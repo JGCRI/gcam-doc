@@ -54,7 +54,7 @@ mitigation policy.
 
 ## Documentation
 
-* [GCAM Documentation](http://wiki.umd.edu/gcam/index.php?title=Main_Page)
+* [GCAM Documentation](toc.html)
 * [Getting Started with GCAM](http://wiki.umd.edu/gcam/index.php?title=Getting_Started_with_GCAM)
 * [GCAM Community](http://www.globalchange.umd.edu/models/gcam/gcam-community/)
 * [2015 Tutorial Slides](http://www.globalchange.umd.edu/data/annual-meetings/2015/GCAM_Tutorial_2015.pdf)
