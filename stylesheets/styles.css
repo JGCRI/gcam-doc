@@ -19,7 +19,7 @@ body {
 }
 
 .wrapper {
-  width: 640px;
+  width: 1200px;
   margin: 0 auto;
   background: #DEDEDE;
   -webkit-border-radius: 8px;
@@ -96,6 +96,10 @@ header p.view a {
 }
 header p.view small {
   font-weight: 400;
+}
+header p.nav {
+    font-size: 125%;
+    width: 800px;
 }
 header ul {
   margin: 0;
