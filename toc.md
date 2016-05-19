@@ -1,6 +1,6 @@
 ---
 layout: index
-title: GCAM Documentation Table of Contents
+title: Table of Contents
 current-version: v4.2
 ---
 
