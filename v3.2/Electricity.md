@@ -82,7 +82,7 @@ Three groups of nuclear power technologies can be modeled: currently operational
 
 Assumptions on the availability of natural uranium vary widely. In the GCAM reference scenario, we use a supply curve for natural uranium based on a generalized simple crustal model of the relationship between uranium abundance and concentration fitted to the resource estimates and costs from the IAEA Redbook. This uranium supply curve, displayed in Figure 1, provides the global availability of uranium in million metric tons (MTU) as a function of price ($/kgU). We refer to this supply curve as the PPM-Cost Model (PPM). The availability of uranium at a given price from the PPM supply curve falls within the range of estimates derived by the Gen IV Fuel Cycle Crosscut Group (FCCG) and Deffeyes and MacGregor. It is worth noting that the natural uranium supply curve is assumed to be continuous and that significant amounts of natural uranium are available beyond those estimates in the Redbook data in lesser concentrations but at higher costs. Any estimates of the future cost of undiscovered mineral resources, whether conventional or not, are speculative and the judicious selection of a particular model depends on how it will be used. Estimates of cost and of the practicality of recovery vary widely, however. In our study, we assume that uranium resources are available if prices rise sufficiently high.
 
-![](Uranium.png "Uranium.png")
+![](images/Uranium.png "Uranium.png")
 
 ###### Figure 1:&nbsp;Uranium Supply Curve&lt;br&gt;&lt;br&gt;
 
@@ -178,7 +178,7 @@ The amount of backup capacity required differs somewhat between wind and solar t
 
 &lt;br&gt;As a second option for maintaining grid reliability, for each central station solar or wind electric technology, there is a corresponding, more capital-intensive technology option with integrated energy storage. This generic storage technology could represent a facility with molten salt, batteries, or pumped hydroelectricity; the important feature is that the coupled system is capable of providing power at relatively constant dispatch, and thus functions as a baseload technology on the grid. There is some energy lost in the extra conversions, but no secondary fuel (e.g. gas) is required for operation.&lt;br&gt;
 
-&lt;br&gt;The third and final component of the cost of renewable technologies is resource costs, calculated from exogenous supply curves. These are used for technologies with marginal costs that are assumed to increase with deployment, such as long-distance transmission line costs that would be required to produce power from remote wind resources. Only wind and rooftop PV are assigned resource supply curves; central station solar technologies are assumed to have constant marginal costs regardless of deployment levels.&lt;br&gt;&lt;br&gt; ![](Wind.png "fig:Wind.png") ![](RooftopPV.png "fig:RooftopPV.png")&lt;br&gt;
+&lt;br&gt;The third and final component of the cost of renewable technologies is resource costs, calculated from exogenous supply curves. These are used for technologies with marginal costs that are assumed to increase with deployment, such as long-distance transmission line costs that would be required to produce power from remote wind resources. Only wind and rooftop PV are assigned resource supply curves; central station solar technologies are assumed to have constant marginal costs regardless of deployment levels.&lt;br&gt;&lt;br&gt; ![](images/Wind.png "fig:Wind.png") ![](images/RooftopPV.png "fig:RooftopPV.png")&lt;br&gt;
 
 ###### Figure 2. Wind and rooftop solar costs with reference and advanced technology assumptions. These supply curves include technology and resource costs, but exclude any ancillary costs.&lt;br&gt;
 
@@ -214,7 +214,7 @@ Like solar and wind, geothermal energy currently accounts for less than one perc
 
 &lt;br&gt;Geothermal costs in GCAM are input as exogenous supply curves. Supply curves assumed for hydrothermal and EGS resources for the U.S. are based on Petty and Porro (2007) and are shown in Figure 3. Supply curves in non-U.S. regions are assumed to have the same shape as those used in the U.S., but with different amounts of maximum resources. Estimates of maximum hydrothermal (conventional geothermal) resources are based on Glitnir (2007), and EGS resources in all regions are based on data provided by R. Bertani (pers. comm..; see Table 7)
 
-&lt;br&gt; <img src="Geothermal2.png" title="fig:Figure 3: Geothermal Supply Curves" alt="Figure 3: Geothermal Supply Curves" width="480" /> &lt;br&gt;
+&lt;br&gt; <img src="images/Geothermal2.png" title="fig:Figure 3: Geothermal Supply Curves" alt="Figure 3: Geothermal Supply Curves" width="480" /> &lt;br&gt;
 
 ###### Figure 3. Geothermal supply curves in 2050 for the U.S. region. The EGS technology is only included in advanced technology scenarios.
 

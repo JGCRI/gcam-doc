@@ -47,7 +47,7 @@ GCAM is a global model. &nbsp;The economy and energy system are&nbsp;disaggregat
 
 &lt;br&gt;
 
-![](GCAMRegions.png "GCAMRegions.png")
+![](images/GCAMRegions.png "GCAMRegions.png")
 
 ###### Figure 1:&nbsp;GCAM&nbsp;Region Definitions&lt;br&gt;
 
@@ -60,11 +60,11 @@ Socioeconomics&lt;br&gt;
 
 GCAM computes the potential GDP of each region using exogenous assumptions about population, labor participation, and labor productivity growth. &nbsp;In some formulations of the model, GDP is adjusted to reflect the effect of changing energy prices on economic growth. &nbsp;However, the default assumption does not include this feedback. Population and GDP in the current baseline scenario are shown in Figures 2 and 3.&lt;br&gt;&lt;br&gt;
 
-<img src="Population.png" title="Population.png" alt="Population.png" width="400" />
+<img src="images/Population.png" title="Population.png" alt="Population.png" width="400" />
 
 ###### Figure 2:&nbsp;Population&lt;br&gt;
 
-<img src="GDP.png" title="GDP.png" alt="GDP.png" width="400" />
+<img src="images/GDP.png" title="GDP.png" alt="GDP.png" width="400" />
 
 ###### Figure 3:&nbsp;GDP&lt;br&gt;
 

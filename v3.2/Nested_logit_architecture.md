@@ -28,7 +28,7 @@ Our current approach is to use a nesting strategy that allows the logit exponent
 
 &lt;br&gt;
 
-![](Land small.png "Land small.png")
+![](images/Land small.png "Land small.png")
 
 ###### Figure 1: Competition for land in GCAM
 

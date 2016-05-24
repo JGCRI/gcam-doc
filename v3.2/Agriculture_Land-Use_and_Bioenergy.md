@@ -69,7 +69,7 @@ Competition between alternative land uses in the GCAM is modeled using
 a [nested logit architecture](Nested_logit_architecture.html). A
 representative, simplified nnesting structure is depicted in Figure 1.
 
-![](Land small.png "fig:Land small.png")&lt;br&gt;
+![](images/Land_small.png "fig:Land small.png")&lt;br&gt;
 
 ###### Figure 1. Competition for Land in GCAM
 

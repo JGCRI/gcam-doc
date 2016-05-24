@@ -12,7 +12,7 @@ GCAM contains a detailed representation of transportation energy use and service
 
 &lt;br&gt;
 
-![](Transportation.png "fig:Transportation.png")&lt;br&gt;
+![](images/Transportation.png "fig:Transportation.png")&lt;br&gt;
 
 ###### Figure 1. GCAM transportation representation.&lt;br&gt;
 

@@ -150,7 +150,7 @@ Implementation Details
 
 ### The GCAM Data Flow Graph
 
-<img src="Gcam-usa-energy-small.png" title="fig:Flow graph for the
+<img src="images/Gcam-usa-energy-small.png" title="fig:Flow graph for the
 energy portion of the USA region. There are additional independent
 tasks in the USA region, and each region is currently independent of
 all the others." alt="Flow graph for the energy portion of the USA
@@ -182,7 +182,7 @@ between these two competing factors.
 
 ### Graph Analysis
 
-<img src="Gcam-usa-clans-small.png" title="fig:Hierarchical breakdown
+<img src="images/Gcam-usa-clans-small.png" title="fig:Hierarchical breakdown
 of the full GCAM USA region (a superset of the graph in the previous
 figure)." alt="Hierarchical breakdown of the full GCAM USA region (a
 superset of the graph in the previous figure)." width="300" /> Parsing
@@ -207,7 +207,7 @@ which is linear. This scenario represents five distinct linear paths
 through the graph, all of which can be run concurrently, but which
 must maintain their internal ordering.
 
-<img src="Gcam-usa-grain020.png" title="fig:Grain flow graph of the
+<img src="images/Gcam-usa-grain020.png" title="fig:Grain flow graph of the
 GCAM USA region with a target grain size of 20 tasks per grain. Note
 that some grains end up being significantly larger or smaller than the
 target size" alt="Grain flow graph of the GCAM USA region with a

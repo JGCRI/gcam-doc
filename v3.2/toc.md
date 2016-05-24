@@ -27,11 +27,11 @@ energy system. An important feature of the GCAM architecture is that
 the GCAM terrestrial carbon cycle model is embedded within the
 agriculture-land-use system model.
 
-![](Figure 1.png "Figure 1.png")
+![](images/Figure_1.png "Figure 1.png")
 
 ###### Figure 1: Overall structure of the general structure of the energy system of the GCAM
 
-![](Figure 2.png "Figure 2.png")
+![](images/Figure_2.png "Figure 2.png")
 
 ###### Figure 2: Overall structure of the agriculture-land-use module of the GCAM
 
@@ -63,7 +63,7 @@ and captured CO2 explicitly. CO2 storage reservoirs are disaggregated
 by region, type and grade. Similarly nuclear waste storage represents
 a potential limit on cumulative deployment and reactor choice.
 
-&lt;br&gt;![](Figure 3.png "fig:Figure 3.png")
+&lt;br&gt;![](images/Figure_3.png "fig:Figure 3.png")
 
 ###### Figure 3: Overview of energy production and transformation in GCAM.
 
@@ -98,9 +98,9 @@ Detailed Model Description
 
 The remainder of the GCAM documentation is divided into 5 sections:
 
--   [Regional Scope, Socioeconomics, and Trade](Regional_Scope,_Socioeconomics,_and_Trade.html)
+-   [Regional Scope, Socioeconomics, and Trade](Regional_Scope_Socioeconomics_and_Trade.html)
 -   [The Energy System](The_Energy_System "wikilink")
--   [Agriculture, Land-Use, and Bioenergy](Agriculture,_Land-Use,_and_Bioenergy.html)
+-   [Agriculture, Land-Use, and Bioenergy](Agriculture_Land-Use_and_Bioenergy.html)
 -   [The Climate Module](The_Climate_Module.html)
 -   [The Solver](GCAM_Solver.html)
 

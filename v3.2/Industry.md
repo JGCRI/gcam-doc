@@ -15,7 +15,7 @@ Aggregate Industrial Sectors&lt;br&gt;
 
 In all non-US regions, the industrial sector is represented as a consumer of generic energy services and feedstocks, as shown in Figure 1. Within energy use there is cost-based competition between fuels, but with a low elasticity of substitution, as the specific uses of the energy are not specified. Cogeneration of electricity is tracked, and represented as a separate technology option for each fuel consumed by the industrial sector (other than electricity). Cogeneration technology options are characterized by higher capital costs, but are credited with the revenue from electricity sold; as such the deployment of cogeneration in any scenario will depend on future fuel and electricity prices. Output of aggregate industrial sectors is represented in generic terms.
 
-<img src="Ind diagram global.gif" title="Schematic of aggregate industrial sectors, used in non-US regions." alt="Schematic of aggregate industrial sectors, used in non-US regions." width="793" height="182" />
+<img src="images/Ind_diagram_global.gif" title="Schematic of aggregate industrial sectors, used in non-US regions." alt="Schematic of aggregate industrial sectors, used in non-US regions." width="793" height="182" />
 
 ##### Figure 1. Schematic of aggregate industrial sectors, used in non-US regions. Cost-based competition occurs in producing the Energy Use and Feedstocks services, but no competition occurs between these services.&lt;br&gt;
 
@@ -52,11 +52,11 @@ Detailed U.S. Industrial Sector&lt;br&gt;
 
 &lt;br&gt;
 
-![](USIndustry.png "fig:USIndustry.png")&lt;br&gt;
+![](images/USIndustry.png "fig:USIndustry.png")&lt;br&gt;
 
 ##### Figure 2. Schematic of a representative US industry in GCAM. Technologies compete to provide intermediate industrial services, which are required in exogenous amounts to produce output. Technological change can take place at both levels.&lt;br&gt;
 
-![](USIndustryConsumption.png "fig:USIndustryConsumption.png")&lt;br&gt;
+![](images/USIndustryConsumption.png "fig:USIndustryConsumption.png")&lt;br&gt;
 
 ##### Figure 3. Industrial energy consumption by GCAM industrial group and intermediate service. Source: 2002 Manufacturing Energy Consumption (EIA 2002).&lt;br&gt;
 

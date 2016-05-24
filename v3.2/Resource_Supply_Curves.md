@@ -17,19 +17,19 @@ Depletable resource supply curves are input for each region as the amount of eac
 
 &lt;br&gt;
 
-<img src="NatGasSupplyCurve.gif" title="NatGasSupplyCurve.gif" alt="NatGasSupplyCurve.gif" width="591" height="442" />
+<img src="images/NatGasSupplyCurve.gif" title="NatGasSupplyCurve.gif" alt="NatGasSupplyCurve.gif" width="591" height="442" />
 
 ###### Figure 1. Natural gas resource supply curves
 
-<img src="CrudeOilSupplyCurve.gif" title="CrudeOilSupplyCurve.gif" alt="CrudeOilSupplyCurve.gif" width="591" height="442" />
+<img src="images/CrudeOilSupplyCurve.gif" title="CrudeOilSupplyCurve.gif" alt="CrudeOilSupplyCurve.gif" width="591" height="442" />
 
 ###### Figure 2. Crude oil resource supply curves
 
-<img src="UnconvOilSupplyCurve.gif" title="UnconvOilSupplyCurve.gif" alt="UnconvOilSupplyCurve.gif" width="591" height="442" />
+<img src="images/UnconvOilSupplyCurve.gif" title="UnconvOilSupplyCurve.gif" alt="UnconvOilSupplyCurve.gif" width="591" height="442" />
 
 ###### Figure 3. Unconventional oil resource supply curves
 
-<img src="CoalSupplyCurve.gif" title="CoalSupplyCurve.gif" alt="CoalSupplyCurve.gif" width="591" height="442" />
+<img src="images/CoalSupplyCurve.gif" title="CoalSupplyCurve.gif" alt="CoalSupplyCurve.gif" width="591" height="442" />
 
 ###### Figure 4. Coal resource supply curves
 
@@ -44,7 +44,7 @@ Wind supply curves in each region include all costs of producing electricity exc
 
 &lt;br&gt;
 
-<img src="WindSupply.gif" title="WindSupply.gif" alt="WindSupply.gif" width="591" height="442" />
+<img src="images/WindSupply.gif" title="WindSupply.gif" alt="WindSupply.gif" width="591" height="442" />
 
 ###### Figure 5. Wind resource supply curves, in EJ/yr of electricity output.
 
@@ -56,7 +56,7 @@ The costs of producing central electricity from solar power are input at the lev
 
 &lt;br&gt;
 
-<img src="PVSupply.gif" title="PVSupply.gif" alt="PVSupply.gif" width="591" height="442" />
+<img src="images/PVSupply.gif" title="PVSupply.gif" alt="PVSupply.gif" width="591" height="442" />
 
 ###### Figure 6. Rooftop PV resource supply curves, in EJ/yr of electricity output.
 
@@ -68,7 +68,7 @@ Geothermal modeling in GCAM&nbsp;is documented in Hannam et al. (2009).&lt;ref&g
 
 &lt;br&gt;
 
-<img src="HydrothermalSupply.gif" title="fig:HydrothermalSupply.gif" alt="HydrothermalSupply.gif" width="395" height="296" /> <img src="EGSSupply.gif" title="fig:EGSSupply.gif" alt="EGSSupply.gif" width="400" height="300" />
+<img src="images/HydrothermalSupply.gif" title="fig:HydrothermalSupply.gif" alt="HydrothermalSupply.gif" width="395" height="296" /> <img src="images/EGSSupply.gif" title="fig:EGSSupply.gif" alt="EGSSupply.gif" width="400" height="300" />
 
 ###### Figure 7. Hydrothermal and EGS supply curves, in EJ/yr of heat production. Note that geothermal electric technologies are assigned a 10% conversion efficiency.
 
@@ -80,7 +80,7 @@ The waste biomass supply curves in each region include several forms of waste th
 
 &lt;br&gt;
 
-<img src="WasteBioSupply.gif" title="WasteBioSupply.gif" alt="WasteBioSupply.gif" width="591" height="442" />
+<img src="images/WasteBioSupply.gif" title="WasteBioSupply.gif" alt="WasteBioSupply.gif" width="591" height="442" />
 
 ###### Figure 8. Waste biomass supply curves, in EJ/yr of combustible energy.
 

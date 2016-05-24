@@ -377,10 +377,10 @@ At the top of each page you may notice some text indicating which version of GCA
 
 Should&nbsp;the note on the page your are viewing indicate that it was revised for a version of GCAM later than what you are interested in click on the “history” tab at the top of that page:
 
-![](Wiki_history_tab.png "fig:Wiki_history_tab.png")&lt;br&gt;
+![](images/Wiki_history_tab.png "fig:Wiki_history_tab.png")&lt;br&gt;
 
 On this page you will find a list of edits to the wiki page of interest. For each edit there may be a comment giving some insight about what changed in that edit. In these comments we will indicate when an edit was made for upgrades made in GCAM. Here you will want to select the last version of the wiki page before it was updated to a later GCAM revision than what you are looking for.
 
-![](Wiki_select_prev_version.png "fig:Wiki_select_prev_version.png")&lt;br&gt;
+![](images/Wiki_select_prev_version.png "fig:Wiki_select_prev_version.png")&lt;br&gt;
 
 Note&nbsp;that this strategy was adopted May 1, 2012 and all edits prior to this date should be assumed to be valid for GCAM 3.0 r4371.
