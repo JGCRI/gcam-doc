@@ -83,39 +83,119 @@ carbon-cycle<sup><a href="#ref6">[6]</a></sup>, and aerosol forcing strength, ar
 enable a GCAM user to produce a wide range of climate
 scenarios.
 
-<!-- The mediawiki version of this table had two columns with the -->
-<!-- cells colored in according to category.  I've tried to recreate -->
-<!-- that effect by coloring the text background, but to be honest it -->
-<!-- looks pretty terrible.  I expect that to get the same effect we -->
-<!-- had in the original we will need to replace the Markdown table -->
-<!-- with a bona-fide HTML table, but that's pretty tedious to do by -->
-<!-- hand, so I've left it for someone else.  Summer interns FTW.-->
+<table>
+  <caption>Table 1: Sources of greenhouse gases in GCAM</caption>
+  <tr>
+    <th>&nbsp;</th>
+    <th>GCAM</th>
+  </tr>
 
-|  |  |
-|---|----|
-|   | **GCAM**   |
-| <span style="background: none repeat scroll 0% 0% Aquamarine;"> CO<sub>2</sub> fuel combustion</span>      | <span style="background: none repeat scroll 0% 0% Aquamarine;"> Endogenous by technology and fuel</span>     |
-| <span style="background: none repeat scroll 0% 0% Aquamarine;"> CO<sub>2</sub> from other industry</span>  | <span style="background: none repeat scroll 0% 0% Aquamarine;"> Endogenous by technology and fuel</span>     |
-| <span style="background: none repeat scroll 0% 0% Aquamarine;"> CO<sub>2</sub> from land-use change</span> | <span style="background: none repeat scroll 0% 0% Aquamarine;"> Endogenous by technology and land use</span> |
-| <span style="background: none repeat scroll 0% 0% LemonChiffon;"> CH<sub>4</sub></span>                    | <span style="background: none repeat scroll 0% 0% LemonChiffon;"> Endogenous, mitigation with MAC</span>     |
-| <span style="background: none repeat scroll 0% 0% LemonChiffon;"> N<sub>2</sub>O</span>                    | <span style="background: none repeat scroll 0% 0% LemonChiffon;"> Endogenous, mitigation with MAC</span>     |
-| <span style="background: none repeat scroll 0% 0% Salmon;"> CFCs</span>                                                | <span style="background: none repeat scroll 0% 0% Salmon;"> Exogenous</span>                                 |
-| <span style="background: none repeat scroll 0% 0% LemonChiffon;"> HFCs </span>                                          | <span style="background: none repeat scroll 0% 0% LemonChiffon;"> Endogenous, mitigation with MAC</span>     |
-| <span style="background: none repeat scroll 0% 0% LemonChiffon;"> PFCs</span>                                          | <span style="background: none repeat scroll 0% 0% LemonChiffon;"> Endogenous, mitigation with MAC</span>     |
-| <span style="background: none repeat scroll 0% 0% LemonChiffon;"> SF<sub>6</sub></span>                    | <span style="background: none repeat scroll 0% 0% LemonChiffon;"> Endogenous, mitigation with MAC</span>     |
-| <span style="background: none repeat scroll 0% 0% Salmon;"> Other Montreal gases</span>                                | <span style="background: none repeat scroll 0% 0% Salmon;"> Exogenous</span>                                 |
-| <span style="background: none repeat scroll 0% 0% Aquamarine;"> CO</span>                                              | <span style="background: none repeat scroll 0% 0% Aquamarine;"> Endogenous</span>                            |
-| <span style="background: none repeat scroll 0% 0% Aquamarine;"> NO<sub>x</sub></span>                      | <span style="background: none repeat scroll 0% 0% Aquamarine;"> Endogenous</span>                            |
-| <span style="background: none repeat scroll 0% 0% Aquamarine;"> VOC</span>                                             | <span style="background: none repeat scroll 0% 0% Aquamarine;"> Endogenous</span>                            |
-| <span style="background: none repeat scroll 0% 0% Aquamarine;"> SO<sub>2</sub></span>                     | <span style="background: none repeat scroll 0% 0% Aquamarine;"> Endogenous</span>                            |
-| <span style="background: none repeat scroll 0% 0% Aquamarine;"> BC from fossil fuel burning</span>                     | <span style="background: none repeat scroll 0% 0% Aquamarine;"> Endogenous</span>                            |
-| <span style="background: none repeat scroll 0% 0% Aquamarine;"> OC from fossil fuel burning</span>                | <span style="background: none repeat scroll 0% 0% Aquamarine;"> Endogenous</span>                            |
-| <span style="background: none repeat scroll 0% 0% Aquamarine;"> BC from biomass burning</span>                         | <span style="background: none repeat scroll 0% 0% Aquamarine;"> Endogenous</span>                            |
-| <span style="background: none repeat scroll 0% 0% Aquamarine;"> OC from biomass burning</span>                    | <span style="background: none repeat scroll 0% 0% Aquamarine;"> Endogenous</span>                            |
-| <span style="background: none repeat scroll 0% 0% Salmon;"> Nitrate</span>                                             | <span style="background: none repeat scroll 0% 0% Salmon;"> Exogenous</span>                                 |
-| <span style="background: none repeat scroll 0% 0% Salmon;"> Mineral dust</span>                                        | <span style="background: none repeat scroll 0% 0% Salmon;"> Exogenous</span>                                 |
-| <span style="background: none repeat scroll 0% 0% Salmon;"> Albedo</span>                                              | <span style="background: none repeat scroll 0% 0% Salmon;"> Exogenous</span>                                 |
+  <tr style="background-color: Aquamarine">
+    <td> CO<sub>2</sub> fuel combustion</td>
+    <td> Endogenous by technology and fuel</td>
+  </tr>
 
+  <tr style="background-color: Aquamarine">
+    <td> CO<sub>2</sub> from other industry</td>
+    <td> Endogenous by technology and fuel</td>
+  </tr>
+
+  <tr style="background-color: Aquamarine">
+    <td> CO<sub>2</sub> from land use change</td>
+    <td> Endogenous by technology and land use</td>
+  </tr>
+
+  <tr style="background-color: LemonChiffon">
+    <td> CH<sub>4</sub></td>
+    <td> Endogenous, mitigation with MAC</td>
+  </tr>
+
+  <tr style="background-color: LemonChiffon">
+    <td> N<sub>2</sub>O</td>
+    <td> Endogenous, mitigation with MAC</td>
+  </tr>
+
+  <tr style="background-color: Salmon">
+    <td> CFCs</td>
+    <td> Exogenous</td>
+  </tr>
+  
+  <tr style="background-color: LemonChiffon">
+    <td> HFCs</td>
+    <td> Endogenous, mitigation with MAC</td>
+  </tr>
+
+  <tr style="background-color: LemonChiffon">
+    <td> PFCs</td>
+    <td> Endogenous, mitigation with MAC</td>
+  </tr>
+  
+  <tr style="background-color: LemonChiffon">
+    <td> SF<sub>y</sub></td>
+    <td> Endogenous, mitigation with MAC</td>
+  </tr>
+
+  <tr style="background-color: Salmon">
+    <td> Other Montreal gases</td>
+    <td> Exogenous</td>
+  </tr>
+
+  <tr style="background-color: Aquamarine">
+    <td> CO</td>
+    <td> Endogenous</td>
+  </tr>
+
+  <tr style="background-color: Aquamarine">
+    <td> NO<sub>x</sub></td>
+    <td> Endogenous</td>
+  </tr>
+
+  <tr style="background-color: Aquamarine">
+    <td> VOC</td>
+    <td> Endogenous</td>
+  </tr>
+
+  <tr style="background-color: Aquamarine">
+    <td> SO<sub>2</sub></td>
+    <td> Endogenous</td>
+  </tr>
+
+  <tr style="background-color: Aquamarine">
+    <td> BC from fossil fuel burning</td>
+    <td> Endogenous</td>
+  </tr>
+
+  <tr style="background-color: Aquamarine">
+    <td> OC from fossil fuel burning</td>
+    <td> Endogenous</td>
+  </tr>
+
+  <tr style="background-color: Aquamarine">
+    <td> BC from biomass burning</td>
+    <td> Endogenous</td>
+  </tr>
+
+  <tr style="background-color: Aquamarine">
+    <td> OC from biomass burning</td>
+    <td> Endogenous</td>
+  </tr>
+
+  <tr style="background-color: Salmon">
+    <td> Nitrate</td>
+    <td> Exogenous</td>
+  </tr>
+
+  <tr style="background-color: Salmon">
+    <td> Mineral dust</td>
+    <td> Exogenous</td>
+  </tr>
+
+  <tr style="background-color: Salmon">
+    <td> Albedo</td>
+    <td> Exogenous</td>
+  </tr>
+</table>
+<br/>
 
 References
 ---------

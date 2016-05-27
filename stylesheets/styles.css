@@ -259,14 +259,16 @@ li pre {
 }
 
 table {
-  width: 100%;
+  max-width: 85%;
+  margin: auto;
+  border: 1;
   border-collapse: collapse;
 }
 
 th, td {
   text-align: left;
-  padding: 5px 10px;
-  border-bottom: 1px solid #aaa;
+  padding: 3px 10px;
+  border: 1px solid #aaa
 }
 
 dt {
