@@ -112,7 +112,7 @@ each iteration with $$ \lambda = 1$$ and evaluate $$ f$$ . If it has
 failed to decrease sufficiently, we decrease $$ \lambda$$ until we
 obtain an acceptable step. The heuristic for accepting a step and the
 procedure for decreasing $$ \lambda$$ are described in *Numerical
-Recipes*.<sup>[1](#NR)
+Recipes*.<sup>[1](#NR)</sup>
 
 #### Limitations
 
