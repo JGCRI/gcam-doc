@@ -16,6 +16,7 @@ body {
   color: #555;
   font-weight: 300;
   background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAUdEVYdENyZWF0aW9uIFRpbWUAMy82LzEygrTcTAAAAFRJREFUSIljfPDggZRf5RIGGNjUHsNATz6jXmSL1Kb2GLiAX+USBnrymRgGGDCORgFmoNAXjEbBaBSMRsFoFIxGwWgUjEbBaBSMRsFoFIxGwWgUAABYNujumib3wAAAAABJRU5ErkJggg==') fixed;
+  text-align: justify
 }
 
 .wrapper {
@@ -45,6 +46,17 @@ p {
   margin: 0 0 20px;
   padding: 0;
 }
+/* Formatting figures */
+.fig {
+    margin: auto;
+    width: 75%;
+    text-align: center;
+    font-size: 90%;
+    font-style: oblique;
+    font-weight: 600;
+}
+    
+
 
 strong {
   color: #222;
