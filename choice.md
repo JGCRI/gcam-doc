@@ -144,15 +144,99 @@ In the Logit case the distribution is the *Generalized Extreme Value
 is the *Weibull* distribution.  
 
 <p class="fig">
-<img src="gcam-figs/logit-dist-cmp.png" alt="Comparison of choice function distributions"/><br/>
+<img src="gcam-figs/gev.png" alt="The GEV distribution" style="width:48%;"/>
+<img src="gcam-figs/weibull.png" alt="The Weibull distribution" style="width:48%;"/><br/>
 Figure 1: Comparison of the probability distributions underlying the
-two choice functions.</p>
+two choice functions.  Increasing the mean of the GEV (left)
+translates the distribution along the x-axis unchanged.  Increasing
+the mean of the Weibull (right) also broadens the distribution.</p>
 
 From Figure 1 it is apparent that changing the mean of a GEV
 distribution while keeping its logit coefficient constant does not
 change the shape of the distribution.  By contrast, changing the mean
 of a Weibull distribution while keeping the logit exponent constant
-makes the distribution broader or narrower.  
+makes the distribution broader or narrower.  Either of these behaviors
+might be desirable in certain circumstances.  For example, if the
+increase in average cost comes from applying a carbon tax, then we
+don't expect the distribution of the random factors to change as a
+result.  The Logit choice function is appropriate for this situation
+because its underlying GEV produces this behavior.
+
+Conversely, in some cases a shift in cost is due to changes in
+secondary factors that are folded into a modified cost.  For example,
+in passenger transportation cost is the basic contributor to the
+choice indicator, but people also care about the time they spend
+traveling.  We represent this preference by adding a cost penalty to
+slower transportation modes.  Because this penalty scales with
+per-capita income, it will produce a cost shift over time.  In this
+case we *would* expect the distribution of the random factors in the
+choice model to change because the shift is a result of a change in
+consumer preferences, and there are many facets to consumer preference
+that GCAM does not capture.  Therefore, in a case like this, the
+Modified Logit choice function is more appropriate.
+
+## GCAM Configuration
+
+GCAM requires each sector and subsector in the energy system to have a
+choice function configured.  Either the Logit or the Modified Logit
+may be selected.  For historical reasons the nomenclature used in the
+GCAM source code and configuration files is slightly different than
+what is used here.  The Logit and Modified Logit choice functions are
+referred to as "Absolute-cost Logit" and "Relative-cost Logit",
+respectively.  Additionally, the logit coefficient for the Logit model
+is not specified directly.  Instead, a logit exponent for an
+_equivalent_<sup>[[8](#note8)]</sup> Modified Logit model is
+specified, and GCAM calculates the corresponding logit coefficient.
+This allows users to switch easily from Logit to Modified Logit or
+vice versa without
+recalculating the parameters.  
+
+A choice function is specified by including its declaration in the
+sector to which it will pertain.  Consider this excerpt from the GCAM
+Reference Scenario (GRS) configuration:  
+
+```xml
+         <supplysector name="electricity">
+            <relative-cost-logit>
+               <logit-exponent fillout="1" year="1975">-3</logit-exponent>
+            </relative-cost-logit>
+
+   . . .
+
+            <subsector name="coal">
+               <relative-cost-logit>
+                  <logit-exponent fillout="1" year="1975">-10</logit-exponent>
+               </relative-cost-logit>
+			   
+   . . . 
+
+``` 
+
+This snippet configures the Electricity sector with a Modified Logit
+choice function for allocating market shares to the available
+subsectors.  (Each subsector represents a different fuel input.)  The
+logit exponent for this choice function is -3, which turns out to
+provide moderate switching behavior when costs change.  Further down
+we configure the Coal subsector with a Modified Logit for allocating
+shares to its subsidiary technologies.  (These represent different
+plant designs, such as steam or IGCC.)  The logit exponent in this
+case is -10, which produces more aggressive switching behavior with
+changing costs.
+
+Either of these declarations could be changed to the Logit choice
+function by changing the `<relative-cost-logit>` XML tag to
+`<absolute-cost-logit>`.  The `<logit-exponent>` tag could be left
+alone to produce a choice function that is similar to the Modified
+Logit version for costs close to those found in the calibration year.
+However, the behaviors of the two functions will diverge as costs
+move out of this initial range.
+
+The choice model in the land system is not currently configurable like
+in the energy system.  Instead, land use choices are always made using
+the Modified Logit.  Logit exponents are specified directly in the
+container object using the `<logit-exponent>` tag.  Land use choice is
+described further in the [Agriculture and Land Use](AgLU.html#logit)
+chapter.
 
 ## Notes and References
 
@@ -188,4 +272,13 @@ $$p\leq0$$ the share is automatically set to zero.
 <a name="note7">[7]</a> This is not universally true.  For $$p \ll 1$$
 tiny increments in $$p$$ can produce huge share differences.  For most
 of GCAM, where $$p$$ represents cost, values in this range are
-uncommon, but they do occur occasionally.
+uncommon, but they do occur in a few sectors.
+
+<a name="note8">[8]</a> By suitable choice of parameters, one can
+arrange for the Logit and Modified Logit to have similar behavior in
+some neighborhood of input values.  However, this equivalence is
+approximate, and the two choice functions diverge increasingly, the
+further the inputs get from this neighborhood of equivalence.
+Typically we choose this neighborhood to be the costs during the
+calibration period, but if necessary it can be specified explicitly
+with the `<base-cost>` XML tag inside the choice function declaration.
