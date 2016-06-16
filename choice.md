@@ -143,13 +143,13 @@ In the Logit case the distribution is the *Generalized Extreme Value
 (GEV)* distribution, while in the Modified Logit case the distribution
 is the *Weibull* distribution.  
 
-<p class="fig">
 <img src="gcam-figs/gev.png" alt="The GEV distribution" style="width:48%;"/>
 <img src="gcam-figs/weibull.png" alt="The Weibull distribution" style="width:48%;"/><br/>
 Figure 1: Comparison of the probability distributions underlying the
 two choice functions.  Increasing the mean of the GEV (left)
 translates the distribution along the x-axis unchanged.  Increasing
-the mean of the Weibull (right) also broadens the distribution.</p>
+the mean of the Weibull (right) also broadens the distribution.
+{: .fig}
 
 From Figure 1 it is apparent that changing the mean of a GEV
 distribution while keeping its logit coefficient constant does not
