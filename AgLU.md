@@ -8,7 +8,7 @@ In GCAM 4.2, the model data for the agriculture and land use parts of the model 
 
 ## AgLU Inputs and Outputs
 
-This section briefly summarized inputs and outputs, including data sources, spatial and temporal resolution. A more complete description of data is available at: http://www.pnl.gov/main/publications/external/technical_reports/PNNL-21025.pdf.
+This section briefly summarizes inputs and outputs, including data sources, spatial and temporal resolution. A more complete description of data is available at: http://www.pnl.gov/main/publications/external/technical_reports/PNNL-21025.pdf.
 
 ### Inputs
 
@@ -51,7 +51,7 @@ In this section, we describe and discuss the approach we have developed for the 
 
 ### Land Sharing Approach 
 
-Economic land use decisions in GCAM are based on a logit model of sharing based on relative inherent profitability of using land for competing purposes. The logit approach was developed my McFadden (1974) to describe the distribution of consumer choice, but a similar mathematical approach works well here for our purposes. The interpretation of this sharing system in GCAM is that there is a distribution of profit behind each competing land use within a region, rather than a single point value. Each competing land use option has a potential average profit over its entire distribution. The share of land allocated to any given use is based on the probability that that use has a highest profit among the competing uses. The relative potential average profits are used in the logit formulation, where an option with a higher average profit will get a higher share than one with a lower average profit. However, at the margin, the profits of competing options are equal. In essence, the sharing can therefore be considered optimal, but the assumption of a distribution of profits makes it very different from a constrained linear optimization approach.
+Economic land use decisions in GCAM are based on a logit model of sharing based on relative inherent profitability of using land for competing purposes. The logit approach was developed by McFadden (1974) to describe the distribution of consumer choice, but a similar mathematical approach works well here for our purposes. The interpretation of this sharing system in GCAM is that there is a distribution of profit behind each competing land use within a region, rather than a single point value. Each competing land use option has a potential average profit over its entire distribution. The share of land allocated to any given use is based on the probability that that use has a highest profit among the competing uses. The relative potential average profits are used in the logit formulation, where an option with a higher average profit will get a higher share than one with a lower average profit. However, at the margin, the profits of competing options are equal. In essence, the sharing can therefore be considered optimal, but the assumption of a distribution of profits makes it very different from a constrained linear optimization approach.
 
 In GCAM, competing uses of land are nested within land nodes. Within each land node, it is generally assumed to be easier to substitute products, so logit exponents are higher to indicate tighter competition. Examples include switching food crops from one to another and converting forests from unmanaged categories to logging forests. Substitution across land nodes is also allowed but is assumed to be more difficult than within land nodes.  We implement this philosophy by setting lower logit exponents via input data. For example, the expansion of cropland into pasture is more difficult than expansion of wheat land into corn land.
 
@@ -141,11 +141,11 @@ For vegetation carbon, we distinguish between two different activities – land 
 
 ### Soil Carbon
 
-For soil carbon, we assume emissions and uptake is exponential, where the half life depends on the region. Colder regions have longer half-lives.
+For soil carbon, we assume we assume both emissions and uptake are exponential, where the exponential half-life depends on the region. Colder regions have longer half-lives.
 
 ### Carbon Stocks
 
-GCAM tracks carbon stocks by calculating and storing cumulative land-use change emissions. As land expands, we add future uptake to the carbon stock and as land contracts we subtract future emissions from the carbon stock.
+GCAM tracks carbon stocks by calculating and storing cumulative land-use change emissions, and then applying those emissions as time proceeds. As land expands, we compute future uptake to be added to the carbon stock, and as land contracts we compute future emissions to subtract from the carbon stock.
 
 ## Policy Options
 
