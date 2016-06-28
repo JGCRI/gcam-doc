@@ -348,7 +348,7 @@ not yet solved.
 
 ### Compile-time configuration options
 
-In order to compute its iteration step, the Broyden solver must solver
+In order to compute its iteration step, the Broyden solver must solve
 equation (1) for $$\delta \vec x$$.  In GCAM's default configuration
 it does this using an L-U Decomposition subroutine provided in the
 Boost libraries.  L-U Decomposition is quick, but it has no way to
