@@ -6,7 +6,7 @@ next:
 current-version: v4.2 
 ---
 
-At each time step, GCAM searches for a vector of prices that casue all
+At each time step, GCAM searches for a vector of prices that cause all
 markets to be cleared and all consistency conditions to be satisfied.
 The mapping from input prices to output market disequilibria is a
 vector function $$\vec y = F(\vec p)$$.  The GCAM solver is responsible
@@ -29,7 +29,7 @@ Solver Algorithms
 
 #### Description
 
-The bisection solver is a multidimensional generalization of of
+The bisection solver is a multidimensional generalization of 
 one-dimensional bisection methods. The one-dimensional methods work by
 first establishing a bracket, identified by a change of sign in
 $$f(x)$$, around the solution. At each iteration $$f(x)$$ is evaluated
@@ -57,7 +57,7 @@ solver into the general vicinity of the solution, from which one of the
 other solvers can easily find it. For initial guesses far from
 the solution, bisection can often be faster than more sophisticated
 solution techniques. Moreover, bisection places no conditions on the
-Jacobian matrix, making it useful for jostling the solver out of
+partial derivatives of $$F$$, making it useful for jostling the solver out of
 singular regions. These two properties make bisection a useful
 technique for getting a solution started, before finishing with
 another technique.
@@ -131,9 +131,9 @@ obtain an acceptable step. The heuristic for accepting a step and the
 procedure for decreasing $$ \lambda$$ are described in *Numerical
 Recipes*.<sup>[1](#NR)</sup>
 
-Because the Broyden solver is the only solver algorithm that can drive
+**Because the Broyden solver is the only solver algorithm that can drive
 the system all the way to a solution, it should always be included in
-the configuration.  Failure to do so will almost always result in a
+the configuration.**  Failure to do so will almost always result in a
 failure to solve.
 
 #### Limitations
@@ -146,7 +146,7 @@ having no impact on the excess demand in any of the solved markets. In
 GCAM this situation occurs predictably at high and low price
 extremes. Many of the input supply and demand functions saturate in
 extreme price regimes, leading to zero derivatives. One of the ways
-GCAM deals with this problem by excluding markets with obvious price
+GCAM deals with this problem is by excluding markets with obvious price
 extremes from the Broyden solver and using other solver algorithms on
 them until their prices come into the normal price domain.
 
@@ -361,7 +361,7 @@ Singular Value Decomposition (SVD).  The idea behind SVD is to use
 more sophisticated linear algebra techniques to detect and filter out
 components of $$\delta \vec x$$ that are corrupted by ill-conditioning
 in the Jacobian matrix.  SVD is a more complex algorithm than L-U and
-takes longer to compute, but the iterations save can more than offset
+takes longer to compute, but the iterations saved can more than offset
 the additional computational cost.
 
 To use SVD you must have LAPACK and BLAS libraries installed, along
