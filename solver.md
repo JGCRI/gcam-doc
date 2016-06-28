@@ -288,7 +288,10 @@ has been exceeded.
   found a valid solution by that time, it exits and issues a warning.  
 * **solution-tolerance**: The relative excess demand threshold, below
   which the model is considered solved. Loosely speaking, this is the
-  accuracy to which we wish to solve the model.  
+  accuracy to which we wish to solve the model.  It should be set
+  greater than or equal to the `ftol` parameter in the Broyden solver
+  component, so that any candidate solution returned by the Broyden
+  algorithm will be guaranteed to pass this test as well.  
 * **solution-floor**: The absolute excess demand threshold, below
   which the model is considered solved. This parameter covers the
   cases where a low demand value makes achieving a relative excess
