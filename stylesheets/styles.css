@@ -274,6 +274,12 @@ th, td {
 dt {
   color: #222;
   font-weight: 700;
+  font-size: 95%;
+}
+
+dl {
+    width: 95%;
+    margin: auto;
 }
 
 th {
