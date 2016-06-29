@@ -4,11 +4,13 @@ title: Agriculture, Land-Use, and Bioenergy
 current-version: v4.2 
 ---
 
-In GCAM 4.2, the model data for the agriculture and land use parts of the model is comprised of 283 subregions in terms of land use, based on a division of the extant agro-ecological zones (AEZs), which we derived from work performed for the GTAP project (Monfreda et al, 2009), within each of GCAM’s 32 global geo-political regions. Within each of these 283 subregions, land is categorized into approximately a dozen types based on cover and use. Some of these types, such as tundra and desert, are not considered arable. Among arable land types, further divisions are made for lands historically in non-commercial uses such as forests and grasslands as well as commercial forestlands and croplands. Production of approximately twenty crops is currently modeled, with yields of each specific to each of the 283 subregions. The model is designed to allow specification of different options for future crop management for each crop in each subregion.
+In GCAM, the model data for the agriculture and land use parts of the model comprises 283 subregions in terms of land use, based on a division of the extant agro-ecological zones (AEZs), which we derived from work performed for the GTAP project (Monfreda et al, 2009), within each of GCAM’s 32 global geo-political regions. Within each of these 283 subregions, land is categorized into approximately a dozen types based on cover and use. Some of these types, such as tundra and desert, are not considered arable. Among arable land types, further divisions are made for lands historically in non-commercial uses such as forests and grasslands as well as commercial forestlands and croplands. Production of approximately twenty crops is currently modeled, with yields of each specific to each of the 283 subregions. The model is designed to allow specification of different options for future crop management for each crop in each subregion.
 
 ## AgLU Inputs and Outputs
 
-This section briefly summarizes inputs and outputs, including data sources, spatial and temporal resolution. A more complete description of data is available at: http://www.pnl.gov/main/publications/external/technical_reports/PNNL-21025.pdf.
+This section briefly summarizes inputs and outputs, including data
+sources, spatial and temporal resolution. A more complete description
+of data is available in [PNNL Technical Report 21025](http://www.pnl.gov/main/publications/external/technical_reports/PNNL-21025.pdf).
 
 ### Inputs
 
