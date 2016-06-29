@@ -28,25 +28,48 @@ GCAM's inputs include information on production, consumption, prices, land, carb
 <dt>Carbon</dt> <dd>Inputs include potential vegetation and soil carbon density (i.e., carbon density if the land grew to equilibrium) and a mature age. Currently, we derive vegetation carbon densities for crops from the FAO computed crop yield. All other carbon densities and mature ages come from Houghton (1999) and King (1997).</dd>
 
 <dt>Other Emissions</dt> <dd>Inputs include emissions of all non-CO<sub>2</sub> gases and species for each year and region. Data for BC and OC is from the RCP inventory (Lamarque et al., 2011). Data for all other gases and species is from EDGAR (European Commission, 2010).</dd>
-</dl>
+</dl><br/>
 
 ### Outputs
 
 GCAM's outputs include variables related to production, consumption, prices, land, carbon, and other emissions. 
 
-**Production**. Outputs include production of all crops and forestry products; this information is calculated annually for each of the 283 AgLU regions. GCAM also calculates production of livestock at the 32 region level.
+<dl>
+<dt>Production</dt> <dd>Outputs include production of all crops and
+forestry products; this information is calculated annually for each of
+the 283 AgLU regions. GCAM also calculates production of livestock at
+the 32 region level.</dd>
 
-**Consumption**. Outputs include food, non-food, bioenergy, and feed consumption of all crop, forestry, livestock, and bioenergy products; this information is calculated annually for each of the 32 geopolitical regions.
+<dt>Consumption</dt> <dd>Outputs include food, non-food, bioenergy,
+and feed consumption of all crop, forestry, livestock, and bioenergy
+products; this information is calculated annually for each of the 32
+geopolitical regions.</dd>
 
-**Prices**. Outputs include the price of all food, feed, forestry, bioenergy and livestock commodities. This information is calculated annually, typically at a global level; however, some commodities (e.g., livestock) have regional prices (32-region level).
+<dt>Prices</dt> <dd>Outputs include the price of all food, feed,
+forestry, bioenergy and livestock commodities. This information is
+calculated annually, typically at a global level; however, some
+commodities (e.g., livestock) have regional prices (32-region
+level).</dd>
 
-**Land**. Outputs include land use and land cover for each of the land types included in GCAM (see Figure 1). This information is calculated annually for each of the 283 AgLU regions.
+<dt>Land</dt> <dd>Outputs include land use and land cover for each of
+the land types included in GCAM (see Figure 1). This information is
+calculated annually for each of the 283 AgLU regions.</dd>
 
-**Carbon**. Outputs include carbon stock and land-use change emissions of CO<sub>2</sub>. This information is calculated annually for each of the 283 AgLU regions.
+<dt>Carbon</dt> <dd>Outputs include carbon stock and land-use change
+emissions of CO<sub>2</sub>. This information is calculated annually
+for each of the 283 AgLU regions.</dd>
 
-**Other emissions**. Outputs include emissions of CH<sub>4</sub>, N<sub>2</sub>O, NH<sub>3</sub>, SO<sub>2</sub>, CO, BC, OC, and NO<sub>x</sub>. Greenhouse gas emissions are produced from livestock, rice, and fertilizer application; these emissions can be reduced with the application of a carbon price. Pollutant emissions are produced from agricultural waste burning, forest fires, deforestation, and savannah burning. Livestock emissions are calculated annually at the 32 region level. All other emissions are calculated annually at the 283 region level.
-
-
+<dt>Other emissions</dt> <dd>Outputs include emissions of
+CH<sub>4</sub>, N<sub>2</sub>O, NH<sub>3</sub>, SO<sub>2</sub>, CO,
+BC, OC, and NO<sub>x</sub>. Greenhouse gas emissions are produced from
+livestock, rice, and fertilizer application; these emissions can be
+reduced with the application of a carbon price. Pollutant emissions
+are produced from agricultural waste burning, forest fires,
+deforestation, and savannah burning. Livestock emissions are
+calculated annually at the 32 region level. All other emissions are
+calculated annually at the 283 region level.</dd>
+</dl><br/>
+  
 ## Economic Modeling Approach
 
 In this section, we describe and discuss the approach we have developed for the economic modeling of agriculture, forestry, and land use in the Global Change Assessment Model (GCAM). We discuss the math determining land allocation in the model, as well as its interpretation. We explain the land nesting strategy and its implications, the math used in calibrating the model, and the types of data required for calibration (the data itself is discussed in later sections). We finish this section with an explanation and discussion of methods for introducing new crops and technologies into the competition beyond the calibration year. More information, including a comparison to other models, is available in Wise et al. (2014).
