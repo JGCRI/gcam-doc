@@ -3,6 +3,10 @@ layout: index
 title: Table of Contents
 current-version: v4.2
 ---
+## GCAM Documentation Topics
+
+* [GCAM Choice Model](choice.html)
+
 
 * [GCAM Solver](solver.html)
 
