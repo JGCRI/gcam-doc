@@ -1,6 +1,8 @@
 ---
 layout: index
 title: Economic Choice in GCAM
+prev: aglu.html
+next: solver.html
 current-version: v4.2
 ---
 

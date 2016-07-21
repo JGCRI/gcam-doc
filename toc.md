@@ -5,9 +5,8 @@ current-version: v4.2
 ---
 ## GCAM Documentation Topics
 
+* [Agriculture, Land Use, and Bioenergy](aglu.html)
 * [GCAM Choice Model](choice.html)
-
-
 * [GCAM Solver](solver.html)
 
 ## Old Versions

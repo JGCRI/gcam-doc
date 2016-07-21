@@ -1,7 +1,7 @@
 ---
 layout: index
 title: GCAM Solver
-prev: 
+prev: choice.html
 next:
 current-version: v4.2 
 ---
