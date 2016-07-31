@@ -12,7 +12,8 @@ Although the GCAM source code offers an "xcode3" branch, the Mac version can be 
 
 ### Development tools
 - Install java SDK 1.8
-- Install a C++ development environment on the Mac.  The easiest way to do this is to install XCode, available in the AppStore at no cost.
+- Install a C++ development environment on the Mac.  The easiest way
+  to do this is to install XCode, available in the App Store at no cost.
 
 
 ### 1. Install xerces library
