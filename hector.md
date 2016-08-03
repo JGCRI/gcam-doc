@@ -10,7 +10,6 @@ Hector, an open-source, object-oriented, reduced-form global climate carbon-cycl
 
 ![Hector Carbon Cycle diagram](gcam-figs/hector_box_model.png)<br/>
 Figure 1: Representation of Hector’s carbon cycle, land, atmosphere, and ocean. The atmosphere consists of one well-mixed box. The ocean consists of four boxes, with advection and water mass exchange simulating thermohaline circulation. At steady state, the high-latitude surface ocean takes up carbon from the atmosphere, while the low-latitude surface ocean off-gases carbon to the atmosphere. The land consists of a user-defined number of biomes or regions for vegetation, detritus and soil. At steady state the vegetation takes up carbon from the atmosphere while the detritus and soil release carbon back into the atmosphere. The earth pool is continually debited with each time step to act as a mass balance check on the carbon system. 
-{: .fig}
 
 
 For more information on Hector please see: 
