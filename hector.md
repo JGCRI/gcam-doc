@@ -14,8 +14,8 @@ Figure 1: Representation of Hector’s carbon cycle, land, atmosphere, and ocean
 
 For more information on Hector please see: 
 [Hector - github repository](http://github.com/JGCRI/Hector)
-Hartin et al. 2015 – Geoscientific Model Development
-Hartin et al. 2016 – Biogeosciences
+[Hartin et al. 2015](http://www.geosci-model-dev.net/8/939/2015/)
+[Hartin et al. 2016](http://www.biogeosciences.net/13/4329/2016/bg-13-4329-2016.html)
 
 ##GCAM-Hector interactions
 Currently the GCAM sectors interact with Hector via their emissions.  At every time step, emissions from GCAM are passed to Hector. Hector takes in emissions, converts to concentrations where necessary, and calculates the radiative forcing, as well as the resulting climate variables (e.g., temperature, carbon-fluxes, etc.)  
