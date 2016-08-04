@@ -13,7 +13,7 @@ Figure 1: Representation of Hector’s carbon cycle, land, atmosphere, and ocean
 {: .fig}
 
 ##GCAM-Hector interactions
-Currently the GCAM sectors interact with Hector via their emissions.  At every time step, emissions from GCAM are passed to Hector. Hector takes in emissions, converts to concentrations where necessary, and calculates the radiative forcing, as well as the resulting climate variables (e.g., temperature, carbon-fluxes, etc.)  
+Currently the GCAM sectors interact with Hector via their emissions.  At every time step, emissions from GCAM are passed to Hector. Hector converts these emissions to concentrations when necessary, and calculates the associated radiative forcing, as well as the response of the climate system (e.g., temperature, carbon-fluxes, etc.)  
 
 | Emission| Sector  | Notes |
 | ------- |:-------:| :------: |
