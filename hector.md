@@ -21,17 +21,16 @@ Table 1: Emissions and sources from each sector passed to Hector.
 
 | Emission| Sector  | Notes |
 | ------- |:-------:| :------: |
-| CO<sub>2</sub>     | AgLU, Energy, Tranportation  | |
-| CH<sub>4</sub>     | AgLU, Energy, Industrial Processes, Tranportation    | |
-| N<sub>2</sub>O 	  | AgLU, Energy, Tranportation    | |
-| NH<sub>4</sub>     | AgLU    | not included in Hector |
-| NH<sub>3</sub>     | Energy, Transportation  |  |
-| SO<sub>2</sub>    | AgLU, Energy, Industrial Processes, Transportation    | |
-| CO 	  | AgLU, Energy, Industrial Processes, Tranportation    |         |
-| BC      | AgLU, Energy, Tranportation    | |
-| OC      | AgLU, Energy, Transportation    ||
-| NO<sub>x</sub> | AgLU, Energy, Industrial Processes, Transportation    | |
-| NMVOC | Energy, Industrial Processes, Transportation | |
+| CO<sub>2</sub>     | AgLU, Energy  | |
+| CH<sub>4</sub>     | AgLU, Energy, Industrial Processes    | |
+| N<sub>2</sub>O 	  | AgLU, Energy    | |
+| NH<sub>3</sub>     | AgLU, Energy  |  |
+| SO<sub>2</sub>    | AgLU, Energy, Industrial Processes    | |
+| CO 	  | AgLU, Energy, Industrial Processes    |         |
+| BC      | AgLU, Energy    | |
+| OC      | AgLU, Energy    ||
+| NO<sub>x</sub> | AgLU, Energy, Industrial Processes    | |
+| NMVOC | Energy, Industrial Processes | |
 | C<sub>2</sub>F<sub>6</sub>| Energy, Industrial Processes | |
 | CF<sub>4</sub>|Industrial Processes, Urban Processes | |
 | SF<sub>6</sub>|Energy, Industrial Processes | |
