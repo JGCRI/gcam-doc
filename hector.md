@@ -21,15 +21,29 @@ Table 1: Emissions and sources from each sector passed to Hector.
 
 | Emission| Sector  | Notes |
 | ------- |:-------:| :------: |
-| CO<sub>2</sub>     | AgLU, Energy  | |
-| CH<sub>4</sub>     | AgLU    | |
-| N<sub>2</sub>O 	  | AgLU    | |
+| CO<sub>2</sub>     | AgLU, Energy, Tranportation  | |
+| CH<sub>4</sub>     | AgLU, Energy, Industrial Processes, Tranportation    | |
+| N<sub>2</sub>O 	  | AgLU, Energy, Tranportation    | |
 | NH<sub>4</sub>     | AgLU    | not included in Hector |
-| SO<sub>2</sub>    | AgLU    | |
-| CO 	  | AgLU    |         |
-| BC      | AgLU, Energy    | |
-| OC      | AgLU, Energy    ||
-| NO<sub>x</sub> 	  | AgLU    | |
+| NH<sub>3</sub>     | Energy, Transportation  |  |
+| SO<sub>2</sub>    | AgLU, Energy, Industrial Processes, Transportation    | |
+| CO 	  | AgLU, Energy, Industrial Processes, Tranportation    |         |
+| BC      | AgLU, Energy, Tranportation    | |
+| OC      | AgLU, Energy, Transportation    ||
+| NO<sub>x</sub> | AgLU, Energy, Industrial Processes, Transportation    | |
+| NMVOC | Energy, Industrial Processes, Transportation | |
+| C<sub>2</sub>F<sub>6</sub>| Energy, Industrial Processes | |
+| CF<sub>4</sub>|Industrial Processes, Urban Processes | |
+| SF<sub>6</sub>|Energy, Industrial Processes | |
+| HFC134a| Energy| |
+| HFC32| Energy| |
+| HFC125| Urban Processes | |
+| HFC227ea| Urban Processes | |
+| HFC23| Urban Processes | |
+| HFC236fa| Urban Processes | not included in Hector |
+| HFC134a| Industrial Processes | |
+| HFC245fa| Industrial Processes | |
+| HFC365mfc| Industrial Processes | not included in Hector |
 
 
 ## Hector Outputs
