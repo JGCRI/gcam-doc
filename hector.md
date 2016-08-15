@@ -21,7 +21,7 @@ Table 1: Emissions and sources from each sector passed to Hector.
 
 | Emission| Sector  | Notes |
 | ------- |:-------:| :------: |
-| CO<sub>2</sub><sup>*</sup>     | [AgLU](gcam-doc/aglu.md), Energy  | |
+| CO<sub>2</sub><sup>*</sup>     | [AgLU](https://github.com/JGCRI/gcam-doc/blob/climate_documentation/aglu.md), Energy  | |
 | CH<sub>4</sub>     | AgLU, Energy, Industrial Processes    | |
 | N<sub>2</sub>O 	  | AgLU, Energy    | |
 | NH<sub>3</sub>     | AgLU, Energy  |  |
@@ -44,7 +44,9 @@ Table 1: Emissions and sources from each sector passed to Hector.
 | HFC245fa| Industrial Processes | |
 | HFC365mfc| Industrial Processes | not included in Hector |
 <sup>*</sup> CO<sub>2</sub> emissions from the AgLU sector are separate from CO<sub>2</sub> emissions from the Energy sector. Any change in atmospheric carbon, occurs as a function of anthropogenic fossil fuel and industrial emissions (F<sub>A</sub>), land-use change emissions (F<sub>LC</sub>), and the atmospheri-ocean (F<sub>O</sub>) and atmosphere-land (F<sub>L</sub>) carbon fluxes. 
-$dC<sub>atm</sub>/dt = F<sub>A</sub>(t) + F<sub>LC</sub>(t) - F<sub>O</sub>(t) - F<sub>L</sub>(t)$
+
+dC<sub>atm</sub>/dt = F<sub>A</sub>(t) + F<sub>LC</sub>(t) - F<sub>O</sub>(t) - F<sub>L</sub>(t)
+
 Land carbon pools change as a result of NPP, RH and land-use change fluxes, whose effects are partiioned among the carbon pools (Hartin et al., 2015).
 
 ## Hector Outputs
