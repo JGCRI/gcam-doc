@@ -21,7 +21,7 @@ Table 1: Emissions and sources from each sector passed to Hector.
 
 | Emission| Sector  | Notes |
 | ------- |:-------:| :------: |
-| CO<sub>2</sub>     | AgLU, Energy  | |
+| CO<sub>2</sub><sup>*</sup>     | [AgLU](gcam-doc/aglu.md), Energy  | |
 | CH<sub>4</sub>     | AgLU, Energy, Industrial Processes    | |
 | N<sub>2</sub>O 	  | AgLU, Energy    | |
 | NH<sub>3</sub>     | AgLU, Energy  |  |
@@ -43,11 +43,12 @@ Table 1: Emissions and sources from each sector passed to Hector.
 | HFC134a| Industrial Processes | |
 | HFC245fa| Industrial Processes | |
 | HFC365mfc| Industrial Processes | not included in Hector |
-
+<sup>*</sup> CO<sub>2</sub> emissions from the AgLU sector are separate from CO<sub>2</sub> emissions from the Energy sector. Any change in atmospheric carbon, occurs as a function of anthropogenic fossil fuel and industrial emissions (F<sub>A</sub>), land-use change emissions (F<sub>LC</sub>), and the atmospheri-ocean (F<sub>O</sub>) and atmosphere-land (F<sub>L</sub>) carbon fluxes. 
+$dC<sub>atm</sub>/dt = F<sub>A</sub>(t) + F<sub>LC</sub>(t) - F<sub>O</sub>(t) - F<sub>L</sub>(t)$
+Land carbon pools change as a result of NPP, RH and land-use change fluxes, whose effects are partiioned among the carbon pools (Hartin et al., 2015).
 
 ## Hector Outputs
 At every time step Hector calculates and outputs key climate variables.  
-
 <dl>
 <dt>Atmosphere</dt>
 <dd><ul>
@@ -56,7 +57,6 @@ At every time step Hector calculates and outputs key climate variables.
 	<li>Atmospheric CO<sub>2</sub> concentrations.</li>
 	</ul>
 </dd>
-
 <dt>Land</dt>
 <dd><ul>
 	<li>Air-land carbon fluxes</li>
@@ -65,13 +65,11 @@ At every time step Hector calculates and outputs key climate variables.
 	<li>Carbon pools (vegetation, detritus, soil)</li>
 	</ul>
 </dd>
-
 <dt>Ocean</dt>
 <dd><ul>
 	<li>Air-sea carbon fluxes</li>
 	<li>Carbon pools (high and low latitude surface, intermediate and deep)</li>
-	<li>Carbonate system (DIC, pCO<sub>2 </sub>,
-	CO<sub>3</sub><sup>2-</sup>, pH, aragonite and calcite
+	<li>Carbonate system (DIC, pCO<sub>2 </sub>, CO<sub>3</sub><sup>2-</sup>, pH, aragonite and calcite 
 	saturations)</li>
 	<li>surface ocean temperature</li>
 	<li>oceanic heat flux</li>
