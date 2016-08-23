@@ -5,19 +5,18 @@ next: en_technologies.html
 current-version: v4.2 
 ---
 
-The IEA Energy Balances are a comprehensive set of country-level statistics of energy production, transformation, and use that is the primary source of all calibration information in GCAM. However, the data product itself is somewhat complex, and the mappings from the IEA's categories to GCAM's sectors and fuels are not obvious. This section is intended to provide an overview description of the data processing with some detailed tables. It does not define the categories within the IEA data; interested readers are instead referred to the [IEA's (2011) documentation](http://wds.iea.org/wds/pdf/documentation_OECDBAL_2011.pdf).
+The IEA Energy Balances [(IEA 2012)](en_refs.html#iea2012) are a comprehensive set of country-level statistics of energy production, transformation, and use that is the primary source of all calibration information in GCAM. However, the data product itself is somewhat complex, and the mappings from the IEA's categories to GCAM's sectors and fuels are not obvious. This section is intended to provide an overview description of the data processing with some detailed tables. It does not define the categories within the IEA data; interested readers are instead referred to the documentation [(IEA 2011)](en_refs.html#iea2011).
 
 ## Processing the IEA Data
 
-First, the three composite regions in the IEA Energy Balances (Other Africa, Other Asia, Other Non-OECD Americas) are downscaled to the country level on the basis of population, according to the IEA's reported country-to-region mapping. This is necessary for the construction of several GCAM regions. Several minor modifications to the dataset are made where thermodynamically impossible conversions were found (e.g., non-zero electricity generation with zero input fuel) that would otherwise result in errors in GCAM. Once the cleaned and country-level dataset is produced, the mappings from the IEA's categories to GCAM's categories are used to aggregate the entire dataset by GCAM regions and sectors. The detailed mappings are shown in the Table 1 and Table 2, and described further below.
+First, the three composite regions in the IEA Energy Balances (Other Africa, Other Asia, Other Non-OECD Americas) are downscaled to the country level on the basis of population, according to the IEA's reported country-to-region mapping. This is necessary for the construction of several GCAM regions. Several minor modifications to the dataset are made where thermodynamically impossible conversions were found (e.g., non-zero electricity generation with zero input fuel) that would otherwise result in errors in GCAM. Once the cleaned and country-level dataset is produced, the mappings from the IEA's categories to GCAM's categories are used to aggregate the entire dataset by GCAM regions and sectors. The detailed mappings are shown in Table 1 and Table 2, and described further below.
 
 ### Resolving primary energy balances
 
 In the IEA Energy Balances, the following identity holds for any country and primary fuel:
 
-Block math:
 $$
-{Production} + {Imports} - {Exports} + {Net stock changes} + {Net statistical differences} = {Consumption}
+{Production} + {Imports} - {Exports} + {NetStockChanges} + {NetStatisticalDifferences} = {Consumption}
 $$
 
 In GCAM, stock changes and statistical differences are not represented, so globally, the sum of consumption must equal the sum of production, and within any region the sum of production and net trade must be equal to consumption. This is resolved by using the consumption data as reported, and scaling the production data so that the global totals are equal. Net trade in each region is then the difference between the reported consumption and the derived, scaled production.

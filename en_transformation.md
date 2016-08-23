@@ -11,7 +11,7 @@ In energy transformation sectors, the output unit and input unit are EJ (per yea
 
 In the schematic of the energy system depicted below, the energy transformation and distribution sectors include all sectors except for the resources (colored red) and the final demands (colored light blue).
 
-![Figure 1](gcam-figs/energy_system_structure.png)
+![Figure 1](gcam-figs/energy_system_structure.png)<br/>
 Figure 1: Simplified schematic of the energy system in each region, showing the inter-sectoral flows of energy goods in GCAM.
 {: .fig}
 
