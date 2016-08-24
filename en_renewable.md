@@ -17,9 +17,9 @@ $$
 Q = maxSubResource * \frac{P^{CurveExponent} }{ ( {MidPrice^{CurveExponent} + P^{CurveExponent} ) } }
 $$
 
-Where Q refers to the quantity of electricity produced, P the price, and the remaining parameters are exogenous, with the names in the XML input files corresponding to the names in the equation above. maxSubResource indicates the maximum quantity of wind energy that could be produced at any price, curve-exponent is a shape parameter, and mid-price indicates the price at which 50% of the maximum available resource is produced. The supply curves in each region are derived from bottom-up analysis documented in [Zhou et al. (2012)](en_refs.html#zhou2012). Note that in this supply curve formulation, the price is zero when the quantity is zero; this is becase the costs in the resource supply curve only reflect the portion of the wind energy costs that increase with deployment. The remainder of the costs are in the technology and backup, described in the [electricity sector](electricity.html).
+Where Q refers to the quantity of electricity produced, P the price, and the remaining parameters are exogenous, with the names in the XML input files corresponding to the names in the equation above. maxSubResource indicates the maximum quantity of wind energy that could be produced at any price, curve-exponent is a shape parameter, and mid-price indicates the price at which 50% of the maximum available resource is produced. The supply curves in each region are derived from bottom-up analysis documented in [Zhou et al. (2012)](en_refs.html#zhou2012). Note that in this supply curve formulation, the price is zero when the quantity is zero; this is because the wind resource supply curves only represent costs that increase with deployment due to the nature of the resources; these include factors such as increased transmission distances, reduced capacity factors, and more costly access to sites, among others. The remainder of the costs of wind electricity generation are in the technology and backup, described in the [electricity sector](electricity.html).
 
-![Figure 1](gcam-figs/wind.jpeg)
+![Figure 1](gcam-figs/wind.jpeg)</br>
 Figure 1: Global gridded potential for wind electricity generation.
 {: .fig}
 

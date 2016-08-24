@@ -78,8 +78,8 @@ The following are input parameters that are used in calculating the backup requi
 * **capacity-limit-backup-calculator/capacity-limit**: mid-point of the curve relating backup capacity requirements to the capacity share of intermittent technologies on the grid. See [electricity](electricity.html) for explanation and equations.
 
 ### Transportation Technologies
-Transportation technologies have several features that are different from other technologies in GCAM.
+<a name="tran_techs">Transportation technologies</a> have several parameters that are different from other technologies in GCAM.
 
 * **minicam-non-energy-input/input-cost**: the average levelized cost of transportation, in 1990$ per vehicle-km. The conversion from 1975$ to 1990$ is 2.212.
-* **minicam-energy-input/coefficient**: btus of energy per vehicle-km. The conversion from btu to kJ is 1.055.
+* **minicam-energy-input/coefficient**: the input-output coefficient is indicated in btus of energy per one millionth of the output unit (btu/vehicle-km). The assmued conversion from btu to kJ is 1.055.
 * **loadFactor**: average number of persons per vehicle for passenger technologies, or tonnes per vehicle for freight technologies
