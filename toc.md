@@ -10,6 +10,7 @@ current-version: v4.2
 * [Agriculture, Land Use, and Bioenergy](aglu.html)
 * [GCAM Choice Model](choice.html)
 * [GCAM Solver](solver.html)
+* [Using the Hector Climate Model with GCAM](hector.html)
 
 ## Documentation for Older Versions of GCAM
 
