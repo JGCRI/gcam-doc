@@ -1,8 +1,8 @@
 ---
 layout: index
 title: GCAM Solver
-prev: choice.html
-next: hector.html
+prev: hector.html
+next: 
 current-version: v4.2 
 ---
 

@@ -5,12 +5,16 @@ current-version: v4.2
 ---
 ## GCAM Documentation Topics
 
+* [GCAM Model Overview](overview.html)
+* [The GCAM Macro-Economic System](macro-econ.html)
+* [Economic Choice in GCAM](choice.html)
+* [GCAM Energy System](energy.html)
+* [Agriculture, Land-Use, and Bioenergy](aglu.html)
+* [Climate Module – Hector](hector.html) 
+* [Solution and Computation](solver.html) 
 * How to Set Up and Build  
   * [Mac OS X](mac-build.html)  
-* [Agriculture, Land Use, and Bioenergy](aglu.html)
-* [GCAM Choice Model](choice.html)
-* [GCAM Solver](solver.html)
-* [Using the Hector Climate Model with GCAM](hector.html)
+* [GCAM-USA](gcam-usa.html)
 
 ## Documentation for Older Versions of GCAM
 
