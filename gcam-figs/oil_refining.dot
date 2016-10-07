@@ -1,0 +1,10 @@
+digraph refining{
+	elec[label="Electricity",style=filled,color=yellow];
+	gas[label="Natural Gas",style=filled,color=steelblue1];
+	oil[label="Oil",style=filled,color=black,fontcolor=white];
+	cor[label="Oil\nRefining",style=filled,color=brown,fontcolor=white];
+	elec->cor[label=0.005]
+	gas->cor[label=0.02]
+	oil->cor[label=1.06]
+	
+}

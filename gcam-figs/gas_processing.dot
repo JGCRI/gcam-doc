@@ -1,0 +1,18 @@
+digraph refining{
+	ng[label="Natural Gas",style=filled,color=blue,fontcolor=white];
+	bio[label="Biomass",style=filled,color=green];
+	coal[label="Coal",style=filled,color=black,fontcolor=white];
+	gasproc[label="Gas Processing",style=filled,color=brown,fontcolor=white];
+	ng->gasproc[label=1]
+	bio->gasproc[label=1.3]
+	coal->gasproc[label=1.3]
+	
+	gaspipe[ label = "Gas Pipeline", style = filled, color = brown, fontcolor = white ];
+	del_gas[ label = "Delivered Gas", style = filled, color = brown, fontcolor = white ];
+	wh_gas[ label = "Wholesale Gas", style = filled, color = brown, fontcolor = white ];
+	
+	gasproc -> gaspipe[ label = 1.03 ];
+	gaspipe -> del_gas[ label = 1 ];
+	gaspipe -> wh_gas[ label = 1 ];
+	
+}
