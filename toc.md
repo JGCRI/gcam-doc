@@ -7,6 +7,7 @@ current-version: v4.2
 
 * [GCAM Model Overview](overview.html)
 * [The GCAM Macro-Economic System](macro-econ.html)
+* [Technology Representation](en_technologies.html)
 * [Economic Choice in GCAM](choice.html)
 * [GCAM Energy System](energy.html)
 * [Agriculture, Land-Use, and Bioenergy](aglu.html)
