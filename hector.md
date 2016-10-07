@@ -1,7 +1,8 @@
 ---
 layout: index
 title: Climate Module – Hector	
-prev: solver.html
+prev: aglu.html
+next: solver.html
 current-version: v4.2
 ---
 

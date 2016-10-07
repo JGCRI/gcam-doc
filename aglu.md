@@ -1,7 +1,8 @@
 ---
 layout: index
 title: Agriculture, Land-Use, and Bioenergy
-next: choice.html
+prev: energy.html
+next: hector.html
 current-version: v4.2 
 ---
 

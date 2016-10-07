@@ -1,8 +1,8 @@
 ---
 layout: index
 title: Economic Choice in GCAM
-prev: aglu.html
-next: solver.html
+prev: macro-econ.html
+next: energy.html
 current-version: v4.2
 ---
 
