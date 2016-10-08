@@ -55,11 +55,10 @@ mitigation policy.
 ## Documentation
 
 * [GCAM Documentation](toc.html)
-* [Getting Started with GCAM](http://wiki.umd.edu/gcam/index.php?title=Getting_Started_with_GCAM)
+* [Getting Started with GCAM](user-guide.html)
 * [GCAM Community](http://www.globalchange.umd.edu/models/gcam/gcam-community/)
 * [2015 Tutorial Slides](http://www.globalchange.umd.edu/data/annual-meetings/2015/GCAM_Tutorial_2015.pdf)
 * GCAM lectures from the UMD Water and Climate class
-
   * [Lecture 3: Introduction to GCAM](https://www.youtube.com/watch?v=xRF9lFwtMr0)
   * [Lecture 4: GCAM Tutorial](https://www.youtube.com/watch?v=S7vAShH-dbs)
 
