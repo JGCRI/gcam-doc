@@ -1,8 +1,8 @@
 ---
 layout: index
 title: GCAM Build Instructions
-prev: 
-next:
+prev: user-guide.html
+next: 
 current-version: v4.2 
 ---
 

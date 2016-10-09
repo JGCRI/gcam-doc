@@ -1,8 +1,8 @@
 ---
 layout: index
 title: Economic Choice in GCAM
-prev: en_technologies.html
-next: energy.html
+prev: hector.html
+next: en_technologies.html
 current-version: v4.2
 ---
 
