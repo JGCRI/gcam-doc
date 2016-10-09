@@ -1,8 +1,8 @@
 ---
 layout: index
 title: GCAM User Guide
-prev: 
-next:
+prev: solver.html
+next: gcam-build.html
 current-version: v4.2 
 ---
 

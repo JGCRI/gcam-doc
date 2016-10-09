@@ -1,7 +1,7 @@
 ---
 layout: index
 title: GCAM Energy System
-prev: choice.html
+prev: macro-econ.html
 next: aglu.html
 current-version: v4.2 
 ---
@@ -15,6 +15,46 @@ The overall structure of the energy system can be thought of as consisting of th
 ![Figure 1](gcam-figs/energy_fig1.png) <br/>
 Schematic of Major Energy Pathways in GCAM
 {: .fig}
+
+We have partitioned the energy system documentation as follows:
+
+* [Resources](#resources)
+* [Renewable Resources](#renewable-resources)
+    * [Wind](#wind)
+    * [Solar](#solar)
+    * [Geothermal](#geothermal)
+    * [Hydropower](#hydropower)
+    * [Traditional biomass](#traditional-biomass)
+* [Energy Transformation](#energy-transformation)
+    * [Electricity](#electricity)
+    * [Refining](#refining)
+        * [Oil Refining](#oil-refining)
+        * [Biomass Liquids](#biomass-liquids)
+        * [Coal to Liquids](#coal-to-liquids)
+        * [Gas to Liquids](#gas-to-liquids)
+    * [Gas processing](#gas-processing)
+        * [Natural Gas](#natural-gas)
+        * [Coal Gasification](#coal-gasification)
+        * [Biomass Gasification](#biomass-gasification)
+        * [Gas Pipeline, Delivered Gas, and Wholesale Gas](#gas-pipeline-delivered-gas-and-wholesale-gas)
+    * [District Services](#district-services)
+    * [Hydrogen](#hydrogen)
+        * [Hydrogen Production](#hydrogen-production)
+* [Final Energy Consumption](#final-energy-consumption)
+    * [Buildings](#buildings)
+    * [Industry](#industry)
+    * [Transportation](#transportation)
+        * [System Boundaries and Structure](#system-boundaries-and-structure)
+        * [Functional Forms](#functional-forms)
+        * [Input Data](#input-data)
+* [Energy Trade](#energy-trade)
+* [Mapping the IEA Energy Balances](#mapping-the-iea-energy-balances)
+    * [Processing the IEA Data](#processing-the-iea-data)
+        * [Resolving primary energy balances](#resolving-primary-energy-balances)
+        * [Resolving secondary energy balances](#resolving-secondary-energy-balances)
+        * [Resolving final energy consumption](#resolving-final-energy-consumption)
+        * [Detailed mappings of products and flows](#detailed-mappings-of-products-and-flows)
+* [References](#references)
 
 ## Resources
 
@@ -270,7 +310,7 @@ In this equation, $$P_f$$ stands for the fuel price, $$I$$ is the vehicle fuel i
 
 The non-fuel costs are estimated for some technologies (e.g., light-duty vehicles) from exogenous assumptions about vehicle capital costs, non-fuel operations and maintenance costs, financing assumptions, and annual vehicle utilization (vehicle-km per year). For others, such as all freight technologies and passenger bus and rail, the non-fuel cost is estimated by deducting estimated fuel costs from reported total service costs (e.g., [BTS 2015](energy.html#bts2015)). In either case, the non-fuel cost is converted to dollars per vehicle-km for the equation above. The model then computes market shares of the different technologies as described in [logit choice](choice.html).
 
-## Input Data <a name="input_data"/>
+## Input Data
 
 The specific values and sources of the input data assumptions to the transportation module of GCAM are documented in [Mishra et al. 2013](energy.html#mishra2013); this section identifies what variables are collected, for each country or region analyzed in detail in constructing GCAM's transportation input files. The idenfifying information for each transportation technology is provided in Table 2.
 
@@ -371,7 +411,7 @@ For refined liquid fuels, the end-use consumption estimates by buildings, indust
 
 The remaining fuels used by end-use consumers (coal, natural gas, and biomass) are primary fuels, whose statistical differences are assigned to the production and trade quantities as described above.
 
-### Final energy consumption
+### Resolving final energy consumption
 This section documents the processing of data from the IEA Energy Balances to GCAM's "aggregate" final energy consumers: residential, commercial, industrial energy use, industrial feedstocks, and the following transportation modes: air, rail, road, and domestic and international ship. Further processing of the data to the more detailed end-use sectors, services, and technologies in GCAM is documented in [buildings](energy.html#buildings), [industry](energy.html#industry), and [transportation](energy.html#transportation).
 
 ### Detailed mappings of products and flows

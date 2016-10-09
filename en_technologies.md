@@ -1,8 +1,8 @@
 ---
 layout: index
 title: Energy Technologies
-prev: macro-econ.html
-next: choice.html
+prev: choice.html
+next: solver.html
 current-version: v4.2 
 ---
 
