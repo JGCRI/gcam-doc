@@ -17,9 +17,5 @@ current-version: v4.2
 * [How to Set Up and Build ](gcam-build.html)
 * [GCAM-USA](gcam-usa.html)
 
-## Documentation for Older Versions of GCAM
-
-* [GCAM-3](v3.2/toc.html)
-* [GCAM-4.2](v4.2/toc.html)
-
+## Documentation for the [Current versions of GCAM](../toc.html)
 
