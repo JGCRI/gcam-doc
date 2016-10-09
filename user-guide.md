@@ -159,7 +159,7 @@ The XML files within each `FileSet` block will be read in after the `ScenarioCom
 
 If there are multiple `ComponentSet` blocks, then all permutations of `FileSets` within each `ComponentSet` will be run.
 
-Note that there is also a batch functionality within the `ModelInterface`, which has a different format.
+Note that there is also a [batch functionality](#modelinterface-batch-modes) within the `ModelInterface`, which has a different format.
 
 ### 3.3 Target Finder
 Enabling this mode for running GCAM involves specifying a [policy target file](#files-input-options) and enabaling [find-path](#bools-input-options).  When run in this mode GCAM will run a scenario several times to find the optimal path to satisfy the configured climate goal.  Running GCAM in such a mode can take quite a bit of time, one option to speed this up is to set `restart-period` to 22 in the [configuration file as noted above](#ints-input-options).  Example policy target files are supplied in `input/policy` and are self documented:
@@ -276,11 +276,11 @@ Each query is represented in it's own XML syntax such as:
 </emissionsQueryBuilder>
 ```
 
-This XML can be copied directly out of the ModelInterface by using Ctrl-C (or CMD-C on Mac) and pasted back into the Model Interface or as text elsewhere such as email.  Similarly the XML text can be copied out of an email and pasted back into the Modle Interface using Ctrl-V (or CMD-V on Mac).  This is a handy short cut for sharing or editing queries.  You will notice when queries are modified a `*` appears at the root of the qeries.  You can choose to `File -> Save` to update the underly query file or use `File -> Save As` to save and switch to a new query file.
+This XML can be copied directly out of the ModelInterface by using Ctrl-C (or CMD-C on Mac) and pasted back into the Model Interface or as text elsewhere such as email.  Similarly the XML text can be copied out of an email and pasted back into the Model Interface using Ctrl-V (or CMD-V on Mac).  This is a handy short cut for sharing or editing queries.  You will notice when queries are modified a `*` appears at the root of the qeries.  You can choose to `File -> Save` to update the underlying query file or use `File -> Save As` to save and switch to a new query file.
 
 #### 3.4.2 ModelInterface Batch Modes
 
-When doing scenario analysis on GCAM results it is often very useful to predefine the set of queries you would like to look at and automatically save the results to CSV or XLS format for plotting or making tables, etc.  Setting up the Model Interface to do  one or two steps depending on the level of automation you would like.
+When doing scenario analysis on GCAM results it is often very useful to predefine the set of queries you would like to look at and automatically save the results to CSV or XLS format for plotting or making tables, etc.  Setting up the Model Interface to do this is done in one or two steps depending on the level of automation you would like.
 
 First you must set up a "batch query" file.  An example of such a file can be found in `output/gcam_diagnostics/batch_queries/Model_verification_queries.xml`.  The idea of such a file is you list the quries you would like to run one after the other and for each query you include the regions (which can be any of the ones listed in the `Regions` section of the GUI) you would like to query.
 
@@ -300,7 +300,7 @@ First you must set up a "batch query" file.  An example of such a file can be fo
 
 The actual queries are of the same format as described [above](#interactive-mode) and can be copied out of a query file or pasted from the Model Interface.
 
-Users can run this "batch query" file from an interactive Model Interface session by selecting `File -> Batch File` and selected the "batch query" file.  Users are then asked where to save the results (.csv saves as CSV and .xls saves to excel) and which scenarios to run.
+Users can run this "batch query" file from an interactive Model Interface session by selecting `File -> Batch File` and selecting the "batch query" file they wish to run.  Users are then asked where to save the results (.csv saves as CSV and .xls saves to excel) and which scenarios to run.
 
 Alternatively if users prefer to set up a workflow that does not require any manual user interaction they may prefer to set up a "batch command" file as well.  An example of such a file can be found at `output/gcam_diagnostics/batch_queries/xmldb_batch.xml`:
 
@@ -338,6 +338,6 @@ Alternatively if users prefer to set up a workflow that does not require any man
 Users can the invoke the Model Interface from the command line to call their batch file and no user interface will be presented:
 
 ```
-java -jar ModelInterface.jar -b batch_queries/xmldb_batch.xml
+java -jar ../../ModelInterface/ModelInterface.jar -b batch_queries/xmldb_batch.xml
 ```
 
