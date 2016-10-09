@@ -13,8 +13,7 @@ current-version: v4.2
 * [Agriculture, Land-Use, and Bioenergy](aglu.html)
 * [Climate Module – Hector](hector.html) 
 * [Solution and Computation](solver.html) 
-* How to Set Up and Build  
-  * [Mac OS X](mac-build.html)  
+* [How to Set Up and Build ](gcam-build.html)
 * [GCAM-USA](gcam-usa.html)
 
 ## Documentation for Older Versions of GCAM
