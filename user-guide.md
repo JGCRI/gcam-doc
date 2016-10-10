@@ -7,9 +7,24 @@ current-version: v4.3
 ---
 
 ## 1.Introduction
-This document provides information on running and using a pre-existing GCAM model set-up including a model executable. For instructions on compiling GCAM see [GCAM Compile Instructions](gcam-build.html).
+This document provides information on download and get running the GCAM model. To download GCAM you can follow the `Downlaod GCAM` link in the upper right had corner.  Users should find the GCAM version 4.3 release.  There will be a few files available for download:
 
-This user's guide is divided into two parts. First a [GCAM "quickstart"](#gcam-quickstart) guide with basic instructions on running GCAM and viewing results, followed by a more detailed [GCAM User's Guide](#gcam-users-guide).
+* Source code (in zip or tar.gz format).  This is the core of the release and contains all model source code and data processing scripts.
+* data-system.tar.gz contains the XML input files as well as supporting CSV files for users who do not have access to the proprietary IEA energy balance data necessary for running the gcam-data-system or would like to get a quick start running GCAM.
+* mac_binaries.tar.gz contains the GCAM excutable, supporting libraries, and the ModelInterface for the Mac OS X platform.
+* windows_binaries.tar.gz contains the GCAM excutable, supporting libraries, and the ModelInterface for the Windows platform.
+
+The following instructions for users who want to use the pre-built GCAM executable and XML input files.  For instructions on compiling your own GCAM excutable see [GCAM Compile Instructions](gcam-build.html).  For instructions on how to run the gcam-data-system to rebuild the XML input files from scratch see [Running the GCAM Data System](TODO-link).  Once built these users can proceed from the [Quickstart](#gcam-quickstart).
+
+To start users should download and unpack the Source code to a location of their choosing.  Through out this document that loaction will be refered to as `<GCAM Workspace>`.  Next they should unpack the data-system.tar.gz and either the Mac or Windows binaries, as appropriate, in the `<GCAM Workspace>`, for example:
+
+```
+cd <GCAM Workspace>
+tar -xzf data-system.tar.gz
+tar -zxf mac_binaries.tar.gz
+```
+
+You have now set up a GCAM release package and are ready to run!  The rest of this user's guide is divided into two parts. First a [GCAM "quickstart"](#gcam-quickstart) guide with basic instructions on running GCAM and viewing results, followed by a more detailed [GCAM User's Guide](#gcam-users-guide).
 
 ## 2. GCAM Quickstart
 
@@ -19,7 +34,7 @@ This section provides a brief introduction on how to use the GCAM Model and view
 
 GCAM requires a valid `configuration.xml` file be present in the exe directory of the GCAM workspace. You can run a reference scenario by copying the `configuration_ref.xml` that is provided in the distribution and renaming it to `configuration.xml`. Note that a `log_conf.xml` file is also necessary, but this should already be present in the exe directory. The configuration file is descried in more detail in the [User's Guide section](#configuration-file), and should not need to be modified in order to run a reference case scenario. The User's Guide describes how to create additional scenarios.
 
-In order to run GCAM double click on the executable or run the executable from the command line.  You should see log messages scroll up the screen as GCAM reads in xml files and begins solving each model period. Log information for each run can be found in `exe/logs/main_log.txt`.
+In order to run GCAM double click on the `run-gcam` executable script or run the executable from the command line.  You should see log messages scroll up the screen as GCAM reads in xml files and begins solving each model period. Log information for each run can be found in `exe/logs/main_log.txt`.
 
 After a successful model run the log file will end with the following text (depending on your set-up and platform, you might also see this on your screen):
 
@@ -62,6 +77,7 @@ This user's guide contains the following sections:
 * [GCAM Batch file](#gcam-batch-mode)
 * [Target finder mode](#target-finder)
 * [ModelInterface](#modelinterface)
+* [Controling the level of XML DB Output](#controling-the-level-of-xml-db-output)
 
 ### 3.1 Configuration File
 
@@ -200,7 +216,7 @@ Enabling this mode for running GCAM involves specifying a [policy target file](#
                                    emissions (or possibly other gasses via the
                                    configuration string: cumulative-target-gas)
      -->
-    <target-type>rcp-forcing</target-type>
+    <target-type>forcing</target-type>
 
     <!-- first-tax-year | default: 2020 | The first year to start a tax in -->
     <first-tax-year>2020</first-tax-year>
@@ -302,7 +318,7 @@ The actual queries are of the same format as described [above](#interactive-mode
 
 Users can run this "batch query" file from an interactive Model Interface session by selecting `File -> Batch File` and selecting the "batch query" file they wish to run.  Users are then asked where to save the results (.csv saves as CSV and .xls saves to excel) and which scenarios to run.
 
-Alternatively if users prefer to set up a workflow that does not require any manual user interaction they may prefer to set up a "batch command" file as well.  An example of such a file can be found at `output/gcam_diagnostics/batch_queries/xmldb_batch.xml`:
+Alternatively if users prefer to set up a workflow that does not require any manual user interaction they may prefer to set up a "batch command" file as well (and even collapse the "batch query" to be defined with in the "batch command" itself).  An example of such a file can be found at `output/gcam_diagnostics/batch_queries/xmldb_batch.xml`:
 
 ```XML
 <ModelInterfaceBatch>
@@ -319,7 +335,9 @@ Alternatively if users prefer to set up a workflow that does not require any man
               -->
             <scenario name="Core_Ref"/>
 
-            <!-- The Batch queries to run -->
+            <!-- The Batch queries file to run.  Alternatively users could specify the
+                 queries to run here contained with in <queries> ... </queries> tags
+            -->
             <queryFile>batch_queries/Model_verification_queries.xml</queryFile>
             <!-- Where to write results -->
             <outFile>gcam_data/Core/reference.csv</outFile>
@@ -335,9 +353,91 @@ Alternatively if users prefer to set up a workflow that does not require any man
 </ModelInterfaceBatch>
 ```
 
-Users can the invoke the Model Interface from the command line to call their batch file and no user interface will be presented:
+Users can the invoke the Model Interface from the command line as follows to call their batch file and no user interface will be presented.  Note if a batch file named `-` is specified then the "batch commands" are read from the STDIN.  Users can also instruct the ModelInterface to save log output to a file by using the flags `-l path/to/log/output.txt`.
 
 ```
-java -jar ../../ModelInterface/ModelInterface.jar -b batch_queries/xmldb_batch.xml
+CLASSPATH=<GCAM Workspace>/libs/jars*:<GCAM Workspace>/input/gcam-data-system/_common/ModelInterface/src/ModelInterface.jar
+java -cp $CLASSPATH ModelInterface/InterfaceMain -b batch_queries/xmldb_batch.xml
+```
+
+### 3.5 Controling the level of XML DB Output
+The GCAM XML database output is verbose and can consume a lot of disk space.  Users may seek to limit or even query and discard these results, particularly when doing a large number of runs, to save space and time.  To do this they can configure in `<GCAM Workspace>/exe/XMLDBDriver.poperties` the following options:
+
+```XML
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Configuration properties to control the behavior of storing GCAM output into the XML database.</comment>
+<!-- If the results should put into an in memory database.
+     WARNING: this means the data will be lost once the DB is closed.
+     This option would be useful if the user wanted to run queries on the results then
+     discard them.  Also note that GCAM will still be holding it's memory while this DB
+     is created.
+-->
+<entry key="in-memory">false</entry>
+<!-- A timeout, in seconds, to wait in case a user tries to write to an already open DB.
+     A negative value indicates to wait indefinately.  Once the timeout has expired or
+     a user has pressed any button it will attempt to open the DB once more and if that
+     fails again then the results will be lost.
+-->
+<entry key="open-db-wait">-1</entry>
+<!-- The path to an STX style script to filter GCAM results before writing them to the
+     DB.  If empty no filters will be applied.
+-->
+<entry key="filter-script"></entry>
+<!-- The path to a Model Interface batch file to run queries after a GCAM run has
+     finished.  If a value of - is specified this instructs the Model Interface
+     to read the batch file from STDIN which could be useful when being run by some
+     other controlling program that wants to dynamically generate the queries to run.
+     Note that GCAM will wait to run these queries until after the scenario
+     has cleaned up it's memory to create more space for the Model Interface and to
+     ensure all results (including cost curves) are available.  If empty no queries
+     will be run.
+-->
+<entry key="batch-queries"></entry>
+<!-- Redirect the log messages from running batch queries to the specified log file.
+     Note that an empty value will keep the messages printing to the standard output.
+-->
+<entry key="batch-logfile">logs/batch_queries.log</entry>
+</properties>
+```
+
+#### 3.5.1 In memory database
+Setting this option will instruct BaseX to keep the entire database in memory instead of writing the results to permanent storage.  In memory databases can be faster to write and much faster to query.  However this will consume much more memory and as soon as GCAM exits the results are lost.  As noted above this would only be useful if a user wanted to run a set of queries against the database and save those select CSV (or XLS) results instead of the XML database.
+
+#### 3.5.2 Filtering results
+Specifying a filter script will filter the GCAM results as it is produced by GCAM and only ever writing the filtered results.  We used the Joost library to do this which is reminiscent of the XSLT standard however imposes some limitations in order to processes XML as it is generated (as apposed to XSLT which needs to store the full results before it can process them which is unrealistic given the size of the GCAM XML results). A good introduction to the concept can be found [here](http://www2.informatik.hu-berlin.de/~obecker/Docs/EML2003/script.html)
+
+The specification for how to write the filter scripts using the Streaming Transformation for XML (STX) sytanx can be found [here](http://stx.sourceforge.net/documents/spec-stx-20070427.html)
+
+A number of example filter scripts are provided in the GCAM workspace under `<GCAM Workspace>/output/queries/filters`.  As mentioned earlier the syntax is very similar to XSLT where the bulk of the work is done with template filters that match XML using an XPath syntax with the exception the XPath expressions can not look ahead.  Meaning for instance that you could not filter a technology by inspecting the value of any of it's child nodes such as physical-output.  The reason for this is STX must be able to process the XML as it is generated and the child XML would not yet been generated. However STX does provide some workaround to accomplish this using XSLT!  More specifically it allows you to collect the results at a given node of interest and apply a sub-filter script once all of the XML for that node has been collected and that sub-filter can be written using XSLT which does allow looking ahead in it's template definitions.  An example script which takes advantage of this feature can be found in `GCAM Workspace/output/queries/filters/results_2020_to_2035.xml`.
+
+#### 3.5.3 Running batch queries
+Runs the Model Interface in [batch mode](#modelinterface-batch-modes) if in the configuration a "batch-queries" file is specified.  Note that the "batch-queries" will be read and processed as normal ["batch command"](#modelinterface-batch-modes) except that the `<xmldbLocation>` will be ignored and use the database opened by GCAM instead.  If no batch queries file is specified the Model Interface will not be loaded and no queries will be run.  Note: batch queries will wait until the last moment for any given scenario to exist before running.  This is to ensure any target finding and/or cost calculations have been run an written to the database so that information would be available to the queries.
+
+#### 3.5.4 Using these features on an exported XML results file
+The tools that provide these features can be run independently from GCAM via the command line.  This can be useful for working with .xml files exported from the XML DB or the [debug_db.xml file](gcam-build.html#disable-java).  A user could programmatically load them back into a new XML DB using any of the aforementioned features.  This is done by calling the `<GCAM Workspace>/exe/XMLDBDriver.jar` directly:
+
+```
+CLASSPATH=<GCAM Workspace>/libs/jars*:<GCAM Workspace>/input/gcam-data-system/_common/ModelInterface/src/ModelInterface.jar
+java -cp ${CLASSPATH}:XMLDBDriver.jar XMLDBDriver --help
+USAGE:
+   java -cp XMLDBDriver.jar XMLDBDriver --db-path=PATH --doc-name=NAME --xml=FILE
+or
+   java -cp XMLDBDriver.jar XMLDBDriver --print-java-path
+
+NOTE: If the first form is used, the arguments -db-path, --doc-name, and --xml are all required.
+      Options can be abbreviated using any unique prefix, e.g., --db=XXX --doc=YYY -x foo.xml
+
+Option             Description                          
+------             -----------                          
+--db-path          Path to XML database                 
+--doc-name         The unique name to call the document 
+                     in the DB                          
+--help             Print this message                   
+--print-java-home  Print the path to the Java home      
+                     directory and exit                 
+--xml              The exported GCAM results XML file to
+                     load                               
 ```
 
