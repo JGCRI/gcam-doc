@@ -1,7 +1,7 @@
 ---
 layout: index
 title: Global Change Assessment Model (GCAM)
-current-version: v4.2
+current-version: v4.3
 ---
 
 The Joint Global Change Research Institute (JGCRI) is the home and

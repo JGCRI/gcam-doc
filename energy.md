@@ -3,7 +3,7 @@ layout: index
 title: GCAM Energy System
 prev: macro-econ.html
 next: aglu.html
-current-version: v4.2 
+current-version: v4.3 
 ---
 
 ## Overview

@@ -3,7 +3,7 @@ layout: index
 title: Climate Module – Hector	
 prev: aglu.html
 next: choice.html
-current-version: v4.2
+current-version: v4.3
 ---
 
 This section describes the new climate module - Hector - that is available for use in GCAM. MAGICC5.3 (Wiglley, 2008) has traditionally been the only climate module available in GCAM.  In GCAM's recent release, there is now the option to run Hector (Hartin et al., 2015).  Both Hector and MAGICC are reduced-form climate carbon-cycle models. 
