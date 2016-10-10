@@ -148,7 +148,7 @@ C:\Program Files\Java\jdk1.8.0_102\lib
 In addtion the PATH variable may need to be updated so that GCAM can find the `jvm.dll`.  Note that this is the purpose of the `<GCAM Workspace>/exe/run-gcam.bat` wrapper.  Users can take a look at this file to understand how GCAM detects the JAVA_HOME and updates the PATH accordingly.
 
 #### 2.3.3 Java on Mac
-Java on the Mac is complicated by Apple's custom Java installation and subsequent removal of said Java since OSX 10.10+.  The Apple version is only up to the now ancient Java version 1.6.  It can still be installed on newer version of OS X with an explict download.  All versions of OS X can still use a more recent version of Java from Oracle/openJDK instead (**note** users must install the JDK, not the JRE).  Even if users on OS X 10.10+ install the Oracle/openJDK version of Java they may still be prompted to install the old Apple JDK when running GCAM or the Model Interface.  Note the purpose of the `<GCAM Workspace>/exe/run-gcam.command` wrapper is partially to detect and work around some of these issues.  For users that are being asked to install the old Apple JDK even if the newer version is installed they can try the following in Terminal to resolve the issue:
+Java on the Mac is complicated by Apple's custom Java installation and subsequent removal of said Java since OSX 10.10+.  The Apple version is only up to the now ancient Java version 1.6.  It can still be installed on newer version of OS X with an explict download.  All versions of OS X can still use a more recent version of Java from Oracle/openJDK instead (**note** users must install the JDK, not the JRE).  Even if users on OS X 10.10+ install the Oracle/openJDK version of Java they may still be prompted to install the old Apple JDK when running GCAM or the Model Interface.  Note the purpose of the `<GCAM Workspace>/exe/run-gcam.command` wrapper is partially to detect and work around some of these issues.  For users that are being asked to install the old Apple JDK even if the newer version is installed they can try the following edit to the Java JDK Info.plist file in Terminal to resolve the issue:
 
 ```
 JAVA_HOME=$(/usr/libexec/java_home)
@@ -229,7 +229,7 @@ cd <GCAM Workspace>/cvs/objects/build/linux
 make gcam -j 8
 ```
 
-Note the `-j 8` is simply to compile multiple sources files at a time and is only necessary to speed up the processes.  Once complete an executable will be copied to `<GCAM Workspace>/exe` and can be run from that directory with `gcam.exe -Ccofig_file.xml`.
+Note the `-j 8` is simply to compile multiple sources files at a time (set as appropriate for your system configuration) and is only necessary to speed up the processes.  Once complete an executable will be copied to `<GCAM Workspace>/exe` and can be run from that directory with `gcam.exe -Ccofig_file.xml`.
 
 ### 4.2 Building with Xcode
 Mac users who would like to use the Xcode integrated development environment must have it installed (available from the Apple App Store), any version 3.2+ will work.  Users can find the project file under `<GCAM Workspace>/cvs/objects/build/xcode3/objects.xcodeproj`. Once open you should change the `Scheme` to build the `Release` target.  You can find the scheme settings here:
