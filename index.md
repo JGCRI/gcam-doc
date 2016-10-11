@@ -70,4 +70,4 @@ Edmonds, J., M. Wise, H. Pitcher, R. Richels, T. Wigley, and C. MacCracken. (199
 
 Kim, S.H., J. Edmonds, J. Lurz, S. J. Smith, and M. Wise (2006) “The ObjECTS Framework for Integrated Assessment: Hybrid Modeling of Transportation ” Energy Journal (Special Issue #2) pp 51-80.
 
-[Full list of GCAM publications](http://wiki.umd.edu/gcam/index.php/References) 
+[Additional GCAM publications](references.html)

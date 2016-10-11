@@ -16,6 +16,7 @@ gcam-version: v4.3
 * [How to Get Started Running GCAM](user-guide.html) 
 * [How to Set Up and Build ](gcam-build.html)
 * [GCAM-USA](gcam-usa.html)
+* [References](references.html)
 
 ## Documentation for Older Versions of GCAM
 
