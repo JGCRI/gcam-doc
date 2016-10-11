@@ -3,7 +3,7 @@ layout: index
 title: GCAM Build Instructions
 prev: user-guide.html
 next: 
-current-version: v4.3 
+gcam-version: v4.3 
 ---
 
 ## 1.Introduction

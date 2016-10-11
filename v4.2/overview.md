@@ -3,7 +3,7 @@ layout: index
 title: GCAM Model Overview
 prev: 
 next: macro-econ.html
-current-version: v4.2 
+gcam-version: v4.2 
 ---
 
 ## Introduction

@@ -3,7 +3,7 @@ layout: index
 title: Economic Choice in GCAM
 prev: hector.html
 next: en_technologies.html
-current-version: v4.2
+gcam-version: v4.2
 ---
 
 ## Introduction

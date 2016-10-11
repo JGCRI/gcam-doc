@@ -3,7 +3,7 @@ layout: index
 title: The GCAM Macro-Economic System
 prev: overview.html
 next: energy.html
-current-version: v4.3 
+gcam-version: v4.3 
 ---
 
 The **Macro-Economic System** component of core GCAM sets the overall scale of economic activity for model simulations. Assumptions about population, and per capital income growth for each of the 32 geopolitical regions determines the Gross Domestic Product (GDP) in each of GCAM's 32 global geo-political regions. At present, the macro-economic systems provide a one-way transfer of information to other GCAM components; the state of other GCAM components does not affect the overall scale of human activities in GCAM (see below for minor exception to this statement). For example, neither the price nor quantity of energy nor the quantity of energy services provided to the economy affect the calculation of the principle model output of the GCAM macro-economic system, Gross Domestic Product (GDP). Similarly, no detail is provided other macro-economic variables such GDP components (consumption, investment, net exports, aggregate capital stock, and so forth) nor social welfare. The development of two-way coupling with other GCAM components is an important focus of present research efforts. 
