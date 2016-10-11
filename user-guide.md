@@ -14,7 +14,7 @@ This document provides information on download and get running the GCAM model. T
 * mac_binaries.tar.gz contains the GCAM excutable, supporting libraries, and the ModelInterface for the Mac OS X platform.
 * windows_binaries.tar.gz contains the GCAM excutable, supporting libraries, and the ModelInterface for the Windows platform.
 
-The following instructions for users who want to use the pre-built GCAM executable and XML input files.  For instructions on compiling your own GCAM excutable see [GCAM Compile Instructions](gcam-build.html).  For instructions on how to run the gcam-data-system to rebuild the XML input files from scratch see [Running the GCAM Data System](TODO-link).  Once built these users can proceed from the [Quickstart](#gcam-quickstart).
+The following instructions for users who want to use the pre-built GCAM executable and XML input files.  For instructions on compiling your own GCAM excutable see [GCAM Compile Instructions](gcam-build.html).  For instructions on how to run the gcam-data-system to rebuild the XML input files from scratch see [Running the GCAM Data System](data-system.html).  Once built these users can proceed from the [Quickstart](#gcam-quickstart).
 
 To start users should download and unpack the Source code to a location of their choosing.  Through out this document that loaction will be refered to as `<GCAM Workspace>`.  Next they should unpack the data-system.tar.gz and either the Mac or Windows binaries, as appropriate, in the `<GCAM Workspace>`, for example:
 
