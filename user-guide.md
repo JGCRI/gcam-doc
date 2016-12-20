@@ -47,7 +47,7 @@ Model exiting successfully.
 
 ### 2.2 Viewing Model Results
 
-Comprehensive model output from each scenario is stored in an XML database. (Note that the current BaseX database is not comparable with versions of GCAM and the GCAM model interface that use the .dbxml format.)
+Comprehensive model output from each scenario is stored in an XML database. (Note that the current BaseX database is not compatible with versions of GCAM and the GCAM model interface that use the .dbxml format.)
 
 To view model output open the ModelInterface application. This multi-platform application is written in java and requires that java be installed on your machine. 
 
@@ -359,6 +359,23 @@ Users can the invoke the Model Interface from the command line as follows to cal
 CLASSPATH=<GCAM Workspace>/libs/jars*:<GCAM Workspace>/input/gcam-data-system/_common/ModelInterface/src/ModelInterface.jar
 java -cp $CLASSPATH ModelInterface/InterfaceMain -b batch_queries/xmldb_batch.xml
 ```
+
+#### 3.4.3 Importing data into R
+
+If you use the R programming language to do your data analysis, then
+you can use the rgcam package to make analysis tasks more convenient.
+This package provides R functions for extracting results from GCAM
+databases and importing them as R structures.  They take your GCAM
+output database, along with the same batch query file described in the
+last section, and run them through the Model Interface, making the
+results available in your R session for analysis.  The imported data
+is also stored in a project data file for future use.
+
+The rgcam package is available on github at
+[JGCRI/rgcam](https://github.com/JGCRI/rgcam).  Installation and
+quick-start usage instructions are available on the repository's front
+page.  Detailed documentation of the functions provided by the package
+is available through the R help system once the package is installed.
 
 ### 3.5 Controling the level of XML DB Output
 The GCAM XML database output is verbose and can consume a lot of disk space.  Users may seek to limit or even query and discard these results, particularly when doing a large number of runs, to save space and time.  To do this they can configure in `<GCAM Workspace>/exe/XMLDBDriver.poperties` the following options:
