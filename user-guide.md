@@ -46,7 +46,9 @@ This section provides a brief introduction on how to use the GCAM Model and view
 
 GCAM requires a valid `configuration.xml` file be present in the exe directory of the GCAM workspace. You can run a reference scenario by copying the `configuration_ref.xml` that is provided in the distribution and renaming it to `configuration.xml`. The configuration file is descried in more detail in the [User's Guide section](#gcam-users-guide), and should not need to be modified in order to run a reference case scenario. The User's Guide describes how to create additional scenarios.
 
-Note that a `log_conf.xml` file is also necessary, but this should already be present in the exe directory.
+A `log_conf.xml` file is also needed, but this file is provided in the
+release package and should therefore already be present in the exe
+directory.
 
 In order to run GCAM double click on the `run-gcam` executable script or run the executable from the command line.  You should see log messages scroll up the screen as GCAM reads in xml files and begins solving each model period. Log information for each run can be found in `exe/logs/main_log.txt`.
 
@@ -391,6 +393,15 @@ The rgcam package is available on github at
 quick-start usage instructions are available on the repository's front
 page.  Detailed documentation of the functions provided by the package
 is available through the R help system once the package is installed.
+
+#### 3.4.4 Importing data into python
+
+The [gcam_reader](https://github.com/JGCRI/gcam_reader) python package
+for importing GCAM data is currently in beta testing.  Although not
+yet as complete as the R package, the python package supports basic
+functionality including importing individual or batched queries as
+pandas data frames for analysis or use in other python programs.
+
 
 ### 3.5 <a name="controlling-the-level-of-xml-db-output"> Controlling the level of XML DB Output </a>
 
