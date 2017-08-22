@@ -10,8 +10,7 @@ gcam-version: v4.3
 This section is for users that wish to compile GCAM C++ source code into an executable. **Note most users can just use the Mac or Windows binaries provided in the GCAM release as most scenario modifications are done by changing XML input files.**  Users may need to re-compile the C++ source code for reasons such as:
 
 * For use on general POSIX systems or a version of Mac or Windows for which the released binary was not compatible.
-* To incorporate bug fixes.
-* To add some other new feature.
+* To add new features or otherwise customize the model.
 
 GCAM provides a generic [Makefile](#building-with-makefile) as well as [Xcode](#building-with-xcode) and [Visual Studio](#building-with-visual-studio) project files.  It relies on the following third party libraries.  Mac and Windows users should be able to use the libraries provided, otherwise see the section on [building third party libraries](#building-third-party-libraries).
 
@@ -24,7 +23,7 @@ In addition users will have to download the [Hector submodule](#getting-hector).
 *Note that, in a departure from past releases*, in addition to compiling the C++ GCAM code, creating a GCAM executable now also requires compiling hector and (if not using the release version of the libraries) compiling boost libraries.
 
 ## 2. Building Third Party Libraries
-This section details where to get and how to build the additional software required to re-compile and run GCAM.  In addition some notes beyond those provided by the source as it pertains to GCAM.  All of these required software are open source and/or available free of charge. **Note:** Mac and Windows binary packages (with the exception of Boost due to it's large size) will already include these libraries and users only need to follow these instructions if they have a specific need to rebuild them.
+This section details where to get and how to build the additional software required to re-compile and run GCAM.  In addition some notes beyond those provided by the source as it pertains to GCAM.  All of these required software are open source and/or available free of charge. **Note:** Mac and Windows binary packages (with the exception of Boost due to its large size) will already include these libraries and users only need to follow these instructions if they have a specific need to rebuild them.
 
 ### 2.1 Boost
 Boost includes many general purpose utilities for the C++ language and helps GCAM compile correctly across most platforms.  The library can be downloaded from [Boost](http://www.boost.org/users/download).  The version released with GCAM was 1.62 however any recent version should work.  GCAM now requires the header files and to build the `system` and `filesystem` libraries.  The Xcode and Visual Studio project files will expect boost to be located in `<GCAM Workspace>/libs` and where the folder unziped after downloading `boost_1_62_0` is either renamed or symlinked to `boost-lib`.  When building using the Makefile they can be located anywhere and are referenced by setting [an environment variable](#building-with-makefile).
@@ -63,7 +62,7 @@ Users can look at [Boost documentation](http://www.boost.org/doc/libs/1_62_0/mor
 
 ```
 cd <GCAM Workspace>/libs/boost-lib
-./bootstrap --with-libraries=system,filesystem --prefix=<GCAM Workspace>/libs/boost-lib/stage/lib
+./bootstrap.sh --with-libraries=system,filesystem --prefix=<GCAM Workspace>/libs/boost-lib/stage/lib
 ./b2 stage
 ```
 
@@ -186,7 +185,7 @@ Please use the appropriate methods on your platform for installing Java.  Please
 ## 3 Compiling Hector
 [Hector](hector.html) is the simple climate developed at JGCRI.  It is available from the hector project's [Github repository](https://github.com/JGCRI/hector).  
 
-The GCAM Make / project files are expecting the hector source to be in `<GCAM Workspace>/cvs/climate/source/hector`.  If you cloned the GCAM Git repository onto your local system, you can place hector into the appropriate location within the GCAM workspace by initializing it's submodule:
+The GCAM Make / project files are expecting the hector source to be in `<GCAM Workspace>/cvs/objects/climate/source/hector`.  If you cloned the GCAM Git repository onto your local system, you can place hector into the appropriate location within the GCAM workspace by initializing it's submodule:
 
 ```
 cd <GCAM Workspace>
