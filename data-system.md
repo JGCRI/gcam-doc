@@ -71,5 +71,17 @@ make xml
 ```
 Running the "xml" command of the makefile in the root directory will execute all necessary code all the way through to the generation of XML files. The "clean" command will wipe the output of any prior runs of the data system, so the next "xml" after a "clean" will run all code files. A run from a clean workspace currently takes about 30 minutes. Note that the make utility doesn’t always pick up every dependency; particularly after modifications that affect a large number of code files, the system may miss files that should have been re-run. This usually causes either the data system or GCAM to crash. As a general rule, if the changes made will affect a large number of modules (e.g. a change to the country/region mapping), it’s probably best to either clean the workspace prior to re-running, or manually force the system to re-run all code files that are known to be affected by the change(s). One can manually force R code files to be run at the next make by deleting the log files associated with the given code files; the makefile treats the log files as the primary outputs of the code files. The file paths to the log files are in for example `energy-processing-code/logs/L202.Ccoef.R.log`.
 
-A very detailed documentation of the GCAM data system can be found in `<GCAM Workspace>/input/gcam-data-system/_common/documentation`.  It can help navigate the GCAM data system and understand how and where users can change inputs or assumptions to update the GCAM model inputs to suite a user's needs.
+Detailed documentation of the GCAM data system can be found in `<GCAM Workspace>/input/gcam-data-system/_common/documentation`.  It can help navigate the GCAM data system and understand how and where users can change inputs or assumptions to update the GCAM model inputs to suite a user's needs.
 
+### 3.3 Troubleshooting
+If, when running the data system using 'make', an error is encountered you are likely to see a message such as this:
+
+```
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -C modeltime-data level2
+../modeltime-processing-code/level2/L200.modeltime.R
+R CMD BATCH --no-save --no-restore ../modeltime-processing-code/level2/L200.modeltime.R ../modeltime-processing-code/logs/L2.Rout
+make[1]: *** [../modeltime-processing-code/logs/L200.modeltime.R.log] Error 1
+make: *** [modeltime] Error 2
+```
+
+For an indication of the problem, check the log files in the indicated directory (in this case the directory: '/modeltime-processing-code/logs/'). Often an indication of the problem can be found there, for example you might have to load a missing R package. Note that the generic level log (e.g. "L2.Rout") generally will contain any R system errors. The log file named for the routine will contain log messages written out by the GCAM data system. (As noted above, you should delete any named log files corresponding to scripts that erred to assure that these scrips will be re-run when the 'make' command is next used.)
