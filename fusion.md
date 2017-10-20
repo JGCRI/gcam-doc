@@ -18,12 +18,12 @@ Background
 GCAM is a object oriented model using a hierarchical structure to represent the various sectors and activities that it models.  This is convenient for setting up the abstractions and relationships with in the model however it does not lend itself well to getting data in and out apart from using a similarly hierarchical data structure: XML which is what we have used thus far.  We generally "set" data once at the start of the model with XMLParse.  We "get" data mostly through the use of custom visitors or after the run has completed via an XML database.
 This has been a hinderance for modelers who would like to implement one-way or two-way coupling bwteen their own model and GCAM.  Where they may want to push new "parameters" into GCAM from a high level so as to dynamically incorporate feedbacks from other models as the model moves forward through time.  
 
-The goal for GCAM Fusion is to be able to manipulate the internal parameters of GCAM from a high level.  However most users will not be familar with GCAM object and member variable names they are usually familiar with the XML tag names used in the input/output which typically map directly on to those internal variables. In addition many of our users have grown accustomed to searching the XML via simple XPath queries that look like: `/scenario[@name='Reference']//sector[@name='electricity]//share-weight[@year <= 2050]`.  Thus GCAM Fusion is a query engine for GCAM with a query syntax _somewhat_ like XPath using the same data names as the XML input tags.  Users can then use the search results as they like including changing the value of the results.
+The goal for GCAM Fusion is to be able to manipulate the internal parameters of GCAM from a high level.  However most users will not be familar with GCAM object and member variable names.  They are usually familiar with the XML tag names used in the input/output which typically map directly on to those internal variables. In addition many of our users have grown accustomed to searching the XML via simple XPath queries that look like: `/scenario[@name='Reference']//sector[@name='electricity]//share-weight[@year <= 2050]`.  Thus GCAM Fusion is a query engine for GCAM with a query syntax _somewhat_ like XPath using the same data names as the XML input tags.  Users can then use the search results as they like including changing the value of the results.
 
 
 == Providing a hook to calling feedbacks ==
 
-Currently we are providing a hooks for users to call their feedbacks:
+Currently we are providing the following hooks for users to call their feedbacks:
 
 * Just before a simulation period of GCAM begins it's solution process.
 * After a simulation period of GCAM has solved and the `hector` climate model has been called.
@@ -88,7 +88,7 @@ An Introduction Using an Illustrative Example
 
 -----------------------
 
-In order to explain how to use the GCAM Fusion capabilities let's jump right into it with an illustrative feedback example.  In this toy example we will, braodly speaking:
+In order to explain how to use the GCAM Fusion capabilities let's jump right into it with an illustrative feedback example.  In this toy example we will, broadly speaking:
 
 * Query GCAM to capture some desriable state of the simulation
 * Use those results to calculate some sort of impact which we would like to effect on the simluation moving forward
@@ -145,7 +145,7 @@ protected:
 };
 ```
 
-You will notice that I have also included the XML parsing hooks that GCAM uses to initialize it's components.  Providing these hooks will be necessary however you can use which ever means to set up your component as is appropriate for you.
+You will notice that I have also included the XML parsing hooks that GCAM uses to initialize it's components such as `XMLParse` and `toInputXML`.  Providing these hooks will be necessary however you can use which ever means to set up your component as is appropriate for you.
 
 The source will then look like the following shell:
 
@@ -260,7 +260,7 @@ The GCAMFusion object takes two parameters:
 -   A vector of FilterSteps
 -   An instance of an object that can handle the results of the search
 
-The object that will handle the results of the search can be any object since GCAMFusion is templated. This object must provide the templated function that will be called when that event occurs corresponding to the templated flags used in creation of the GCAMFusion object \[link to processing events\]:
+The object that will handle the results of the search can be any object since GCAMFusion is templated. This object must provide the templated function that will be called when that event occurs corresponding to the templated flags used in creation of the GCAMFusion object:
 
 ```cpp
 struct GatherEmiss {
@@ -312,7 +312,7 @@ void DegreeDaysFeedback::calcFeedbacksAfterPeriod( Scenario* aScenario, const IC
 }
 ```
 
-As you can see above the FilterSteps can be created manually or by using the utility `parseFilterString` to conveniently generate it for you by using a syntax _similar_ to XPath. Each filter step \[link to FilterStep section\] may contain a data name and a filter . Each filter \[link to Filter section\] contains a predicate \[link to predicate section\] and the predicate value.
+As you can see above the FilterSteps can be created manually or by using the utility `parseFilterString` to conveniently generate it for you by using a syntax _similar_ to XPath. Each [filter step](#filterstep-objects) may contain a data name and a filter . Each [filter](#filter-objects) contains a [predicate](#predicates) and the predicate value.
 
 
 As mentioned above GCAMFusion finds a result that matches the search it will call `processData` and the user can get or set the value as appropriate for their needs:
@@ -341,7 +341,7 @@ Next we do something interesting with our results.. although in this example the
     mCurrDDScaler = 1.0 / ( currGlobalEmiss / mBaseYearValue ) * mHDDCoef;
 ```
 
-Finally we can query for the appropriate GCAM paramaters again but this time change the value.  You will notice that really everything works the same as when we were collecting the CO2 emissions.  The data passed to `processData` is passed by reference to the actual parameter that lives in the GCAM objects and is not const so we are free to change it as we please.
+Finally we can query for the appropriate GCAM paramaters again but this time changing the value.  You will notice that really everything works the same as when we were collecting the CO2 emissions.  The data passed to `processData` is passed by reference to the actual parameter that lives in the GCAM objects and is not const so we are free to change it as we please.
 
 ```cpp
     // Note the actual services are "resid heating" or "comm cooling", etc so we
@@ -390,7 +390,7 @@ void>::type DegreeDaysFeedback::pushFilterStep( const T& aContainer ) {
 ```
 
 A couple things to note, sometimes it is easier to just use your feedback object to process callbacks from GCAM fusion.  It isn't required to use a helper struct to do so and sometimes it is easier not to.  Nothing additional is required to handle feedbacks, you don't have to implement any interface, just provide the `processData`, etc callback methods.
-I've also included and configured the call back for `pushFilterStep` just for example.  I also threw in some uses of boost's (using the std library should work just fine too) type traits + SFINAE to control which objects we are intereasted in just to point out the possible strategies for only dealing with certain types (although how SFINAE techniques actually work is far more complicated to discuss here, luckily plenty has been written about the topic).
+I've also included and configured the call back for `pushFilterStep` just for example.  I also threw in some uses of boost's (using the std library should work just fine too) type traits + SFINAE to control which objects we are intereasted in just to point out the possible strategies for only dealing with certain types (although how SFINAE techniques actually work is far too complicated to discuss here, luckily plenty has been written about the topic).
 
 
 TODO: Linking in your feedbacks
@@ -400,7 +400,7 @@ TODO:
 Intended Use of GCAM Fusion
 ---
 Note that GCAM Fusion gives the users full access to all the internal parameters of GCAM for better or for worse.  Just because you are able to change these values doesn't mean GCAM will be able to operate normally when doing so.
-Therefore we only reccommend using GCAM Fusion inside of the IModelFeedback methods.  Making feedbacks during the solution of a model period would require additional dependencies and linkages to ensure proper solution and GCAM Fusion would entirely circumvent those procedures.
+Therefore we only reccommend using GCAM Fusion inside of the `IModelFeedback` methods.  Making feedbacks during the solution of a model period would require additional dependencies and linkages to ensure proper solution and GCAM Fusion would entirely circumvent those procedures.
 As a rule of thumb adjusting the same model perameters which are parsed in GCAM XML input files should be fine to modify.  It should **not** be used to curcimvent normal object orientened principals or designs.  Object encapsulation allows us to ensure some level of consistency.
 
 To be clear there are no sofware limitation imposed on the use of GCAM Fusion however code proposed for inclusion into the Core GCAM model may be rejected due to improper / abuse of the capabilities as it will hinder the long term maintainability of the model.
@@ -413,7 +413,7 @@ Some Documentation for Filter Steps
 
 
 
-A FilterStep is the object that GCAMFusion uses to search a single GCAM container's data vector.  It can optionally specify a data name to match which is compared against the `Data::mDataName`.  If the data name in the FilterStep is empty it is assumed to match *any* data name.  The other optional parameter is a Filter \[link to Filter section\] which can used to filter any single element of the data vector that is an ArrayData or ContainerData.  Note if no filter is specified it is assumed to be NoFilter.  Note if a Filter other than NoFilter is set then any element of the data vector that is defined as a Data object will be rejected even if the data name matches.  In addition if no data name and no filter is set then not only does this FilterStep match all data but it also enables special "descendant step" traversal behavior in GCAMFusion where the next FilterStep can be matched zero or more containers down.  For instance `sector//share-weight` will find share-weight data at the subector and technology levels.
+A FilterStep is the object that GCAMFusion uses to search a single GCAM container's data vector.  It can optionally specify a data name to match which is compared against the `Data::mDataName`.  If the data name in the FilterStep is empty it is assumed to match *any* data name.  The other optional parameter is a [Filter](#filter-objects) which can used to filter any single element of the data vector that has an `ARRAY` or `CONTAINER` flag.  Note if no filter is specified it is assumed to be `NoFilter`.  Note if a Filter other than `NoFilter` is set then any element of the data vector that is defined as a `SIMPLE` Data object will be rejected even if the data name matches.  In addition if no data name and no filter is set then not only does this FilterStep match all data but it also enables special "descendant step" traversal behavior in GCAMFusion where the next FilterStep can be matched zero or more containers down.  For instance `sector//share-weight` will find `share-weight` data at the `subector` and `technology` levels.
 
 
 
@@ -423,13 +423,10 @@ A FilterStep is the object that GCAMFusion uses to search a single GCAM containe
 
 A Filter object allows GCAMFusion to select a subset of data vector element if that data element was for instance an array of containers. The available Filters are:
 
-\* NoFilter: matches all elements
-
-\* NamedFilter: Calls the -&gt;getName() method on the container to compare in it's predicate. Data and ArrayData will never match.
-
-\* YearFilter: Calls the -&gt;getYear() method if the data is ContainerData or uses Modeltime to convert period index to year if the data is ArrayData and compares that year in it's predicate. Data will never match.
-
-\* IndexFilter: Computes the index offset of each element in an ArrayData or ContainerData for comparison in it's predicate. Simple Data will never match.
+* NoFilter: matches all elements
+* NamedFilter: Calls the -&gt;getName() method on the container to compare in it's predicate. `SIMPLE` and `ARRAY` will never match.
+* YearFilter: Calls the -&gt;getYear() method if the data is `CONTAINER` or uses the `Modeltime` to convert period index to year if the data is `ARRAY` and compares that year in it's predicate. `SIMPLE` data will never match.
+* IndexFilter: Computes the index offset of each element in an `ARRAY` or `CONTAINER` Data for comparison in it's predicate. `SIMPLE` Data will never match.
 
 
 
@@ -442,17 +439,11 @@ A predicate is a way to test whether a year, or name, or index, etc matches a va
 
 
 -   StringEquals | string | Tests if the proposition exactly matches a string value.
-
 -   StringRegexMatches | string | Tests if the proposition matches a regular expression in the egrep notation (TODO: which notation do we want to use, check C++ standard for options).
-
 -   IntEquals | int | Tests if the proposition exactly matches an int value.
-
 -   IntGreaterThan | int | Tests if the proposition is strictly greater than an int value.
-
 -   IntGreaterThanEq | int | Tests if the proposition is greater or equal to an int value.
-
 -   IntLessThan | int | Tests if the proposition is strictly less than an int value.
-
 -   IntLessThanEq | int | Tests if the proposition is less or equal to an int value.
 
 
@@ -469,15 +460,15 @@ This is a utility method so that users do not need to manually construct FilterS
 
 \*\* All characters in between the '\[' and '\]' (if they exist) are split by ','
 
-\*\*\* Each element is then processed by the first element being the Filter \[link to Filter section\]
+\*\*\* Each element is then processed by the first element being the [Filter](#filter-objects)
 
-\*\*\* The second and third element (must exist unless Filter is NoFilter) is a predicate and the value to match in the predicate \[link to predicate section\]
+\*\*\* The second and third element (must exist unless Filter is NoFilter) is a predicate and the value to match in the [predicate](predicates)
 
 
 What GCAM Fusion Means for Writing a New GCAM Component
 ---
 
-The following section is perhaps more advanced than most GCAM users would need to know it is geared towards someone who would need to add a new Class to GCAM and still be compatible with GCAM Fusion.
+The following section is perhaps more advanced than most GCAM users would need to know.  It is geared towards someone who would need to add a new Class to GCAM and still be compatible with GCAM Fusion.
 
 
 
@@ -488,8 +479,8 @@ Background
 
 To accomplish our goals set out earlier for coming up with a high level API for implementing two-way feedbacks with GCAM we need to deal with:
 * Traverse the heirarchical GCAM strucuture from a high level
-* Avoid forcing users to become familiar with the internals of GCAM, instead we can rely leverage their knowledge of the XML strucuture
-* Avoid putting too much burden of GCAM developers to maintain the API when developing new capabilities
+* Avoid forcing users to become familiar with the internals of GCAM, instead we can leverage their knowledge of the XML strucuture
+* Avoid putting too much burden on GCAM developers to maintain the API when developing new capabilities
 
 
 This then presents us with our first challenge. While we currently have a mapping from XML name to data objects (such as XMLParse, toInputXML, or XMLDB output) it is mostly a manual process replicated in EACH of these cases where it is needed. It would be better if we associated that name just one time together with the declartion of the variable. Lets use a simple psuedocode example to illustrate:
@@ -678,17 +669,16 @@ Then the type `DataVectorType` is a special kind of vector, one that can hold 
 
 
 
-Note that an instance of the DataVectorType is only created if the `generateDatatVector()` method is called (which should typically only be called through GCAM Fusion &lt;link to expand data vector&gt;) thus there is no runtime overhead penalty imposed on GCAM except when calling GCAMFusion to search for data.  In addition implies that all of the changes required to allow for GCAM Fusion need only to be made in the header files by declaring variables as described above.
+Note that an instance of the DataVectorType is only created if the `generateDatatVector()` method is called (which should typically only be called through GCAM Fusion via [ExpandDataVector](#expanddatavector)) thus there is no runtime overhead penalty imposed on GCAM except when calling GCAMFusion to search for data.  In addition this implies that all of the changes required to allow for GCAM Fusion need only to be made in the header files by declaring variables as described above.
 
 
 
 What to know when writing or updating a GCAM class
-
 --------------------------------------------------
 
 
 
-As mentioned earlier GCAM fusion changes the way we declare member variables for GCAM classes.  Some of these changes are simply to associate meta information that the GCAM fusion tools can utilize to search and traverse the GCAM objects.  Other changes are actually just to ensure we have a uniform approach so that we may generate as much boiler plate code as possible without the need to special case.  Note while it is possible to not follow or utilize and of the GCAM Fusion tools and coding standards and still create valid and usable GCAM objects it is \*highly discouraged\*.  While you may think you don't want anyone messing with the internals of your object keep in mind that these tools provide the ability to do so much more that just a high level GCAM API.  We could (and have in experimental versions) take advantage to for instance to automatically generate all XML parsing code or make several copies of a running GCAM instance to run in parallel.
+As mentioned earlier GCAM fusion changes the way we declare member variables for GCAM classes.  Some of these changes are simply to associate meta information that the GCAM fusion tools can utilize to search and traverse the GCAM objects.  Other changes are actually just to ensure we have a uniform approach so that we may generate as much boiler plate code as possible without the need to special case.  Note while it is possible to not follow or utilize and of the GCAM Fusion tools and coding standards and still create valid and usable GCAM objects it is *highly discouraged*.  While you may think you don't want anyone messing with the internals of your object keep in mind that these tools provide the ability to do so much more that just a high level GCAM API.  We could (and have in experimental versions) take advantage to for instance to automatically generate all XML parsing code or make several copies of a running GCAM instance to run in parallel.
 
 
 
@@ -738,7 +728,7 @@ class TranTechnology : public Technology {
 
 
 
-A user then would use DEFINE\_DATA in the base class \*even if it is not going to define and data members\*.  The first argument to DEFINE\_DATA must be a list of the name of the class then all possible subclasses of the class \[link to a section where we explain why\].  Note that classes that do not have any classes derive from them will still use this method and the subclass list will only contain itself.
+A user then would use DEFINE\_DATA in the base class even if it is not going to define and data members.  The first argument to DEFINE\_DATA must be a list of the name of the class then all possible subclasses of the class \[link to a section where we explain why\].  Note that classes that do not have any classes derive from them will still use this method and the subclass list will only contain itself.
 
 
 
@@ -824,7 +814,7 @@ This is used to define a member variable that is an array of simple data such as
 
 
 
-This is used to define a member variable that is a container of more data such as Region, Sector, etc (i.e. `/discrete-choice-function/logit-exponent` is valid).  Note that the variable definition may be a vector, such as with subsector or just a single object such as with discrete-choice-function.  We just use the CONTAINER tag to handle both cases.  The reason is for container may be filtered by NamedFilter or YearFilter \[link to filters section\].  If the data being held is vector&lt;Subsector\*&gt; for instance this allows us to search only the one that matches the name: `/subsector[@name='coal']/share-weight`.  If the data isn't a vector and just a single object it may still make sense to filter by name, such an example would be the climate model `/climate-model[@name='hector']`.
+This is used to define a member variable that is a container of more data such as Region, Sector, etc (i.e. `/discrete-choice-function/logit-exponent` is valid).  Note that the variable definition may be a vector, such as with subsector or just a single object such as with discrete-choice-function.  We just use the CONTAINER tag to handle both cases.  The reason is for container thery may be filtered by [NamedFilter](#filter-objects) or [YearFilter](#filter-objects).  If the data being held is vector&lt;Subsector\*&gt; for instance this allows us to search only the one that matches the name: `/subsector[@name='coal']/share-weight`.  If the data isn't a vector and just a single object it may still make sense to filter by name, such an example would be the climate model `/climate-model[@name='hector']`.
 
 
 
@@ -832,7 +822,7 @@ This is used to define a member variable that is a container of more data such a
 
 
 
-The data flags can be combined with the vertical bar operator `|` if associating more tags may be useful.  Note Data **must** be tagged with one of `SIMPLE`, `ARRAY`, or `CONTAINER`.  Currently there is only one other flag defined to combine with those other flags: `STATE`.  In fact it only makes sense to use `STATE` with `SIMPLE` or `ARRAY`.  You should add this flag to any simple Data definition who's data will get set during a call to `World.calc`, &lt;link to section on state management&gt;.
+The data flags can be combined with the vertical bar operator `|` if associating more tags may be useful.  Note Data **must** be tagged with one of `SIMPLE`, `ARRAY`, or `CONTAINER`.  Currently there is only one other flag defined to combine with those other flags: `STATE`.  In fact it only makes sense to use `STATE` with `SIMPLE` or `ARRAY`.  You should add this flag to any Data definition who's data will get set during a call to `World.calc`, as described in [Centrally Managed State Variables](#centrally-managed-state-variables).
 
 
 
@@ -854,7 +844,6 @@ The data flags can be combined with the vertical bar operator `|` if associatin
 
 
 Centrally Managed State Variables
-
 ---------------------------------
 
 
@@ -872,10 +861,8 @@ State variables are of interest since during partial derivative calculations we 
 
 
 -   Each market had a "stored" price, supply, and demand and corresponding methods to store/restore them.
-
 -   Any GCAM object that needed to addToSupply/Demand would have to keep an additional "state" member variables to make the call to the market place: `mLastCalcValue = marketplace->addToDemand( mName, aRegionName, annualServiceDemand, mLastCalcValue, aPeriod );`
-
--   Any other state would get lazily recalculated by marking at the Activity level a "stale" flag.  If a Demand Activity was still marked as stale when it needed to recalculate a partial derivative then it would be forced to recalculate it's Price Activity.  A strategy which creates extra work and potentially easy to break/get wrong: 
+-   Any other state would get lazily recalculated by marking at the Activity level a "stale" flag.  If a Demand Activity was still marked as stale when it needed to recalculate a partial derivative then it would be forced to recalculate it's Price Activity.  A strategy which creates extra work and potentially easy to break/get wrong.
 
 
 
@@ -884,12 +871,10 @@ With the changes to central manage state that come along with GCAM Fusion we sim
 
 
 -   The centrally managed "scratch" chunk of memory gets copied over with the "base" chunk of memory.
-
--   Any GCAM object that needed to addToSupply/Demand must do so with a  `Value` member variable marked as state: `marketplace->addToDemand( mName, aRegionName, mServiceDemands[ aPeriod ], aPeriod );`
-
+-   Any GCAM object that needed to addToSupply/Demand must do so with a `Value` member variable marked as `STATE`: `marketplace->addToDemand( mName, aRegionName, mServiceDemands[ aPeriod ], aPeriod );`
 
 
-The new approach is much more simple and easier to guarantee we didn't miss something &lt;link to DEBUG\_STATE&gt;.  In addition when running with GCAM Parallel enabled we can allocate a "scratch" space for every thread allowing for each of the ~470 partial derivative calculations to be calculated completely independently and in parallel from each other.  This gives us far greater parallelism than we had previously.
+The new approach is much more simple and easier to guarantee we didn't miss something by using [DEBUG_STATE](#ensuring-that-no-state-variable-is-missed).  In addition when running with GCAM Parallel enabled we can allocate a "scratch" space for every thread allowing for each of the ~470 partial derivative calculations to be calculated completely independently and in parallel from each other.  This gives us far greater parallelism than we had previously.
 
 
 
@@ -897,16 +882,14 @@ The new approach is much more simple and easier to guarantee we didn't miss some
 
 
 
-First users must tag the Data definitions with the `STATE` flag &lt;link to DEFINE\_DATA with section&gt; to indicate which member variables are state.  The type of these variables could in principal be any simple type or array of simple type however for simplicity and to provide an object that gives us an opportunity for indirection to swap out the actual location of the underlying data from a central location we must use the `Value` class:
+First users must tag the Data definitions with the `STATE` [flag](#definevariable-with-flag-simple--state-or-array--state) to indicate which member variables are state.  The type of these variables could in principal be any simple type or array of simple type however for simplicity and to provide an object that gives us an opportunity for indirection to swap out the actual location of the underlying data from a central location we must use the `Value` class:
 
 
 
 `DEFINE_VARIABLE( SIMPLE | STATE, "price", mPrice, Value )`
 
 
-
 or
-
 
 
 `DEFINE_VARIABLE( ARRAY | STATE, "emissions", mEmissions, objects::PeriodVector<Value> )`
@@ -918,15 +901,16 @@ By adding the `STATE` tag it allows us to search, using GCAM Fusion, for all of
 
 
 -   Skip data that is in a Technology that is not operating or a Market not of the current year
-
 -   Data in a period vector are only collected for the current period.
-
--   Data in a year vector (such as LUC emissions) for only the years in the current tilmestep.
-
+-   Data in a year vector (such as LUC emissions) for only the years in the current timestep.
 
 
-Once we know how many state data there are in a period we can allocate space to store the centrally managed data in a two dimensional array.  The first dimension is an entry for each state variable.  The second dimension is for the states, where the first is the "base" state and the rest are "scratch" (without parallel enabled just 1 however when enabled it is one for each thread, on PIC some nodes can have as many as 48 threads).  Since we need to be able to quickly copy over scratch state we need to store the data contagiously.  Thus in order to keep several copies of state and quickly replace it is important we keep that total number of state variables to a reasonable amount.  Currently we observe 300,000 to 700,000 double values depending on the model period which is ~ 2 - 5 MB worth of memory per state which is well with in reason.
 
+Once we know how many state data there are in a period we can allocate space to store the centrally managed data in a two dimensional array.  The first dimension is an entry for each state variable.  The second dimension is for the states, where the first is the "base" state and the rest are "scratch" (without parallel enabled just 1 however when enabled it is one for each thread, on PIC some nodes can have as many as 48 threads).  Since we need to be able to quickly copy over scratch state we need to store the data contigiously.  Thus in order to keep several copies of state and quickly replace it is important we keep that total number of state variables to a reasonable amount.  Currently we observe 300,000 to 700,000 double values depending on the model period which is ~ 2 - 5 MB worth of memory per state which is well with in reason.
+
+
+
+After the central state memory is allocated we loop over each state Value and set a flag to indicate that it is active state and assign it an offset into the centrally managed state.  We also set static variable `Value::sCentralValue` to point to the centrally managed "base" state.  Thus the Value class will lookup the actual data using:
 
 
 ```cpp
@@ -946,13 +930,6 @@ inline double& Value::getInternal() {
         : mValue;
 }
 ```
-
-
-
-After the central state memory is allocated we loop over each state Value and set a flag to indicate that it is active state and assign it an offset into the centrally managed state.  We also set static variable `Value::sCentralValue` to point to the centrally managed "base" state.  Thus the Value class will lookup the actual data using:
-
-
-
 
 
 When it comes time to calculate partial derivatives `Value::sCentralValue` is reset to the "scratch" space (thus the reason to make it static so it may be quickly switched in all Values).  Before each partial is calculated the "scratch" array is copied over with the "base" array using the highly optimized function `memcpy`:
@@ -990,12 +967,11 @@ Once we are done solving the period the `ManageStateVariables` will loop back o
 
 
 
-We can check to make sure that not Data definitions were missed being tagged as "state" (how I got'em all initially) by enabling the preprocessor flag `DEBUG_STATE` which will enable checks to flag Values that are changed during a call to `World.calc `as well as other checks to ensure Values get collected / reset properly.
+We can check to make sure that not Data definitions were missed being tagged as "state" (how I got'em all initially) by enabling the preprocessor flag `DEBUG_STATE` which will enable checks to flag Values that are changed during a call to `World.calc` as well as other checks to ensure Values get collected / reset properly.
 
 
 
 Other GCAM Fusion related utilities
-
 -----------------------------------
 
 
@@ -1012,17 +988,16 @@ Generally users typically would not call this method directly and instead used i
 
 
 
-A generic templated factory that can create any member of a SubClassFamilyVector &lt;link to define subclass family&gt; given the XML name.  This class is currently not used however could be employed to replace all of the various Factory singleton classes that currently exist in GCAM.  It would really be useful when/if we generate all XML Parsing code by the compiler.
+A generic templated factory that can create any member of a [SubClassFamilyVector](#definedata---and-definedatawithparent--) given the XML name.  This class is currently not used however could be employed to replace all of the various Factory singleton classes that currently exist in GCAM.  It would really be useful when/if we generate all XML Parsing code by the compiler.
 
 
 
 C++11/14 Features:
-
 ------------------
 
 
 
-Some code written in GCAM Fusion take advantge of some new language features. While not always necessary they proved useful. Note this isn't the full breadth of the new C++11/14 features, just the ones you may find in GCAM Fusion. In addtion there some classes, such as regular expressions, which are also part of the new standard however I will not talk about them since it doesn't change any language expressions that may be confusing to C++ coders.
+Some code written in GCAM Fusion take advantge of some new language features. While not always necessary they proved useful. Note this isn't the full breadth of the new C++11/14 features, just the ones you may find in GCAM Fusion. In addtion there are some classes, such as regular expressions, which are also part of the new standard however I will not talk about them since it doesn't change any language expressions that may be confusing to C++ coders.
 
 
 
@@ -1063,7 +1038,7 @@ void someFunc(ContainerData<SomeKindOfArrayOfContainerType> aData ) {
 
 
 
-Similiar to the `auto` declaration the `decltype` allows the coder to be lazy about declaring the type of some variable. This declartaion allows you to copy the type of some other variable. Although the true usefulness of this language tool is you can then use it to derive further types:
+Similiar to the `auto` declaration the `decltype` allows the coder to be lazy about declaring the type of some variable. This declaration allows you to copy the type of some other variable. Although the true usefulness of this language tool is you can then use it to derive further types:
 
 `typename decltype( mSomeVector )::const_iterator`
 
@@ -1126,7 +1101,7 @@ bool isNameCoal = boost::fusion::any(vec,
 
 
 
-The values in the `[ ]` name the variables from the local scope to be made available in the closure.  Including an `&` in from of the variable indicates to pass by reference.  Simply providing the `&` indicates make available all local variables by reference.
+The values in the `[ ]` names the variables from the local scope to be made available in the closure.  Including an `&` in front of the variable indicates to pass by reference.  Simply providing the `&` indicates make available all local variables by reference.
 
 
 
