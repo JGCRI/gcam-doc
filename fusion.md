@@ -250,9 +250,9 @@ WARNING: including GCAMFusion essentially includes the **entire** model.  This 
 The `GCAMFusion` object takes four template parameters:
 
 -   The type of the object that can handle the results of the search
--   A boolean flag to indicate if said object will process the data being found (default is `true`).
 -   A boolean flag to indicate if said object will process the start of each step taken into a `CONTAINER` object (default is `false`).
 -   A boolean flag to indicate if said object will process stepping out of a `CONTAINER` object (default is false).
+-   A boolean flag to indicate if said object will process the data being found (default is `true`).
 
 
 The GCAMFusion object takes two parameters:
@@ -299,7 +299,8 @@ void DegreeDaysFeedback::calcFeedbacksAfterPeriod( Scenario* aScenario, const IC
     // an IndexFilter
     emissFilterSteps.push_back( new FilterStep( "emissions", new IndexFilter( new IntEquals( aPeriod ) ) ) );
     GatherEmiss gatherEmissProc;
-    GCAMFusion<GatherEmiss, true> gatherEmiss( gatherEmissProc, emissFilterSteps );
+    // note we are just using the default template flags here: just process data, not the steps
+    GCAMFusion<GatherEmiss> gatherEmiss( gatherEmissProc, emissFilterSteps );
     // We must provide an object as the context to start the search, in this case we
     // start at the top with the Scenario object.
     gatherEmiss.startFilter( aScenario );
@@ -348,14 +349,14 @@ Finally we can query for the appropriate GCAM paramaters again but this time cha
     // use regular expression partial matching so we do not have to spell it out.
     vector<FilterStep*> ddFilterSteps = parseFilterString( "world/region/consumer/nodeInput/nodeInput/nodeInput[NamedFilter,StringRegexMatches,heating]" );
     ddFilterSteps.push_back( new FilterStep( "degree-days", new IndexFilter( new IntEquals( aPeriod + 1 ) ) ) );
-    GCAMFusion<DegreeDaysFeedback, true> scaleHDD( *this, ddFilterSteps );
+    GCAMFusion<DegreeDaysFeedback> scaleHDD( *this, ddFilterSteps );
     scaleHDD.startFilter( aScenario );
     
     mCurrDDScaler = ( currGlobalEmiss / mBaseYearValue ) * mCDDCoef;
     // only updating the service name filter of our query, we can keep the rest of it the same
     delete ddFilterSteps[ ddFilterSteps.size() - 2 ];
     ddFilterSteps[ ddFilterSteps.size() - 2 ] = new FilterStep( "nodeInput", new NamedFilter( new StringRegexMatches( "cooling" ) ) );
-    GCAMFusion<DegreeDaysFeedback, true, true> scaleCDD( *this, ddFilterSteps );
+    GCAMFusion<DegreeDaysFeedback, true> scaleCDD( *this, ddFilterSteps );
     scaleCDD.startFilter( aScenario );
 
     // note we are still responsible for the memory we allocate even if it was done in the parseFilterString utility
