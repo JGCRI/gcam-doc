@@ -26,7 +26,8 @@ questions and work closely with Earth system and ecosystem modelers to
 integrate the human decision components of GCAM into their analyses.
 
 ## GCAM Model Overview
-# Introduction
+
+### Introduction
 
 GCAM is a global integrated assessment model that represents the
 behavior of, and complex interactions between five systems: the energy
@@ -66,7 +67,7 @@ across the globe, creating a shared global research enterprise. GCAM
 can be run on Windows, Linux, Apple, and high-performance computing
 systems.
 
-# Background: Integrated Assessment Models
+### Background: Integrated Assessment Models
 
 GCAM is an integrated assessment model. The role of integrated
 assessment research and integrated assessment modeling is to bring
@@ -117,6 +118,7 @@ analysis, and Monte Carlo simulations. Exploring and understanding the
 role of uncertainty in shaping events remains an important research
 use of GCAM.
 
+## User Guides and Tutorials
 
 * [GCAM Documentation](toc.html)
 * [Getting Started with GCAM](user-guide.html)
