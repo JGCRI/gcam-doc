@@ -62,14 +62,17 @@ We have partitioned the energy system documentation as follows:
 
 GCAM models depletable resources (oil, unconventional oil, natural gas, coal, and uranium) using graded resource supply curves. As cumulative extraction of these resources increases, the cost of extraction rises; however, technical change can be applied to reduce the extraction cost in future years. Resource curves for fossil fuels are shown below.
  
-* Oil and unconventional oil
-![Figure x.1](gcam-figs/oil_supply_curve.png)
+#### Oil and unconventional oil
 
-* Natural gas
-![Figure x.2](gcam-figs/gas_supply_curve.png)
+<img src="gcam-figs/oil_supply_curve.png" width="750" height="300" />
 
-* Coal
-![Figure x.3](gcam-figs/coal_supply_curve.png)
+#### Natural gas
+
+<img src="gcam-figs/gas_supply_curve.png" width="750" height="300" />
+
+#### Coal
+
+<img src="gcam-figs/coal_supply_curve.png" width="750" height="300" />
 
 ### Renewable Resources 
 
@@ -254,7 +257,8 @@ The wind and solar technologies are electrolysis technologies, but are specifica
 
 GCAM disaggregates the building sector into residential and commercial and models three aggregate services (heating, cooling, and other). Within each region, each type of building and each service starts with a different mix of fuels supplying energy (see Figure below). The future evolution of building energy use is shaped by changes in (1) floorspace, (2) the level of building service per unit of floorspace, and (3) fuel and technology choices by consumers.  Floorspace depends on population, income, and exogenously specified satiation levels. The level of building service demands per unit of floorspace depend on climate, building shell conductivity, income, and satiation levels.
 
-![Figure **](gcam-figs/building_energy_2010.png)
+<img src="gcam-figs/building_energy_2010.png" width="750" height="450" />
+
 Per-capita Residential and Commercial Energy Use in 2010
 
 
