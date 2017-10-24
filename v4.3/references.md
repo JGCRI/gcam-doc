@@ -1,7 +1,7 @@
 ---
 layout: index
 title: References
-gcam-version: v4.4
+gcam-version: v4.3
 ---
 
 **Selected GCAM Papers and Reports**
