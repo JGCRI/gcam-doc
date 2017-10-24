@@ -1,0 +1,88 @@
+digraph USA{
+	trn_passenger[label="Passenger\nTransport",color=steelblue1,style=filled];
+subgraph cluster1{
+	color=white;
+	trn_pass_road[label="Road"];
+	pass_air[label="Air - Short and\nMedium Distance",color=beige,style=filled];
+	pass_rail[label="Rail",color=beige,style=filled];
+	hsr[label="High Speed Rail",color=beige,style=filled];
+	LDV[label="Light Duty\nVehicles"];
+	bus[label="Bus"];
+}
+subgraph cluster2{
+	color=white;
+	LDV_4W[label="Four Wheeled\nVehicles"];
+	LDV_2W[label="Two Wheeled\nVehicles"];
+
+}
+subgraph cluster3{
+	color=white;
+	LDV_sml[label="Mini\nCar",color=beige,style=filled];
+	LDV_med[label="Subcompact\nCar",color=beige,style=filled];
+	LDV_lrg[label="Compact\nCar",color=beige,style=filled];
+	LDV_trk[label="Large Car\nand SUV",color=beige,style=filled];
+	LDV_mpd[label="Mopeds",color=beige,style=filled];
+	LDV_sct[label="Scooters",color=beige,style=filled];
+	LDV_mtr[label="Motorcycles",color=beige,style=filled];
+	LDV_3W[label="Three Wheelers",color=beige,style=filled];
+	bus_sml[label="Small Bus",color=beige,style=filled];
+	bus_lrg[label="Large Bus",color=beige,style=filled];
+}
+	trn_passenger->pass_air[dir=back];
+	trn_passenger->hsr[dir=back];
+	trn_passenger->pass_rail[dir=back];
+	trn_passenger->trn_pass_road[dir=back];
+	trn_pass_road->bus[dir=back];
+	trn_pass_road->LDV[dir=back];
+	LDV->LDV_4W[dir=back];
+	LDV->LDV_2W[dir=back];
+	LDV->LDV_3W[dir=back];
+	LDV_4W->LDV_sml[dir=back];
+	LDV_4W->LDV_med[dir=back];
+	LDV_4W->LDV_lrg[dir=back];
+	LDV_4W->LDV_trk[dir=back];
+	LDV_2W->LDV_mpd[dir=back];
+	LDV_2W->LDV_sct[dir=back];
+	LDV_2W->LDV_mtr[dir=back];
+	bus->bus_sml[dir=back];
+	bus->bus_lrg[dir=back];
+	
+	liq[label="Liquid fuels",color=cadetblue3,style=filled];
+	gas[label="Gas",color=cadetblue3,style=filled];
+	elec[label="Electricity",color=cadetblue3,style=filled];
+	h2[label="Hydrogen",color=cadetblue3,style=filled];
+
+	LDV_sml->liq[dir=back];
+	LDV_sml->gas[dir=back];
+	LDV_sml->elec[dir=back];
+	LDV_sml->h2[dir=back];
+	LDV_med->liq[dir=back];
+	LDV_med->gas[dir=back];
+	LDV_med->elec[dir=back];
+	LDV_med->h2[dir=back];
+	LDV_lrg->liq[dir=back];
+	LDV_lrg->gas[dir=back];
+	LDV_lrg->elec[dir=back];
+	LDV_lrg->h2[dir=back];
+	LDV_trk->liq[dir=back];
+	LDV_trk->gas[dir=back];
+	LDV_trk->elec[dir=back];
+	LDV_trk->h2[dir=back];
+	LDV_mpd->liq[dir=back];
+	LDV_mpd->elec[dir=back];
+	LDV_sct->liq[dir=back];
+	LDV_sct->elec[dir=back];
+	LDV_mtr->liq[dir=back];
+	LDV_mtr->elec[dir=back];
+	LDV_3W->liq[dir=back];
+	LDV_3W->gas[dir=back];
+	bus_sml->liq[dir=back];
+	bus_sml->gas[dir=back];
+	bus_lrg->liq[dir=back];
+	bus_lrg->gas[dir=back];
+	pass_air->liq[dir=back];
+	pass_rail->liq[dir=back];
+	pass_rail->elec[dir=back];
+	hsr->elec[dir=back];
+
+}
