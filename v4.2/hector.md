@@ -3,10 +3,10 @@ layout: index
 title: Climate Module – Hector	
 prev: aglu.html
 next: choice.html
-gcam-version: v4.3
+gcam-version: v4.2
 ---
 
-This section describes the new climate module - Hector - that is available for use in GCAM. MAGICC5.3 (Wiglley, 2008) has traditionally been the only climate module available in GCAM.  In GCAM's recent release, Hector is now the default climate model(Hartin et al., 2015).  Both Hector and MAGICC are reduced-form climate carbon-cycle models. 
+This section describes the new climate module - Hector - that is available for use in GCAM. MAGICC5.3 (Wiglley, 2008) has traditionally been the only climate module available in GCAM.  In GCAM's recent release, there is now the option to run Hector (Hartin et al., 2015).  Both Hector and MAGICC are reduced-form climate carbon-cycle models. 
 
 Hector, an open-source, object-oriented, reduced-form global climate carbon-cycle model, is written in C++. This model runs essentially instantaneously while still representing the most critical global-scale earth system processes. Hector has a three-part main carbon cycle: a one-pool atmosphere, land, and ocean. The model’s terrestrial carbon cycle includes primary production and respiration fluxes, accommodating arbitrary geographic divisions into, e.g., ecological biomes or political units. Hector actively solves the inorganic carbon system in the surface ocean, directly calculating air– sea fluxes of carbon and ocean pH. Hector reproduces the global historical trends of atmospheric [CO<sub>2</sub>], radiative forcing, and surface temperatures. The model simulates all four Representative Concentration Pathways (RCPs) with equivalent rates of change of key variables over time compared to current observations, MAGICC, and models from CMIP5 (Hartin et al., 2015). Hector’s flexibility, open-source nature, and modular design facilitates a broad range of research in various areas. 
 
@@ -22,7 +22,7 @@ Table 1: Emissions and sources from each sector passed to Hector.
 
 | Emission| Sector  | Notes |
 | ------- |:-------| :------ |
-| CO<sub>2</sub><sup>*</sup>     | [AgLU](aglu.html), [Energy](energy.html)  | |
+| CO<sub>2</sub><sup>*</sup>     | [AgLU](https://github.com/JGCRI/gcam-doc/blob/climate_documentation/aglu.md), Energy  | |
 | CH<sub>4</sub>     | AgLU, Energy, Industrial Processes    | |
 | N<sub>2</sub>O 	  | AgLU, Energy    | |
 | NH<sub>3</sub>     | AgLU, Energy  |  |
@@ -82,7 +82,93 @@ At every time step Hector calculates and outputs key climate variables.
 </dl>
 
 ## Getting and Installing Hector for Use with GCAM
-For users who are running GCAM with the [Mac](https://github.com/JGCRI/gcam-core/releases/download/gcam-v4.3/mac_binaries.tar.gz) or [Windows](https://github.com/JGCRI/gcam-core/releases/download/gcam-v4.3/windows_binaries.tar.gz) binary Release add-ons, Hector support is already compiled in.  For users compiling for source or interested in getting the Hector source, please see the [Hector section in How to Set Up and Build GCAM](gcam-build.html#getting-hector).
+This section describes step by step instructions for various platforms to build and link GCAM with Hector.  Users can set Hector as the climate model in GCAM instead of MAGICC.
+
+Frst download Hctor from (Note that at the time of this writing only v1.1.2 has been tested): https://github.com/JGCRI/hector/releases
+
+### Step-by-step guide
+
+#### Building GCAM-Hector on XCode
+
+1. Move or symlink the Hector workspace under the GCAM workspace under
+   `cvs/objects/climate/source/hector`. Note that the name of the
+   workspace that GCAM will be looking for will be “hector”.  If you
+   wish to retain version numbering etc we recommend creating a
+   symlink: 
+
+```
+	cd  cvs/objects/climate/source
+	ln –s /path/to/your/hector-v1.1.2 hector
+```	
+
+2. Verify that both GCAM and hector successfully build independently.  If not you should consult the build instructions for each. [BuildHector](https://github.com/JGCRI/hector/wiki/BuildHector)
+
+3. Open the GCAM project in Xcode.
+
+4. Locate the “objects” project properties from the Project
+   Navigator. Go to the Build Settings and find the Preprocessor
+   Macros and add to whichever build configuration you need:  `USE_HECTOR=1`
+
+5. Go to the Build Settings and find the Other Linker Flags and add to
+   whichever build configuration you need: `-lgsl -lgslcblas -lm` 
+
+6. Go to the Build Settings and find the Library Search Paths and add
+   to whichever build configuration you need: `<path to gsl
+   install>/lib` 
+
+7. Go to the Build Settings and find the User Header Search Paths and
+	add to it the following entry: `../../climate/source/hector/headers`
+
+8. Go to the Build Settings and find the C++ Language Dialect and ensure that it is set to the following value from the drop down menu: `Compiler Default`
+
+9. Go to the Build Settings and find the C++ Standard Library and ensure that it is set to the following value from the drop down menu: `libstdc++ `
+
+10. Next add the Hector project to GCAM by right clicking on the
+    “objects” project properties in the Project Navigator and select
+    `Add to “objects”…`. Select the Hector project file which is
+    located in
+    `cvs/objects/climate/source/hector/project_files/Xcode/hector.xcodeproj` 
+
+11. Under the “objects” project properties from the Project Navigator go to the Build Phases.
+	Open the Target Dependencies and click the +.  In the dialog find “hector-lib” from under the “Hector” project.
+	Open the Link Binary With Libraries and click the +.  In the dialog find “libhector-lib.a” from under the “Workspace” category.
+
+12. Ensure that objects is your current build target and Xcode will now re-build Hector and GCAM as necessary and link them together.  The GCAM is still run the same as always and will control calling Hector (if configured via add-on files to use Hector instead of MAGICC).
+
+#### Building GCAM-Hector on Visual Studio
+1.  Move or symlink the Hector workspace under the GCAM workspace under `cvs/objects/climate/source/hector` Note that the name of the workspace that GCAM will be looking for will be “Hector”.  If you wish to retain version numbering etc we recommend creating a symlink:
+
+```
+	cd  cvs/objects/climate/source  
+	mklink /D  hector c:/path/to/your/hector-v1.1.2
+```
+
+2. Verify that both GCAM and Hector successfully build independently.  If not you should consult the build instructions for each. [BuildHector](https://github.com/JGCRI/hector/wiki/BuildHector)
+
+3. Open the GCAM project in Visual Studio.
+
+4. Locate the “objects-main” project properties from the Solution
+   Explorer. Go to the Configuration Properties –- C/C++ --
+   Preprocessor and find the Preprocessor Definitions and add to
+   whichever build configuration you need: `USE_HECTOR` 
+
+5. Go to the Configuration Properties –- C/C++ -- General and find the Additional Include Directories and add to it the following entry: `..\..\climate\source\hector\headers`
+
+6. Go to the Configuration Properties –- Linker -- General and find the Additional Library Directories and add to whichever build configuration you need: `<path to gsl install>/Release`
+
+7. Go to the Configuration Properties –- Linker -- Input and find the Additional Dependencies and add to whichever build configuration you need: `gsl.lib`
+
+8. Next add the Hector project to GCAM by right clicking on the
+   “Solution” project properties in the Solution Explorer and select
+   `Add -> Existing project…`. Select the Hector project file which is
+   located in
+   `cvs/objects/climate/source/hector/project_files/VS/hector-lib.vcxproj` 
+
+9. Right click on “objects-main” from the Solution Explorer and select
+   References. In the dialog click the button Add New References…  In
+   the dialog check the “hector-lib” and click ok and ok again. 
+
+10. Now you can build solution and GCAM and Hector will be re-built as necessary and link them together.  The GCAM is still run the same as always and will control calling Hector (if configured via add-on files to use Hector instead of MAGICC).
 
 ## References
 1. Hartin, C. A., Patel, P., Schwarber, A., Link, R. P., and
