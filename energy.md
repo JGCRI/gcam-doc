@@ -60,15 +60,16 @@ We have partitioned the energy system documentation as follows:
 
 ### Depletable Resources 
 
+GCAM models depletable resources (oil, unconventional oil, natural gas, coal, and uranium) using graded resource supply curves. As cumulative extraction of these resources increases, the cost of extraction rises; however, technical change can be applied to reduce the extraction cost in future years. Resource curves for fossil fuels are shown below.
+ 
 * Oil and unconventional oil
+![Figure x.1](gcam-figs/oil_supply_curve.png)
 
 * Natural gas
+![Figure x.2](gcam-figs/gas_supply_curve.png)
 
 * Coal
-
-* Uranium
-
-*Under Construction*
+![Figure x.3](gcam-figs/coal_supply_curve.png)
 
 ### Renewable Resources 
 
@@ -131,7 +132,9 @@ Figure 3: Simplified schematic of the energy system in each region, showing the 
 
 ### Electricity
 
-*Under Construction*
+The GCAM electricity sector models the conversion of primary fuels (e.g., coal, gas, oil, bioenergy) to electricity. For most fuels, GCAM includes several different technology options (e.g., pulverized coal, coal IGCC, etc.). Individual technologies compete for market share based on their technological characteristics (conversion efficiency in the production of products from inputs), and cost of inputs and price of outputs. The cost of a technology in any period depends on (1) its exogenously specified non-energy cost, (2) its endogenously calculated fuel cost, and (3) any cost of emissions, as determined by the climate policy. The first term, non-energy cost, represents capital, fixed and variable O&M costs incurred over the lifetime of the equipment (except for fuel or electricity costs). For electricity technologies, GCAM read in each of these terms and compute the levelized cost of energy within the model. For example, the non-energy cost of coal-fired power plant is calculated as the sum of overnight capital cost (amortized using a capital recovery factor and converted to dollars per unit of energy output by applying a capacity factor), fixed and variable operations and maintenance costs. The second term, fuel or electricity cost, depends on the specified efficiency of the technology, which determines the amount of fuel or electricity required to produce each unit of output, as well as the cost of the fuel or electricity.
+
+Details on the assumptions used in GCAM (e.g., cost, efficiency, capacity factors, etc.) is documented in [Muratori et al., (2017)](http://www.sciencedirect.com/science/article/pii/S1364032117305531). 
 
 ### Refining 
 
@@ -249,9 +252,11 @@ The wind and solar technologies are electrolysis technologies, but are specifica
 
 ### Buildings
 
-* Structure and functional forms
+GCAM disaggregates the building sector into residential and commercial and models three aggregate services (heating, cooling, and other). Within each region, each type of building and each service starts with a different mix of fuels supplying energy (see Figure below). The future evolution of building energy use is shaped by changes in (1) floorspace, (2) the level of building service per unit of floorspace, and (3) fuel and technology choices by consumers.  Floorspace depends on population, income, and exogenously specified satiation levels. The level of building service demands per unit of floorspace depend on climate, building shell conductivity, income, and satiation levels.
 
-*Under Construction*
+![Figure **](gcam-figs/building_energy_2010.png)
+Per-capita Residential and Commercial Energy Use in 2010
+
 
 ### Industry
 
@@ -379,7 +384,7 @@ Note that the size classes shown are tailored to each region, depending on the d
 
 ## Energy Trade
 
-*Under Construction*
+GCAM models trade for coal, gas, oil, and bioenergy using a Heckscher-Ohlin paradigm. That is, trade for these products occurs freely into and out of global markets. Other energy carriers (e.g., solar, wind, geothermal) are not traded.
 
 ## Mapping the IEA Energy Balances
 
