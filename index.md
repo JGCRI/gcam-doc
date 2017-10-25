@@ -22,11 +22,10 @@ behavior of, and complex interactions between, five systems: energy
 , water, agriculture and land use, economy, and
 climate. GCAM has been under development for over 30 years. Work began
 in 1980 on the Edmonds-Reilly, and subsequently
-Edmonds-Reilly-Barnes (ERB), model (Edmonds and Reilly, 1982a,b,c, 1983a,b,c). The model was renamed MiniCAM in the mid-1990s and GCAM in the mid-2000s. The
+Edmonds-Reilly-Barnes (ERB), model (Edmonds and Reilly 1982, 1983a,b, 1985). The model was renamed MiniCAM in the mid-1990s and GCAM in the mid-2000s, around which time the model was also re-written in an object-oriented C++ framework (Kim et al. 2006). The
 first coupling to a carbon cycle model was published in Edmonds, et
 al. (1984). The first use of GCAM (MiniCAM at the time) in conjunction
-with a Monte Carlo uncertainty analysis was published in Reilly,
-Edmonds, Gardner and Brenkert (1987).
+with a Monte Carlo uncertainty analysis was published in Reilly et al. (1987).
 
 Throughout its lifetime GCAM has evolved to address an expanding set of science and assessment questions. The
 original question to which the model was applied was the
@@ -41,7 +40,7 @@ of the art Earth system model (Collins, et al., 2015). GCAM has been
 used to produce scenarios for national and international assessments
 ranging from the very first IPCC scenarios (Response Strategies
 Working Group, 1990) through the present Shared Socioeconomic Pathways
-(Ebi, et al., 2014). Hundreds of papers have been published in
+(Ebi, et al., 2014, Calvin et al. 2017). Hundreds of papers have been published in
 peer-reviewed journals using GCAM over its lifetime and GCAM
 continues to be an important tool for scientific
 inquiry. GCAM is also a community model being used by researchers
@@ -106,12 +105,27 @@ use of GCAM.
   * [Lecture 3: Introduction to GCAM](https://www.youtube.com/watch?v=xRF9lFwtMr0)
   * [Lecture 4: GCAM Tutorial](https://www.youtube.com/watch?v=S7vAShH-dbs)
 
-## Selected Publications
+## References
 
-Edmonds, J., and J. Reilly (1985)Global Energy: Assessing the Future (Oxford University Press, New York) pp.317.
+Calvin, K., et al. (2017). "The SSP4: A world of deepening inequality." Global Environmental Change-Human and Policy Dimensions 42: 284-296.
+
+Collins WD, AP Craig, JE Truesdale, A Di Vittorio, AD Jones, B Bond-Lamberty, KV Calvin, JA Edmonds, SH Kim, AM Thomson, PL Patel, Y Zhou, J Mao, X Shi, PE Thornton, LM Chini, and GC Hurtt. 2015. "The integrated Earth System Model Version 1: formulation and functionality." Biogeosciences 8:2203-2219.  doi:10.5194/gmd-8-2203-2015
+
+Ebi, K., et al. (2014). "A new scenario framework for climate change research: background, process, and future directions." Climatic Change 122(3): 363-372.
+	
+Edmonds, J., and J. Reilly (1985) Global Energy: Assessing the Future (Oxford University Press, New York) pp.317.
 
 Edmonds, J., M. Wise, H. Pitcher, R. Richels, T. Wigley, and C. MacCracken. (1997) “An Integrated Assessment of Climate Change and the Accelerated Introduction of Advanced Energy Technologies”, Mitigation and Adaptation Strategies for Global Change, 1, pp. 311-39
 
+Edmonds, J.A., and J.M. Reilly. 1982. An introduction to the use of the IEA/ORAU Long-Term, Global, Energy Model. Institute for Energy Analysis Working Paper, Contribution No. 82-9. Institute for Energy Analysis, Oak Ridge Associated Universities, Washington, D.C.
+
+Edmonds, J.A., and J.M. Reilly. 1983. A long-term global energy-economic model of carbon dioxide release from fossil fuel use. Energy Economics 5(2): 74-88.
+
+Edmonds, J.A., and J.M. Reilly. 1983. Global energy productions and use to the year 2050, Energy (Oxford) 8(6): 419-432.
+
 Kim, S.H., J. Edmonds, J. Lurz, S. J. Smith, and M. Wise (2006) “The ObjECTS Framework for Integrated Assessment: Hybrid Modeling of Transportation ” Energy Journal (Special Issue #2) pp 51-80.
+
+Reilly, J. M., J. A. Edmonds, R. H. Gardner and A. L. Brenkert  (1987) "Uncertainty Analysis of the IEA/ORAU CO₂ Emissions Model"
+The Energy Journal, Vol. 8, No. 3, pp. 1-29
 
 [Additional GCAM publications](references.html)
