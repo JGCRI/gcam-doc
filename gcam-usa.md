@@ -1,7 +1,7 @@
 ---
 layout: index
 title: GCAM-USA
-current-version: v4.2
+current-version: v4.3
 ---
 
 The Global Change Assessment Model (GCAM) and GCAM-USA

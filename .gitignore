@@ -1,4 +1,11 @@
+# The generated website files are in _site
 _site
+
+# Emacs stuff
 *~
+\#*#
+.#*
+
+# Mac stuff
 .DS_Store
 
