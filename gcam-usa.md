@@ -9,19 +9,7 @@ The Global Change Assessment Model (GCAM) and GCAM-USA
 
 The GCAM model was expanded to include greater spatial detail in the USA region, referred to as GCAM-USA. In GCAM-USA the 50 U.S. states plus the District of Columbia are included as explicit regions that operate within the global GCAM model. Energy transformation (electricity generation and refined liquids production) and end-use demands (buildings, transportation, and industry) are modeled at the individual state level. All primary fossil fuels, biomass, and refined liquids can be freely traded across all states with one endogenously determined price.
 
-Renewable resource potential is modeled with resource characteristics appropriate for each state. Central photovoltaic (PV), concentrated solar power (CSP), and geothermal resources are from Lopez et. al (2012), residential rooftop PV is modeled separately using the supply curves from Denholm and Margolis (2008), and wind resources are from (Zhou et al 2012). Fossil and nuclear generation costs are identical across states, as are capital and O&M costs for renewable technologies.
-
-Under climate policy scenarios, fossil and biomass energy transformation technologies, including electric generation, have the option of utilizing carbon dioxide capture and geologic storage (CCS). CCS resources are represented within GCAM-USA as a set of region-specific CO<sub>2</sub> transport and storage cost curves allowing for some inter-state trade of CO<sub>2</sub>. This allows the model to account for the heterogeneous distribution of geologic CO<sub>2</sub> storage resources and the proximity of these candidate CO<sub>2</sub> storage formations to existing and future large anthropogenic CO<sub>2</sub> point sources.  
-
-These new CO<sub>2</sub> transport and storage curves are built upon the core methodology and dataset first published by [Dahowski et al. (2005](#_ENREF_2)) and which have been refined and extended as detailed in [Dahowski et al. (2011](#_ENREF_1)); [Dahowski et al. (2012](#_ENREF_3)); [Wise et al. (2007](#_ENREF_4)).  These supply curves (SI-2.6) incorporate the fact that some regions have limited and expensive CO<sub>2</sub> storage resources, while other regions have relatively inexpensive and abundant endowments of geologic CO<sub>2</sub> storage capacity.
-
-In most of our scenarios the electricity markets in each state are grouped based on the market structure within the National Energy Modeling System (EIA, 2010) although boundaries are shifted to coincide with state lines (Table 1, also see SI-2.5). States compete and trade freely within their markets to satisfy the demand from each load segment individually. In our Base scenario we have assumed that inter-regional trade between these markets will remain fixed at the estimated net electricity import/export for the rest of the century. This scenario, in essence, assumes that long-distance transmission capacity is not expanded beyond current levels.
-
-Final demand, including buildings, transportation, and industry, are also modeled at the state level. The buildings sector is disaggregated into a residential and commercial sectors, which consumes a suite of energy services comprising heating, cooling, lighting, appliances, cooking, hot water, office equipment, ventilation, refrigeration, and other (Zhou et al. 2014). Transportation is disaggregated between passenger, domestic freight, and international shipping (Kim et al 2006). Each energy service can be supplied by one or more technologies.
-
-Industry is modeled in an aggregate fashion with fuel use distinguished by feedstock use, combined heat and power facilities, and other energy use, calibrated by fuel type to the reported values in each state historically (SI-2.2). The industrial sector includes all manufacturing, as well as agricultural, construction, and mining energy use, and excludes energy used at refineries and electric power plants.
-
-Several aspects of the energy system are still modeled at the aggregate U.S. level. Most notably this applies to primary production of fossil resources including oil, gas, and coal. The supply of biomass energy feedstocks, which include residues and dedicated energy crops, is modeled at the level of 10 agro-ecological zones (AEZ) in the United States (Calvin et al 2014, Wise et al 2014). As with primary fossil resources, biomass feedstocks are assumed to be freely traded at one global price.
+Note, several aspects of the energy system are still modeled at the aggregate U.S. level. Most notably this applies to primary production of fossil resources including oil, gas, and coal. The supply of biomass energy feedstocks, which include residues and dedicated energy crops, is modeled at the level of 10 agro-ecological zones (AEZ) in the United States (Calvin et al 2014, Wise et al 2014). As with primary fossil resources, biomass feedstocks are assumed to be freely traded at one global price.
 
 Developing a historical energy balance for model calibration
 ============================================================
@@ -35,18 +23,30 @@ We begin by describing the process for developing the energy balances for final 
 
 Additional processing to differentiate energy for specific buildings services required additional data sets and assumptions as described in Zhou et al. (2013). Each energy service can be supplied by one or more technologies. Heating and cooling service demand depends on building envelope thermal efficiency, internal heat gains, and climate. Technology and building envelope efficiencies are assumed to increase over the century as described in Zhou et al (2014).
 
-The EIA SEDS database only has a single transportation sector (TC), but it has a number of fuels that are used differentially by different transportation technologies: diesel, motor gasoline, residual fuel oil, jet fuel, aviation gasoline, compressed natural gas, and electricity. These fuel uses need to be disaggregated into the following modes: road, rail, air, domestic ship, and international ship. Each mode is done by taking the national estimate of energy consumption for each fuel, and disaggregating to states on the basis of each state’s share of the fuel most relevant for the mode. The following table presents how this mapping is done. Note that electricity consumption in the transportation sector is small and was generally assumed to be used for passenger rail. Each mode may have multiple technology/fuel options such as internal combustion engine, electric, or hydrogen fuel cell. Fuel efficiencies are assumed to increase significantly over the 21st century, with on-road liquid-fueled light-duty vehicle fleet average efficiency increasing from 22.8 in 2005 to 33.9 MPG in 2050. The fleet average value, including electric vehicles, is similar to current vehicle efficiency regulations in our Base scenario if emissions from electric power production are not included, however this is not as efficient as the standards require if electric system indirect emissions are included.
+The transportation sector is disaggregated between passenger, domestic freight, and international shipping. The demand for transportation services depends on vehicle miles traveled, GDP and population by state. Each of the freight and passenger vehicle classes represent on-road vehicle options such as cars, trucks, and motorcycles, as well as off-road options such as trains. In addition, these vehicle options include various drivetrain technologies such as liquid, hybrid, and electric. These assumptions are consistent with the transporation sector in the global GCAM model: [Energy System](energy.html#Transportation). The following mapping is used calibrate historical energy balances from the EIA SEDS.  For EIA Fuel + Sector combinations that span multiple GCAM mode definitions, Air Domestic and International, the national level shares will be used for all states.
 
 | **Mode**           | **GCAM fuel**   | **EIA fuel used for disaggregation**              |
 |--------------------|-----------------|---------------------------------------------------|
-| Domestic ship      | Refined liquids | Residual fuel oil                                 |
-| International ship | Refined liquids | Residual fuel oil                                 |
-| Air                | Refined liquids | Jet fuel                                          |
-| Rail, Road         | Refined liquids | All liquids, minus residual fuel oil and jet fuel |
-| Rail               | Electricity     | Electricity                                       |
-| Road               | Gas             | Natural gas                                       |
+| Air Domestic | refined liquids | Jet fuel in transporation |
+| Air International | refined liquids | Jet fuel in transporation |
+| Bus | gas | Natural gas in vehicle fuel |
+| Bus | refined liquids | Distillate fuel oil in transporation |
+| HSR | electricity | Electricity in transporation |
+| LDV_2W | electricity | Electricity in transporation |
+| LDV_2W | refined liquids | Motor gasoline in transportation |
+| LDV_4W | electricity | Electricity in transporation |
+| LDV_4W | gas | Motor gasoline in transportation |
+| LDV_4W | hydrogen | Motor gasoline in transportation |
+| LDV_4W | refined liquids | Motor gasoline in transportation |
+| Rail | coal | Distillate fuel oil in transporation |
+| Rail | electricity | Electricity in transporation |
+| Rail | refined liquids | Distillate fuel oil in transporation |
+| Ship Domestic | refined liquids | Residual fuel oil in transportation |
+| Ship International | refined liquids | Residual fuel oil in transportation |
+| Truck | refined liquids | Distillate fuel oil in transporation |
+| Truck | gas | Distillate fuel oil in transporation |
 
-Table SI-: Mapping EIA fuels to GCAM transportation modes.
+Mapping EIA fuels to GCAM transportation modes.
 
 Industry was more difficult due to the refinery sector’s energy use being included in the industry sector of SEDS as well as the need to quantify electricity co-generation from industrial plants. The national estimates of cogeneration by fuel are from the IEA’s Autoproducer CHP Plants, defined as facilities whose power production is primarily in support of activities that are on-site. No state-and fuel-level inventory of co-generation was available, so fuel consumption by the whole industrial sector is used to derive the proportional allocation to states. Inputs to cogeneration are then calculated using exogenous fuel-specific input-output coefficients, which are taken from the GCAM aggregate US module.
 
@@ -68,55 +68,26 @@ At this stage we have estimated total electricity generation from central produc
 
 Finally we estimate electricity losses with in each state. EIA SEDS presents estimates of energy losses in transmission and distribution. The method for calculating the coefficient for electricity is to first add up all of the demands of electricity by all sectors: refining, electricity, buildings, industry, and transportation. Then the electricity T&D energy losses are added in, with the total of all the state estimates scaled to match the IEA’s whole-US estimates of electricity distribution losses.
 
-A number of assumptions regarding technology characteristics in the electric power sector need to be made. Generally speaking assumptions are carried from the USA region of GCAM and applied equally to all states. This includes generation efficiencies, costs, and technology availability. Regional variations in resource characteristics such as wind and solar potential and geothermal and carbon storage resources are accounted for as noted in the main text (2.1).
-
-The Table SI-4 provides the assumptions used for the capital costs of electric generation technologies. The 2005 values are based on EIA 2008a and are assumed to improve over time. For fossil technologies, capacity factor varies by load segment as follows: baseload 84%, intermediate 52%, sub-peak 25%, and peak 6%.
-
-| **Capital Cost**      | **2005** | **2020** | **2035** | **2050** | **2065** | **2080** | **2095** |
-| 2007 $/kW of Capacity |          |          |          |          |          |          |          |
-|-----------------------|----------|----------|----------|----------|----------|----------|----------|
-| Coal (existing)       | 1,545    |          |          |          |          |          |          |
-| Coal (conv pul)       |          | 1,545    | 1,455    | 1,370    | 1,290    | 1,215    | 1,144    |
-| Coal (IGCC)           |          | 1,791    | 1,610    | 1,361    | 1,350    | 1,278    | 1,253    |
-| Gas (existing)        | 548      |          |          |          |          |          |          |
-| Gas (conv)            |          | 509      | 479      | 451      | 425      | 400      | 377      |
-| Gas (CC)              |          | 725      | 632      | 551      | 539      | 516      | 508      |
-| Oil (existing)        | 492      |          |          |          |          |          |          |
-| Oil (conv)            |          | 509      | 479      | 451      | 425      | 400      | 377      |
-| Oil (IGCC)            |          | 1,612    | 1,404    | 1,225    | 1,196    | 1,145    | 1,128    |
-| Biomass (existing)    | 1,591    |          |          |          |          |          |          |
-| Biomass (conv)        |          | 1,591    | 1,498    | 1,411    | 1,329    | 1,251    | 1,178    |
-| Biomass (IGCC)        |          | 1,844    | 1,659    | 1,402    | 1,390    | 1,316    | 1,291    |
-| Nuclear               | 1,931    | 2,104    | 2,069    | 2,038    | 2,007    | 1,981    | 1,951    |
-| Wind                  | 1,184    | 1,140    | 1,098    | 1,058    | 1,019    | 981      | 945      |
-| Wind Storage          | 2,852    | 2,575    | 2,380    | 2,247    | 2,164    | 2,084    | 2,007    |
-| CSP Storage           | 6,683    | 6,199    | 5,750    | 5,334    | 4,947    | 4,589    | 4,257    |
-| CSP                   | 3,342    | 3,100    | 2,875    | 2,667    | 2,474    | 2,294    | 2,128    |
-| Photovoltaic (PV)     | 9,393    | 5,945    | 4,064    | 2,999    | 2,388    | 2,051    | 1,900    |
-| PV Storage            | 11,061   | 7,380    | 5,346    | 4,188    | 3,533    | 3,154    | 2,962    |
-| Battery               | 1,700    | 1,462    | 1,306    | 1,211    | 1,167    | 1,124    | 1,082    |
-
-<span id="_Ref277589327" class="anchor"></span>Table SI-: Assumed capital costs and improvement over time.
+A number of assumptions regarding technology characteristics in the electric power sector need to be made. Generally speaking assumptions are carried from the USA region of GCAM and applied equally to all states. This includes generation efficiencies, costs, and technology availability. Regional variations in resource characteristics such as [wind and solar potential and geothermal](#renewable-energy) and [carbon storage](#carbon-dioxide-capture-and-geologic-storage) resources are accounted for.
 
 Electricity Trade
 =================
 
-For electricity trade between states we take two distinctly separate approaches since GCAM does not explicitly model the siting and building of transmission capacity. The first approach, which we will call “Copper Plate”, is where all states are allowed to freely trade as if a single grid covered the nation, with no additional cost. While not realistic, this scenario provides a bounding result to test the sensitivity of results to transmission assumptions. The alternative approach is limit expansion of grid infrastructure thus limit electricity trade between states. To do this we group states roughly into the 13 NEMS Electricity Market Module Regions (EIA 2010) as seen in Figure SI-8. Whereby states within the same sub-region can trade freely within that sub-region, trade between regions remains fixed at current-day values. Note that in this manuscript electricity trade refers to the net trade calculated as the difference between the annual generation of electricity in each region and the annual demands taking into account transmission losses.
+For electricity trade between states we group states roughly into the 13 NEMS Electricity Market Module Regions (EIA 2010) plus Alaska and Hawaii. Whereby states within the same sub-region can trade freely within that sub-region, trade between regions may be limited.
 
-To model the idealized national grid we simply pool electricity generation from all states and calculate a single US average price. Each state then draws supply from this single aggregated electricity market. Note that a logit nesting structure is used in a two-layer nest. First states are nested under their NEMS region, and subsequently the NEMS regions nested under the single US electricity market. This allows some consistent behavior as the model moves away from calibration.
+<img src="gcam-figs/gcam-usa-grid-regions.png" width="539" height="416" />
 
-NEMS regional trading blocks
+<span id="_Ref277591668" class="anchor"></span>Modeled electricity markets based on NEMS.
 
-In these scenarios we group states within the same NEMS region together such that they may trade freely between each other. This presumes that the necessary infrastructure already exists or would be built in the future. Trading between NEMS regions may be limited.
+Renewable Energy
+================
 
-<img src="images/gcam-usa_grid-regions.png" width="539" height="416" />
-
-<span id="_Ref277591668" class="anchor"></span>Figure SI-: Modeled electricity markets based on NEMS.
+Renewable energy resource are modeled at the state level.  Wind and residential rooftop PV technologies include resource costs that are also calculated from exogenous supply curves that represent marginal costs that increase with deployment, such as long-distance transmission line costs that would be required to produce power from remote wind resources and reducing capacity factors as most optimal locations are used first. Central station solar technologies are assumed to have constant marginal costs regardless of deployment levels. Wind resource curves are based on Zhou, et al. 13. Geothermal resources are from Lopez A, et al. 14. Supply curves for residential rooftop PV are obtained from Denholm and Margolis 15.  Hydro power is held fixed at historical production levels.
 
 Carbon-Dioxide Capture and Geologic Storage
 ===========================================
 
-The depiction of the regionally-specific graded CO<sub>2</sub> transport storage cost curves in (Figure SI-9) reflect adjusted per-ton project costs for CO<sub>2</sub> transport and geologic storage as based on the methodology developed by [Dahowski et al. (2011](#_ENREF_1)); [Dahowski et al. (2005](#_ENREF_2)); [Dahowski et al. (2010](#_ENREF_3)). The costs shown in the figure include site characterization, capital and operations and maintenance costs associated with CO<sub>2</sub> injection into suitable deep geologic reservoirs, and costs for required measurement, monitoring and verification technologies as well as other costs associated with regulatory compliance. These values do not include the cost of CO<sub>2</sub> capture and compression to pipeline pressures which is accounted for at the technology level within GCAM-USA. CO<sub>2</sub> storage is aggregated to the same sub-regional markets as electricity to allow for some cross state border trade in CO<sub>2</sub>.
+The depiction of the regionally-specific graded CO<sub>2</sub> transport storage cost curves reflect adjusted per-ton project costs for CO<sub>2</sub> transport and geologic storage as based on the methodology developed by [Dahowski et al. (2011](#_ENREF_1)); [Dahowski et al. (2005](#_ENREF_2)); [Dahowski et al. (2010](#_ENREF_3)). The costs shown in the figure include site characterization, capital and operations and maintenance costs associated with CO<sub>2</sub> injection into suitable deep geologic reservoirs, and costs for required measurement, monitoring and verification technologies as well as other costs associated with regulatory compliance. These values do not include the cost of CO<sub>2</sub> capture and compression to pipeline pressures which is accounted for at the technology level within GCAM-USA. CO<sub>2</sub> storage is aggregated to the same sub-regional markets as electricity to allow for some cross state border trade in CO<sub>2</sub>.
 
 In brief, the regionally-specific CO<sub>2</sub> transport and storage cost curves for the U.S. were developed using a cost-optimized source-sink matching algorithm designed to model globally optimal CCS deployment (again, less the cost of CO<sub>2</sub> capture and compression) across the modeled domain. Each point on the resulting cost curves represents a single source-sink pair with a single average per-ton cost over the first 20-year timestep of the analysis (see [Dahowski et al., 2005](#_ENREF_2); [Dahowski et al., 2010 for the rationale for this 20-year time step and its significance for these CO2 transport and storage cost curves](#_ENREF_3)). Source-sink pairs were derived using both spatial and economic criteria based on a set of 2017 large anthropogenic CO<sub>2</sub> point sources[1] and 326 individual geologic storage reservoirs within the US ([Dahowski et al., 2011](#_ENREF_1)). As shown in this earlier published research, the *average* per ton cost of CO<sub>2</sub> transport and storage would increase in the future as the capacity of low cost, value-added geologic CO<sub>2</sub> storage reservoirs are preferentially consumed ahead of non-value added geologic storage reservoirs. The cost-curves are implemented within GCAM-USA as exhaustible resources, so once low-cost storage sites are used, higher cost sites must be used.
 
@@ -124,7 +95,7 @@ In keeping with the US electricity-specific CCS modeling presented in [Wise et a
 
 <img src="images/gcam-usa_CCS-curves.png" width="576" height="345" />
 
-<span id="_Ref277591731" class="anchor"></span>Figure SI-: Carbon storage potential by electricity market.
+<span id="_Ref277591731" class="anchor"></span>Carbon storage potential by electricity market.
 
 Socio-economics
 ===============
