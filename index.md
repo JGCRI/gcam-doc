@@ -38,8 +38,7 @@ hard-coupled to other models with different foci and often greater
 resolution in key sectors. For example, it has been coupled to a state
 of the art Earth system model (Collins, et al., 2015). GCAM has been
 used to produce scenarios for national and international assessments
-ranging from the very first IPCC scenarios (Response Strategies
-Working Group, 1990) through the present Shared Socioeconomic Pathways
+ranging from the very first IPCC scenarios through the present Shared Socioeconomic Pathways
 (Ebi, et al., 2014, Calvin et al. 2017). Hundreds of papers have been published in
 peer-reviewed journals using GCAM over its lifetime and GCAM
 continues to be an important tool for scientific
