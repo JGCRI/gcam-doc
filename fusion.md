@@ -468,9 +468,9 @@ void>::type DegreeDaysFeedback::pushFilterStep( const T& aContainer ) {
 }
 ```
 
-A couple things to note, sometimes it is easier to just use your feedback object to process callbacks from GCAM fusion.  It isn't required to use a helper struct to do so and sometimes it is easier not to.  Nothing additional is required to handle feedbacks, you don't have to implement any interface, just provide the `processData`, etc callback methods.
-I've also included and configured the call back for `pushFilterStep` just for example.  I also threw in some uses of boost's (using the std library should work just fine too) type traits + SFINAE to control which objects we are intereasted in just to point out the possible strategies for only dealing with certain types (although how SFINAE techniques actually work is far too complicated to discuss here, luckily plenty has been written about the topic).
-<!-- XXX: I'm not sure what we are trying to say here -->
+A couple things to note, sometimes it is easier to just use your feedback object to process callbacks from GCAM fusion.  It isn't required to use a helper struct.  You class/struct does not need to implement any interface or the like, just provide the `processData`, etc callback methods.
+
+I have also included and configured the call back for `pushFilterStep` just for example.  In addition you will notice the use of `disable_if` and some uses of boost's (using the std library should work just fine too) type traits such as `is_base_of`.  The purpose is to demonstrate how to control which objects we are intereasted in our `pushFilterStep` call back.  In this example we have the compiler generate one version for any object for which we can call `->getName()` on (implements the `INamed` interface) and another for types which do not.
 
 Linking in your feedbacks
 -------------------------
@@ -528,9 +528,6 @@ find data named 'share-weight' at both the subector and technology levels.  It
 would also find a share-weight object contained in the sector itself if there
 were any, but in this example there are no such matches; share weights are only
 defined for subsectors and technologies.
-<!-- XXX: Check if this last sentence is accurate: would sector//share-weight -->
-<!-- match a share weight that is a direct child of the sector (if there were -->
-<!-- one)? -->
 
 
 
@@ -555,7 +552,6 @@ value the user was looking for. Currently predicates can only operate on string
 and int. If a predicate that is doing a string comparison is given an int to
 match (i.e. called from a YearFilter) it will always return false, and vice
 versa. The available predicates are:
-<!-- XXX: Is it true that an int predicate will always fail to match a string? -->
 
 |   StringEquals | string | Tests if the proposition exactly matches a string value.|
 |   StringRegexMatches | string | Tests if the proposition matches a regular expression in the egrep notation.|
@@ -564,8 +560,6 @@ versa. The available predicates are:
 |   IntGreaterThanEq | int | Tests if the proposition is greater or equal to an int value.|
 |   IntLessThan | int | Tests if the proposition is strictly less than an int value.|
 |   IntLessThanEq | int | Tests if the proposition is less or equal to an int value.|
-
-<!-- XXX: which notation do we want to use, check C++ standard for options -->
 
 
 ### Constructing filters using a string notation
@@ -582,9 +576,7 @@ constructing the string are:
     ','.  In the example the elements would be `NamedFilter`, `StringEquals`,
     and `CO2`.
     * The first element is the [Filter](#filter-objects)  
-    * Unless the filter is a `NoFilter`, there must be a total of three elements.  
-  <!-- XXX: If the filter is a NoFilter, are extra groupings ignored, or are -->
-  <!-- they an error? -->
+    * Unless the filter is a `NoFilter`, there must be a total of three elements.  Note it is an error to use `NoFilter` and supply predicate values as well.
     * The second element is a predicate [predicate](#predicates).  
 	* The third element is the value to match in the predicate.  
 * A `//` can be used to cause the next filter step to match an arbitrary number
