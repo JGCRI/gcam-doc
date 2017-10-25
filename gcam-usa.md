@@ -93,7 +93,7 @@ In brief, the regionally-specific CO<sub>2</sub> transport and storage cost curv
 
 In keeping with the US electricity-specific CCS modeling presented in [Wise et al. (2007](#_ENREF_4)), the CO<sub>2</sub> transport and storage cost curves represented in this analysis have been adjusted to account for the fact that the cost of CO<sub>2</sub> capture can vary by an order of magnitude for the different CO<sub>2</sub> sources modeled to generate the raw region specific CO2 transport and storage cost (i.e., a natural gas processing plant generates a virtually pure stream of CO<sub>2</sub> that can be captured – already dehydrated and compressed - for a cost of less than $10/tonCO<sub>2</sub>, while an older and relatively small pulverized coal plant could see capture costs well above $50/tonCO<sub>2</sub>) and which kinds of CO<sub>2</sub> point sources get to access what kinds of geologic storage reservoirs is influenced strongly by the capture costs.  Therefore, the raw region-specific CO<sub>2</sub> transport and storage curves would present an unrealistically low representation of the net cost of CO<sub>2</sub> transport and storage likely to be experienced by large stationary CO<sub>2</sub> point sources like coal, natural gas, and biomass – fired power plants and refineries, which are the anthropogenic CO<sub>2</sub> sources that are modeled specifically in GCAM-USA.
 
-<img src="images/gcam-usa_CCS-curves.png" width="576" height="345" />
+<img src="gcam-figs/gcam-usa_CCS-curves.png" width="576" height="345" />
 
 <span id="_Ref277591731" class="anchor"></span>Carbon storage potential by electricity market.
 
