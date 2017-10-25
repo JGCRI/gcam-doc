@@ -71,7 +71,7 @@ The exact interface is as follows:
  *          has finished solving and climate model results for the period are available.
  *          A references to the Scenario and IClimateModel will be provided however
  *          it is implied that the subclasses of this interface will utilize the 
- *          GCAM fusion capabilities to gain access to the internal model state
+ *          GCAM Fusion capabilities to gain access to the internal model state
  *          necessary to compute and/or push feedbacks into GCAM.
  * \warning MAGICC does not currently run between periods so these feedbacks may
  *          not work correctly if climate results are needed and MAGICC is configured
@@ -468,7 +468,7 @@ void>::type DegreeDaysFeedback::pushFilterStep( const T& aContainer ) {
 }
 ```
 
-A couple things to note, sometimes it is easier to just use your feedback object to process callbacks from GCAM fusion.  It isn't required to use a helper struct.  You class/struct does not need to implement any interface or the like, just provide the `processData`, etc callback methods.
+A couple things to note, sometimes it is easier to just use your feedback object to process callbacks from GCAM Fusion.  It isn't required to use a helper struct.  You class/struct does not need to implement any interface or the like, just provide the `processData`, etc callback methods.
 
 I have also included and configured the call back for `pushFilterStep` just for example.  In addition you will notice the use of `disable_if` and some uses of boost's (using the std library should work just fine too) type traits such as `is_base_of`.  The purpose is to demonstrate how to control which objects we are intereasted in our `pushFilterStep` call back.  In this example we have the compiler generate one version for any object for which we can call `->getName()` on (implements the `INamed` interface) and another for types which do not.
 
@@ -827,9 +827,9 @@ variables as described above.
 What to know when writing or updating a GCAM class
 --------------------------------------------------
 
-As mentioned earlier GCAM fusion changes the way we declare member variables for
+As mentioned earlier GCAM Fusion changes the way we declare member variables for
 GCAM classes.  Some of these changes are simply to associate meta information
-that the GCAM fusion tools can utilize to search and traverse the GCAM
+that the GCAM Fusion tools can utilize to search and traverse the GCAM
 objects.  Other changes are actually just to ensure we have a uniform approach
 so that we may generate as much boiler plate code as possible without the need
 to special case.  Note while it is possible to not follow or utilize and of the
@@ -1054,7 +1054,7 @@ A naive approach would be to just call `World::calc` using the original prices
 from the "base" state.  However such a strategy would essentially double the
 number of computation required to calculate partial derivatives.  Instead GCAM
 has code to track and manage state to be able to quickly reset the "base" state
-when calculating partial derivatives.  However prior to GCAM fusion this code
+when calculating partial derivatives.  However prior to GCAM Fusion this code
 was strewn throughout the code in many places: 
 
 -   Each market had a "stored" price, supply, and demand and corresponding methods to store/restore them.
