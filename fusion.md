@@ -58,7 +58,15 @@ the model structure manageable.  Arbitrary updates to model internals can happen
 _only_ at designated times.  This prevents every model object from becoming, in
 effect, a global variable.
 
-The exact interface is as follows:
+You create a feedback calculation by creating a "feedback object", which is an
+instance of a class that implements `IModelFeedbackCalc` interface.  The key
+functions in the interface are  
+* `calcFeedbacksBeforePeriod`: A callback function that will be called at the
+  start of a model period.
+* `calcFeedbacksAfterPeriod`:  A callback function that will be called at the
+  end of a model period. 
+
+The full definition of `IModelFeedbackCalc` is:
 
 ```cpp
 /*!
@@ -130,8 +138,9 @@ we will query for global CO2 emissions, calculate feedbacks to heating and
 cooling degree days using a simplistic linear relationsip, and finally change
 the heating and cooling degree days with in GCAM for the next simulation period.
 
+<a name="feedback"></a>
 To start we will create a new class which implements the feedback interface
-mentioned above:
+mentioned above.  
 
 ```cpp
 #include "containers/include/imodel_feedback_calc.h"
@@ -161,9 +170,11 @@ public:
     virtual void toInputXML( std::ostream& aOut, Tabs* aTabs ) const;
     
     // IModelFeedbackCalc methods
-    virtual void calcFeedbacksBeforePeriod( Scenario* aScenario, const IClimateModel* aClimateModel, const int aPeriod );
+    virtual void calcFeedbacksBeforePeriod( Scenario* aScenario, const
+                                            IClimateModel* aClimateModel, const int aPeriod );
     
-    virtual void calcFeedbacksAfterPeriod( Scenario* aScenario, const IClimateModel* aClimateModel, const int aPeriod );
+    virtual void calcFeedbacksAfterPeriod( Scenario* aScenario, const
+                                           IClimateModel* aClimateModel, const int aPeriod ); 
     
 protected:
     //! The name of this feedback
@@ -181,11 +192,11 @@ protected:
 ```
 
 You will notice that we have also included the XML parsing hooks that GCAM uses
-to initialize it's components such as `XMLParse` and `toInputXML`.  These hooks
-always have to be provided; however, you can use whichever means to set up your
-component as is appropriate for you.
+to initialize its components such as `XMLParse` and `toInputXML`.  These
+functions allow us to activate our feedback by including them in an XML add-on
+file 
 
-The source will then look like the following skeleton:
+The source code that goes with this declaration will then look like the following skeleton:
 
 ```cpp
 #include "util/base/include/definitions.h"
@@ -211,6 +222,8 @@ DegreeDaysFeedback::~DegreeDaysFeedback() {
 }
 
 const string& DegreeDaysFeedback::getXMLNameStatic() {
+    // This is the string you will use to refer to this object
+	// in input files.
     const static string XML_NAME = "degree-day-feedback";
     return XML_NAME;
 }
@@ -219,6 +232,34 @@ const string& DegreeDaysFeedback::getName() const {
     return mName;
 }
 
+bool DegreeDaysFeedback::XMLParse( const DOMNode* aNode ) {
+	// Code to read the feedback object from XML inputs
+}
+
+void DegreeDaysFeedback::toInputXML( ostream& aOut, Tabs* aTabs ) const {
+	// Code to write the object's configuration as XML 
+	// (This is used when saving a configuration to be reread later)
+}
+
+void DegreeDaysFeedback::calcFeedbacksBeforePeriod( Scenario* aSceanrio, 
+                                                    const IClimateModel* aClimateModel, 
+													const int aPeriod ) 
+{
+    // code that gets called just before a period will begin to solve
+}
+
+void DegreeDaysFeedback::calcFeedbacksAfterPeriod( Scenario* aScenario, 
+                                                   const IClimateModel* aClimateModel,
+                                                   const int aPeriod )
+{
+    // code that gets called after a period is done solving, 
+}
+```
+
+The two XML functions allow us to set up our feedback object from GCAM XML input
+files.  Here is how they are defined:
+
+```cpp
 bool DegreeDaysFeedback::XMLParse( const DOMNode* aNode ) {
     /*! \pre Make sure we were passed a valid node. */
     assert( aNode );
@@ -262,18 +303,25 @@ void DegreeDaysFeedback::toInputXML( ostream& aOut, Tabs* aTabs ) const {
     XMLWriteClosingTag( getXMLNameStatic(), aOut, aTabs );
 }
 
-void DegreeDaysFeedback::calcFeedbacksBeforePeriod( Scenario* aSceanrio, const IClimateModel* aClimateModel,
-                                                    const int aPeriod )
-{
-    // gets called just before a period will begin to solve
-}
+```
 
-void DegreeDaysFeedback::calcFeedbacksAfterPeriod( Scenario* aScenario, const IClimateModel* aClimateModel,
-                                                   const int aPeriod )
-{
-    // gets called after a period is done solving, this will be the one we will use in
-    // our example
-}
+With these functions in place, you will be able to activate the feedbacks by
+including an XML add-on file in your GCAM configuration.  Including the add-on
+file will cause the feedback object to be created and added to the scenario's
+list of feedbacks.  The `calcFeedbacksBeforePeriod` and
+`calcFeedbacksAfterPeriod` methods will then be run automatically at the
+beginning and end of each GCAM time step.
+The add-on file would contain the following XML:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<scenario>
+	<degree-day-feedback>
+	<!-- The numerical values for the coefficients here are just examples -->
+		<hdd-coef>23</hdd-coef>
+		<cdd-coef>42</cdd-coef>
+	</degree-day-feedback>
+</scenario>
 ```
 
 Next we will add in some calls to GCAM Fusion to query for the global CO2
@@ -291,26 +339,15 @@ the model.  This will lead to a long compile time for any source file that
 includes it.  Therefore, you should try to isolate code that uses these
 capabilities in a small number of fusion-aware translation units.
 
-The `GCAMFusion` object takes four template parameters:
-
--   The type of the object that can handle the results of the search
--   A boolean flag to indicate if said object will process the start of each
-    step taken into a `CONTAINER` object (default is `false`).
--   A boolean flag to indicate if said object will process stepping out of
-    a `CONTAINER` object (default is false). 
--   A boolean flag to indicate if said object will process the data being found
-    (default is `true`).
-
-
-The GCAMFusion object constructor takes two arguments:
-
--   A vector of FilterSteps
--   An instance of an object that can handle the results of the search
-
-The object that will handle the results of the search can be any object since
-GCAMFusion is templated. This object must provide the templated function that
-will be called when that event occurs corresponding to the templated flags used
-in creation of the GCAMFusion object:
+<a name="handler"></a>
+Next, you will need an object that will handle the results of the search.  This
+object can be of any type, since
+the `GCAMFusion` class is templated. The only requirement is that the object must provide
+the templated functions that
+will be called on data found by the search.  The functions required will depend
+on what combination of the three event types supported by GCAM Fusion you are
+using.  The event types eare explained below.  If you aren't using an event
+type, you can omit its processing function.
 
 ```cpp
 struct GatherEmiss {
@@ -318,23 +355,44 @@ struct GatherEmiss {
     double mEmiss = 0;
 
     // call back methods for GCAMFusion
-    // called if the second templated flag to GCAMFusion is true
+    // called if the fourth template argument to GCAMFusion is true
     template<typename T>
     void processData( T& aData );
 
 
     // call back methods for GCAMFusion
-    // called if the third templated flag to GCAMFusion were true
+    // called if the second templated argument to GCAMFusion is true
+    // we won't be using it in this example.
     //template<typename T>
     //void pushFilterStep( const DataType& aData );
 
 
     // call back methods for GCAMFusion
-    // called if the fourth templated flag to GCAMFusion were true
+    // called if the third templated argument to GCAMFusion is true
+    // we won't be using it in this example.
     //template<typename T>
     //void popFilterStep( const DataType& aData );
 };
 ```
+
+We now have everything we need to use the GCAM Fusion interface.
+The `GCAMFusion` object takes four template parameters:
+
+-   The handler object that we just defined.
+-   A boolean flag to indicate whether the handler will process the start of each
+    step taken into a `CONTAINER` object (default is `false`).
+-   A boolean flag to indicate whether the handler will process stepping out of
+    a `CONTAINER` object (default is false). 
+-   A boolean flag to indicate whether the handler will process the data being found
+    (default is `true`).
+	
+The last flag (the one that defaults to `true`) is the most common use case, and
+it's the only one we will use in this example.
+
+The `GCAMFusion` object constructor takes two arguments:
+
+-   A vector of FilterSteps
+-   An instance of an object that can handle the results of the search
 
 Then we can call GCAM Fusion with a search string and have it use the above
 struct to process the results:
@@ -371,7 +429,6 @@ syntax _similar_ (but not precisely identical) to XPath. Each
 [filter](#filter-objects) contains a [predicate](#predicates) and the predicate
 value.
 
-
 As mentioned above, when GCAMFusion finds a result that matches the search it
 will call `processData` and the user can get or set the value as appropriate for
 their needs:  
@@ -403,8 +460,7 @@ If for some reason it does, then the run will abort with an error.
 Next we do something with our results.  To keep things simple for illustrative
 purposes, we'll adjust degree days by a scale factor, but you could in principle
 do anything here, including running another model and passing it the data you
-just
-received.  
+just received.  
 
 ```cpp
     if( aPeriod == modeltime->getFinalCalibrationPeriod() ) {
@@ -472,9 +528,117 @@ A couple things to note, sometimes it is easier to just use your feedback object
 
 I have also included and configured the call back for `pushFilterStep` just for example.  In addition you will notice the use of `disable_if` and some uses of boost's (using the std library should work just fine too) type traits such as `is_base_of`.  The purpose is to demonstrate how to control which objects we are intereasted in our `pushFilterStep` call back.  In this example we have the compiler generate one version for any object for which we can call `->getName()` on (implements the `INamed` interface) and another for types which do not.
 
-Linking in your feedbacks
+Linking to Other Models
 -------------------------
-TODO:
+
+Often you want to use the data you retrieve using the GCAM Fusion interface as
+input to another model.  Likewise, you may want to return the results of running
+that model to GCAM as feedbacks.  To do these things you will have to link your
+model to GCAM.  There are three options for doing this.
+
+### Run your model as a stand-alone program and communicate with GCAM via IPC
+
+This method is a little clunky, but it is probably the easiest to get up and
+running in most cases.  You will run your model as a stand-alone process, and
+you will communicate with GCAM via interprocess communication (IPC).  
+
+The easiest form of IPC to get up and running is the
+[named pipe](http://www.linuxjournal.com/article/2156). (The linked article is
+for Linux, but named pipes work the same on Mac OS X as they do on Linux.)  The
+concept here is that you will have set up a named pipe for each communication
+stream between GCAM and your model.  These communication streams are
+unidirectional, so for two way communication you will always need at least two.
+Once the pipes are set up you can read and write to them as if they were files.
+Your model should expect to receive data from GCAM after each GCAM time step on
+the input pipe, and it should write its data on the output pipe.  You will also
+need to establish conventions for signaling in-band when the data for a single
+time step is finished, and when a model is exiting.
+
+On the GCAM side, you will put all of the code to communicate with your model in
+one of the `calcFeedbacksBeforePeriod` or `calcFeedbacksAfterPeriod` methods
+associated with a feedback object, as described in the
+[previous section](#feedback).  The code in the method should collect the data
+you want from GCAM objects, format it as required by your model, and write it to
+the named pipe your code is using for input.  Then you will want to read your
+model's response on the pipe your code is using for output.  This operation will
+block until your model provides its response.
+
+Next, you must recompile GCAM including your new feedback object and add its XML
+add-on file to your GCAM configuration.  Then, to perform a run, execute both
+models (*e.g.*, from two terminal windows).  The models should communicate with
+one another whenever they have data to send, and block whenever they are waiting
+for the other model to provide data they are expecting.
+
+The advantage of this method is that it can be set up with relatively little
+modification to either model's software.  The disadvantage is that one must
+manage the communication between the models carefully to avoid deadlock, a
+situation in which both processes are simultaneously stopped waiting for input
+from the other process.
+
+### Build your model as a library and have GCAM call it
+
+To use this option you will take the object files produced by compiling your
+model, and collect them into a library.  Building libraries works a differently
+depending on what operating system you are using.  On unix-like operating
+systems, including OS X, you can create them using the `ar` command.  When you
+build this library, make sure you leave out the `main()` function from your
+program.  You will be using GCAM's `main()`, and trying to build a program with
+two `main`s will cause an error.
+
+Once you have your library you will add that to the list of libraries that GCAM
+links to.  Once you have done this, any functions in your model will be callable
+from GCAM.  You will probably have two types of functions you will want to call:
+functions to initialize your model and functions to run your model components.
+Initialization functions can be called from GCAM's `main`.  Functions to run
+your model's components should be called from the methods of GCAM feedback
+objects, either `calcFeedbacksBeforePeriod` or `calcFeedbacksAfterPeriod`, as
+appropriate.  When these callbacks run they will have access to the data
+returned by filters and can provide them to your model.  Similarly, data
+returned by your model can be set into objects returned by the filter step.
+Once you have written the necessary feedback objects you can recompile GCAM, and
+the linked models should be ready to run.
+
+The advantage of this method is that if your model already supports accepting
+data from other models, you will be able to use it with little or no
+modification.  Your model will not need any particular knowledge of GCAM's
+internal structure and might even be indifferent to whether it is getting data
+from GCAM or from some other source.  The disadvantage of this method is that it
+requires you to make some changes to GCAM, particularly where initializing your
+model is concerend.  
+
+This is the method used to implement the one-way coupling between GCAM and
+Hector, so looking at that model may provide some guidance on how to proceed.
+However, one difference between Hector and other models is that Hector predates
+the GCAM Fusion interface.  Therefore, instead of being called from a filter
+object, Hector is called from a hook built into GCAM specifically for that
+purpose.  Future model coupling will take place through GCAM Fusion, eliminating
+the need for custom hooks.
+
+### Have your model call GCAM functions provided in libgcam.
+
+This option is the inverse of the previous one.  Instead of building your model
+as a library, you link your model to the `libgcam.a` library created when GCAM
+is built.  All of GCAM's functions will be available to be called from your
+model.  You will need to call GCAM initialization functions to set up the model
+structure.  After that, the `Scenario::run()` method will allow you to run
+individual time periods in the scenario.  You can call `Scenario::run()` at any
+point in your model where it makes sense to do so; you can even run a period
+multiple times with different feedbacks from your model in each evaluation, if
+doing so is useful in the problem you are trying to solve.
+
+Using this method, you will not need to create a feedback object.  Instead, you
+can create a [handler](#handler) object and use it to call the GCAM Fusion
+interface directly from anywhere in your code.  You can create multiple handlers
+and multiple filters and use them as required to get or set data from GCAM.
+
+This method gives you a lot more control over how and when GCAM runs than other
+methods.  It is also the best method for coupling to models that have very
+complex setup procedures, since it avoids having to replicate the setup within
+GCAM.  The main disadvantage to this method is that it requires a lot of
+GCAM-specific modifications to your model.  These modifications will have to be
+disabled to use your model in stand-alone mode or to couple to another model.
+
+
 
 Intended Use of GCAM Fusion
 ---------------------------
