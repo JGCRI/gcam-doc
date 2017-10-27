@@ -61,8 +61,10 @@ effect, a global variable.
 You create a feedback calculation by creating a "feedback object", which is an
 instance of a class that implements `IModelFeedbackCalc` interface.  The key
 functions in the interface are  
+
 * `calcFeedbacksBeforePeriod`: A callback function that will be called at the
-  start of a model period.
+  start of a model period.  
+
 * `calcFeedbacksAfterPeriod`:  A callback function that will be called at the
   end of a model period. 
 
@@ -524,7 +526,7 @@ void>::type DegreeDaysFeedback::pushFilterStep( const T& aContainer ) {
 }
 ```
 
-A couple things to note, sometimes it is easier to just use your feedback object to process callbacks from GCAM Fusion.  It isn't required to use a helper struct.  You class/struct does not need to implement any interface or the like, just provide the `processData`, etc callback methods.
+A couple things to note, sometimes it is easier to just use your feedback object to process callbacks from GCAM Fusion.  It isn't required to use a helper struct.  Your class/struct does not need to implement any interface or the like, just provide the `processData`, etc callback methods.
 
 I have also included and configured the call back for `pushFilterStep` just for example.  In addition you will notice the use of `disable_if` and some uses of boost's (using the std library should work just fine too) type traits such as `is_base_of`.  The purpose is to demonstrate how to control which objects we are intereasted in our `pushFilterStep` call back.  In this example we have the compiler generate one version for any object for which we can call `->getName()` on (implements the `INamed` interface) and another for types which do not.
 
