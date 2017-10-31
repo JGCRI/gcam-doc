@@ -57,7 +57,7 @@ disciplinary scientific research alone. Such integrated assessment models (IAMs)
 explore these interactions in a single computational platform with a
 sufficiently low computational requirement to allow for broad
 explorations of scenarios and uncertainties. IA models include both
-human and physical Earth systems, Figure 1. Components of an IA model
+human and physical Earth systems. Components of an IA model
 are designed to capture the behavior of human and physical systems,
 but they do not necessarily include the most detailed process-scale
 representations of its constituent components. On the other hand, IA
