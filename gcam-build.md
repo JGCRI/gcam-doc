@@ -2,7 +2,7 @@
 layout: index
 title: GCAM Build Instructions
 prev: user-guide.html
-next: 
+next: fusion.html
 gcam-version: v4.4 
 ---
 
