@@ -57,7 +57,17 @@ p {
     font-weight: 600;
 }
     
-
+/* Formatting table captions */
+.tbl {
+    margin: auto;
+    width: 75%;
+    padding-bottom: 10px;
+    padding-top: 40px;
+    text-align: center;
+    font-size: 90%;
+    font-style: oblique;
+    font-weight: 600;
+}    
 
 strong {
   color: #222;

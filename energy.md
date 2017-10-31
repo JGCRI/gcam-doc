@@ -128,14 +128,14 @@ In energy transformation sectors, the output unit and input unit are EJ (per yea
 
 In the schematic of the energy system depicted below, the energy transformation and distribution sectors include all sectors except for the resources (colored red) and the final demands (colored light blue).
 
-![Figure 3](gcam-figs/energy_system_structure.png)<br/>
+![Figure 3](gcam-figs/energy_system_structure.jpg)<br/>
 Simplified schematic of the energy system in each region, showing the inter-sectoral flows of energy goods in GCAM.
 {: .fig}
 
 
 ### Electricity
 
-The GCAM electricity sector models the conversion of primary fuels (e.g., coal, gas, oil, bioenergy) to electricity. For most fuels, GCAM includes several different technology options (e.g., pulverized coal, coal IGCC, etc.). Individual technologies compete for market share based on their technological characteristics (conversion efficiency in the production of products from inputs), and cost of inputs and price of outputs. The cost of a technology in any period depends on (1) its exogenously specified non-energy cost, (2) its endogenously calculated fuel cost, and (3) any cost of emissions, as determined by the climate policy. The first term, non-energy cost, represents capital, fixed and variable O&M costs incurred over the lifetime of the equipment (except for fuel or electricity costs). For electricity technologies, GCAM read in each of these terms and compute the levelized cost of energy within the model. For example, the non-energy cost of coal-fired power plant is calculated as the sum of overnight capital cost (amortized using a capital recovery factor and converted to dollars per unit of energy output by applying a capacity factor), fixed and variable operations and maintenance costs. The second term, fuel or electricity cost, depends on the specified efficiency of the technology, which determines the amount of fuel or electricity required to produce each unit of output, as well as the cost of the fuel or electricity.
+The GCAM electricity sector models the conversion of primary fuels (e.g., coal, gas, oil, bioenergy) to electricity. For most fuels, GCAM includes several different technology options (e.g., pulverized coal, coal IGCC, etc.). Individual technologies compete for market share based on their technological characteristics (conversion efficiency in the production of products from inputs), and cost of inputs and price of outputs. The cost of a technology in any period depends on (1) its exogenously specified non-energy cost, (2) its endogenously calculated fuel cost, and (3) any cost of emissions, as determined by the climate policy. The first term, non-energy cost, represents capital, fixed and variable O&M costs incurred over the lifetime of the equipment (except for fuel or electricity costs). For electricity technologies, GCAM reads in each of these terms and computes the levelized cost of energy within the model. For example, the non-energy cost of coal-fired power plant is calculated as the sum of overnight capital cost (amortized using a capital recovery factor and converted to dollars per unit of energy output by applying a capacity factor), fixed and variable operations and maintenance costs. The second term, fuel or electricity cost, depends on the specified efficiency of the technology, which determines the amount of fuel or electricity required to produce each unit of output, as well as the cost of the fuel or electricity.
 
 Details on the assumptions used in GCAM (e.g., cost, efficiency, capacity factors, etc.) is documented in [Muratori et al., (2017)](http://www.sciencedirect.com/science/article/pii/S1364032117305531). 
 
@@ -162,6 +162,7 @@ The coefficients of the oil refining production technology reflect whole-process
 The biomass liquids subsector includes up to eight technologies in each region, with a global total of 11, listed in Table 1.
 
 **Table 1**: Biomass liquids production technologies in GCAM
+{: .tbl}
 
 | Technology        | Inputs           |
 | :------------- |:-------------|
@@ -237,7 +238,7 @@ Hydrogen in GCAM is modeled purely as a future energy commodity; while industria
 
 The representation of hydrogen in GCAM includes 10 production technologies in two production sectors, with cost mark-ups to reflect levelized infrastructural costs, as well as variable transmission and distribution costs. The structure of the hydrogen production and distribution sectors and technologies in GCAM generally uses the structure of the U.S. Department of Energy's Hydrogen Analysis (H2A) models [DOE 2015](energy.html#doe2015), and is shown in Figure 10.
 
-![Figure 10](gcam-figs/hydrogen.png)
+![Figure 10](gcam-figs/hydrogen.png)<br/>
 Hydrogen structure, with example input-output coefficients shown.
 {: .fig}
 
@@ -257,9 +258,9 @@ The wind and solar technologies are electrolysis technologies, but are specifica
 
 GCAM disaggregates the building sector into residential and commercial and models three aggregate services (heating, cooling, and other). Within each region, each type of building and each service starts with a different mix of fuels supplying energy (see Figure below). The future evolution of building energy use is shaped by changes in (1) floorspace, (2) the level of building service per unit of floorspace, and (3) fuel and technology choices by consumers.  Floorspace depends on population, income, and exogenously specified satiation levels. The level of building service demands per unit of floorspace depend on climate, building shell conductivity, income, and satiation levels.
 
-<img src="gcam-figs/building_energy_2010.png" width="750" height="450" />
-
+<img src="gcam-figs/building_energy_2010.png" width="750" height="450" /><br/> 
 Per-capita Residential and Commercial Energy Use in 2010
+{: .fig}
 
 
 ### Industry
@@ -316,7 +317,9 @@ The non-fuel costs are estimated for some technologies (e.g., light-duty vehicle
 
 The specific values and sources of the input data assumptions to the transportation module of GCAM are documented in [Mishra et al. 2013](energy.html#mishra2013); this section identifies what variables are collected, for each country or region analyzed in detail in constructing GCAM's transportation input files. The idenfifying information for each transportation technology is provided in Table 2.
 
-**Table 2**: Transportation input data categories for a sample region in GCAM.
+**Table 2**: Transportation input data categories for a sample region
+  in GCAM.
+{: .tbl}
 
 | Service   | Mode               | Size class          | Technology     | Fuel        |
 |:----------|:-------------------|:--------------------|:---------------|:------------|
@@ -417,7 +420,9 @@ This section documents the processing of data from the IEA Energy Balances to GC
 ### Detailed mappings of products and flows
 The tables below show the mappings from the IEA's "flows" to GCAM's sectors, and from the IEA's "products" to GCAM's fuels. Exceptions to simple one-to-one mappings are noted below the tables.
 
-**Table 3<a name="table3"/>: Mapping from IEA flows to GCAM sectors (and subsectors where appropriate)**
+**Table 3<a name="table3"/>:** Mapping from IEA flows to GCAM sectors
+  (and subsectors where appropriate)
+{: .tbl}  
 
 | flow_code | flow_name                                     | sector                                                  |
 |:-----------|:-----------------------------------------------|:---------------------------------------------------------|
@@ -515,9 +520,11 @@ The tables below show the mappings from the IEA's "flows" to GCAM's sectors, and
 | HEMAINC   | Heat Output-main activity producer CHP plants | electricity; district heat                              |
 | HEAUTOC   | Heat Output-autoproducer CHP plants           |                                                         |
 | HEMAINH   | Heat Output-main activity producer heat plant |                                                         |
-| HEAUTOH   | Heat Output-autoproducer heat plants          |                                                         |
+| HEAUTOH   | Heat Output-autoproducer heat plants          | |
 
-**Table 4<a name="table4"/>. Mapping from the IEA fuels to GCAM fuels**
+**Table 4<a name="table4"/>:** Mapping from the IEA fuels to GCAM
+  fuels
+{: .tbl}
 
 | product                                                | fuel            |
 |:--------------------------------------------------------|:-----------------|
