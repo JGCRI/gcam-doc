@@ -4,8 +4,8 @@ title: Global Change Assessment Model (GCAM)
 gcam-version: v4.3
 ---
 
-The Joint Global Change Research Institute (JGCRI) is the home and
-primary development institution for the Global Change Assessment Model (GCAM), a comprehensive integrated modeling tool for exploring energy, water, and land interactions over timescales of decades to a century.
+The Joint Global Change Research Institute (JGCRI) is the
+primary development institution for the Global Change Assessment Model (GCAM), a comprehensive integrated modeling tool for exploring energy, water, land, and climate interactions over timescales of decades to a century.
 
 GCAM and its predecessor models have been in use for over 35 years. GCAM is now a freely available community model and documented online (See below). The team
 at JGCRI is comprised of economists, engineers, energy experts, forest
@@ -20,31 +20,30 @@ questions and work closely with Earth system and ecosystem modelers.
 GCAM is a global integrated model that represents the
 behavior of, and complex interactions between, five systems: energy
 , water, agriculture and land use, economy, and
-climate. GCAM has been under development for over 30 years. Work began
+climate. GCAM has been under development for over 35 years. Work began
 in 1980 on the Edmonds-Reilly, and subsequently
 Edmonds-Reilly-Barnes (ERB), model (Edmonds and Reilly 1982, 1983a,b, 1985). The model was renamed MiniCAM in the mid-1990s and GCAM in the mid-2000s, around which time the model was also re-written in an object-oriented C++ framework (Kim et al. 2006). The
 first coupling to a carbon cycle model was published in Edmonds, et
-al. (1984). The first use of GCAM (MiniCAM at the time) in conjunction
+al. (1984). The first use of the model in conjunction
 with a Monte Carlo uncertainty analysis was published in Reilly et al. (1987).
 
 Throughout its lifetime GCAM has evolved to address an expanding set of science and assessment questions. The
 original question to which the model was applied was the
 magnitude of mid-21st-century global emissions of fossil fuel
 CO<sub>2</sub>. Over time GCAM has expanded its scope to include a wider set of
-energy producing, transforming, and using technologies, emissions of
-non-CO<sub>2</sub> greenhouse and air pollutant gases, agriculture and land use, water supplies and demands, and physical Earth systems. It is increasingly being used in
-multi-model, multi-scale analysis, in which it is either soft- or
-hard-coupled to other models with different foci and often greater
+energy producing, transforming, and using technologies; emissions of
+non-CO<sub>2</sub> greenhouse and air pollutant gases; agriculture and land use; water supplies and demands; and physical Earth systems. It is increasingly being used in
+multi-model, multi-scale analysis, in which it is coupled to other models with different foci and often greater
 resolution in key sectors. For example, it has been coupled to a state
 of the art Earth system model (Collins, et al., 2015). GCAM has been
 used to produce scenarios for national and international assessments
 ranging from the very first IPCC scenarios through the present Shared Socioeconomic Pathways
 (Ebi, et al., 2014, Calvin et al. 2017). Hundreds of papers have been published in
-peer-reviewed journals using GCAM over its lifetime and GCAM
+peer-reviewed journals using GCAM and the model
 continues to be an important tool for scientific
 inquiry. GCAM is also a community model being used by researchers
 across the globe, creating a shared global research enterprise. GCAM
-can be run on Windows, Linux, Apple, and high-performance computing
+can be run on Windows, Linux, Macintosh, and high-performance computing
 systems.
 
 ### Background: Integrated Modeling Tools
@@ -63,13 +62,6 @@ but they do not necessarily include the most detailed process-scale
 representations of its constituent components. On the other hand, IA
 model components aim to provide a faithful representation of the
 best current scientific understanding of underlying behavior.
-
-In general IAMs can be divided into two categories: high-resolution and highly aggregated. GCAM is a higher resolution model which, by including economic and Earth system components, focuses on 
-understanding physical and economic details of human and
-Earth system interactions. A second type of IAM is more 
-highly aggregated and focused on the conduct of global,
-century-scale, cost-benefit analysis (examples include DICE, FUND, and
-PAGE). GCAM does not contain the components necessary to conduct cost-benefit analysis.
 
 Models such as GCAM do not provide predictions of the
 future. They are used to provide conditional "forecasts" of the
@@ -93,6 +85,13 @@ outcomes including structured scenario analysis, sensitivity
 analysis, and Monte Carlo simulations. Exploring and understanding the
 role of uncertainty in shaping events remains an important research
 use of GCAM.
+
+Note that IAMs can  generally be divided into two categories: high-resolution and highly aggregated. GCAM is a higher resolution model which, by including economic and Earth system components, focuses on 
+understanding physical and economic details of human and
+Earth system interactions. A second type of IAM is more 
+highly aggregated and focused on the conduct of global,
+century-scale, cost-benefit analysis (examples include DICE, FUND, and
+PAGE). GCAM does not contain the components necessary to conduct cost-benefit analysis.
 
 ## User Guides and Tutorials
 
