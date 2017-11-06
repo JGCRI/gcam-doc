@@ -286,13 +286,13 @@ The model interface is a GCAM tool to view GCAM results from the [BaseX](http://
 
 #### <a name="interactive-mode"> 3.4.1 Interactive Mode </a>
 
-Please see the [Quick Start](#22-viewing-model-results) section for the basics on how to open an database and run queries.  The `Scenarios` and `Regions` sections get populated automatically from the GCAM results that are stored in the database.  The `Queries` are loaded from a query file.  You can check the `model_interface.properties` file which is located in the folder as the `ModelInterface.jar`:
+Please see the [Quick Start](#22-viewing-model-results) section for the basics on how to open an database and run queries.  The `Scenarios` and `Regions` sections get populated automatically from the GCAM results that are stored in the database.  The `Queries` are loaded from a query file.  You can check the `model_interface.properties` file which is located in the folder as the `ModelInterface.jar` or if using the `ModelInterface.app` on the Mac in your home directory:
 
 ```
-<entry key="queryFile">../Main_User_Workspace/output/queries/Main_queries.xml</entry>
+<entry key="queryFile">../output/queries/Main_queries.xml</entry>
 ```
 
-Each query is represented in it's own XML syntax such as:
+Note if the query file is not found the ModelInterface will ask you to select a new one.  Each query is represented in it's own XML syntax such as:
 
 ```XML
 <emissionsQueryBuilder title="GHG emissions by region">
