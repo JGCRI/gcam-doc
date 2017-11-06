@@ -9,6 +9,8 @@ The Global Change Assessment Model (GCAM) and GCAM-USA
 
 The GCAM model was expanded to include greater spatial detail in the USA region, referred to as GCAM-USA. In GCAM-USA the 50 U.S. states plus the District of Columbia (hereafter, the 51 states) are included as explicit regions that operate within the global GCAM model. Energy transformation (electricity generation and refined liquids production) and end-use demands (buildings, transportation, and industry) are modeled at the individual state level. Inter-state trade of all energy goods is considered, with state-specific consumer price mark-ups assigned for coal, natural gas, and refined liquids assigned based on price data from EIA (2012).
 
+<img src="gcam-figs/gcam-usa.png" width="397" height="525" />
+
 Note, several aspects of the energy system are still modeled at the aggregate U.S. level. Most notably this applies to primary production of fossil resources including oil, gas, and coal. The supply of biomass energy feedstocks, which include residues and dedicated energy crops, is modeled at the level of 10 agro-ecological zones (AEZ) in the United States (Calvin et al 2014, Wise et al 2014). As with primary fossil resources, biomass feedstocks are assumed to be freely traded at one global price.
 
 Developing a historical energy balance for model calibration
