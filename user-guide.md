@@ -19,24 +19,18 @@ gcam-version: v4.4
 * [Controlling the level of XML DB Output](#controlling-the-level-of-xml-db-output)
     
 ## <a name="gcam-intro"> 1.Introduction </a>
- This document provides information on download and get running the GCAM model. To download GCAM you can follow the `Download GCAM` link in the upper right had corner.  Users should find the GCAM version 4.3 release.  There will be a few files available for download:
+ This document provides information on download and get running the GCAM model. To download GCAM you can follow the `Download GCAM` link in the upper right had corner.  Users should find the GCAM version 4.4 release.  There will be a few files available for download:
 
-* Source code (in zip or tar.gz format).  This is the core of the release and contains all model source code and data processing scripts.
-* data-system.tar.gz contains the XML input files as well as supporting CSV files for users who do not have access to the proprietary IEA energy balance data necessary for running the gcam-data-system or would like to get a quick start running GCAM.
-* mac_binaries.tar.gz contains the GCAM executable, supporting libraries, and the ModelInterface for the Mac OS X platform.
-* windows_binaries.tar.gz contains the GCAM executable, supporting libraries, and the ModelInterface for the Windows platform.
+* gcam-v4.4-Mac-Release-Package.zip contains the GCAM executable, supporting libraries, the ModelInterface, and input XML files for the Mac OS X platform.  **Note for most Mac users this is typically the only package required.**
+* gcam-v4.4-Windows-Release-Package.zip contains the GCAM executable, supporting libraries, the ModelInterface, and input XML files for the Windows platform. **Note for most Windows users this is typically the only package required.**
+* Source code (in zip or tar.gz format).  This is the core of the release and contains all model source code and data processing scripts.  Generally only needed if you need to comple the source code or rebuild input files from scratch.  Users who will need to maintain changes to source code and/or data processing code for an extended period of time should strongly consider checking out the repository with Git instead.
+* data-system.tar.gz contains the XML input files as well as supporting CSV files for users who do not have access to the proprietary IEA energy balance data necessary for running the gcam-data-system.
 
 The following instructions for users who want to use the pre-built GCAM executable and XML input files.  For instructions on compiling your own GCAM executable see [GCAM Compile Instructions](gcam-build.html).  For instructions on how to run the gcam-data-system to rebuild the XML input files from scratch see [Running the GCAM Data System](data-system.html).  Once built these users can proceed from the [Quickstart](#gcam-quickstart) guide.
 
-To start users should download and unpack the Source code to a location of their choosing.  Throughout this document that location will be referred to as `<GCAM Workspace>`.  Next they should unpack the data-system.tar.gz and either the Mac or Windows binaries, as appropriate, in the `<GCAM Workspace>`, for example:
+To start users should download and unpack the Release Package appropriate for their platform to a location of their choosing.  Throughout this document that location will be referred to as `<GCAM Workspace>`.
 
-```
-cd <GCAM Workspace>
-tar -xzf data-system.tar.gz
-tar -zxf mac_binaries.tar.gz
-```
-
-You have now set up a GCAM release package and are ready to run!  The rest of this user's guide is divided into two parts. First a [GCAM "quickstart"](#gcam-quickstart) guide with basic instructions on running GCAM and viewing results, followed by a more detailed [GCAM User's Guide](#gcam-users-guide).
+The rest of this user's guide is divided into two parts. First a [GCAM "quickstart"](#gcam-quickstart) guide with basic instructions on running GCAM and viewing results, followed by a more detailed [GCAM User's Guide](#gcam-users-guide).
 
 ## 2. <a name="gcam-quickstart">GCAM Quickstart</a>
 
@@ -195,7 +189,7 @@ Note that there is also a [batch functionality](#modelinterface-batch-modes) wit
 
 ### 3.3 <a name="target-finder"> Target finder </a>
 
-Enabling this mode for running GCAM involves specifying a [policy target file](#files-input-options) and enabling [find-path](#bools-input-options).  When run in this mode GCAM will run a scenario several times to find the optimal path to satisfy the configured climate goal.  Running GCAM in such a mode can take quite a bit of time, one option to speed this up is to set `restart-period` to 22 in the [configuration file as noted above](#ints-input-options).  Example policy target files are supplied in `input/policy` and are self documented:
+Enabling this mode for running GCAM involves specifying a [policy target file](#files-input-options) and enabling [find-path](#bools-input-options).  In addition when a user is running target finder with a negative emissions budget constraint they should be sure to set up the market, for example by reading in the policy file `carbon_tax_0.xml`.  When run in this mode GCAM will run a scenario several times to find the optimal path to satisfy the configured climate goal.  Running GCAM in such a mode can take quite a bit of time, one option to speed this up is to set `restart-period` to 22 in the [configuration file as noted above](#ints-input-options).  Example policy target files are supplied in `input/policy` and are self documented:
 
 ```XML
 <policy-target-runner name="forcing_4p5">
