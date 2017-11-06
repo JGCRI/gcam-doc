@@ -1,7 +1,7 @@
 ---
 layout: index
 title: Table of Contents
-gcam-version: v4.4
+gcam-version: v4.3
 ---
 ## GCAM Documentation Topics
 
@@ -16,13 +16,11 @@ gcam-version: v4.4
 * [How to Get Started Running GCAM](user-guide.html) 
 * [How to Set Up and Build ](gcam-build.html)
 * [GCAM-USA](gcam-usa.html)
-* [GCAM Fusion Usage Guide](fusion.html)
 * [References](references.html)
 
 ## Documentation for Older Versions of GCAM
 
 * [GCAM-3](v3.2/toc.html)
 * [GCAM-4.2](v4.2/toc.html)
-* [GCAM-4.3](v4.3/toc.html)
 
 

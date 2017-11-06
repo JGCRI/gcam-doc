@@ -1,0 +1,35 @@
+digraph hydrogen{
+	regional_biomass[label = "Biomass", color=green,style=filled];
+	regional_coal[label = "Coal", color=black, fontcolor = white, style=filled];
+	regional_natural_gas[label = "Gas",color=blue, fontcolor = white, style=filled];
+	elect_td_ind[label = "Electricity", color=yellow;style=filled];
+	nuclearFuelGenX[label = "Nuclear\nFuel", color=orange,style=filled];
+	wind[label = "Wind", color=skyblue,style=filled];
+	solar[label = "Solar", color=red,style=filled];
+
+	h2_central_production[label = "H2 Central\nProduction", color=indigo,style=filled;fontcolor=white];
+	h2_distribution[label = "H2 distribution", color=indigo,style=filled;fontcolor=white];
+	h2_forecourt_production[label = "H2 Forecourt\nProduction", color=indigo,style=filled;fontcolor=white];
+	h2_enduse[label = "H2 Enduse", color=indigo,style=filled;fontcolor=white];
+
+	industry[label = "Industry", color=steelblue1;style=filled;fontcolor=white];
+	transportation[label = "Transportation", color=steelblue1;style=filled;fontcolor=white];
+
+	regional_biomass->h2_central_production[label = 2.2];
+	regional_coal->h2_central_production[label = 1.6];
+	regional_natural_gas->h2_central_production[label = 1.4];
+	elect_td_ind->h2_central_production[label = 1.6];
+	nuclearFuelGenX->h2_central_production[label = 1.2];
+	wind->h2_central_production[label = 1.6];
+	solar->h2_central_production[label = 1.6];
+
+	regional_natural_gas->h2_forecourt_production[label = 1.8];
+	elect_td_ind->h2_forecourt_production[label = 1.6];
+
+	h2_central_production->h2_distribution[label = 1];
+	h2_distribution->h2_enduse[label = 1];
+	h2_forecourt_production->h2_enduse[label = 1];
+
+	h2_enduse->industry;
+	h2_enduse->transportation;
+}

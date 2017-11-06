@@ -3,7 +3,7 @@ layout: index
 title: Climate Module – Hector	
 prev: aglu.html
 next: choice.html
-gcam-version: v4.4
+gcam-version: v4.3
 ---
 
 This section describes the new climate module - Hector - that is available for use in GCAM. MAGICC5.3 (Wiglley, 2008) has traditionally been the only climate module available in GCAM.  In GCAM's recent release, Hector is now the default climate model(Hartin et al., 2015).  Both Hector and MAGICC are reduced-form climate carbon-cycle models. 
@@ -82,7 +82,7 @@ At every time step Hector calculates and outputs key climate variables.
 </dl>
 
 ## Getting and Installing Hector for Use with GCAM
-For users who are running GCAM with the [Mac](https://github.com/JGCRI/gcam-core/releases/download/gcam-v4.3/mac_binaries.tar.gz) or [Windows](https://github.com/JGCRI/gcam-core/releases/download/gcam-v4.3/windows_binaries.tar.gz) binary Release add-ons, Hector support is already compiled in.  For users compiling for source or interested in getting the Hector source, please see the [Hector section in How to Set Up and Build GCAM](gcam-build.html#3-compiling-hector).
+For users who are running GCAM with the [Mac](https://github.com/JGCRI/gcam-core/releases/download/gcam-v4.3/mac_binaries.tar.gz) or [Windows](https://github.com/JGCRI/gcam-core/releases/download/gcam-v4.3/windows_binaries.tar.gz) binary Release add-ons, Hector support is already compiled in.  For users compiling for source or interested in getting the Hector source, please see the [Hector section in How to Set Up and Build GCAM](gcam-build.html#getting-hector).
 
 ## References
 1. Hartin, C. A., Patel, P., Schwarber, A., Link, R. P., and
