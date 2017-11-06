@@ -77,7 +77,7 @@ Electricity Trade
 
 For electricity trade between states we group states roughly into the 13 NEMS Electricity Market Module Regions (EIA 2010) plus Alaska and Hawaii. Whereby states within the same sub-region can trade freely within that sub-region, trade between regions may be limited.
 
-<img src="gcam-figs/gcam-usa-grid-regions.png" width="539" height="416" />
+<img src="gcam-figs/gcam-usa-grid-regions.png" width="488" height="282" />
 
 <span id="_Ref277591668" class="anchor"></span>Modeled electricity markets based on NEMS.
 
@@ -95,7 +95,7 @@ The region-specific CO<sub>2</sub> transport and storage cost curves for the U.S
 
 In keeping with the US electricity-specific CCS modeling presented in [Wise et al. (2007](#_ENREF_4)), the CO<sub>2</sub> transport and storage cost curves represented in this analysis have been adjusted to account for the fact that the cost of CO<sub>2</sub> capture can vary by an order of magnitude for the different CO<sub>2</sub> sources modeled to generate the raw region specific CO2 transport and storage cost (i.e., a natural gas processing plant generates a virtually pure stream of CO<sub>2</sub> that can be captured – already dehydrated and compressed - for a cost of less than $10/tonCO<sub>2</sub>, while an older and relatively small pulverized coal plant could see capture costs well above $50/tonCO<sub>2</sub>) and which kinds of CO<sub>2</sub> point sources get to access what kinds of geologic storage reservoirs is influenced strongly by the capture costs.  Therefore, without the sort of adjustments performed, the raw region-specific CO<sub>2</sub> transport and storage curves would present an unrealistically low representation of the net cost of CO<sub>2</sub> transport and storage likely to be experienced by large stationary CO<sub>2</sub> point sources like coal, natural gas, and biomass – fired power plants and refineries, which are the anthropogenic CO<sub>2</sub> sources that are modeled specifically in GCAM-USA.
 
-<img src="gcam-figs/gcam-usa_CCS-curves.png" width="576" height="345" />
+<img src="gcam-figs/gcam-usa_CCS-curves.png" width="400" height="262" />
 
 <span id="_Ref277591731" class="anchor"></span>Carbon storage potential by electricity market.
 
@@ -103,10 +103,6 @@ Socio-economics
 ===============
 
 The socio-economic projections were developed as part of the PNNL PRIMA initiative (Scott et al. 2014). We estimate state-level medium population projections from the 2005 US Census projections from 2010 to 2030, extended to 2100 with a combination of state growth factor predictions and regression to the U.N.'s national projection. We take the ratio of the medium state projection to the national medium projection to obtain a state-to-national proportionality profile. We then apply this proportionality profile to a quantile of the national projection distribution to obtain a state’s corresponding population projection quantile (Scott et al. 2014). Historical GDP at the state level is from the Bureau of Economic Analysis (BEA, 2009). Future GDP is projected using the same aggregate productivity growth rate for all states from the GCAM Base scenario. U.S. per capita GDP in this scenario increases by 60% from 2005 to 2050 to $67,470/capita.
-
-Texas and Florida dominate the economic landscape in the Gulf Coast (Figure SI-10) with continued rapid growth in population to mid century of 1.2% per year for Texas and 1.6% for Florida. As such they will continue to be the largest source of GDP in the Gulf Coast however on a GDP per-capita basis the difference between the states remain the same since all states grow with the same labor productivity.
-
-<span id="_Ref277586999" class="anchor"><span id="_Ref277586930" class="anchor"></span></span>Figure SI-: Projected socioeconomics.
 
 Referenes
 ===============
@@ -120,37 +116,13 @@ U.S. Energy Information Agency (EIA 2014) State Energy Data System ([www.eia.gov
 
 U.S. Energy Information Agency (EIA 2010) Annual Energy Outlook 2010 With Projections to 2035. DOE/EIA-0383(2010).
 
-Dahowski, R., Davidson, C., Dooley, J., 2011. Comparing large scale CCS deployment potential in the USA and China: A detailed analysis based on country-specific CO2 transport & storage cost curves. Energy Procedia 4, 2732-2739.
-
-Dahowski, R., Dooley, J., Davidson, C., Bachu, S., Gupta, N., 2005. Building the Cost Curves for CO2 Storage: North America. IEA Greenhouse Gas R&D Programme, Cheltenham, UK.
-
-Dahowski, R., Li, X., Davidson, C., Wei, N., Dooley, J., 2010. Regional Opportunities for Carbon Dioxide Capture and Storage in China: A Comprehensive CO2 Storage Cost Curve and Analysis of the Potential for Large Scale Carbon Dioxide Capture and Storage in the People’s Republic of China Pacific Northwest National Laboratory, Richland, WA.
-
-Wise, M., Dooley, J., Dahowski, R., Davidson, C., 2007. Modeling the impacts of climate policy on the deployment of carbon dioxide capture and geologic storage across electric power regions in the United States. International Journal of Greenhouse Gas Control 1, 261-270.
-
 Scott MJ, DS Daly, Y Zhou, JS Rice, PL Patel, HC McJeon, GP Kyle, SH Kim, J Eom, and LE Clarke.  2014.  "Evaluating sub-national building-energy efficiency policy options under uncertainty: Efficient sensitivity testing of alternative climate, technolgical, and socioeconomic futures in a regional intergrated-assessment model. ."  Energy Economics 43(2014):22-33.  doi:10.1016/j.eneco.2014.01.012
 
 United Nations, Department of Economic and Social Affairs, Population Division (2011). *[World Population Prospects: The 2010 Revision, Volume I: Comprehensive Tables](http://esa.un.org/wpp/Documentation/pdf/WPP2010_Volume-I_Comprehensive-Tables.pdf).* ST/ESA/SER.A/313.
 
-Chaturvedi V, SH Kim, SJ Smith, LE Clarke, Y Zhou, GP Kyle, and PL Patel.  2013.  "Model evaluation and hindcasting: A zero order experiment with an integrated assessment model."  Energy.
-
 Zhou Y, J Eom, and LE Clarke.  2013.  "The effect of climate change, population distribution, and climate mitigation on building energy use in the U.S. and China."  Climatic Change 119(3-4):979-992.  doi:10.1007/s10584-013-0772-x
 
-Kyle GP, LE Clarke, SJ Smith, SH Kim, M Nathan, and MA Wise.  2011.  "The Value of Advanced End-Use Energy Technologies in Meeting U.S. Climate Policy Goals."  The Energy Journal 32(Special Issue):Article No. 5.
-
-Rupp, D. E., P. W. Mote, N. Massey, C. J. Rye, R. Jones, M. R. Allen. 2012. Did human influence on climate make the 2011 Texas drought more probable? in Peterson, T. C., P. A. Stott, S. Herring, eds., Explaining extreme events of 2011 from a climate perspective, Bulletin of the American Meteorological Society (93), 1041-1067, doi: 10.1175/BAMS-D-11-00021.1.
-
-Karl TR, J. Melillo T. Peterson. 2009. Global Climate Change Impacts in the United States. Cambridge University Press, 2009.
-
-Min, S.-K., X. Zhang, F. W. Zwiers, and G. C. Hegerl, 2011: Human contribution to more intense precipitation extremes. Nature, 470, 378–381.
-
-T. K. Mideksa and S. Kallbekken (2010) The impact of climate change on the electricity market: A review Energy Policy 38, 3579–3585.
-
-Connolly, D., Lund, H., Mathiesen, B. V. & Leahy, M. 2010. A review of computer tools for analysing the integration of renewable energy into various energy systems. Applied Energy, 87, 1059-1082.
-
 Calvin KV, MA Wise, GP Kyle, PL Patel, LE Clarke, and JA Edmonds.  2014.  "Trade-offs of different land and bioenergy policies on the path to achieving climate targets."  Climatic Change 123(3-4):691-704.  doi:10.1007/s10584-013-0897-y
-
-Clarke, L., J. Lurz, M. Wise, J. Edmonds, S. Kim, S. Smith, H. Pitcher. 2007. Model Documentation for the MiniCAM Climate Change Science Program Stabilization Scenarios: CCSP Product 2.1a. PNNL Technical Report. PNNL-16735.
 
 <span id="_ENREF_1" class="anchor"></span>Dahowski, R., Davidson, C., Dooley, J., 2011. Comparing large scale CCS deployment potential in the USA and China: A detailed analysis based on country-specific CO<sub>2</sub> transport & storage cost curves. Energy Procedia 4, 2732-2739.
 
@@ -160,25 +132,11 @@ Clarke, L., J. Lurz, M. Wise, J. Edmonds, S. Kim, S. Smith, H. Pitcher. 2007. Mo
 
 Denholm, P. and R. Margolis. 2008. Supply Curves for Rooftop Solar PV-Generated Electricity for the United States. National Renewable Energy Laboratory, Technical Report NREL / TP-6A0-44073, November 2008.
 
-Edmonds, J. and J. Reilly. 1983. "A Long-Term, Global, Energy-Economic Model of Carbon Dioxide Release From Fossil Fuel Use," Energy Economics, 5(2):74-88.
-
-Edmonds, J. and J. Reilly. 1983. "Global Energy and CO<sub>2</sub> to the Year 2050," The Energy Journal, 4(3):21-47.
-
-Edmonds, J. and J. Reilly. 1983. "Global Energy Production and Use to the Year 2050," Energy, 8(6):419-32
-
-Edmonds, J. and J. Reilly. 1985. Global Energy: Assessing the Future, Oxford University Press, New York. 1985.
-
 IEA. 2009. Chemical and Petrochemical Sector - Potential of best practice technology and other measures for improving energy efficiency. <https://www.iea.org/publications/freepublications/publication/chemical_petrochemical_sector.pdf>
-
-Kim, S.H., J.A. Edmonds, J. Lurz, S.J. Smith, and M. Wise (2006). “The ObjECTS Framework for Integrated Assessment: Hybrid Modeling of Transportation.” Energy Journal 27: 63-91.
-
-Krey, V., G. Luderer, L. Clarke, and E. Kriegler. 2014. Getting from here to there – energy technology transformation pathways in the EMF27 scenarios. Climatic Change 123: 369-382.
 
 Lopez A, B Roberts, D Heimiller (2012). U.S. Renewable Energy Technical Potentials: A GIS-Based Analysis. National Renewable Energy Laboratory, Technical Report NREL/TP-6A20-51946, July 2012
 
 Luckow, P.; Wise, M.; Dooley, J. (2011\_ Deployment of CCS Technologies across the Load Curve for a Competitive Electricity Market as a Function of CO<sub>2</sub> Emissions Permit Prices, In 10th International Conference on Greenhouse Gas Control Technologies, Amsterdam, The Netherlands, 19-23 September 2010, 2011; Gale, J.; Hendriks, C.; Turkenberg, W., Eds. Elsevier: Amsterdam, The Netherlands, 2011; pp 5762-5769.
-
-Schaeffer, R., Szklo, A. S., De Lucena, A. F. P., et al. 2012. Energy sector vulnerability to climate change: A review. Energy, 38, 1-12
 
 U.S. Census (2013) New Privately Owned Housing Units Completed (<http://www.census.gov/construction/nrc/>, downloaded 12/31/2013).
 
@@ -205,5 +163,3 @@ Wise MA, JJ Dooley, P Luckow, KV Calvin, and GP Kyle.  2014.  "[Agriculture, L
 Zhou Y, LE Clarke, J Eom, GP Kyle, PL Patel, SH Kim, JA Dirks, EA Jensen, Y Liu, JS Rice, LC Schmidt, and TE Seiple.  2014.  "Modeling the effect of climate change on U.S. state-level buildings energy demands in an integrated assessment framework."  Applied Energy 113:1077-1088.  doi:10.1016/j.apenergy.2013.08.034
 
 Zhou, Y, P Luckow, SJ Smith, LE Clarke (2012) *Evaluation of Global Onshore Wind Energy Potential and Generation Costs* *Environmental Science & Technology* **46 (14)** 7857-7864.
-
-Wise MA, KV Calvin, AM Thomson, LE Clarke, B Bond-Lamberty, RD Sands, SJ Smith, AC Janetos, and JA Edmonds.  2009.  "Implications of Limiting CO2 Concentrations for Land Use and Energy."  Science 324(5931):1183-1186 . 
