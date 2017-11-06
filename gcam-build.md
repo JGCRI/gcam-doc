@@ -7,12 +7,12 @@ gcam-version: v4.4
 ---
 
 ## 1.Introduction
-This section is for users that wish to compile GCAM C++ source code into an executable. **Note most users can just use the Mac or Windows binaries provided in the GCAM release as most scenario modifications are done by changing XML input files.**  Users may need to re-compile the C++ source code for reasons such as:
+This section is for users that wish to compile GCAM C++ source code into an executable. **Note most users can just use the Mac or Windows Release Packages provided in the GCAM release as most scenario modifications are done by changing XML input files.**  Users may need to re-compile the C++ source code for reasons such as:
 
 * For use on general POSIX systems or a version of Mac or Windows for which the released binary was not compatible.
 * To add new features or otherwise customize the model.
 
-GCAM provides a generic [Makefile](#building-with-makefile) as well as [Xcode](#building-with-xcode) and [Visual Studio](#building-with-visual-studio) project files.  It relies on the following third party libraries.  Mac and Windows users should be able to use the libraries provided, otherwise see the section on [building third party libraries](#building-third-party-libraries).
+GCAM provides a generic [Makefile](#building-with-makefile) as well as [Xcode](#building-with-xcode) and [Visual Studio](#building-with-visual-studio) project files.  **Note** as of GCAM 4.4 compiling GCAM requires a C++ compiler with support for the C++ 14 language standard.  In addtion, it relies on the following third party libraries.  Mac and Windows users should be able to use the libraries provided, otherwise see the section on [building third party libraries](#building-third-party-libraries).
 
 * [Boost C++ Libraries](http://www.boost.org), details [here](#boost)
 * [Xerces C++ XML Parser](http://xerces.apache.org), details [here](#xerces-xml-parser)
@@ -33,8 +33,8 @@ Users can look at [Boost documentation](http://www.boost.org/doc/libs/1_62_0/mor
 
 ```
 cd <GCAM Workspace>/libs/boost-lib
-./bootstrap.sh --with-libraries=system,filesystem
-./b2 address-model=64 stage
+bootstrap.bat 
+b2 --with-system --with-filesystem address-model=64 stage
 ```
 
 #### 2.1.2 Building Boost Mac Notes
@@ -110,7 +110,7 @@ make clean
 ```
 
 ### 2.3 Java
-Java is required by GCAM in order to store results in a [BaseX](http://basex.org) XML database, which itself is written in Java.  GCAM will use the Java Native Interface to interact with the database.  Since BaseX is written in Java it is inherently cross platform thus building it is not discussed here.  GCAM uses version 7.9 of the BaseX library, which is the last version which still supports Java 1.6.  GCAM, therefore requires Java version 1.6 or newer.  The [official Oracle](http://www.oracle.com/technetwork/java/index.html) version or the [open source](http://openjdk.java.net) version should work (both are free to install).  Some additional notes:
+Java is required by GCAM in order to store results in a [BaseX](http://basex.org) XML database, which itself is written in Java.  GCAM will use the Java Native Interface to interact with the database.  Since BaseX is written in Java it is inherently cross platform thus building it is not discussed here.  GCAM uses version 8.6.7 of the BaseX library, which is only supports Java 1.7+.  GCAM, therefore requires Java version 1.7 or newer.  The [official Oracle](http://www.oracle.com/technetwork/java/index.html) version or the [open source](http://openjdk.java.net) version should work (both are free to install).  Some additional notes:
 
 #### 2.3.1 Disable Java
 GCAM can be configured to compile without Java support, doing so implies GCAM results are not written to the BaseX database.  To disable Java edit `<GCAM Workspace>/cvs/objects/util/base/include/definitions.h` and set `__HAVE_JAVA__` to `0`:
@@ -151,7 +151,7 @@ C:\Program Files\Java\jdk1.8.0_102\lib
 In addtion the PATH variable may need to be updated so that GCAM can find the `jvm.dll`.  Note that this is the purpose of the `<GCAM Workspace>/exe/run-gcam.bat` wrapper.  Users can take a look at this file to understand how GCAM detects the JAVA_HOME and updates the PATH accordingly.
 
 #### 2.3.3 Java on Mac
-Java on the Mac is complicated by Apple's custom Java installation and subsequent removal of said Java since OSX 10.10+.  The Apple version is only up to the now ancient Java version 1.6.  It can still be installed on newer version of OS X with an explicit download.  All versions of OS X can still use a more recent version of Java from Oracle/openJDK instead (**note** users must install the JDK, not the JRE).  Even if users on OS X 10.10+ install the Oracle/openJDK version of Java they may still be prompted to install the old Apple JDK when running GCAM or the Model Interface.  Note the purpose of the `<GCAM Workspace>/exe/run-gcam.command` wrapper is partially to detect and work around some of these issues.  For users that are being asked to install the old Apple JDK even if the newer version is installed they can try the following edit to the Java JDK Info.plist file in Terminal to resolve the issue:
+Note since GCAM now requires Java 1.7+ the old Apple supplied Java installation is no longer supported.  All versions of OS X can still use a more recent version of Java from Oracle/openJDK instead (**note** users must install the JDK, not the JRE).  Even if users on OS X 10.10+ install the Oracle/openJDK version of Java they may still be prompted to install the old Apple JDK when running GCAM or the Model Interface.  Note the purpose of the `<GCAM Workspace>/exe/run-gcam.command` wrapper is partially to detect and work around some of these issues.  For users that are being asked to install the old Apple JDK even if the newer version is installed they can try the following edit to the Java JDK Info.plist file in Terminal to resolve the issue:
 
 ```
 JAVA_HOME=$(/usr/libexec/java_home)
@@ -170,7 +170,7 @@ And add the following `JVMCapabilities`:
     </array>
 ```
 
-Users who want to use the Xcode build environment will need to set up in the `<GCAM Workspace>/libs` the `include` and `lib` directories.  For users using the old Apple JDK the `run-gcam.command` will copy into place a stub library to appropriately call the Apple `JavaVM.framework` (TODO: where to find the include).  For users using the Oracle/openJDK Java they will need to create the following symlinks:
+Users who want to use the Xcode build environment will need to set up in the `<GCAM Workspace>/libs` the `include` and `lib` directories.  Users will need to create the following symlinks:
 
 ```
 cd <GCAM Workspace>/libs/java
@@ -181,6 +181,9 @@ ln -s ${JAVA_HOME}/jre/lib/server lib
 
 #### 2.3.4 Java On POSIX
 Please use the appropriate methods on your platform for installing Java.  Please see the [Compiling with Makefile](#building-with-makefile) for how to set environment variables so that your Java installation is found by GCAM.
+
+#### 2.3.5 Third party Jar files used by the Model Interface
+Users should copy into `<GCAM Workspace>/libs/jars` a copy of all of the third party libraries used by GCAM / the ModelInterface including the BaseX library.  You may obtain these from the Mac or Windows Release Package or from the [ModelInterface Releases on Github](https://github.com/JGCRI/modelinterface/releases).
 
 ## 3 Compiling Hector
 [Hector](hector.html) is the simple climate developed at JGCRI.  It is available from the hector project's [Github repository](https://github.com/JGCRI/hector).  
@@ -237,7 +240,7 @@ make gcam -j 8
 Note the `-j 8` is simply to compile multiple sources files at a time (set as appropriate for your system configuration) and is only necessary to speed up the processes.  Once complete an executable will be copied to `<GCAM Workspace>/exe` and can be run from that directory with `gcam.exe -Ccofig_file.xml`.
 
 ### 4.2 Building with Xcode
-Mac users who would like to use the Xcode integrated development environment must have it installed (available from the Apple App Store), any version 3.2+ will work.  Users can find the project file under `<GCAM Workspace>/cvs/objects/build/xcode3/objects.xcodeproj`. Once open you should change the `Scheme` to build the `Release` target.  You can find the scheme settings here:
+Mac users who would like to use the Xcode integrated development environment must have it installed (available from the Apple App Store), however a recent version with C++ 14 support is required.  Xcode version 8.1+ have been known to work.  Users can find the project file under `<GCAM Workspace>/cvs/objects/build/xcode3/objects.xcodeproj`. Once open you should change the `Scheme` to build the `Release` target.  You can find the scheme settings here:
 
 ![Xcode Scheme](gcam-figs/mac-build-scheme.png)
 
@@ -248,7 +251,7 @@ Then under the `Info` tab change the build configuration to `Release`:
 Finally select menu option `Product -> Build` to build GCAM.  Once complete an executable will be copied to `<GCAM Workspace>/exe` and you can still use `run-gcam.command` to run it.  Note that to run GCAM from within Xcode, you must set the working directory to the `exe` directory within your workspace. This is done within the `Options` section of the current scheme.
 
 ### 4.3 Building with Visual Studio
-Users will need to have Microsoft Visual Studio C++ compiler installed (usually called for Windows Desktop).  Any version 2010+ will work as the 64-bit C++ compiler is required.  Note Microsoft does provide a free option called ["Express"](https://www.microsoft.com/en-us/download/details.aspx?id=44914).  Users can find the project file under `<GCAM Workspace>/cvs/objects/build/vc10/objects.vcxproj`.  Once open you should change the `Solution Configurations` and `Solution Platform` to `Release` and `x64`:
+Users will need to have Microsoft Visual Studio C++ compiler installed (usually called for Windows Desktop).  Note that since GCAM 4.4 you will need a version which supports the C++ 14 standard.  Visual Studio 2015 is known to work.  Note Microsoft does provide a free option called ["Express"](https://www.microsoft.com/en-us/download/details.aspx?id=44914).  Users can find the project file under `<GCAM Workspace>/cvs/objects/build/vc10/objects.vcxproj`.  Once open you should change the `Solution Configurations` and `Solution Platform` to `Release` and `x64`:
 
 ![Visual Studio build configuration](gcam-figs/vs-build-config.png)
 
@@ -262,12 +265,15 @@ Finally select menu option `Build -> Build Solution` to build GCAM.  Once comple
 The Java components of GCAM `XMLDBDriver.jar` and `ModelInterface.jar` are included with the GCAM source code (in the Git repository or release package) and are inherently cross platform.  Users will not typically need to recompile these unless they need to apply bug fixes or feature updates.  In such a case simple Makefiles have been provided.  Note the [Java compiler](#java) is required.  In both cases users will need the `<GCAM Workspace>/libs/jars` which are included in both the Mac and Windows binary release add-ons.
 
 ### 5.1 Recompiling ModelInterface.jar
-Users will need to set up the classpath and run the following.
+Users will need to set up the classpath and run the following.  Note that the ModelInterface is developed in it's [own Git repository](https://github.com/JGCRI/modelinterface) but GCAM contains a submodule reference pointing specifically to the version known to work with your version of GCAM.
 
 ```
 export CLASSPATH=<GCAM Workspace>/libs/jars/\*
 cd <GCAM Workspace>/input/gcam-data-system/_common/ModelInterface/src
+git submodule update --init modelinterface
+cd modelinterface
 make ModelInterface.jar
+cp ModelInterface.jar ../
 ```
 
 ### 5.2 Recompiling XMLDBDriver.jar
