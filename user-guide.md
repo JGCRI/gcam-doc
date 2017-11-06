@@ -38,7 +38,7 @@ This section provides a brief introduction on how to use the GCAM Model and view
 
 ### 2.1. Running a reference case scenario
 
-GCAM requires a valid `configuration.xml` file be present in the exe directory of the GCAM workspace. You can run a reference scenario by copying the `configuration_ref.xml` that is provided in the distribution and renaming it to `configuration.xml`. The configuration file is descried in more detail in the [User's Guide section](#gcam-users-guide), and should not need to be modified in order to run a reference case scenario. The User's Guide describes how to create additional scenarios.
+GCAM requires a valid `configuration.xml` file be present in the exe directory of the GCAM workspace. You can run a reference scenario by copying the `configuration_ref.xml` that is provided in the distribution and renaming it to `configuration.xml`. The configuration file is descried in more detail in the [User's Guide section](#3-gcam-users-guide), and should not need to be modified in order to run a reference case scenario. The User's Guide describes how to create additional scenarios.
 
 A `log_conf.xml` file is also needed, but this file is provided in the
 release package and should therefore already be present in the exe
@@ -189,7 +189,7 @@ Note that there is also a [batch functionality](#modelinterface-batch-modes) wit
 
 ### 3.3 <a name="target-finder"> Target finder </a>
 
-Enabling this mode for running GCAM involves specifying a [policy target file](#files-input-options) and enabling [find-path](#bools-input-options).  In addition when a user is running target finder with a negative emissions budget constraint they should be sure to set up the market, for example by reading in the policy file `carbon_tax_0.xml`.  When run in this mode GCAM will run a scenario several times to find the optimal path to satisfy the configured climate goal.  Running GCAM in such a mode can take quite a bit of time, one option to speed this up is to set `restart-period` to 22 in the [configuration file as noted above](#ints-input-options).  Example policy target files are supplied in `input/policy` and are self documented:
+Enabling this mode for running GCAM involves specifying a [policy target file](#312-files-input-options) and enabling [find-path](#314-bools-input-options).  In addition when a user is running target finder with a negative emissions budget constraint they should be sure to set up the market, for example by reading in the policy file `carbon_tax_0.xml`.  When run in this mode GCAM will run a scenario several times to find the optimal path to satisfy the configured climate goal.  Running GCAM in such a mode can take quite a bit of time, one option to speed this up is to set `restart-period` to 22 in the [configuration file as noted above](#315-ints-input-options).  Example policy target files are supplied in `input/policy` and are self documented:
 
 ```XML
 <policy-target-runner name="forcing_4p5">
@@ -286,7 +286,7 @@ The model interface is a GCAM tool to view GCAM results from the [BaseX](http://
 
 #### <a name="interactive-mode"> 3.4.1 Interactive Mode </a>
 
-Please see the [Quick Start](#viewing-model-results) section for the basics on how to open an database and run queries.  The `Scenarios` and `Regions` sections get populated automatically from the GCAM results that are stored in the database.  The `Queries` are loaded from a query file.  You can check the `model_interface.properties` file which is located in the folder as the `ModelInterface.jar`:
+Please see the [Quick Start](#22-viewing-model-results) section for the basics on how to open an database and run queries.  The `Scenarios` and `Regions` sections get populated automatically from the GCAM results that are stored in the database.  The `Queries` are loaded from a query file.  You can check the `model_interface.properties` file which is located in the folder as the `ModelInterface.jar`:
 
 ```
 <entry key="queryFile">../Main_User_Workspace/output/queries/Main_queries.xml</entry>
@@ -454,7 +454,7 @@ A number of example filter scripts are provided in the GCAM workspace under `<GC
 Runs the Model Interface in [batch mode](#modelinterface-batch-modes) if in the configuration a "batch-queries" file is specified.  Note that the "batch-queries" will be read and processed as normal ["batch command"](#modelinterface-batch-modes) except that the `<xmldbLocation>` will be ignored and use the database opened by GCAM instead.  If no batch queries file is specified the Model Interface will not be loaded and no queries will be run.  Note: batch queries will wait until the last moment for any given scenario to exist before running.  This is to ensure any target finding and/or cost calculations have been run an written to the database so that information would be available to the queries.
 
 #### 3.5.4 Using these features on an exported XML results file
-The tools that provide these features can be run independently from GCAM via the command line.  This can be useful for working with .xml files exported from the XML DB or the [debug_db.xml file](gcam-build.html#disable-java).  A user could programmatically load them back into a new XML DB using any of the aforementioned features.  This is done by calling the `<GCAM Workspace>/exe/XMLDBDriver.jar` directly:
+The tools that provide these features can be run independently from GCAM via the command line.  This can be useful for working with .xml files exported from the XML DB or the [debug_db.xml file](gcam-build.html#231-disable-java).  A user could programmatically load them back into a new XML DB using any of the aforementioned features.  This is done by calling the `<GCAM Workspace>/exe/XMLDBDriver.jar` directly:
 
 ```
 CLASSPATH=<GCAM Workspace>/libs/jars*:<GCAM Workspace>/input/gcam-data-system/_common/ModelInterface/src/ModelInterface.jar
