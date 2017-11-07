@@ -55,13 +55,42 @@ Model run completed.
 Model exiting successfully.
 ```
 
+#### 2.1.1 Common failures
+
+The most common failure to run GCAM when double clicking the `run-gcam` executable script typically relate to Java.  Dealing with Java differs depending on your system. 
+
+#### 2.1.1.1 Windows
+
+If a user sees a message similar to any of the following:
+
+* Unable to locate `jvm.dll`
+* A 64-bit Java is required to run GCAM
+* Or sometimes a generic message about the application is unable to start correctly (referencing some memory address)
+
+The most likely case is that the `run-gcam.bat` script was unable to detect the correct version of GCAM to use.  Either there is no 64-bit version of Java installed or both a 32-bit and 64-bit is installed and it didn't choose the right one.  In either case you should edit `run-gcam.bat` and update the `JAVA_HOME` manually to point to the correct location and delete the `REM` before the `SET`:
+
+```
+REM Users may set the following location to the appropriate Java Runtime installation location
+REM instead of trying to detect the appropriate location.  This may be necessary if the default
+REM Java version is the 32-bit runtime.
+REM SET JAVA_HOME=C:\Program Files\Java\jre1.8.0_101
+```
+
+Another common problem on Windows is GCAM also relies on the [Microsoft Visual Studio 2015 Redistributable](https://www.microsoft.com/en-us/download/details.aspx?id=48145) 64-bit package be installed as well.  Although the error message in this situation tends to be more reliable and descriptive.
+
+#### 2.1.1.2 Mac
+
+On the Mac a missing Java usually prompts an install of "legacy Java" from Apple.  Note this install is no longer supported by GCAM.  Instead users will need to install the Java Developer Kit from Oracle version 1.7 or newer.  The prcesses is a little bit ore involved so users should follow the same instructions for setting up [Java when compiling GCAM](gcam-build.html#23-java).
+
 ### 2.2 Viewing Model Results
 
 Comprehensive model output from each scenario is stored in an XML database. (Note that the current BaseX database is not compatible with older versions of GCAM and the GCAM model interface that use the .dbxml format.)
 
 To view model output open the ModelInterface application. This multi-platform application is written in java and requires that java be installed on your machine. 
 
-Select `Open` from the Model Interface File menu and then select `DB Open` from the sub-menu. The default setting is that the XML database is located in the `Output` subdirectory and is called `database_basexdb`. Select `database_basexdb` and you should see the following on your screen:
+Select `Open` from the Model Interface File menu and then select `DB Open` from the sub-menu. The default setting is that the XML database is located in the `Output` subdirectory and is called `database_basexdb`. Select `database_basexdb` and you should see the following on your screen.
+
+Note as of GCAM 4.4 the ModelInterface package on the Mac may prompt you to select your query file if it can not locate it.  This file is typically located in `<GCAM Workspace>/output/queries/Main_queries.xml`.
 
 ![Figure UG-1](gcam-figs/ModelInterface_Screenshot.png) <br/>
 Figure UG-1:  Screenshot of GCAM ModelInterface after an XML database has been opened, but before any queries have been run.
@@ -283,6 +312,17 @@ Note that target finder runs can also be configured in [Batch mode](#gcam-batch-
 ### 3.4 <a name="modelinterface"> ModelInterface </a>
 
 The model interface is a GCAM tool to view GCAM results from the [BaseX](http://basex.org) XML database or convert CSV files to XML.  You may find a copy at the top level of your release package and can be run by double clicking the `ModelInterface.jar` (on Mac this will be ModelInterface.app).  This section will focus mainly on viewing results.  It can be used in an [interactive mode](#interactive-mode) or users can set up [batch query](#modelinterface-batch-modes) files to automate dumping results to CSV or XLS.
+
+Note as of GCAM 4.4 the ModelInterface package on the Mac will by default save the `model_interface.properties` file in your home directory.  You can change this by:
+
+* Right click on the `ModelInteface.app` and select "Show Package Contents"
+* Edit `Contents/Info.plist` (using TextEdit should be sufficient)
+* Change the following `<string>` to an appropriate location, note you must use absolute paths.
+
+```
+<key>WorkingDirectory</key>
+<string>$USER_HOME</string>
+```
 
 #### <a name="interactive-mode"> 3.4.1 Interactive Mode </a>
 
