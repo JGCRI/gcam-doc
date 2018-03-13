@@ -3,7 +3,7 @@ layout: index
 title: The GCAM Macro-Economic System
 prev: overview.html
 next: energy.html
-gcam-version: v4.4 
+gcam-version: v5.0 
 ---
 
 The **Macro-Economic System** component of core GCAM sets the overall scale of economic activity for model simulations. Assumptions about population, and per capital income growth for each of the 32 geopolitical regions determines the Gross Domestic Product (GDP) in each of GCAM's 32 global geo-political regions. At present, the macro-economic systems provide a one-way transfer of information to other GCAM components; the state of other GCAM components does not affect the overall scale of human activities in GCAM (see below for minor exception to this statement). For example, neither the price nor quantity of energy nor the quantity of energy services provided to the economy affect the calculation of the principle model output of the GCAM macro-economic system, Gross Domestic Product (GDP). Similarly, no detail is provided other macro-economic variables such GDP components (consumption, investment, net exports, aggregate capital stock, and so forth) nor social welfare. The development of two-way coupling with other GCAM components is an important focus of present research efforts. 
@@ -56,6 +56,15 @@ Historical population and observed GDP are used to calibrate a GCAM simulation u
 
 The macro-economic systems provide information to other parts of the GCAM system. GDP and population values are used in the energy, land-use and water systems of GCAM. Macro-economic system coupling is one-way at present. GCAM macro systems do not use information derived from any other component of GCAM unless the energy-GDP feedback term is turned on. That is $$\alpha\neq0$$. Future versions of the macro-economic systems component of GCAM will introduce two-way coupling between GDP and the other GCAM human-systems components, energy, land and water.
 
+## Shared-Socioeconomic Pathways (SSPs)
+
+The SSPs are new reference scenarios for climate change modeling and research (Moss et al. 2010, van Vuuren et al., 2017). GCAM was one of six models used in the quantification of the SSPs. A complete description of the GCAM implementation, as well as links to results, is available at [GCAM SSPs](ssp.html).
+
+
 ## Reference
 
 Edmonds, J. and J. Reilly. 1983. "A Long-Term, Global, Energy-Economic Model of Carbon Dioxide Release From Fossil Fuel Use," Energy Economics, 5(2):74-88.
+
+Moss, R. H., J. A. Edmonds, K. A. Hibbard, M. R. Manning, S. K. Rose, D. P. van Vuuren, T. R. Carter, S. Emori, M. Kainuma, T. Kram, G. A. Meehl, J. F. B. Mitchell, N. Nakicenovic, K. Riahi, S. J. Smith, R. J. Stouffer, A. M. Thomson, J. P. Weyant and T. J. Wilbanks (2010). "The next generation of scenarios for climate change research and assessment." Nature 463(7282): 747-756.
+
+van Vuuren, D. P., K. Riahi, K. Calvin, R. Dellink, J. Emmerling, S. Fujimori, S. Kc, E. Kriegler and B. O’Neill (2017). "The Shared Socio-economic Pathways: Trajectories for human development and global environmental change." Global Environmental Change 42: 148-152.
