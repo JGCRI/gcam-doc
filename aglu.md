@@ -116,6 +116,10 @@ more or less difficult by choosing lower or higher logit parameters.
 
 The inclusion of multiple management types for each crop within each subregion of GCAM allows the model to represent price-induced intensification. That is, we can increase yields via increased fertilizer or irrigation if economic conditions favor those options. Like the rest of the land allocation decisions in GCAM, the share of each management practice depends on relative profitability. As profits of one option increase, more land will be allocated to that option. If the option is higher yielding, then average yields will increase (an intensification response). In general, GCAM will intensify when there is a lot of land competition (like when carbon in land is valued). Note that it is possible for average yields in a subregion to decline over time; this will happen if commodity prices decline or if the price of fertilizer and/or water increases. 
 
+### Land Regions
+
+For GCAM3.0 through GCAM4.4, the Agriculture and Land Use model subdivided the GCAM geopolitical regions into as many as 18 climatically defined agro-ecological zones (AEZs) developed by the GTAP group. GCAM5.0 switches subregions to water basin-defined geographic land units (GLUs). The land data system files are produced by the [Land Data System (LDS)](https://github.com/JGCRI/lds), described in Di Vittorio et al. (2016). 
+
 ## Calibration
 
 While the profit-based logit land sharing is fairly straightforward, it must be calibrated to match historical data on land use shares, crop yields, costs, and land prices in the base year. The calibration method is algebraically simple, but it can be difficult conceptually. The aim of the calibration is to infer distributions and underlying parameters from the historical data. Based on the logit model chosen, including nesting and exponents, underlying economic values of the various land types are implied from the real world shares of each land. 
