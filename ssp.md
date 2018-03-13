@@ -231,15 +231,23 @@ Table 6 includes information on implementation of the SSPs for the agriculture a
 
 To move from baseline scenarios to the RCP replications, we implemented the Shared Policy Assumptions (Kriegler et al., 2014) in GCAM. These assumptions are described in Table 7. For land policy, the relevant policy is phased in over several decades once the globally harmonized carbon price is imposed. For CO2 prices prior to global cooperation, we impose the carbon price required to reach a region’s Copenhagen pledge in an SSP2 world in all SSPs. That is, the same carbon price in 2020 is used regardless of SSP. Note that these policy assumptions are not unique and alternative assumptions could be derived that are also consistent with the SSP storylines. Note that the land carbon price described in the table is absent any transaction costs; we further reduce carbon prices on land by 50% to capture these effects.
 
-**Table 7**: Policy Assumptions across SSPs
+**Table 7a**: Policy Assumptions across SSPs: First model time period with global cooperation (i.e., harmonized global carbon price)
 {: .tbl}
 
-| | First model time period with global cooperation (i.e., harmonized global carbon price) | Land Policy |
-| | **SSP1** | **SSP2** | **SSP3** | **SSP4** | **SSP5** | **SSP1** | **SSP2** | **SSP3** | **SSP4** | **SSP5** |
-|:----------------|:----------------|:----------------|:----------------|:----------------|:----------------|:----------------|:----------------|:----------------|:----------------|:---------------- |
-| High Income | 2025 | 2040 | 2040 | 2025 | 2040 | Carbon Price on Land is Equal to Energy Carbon Price (i.e., UCT in Wise et al., 2009) | Carbon Price on Land is Equal to 50% of Energy Carbon Price | No Land Policy (i.e., FFICT in Wise et al., 2009) | Carbon Price on Land is Equal to Energy Carbon Price (i.e., UCT in Wise et al., 2009) | Carbon Price on Land is Equal to Energy Carbon Price (i.e., UCT in Wise et al., 2009) |
-| Medium Income | 2025 | 2040 | 2040 | 2025 | 2040 | Carbon Price on Land is Equal to Energy Carbon Price (i.e., UCT in Wise et al., 2009) | Carbon Price on Land is Equal to 50% of Energy Carbon Price | No Land Policy (i.e., FFICT in Wise et al., 2009) | Carbon Price on Land is Equal to 50% of Energy Carbon Price |Carbon Price on Land is Equal to Energy Carbon Price (i.e., UCT in Wise et al., 2009) |
-| Low Income |2025 | 2040 | 2050 | 2025 | 2040 | Carbon Price on Land is Equal to Energy Carbon Price (i.e., UCT in Wise et al., 2009) | Carbon Price on Land is Equal to 50% of Energy Carbon Price |No Land Policy (i.e., FFICT in Wise et al., 2009) |No Land Policy (i.e., FFICT in Wise et al., 2009) | Carbon Price on Land is Equal to Energy Carbon Price (i.e., UCT in Wise et al., 2009) |
+| Income Group | **SSP1** | **SSP2** | **SSP3** | **SSP4** | **SSP5** |
+|:----------------|:----------------|:----------------|:----------------|:----------------|:----------------|
+| High Income | 2025 | 2040 | 2040 | 2025 | 2040 | 
+| Medium Income | 2025 | 2040 | 2040 | 2025 | 2040 | 
+| Low Income | 2025 | 2040 | 2050 | 2025 | 2040 | 
+
+**Table 7b**: Policy Assumptions across SSPs: Land Policy
+{: .tbl}
+
+| Income Group | **SSP1** | **SSP2** | **SSP3** | **SSP4** | **SSP5** |
+|:----------------|:----------------|:----------------|:----------------|:----------------|:----------------|
+| High Income | Carbon Price on Land is Equal to Energy Carbon Price (i.e., UCT in Wise et al., 2009) | Carbon Price on Land is Equal to 50% of Energy Carbon Price | No Land Policy (i.e., FFICT in Wise et al., 2009) | Carbon Price on Land is Equal to Energy Carbon Price (i.e., UCT in Wise et al., 2009) | Carbon Price on Land is Equal to Energy Carbon Price (i.e., UCT in Wise et al., 2009) |
+| Medium Income | Carbon Price on Land is Equal to Energy Carbon Price (i.e., UCT in Wise et al., 2009) | Carbon Price on Land is Equal to 50% of Energy Carbon Price | No Land Policy (i.e., FFICT in Wise et al., 2009) | Carbon Price on Land is Equal to 50% of Energy Carbon Price |Carbon Price on Land is Equal to Energy Carbon Price (i.e., UCT in Wise et al., 2009) |
+| Low Income |Carbon Price on Land is Equal to Energy Carbon Price (i.e., UCT in Wise et al., 2009) | Carbon Price on Land is Equal to 50% of Energy Carbon Price |No Land Policy (i.e., FFICT in Wise et al., 2009) |No Land Policy (i.e., FFICT in Wise et al., 2009) | Carbon Price on Land is Equal to Energy Carbon Price (i.e., UCT in Wise et al., 2009) |
 
 ## Differences between Official SSPs and GCAM5.0 SSPs
 
