@@ -2,7 +2,7 @@
 layout: index
 title: Agriculture, Land-Use, and Bioenergy
 prev: energy.html
-next: hector.html
+next: water.html
 gcam-version: v5.0 
 ---
 

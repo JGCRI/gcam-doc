@@ -1,7 +1,7 @@
 ---
 layout: index
 title: Table of Contents
-gcam-version: v4.4
+gcam-version: v5.0
 ---
 ## GCAM Documentation Topics
 
@@ -9,6 +9,7 @@ gcam-version: v4.4
 * [Socioeconomics](macro-econ.html)
 * [GCAM Energy System](energy.html)
 * [Agriculture, Land-Use, and Bioenergy](aglu.html)
+* [Water](water.html)
 * [Climate Module – Hector](hector.html) 
 * [Economic Choice in GCAM](choice.html)
 * [Technology Representation](en_technologies.html)
@@ -24,5 +25,6 @@ gcam-version: v4.4
 * [GCAM-3](v3.2/toc.html)
 * [GCAM-4.2](v4.2/toc.html)
 * [GCAM-4.3](v4.3/toc.html)
+* [GCAM-4.4](v4.4/toc.html)
 
 

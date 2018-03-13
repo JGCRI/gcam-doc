@@ -1,7 +1,7 @@
 ---
 layout: index
 title: Climate Module – Hector	
-prev: aglu.html
+prev: water.html
 next: choice.html
 gcam-version: v4.4
 ---
