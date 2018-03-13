@@ -40,8 +40,7 @@ To implement the SSPs within GCAM, we use the demographic and economic assumptio
 **Table 2**: Qualitative Assumptions across SSPs
 {: .tbl}
 
-|  |  |  |  |  | SSP4 |  |
-| Category | Variable | SSP1 | SSP2 | SSP3 | High Income / Medium Income / Low Income | SSP5 |
+| Category | Variable | SSP1 | SSP2 | SSP3 | SSP4 (High / Medium / Low Income ) | SSP5 |
 | :------------- |:------------- |:------------- |:------------- |:------------- |:------------- |:-------------|
 | Socioeconomics | Population in 2100 | 6.9 billion | 9 billion | 12.7 billion | 0.9 billion / 2.0 billion / 6.4 billion | 7.4 billion |
 |  | GDP per capita in 2100 | $46,306  | $33,307 | $12,092 | $123,244 / $30,937 / $7,388 | $83,496 |
@@ -174,16 +173,25 @@ Table 3 maps technology & SSP to either core, advanced (less expensive), or low 
 
 Table 4 details assumptions made for fossil fuel supply. Similar to renewables, we do not vary the resource bases across SSPs, but instead vary cost of extraction and use. In particular, we adjust the technical change coefficient on future extraction costs to reflect differences in technological conditions across SSPs. To reflect differences in social acceptance, we use a cost adder that adjusts the cost to downstream users. The cost adder for 2100 is shown in Table 3; adders are linearly interpolated from $0 in 2010 to the 2100 value. The 2100 value is defined in relation to the carbon content of the resource; thus, a “medium” social acceptance will result in a different cost adder for different fuels.
 
-**Table 4**: Fossil Fuel Assumptions across SSPs
+**Table 4a**: Fossil Fuel Assumptions across SSPs: Technical Change on Extraction Cost (% per year)
 {: .tbl}
 
-| |  Technical Change on Extraction Cost (% per year) | Cost Adder in 2100 ($/GJ) |
-| | **SSP1** | **SSP2** | **SSP3** | **SSP4** | **SSP5** | **SSP1** | **SSP2** | **SSP3** | **SSP4** | **SSP5** |
+| Fuel | **SSP1** | **SSP2** | **SSP3** | **SSP4** | **SSP5** | 
 |:---------- |:----------|:----------|:----------|:----------|:----------|:----------|:----------|:----------|:----------|:----------|
-| Coal | 0.5% | 0.5% | 1% | 0.5% | 2% | $1.37 | $0.27 | $0 | $0.27 | $0 |
-| Gas | 0.5% | 0.5% | 0.5% | 1% | 2% | $0.14 | $0.14 | $0.14 | $0.71 | $0 |
-| Conventional Oil | 0.5% | 0.5% | 0.5% | 1% | 2% | $0.20 | $0.20 | $0.20 | $0.98 | $0 |
-| Unconventional Oil | 0% |  0.5% | 0.5% | 2% | $0.21 | $0.21 | $0.21 | $1.06 | $0 |
+| Coal | 0.5% | 0.5% | 1% | 0.5% | 2% | 
+| Gas | 0.5% | 0.5% | 0.5% | 1% | 2% | 
+| Conventional Oil | 0.5% | 0.5% | 0.5% | 1% | 2% | 
+| Unconventional Oil | 0% |  0.5% | 0.5% | 2% | 
+
+
+**Table 4b**: Fossil Fuel Assumptions across SSPs: Cost Adder in 2100 ($/GJ)
+{: .tbl}
+
+| Fuel | **SSP1** | **SSP2** | **SSP3** | **SSP4** | **SSP5** |
+| Coal | $1.37 | $0.27 | $0 | $0.27 | $0 |
+| Gas | $0.14 | $0.14 | $0.14 | $0.71 | $0 |
+| Conventional Oil | $0.20 | $0.20 | $0.20 | $0.98 | $0 |
+| Unconventional Oil | $0.21 | $0.21 | $0.21 | $1.06 | $0 |
 
 ### Building Energy Demand Assumptions
 
@@ -221,8 +229,7 @@ Table 6 includes information on implementation of the SSPs for the agriculture a
 **Table 6**: Agriculture and Land Use Assumptions across SSPs
 {: .tbl}
 
-|  |  |  |  | SSP4 |  |
-|  | SSP1 | SSP2 | SSP3 | High Income / Medium Income / Low Income | SSP5 |
+| Variable  | SSP1 |  SSP2 | SSP3 | SSP4 (High / Med / Low Income )| SSP5 |
 |:----------------|:----------------|:----------------|:----------------|:----------------|:----------------|
 | Agricultural Productivity Growth | 50% above GCAM default | GCAM default | 50% below GCAM default | 50% above GCAM default / GCAM default / 50% below GCAM default | 50% above GCAM default |
 | Meat Demand | Meat demand limited to 1000 kcal/per/day. Shift in preferences among meat products away from beef, sheep, and goats. | Meat demand limited to 1100 kcal/per/day. | Meat demand limited to 1400 kcal/per/day.  | Meat demand limited to 1100kcal/per/day. | Meat demand limited to 1400 kcal/per/day. |
