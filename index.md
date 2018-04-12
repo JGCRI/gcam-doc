@@ -93,12 +93,17 @@ highly aggregated and focused on the conduct of global,
 century-scale, cost-benefit analysis (examples include DICE, FUND, and
 PAGE). GCAM does not contain the components necessary to conduct cost-benefit analysis.
 
+### GCAM version 4.4
+
+The major updates in GCAM version 4.4 are BECCS supply & demand updates and new flexibility for non-CO2 emissions and markets. A number of other updates and bug fixes are included. These are detailed in a [presentaion from the 2017 GCAM community meeting](http://www.globalchange.umd.edu/data/annual-meetings/2017/KCalvin_GCAM_release_updates.pdf).
+
+
 ## User Guides and Tutorials
 
-* [GCAM Documentation](toc.html)
 * [Getting Started with GCAM](user-guide.html)
+* [GCAM Documentation](toc.html)
 * [GCAM Community](http://www.globalchange.umd.edu/models/gcam/gcam-community/)
-* [2015 Tutorial Slides](http://www.globalchange.umd.edu/data/annual-meetings/2015/GCAM_Tutorial_2015.pdf)
+* [2017 Tutorial Slides](http://www.globalchange.umd.edu/data/annual-meetings/2017/GCAM_Tutorial_2017.pdf)
 * GCAM lectures from the UMD Water and Climate class
   * [Lecture 3: Introduction to GCAM](https://www.youtube.com/watch?v=xRF9lFwtMr0)
   * [Lecture 4: GCAM Tutorial](https://www.youtube.com/watch?v=S7vAShH-dbs)
