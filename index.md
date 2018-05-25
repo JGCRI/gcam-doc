@@ -125,5 +125,3 @@ Kim, S.H., J. Edmonds, J. Lurz, S. J. Smith, and M. Wise (2006) “The ObjECTS F
 
 Reilly, J. M., J. A. Edmonds, R. H. Gardner and A. L. Brenkert  (1987) "Uncertainty Analysis of the IEA/ORAU CO₂ Emissions Model"
 The Energy Journal, Vol. 8, No. 3, pp. 1-29
-
-[Additional GCAM publications](references.html)
