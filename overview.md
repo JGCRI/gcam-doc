@@ -3,7 +3,7 @@ layout: index
 title: GCAM Model Overview
 prev: 
 next: macro-econ.html
-gcam-version: v4.4 
+gcam-version: v5.0 
 ---
 
 ## Introduction
@@ -54,7 +54,7 @@ Supplied with input information from the GCAM Data System, the GCAM Core is the 
 
 * [**Agriculture and Land Systems**](aglu.html): The agriculture and land systems provide in information about land use, land cover, carbon stocks and net emissions, the production of bioenergy, food, fiber, and forest products. Demands are driven by the size of the population, their income levels, and commodity prices. The module reports demands for and supplies of agricultural and other commodities, land and emissions of greenhouse gases, aerosols and other short-lived species. The demand for bioenergy is a derived demand by the energy sector. Agriculture and land systems demand water from water systems.
 
-* **Water Systems**: At present, the water systems module is not part of the release version of the GCAM. A research branch of GCAM exists for which the water system is fully integrated with the macro-economy, energy, agriculture and land systems.
+* [**Water Systems**](water.html): The water module provides information about water withdrawals and water consumption for energy, agriculture, and municipal uses.
 
 * [**Physical Earth System**](hector.html): The physical Earth system in GCAM is modeled using Hector, a physical Earth system emulator that provides information about the composition of the atmosphere based on emissions provided by the other modules, ocean acidity, and climate.
 
@@ -133,6 +133,10 @@ Key Scenario Results from the GCAM Core
 * Water: water demands and supplies for all agricultural, energy, and household uses
 
 * Emissions: 16 greenhouse gases and short-lived species:  CO2, CH4, N2O, halocarbons, carbonaceous aerosols, reactive gases, sulfur dioxide.
+
+## Changes from the Previous Version
+
+[**Recent Updates**](updates.html): A summary of key update to GCAM between version 5.0 and the previous version (version 4.4).
 
 ## Regional Versions of GCAM 
 
