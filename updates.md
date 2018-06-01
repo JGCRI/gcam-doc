@@ -10,9 +10,10 @@ Several changes have been made to GCAM since the last release version (v4.4). Th
 1. Water demands are now included (see [Water Demand](#water-demand)
 2. Land use regions are now based on water basins (see [Land Regions](#land-regions))
 3. Multiple agricultural management practices are included (see [Agricultural Management](#agricultural-management))
-4. The GCAM Shared Socioeconomic Pathways are included (see [SSPs](#ssps)
+4. The GCAM Shared Socioeconomic Pathways are included (see [SSPs](#ssps))
 5. A newer version of Hector is included (see [Hector](#hector))
 6. Update to a new data system (see [Data System](#data-system))
+7. Model Interface bug fixes and support for Java 9/10.
 
 The sections below provide short summaries of all changes.
 

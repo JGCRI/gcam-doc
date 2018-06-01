@@ -7,6 +7,7 @@ gcam-version: v5.0
 
 * [GCAM Model Overview](overview.html)
 * [Socioeconomics](macro-econ.html)
+* [Shared-Socioeconomic Pathways](ssp.html)
 * [GCAM Energy System](energy.html)
 * [Agriculture, Land-Use, and Bioenergy](aglu.html)
 * [Water](water.html)
