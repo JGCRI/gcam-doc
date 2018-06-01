@@ -1,7 +1,7 @@
 ---
 layout: index
 title: GCAM Energy System
-prev: macro-econ.html
+prev: ssp.html
 next: aglu.html
 gcam-version: v5.0
 ---

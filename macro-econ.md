@@ -2,7 +2,7 @@
 layout: index
 title: The GCAM Macro-Economic System
 prev: overview.html
-next: energy.html
+next: ssp.html
 gcam-version: v5.0 
 ---
 

@@ -2,7 +2,7 @@
 layout: index
 title: GCAM Fusion users guide
 prev: gcam-build.html
-next: references.html
+next: 
 gcam-version: v5.0
 ---
 

@@ -7,6 +7,7 @@ gcam-version: v5.0
 
 * [GCAM Model Overview](overview.html)
 * [Socioeconomics](macro-econ.html)
+* [Shared-Socioeconomic Pathways](ssp.html)
 * [GCAM Energy System](energy.html)
 * [Agriculture, Land-Use, and Bioenergy](aglu.html)
 * [Water](water.html)
@@ -18,7 +19,6 @@ gcam-version: v5.0
 * [How to Set Up and Build ](gcam-build.html)
 * [GCAM-USA](gcam-usa.html)
 * [GCAM Fusion Usage Guide](fusion.html)
-* [References](references.html)
 
 ## Documentation for Older Versions of GCAM
 
