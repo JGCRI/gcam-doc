@@ -3,7 +3,7 @@ layout: index
 title: GCAM User Guide
 prev: solver.html
 next: gcam-build.html
-gcam-version: v4.4 
+gcam-version: v5.0 
 ---
 ## Table Of Contents
   [1. Introduction](#gcam-intro)
@@ -19,14 +19,13 @@ gcam-version: v4.4
 * [Controlling the level of XML DB Output](#controlling-the-level-of-xml-db-output)
     
 ## <a name="gcam-intro"> 1.Introduction </a>
- This document provides information on download and get running the GCAM model. To download GCAM you can follow the `Download GCAM` link in the upper right had corner.  Users should find the GCAM version 4.4 release.  There will be a few files available for download:
+ This document provides information on download and get running the GCAM model. To download GCAM you can follow the `Download GCAM` link in the upper right had corner.  Users should find the GCAM version 5.1 release.  There will be a few files available for download:
 
-* gcam-v4.4-Mac-Release-Package.zip contains the GCAM executable, supporting libraries, the ModelInterface, and input XML files for the Mac OS X platform.  **Note for most Mac users this is typically the only package required.**
-* gcam-v4.4-Windows-Release-Package.zip contains the GCAM executable, supporting libraries, the ModelInterface, and input XML files for the Windows platform. **Note for most Windows users this is typically the only package required.**
-* Source code (in zip or tar.gz format).  This is the core of the release and contains all model source code and data processing scripts.  Generally only needed if you need to comple the source code or rebuild input files from scratch.  Users who will need to maintain changes to source code and/or data processing code for an extended period of time should strongly consider checking out the repository with Git instead.
-* data-system.tar.gz contains the XML input files as well as supporting CSV files for users who do not have access to the proprietary IEA energy balance data necessary for running the gcam-data-system.
+* gcam-v5.1-Mac-Release-Package.zip contains the GCAM executable, supporting libraries, the ModelInterface, and input XML files for the Mac OS X platform.  **Note for most Mac users this is typically the only package required.**
+* gcam-v5.1-Windows-Release-Package.zip contains the GCAM executable, supporting libraries, the ModelInterface, and input XML files for the Windows platform. **Note for most Windows users this is typically the only package required.**
+* Source code (in zip or tar.gz format).  This is the core of the release and contains all model source code and data processing scripts.  Generally only needed if you need to comple the source code from scratch.  Users who will need to maintain changes to source code and/or data processing code for an extended period of time should strongly consider checking out the repository with Git instead.
 
-The following instructions for users who want to use the pre-built GCAM executable and XML input files.  For instructions on compiling your own GCAM executable see [GCAM Compile Instructions](gcam-build.html).  For instructions on how to run the gcam-data-system to rebuild the XML input files from scratch see [Running the GCAM Data System](data-system.html).  Once built these users can proceed from the [Quickstart](#gcam-quickstart) guide.
+The following instructions for users who want to use the pre-built GCAM executable and XML input files.  For instructions on compiling your own GCAM executable see [GCAM Compile Instructions](gcam-build.html).  For instructions on how to run the gcamdata R package to rebuild the XML input files from scratch see [Running the GCAM Data System](data-system.html).  Once built these users can proceed from the [Quickstart](#gcam-quickstart) guide.
 
 To start users should download and unpack the Release Package appropriate for their platform to a location of their choosing.  Throughout this document that location will be referred to as `<GCAM Workspace>`.
 
@@ -35,6 +34,8 @@ The rest of this user's guide is divided into two parts. First a [GCAM "quicksta
 ## 2. <a name="gcam-quickstart">GCAM Quickstart</a>
 
 This section provides a brief introduction on how to use the GCAM Model and view model data using the GCAM model interface. The instructions in this Quickstart guide should work with a GCAM distribution release that has been downloaded and uncompressed to your local machine.
+
+**Warning:** For GCAM 5.1 computational requirements have increased significantly.  A GCAM model simulation will utilize over 8 GB of system RAM and storing the full results of the simulation will take around 2 GB of disk space per scenario.
 
 ### 2.1. Running a reference case scenario
 
@@ -407,7 +408,7 @@ Alternatively if users prefer to set up a workflow that does not require any man
 Users can the invoke the Model Interface from the command line as follows to call their batch file and no user interface will be presented.  Note if a batch file named `-` is specified then the "batch commands" are read from the STDIN.  Users can also instruct the ModelInterface to save log output to a file by using the flags `-l path/to/log/output.txt`.
 
 ```
-CLASSPATH=<GCAM Workspace>/libs/jars*:<GCAM Workspace>/input/gcam-data-system/_common/ModelInterface/src/ModelInterface.jar
+CLASSPATH=<GCAM Workspace>/libs/jars*:<GCAM Workspace>/output/modelInterface/ModelInterface.jar
 java -cp $CLASSPATH ModelInterface/InterfaceMain -b batch_queries/xmldb_batch.xml
 ```
 
@@ -497,7 +498,7 @@ Runs the Model Interface in [batch mode](#modelinterface-batch-modes) if in the 
 The tools that provide these features can be run independently from GCAM via the command line.  This can be useful for working with .xml files exported from the XML DB or the [debug_db.xml file](gcam-build.html#231-disable-java).  A user could programmatically load them back into a new XML DB using any of the aforementioned features.  This is done by calling the `<GCAM Workspace>/exe/XMLDBDriver.jar` directly:
 
 ```
-CLASSPATH=<GCAM Workspace>/libs/jars*:<GCAM Workspace>/input/gcam-data-system/_common/ModelInterface/src/ModelInterface.jar
+CLASSPATH=<GCAM Workspace>/libs/jars*:<GCAM Workspace>/output/modelInterface/ModelInterface.jar
 java -cp ${CLASSPATH}:XMLDBDriver.jar XMLDBDriver --help
 USAGE:
    java -cp XMLDBDriver.jar XMLDBDriver --db-path=PATH --doc-name=NAME --xml=FILE
