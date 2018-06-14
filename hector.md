@@ -1,6 +1,6 @@
----
+﻿---
 layout: index
-title: Climate Module – Hector v2.0	
+title: Earth System Module – Hector v2.0	
 prev: water.html
 next: choice.html
 gcam-version: v5.1
