@@ -85,7 +85,7 @@ At every time step Hector calculates and outputs key climate variables.
 </dl>
 
 ## Getting and Installing Hector for Use with GCAM
-For users who are running GCAM with the [Mac] (https://github.com/JGCRI/gcam-core/releases/download/gcam-v5.1/mac_binaries.tar.gz) or [Windows](https://github.com/JGCRI/gcam-core/releases/download/gcam-v5.1/windows_binaries.tar.gz) binary Release add-ons, Hector support is already compiled in.  For users compiling for source or interested in getting the Hector source, please see the [Hector section in How to Set Up and Build GCAM](gcam-build.html#3-compiling-hector).
+For users who are running GCAM with the Mac or Windows Release Package, Hector support is already compiled in.  For users compiling from source or interested in getting the Hector source, please see the [Hector section in How to Set Up and Build GCAM](gcam-build.html#3-compiling-hector).
 
 ## References
 1. Hartin, C. A., Patel, P., Schwarber, A., Link, R. P., and
