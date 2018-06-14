@@ -1176,7 +1176,8 @@ to use `STATE` with `SIMPLE` or `ARRAY`.  You should add this flag to any Da
 definition who's data will get set during a call to `World::calc`, as described
 in [Centrally Managed State Variables](#centrally-managed-state-variables).
 
-
+### Add your new class to `gcam_data_containers.h`
+Since the `GCAMFusion` object determines which GCAM objects it will access at runtime it potentially needs to be able to traverse *all* GCAM objects.  Thus we maintain a header file that includes all GCAM objects that `DEFINE_DATA` that GCAM Fusion may need to access in `util/base/include/gcam_data_containers.h`.  Thus if you add a new class you must also include the header file to your new class in `gcam_data_containers.h` as well.
 
 ### Some side effects from the way we have done the data definitions
 
