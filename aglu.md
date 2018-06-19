@@ -34,7 +34,7 @@ GCAM's inputs include information on production, consumption, prices, land, carb
 
 ### Outputs
 
-GCAM's outputs include variables related to production, consumption, prices, land, carbon, and other emissions. 
+GCAM's outputs include variables related to production, consumption, prices, land, fertilizer, carbon, and other emissions. 
 
 <dl>
 <dt>Production</dt> <dd>Outputs include production of all crops and
@@ -55,6 +55,9 @@ level).</dd>
 
 <dt>Land</dt> <dd>Outputs include land use and land cover for each of
 the land types included in GCAM (see Figure 1). This information is
+calculated annually for each of the AgLU subregions.</dd>
+
+<dt>Fertilizer</dt> <dd>Outputs include fertilizer use for each crop and management practice included in GCAM (see Figure 1). This information is
 calculated annually for each of the AgLU subregions.</dd>
 
 <dt>Water Withdrawals</dt> <dd>Outputs include water withdrawals by crop and management practice. This information is
