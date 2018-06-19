@@ -39,7 +39,7 @@ GCAM's outputs include variables related to production, consumption, prices, lan
 <dl>
 <dt>Production</dt> <dd>Outputs include production of all crops and
 forestry products; this information is calculated annually for each of
-the 283 AgLU regions. GCAM also calculates production of livestock at
+the 300+ AgLU regions. GCAM also calculates production of livestock at
 the 32 region level.</dd>
 
 <dt>Consumption</dt> <dd>Outputs include food, non-food, bioenergy,
@@ -65,7 +65,7 @@ calculated annually for each of the AgLU subregions.</dd>
 
 <dt>Carbon</dt> <dd>Outputs include carbon stock and land-use change
 emissions of CO<sub>2</sub>. This information is calculated annually
-for each of the 283 AgLU regions.</dd>
+for each of the 300+ AgLU regions.</dd>
 
 <dt>Other emissions</dt> <dd>Outputs include emissions of
 CH<sub>4</sub>, N<sub>2</sub>O, NH<sub>3</sub>, SO<sub>2</sub>, CO,
@@ -75,7 +75,7 @@ reduced with the application of a carbon price. Pollutant emissions
 are produced from agricultural waste burning, forest fires,
 deforestation, and savannah burning. Livestock emissions are
 calculated annually at the 32 region level. All other emissions are
-calculated annually at the 283 region level.</dd>
+calculated annually at the 300+ region level.</dd>
 </dl><br/>
   
 ## Economic Modeling Approach
@@ -148,7 +148,7 @@ The main points can be summarized as:
 * Variable costs should be based on technology data. They should not be used as calibration parameters to adjust profits.
 * Variable costs should not include value-added categories of land, return to capital, and owner-wages.
 
-### New Land Types
+### Modeling Land Uses and Crops that are New to a Region
 
 The calibration process can accommodate gaps or imprecisions of the price and cost data for the crops and land uses in base year calibration data set. Changing the values of inputs such as land prices, product prices, and product variable costs will change the values of the calibration parameters internal to the model. Algebraically, the calibration parameters adjust or compensate to make the profit rates consistent with the base year shares and crop yields. In most situations, these changes will not affect model results either in the calibration year or future years. The calibration is to an extent self-correcting.
 
@@ -220,7 +220,7 @@ We can impose constraints (lower or upper bounds) on bioenergy within GCAM. Unde
 
 ### Land expansion costs/constraints
 
-One approach we have implemented and tested is to add a land expansion cost curve to targeted land types in regional AEZs. Specifically, we have added land expansion cost curves to unmanaged forest land in regional AEZ’s in which a carbon policy resulted in fast transformation from grassland to unmanaged forest. This method effectively adds a cost associated with converting to forests.  This cost can be interpreted as the cost of planting, watering, fire management, etc. required to grow trees on previously unforested land.
+One approach we have implemented and tested is to add a land expansion cost curve to targeted land types in specific regions. Specifically, we have added land expansion cost curves to unmanaged forest land in individual regions in which a carbon policy resulted in fast transformation from grassland to unmanaged forest. This method effectively adds a cost associated with converting to forests.  This cost can be interpreted as the cost of planting, watering, fire management, etc. required to grow trees on previously unforested land.
 
 The land expansion cost curve is implemented as a “renewable” resource that land must “purchase” on a per-unit of land basis. The cost curve can be set at a zero cost up to a predefined amount of land: e.g., base year allocation, pre-industrial allocation, etc. Beyond this point, the cost curve increases to either represent a physical expansion cost or an arbitrarily high cost that would act as a hard constraint on expansion. One drawback to this approach is that each cost curve adds a market equation that needs to be solved. The market should behave well, but adding markets should always be done with care as it does put additional burdens on the solution algorithm.
 
