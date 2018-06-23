@@ -11,10 +11,10 @@ An overview of GCAM is available at [GCAM Model Overview](overview.html). There 
 
 ## User Guides and Tutorials
 
-* [GCAM Documentation](toc.html)
 * [Getting Started with GCAM](user-guide.html)
+* [GCAM Documentation](toc.html)
 * [GCAM Community](http://www.globalchange.umd.edu/models/gcam/gcam-community/)
-* [2015 Tutorial Slides](http://www.globalchange.umd.edu/data/annual-meetings/2015/GCAM_Tutorial_2015.pdf)
+* [2017 Tutorial Slides](http://www.globalchange.umd.edu/data/annual-meetings/2017/GCAM_Tutorial_2017.pdf)
 * GCAM lectures from the UMD Water and Climate class
   * [Lecture 3: Introduction to GCAM](https://www.youtube.com/watch?v=xRF9lFwtMr0)
   * [Lecture 4: GCAM Tutorial](https://www.youtube.com/watch?v=S7vAShH-dbs)
