@@ -3,7 +3,7 @@ layout: index
 title: Recent updates
 prev: hector.html
 next: overview.html
-gcam-version: v5.0 
+gcam-version: v5.1 
 ---
 
 Several changes have been made to GCAM since the last release version (v4.4). The key updates are:
