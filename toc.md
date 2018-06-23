@@ -19,6 +19,7 @@ gcam-version: v5.1
 * [How to Set Up and Build ](gcam-build.html)
 * [GCAM-USA](gcam-usa.html)
 * [GCAM Fusion Usage Guide](fusion.html)
+* [Updates from the Previous Release](updates.html)
 
 ## Documentation for Older Versions of GCAM
 
