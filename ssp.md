@@ -3,18 +3,18 @@ layout: index
 title: GCAM Shared-Socioeconomic Pathways
 prev: macro-econ.html
 next: energy.html
-gcam-version: v5.0 
+gcam-version: v5.1 
 ---
 
 ## Overview of the SSPs
 
-The GCAM model was one of six models used in the quantification of the Shared Socioeconomic Pathways (SSP; Riahi et al., 2017). The SSPs are new reference scenarios for climate change modeling and research (Moss et al. 2010, van Vuuren et al., 2014). That is the five SSPs assume no additional policies and measures explicitly designed to reduce greenhouse gas emissions.  However, each of the five reference scenarios can be paired with a set of emissions mitigation assumptions.  Thus, when paired with a limit of 2.6, 4.5, or 6.0, a constrained SSP can be paired with the corresponding climate model experiments in the CMIP6 data base. The five SSPs are defined along two different axes: challenges to mitigation and challenges to adaptation (see Figure below).
+The GCAM model was one of six models used in the quantification of the Shared Socioeconomic Pathways (SSP; Riahi et al., 2017). The SSPs are new reference scenarios for climate change modeling and research (Moss et al. 2010, van Vuuren et al., 2014). That is the five SSPs assume no additional policies and measures explicitly designed to reduce greenhouse gas emissions.  However, each of the five reference scenarios can be paired with a set of emissions mitigation assumptions.  Thus, when paired with a limit of 2.6, 4.5, or 6.0, the resulting scenario can be used in combination with the corresponding climate model experiments in the CMIP data base. The five SSPs are defined along two different axes: challenges to mitigation and challenges to adaptation (see Figure below).
 
 ![SSP Definitions](gcam-figs/ssp_axes.png)<br/>
 Figure 1: Definitions of SSPs in terms of Challenges to Mitigation and Challenges to Adaptation
 {: .fig}
 
-Each of the models produced results for between three and five of the SSPs, with one model identified as the "marker" for each SSP and the others providing estimates of uncertainty. GCAM was the marker model for the SSP4. Marker models, and models providing uncertainty estimates, for all SSPs are listed in the Table below.
+Each of the six IAMs produced results for between three and five of the SSPs, with one model identified as the "marker" for each SSP and the others providing estimates of uncertainty. GCAM was the marker model for the SSP4. Marker models, and models providing uncertainty estimates, for all SSPs are listed in the Table below.
 
 **Table 1**: Overview of the SSPs
 {: .tbl}
@@ -31,11 +31,11 @@ Each of the models produced results for between three and five of the SSPs, with
 
 Official SSP data, as planned for use in [CMIP6](http://www.geosci-model-dev.net/9/3461/2016/), must be downloaded from the official [SSP database](https://secure.iiasa.ac.at/web-apps/ene/SspDb/dsd?Action=htmlpage&page=about).
 
-The GCAM data for the SSP4 and the GCAM representation of all other SSPs (Calvin et al., 2017) are being made available to interested researchers for scenario analysis and comparison. This data is available at ***INSERT LINK***
+The GCAM data for the SSP4 and the GCAM representation of all other SSPs (Calvin et al., 2017) are being made available to interested researchers for scenario analysis and comparison. 
 
 ## Implementation in GCAM
 
-To implement the SSPs within GCAM, we use the demographic and economic assumptions developed by Lutz et al. (2015) and Dellink et al. (2015) in combination with technology and policy assumptions derived from the SSP narratives (O’Neill et al. 2015). Table 1 provides a qualitative summary of these parameters; quantitative details are provided in subsequent tables. In general, we have altered parameters related to energy supply (e.g., the capital cost of new power plants, technical change on extraction costs), energy demand (e.g., preferences for traditional bioenergy), agriculture (e.g., agricultural productivity growth), and policy (e.g., start years for carbon policies). To implement the SSP storylines within GCAM, we quantified “high”, “medium”, and “low” for each of the variables listed in Table 2. Those quantifications are provided in Tables 3 through Table 8.
+To implement the SSPs within GCAM, we use the demographic and economic assumptions developed by Lutz et al. (2015) and Dellink et al. (2015) in combination with technology and policy assumptions derived from the SSP narratives (O’Neill et al. 2015). Table 2 provides a qualitative summary of these parameters; quantitative details are provided in subsequent tables. In general, we have altered parameters related to energy supply (e.g., the capital cost of new power plants, technical change on extraction costs), energy demand (e.g., preferences for traditional bioenergy), agriculture (e.g., agricultural productivity growth), and policy (e.g., start years for carbon policies). To implement the SSP storylines within GCAM, we quantified “high”, “medium”, and “low” for each of the variables listed in Table 2. Those quantifications are provided in Table 3 through Table 8.
 
 **Table 2**: Qualitative Assumptions across SSPs
 {: .tbl}
@@ -237,7 +237,7 @@ Table 6 includes information on implementation of the SSPs for the agriculture a
 
 ### Climate Policy
 
-To move from baseline scenarios to the RCP replications, we implemented the Shared Policy Assumptions (Kriegler et al., 2014) in GCAM. These assumptions are described in Table 7. For land policy, the relevant policy is phased in over several decades once the globally harmonized carbon price is imposed. For CO2 prices prior to global cooperation, we impose the carbon price required to reach a region’s Copenhagen pledge in an SSP2 world in all SSPs. That is, the same carbon price in 2020 is used regardless of SSP. Note that these policy assumptions are not unique and alternative assumptions could be derived that are also consistent with the SSP storylines. Note that the land carbon price described in the table is absent any transaction costs; we further reduce carbon prices on land by 50% to capture these effects.
+To move from baseline scenarios to the RCP replications, we implemented the Shared Policy Assumptions (Kriegler et al., 2014) in GCAM. These assumptions are described in Table 7. For land policy, the relevant policy is phased in over several decades once the globally harmonized carbon price is imposed. For CO<sub>2</sub> prices prior to global cooperation, we impose the carbon price required to reach a region’s Copenhagen pledge in an SSP2 world in all SSPs. That is, the same carbon price in 2020 is used regardless of SSP. Note that these policy assumptions are not unique and alternative assumptions could be derived that are also consistent with the SSP storylines. Note that the land carbon price described in the table is absent any transaction costs; we further reduce carbon prices on land by 50% to capture these effects.
 
 **Table 7a**: Policy Assumptions across SSPs: First model time period with global cooperation (i.e., harmonized global carbon price)
 {: .tbl}
@@ -257,11 +257,11 @@ To move from baseline scenarios to the RCP replications, we implemented the Shar
 | Medium Income | Carbon Price on Land is Equal to Energy Carbon Price (i.e., UCT in Wise et al., 2009) | Carbon Price on Land is Equal to 50% of Energy Carbon Price | No Land Policy (i.e., FFICT in Wise et al., 2009) | Carbon Price on Land is Equal to 50% of Energy Carbon Price |Carbon Price on Land is Equal to Energy Carbon Price (i.e., UCT in Wise et al., 2009) |
 | Low Income |Carbon Price on Land is Equal to Energy Carbon Price (i.e., UCT in Wise et al., 2009) | Carbon Price on Land is Equal to 50% of Energy Carbon Price |No Land Policy (i.e., FFICT in Wise et al., 2009) |No Land Policy (i.e., FFICT in Wise et al., 2009) | Carbon Price on Land is Equal to Energy Carbon Price (i.e., UCT in Wise et al., 2009) |
 
-## Differences between Official SSPs and GCAM5.0 SSPs
+## Differences between Official SSPs and GCAM5.1 SSPs
 
-The official SSPs (Calvin et al., 2017) were branched from GCAM4.0. There are several changes between versions that will have implications for SSP-related results. First, in the original SSPs (Calvin et al., 2017), electricity power plant costs were based off of the values used in GCAM4.0. We defined advanced and low as deviations from the core model. GCAM4.2, however, updated the power plant capital costs in the core, and established advanced and low technology costs. These values will be used going forward in the SSPs.  Second, GCAM5.0 includes different land regions and multiple land technologies (see below). These are likely to have effects on all land-related results. Third, GCAM4.4 introduced a net negative emissions constraint that wasn't present in the official SSPs. This will affect bioenergy use and net negative CO2 emissions, particularly in 2.6 W/m^2 scenarios.
+The official SSPs (Calvin et al., 2017) were branched from GCAM4.0. There are several changes between versions that will have implications for SSP-related results. First, in the original SSPs (Calvin et al., 2017), electricity power plant costs were based off of the values used in GCAM4.0. We defined advanced and low as deviations from the core model. GCAM4.2, however, updated the power plant capital costs in the core, and established advanced and low technology costs. These values will be used going forward in the SSPs.  Second, GCAM5.1 includes different land regions and multiple land technologies (see below). These are likely to have effects on all land-related results. Third, GCAM4.4 introduced a net negative emissions constraint that wasn't present in the official SSPs. This will affect bioenergy use and net negative CO<sub>2</sub> emissions, particularly in 2.6 W/m<sup>2</sup> scenarios.
 
-Data from the official SSPs is available at [SSP database](https://secure.iiasa.ac.at/web-apps/ene/SspDb/dsd?Action=htmlpage&page=about). Additional data from the GCAM model is available at: ***INSERT LINK***
+Data from the official SSPs is available at [SSP database](https://secure.iiasa.ac.at/web-apps/ene/SspDb/dsd?Action=htmlpage&page=about).
 
 ## References
 
