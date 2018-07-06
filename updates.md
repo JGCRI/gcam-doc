@@ -1,13 +1,13 @@
 ---
 layout: index
 title: Recent updates
-prev: hector.html
-next: overview.html
+prev: fusion.html
+next: 
 gcam-version: v5.1 
 ---
 
 Several changes have been made to GCAM since the last release version (v4.4). The key updates are:
-1. Water demands are now included (see [Water Demand](#water-demand)
+1. Water demands are now included (see [Water Demand](#water-demand))
 2. Land use regions are now based on water basins (see [Land Regions](#land-regions))
 3. Multiple agricultural management practices are included (see [Agricultural Management](#agricultural-management))
 4. The GCAM Shared Socioeconomic Pathways are included (see [SSPs](#ssps))

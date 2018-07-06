@@ -126,7 +126,7 @@ Key Scenario Results from the GCAM Core
 
 ## Changes from the Previous Version
 
-[**Recent Updates**](updates.html): A summary of key updates to GCAM between the current version ({{ page.gcam-version }}) and the previous version.
+A summary of key updates to GCAM between the current version ({{ page.gcam-version }}) and the previous version: [**Recent Updates**](updates.html).
 
 ## Regional Versions of GCAM 
 
