@@ -3,7 +3,7 @@ layout: index
 title: GCAM Build Instructions
 prev: user-guide.html
 next: fusion.html
-gcam-version: v4.4 
+gcam-version: v5.1 
 ---
 
 ## 1.Introduction
@@ -176,7 +176,10 @@ Users who want to use the Xcode build environment will need to set up in the `<G
 cd <GCAM Workspace>/libs/java
 JAVA_HOME=$(/usr/libexec/java_home)
 ln -s ${JAVA_HOME}/include include
+# Note the following works for Java 1.7/8
 ln -s ${JAVA_HOME}/jre/lib/server lib
+# The following is requred for Java 9/10
+# ln -s ${JAVA_HOME}/lib/server lib
 ```
 
 #### 2.3.4 Java On POSIX
@@ -237,7 +240,7 @@ cd <GCAM Workspace>/cvs/objects/build/linux
 make gcam -j 8
 ```
 
-Note the `-j 8` is simply to compile multiple sources files at a time (set as appropriate for your system configuration) and is only necessary to speed up the processes.  Once complete an executable will be copied to `<GCAM Workspace>/exe` and can be run from that directory with `gcam.exe -Ccofig_file.xml`.
+Note the `-j 8` is simply to compile multiple sources files at a time (set as appropriate for your system configuration) and is only necessary to speed up the processes.  Once complete an executable will be copied to `<GCAM Workspace>/exe` and can be run from that directory with `gcam.exe -C config_file.xml`.
 
 ### 4.2 Building with Xcode
 Mac users who would like to use the Xcode integrated development environment must have it installed (available from the Apple App Store), however a recent version with C++ 14 support is required.  Xcode version 8.1+ have been known to work.  Users can find the project file under `<GCAM Workspace>/cvs/objects/build/xcode3/objects.xcodeproj`. Once open you should change the `Scheme` to build the `Release` target.  You can find the scheme settings here:
@@ -262,14 +265,14 @@ Also you will likely have to change the `Platform Toolset` under menu `Project -
 Finally select menu option `Build -> Build Solution` to build GCAM.  Once complete an executable will be copied to `<GCAM Workspace>/exe` and you can still use `run-gcam.bat` to run it.
 
 ## 5 Recompiling Java Components
-The Java components of GCAM `XMLDBDriver.jar` and `ModelInterface.jar` are included with the GCAM source code (in the Git repository or release package) and are inherently cross platform.  Users will not typically need to recompile these unless they need to apply bug fixes or feature updates.  In such a case simple Makefiles have been provided.  Note the [Java compiler](#23-java) is required.  In both cases users will need the `<GCAM Workspace>/libs/jars` which are included in both the Mac and Windows binary release add-ons.
+The Java components of GCAM `XMLDBDriver.jar` and `ModelInterface.jar` are included with the GCAM source code (in the Git repository or release package) and are inherently cross platform.  Users will not typically need to recompile these unless they need to apply bug fixes or feature updates.  In such a case simple Makefiles have been provided.  Note the [Java compiler](#23-java) is required.  In both cases users will need the `<GCAM Workspace>/libs/jars` which are included in both the Mac and Windows Release Package or from the [ModelInterface Releases on Github](https://github.com/JGCRI/modelinterface/releases).
 
 ### 5.1 Recompiling ModelInterface.jar
 Users will need to set up the classpath and run the following.  Note that the ModelInterface is developed in it's [own Git repository](https://github.com/JGCRI/modelinterface) but GCAM contains a submodule reference pointing specifically to the version known to work with your version of GCAM.
 
 ```
 export CLASSPATH=<GCAM Workspace>/libs/jars/\*
-cd <GCAM Workspace>/input/gcam-data-system/_common/ModelInterface/src
+cd <GCAM Workspace>/output/modelInterface/
 git submodule update --init modelinterface
 cd modelinterface
 make ModelInterface.jar
@@ -280,7 +283,7 @@ cp ModelInterface.jar ../
 Users will need to set up the classpath and run the following which will also copy it into the `exe` directory where GCAM will be expecting it.
 
 ```
-export CLASSPATH=<GCAM Workspace>/libs/jars/*:<GCAM Workspace>/input/gcam-data-system/_common/ModelInterface/src/ModelInterface.jar
+export CLASSPATH=<GCAM Workspace>/libs/jars/*:<GCAM Workspace>/output/modelInterface/ModelInterface.jar
 cd <GCAM Workspace>/cvs/objects/java/source
 make clean
 make install

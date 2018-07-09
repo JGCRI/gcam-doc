@@ -2,11 +2,11 @@
 layout: index
 title: Agriculture, Land-Use, and Bioenergy
 prev: energy.html
-next: hector.html
-gcam-version: v4.4 
+next: water.html
+gcam-version: v5.1 
 ---
 
-In GCAM, the model data for the agriculture and land use parts of the model comprises 283 subregions in terms of land use, based on a division of the extant agro-ecological zones (AEZs), which we derived from work performed for the GTAP project (Monfreda et al, 2009), within each of GCAM’s 32 global geo-political regions. Within each of these 283 subregions, land is categorized into approximately a dozen types based on cover and use. Some of these types, such as tundra and desert, are not considered arable. Among arable land types, further divisions are made for lands historically in non-commercial uses such as forests and grasslands as well as commercial forestlands and croplands. Production of approximately twenty crops is currently modeled, with yields of each specific to each of the 283 subregions. The model is designed to allow specification of different options for future crop management for each crop in each subregion.
+In GCAM, the model data for the agriculture and land use parts of the model comprises >300 subregions in terms of land use, formed by subdividing each of GCAM’s 32 global geo-political regions into water basins. Within each of these subregions, land is categorized into approximately a dozen types based on cover and use. Some of these types, such as tundra and desert, are not considered arable. Among arable land types, further divisions are made for lands historically in non-commercial uses such as forests and grasslands as well as commercial forestlands and croplands. Production of approximately twenty crops is currently modeled, with yields of each specific to each of the subregions and management types. For each crop, we include four different management types (with and without irrigation, high and low fertilizer). The model is designed to allow specification of different options for future crop management for each crop in each subregion.
 
 ## AgLU Inputs and Outputs
 
@@ -34,12 +34,12 @@ GCAM's inputs include information on production, consumption, prices, land, carb
 
 ### Outputs
 
-GCAM's outputs include variables related to production, consumption, prices, land, carbon, and other emissions. 
+GCAM's outputs include variables related to production, consumption, prices, land, fertilizer, carbon, and other emissions. 
 
 <dl>
 <dt>Production</dt> <dd>Outputs include production of all crops and
 forestry products; this information is calculated annually for each of
-the 283 AgLU regions. GCAM also calculates production of livestock at
+the 300+ AgLU regions. GCAM also calculates production of livestock at
 the 32 region level.</dd>
 
 <dt>Consumption</dt> <dd>Outputs include food, non-food, bioenergy,
@@ -55,11 +55,20 @@ level).</dd>
 
 <dt>Land</dt> <dd>Outputs include land use and land cover for each of
 the land types included in GCAM (see Figure 1). This information is
-calculated annually for each of the 283 AgLU regions.</dd>
+calculated annually for each of the AgLU subregions.</dd>
+
+<dt>Fertilizer</dt> <dd>Outputs include fertilizer use for each crop and management practice included in GCAM (see Figure 1). This information is
+calculated annually for each of the AgLU subregions.</dd>
+
+<dt>Water Withdrawals</dt> <dd>Outputs include water withdrawals by crop and management practice. This information is
+calculated annually for each of the AgLU subregions.</dd>
+
+<dt>Water Consumption</dt> <dd>Outputs include water consumption (both blue and green) by crop and management practice. This information is
+calculated annually for each of the AgLU subregions.</dd>
 
 <dt>Carbon</dt> <dd>Outputs include carbon stock and land-use change
 emissions of CO<sub>2</sub>. This information is calculated annually
-for each of the 283 AgLU regions.</dd>
+for each of the 300+ AgLU regions.</dd>
 
 <dt>Other emissions</dt> <dd>Outputs include emissions of
 CH<sub>4</sub>, N<sub>2</sub>O, NH<sub>3</sub>, SO<sub>2</sub>, CO,
@@ -69,7 +78,7 @@ reduced with the application of a carbon price. Pollutant emissions
 are produced from agricultural waste burning, forest fires,
 deforestation, and savannah burning. Livestock emissions are
 calculated annually at the 32 region level. All other emissions are
-calculated annually at the 283 region level.</dd>
+calculated annually at the 300+ region level.</dd>
 </dl><br/>
   
 ## Economic Modeling Approach
@@ -94,17 +103,25 @@ Before discussing our nesting approach, it is useful to consider the space of po
 
 The other extreme is that of no substitution. This would be accomplished with near zero or zero logit exponents, whether in a single nest or multiple nests. This implies that either it is physically impossible or the transition costs are too high to allow switching from one land type to another. Currently, in GCAM, we use zero logit exponents in a very limited number of situations, where we do not want any substitution (e.g., we do not allow cropland to expand into desert or tundra).  However, in most situations, we employ positive logit exponents and allow economics to dictate the land allocation within a region. 
 
-Our approach is to use a nesting strategy that allows the logit exponents to reflect differences in substitutability across land categories. Figure 1 shows the nesting diagram of land with an AEZ subregion. At the top is all land, which is divided into two main types of nodes: agro-forestry land and the remaining categories of land that are not suitable for agriculture. This second category could be divided further if useful. The next node layer contains two further nodes: all agro-forestry, non-pasture land and all pasture land. The pasture land node contains two competing uses (land leaves in the code): managed pasture (that which feeds marketed livestock) and unmanaged pasture.
+Our approach is to use a nesting strategy that allows the logit exponents to reflect differences in substitutability across land categories. Figure 1 shows the nesting diagram of land with a subregion. At the top is all land, which is divided into two main types of nodes: agro-forestry land and the remaining categories of land that are not suitable for agriculture. This second category could be divided further if useful. The next node layer contains two further nodes: all agro-forestry, non-pasture land and all pasture land. The pasture land node contains two competing uses (land leaves in the code): managed pasture (that which feeds marketed livestock) and unmanaged pasture.
 
 
 ![AgLU Land Nesting Diagram](gcam-figs/AgLUTree.bmp)<br/>
 Figure 1: AgLU Land Nest
 {: .fig}
 
-The agro-forestry (non-pasture) node contains three competing nodes: shrub and grass lands, forest lands, and croplands. Shrublands and grasslands are separated from the rest as they are both classified as unmanaged land categories and we want to control their substitutability between each other separately. Finally, the forestland node competes with the total cropland node. Within forestland, there are managed and unmanaged forest leaves,  and we have added a woody biomass option there in some regions and scenarios. Under cropland are all food and other agriculture products (e.g., corn, wheat, sugars, etc.), including biomass crops, along with an unmanaged land category called other arable land. Note that several crops are included explicitly in the CropLand node, and the grouping of “AllOtherCrops” is simply a convenience for this figure.
+The agro-forestry (non-pasture) node contains three competing nodes: shrub and grass lands, forest lands, and croplands. Shrublands and grasslands are separated from the rest as they are both classified as unmanaged land categories and we want to control their substitutability between each other separately. Finally, the forestland node competes with the total cropland node. Within forestland, there are managed and unmanaged forest leaves,  and we have added a woody biomass option there in some regions and scenarios. Under cropland are all food and other agriculture products (e.g., corn, wheat, sugars, etc.), including biomass crops, along with an unmanaged land category called other arable land. Note that several crops are included explicitly in the CropLand node, and the grouping of “AllOtherCrops” is simply a convenience for this figure.  Additionally, crops are further divided beyond what is in Figure 1, nesting irrigated/rainfed and hi/lo fertilizer.
 
 With this specification, we can make substitution across categories
 more or less difficult by choosing lower or higher logit parameters.
+
+### Intensification
+
+The inclusion of multiple management types for each crop within each subregion of GCAM allows the model to represent price-induced intensification. That is, we can increase yields via increased fertilizer or irrigation if economic conditions favor those options. Like the rest of the land allocation decisions in GCAM, the share of each management practice depends on relative profitability. As profits of one option increase, more land will be allocated to that option. If the option is higher yielding, then average yields will increase (an intensification response). In general, GCAM will intensify when there is a lot of land competition (like when carbon in land is valued). Note that it is possible for average yields in a subregion to decline over time; this will happen if commodity prices decline or if the price of fertilizer and/or water increases. 
+
+### Land Regions
+
+For GCAM3.0 through GCAM4.4, the Agriculture and Land Use model subdivided the GCAM geopolitical regions into as many as 18 climatically defined agro-ecological zones (AEZs) developed by the GTAP group. GCAM5+ switches subregions to water basin-defined geographic land units (GLUs). The land data system files are produced by the [Land Data System (LDS)](https://github.com/JGCRI/lds), described in Di Vittorio et al. (2016). 
 
 ## Calibration
 
@@ -114,13 +131,15 @@ For calibration, base year data sets must include values of physical results suc
 
 The approach to calibration is to solve for parameters that adjust observed profit rates, which are based on base year data, such that they equal the potential average profit rates implied by base year shares and the assumed average price of unmanaged land. The potential average profit rates implied by the shares can be interpreted as the average profit if all land were devoted to that use. Here, we will refer to these rates as the calibration profit rates. The calibration parameters, which we have called calibration profit scalers in the code, should not be confused with the logit share weights that we use in the energy model. They serve much the same function, but their derivation is more complicated, and they should not be assumed to be transformable. Unlike the share weights, the absolute values of the calibration profit scalers have meaning, not just their relative values. Therefore, they cannot be transformed by indexing them around a value of one for convenience like we can do with the share weights in the energy sector.
 
-In future model periods, the calibration profit scalers are used to adjust the future profit rates in the logit sharing and profit equations. The calibration routine ensures that the future is grounded in history. If prices, demand, and crop yields were unchanged in future modeling periods, shares, profits, and land allocations would equal the base year values. When future conditions evolve in the model such that costs, prices, yields, and other factors deviate from historical values, shares and profits will also change from their base year values. 
+In future model periods, the calibration profit scalers are used to adjust the future profit rates in the logit sharing and profit equations. The calibration routine ensures that the future is grounded in history. If prices, demand, crop yields, and the cost of inputs (fertilizer, water) were unchanged in future modeling periods, shares, profits, and land allocations would equal the base year values. When future conditions evolve in the model such that costs, prices, yields, and other factors deviate from historical values, shares and profits will also change from their base year values. 
 
 ## Variable Costs
 
-Variable costs are defined here as the non-land costs of crop production, per-unit of crop.  Variable costs set hard price floors in the model: production goes to zero when price is less than or equal to the variable costs. As a result, these costs should be interpreted as pure minimum or shut-down costs. They should be just the cost of materials and hired labor for producing a crop or product with a given technology in a subregion. 
+Variable costs are defined here as the non-land costs of crop production, per-unit of crop.  We model the cost of fertilizer and water explicitly, including input-output coefficients and prices of each. Other components of variable cost are derived from USDA cost data.
 
-Value-added categories should not be included in the variable costs. In addition, variable costs should not include land costs, as the model is based on allocating land on per unit profits. They should also not include cost categories that represent return to capital or profits. We can assume these costs are captured in the distribution of profit rates behind the logit. Otherwise, consider that if these costs are put into our variable costs, ultimately all marginal profit rates (from economic theory) would be zero and provide no value to our modeling. In addition, accounting costs such as depreciation should not be part of variable costs.
+Variable costs set hard price floors in the model: production goes to zero when price is less than or equal to the variable costs. As a result, these costs should be interpreted as pure minimum or shut-down costs. They should be just the cost of materials and hired labor for producing a crop or product with a given technology in a subregion. 
+
+Value-added categories are not included in the variable costs. In addition, variable costs do not include land costs, as the model is based on allocating land on per unit profits. They should also not include cost categories that represent return to capital or profits. We can assume these costs are captured in the distribution of profit rates behind the logit. Otherwise, consider that if these costs are put into our variable costs, ultimately all marginal profit rates (from economic theory) would be zero and provide no value to our modeling. In addition, accounting costs such as depreciation should not be part of variable costs.
 
 Data on labor costs can be difficult to use, since some farm wage categories are income that the farmer either earns or expects to be paid and thus, some labor costs are really profit to the land-owner (i.e., farmer). Therefore, we have restricted our variable cost data to include what is labeled as “hired labor”.
 
@@ -132,7 +151,7 @@ The main points can be summarized as:
 * Variable costs should be based on technology data. They should not be used as calibration parameters to adjust profits.
 * Variable costs should not include value-added categories of land, return to capital, and owner-wages.
 
-### New Land Types
+### Modeling Land Uses and Crops that are New to a Region
 
 The calibration process can accommodate gaps or imprecisions of the price and cost data for the crops and land uses in base year calibration data set. Changing the values of inputs such as land prices, product prices, and product variable costs will change the values of the calibration parameters internal to the model. Algebraically, the calibration parameters adjust or compensate to make the profit rates consistent with the base year shares and crop yields. In most situations, these changes will not affect model results either in the calibration year or future years. The calibration is to an extent self-correcting.
 
@@ -146,7 +165,7 @@ Land prices are for the most part factored out by the calibration. They behave a
 
 There are many places in the crop production data where a small amount of land produces a crop at a high yield that is not representative of the potential yield of that region. Some of these cases are data errors, but some cases are real observations where crop production is intensively managed or irrigated. In the current calibration data set, the amount of food, fiber, and fodder produced in these high-yielding regions is small relative to regional or global crop production.  Through the calibration process, we have ensured that the model cannot expand that these high-yielding crops throughout that region without substantial costs.
 
-For example, the current data set has very high-yielding wheat in the panhandle of Alaska.  The data suggest that there is a very small amount of land producing wheat with a very high yield.  This wheat land accounts for a small share of cropland in that AEZ.  Because the share of cropland is low, the calibration process will compute parameters that reflect limitations on the potential expansion of this land due to cost or factors not otherwise modeled.  Literally, the math will calculate very low profit share scalers for wheat in Alaska.  This also is the case if wheat share of cropland is high but the cropland share of arable land is low, implying something is preventing cropland from expanding.  Perhaps the real world cropland extent reflects something about the soil quality that is not explicitly modeled in AgLU.
+For example, the current data set has very high-yielding wheat in the panhandle of Alaska.  The data suggest that there is a very small amount of land producing wheat with a very high yield.  This wheat land accounts for a small share of cropland in that subregion.  Because the share of cropland is low, the calibration process will compute parameters that reflect limitations on the potential expansion of this land due to cost or factors not otherwise modeled.  Literally, the math will calculate very low profit share scalers for wheat in Alaska.  This also is the case if wheat share of cropland is high but the cropland share of arable land is low, implying something is preventing cropland from expanding.  Perhaps the real world cropland extent reflects something about the soil quality that is not explicitly modeled in AgLU.
 
 ### Regional Production and Comparative Advantage
 
@@ -200,11 +219,11 @@ In a policy regime, we can choose to put a price on land-use change CO<sub>2</su
 
 ### Bioenergy Constraints
 
-We can impose constraints (lower or upper bounds) on bioenergy within GCAM. Under such a policy, GCAM will calculate the tax or subsidy required to ensure that the constraint is met. 
+We can impose constraints (lower or upper bounds) on bioenergy within GCAM. Under such a policy, GCAM will calculate the tax or subsidy required to ensure that the constraint is met. Note that by default a bioenergy constraint in GCAM (starting with v4.4) is imposed based on the amount of subsidy available for net negative emissions.
 
 ### Land expansion costs/constraints
 
-One approach we have implemented and tested is to add a land expansion cost curve to targeted land types in regional AEZs. Specifically, we have added land expansion cost curves to unmanaged forest land in regional AEZ’s in which a carbon policy resulted in fast transformation from grassland to unmanaged forest. This method effectively adds a cost associated with converting to forests.  This cost can be interpreted as the cost of planting, watering, fire management, etc. required to grow trees on previously unforested land.
+One approach we have implemented and tested is to add a land expansion cost curve to targeted land types in specific regions. Specifically, we have added land expansion cost curves to unmanaged forest land in individual regions in which a carbon policy resulted in fast transformation from grassland to unmanaged forest. This method effectively adds a cost associated with converting to forests.  This cost can be interpreted as the cost of planting, watering, fire management, etc. required to grow trees on previously unforested land.
 
 The land expansion cost curve is implemented as a “renewable” resource that land must “purchase” on a per-unit of land basis. The cost curve can be set at a zero cost up to a predefined amount of land: e.g., base year allocation, pre-industrial allocation, etc. Beyond this point, the cost curve increases to either represent a physical expansion cost or an arbitrarily high cost that would act as a hard constraint on expansion. One drawback to this approach is that each cost curve adds a market equation that needs to be solved. The market should behave well, but adding markets should always be done with care as it does put additional burdens on the solution algorithm.
 
