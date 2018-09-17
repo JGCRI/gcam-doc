@@ -150,10 +150,8 @@ BatchFileName | Name of the [batch file input](#gcam-batch-mode). This will only
 policy-target-file | Run the model in [target finder mode](#target-finder).  This will only be used if `find-path` boolean is set to 1.
 GHGInputFileName | Default MAGICC input for GHG emissions time series. 
 xmldb-location | Location and name of xml output database
-xmlOutputFileName | Output xml filename. This xml file contains a complete input dataset that will replicate this scenario. Note that these files can be very large.
 xmlDebugFileName | Name of debug output file. For the specified `debug-region` (see below), a set of internal state variables will be output at the end of each model period.
 climatFileName | Output file that contains the GHG and pollutant emissions that was passed to MAGICC.
-outFileName | csv formatted GCAM output.  Note These results are not maintained, users should prefer xmldb output instead.
 costCurvesOutputFileName | Output for cost curves if `createCostCurve` is set to 1. 
 batchCSVOutputFile | csv output of a minimal set of variables. This is useful during large batch runs where creating an xml database would result in excessively large files.
 
