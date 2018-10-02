@@ -6,6 +6,8 @@ gcam-version: v5.1
 
 The Joint Global Change Research Institute (JGCRI) is the primary development institution for the Global Change Assessment Model (GCAM), a comprehensive integrated modeling tool for exploring energy, water, land, and climate interactions over timescales of decades to a century.
 
+[I am going to update this with the table of contents.]
+
 ## GCAM Model Description
 An overview of GCAM is available at [GCAM Model Overview](overview.html). There are also more detailed descriptions of the [economic](macro-econ.html), [energy](energy.html), [land](land.html), [water](water.html), and [climate](hector.html) components.
 
