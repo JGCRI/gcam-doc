@@ -12,7 +12,7 @@ GCAM structure are user defined, based on the data inputs provided to the model.
 
 The overall structure of the energy system can be thought of as consisting of three main elements: energy resources, energy transformation, and final energy demands. It also tracks international trade in energy commodities. Consistent with the overall structure of GCAM, all the different elements of GCAM interact through market prices and physical flows of, for example, electricity. Technology choices are made based on prices using discrete [choice methods](choice.html).
 
-![Figure 1](gcam-figs/energy_fig1.png) <br/>
+<img src="gcam-figs/energy_fig1.png" width="400" height="300" /><br/>
 Schematic of Major Energy Pathways in GCAM
 {: .fig}
 
@@ -90,7 +90,7 @@ $$
 
 Where Q refers to the quantity of electricity produced, P the price, and the remaining parameters are exogenous, with the names in the XML input files corresponding to the names in the equation above. maxSubResource indicates the maximum quantity of wind energy that could be produced at any price, curve-exponent is a shape parameter, and mid-price indicates the price at which 50% of the maximum available resource is produced. The supply curves in each region are derived from bottom-up analysis documented in [Zhou et al. (2012)](energy.html#zhou2012). Note that in this supply curve formulation, the price is zero when the quantity is zero; this is because the wind resource supply curves only represent costs that increase with deployment due to the nature of the resources; these include factors such as increased transmission distances, reduced capacity factors, and more costly access to sites, among others. The remainder of the costs of wind electricity generation are in the technology and backup, described in the [electricity sector](energy.html#electricity).
 
-![Figure 2](gcam-figs/wind.jpeg)
+<img src="gcam-figs/wind.jpeg" width="900" height="500" /><br/>
 Global gridded potential for wind electricity generation.
 {: .fig}
 
@@ -128,7 +128,7 @@ In energy transformation sectors, the output unit and input unit are EJ (per yea
 
 In the schematic of the energy system depicted below, the energy transformation and distribution sectors include all sectors except for the resources (colored red) and the final demands (colored light blue).
 
-![Figure 3](gcam-figs/energy_system_structure.jpg)<br/>
+<img src="gcam-figs/energy_system_structure.jpg" width="900" height="650" /><br/>
 Simplified schematic of the energy system in each region, showing the inter-sectoral flows of energy goods in GCAM.
 {: .fig}
 
@@ -137,7 +137,7 @@ Simplified schematic of the energy system in each region, showing the inter-sect
 
 The GCAM electricity sector models the conversion of primary fuels (e.g., coal, gas, oil, bioenergy) to electricity. For most fuels, GCAM includes several different technology options (e.g., pulverized coal, coal IGCC, etc.). Individual technologies compete for market share based on their technological characteristics (conversion efficiency in the production of products from inputs), and cost of inputs and price of outputs. The cost of a technology in any period depends on (1) its exogenously specified non-energy cost, (2) its endogenously calculated fuel cost, and (3) any cost of emissions, as determined by the climate policy. The first term, non-energy cost, represents capital, fixed and variable O&M costs incurred over the lifetime of the equipment (except for fuel or electricity costs). For electricity technologies, GCAM reads in each of these terms and computes the levelized cost of energy within the model. For example, the non-energy cost of coal-fired power plant is calculated as the sum of overnight capital cost (amortized using a capital recovery factor and converted to dollars per unit of energy output by applying a capacity factor), fixed and variable operations and maintenance costs. The second term, fuel or electricity cost, depends on the specified efficiency of the technology, which determines the amount of fuel or electricity required to produce each unit of output, as well as the cost of the fuel or electricity. The nesting structure of the electric sector is shown in the figure below, with a focus on one repesentative technology.
 
-![Figure 4](gcam-figs/elec_structure.png)<br/>
+<img src="gcam-figs/elec_structure.png" width="900" height="200" /><br/>
 Schematic showing the nesting structure of the electric sector, with levels for choices between fuels, technologies, and cooling systems. Note that this is a simplification of the actual structure used, which includes "pass-through" sectors, because GCAM sectors are only allowed two levels of nesting.
 {: .fig}
 
@@ -147,7 +147,7 @@ Details on the assumptions used in GCAM (e.g., cost, efficiency, capacity factor
 
 The refining sector, or liquid fuels production sector, explicitly tracks all energy inputs, emissions, and costs involved with converting primary energy forms into liquid fuels. Liquid fuels include gasoline, diesel, kerosene, ethanol and many other liquid hydrocarbon fuels; for the full mapping see [Mapping the IEA Energy Balances](energy.html#mapping-the-iea-energy-balances). The refining sector includes subsectors of oil refining, biomass liquids, gas to liquids, and coal to liquids, each of which are described below. Each of these four subsectors is available starting in the first future time period, and the capital stocks of refineries are explicitly tracked. The structure of refining in the broader energy system is shown in the following figure, with example input-output coefficients.
 
-![Figure 5a](gcam-figs/refining.png)<br/>
+<img src="gcam-figs/refining.png" width="400" height="300" /><br/>
 Structure of refining sector and associated products within the energy system, with sample input-output coefficients shown. Electricity and natural gas inputs to oil refining not shown for simplicity.
 {: .fig}
 
@@ -155,7 +155,7 @@ Structure of refining sector and associated products within the energy system, w
 
 The oil refining subsector accounts for the vast majority of the historical output of the refining sector, globally and in all regions. Each region is assigned a single production technology for oil refining; as indicated in the figure above, this technology does not differentiate between conventional and unconventional oil, whose competition is explicitly modeled upstream of the refining sector. In a typical region, the oil refining technology consumes three energy inputs: crude oil, natural gas, and electricity. This is depicted graphically below, with typical input-output coefficients shown.
 
-![Figure 5b](gcam-figs/oil_refining.png)<br/>
+<img src="gcam-figs/oil_refining.png" width="300" height="150" /><br/>
 Oil refining production technology, with example coefficients.
 {: .fig}
 
@@ -196,7 +196,7 @@ While a minor contributor to liquid fuels production globally (about 0.1%; [IEA 
 
 The structure of the natural gas supply and distribution in GCAM is shown below:
 
-![Figure 6](gcam-figs/gas_processing.png)<br/>
+<img src="gcam-figs/gas_processing.png" width="300" height="300" /><br/>
 Gas processing and distribution, with example coefficients.
 {: .fig}
 
@@ -224,13 +224,13 @@ Heat is included as a final energy carrier in the IEA Energy Balances, and is in
 
 In most regions in GCAM, heat is not explicitly represented as an energy commodity; instead, the reported fuel inputs to heat plants are assigned directly to the end use sectors that consume the heat (buildings and industry). Combined heat and power (CHP) is included as a technology option, but is located within the industrial energy use sector, and no inter-sectoral flow of heat is represented. However, in several regions where purchased heat accounts for a large share of the final energy use, GCAM does include a representation of district heat production, with four competing technology options, shown below.
 
-![Figure 7](gcam-figs/district_heat.png)<br/>
+<img src="gcam-figs/district_heat.png" width="400" height="300" /><br/>
 District heating structure, with example input-output coefficients shown.  
 {: .fig}
 
 As shown, all energy losses and cost mark-ups incurred in transforming primary energy into delivered district heat are accounted in the "district heat" technologies; there are no explicit cost adders and efficiency losses for heat distribution, or different prices for the heat consumed by buildings and industry sectors. This simplistic representation reflects the lack of data on district heating globally, and that the delineation of what constitutes a "third party sale" as opposed to on-site use is often unclear. This is illustrated further in the graphic below.
 
-![Figure 8](gcam-figs/IEA_pulp_paper.png)<br/>
+<img src="gcam-figs/IEA_pulp_paper.png" width="450" height="350" /><br/>
 Energy flows in the pulp and paper industries, illustrating the delineation between energy producers and energy consumers. These components may or may not be located on the same property, or owned by the same entity, and the physical flows themselves often include backflows of combustible wastes from the "consumers" to the "producers". This complicates the accounting of what constitutes a "third party" sale of heat. Source: [IEA (2007)](energy.html#iea2007)
 {: .fig}
 
@@ -242,7 +242,7 @@ Hydrogen in GCAM is modeled purely as a future energy commodity; while industria
 
 The representation of hydrogen in GCAM includes 10 production technologies in two production sectors, with cost mark-ups to reflect levelized infrastructural costs, as well as variable transmission and distribution costs. The structure of the hydrogen production and distribution sectors and technologies in GCAM generally uses the structure of the U.S. Department of Energy's Hydrogen Analysis (H2A) models [DOE 2015](energy.html#doe2015), and is shown in the figure below.
 
-![Figure 9](gcam-figs/hydrogen.png)<br/>
+<img src="gcam-figs/hydrogen.png" width="600" height="400" /><br/>
 Hydrogen structure, with example input-output coefficients shown.
 {: .fig}
 
@@ -304,7 +304,7 @@ With the exception of cement and fertilizer, which are explicitly modeled in GCA
 
 GCAM includes a physical representation of the manufacture of cement, that tracks both the fuel- and limestone-derived emissions of CO<sub>2</sub>. Production volumes are indicated in Mt of cement; input-output coefficients of heat and electricity are indicated in GJ per kg of cement, and the input-output coefficient of limestone is unitless. The energy input-output coefficients are specific to each region, based on [Worrell et al. (2001)](energy.html#worrell2001) and Tables 6.9 and 6.10 in [IEA (2007)](energy.html#iea2007). The limestone input-output coefficient is calculated to return the region's cement-related emissions reported by [CDIAC 2017](energy.html#CDIAC2017). Each region's calibrated fuel shares in this industry are from Table 6.6 in [IEA 2007](energy.html#iea2007). A simple schematic with example input-outout coefficients is shown below; note that in the structure, "process heat cement" is treated as a specific energy commodity, so as to avoid allowing electricity to compete for market share of this input to the cement production process.
 
-![Figure 10](gcam-figs/cement.png)<br/>
+<img src="gcam-figs/cement.png" width="500" height="250" /><br/>
 Structure of GCAM's representation of cement production, with example input-output coefficients shown (GJ/kg of energy, and unitless for limestone)
 {: .fig}
 
@@ -318,7 +318,7 @@ The representation of nitrogenous fertilizers ("N fertilizer"), indicated in Mt 
 
 Fuel and feedstock sources and input-output coefficients are calibrated based on Table 4.15 of [IEA 2007](energy.html#iea2007). The schematic below shows how N fertilizer is situated between the energy and agricultural systems of GCAM.
 
-![Figure 11](gcam-figs/Nfertilizer.png)<br/>
+<img src="gcam-figs/Nfertilizer.png" width="300" height="200" /><br/>
 Structure of GCAM's representation of N fertilizer supply and demand, with example input-output coefficients shown (GJ/kg of N fertilizer on the energy inputs, and unitless for the N fertilizer inputs to crop production). Note that the fuel/feedstock sources are competing technologies, not fixed inputs to a production function.
 {: .fig}
 
@@ -334,7 +334,7 @@ The transportation sector in GCAM is subdivided into four final demands: long-di
 
 The structure of the passenger sector differs by region, but a typical region is depicted below.
 
-![Figure 12](gcam-figs/trnfig_passenger.png)<br/>
+<img src="gcam-figs/trnfig_passenger.png" width="900" height="350" /><br/>
 Schematic of passenger sector in a typical GCAM region.
 {: .fig}
 
