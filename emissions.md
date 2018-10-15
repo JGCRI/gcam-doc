@@ -113,13 +113,13 @@ SF<sub>6</sub> emissions from electric transformers scale with electricity consu
 Air pollutant emissions such as sulfur dioxide (SO<sub>s</sub>) and nitrogen oxides (NO<sub>x</sub>) are modeled as:
 
 $$
-E_{t}=A_{t}*F_{t0}*(1-EmCtrl(pcGDP_{t})))
+E_{t}=A_{t}*EF_{t0}*(1-EmCtrl(pcGDP_{t}))
 $$
 
 where EmCtrl is a function that represents decreasing emissions intensity as per-capita income increases:
 
 $$
-EmCtrl_{t}=1-\frac{1}{1+\frac{{}(pcGDP_{t}-pcGDP_{t0})}{steepness}}
+EmCtrl_{t}=1-\frac{1}{1+\frac{(pcGDP_{t}-pcGDP_{t0})}{steepness}}
 $$
 
 where *pcGDP* stands for the per-capita GDP, and *steepness* is an exogenous constant, specific to each technology and pollutant species, that governs the degree to which changes in per-capita GDP will be translated to emissions controls. The purpose here is to capture the general global trend of increasing pollutant controls over time, but does not capture regional and technological heterogeneity.
