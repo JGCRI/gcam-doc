@@ -28,4 +28,31 @@ There are a number of ways that policies can be applied directly to influence th
 * Bioenergy constraints: GCAM users can impose constraints on bioenergy within GCAM. Under such a policy, GCAM will calculate the tax or subsidy required to ensure that the constraint is met. By default a bioenergy constraint in GCAM is imposed based on the amount of subsidy available for net negative emissions.
 
 ## Calculating Emissions Policy Costs
-GCAM can be used to make an estimate of the economic costs of a climate policy. The cost metric used is the area under the marginal abatement cost (MAC) curve. This area under the MAC curve commonly referred to as “deadweight loss” (i.e., the change in producer and consumer surplus.) Currently, we are not modeling this cost as affecting GDP in GCAM.
+
+The cost of emissions mitigation is a concept that is not uniquely defined. A wide range of measures are used in the literature. These include, the price of carbon (or as appropriate given the policy) needed to achieve a desired emission mitigation goal, reduction in Gross Domestic Product (GDP), consumption loss, deadweight loss, and equivalent variation. Beyond that the concept of net cost, which includes the benefits of emissions mitigation as well as the resource cost of emissions reduction and the social cost of carbon are also encountered. GCAM makes no attempt to calculate the benefits.
+
+In addition to identifying policy prices as one measure of cost, GCAM employs the “deadweight loss” approach to measuring welfare loss from emissions mitigation efforts. GCAM employs the deadweight loss approach for several reasons. First, the deadweight loss approach is numerically straight forward to calculate in GCAM. Second, the deadweight loss approach provides a computationally tractable method to measuring the change in welfare, though it is only an approximation. In principle the equivalent variation is the right approach to measure an individual’s loss in welfare. Equivalent variation measures the minimum amount of income that would be needed to leave consumers just as happy with the new price (e.g. carbon tax) as without. However, its calculation requires either knowledge of all of society’s individual preference functions or the existence of a well-ordered set of social preferences, a requirement that Arrow (1950) demonstrated to be impossible under ordinary circumstances. Third, the deadweight loss approach takes advantage of GCAM’s detailed technological characterization.
+
+A detailed description of the method used in GCAM is documented in Bradley, et al. (2001). In general, the approach is as follows. GCAM calculates the cost of emissions mitigation at each GCAM time step. For example in the figure below, the cost of moving from a reference path without a carbon tax (blue) to the emissions path with a carbon tax (green) in period T can be calculated simply. Successive scenarios with fixed carbon taxes in period T are run. The associated emissions are recorded for each carbon tax. The cost is calculated as the area of the purple triangle, which is the integral of each emissions mitigation step weighted by the carbon tax that was required to deliver the reduction. The final ton of carbon emissions is the most expensive ton, because it is assumed that for a carbon tax, emissions mitigation occurs with the least expensive tons being reduced first. The final ton of carbon is simply the carbon tax rate itself. The tax revenue can be calculated as the tax rate times the remaining emissions, shown in red below.
+
+<img src="gcam-figs/policy cost.png" width="750" height="300" />
+
+As discussed in Bradley, et al. (2001) and demonstrated in Calvin, et al. (2014), the approach can be used to calculate costs for a wide range of heterogeneous non-price policies. While conceptually similar to the simple approach above, the other is tedious. Similarly, the deadweight loss approach can be used to calculate the cost of policies other than carbon taxes. It is completely general (Mankiw and Hakes, 2012).
+
+The approach is employed at each GCAM time step. Costs occurring between time steps is inferred by interpolation. Costs over time can be summed. Costs can be summed with or without discounting. But, the GCAM user needs to be aware of the implications of whatever approach is employed.
+
+The deadweight loss approach is not without its limitations. While the numerical calculation is simple for a uniform carbon tax (or a cap-and-trade regime), more complex policies are more tedious to represent. Second, there is no link back to the macro-economy. Changes of the magnitude associated with stringent climate policies will have macro-economic consequences. Those consequence will, in turn affect the scale of economic activity. Third, there is no way to calculate the effects of alternative uses of tax revenue or carbon permit allocations.
+
+## References
+
+Arrow, Kenneth J. (1950). "A Difficulty in the Concept of Social Welfare" (PDF). Journal of Political Economy. 58 (4): 328–346. doi:10.1086/256963.
+
+Bhattacharya, Jay. (2001). Three measures of the change in welfare. https://web.stanford.edu/~jay/micro_class/lecture8.pdf
+
+Bradley, Richard A., Edward C. Watts, and Edward R. Williams. Limiting net greenhouse gas emissions in the United States. No. DOE/PE-0101-Vol. 2. USDOE Office of Policy, Planning and Analysis, Washington, DC (United States). Office of Environmental Analysis, 1991.
+
+Calvin, Katherine, Jae Edmonds, Bjorn Bakken, Marshall Wise, Son H. Kim, Patrick Luckow, Pralit Patel, Ingeborg Graabak.  (2014). The EU20-20-20 energy policy as a model for global climate mitigation.  Climate Policy http://dx.doi.org/10.1080/14693062.2013.879794.
+
+Mankiw, N.  and David Hakes (2012). Principles of microeconomics. South-Western Cengage Learning.
+
+

@@ -15,9 +15,9 @@ An overview of GCAM is available at [GCAM Model Overview](overview.html). The fi
 * [Climate](hector.html) 
 * [Economic Choice](choice.html)
 * [Solution and Computation](solver.html)
-* [Trade]
+* [Trade](trade.html)
 * [Technology Representation](en_technologies.html)
-* [Policies](policies.html)
+* [Policies and costs](policies.html)
 
 Special versions or representations of GCAM, including the representation of the Shared Socioeconoomic Pathways (SSPs) in  GCAM and the GCAM-USA model are covered in the following pages.
 

@@ -26,11 +26,7 @@ Developing and quantifying a single set of scenario assumptions is the most comm
 
 ## Overview of GCAM Computational Components 
 
-The GCAM framework includes three independent pieces: (1) the GCAM data system, (2) the GCAM core in which the economic decisions and dynamic interactions between human and Earth systems are represented, and (3) a set of disaggregation models that allow for more spatially and temporally resolved representations of GCAM output than are possible in the GCAM core. Many GCAM users will only focus on use of the GCAM core. Others will also work with the data system to develop new versions of the model with different assumptions or different model resolution. Disaggregation models are produced and available separately and not included in the release version of GCAM.
-
-<img src="gcam-figs/overview_fig3.png" width="600"><br/>
-Figure 2: Overview of the three components of the GCAM modeling framework
-{: .fig}
+The GCAM ecostystem includes a range of different tools, from data manipulation tools, the dynamic core of GCAM, and a range of disaggregation models, visualization tools and emulation tools. The GCAM release includes a data system for creatinig the XML inputs for GCAM and the dynamic core. Additional tools are produced and available separately and not included in the release version of GCAM.
 
 The [GCAM Data System](https://github.com/JGCRI/gcamdata) combines and reconciles a wide range of different data sets, and systematically incorporates a range of future assumptions. The output of the data system is an XML dataset with historical and base-year data for calibrating the model along with assumptions about future trajectories such as GDP, population, and technology. It includes the necessary information for representing energy, water, land, and the economic system. The GCAM Data System is largely constructed in R, but accommodates inputs in a range of different formats. Creating new scenarios does not require the use of the GCAM data system. New, "add on" xml files can be created to overwrite key future scenario assumptions such as population, economic activity, and technology cost and performance, among others.
 
@@ -75,11 +71,11 @@ The exact structure of the model explored in the GCAM core - for example, the nu
   </tr>
     <tr>
     <td class="first_col">Land System</td>
-    <td class="second_col">300+ subregions</td>
+    <td class="second_col">235 subregions</td>
   </tr>
     <tr>
     <td class="first_col">Water Supplies</td>
-    <td class="second_col">233 Hydrologic Basins</td>
+    <td class="second_col">384 Hydrologic Basins</td>
   </tr>
     <tr>
     <td class="first_col">Physical Earth System</td>
