@@ -13,47 +13,25 @@ GCAM structure are user defined, based on the data inputs provided to the model.
 The overall structure of the energy system can be thought of as consisting of three main elements: energy resources, energy transformation, and final energy demands. It also tracks international trade in energy commodities. Consistent with the overall structure of GCAM, all the different elements of GCAM interact through market prices and physical flows of, for example, electricity. Technology choices are made based on prices using discrete [choice methods](choice.html).
 
 <img src="gcam-figs/energy_fig1.png" width="400" height="300" /><br/>
-** Schematic of Major Energy Pathways in GCAM**
+**Schematic of Major Energy Pathways in GCAM**
 {: .fig}
 
 We have partitioned the energy system documentation as follows:
 
 * [Resources](#resources)
 * [Renewable Resources](#renewable-resources)
-    * [Wind](#wind)
-    * [Solar](#solar)
-    * [Geothermal](#geothermal)
-    * [Hydropower](#hydropower)
-    * [Traditional biomass](#traditional-biomass)
 * [Energy Transformation](#energy-transformation)
     * [Electricity](#electricity)
     * [Refining](#refining)
-        * [Oil Refining](#oil-refining)
-        * [Biomass Liquids](#biomass-liquids)
-        * [Coal to Liquids](#coal-to-liquids)
-        * [Gas to Liquids](#gas-to-liquids)
     * [Gas processing](#gas-processing)
-        * [Natural Gas](#natural-gas)
-        * [Coal Gasification](#coal-gasification)
-        * [Biomass Gasification](#biomass-gasification)
-        * [Gas Pipeline, Delivered Gas, and Wholesale Gas](#gas-pipeline-delivered-gas-and-wholesale-gas)
     * [District Services](#district-services)
     * [Hydrogen](#hydrogen)
-        * [Hydrogen Production](#hydrogen-production)
 * [Final Energy Consumption](#final-energy-consumption)
     * [Buildings](#buildings)
     * [Industry](#industry)
     * [Transportation](#transportation)
-        * [System Boundaries and Structure](#system-boundaries-and-structure)
-        * [Functional Forms](#functional-forms)
-        * [Input Data](#input-data)
 * [Energy Trade](#energy-trade)
 * [Mapping the IEA Energy Balances](#mapping-the-iea-energy-balances)
-    * [Processing the IEA Data](#processing-the-iea-data)
-        * [Resolving primary energy balances](#resolving-primary-energy-balances)
-        * [Resolving secondary energy balances](#resolving-secondary-energy-balances)
-        * [Resolving final energy consumption](#resolving-final-energy-consumption)
-        * [Detailed mappings of products and flows](#detailed-mappings-of-products-and-flows)
 * [References](#references)
 
 ## Resources
@@ -63,10 +41,13 @@ We have partitioned the energy system documentation as follows:
 GCAM models depletable resources (oil, unconventional oil, natural gas, coal, and uranium) using graded resource supply curves. As cumulative extraction of these resources increases, the cost of extraction rises; however, technical change can be applied to reduce the extraction cost in future years. Resource curves for fossil fuels are shown below.
 
 <img src="gcam-figs/oil_supply_curve.png" width="750" height="300" />
-<img src="gcam-figs/gas_supply_curve.png" width="750" height="300" />
-<img src="gcam-figs/coal_supply_curve.png" width="750" height="300" />
-**illustrative examples of supply curves and totall supplies for fossil resources in GCAM (from GCAM 5.1.2)**
 {: .fig}
+<img src="gcam-figs/gas_supply_curve.png" width="750" height="300" />
+{: .fig}
+<img src="gcam-figs/coal_supply_curve.png" width="750" height="300" />
+**Illustrative examples of supply curves and totall supplies for fossil resources in GCAM (from GCAM 5.1.2)**
+{: .fig}
+
 
 ### Renewable Resources 
 

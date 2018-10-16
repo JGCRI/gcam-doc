@@ -101,23 +101,16 @@ While the agents in the GCAM model are assumed to act to maximize their own self
 Key Scenario Assumptions for the GCAM Core
 
 * Socioeconomics: Population, labor participation, and labor productivity
-
 * Energy Technology Characteristics: e.g., costs, performance, water requirements
-
 * Agricultural Technology Characteristics: e.g., crop yields, costs, carbon contents, water requirements, fertilizer requirements
-
 * Energy and Other Resources: e.g., fossil fuels, wind, solar, uranium, groundwater 
-
 * Policies: e.g., emissions constraints, renewable portfolio standards
 
 Key Scenario Results from the GCAM Core
 
 * Energy System: energy demands, flows, technology deployments, and prices throughout the energy system.
-
 * Agriculture and Land Use: prices and supplies of all agricultural and forest products, land use and land use change.
-
 * Water: water demands and supplies for all agricultural, energy, and household uses
-
 * Emissions: 24 greenhouse gases and short-lived species:  CO2, CH4, N2O, halocarbons, carbonaceous aerosols, reactive gases, sulfur dioxide.
 
 ## Changes from the Previous Version
