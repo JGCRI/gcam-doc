@@ -4,17 +4,36 @@ title: Global Change Assessment Model (GCAM)
 gcam-version: v5.1
 ---
 
-The Joint Global Change Research Institute (JGCRI) is the primary development institution for the Global Change Assessment Model (GCAM), a comprehensive integrated modeling tool for exploring energy, water, land, and climate interactions over timescales of decades to a century.
+The Global Change Assessment Model (GCAM) is a global model that represents the behavior of, and interactions between five systems: the energy system, water, agriculture and land use, the economy, and the climate. It is used in a wide range of different applications from the exploration of fundamental questions about the complex dynamics between human and Earth systems to the those associated with response strategies to address important environmental questions. GCAM is a community model stewarded by The Joint Global Change Research Institute (JGCRI). This wiki page provides the documentation for GCAM.
 
-## GCAM Model Description
-An overview of GCAM is available at [GCAM Model Overview](overview.html). There are also more detailed descriptions of the [economic](macro-econ.html), [energy](energy.html), [land](land.html), [water](water.html), and [climate](hector.html) components.
+An overview of GCAM is available at [GCAM Model Overview](overview.html). The five main systems in GCAM (energy, water, land, economics, and the climate), along with other key considerations in the construction annd use of the model are covered in the following pages.
 
-## User Guides and Tutorials
+* [Socioeconomics](macro-econ.html)
+* [Energy](energy.html)
+* [Agriculture, Land-Use, and Bioenergy](aglu.html)
+* [Water](water.html)
+* [Climate](hector.html) 
+* [Economic Choice](choice.html)
+* [Solution and Computation](solver.html)
+* [Trade](trade.html)
+* [Technology Representation](en_technologies.html)
+* [Policies and costs](policies.html)
 
-* [Getting Started with GCAM](user-guide.html)
-* [GCAM Documentation](toc.html)
-* [GCAM Community](http://www.globalchange.umd.edu/models/gcam/gcam-community/)
-* [2017 Tutorial Slides](http://www.globalchange.umd.edu/data/annual-meetings/2017/GCAM_Tutorial_2017.pdf)
-* GCAM lectures from the UMD Water and Climate class
-  * [Lecture 3: Introduction to GCAM](https://www.youtube.com/watch?v=xRF9lFwtMr0)
-  * [Lecture 4: GCAM Tutorial](https://www.youtube.com/watch?v=S7vAShH-dbs)
+Special versions or representations of GCAM, including the representation of the Shared Socioeconoomic Pathways (SSPs) in  GCAM and the GCAM-USA model are covered in the following pages.
+
+* [Shared-Socioeconomic Pathways](ssp.html)
+* [GCAM-USA](gcam-usa.html)
+
+Material on how to get started and use GCAM can be found on the following pages.
+
+* [How to Get Started Running GCAM](user-guide.html)
+* [How to Set Up and Build ](gcam-build.html)
+* [GCAM Fusion Usage Guide](fusion.html)
+
+GCAM is under continuing development. Informatiion on how this version of GCAM differs from previous versions, along documentation for previous versions can be found on the following pages.
+
+* [Updates from the Previous Release](updates.html)
+* [GCAM-3](v3.2/toc.html)
+* [GCAM-4.2](v4.2/toc.html)
+* [GCAM-4.3](v4.3/toc.html)
+* [GCAM-4.4](v4.4/toc.html)

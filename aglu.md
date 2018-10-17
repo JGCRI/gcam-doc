@@ -16,20 +16,26 @@ of data is available in [PNNL Technical Report 21025](http://www.pnl.gov/main/pu
 
 ### Inputs
 
-GCAM's inputs include information on production, consumption, prices, land, carbon, and other emissions in the historical period. GCAM requires globally consistent data sets for each of its historical model periods. The GCAM data system can produce such data sets annually beginning in 1971. Currently, GCAM uses data from 1990, 2005, and 2010 to initialize the model, but could be initialized to any year beginning in 1971.
+GCAM's inputs include information on production, consumption, prices, land, carbon, and other emissions in the historical period in order to calibrate model parameters and functions that are used for modeling future periods. GCAM requires globally consistent data sets for each of its historical model periods as it solves for market equilibrium in these years as it does for future years. The GCAM data system can produce such data sets annually beginning in 1971. Currently, GCAM uses data from 1990, 2005, and 2010 to initialize the model, but could be initialized to any year beginning in 1971.
 
 <dl>
-<dt>Production</dt> <dd>Inputs include production of all crops and forestry products for each of the 283 AgLU regions. We currently rely on a blend of FAO and GTAP data for these inputs. FAO includes country-level data over the entire historical period, while GCAM has sub-national information for a single year in time.</dd>
+<dt>Historical Production</dt> <dd>Inputs include historical production of all crops and forestry products for each of the AgLU regions for the model base years. We currently rely on a blend of FAO and GTAP data for these inputs. FAO includes country-level data over the entire historical period, while GCAM has sub-national information for a single year in time.</dd>
 
-<dt>Consumption</dt> <dd>Inputs include food, non-food, bioenergy, and feed consumption of all crop and forestry products for each of the 32 geopolitical regions. We currently rely on IMAGE for animal feed and FAO data for all remaining inputs.</dd>
+<dt>Historical Consumption</dt> <dd>Inputs include food, non-food, bioenergy, and feed consumption of all crop and forestry products for each of the 32 geopolitical regions for the historical base years. We currently rely on IMAGE for animal feed and FAO data for all remaining inputs.</dd>
 
-<dt>Prices</dt> <dd>Inputs include the price of all food, feed, and forestry commodities. We currently use producer prices from FAO for these inputs.</dd>
+<dt>Historical Prices</dt> <dd>Inputs include the price of all food, feed, and forestry commodities for our historical base years. We currently use producer prices from FAO for these inputs.</dd>
 
-<dt>Land</dt> <dd>Inputs include land cover and land use for each of the GCAM land types and AgLU regions. We use information beginning in 1700 in order to spin-up the carbon cycle within GCAM. Currently, we use a blend of the Hurtt-Hyde land cover product from CMIP5, the SAGE potential vegetation map, and FAO/GTAP cropland area.</dd>
+<dt>Historical Land Cover and Use</dt> <dd>Inputs include land cover and land use for each of the GCAM land types and AgLU regions. We use information beginning in 1700 in order to spin-up the carbon cycle within GCAM. Currently, we use a blend of the Hurtt-Hyde land cover product from CMIP5, the SAGE potential vegetation map, and FAO/GTAP cropland area.</dd>
 
-<dt>Carbon</dt> <dd>Inputs include potential vegetation and soil carbon density (i.e., carbon density if the land grew to equilibrium) and a mature age. Currently, we derive vegetation carbon densities for crops from the FAO computed crop yield. All other carbon densities and mature ages come from Houghton (1999) and King (1997).</dd>
+<dt>Terrestrial Carbon Densities</dt> <dd>Inputs include potential vegetation and soil carbon density (i.e., carbon density if the land grew to equilibrium) and a mature age. Currently, we derive vegetation carbon densities for crops from the FAO computed crop yield. All other carbon densities and mature ages come from Houghton (1999) and King (1997).</dd>
 
-<dt>Other Emissions</dt> <dd>Inputs include emissions of all non-CO<sub>2</sub> gases and species for each year and region. Data for BC and OC is from the RCP inventory (Lamarque et al., 2011). Data for all other gases and species is from EDGAR (European Commission, 2010).</dd>
+<dt>Other Historical Emissions</dt> <dd>Inputs include emissions of all non-CO<sub>2</sub> gases and species for each year and region. Data for BC and OC is from the RCP inventory (Lamarque et al., 2011). Data for all other gases and species is from EDGAR (European Commission, 2010).</dd>
+
+<dt>Future Crop Yield Improvements</dt> <dd>Assumed rates of annual yield improvements for each of the crops and crop management options in each region.</dd>
+
+<dt>Other Variable Costs</dt> <dd>Per unit crop production cost of inputs that are not modeled explicitly in GCAM. Specifically, capital, operating, and labor costs other than land, water, and fertilizer</dd>
+
+<dt>Price and Income Elasticities of Food</dt> <dd>Elasticity parameters that influence the response of food to demand to future changes in prices and income levels.</dd>
 </dl><br/>
 
 ### Outputs
@@ -94,6 +100,8 @@ Economic land use decisions in GCAM are based on a logit model of sharing based 
 In GCAM, competing uses of land are nested within land nodes. Within each land node, it is generally assumed to be easier to substitute products, so logit exponents are higher to indicate tighter competition. Examples include switching food crops from one to another and converting forests from unmanaged categories to logging forests. Substitution across land nodes is also allowed but is assumed to be more difficult than within land nodes.  We implement this philosophy by setting lower logit exponents via input data. For example, the expansion of cropland into pasture is more difficult than expansion of wheat land into corn land.
 
 Although relative average profit rates are used in the logit sharing equations, the theory behind the math is that land shares are determined so the land is allocated across uses up until the point at which the marginal profit rates are equal to each other.  Therefore, the land values at the margin are also equal. As a result, all land uses within a nesting structure have equal value at the margin and further substitution will not increase total profits. If one option has a higher potential average profit rate than a second, it is assumed that option has a greater proportion of its distribution of profit rates that will exceed the marginal profit rate than the second option.  Therefore, this option will receive a higher share, but unlike a simple optimization model it will not get all of the land in the node.
+
+Finally, because the logit sharing approach reflects non-linear representations of crop profits and market share, it results in diminishing returns to scale as land uses expand further from historical values. In contrast to a linear model with constant returns to scale, the GCAM approach does not require explicit constraints on land use to govern behavior. See Wise et al. (2014) for more discussion about this effect and the relationship between logit exponents and land use change elasticities.
 
 ### Land Nesting Strategy
 
