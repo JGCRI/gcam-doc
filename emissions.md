@@ -68,7 +68,7 @@ Most base-year non-CO<sub>2</sub> emissions are calibrated to the EDGAR 4.2 emis
 
 ####  Agriculture and Land-Use Drivers
 * Emissions in the agriculture and land use system can be driven by output (e.g., for crop production) or land area (e.g., for forest fires).
-* Emissions are modeled at the level of agricultural technologies: region, water basin, crop type, and irrigation and management level. Note however that the underlying inventory data is far coarses, typically only available by sector and country. 
+* Emissions are modeled at the level of agricultural technologies: region, water basin, crop type, and irrigation and management level. Note however that the underlying inventory data is far coarser, typically only available by sector and country. 
 
 ####  Naming Conventions
 There are some naming conventions for a few emission species/sectors within GCAM that are useful to note.
@@ -128,46 +128,16 @@ Note that the GCAM implementation of the SSP scenarios used a different approach
 
 ## <a name="user-options">Advanced Non-CO<sub>2</sub> User Options</a>
 
-### Linked Emission Markets
-Emissions prices of different GHGs can be linked together for a multi-gas policy using the linked-ghg-policy object. For example, in the default [linked_ghg_policy.xml](https://github.com/JGCRI/gcam-core/blob/master/input/policy/linked_ghg_policy.xml) file in the GCAM release, all non-CO<sub>2</sub> GHGs are linked to the market for CO<sub>2</sub>. 
 
-The parameter price-adjust is used to convert prices (e.g., 100 year GWPs in the default set-up) and demand-adjust is used to convert demand units (e.g., to common units of carbon equivalents).
-These can be changed by year if desired.
+### Markets
 
-Setting price-adjust to zero means that there is no economic feedback for the price of this GHG. MAC curves, however, will still operate under the default set-up (whereby MAC curves are driven by CO<sub>2</sub> prices). This can be changed separately for energy/industrial/urban CH4, agricultural CH4 (CH4\_AGR), and CH4 from agricultural waste burning (CH4\_AWB), LUC CO<sub>2</sub> emissions (e.g. CO2_LUC).
+For information on using markets for non-CO2 emissions see the [markets For non-CO<sub>2</sub>](./policies.html#non-co2-markets) section of the polices page.
 
-Note that you must first create a policy by reading in a <ghgpolicy> object (by reading an an XML with this object first, see the various policy files in the GCAM release) and then you can define how this links to any emissions (through <linked-ghg-policy> objects).
-
-This flexibility allows CO<sub>2</sub>-only, CO<sub>2</sub>-equivalent, or non-CO<sub>2</sub> markets/constraints for various “baskets” of emissions as needed.
-
-Note that the GCAM default set-up includes economic feedbacks for methane and nitrous oxide. This is an idealized assumption, but might not happen in real-world policies. For example, in many current systems agricultural emissions are offsets only – e.g., they get paid to reduce emissions, but are not charged for any remaining emissions. (So to simulate this type of policy, price-adjust would be set to zero).
-
-### Markets For non-CO<sub>2</sub> Emission Species
-
-Markets can be set for any emission species. (e.g., CH4-only market, NOx market, etc.)
-
-Note that it generally does not make sense to set up an emissions market unless the model has a direct way to reduce emissions! (e.g. you’ve added relevant MAC curves.) For example, in [Shi et al. (2017)](energy.html#shi2017) US electricity sector SO<sub>2</sub> and NO<sub>x</sub> markets were used to represent current policies that cap emissions in certain states. MAC curves for existing power plants were added to allow emissions to change in response to market prices.
-
-xml inputs within the MAC curve that will likely need to be used to set-up new markets are:
-
-XML Tag | Description
------------- | -------------
-market-name | Name of market from which the price used by the MAC curve will be obtained (default = "CO2")
-mac-price-conversion | Value to multiply market price by to convert to unit expected by the MAC curve (for example, converting from $/tC to $/tCO2eq) (default  = 1)
-Note | mac-price-conversion can also be set to -1, which is a flag to turn off all use of the MAC curve. This is useful for sensitivity studies.
-
-One additional MAC-curve option to note is:
-
-| | |
------------- | -------------
-zero-cost-phase-in-time | Number of years over which to phase-in "below-zero" MAC curve reductions (default = 25 years)
-
-
-### Other Non-CO<sub>2</sub> Emission Options
+### Additional Non-CO<sub>2</sub> Emission Options
 
 Emission objects can be added/changed via user input in any time period. New parameters (such as emission factors) overwrite any previous values. Note that emission control objects will be copied forward. For vintaged technologies (e.g. electric generation, road transport), any new emission object will be applied to new vintages. Old vintages will retain the previously read-in emission characteristics.
 
-This also means that GHG objects can be removed after a given year by reading in a blank GHG object for that gas.
+This also means that GHG objects can be removed or overwritten after a given year by reading in a new GHG object for that gas. This also applies to GHG control objects. Reading in a new control object, for example, in 2020 for an electric generation technology will negate the effect of a previously read in control object of the same name for that vintage and future vintages. This can, for example, represent a transition from some emissions control regime applied to older vintages to a regime defined by new source performance standards. 
 
 In addition to the GDP control object, a linear-control object is also available that allows a user to specify that an emission factor will linearly change over time to a user-defined value over a specified time period. The parameters controlling the linear-control object are:
 
@@ -194,7 +164,5 @@ allow-ef-increase | (optional) Allow emission factors to increase from their sta
 <a name="lamarque2010">[Lamarque et al. 2010]</a> Lamarque, J.F., Bond, T. C., Eyring, V., et al. 2010. Historical (1850-2000) gridded anthropogenic and biomass burning emissions of reactive gases and aerosols: methodology and application, *Atmospheric Chemistry and Physics* 10(15): 7017–7039. doi:10.5194/acp-10-7017-2010. [Link](https://www.atmos-chem-phys.net/10/7017/2010/acp-10-7017-2010.html)
 
 <a name="rao2017">[Rao et al. 2017]</a> Rao, S., Klimont, Z., Smith, S., et al. 2017. Future air pollution int he Shared Socio-economic Pathways. *Global Environmental Change* 42: 246–358. doi:10.1016/j.gloenvcha.2016.05.012. [Link](https://www.sciencedirect.com/science/article/pii/S0959378016300723)
-
-<a name="shi2017">[Shi et al. 2017]</a> Shi W, Ou Y, Smith S J, Ledna C M, Nolte C G, Loughlin D H 2017. "Projecting state-level air pollutant emissions using an integrated assessment model: GCAM-USA" *Applied Energy* 208 511–521. doi: 10.1016/j.apenergy.2017.09.122. [Link](https://www.sciencedirect.com/science/article/pii/S0306261917314125)
 
 <a name="smith2005">[Smith et al. 2005]</a> Smith, S.J., Pitcher, H., and Wigley, T. 2005. "Future Sulfur Dioxide Emissions" *Climatic Change* 3: 267-318. doi: 10.1007/s10584-005-6887-y. [Link](https://link.springer.com/article/10.1007/s10584-005-6887-y)
