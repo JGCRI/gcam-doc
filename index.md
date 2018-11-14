@@ -13,6 +13,7 @@ An overview of GCAM is available at [GCAM Model Overview](overview.html). The fi
 * [Agriculture, Land-Use, and Bioenergy](aglu.html)
 * [Water](water.html)
 * [Climate](hector.html) 
+* [Emissions](choice.html)
 * [Economic Choice](choice.html)
 * [Solution and Computation](solver.html)
 * [Trade](trade.html)

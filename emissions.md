@@ -1,8 +1,8 @@
 ---
 layout: index
 title: GCAM Emissions
-prev: ssp.html
-next: aglu.html
+prev: hector.html
+next: choice.html
 gcam-version: v5.1
 ---
 
