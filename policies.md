@@ -54,11 +54,6 @@ XML Tag | Description
 market-name | Name of market from which the price used by the MAC curve will be obtained (default = "CO2")
 mac-price-conversion | Value to multiply market price by to convert to unit expected by the MAC curve (for example, converting from $/tC to $/tCO2eq) (default  = 1)
 Note | mac-price-conversion can also be set to -1, which is a flag to turn off all use of the MAC curve. This is useful for sensitivity studies.
-
-One additional MAC-curve option to note is:
-
-| | |
------------- | -------------
 zero-cost-phase-in-time | Number of years over which to phase-in "below-zero" MAC curve reductions (default = 25 years)
 
 ## <a name="energy-production-policies"> Energy Production Policies </a>

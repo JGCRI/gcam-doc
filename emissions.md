@@ -51,7 +51,7 @@ Figure 1: Timescales for forest regrowth in GCAM.
 
 Changes in the carbon content of soils due to land-use change also exponentially approach an equilibrium value using a region-dependent timescale. This represents the timescales for carbon pool changes in soils.
 
-##<a name="non-co2-overview">Non-CO<sub>2</sub> Emissions Overview</a>
+## <a name="non-co2-overview">Non-CO<sub>2</sub> Emissions Overview</a>
 
 We summarize here some general points common to non-CO<sub>2</sub> emissions in GCAM
 
