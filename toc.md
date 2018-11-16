@@ -12,6 +12,7 @@ gcam-version: v5.1
 * [Agriculture, Land-Use, and Bioenergy](aglu.html)
 * [Water](water.html)
 * [Climate](hector.html) 
+* [Emissions](emissions.html)
 * [Economic Choice](choice.html)
 * [Solution and Computation](solver.html)
 * [Trade](trade.html)

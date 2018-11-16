@@ -1,8 +1,8 @@
-﻿---
+---
 layout: index
 title: Earth System Module – Hector v2.0	
 prev: water.html
-next: choice.html
+next: emissions.html
 gcam-version: v5.1
 ---
 

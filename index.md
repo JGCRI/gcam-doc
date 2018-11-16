@@ -13,6 +13,7 @@ An overview of GCAM is available at [GCAM Model Overview](overview.html). The fi
 * [Agriculture, Land-Use, and Bioenergy](aglu.html)
 * [Water](water.html)
 * [Climate](hector.html) 
+* [Emissions](emissions.html)
 * [Economic Choice](choice.html)
 * [Solution and Computation](solver.html)
 * [Trade](trade.html)
@@ -37,3 +38,4 @@ GCAM is under continuing development. Informatiion on how this version of GCAM d
 * [GCAM-4.2](v4.2/toc.html)
 * [GCAM-4.3](v4.3/toc.html)
 * [GCAM-4.4](v4.4/toc.html)
+
