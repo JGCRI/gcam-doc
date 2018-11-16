@@ -161,6 +161,9 @@ In keeping with the US electricity-specific CCS modeling presented in [Wise et a
 
 <span id="_Ref277591731" class="anchor"></span>Carbon storage potential by electricity market.
 
+Non-CO2 GHGs
+============
+Note that at this time the specification of Non-CO2 greenhouse gases in GCAM-USA is incomplete.  This is an active area of development.  However for this reason the climate model will be disabled in GCAM-USA scenarios.
 
 Referenes
 ===============
