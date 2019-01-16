@@ -18,7 +18,7 @@ GCAM is an integrated, multi-sector model that explores both human and Earth sys
 
 GCAM allows users to explore what-if scenarios, quantifying the implications of possible future conditions. These outputs are not predictions of the future; they are a way of analyzing the potential impacts of different assumptions about future conditions. GCAM reads in external "scenario assumptions" about key drivers (e.g., population, economic activity, technology, and policies) and then assesses the implications of these assumptions on key scientific or decision-relevant outcomes (e.g., commodity prices, energy use, land use, water use, emissions, and concentrations). 
 
-<img src="gcam-figs/overview_fig2.png" width="600"><br/>
+<img src="gcam-figs/overview_fig2.png" width="600" style="background-color:lightgray"><br/>
 Figure 1: Conceptual diagram of the way that IA models use scenario assumptions to produce fuller, modeled scenarios that include a wide range of additional information
 {: .fig}
 
@@ -28,7 +28,7 @@ Developing and quantifying a single set of scenario assumptions is the most comm
 
 The GCAM ecostystem includes a range of different tools, from data manipulation tools, the dynamic core of GCAM, and a range of disaggregation models, visualization tools and emulation tools. The GCAM release includes a data system for creatinig the XML inputs for GCAM and the dynamic core. Additional tools are produced and available separately and not included in the release version of GCAM.
 
-The [GCAM Data System](https://github.com/JGCRI/gcamdata) combines and reconciles a wide range of different data sets, and systematically incorporates a range of future assumptions. The output of the data system is an XML dataset with historical and base-year data for calibrating the model along with assumptions about future trajectories such as GDP, population, and technology. It includes the necessary information for representing energy, water, land, and the economic system. The GCAM Data System is largely constructed in R, but accommodates inputs in a range of different formats. Creating new scenarios does not require the use of the GCAM data system. New, "add on" xml files can be created to overwrite key future scenario assumptions such as population, economic activity, and technology cost and performance, among others.
+The [GCAM Data System](https://github.com/JGCRI/gcamdata) combines and reconciles a wide range of different data sets, and systematically incorporates a range of future assumptions. The output of the data system is an XML dataset with historical and base-year data for calibrating the model along with assumptions about future trajectories such as GDP, population, and technology. It includes the necessary information for representing energy, water, land, and the economic system. The GCAM Data System is largely constructed in R, but accommodates inputs in a range of different formats. Creating new scenarios does not require the use of the GCAM data system. New, "add on" xml files can be created to overwrite key future scenario assumptions such as population, economic activity, and technology cost and performance, among others. More information on GCAM XML files is available [here](gcam-xml.html).
 
 The GCAM core (discussed below) is the component of the model in which economic decisions are made (e.g., land use and technology choices), and in which dynamics and interactions are modeled within and among different human and Earth systems. The GCAM core is written in C++ and takes in inputs in XML. Outputs are written to a xml database.
 
@@ -88,7 +88,7 @@ The core operating principle for GCAM is that of market equilibrium. Representat
 
 As an example, in any single model period, GCAM derives a demand for natural gas starting with all of the uses to which natural gas might be put, such as passenger and freight transport, power generation, hydrogen production, heating, cooling and cooking, fertilizer production, and other industrial energy uses. Those demands depend on the external assumptions about, for example, electricity generating technology efficiencies, but also on the price of all of the commodities in the model. GCAM then calculates the amount of natural gas that suppliers would like to supply given their available technology for extracting resources and the market price. The model gathers this same information for all of the commodities and then adjusts prices so that in every market during that period supplies of everything from rice to solar power match demands.
 
-<img src="gcam-figs/overview_fig4.png" width="600"><br/>
+<img src="gcam-figs/overview_fig4.png" width="600" style="background-color:lightgray"><br/>
 Figure 3: Conceptual Schematic of the Operation of the GCAM Core
 {: .fig}
 
