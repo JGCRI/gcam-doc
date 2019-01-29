@@ -81,14 +81,15 @@ Another common problem on Windows is GCAM also relies on the [Microsoft Visual S
 
 #### 2.1.1.2 Mac
 
-On the Mac a missing Java usually prompts an install of "legacy Java" from Apple.  Note this install is no longer supported by GCAM.  Instead users will need to install the Java Developer Kit from Oracle version 1.7 or newer.  The processes is a little bit ore involved so users should follow the same instructions for setting up [Java when compiling GCAM](gcam-build.html#23-java).
+On the Mac a missing Java usually prompts an install of "legacy Java" from Apple.  Note this install is no longer supported by GCAM.  Instead users will need to install the Java Developer Kit from Oracle version 1.7 or newer.  The processes is a little bit more involved so users should follow the same instructions for setting up [Java when compiling GCAM](gcam-build.html#23-java).
 
 ##### 2.1.1.2.1 Troubleshooting Java on Mac
-The`<GCAM Workspace>/exe/run-gcam.command`script attempts to put a symbolic link into the `libs/java` directory that points to the location of the necessary java libraries. 
+The`<GCAM Workspace>/exe/run-gcam.command`script attempts to put a symbolic link into the `libs/java` directory that points to the location of the necessary java libraries (e.g., `libjvm.dylib`). 
 
-If, when attempting to run GCAM, the libraries are not found (e.g. an error message of:
-`dyld: Library not loaded: @rpath/libjvm.dylib`,
-the problem may be that the symlink is not actually pointing to the directory that contains the needed library. Use the`readlink`command within the terminal to resolve the symlink path. If the path is incorrect, then create a new symlink that points to the java sdk directory that contains the libjvm.dylib library (some examples are in [Java when compiling GCAM](gcam-build.html#23-java).
+If, when attempting to run GCAM, the libraries are not found, you will get an error message of:
+`dyld: Library not loaded: @rpath/libjvm.dylib`. In this case the problem may be that the symlink is not actually pointing to the directory that contains the needed library. This can occur if the `run-gcam.command`script gets out of sync with the java version (e.g. using an older version of GCAM or if java is updated).
+
+To fix this, use `ls -l` or `readlink` within terminal to resolve the symlink path. If the path is incorrect, then create a new symlink that points to the java `sdk` directory that contains the libjvm.dylib library (please see [Java when compiling GCAM](gcam-build.html#23-java) for details on how to do this).
 
 ### 2.2 Viewing Model Results
 
