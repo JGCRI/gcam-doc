@@ -55,9 +55,8 @@ geopolitical regions.</dd>
 
 <dt>Prices</dt> <dd>Outputs include the price of all food, feed,
 forestry, bioenergy and livestock commodities. This information is
-calculated annually, typically at a global level; however, some
-commodities (e.g., livestock) have regional prices (32-region
-level).</dd>
+calculated annually, typically at a regional (i.e., 32-region)
+level.</dd>
 
 <dt>Land</dt> <dd>Outputs include land use and land cover for each of
 the land types included in GCAM (see Figure 1). This information is
@@ -196,6 +195,25 @@ The GCAM representation of global land and allocation is much more complicated t
 Consider the example of a future scenario with a high global demand for a bioenergy crop such as switchgrass. A developed region with favorable climate such as Western Europe may have much higher potential yields, and thus higher potential profit rates for growing a bioenergy crop than Africa. However, that does not mean that Western Europe would grow more bioenergy crops than Africa. Western Europe will also have higher yields and profits for high-valued food crops, as well as high land prices that would limit expansion of agricultural land. Africa may find in this scenario that it is profitable to expand agricultural land for bioenergy crops for export, even though its bioenergy yields are lower on an absolute basis. Similar examples can be made with food crops and forestry.
 
 Although GCAM is not structured as an optimization model, the allocation of production of crops and products across regions and subregions of the globe based on comparative advantage can be considered optimal in terms of maximizing global profits (which is not the same as minimizing land requirements). While each land subregion makes its own independent allocation, the subregions communicate these decisions with each other through economic markets. The global markets for agricultural and forest products react to these allocations by comparing global supplies to demands and adjusting prices to equilibrate supplies and demands. The resulting prices are sent back to each land subregion as signals as to how its land allocation should be changed.  The process of allocation and price adjustment continues until the markets are in equilibrium.  This market equilibrium is an economically efficient allocation of land resources among regions (Samuelson and Nordhaus, 1985).
+
+### Regional Agricultural Markets and Trade
+Version 5.1.3 and greater of GCAM include the capability to represent regional agricultural markets, with explicitly modeled gross imports and exports of selected crop types. In contrast to the purely global approach, wherein crop prices are only tracked at the global level, the regional markets approach also has region-specific crop prices and markets. Note that bilateral trade is not modeled; for each crop, a region's gross imports come from, and exports go to, a single global market for the given crop.
+
+The structural implementations of a "global-market" versus a "regional-market" representation are shown in Figure 2.
+
+![AgLU Global Markets](gcam-figs/ag_global_mkt.png)<br/>
+![AgLU Regional Markets](gcam-figs/ag_regional_mkt.png)<br/>
+Figure 2: Global (upper) and regional (lower) agricultural markets structures, for a representative crop and three representative regions.
+{: .fig}
+
+In the global-market representation, each region's production is output to a global market, which in turn supplies each region's demand sectors (i.e., food, feed, biofuel production, and other uses). As there is only one global market per crop commodity, all regions see the same price. Similarly, the impacts of a supply (demand) shock within any region do not directly cause a shock to the demand (supply) of that region; these sorts of within-region impacts are buffered by the global market.
+
+In the regional-market representation, one additional sector per crop is added to each region for representing domestic supplies; consistent with GCAM terminology elsewhere, these sectors are named, e.g., "regional corn". The total domestic supply of any crop and region is equal to production minus exports plus imports. The production sector's prices are region-specific, as are the "regional crop" prices seen by the demand sectors. Therefore, a shock to the producer prices of an agricultural commodity in some region has a direct impact on the consumption sectors within that region.
+
+For each crop, this structure introduces two new nests with [calibrated logit choice](choice.html):
+
+1. The global "traded crop" is supplied by gross exports from each of GCAM's geopolitical regions.
+2. The "regional crop" sector within each region allocates market share to domestic production versus imports of the global "traded crop".
 
 ## Terrestrial Carbon Approach
 
