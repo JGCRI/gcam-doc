@@ -149,7 +149,7 @@ Edmonds, J. and J. Reilly. 1983c. "Global Energy Production and Use to the Year 
 
 Edmonds, J., J. Reilly, J.R. Trabalka and D.E. Reichle. 1984. An Analysis of Possible Future Atmospheric Retention of Fossil Fuel CO2. TR013, DOE/OR/21400-1. National Technical Information Service, U.S. Department of Commerce, Springfield Virginia 22161. 
 
-Kim, S.H., J. Edmonds, J. Lurz, S. J. Smith, and M. Wise (2006) The ObjECTS Framework for Integrated Assessment: Hybrid Modeling of Transportation Energy Journal (Special Issue #2) pp 51-80.
+Kim, S.H., J. Edmonds, J. Lurz, S. J. Smith, and M. Wise (2006) The ObjECTS Framework for Integrated Assessment: Hybrid Modeling of Transportation. The Energy Journal 27(Special Issue 2): pp 63-91.
 
 Reilly, J.M., Edmonds, J.A., Gardner, R.H., and Brenkert, A.L. 1987. "Uncertainty Analysis of the IEA/ORAU CO2 Emissions Model," The Energy Journal, 8(3):1-29. Response Strategies Working Group, Intergovernmental Panel on Climate Change. 1990. Emissions Scenarios.
 
