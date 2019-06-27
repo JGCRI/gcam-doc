@@ -5,7 +5,8 @@ gcam-version: v5.1
 ---
 ## GCAM Ecosystem of Models and Tools
 
-The GCAM ecosystem of models and tools provides several options for interfacing with GCAM and run outputs.  The following are a list of resources and tools with their descriptions and use cases created for the GCAM user community:
+The GCAM ecosystem of models and tools provides a suite of options for interfacing with GCAM inputs and outputs.  The following are a list of models and tools created for the GCAM user community with their descriptions and location:
+
 
 ### Extraction and formatting
 
