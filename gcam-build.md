@@ -154,6 +154,7 @@ In addtion the PATH variable may need to be updated so that GCAM can find the `j
 Note since GCAM now requires Java 1.7+ the old Apple supplied Java installation is no longer supported.  All versions of OS X can still use a more recent version of Java from Oracle/openJDK instead (**note** users must install the JDK, not the JRE).  Again we now reccommend users install the openJDK version.  Note, openJDK only provides a zip archive, to install on the Mac a user may simply run in the Terminal:
 
 ```
+tar -zxf openjdk-12.0.1_osx-x64_bin.tar.gz
 sudo mv jdk-12.0.1.jdk /Library/Java/JavaVirtualMachines/
 ```
 
