@@ -18,6 +18,15 @@ GCAM provides a generic [Makefile](#41-building-with-makefile) as well as [Xcode
 * [Xerces C++ XML Parser](http://xerces.apache.org), details [here](#22-xerces-xml-parser)
 * [Java](http://www.oracle.com/technetwork/java/index.html), required to write XML DB results.  See [below](#23-java) for more details.
 
+All of these libraries can also be installed through package managers:
+
+|        | Homebrew (MacOS)                | Aptitude (Debian/Ubuntu)                                     |
+|        | `brew install <package>`        | `sudo apt install <package>`                                 |
+|--------|---------------------------------|--------------------------------------------------------------|
+| Boost  | `boost`                         | `libboost-dev` `libboost-system-dev libboost-filesystem-dev` |
+| Xerces | `xerces-c`                      | `libxerces-c-dev`                                            |
+| Java   | (Cask) `brew cask install java` | `default-jre` `default-jdk`                                  |
+
 In addition users will have to download the [Hector submodule](#3-compiling-hector).
 
 *Note that, in a departure from past releases*, in addition to compiling the C++ GCAM code, creating a GCAM executable now also requires compiling hector and (if not using the release version of the libraries) compiling boost libraries.
@@ -233,6 +242,8 @@ export JAVA_INCLUDE=${JAVA_HOME}/include
 export JAVA_LIB=${JAVA_HOME}/jre/lib/server
 ```
 
+(Note that unlike the other variables, `JARS_LIB` points to all of the jar _files_, **not** the jar _directory_, which is why the `*` wildcard is necessary. `JARS_LIB` may also be set to point to multiple different files by concatenating the paths, e.g. `export JARS_LIB=/path/to/BaseX-8.6.7.jar:/path/to/joost-0.9.1.jar:${HOME}/libs/jars/*`).
+
 With these environment variables set a user can simple run:
 
 ```
@@ -241,6 +252,32 @@ make gcam -j 8
 ```
 
 Note the `-j 8` is simply to compile multiple sources files at a time (set as appropriate for your system configuration) and is only necessary to speed up the processes.  Once complete an executable will be copied to `<GCAM Workspace>/exe` and can be run from that directory with `gcam.exe -C config_file.xml`.
+
+#### 4.1.1 Recommended configuration using Ubuntu 16.04
+Assuming the libraries were installed via the `apt` package manager using a command like the following:
+
+```
+sudo apt install libboost-dev libboost-system-dev libboost-filesystem-dev libxerces-c-dev default-jre default-jdk
+```
+
+...the following variables can be used:
+
+```
+USRLIB = /usr/lib/x86_64-linux-gnu
+
+BOOST_LIB = $(USRLIB)
+BOOST_INCLUDE = /usr/include/boost
+
+# For Hector, which uses different definitions
+BOOSTLIB = $(BOOST_LIB)
+BOOSTROOT = $(BOOST_INCLUDE)
+
+XERCES_LIB = $(USRLIB)
+XERCES_INCLUDE = /usr/include/xercesc
+
+JAVA_INCLUDE = /usr/lib/jvm/default-java/include
+JAVA_LIB = /usr/lib/jvm/default-java/jre/lib/amd64/server
+```
 
 ### 4.2 Building with Xcode
 Mac users who would like to use the Xcode integrated development environment must have it installed (available from the Apple App Store), however a recent version with C++ 14 support is required.  Xcode version 8.1+ have been known to work.  Users can find the project file under `<GCAM Workspace>/cvs/objects/build/xcode3/objects.xcodeproj`. Once open you should change the `Scheme` to build the `Release` target.  You can find the scheme settings here:

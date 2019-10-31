@@ -23,7 +23,7 @@ gcam-version: v5.1
 
 * gcam-v5.1-Mac-Release-Package.zip contains the GCAM executable, supporting libraries, the ModelInterface, and input XML files for the Mac OS X platform.  **Note for most Mac users this is typically the only package required.**
 * gcam-v5.1-Windows-Release-Package.zip contains the GCAM executable, supporting libraries, the ModelInterface, and input XML files for the Windows platform. **Note for most Windows users this is typically the only package required.**
-* Source code (in zip or tar.gz format).  This is the core of the release and contains all model source code and data processing scripts.  Generally only needed if you need to comple the source code from scratch.  Users who will need to maintain changes to source code and/or data processing code for an extended period of time should strongly consider checking out the repository with Git instead.
+* Source code (in zip or tar.gz format).  This is the core of the release and contains all model source code and data processing scripts.  Generally only needed if you need to compile the source code from scratch.  Users who will need to maintain changes to source code and/or data processing code for an extended period of time should strongly consider checking out the repository with Git instead.
 
 The following instructions for users who want to use the pre-built GCAM executable and XML input files.  For instructions on compiling your own GCAM executable see [GCAM Compile Instructions](gcam-build.html).  For instructions on how to run the gcamdata R package to rebuild the XML input files from scratch see [Running the GCAM Data System](data-system.html).  Once built these users can proceed from the [Quickstart](#gcam-quickstart) guide.
 
@@ -81,7 +81,15 @@ Another common problem on Windows is GCAM also relies on the [Microsoft Visual S
 
 #### 2.1.1.2 Mac
 
-On the Mac a missing Java usually prompts an install of "legacy Java" from Apple.  Note this install is no longer supported by GCAM.  Instead users will need to install the Java Developer Kit from Oracle version 1.7 or newer.  The prcesses is a little bit ore involved so users should follow the same instructions for setting up [Java when compiling GCAM](gcam-build.html#23-java).
+On the Mac a missing Java usually prompts an install of "legacy Java" from Apple.  Note this install is no longer supported by GCAM.  Instead users will need to install the Java Developer Kit from Oracle version 1.7 or newer.  The processes is a little bit more involved so users should follow the same instructions for setting up [Java when compiling GCAM](gcam-build.html#23-java).
+
+##### 2.1.1.2.1 Troubleshooting Java on Mac
+The`<GCAM Workspace>/exe/run-gcam.command`script attempts to put a symbolic link into the `libs/java` directory that points to the location of the necessary java libraries (e.g., `libjvm.dylib`). 
+
+If, when attempting to run GCAM, the libraries are not found, you will get an error message of:
+`dyld: Library not loaded: @rpath/libjvm.dylib`. In this case the problem may be that the symlink is not actually pointing to the directory that contains the needed library. This can occur if the `run-gcam.command`script gets out of sync with the java version (e.g. using an older version of GCAM or if java is updated).
+
+To fix this, use `ls -l` or `readlink` within terminal to resolve the symlink path. If the path is incorrect, then create a new symlink that points to the java `sdk` directory that contains the libjvm.dylib library (please see [Java when compiling GCAM](gcam-build.html#23-java) for details on how to do this).
 
 ### 2.2 Viewing Model Results
 

@@ -48,7 +48,7 @@ Supplied with input information from the GCAM Data System, the GCAM Core is the 
 
 * [**Physical Earth System**](hector.html): The physical Earth system in GCAM is modeled using Hector, a physical Earth system emulator that provides information about the composition of the atmosphere based on emissions provided by the other modules, ocean acidity, and climate.
 
-The exact structure of the model explored in the GCAM core - for example, the number of regions and technologies - is data driven. In all cases, the GCAM core represents the entire world, but it is constructed with different levels of resolution for each of these different systems. In the current release version of GCAM, the energy-economy system operates at 32 regions globally, land is divided into >300 subregions, and water is tracked for 233 basins worldwide. The Earth system module operates at a global scale.
+The exact structure of the model explored in the GCAM core - for example, the number of regions and technologies - is data driven. In all cases, the GCAM core represents the entire world, but it is constructed with different levels of resolution for each of these different systems (see Figure 2). In the current release version of GCAM, the energy-economy system operates at 32 regions globally (see tables below), land is divided into >300 subregions, and water is tracked for 233 basins worldwide. The Earth system module operates at a global scale.
 
 <style type="text/css">
 .header{font-weight:bold;background-color:#333333;color:#ffffff;vertical-align:top}
@@ -71,11 +71,11 @@ The exact structure of the model explored in the GCAM core - for example, the nu
   </tr>
     <tr>
     <td class="first_col">Land System</td>
-    <td class="second_col">235 subregions</td>
+    <td class="second_col">384 subregions</td>
   </tr>
     <tr>
     <td class="first_col">Water Supplies</td>
-    <td class="second_col">384 Hydrologic Basins</td>
+    <td class="second_col">235 Hydrologic Basins</td>
   </tr>
     <tr>
     <td class="first_col">Physical Earth System</td>
@@ -83,6 +83,49 @@ The exact structure of the model explored in the GCAM core - for example, the nu
   </tr>
 </table>
 <br/>
+
+<img src="gcam-figs/gcam_regions.png" width="600"><br/>
+Figure 2: GCAM regional mapping
+{: .fig}
+
+
+| GCAM Region	| Countries |
+|:-------------:|:---------:|
+| Africa\_Eastern	| Burundi, Comoros, Djibouti, Eritrea, Ethiopia, Kenya, Madagascar, Mauritius, Reunion, Rwanda, Sudan, Somalia, Uganda |
+| Africa\_Northern | Algeria, Egypt, Western Sahara, Libya, Morocco, Tunisia |
+| Africa\_Southern | Angola, Botswana, Lesotho, Mozambique, Malawi, Namibia, Swaziland, Tanzania, Zambia, Zimbabwe |
+| Africa\_Western	 | Benin, Burkina Faso, Central African Republic, Cote d’Ivoire, Cameroon, Democratic Republic of the Congo, Congo, Cape Verde, Gabon, Ghana, Guinea, Gambia, Guinea-Bissau, Equatorial Guinea, Liberia, Mali, Mauritania, Niger, Nigeria, Senegal, Sierra Leone, Sao Tome and Principe, Chad, Togo |
+| Argentina | Argentina |
+| Australia\_NZ	| Australia, New Zealand |
+| Brazil | Brazil |
+| Canada	    | Canada |
+| Central America and the Caribbean	 | Aruba, Anguilla, Netherlands Antilles, Antigua & Barbuda, Bahamas, Belize, Bermuda, Barbados, Costa Rica, Cuba, Cayman Islands, Dominica, Dominican Republic, Guadeloupe, Grenada, Guatemala, Honduras, Haiti, Jamaica, Saint Kitts and Nevis, Saint Lucia, Montserrat, Martinique, Nicaragua, Panama, El Salvador, Trinidad and Tobago, Saint Vincent and the Grenadines |
+| Central Asia | Armenia, Azerbaijan, Georgia, Kazakhstan, Kyrgyzstan, Mongolia, Tajikistan, Turkmenistan, Uzbekistan |
+| China | China |
+| Colombia | Colombia |
+| EU-12 | Bulgaria, Cyprus, Czech Republic, Estonia, Hungary, Lithuania, Latvia, Malta, Poland, Romania, Slovakia, Slovenia |
+| EU-15         |	Andorra, Austria, Belgium, Denmark, Finland, France, Germany, Greece, Greenland, Ireland, Italy, Luxembourg, Monaco, Netherlands, Portugal, Sweden, Spain, United Kingdom |
+| Europe\_Eastern | Belarus, Moldova, Ukraine |
+| European Free Trade Association |Iceland, Norway, Switzerland |
+| Europe\_Non\_EU | Albania, Bosnia and Herzegovina, Croatia, Macedonia, Montenegro, Serbia, Turkey |
+| India | India |
+| Indonesia | Indonesia |
+| Japan |	Japan |
+| Mexico | Mexico |
+| Middle East | United Arab Emirates, Bahrain, Iran, Iraq, Israel, Jordan, Kuwait, Lebanon, Oman, Palestine, Qatar, Saudi Arabia, Syria, Yemen |
+| Pakistan | Pakistan |
+| Russia | Russia |
+| South Africa | South Africa |
+| South America\_Northern	| French Guiana, Guyana, Suriname, Venezuela |
+| South America\_Southern	| Bolivia, Chile, Ecuador, Peru, Paraguay, Uruguay |
+| South Asia | Afghanistan, Bangladesh, Bhutan, Sri Lanka, Maldives, Nepal |
+| Southeast Asia | American Samoa, Brunei Darussalam, Cocos (Keeling) Islands, Cook Islands, Christmas Island, Fiji, Federated States of Micronesia, Guam, Cambodia, Kiribati, Lao Peoples Democratic Republic, Marshall Islands, Myanmar, Northern Mariana Islands, Malaysia, Mayotte, New Caledonia, Norfolk Island, Niue, Nauru, Pacific Islands Trust Territory, Pitcairn Islands, Philippines, Palau, Papua New Guinea, Democratic Peoples Republic of Korea, French Polynesia, Singapore, Solomon Islands, Seychelles, Thailand, Tokelau, Timor Leste, Tonga, Tuvalu, Viet Nam, Vanuatu, Samoa |
+| South Korea | South Korea |
+| Taiwan | Taiwan |
+| USA | United States |
+
+Table: Mapping from GCAM region to country
+
 
 The core operating principle for GCAM is that of market equilibrium. Representative agents in GCAM use information on prices, as well as other information that might be relevant, and make decisions about the allocation of resources. These representative agents exist throughout the model, representing, for example, regional electricity sectors, regional refining sectors, regional energy demand sectors, and land users who have to allocate land among competing crops within any given land region. Markets are the means by which these representative agents interact with one another. Agents indicate their intended supply and/or demand for goods and services in the markets. GCAM solves for a set of market prices so that supplies and demands are balanced in all these markets across the model. The [GCAM solution process](solver.html) is the process of iterating on market prices until this equilibrium is reached. Markets exist for physical flows such as electricity or agricultural commodities, but they also can exist for other types of goods and services, for example tradable carbon permits. 
 
