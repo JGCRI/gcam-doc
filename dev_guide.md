@@ -11,7 +11,7 @@ gcam-version: v5.1
 * [Review Process](dev-guide/review.html)
 * [Analysis Tools](dev-guide/analysis.html)
 * [Examples](dev-guide/examples.html)
-* [Common Issues and Frequently Asked Questions](dev-guide/faq.html)
+* [Debugging: Common Issues](dev-guide/debug.html)
 * [Additional Information](dev-guide/additional_info.html)
 
 
