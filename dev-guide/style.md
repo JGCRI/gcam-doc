@@ -10,10 +10,10 @@ gcam-version: v5.1
 
 Adapted from Coding Standards for C, C++, and Java by the PNNL BioInformatics Initiative and by NASA's Vision 2000 CCS Package and Application Team, Collab Software Coding Standards Guide for Java by DOE's EMSL Collaboratory team, and the PNNL Coding Standards of the Software Systems Engineering Process.
 
-###Introduction
+### Introduction
 The purpose of these coding standards is to increase productivity, reduce errors, and facilitate the maintenance, portability, and reuse of custom C, C++, and Java source code developed under the GCAM Modeling Group. These standards were developed from a variety of sources, including other standards documents, software examples from de facto standard language references, and personal experience. As with any guidelines, there will be circumstances where full compliance is not desirable for efficiency, maintainability, or other reasons. In these cases, conformance should not be pursued simply for the sake of meeting the standards.
 
-####When the standards are not followed, it is advisable to add a comment with the reason for non-conformance.
+#### When the standards are not followed, it is advisable to add a comment with the reason for non-conformance.
 
 This document is organized into five sections:
 
@@ -25,11 +25,11 @@ This document is organized into five sections:
 
 The   symbol is used to denote language specific information. Within tables, "n/a" denotes "not applicable".
  
-###1 Directory Structure
+### 1 Directory Structure
 All custom source and header files should be grouped into relevant topics and placed within the topic directory. Header and source files should be further separated in Include and Source directories within the topic directory. Libraries should be placed in separate locations and added through the IDE. If the project involves mixed-code (i.e. Fortran and C++) it is acceptable to separate the source code by language, with a single folder named after each language. As projects become more complex, this standard is likely to evolve.
  
-###2 File Organization
-####2.0 File Contents
+### 2 File Organization
+#### 2.0 File Contents
 Files should be used to organize related code modules, either at the class (for C++ and Java) or function (for C) level. The following table identifies the contents of individual files for each language:
 
 File contents	|C++	|Java
@@ -39,7 +39,8 @@ class definition (source)	|X	|X
 main function	|X	|(with primary class)
 function(s)	|X	|n/a
 globals	|X	|n/a
-####2.1 Source File Layout
+
+#### 2.1 Source File Layout
 Source files should contain the following components in the order shown:
 
 File contents	|C++	|Java
@@ -59,7 +60,8 @@ private methods	|X	|X
 functions	|X	|n/a
   
   (C++) When its possible to put a needed  #include line in the source file instead of in the header file, do so.  This will reduce unnecessary file dependencies and save a little compile time.
-####2.2 Header File Layout
+
+#### 2.2 Header File Layout
 Header files should contain the following components in the order shown (note that Java does not use header files):
 
 File contents|C++	|Java
@@ -81,20 +83,25 @@ protected methods	|X	|n/a
 private methods	|X	|n/a
 inline method definitions	|X	|n/a
 functions	|X	|n/a
-####2.3 Header File Guard
+
+#### 2.3 Header File Guard
    (C++) All header files should contain a file guard mechanism to prevent multiple inclusion. This mechanism is implemented as shown by the following lines:
    
-/#ifndef MeaningfulNameH         // first line of the header file  
-/#define MeaningfulNameH         // second line of the header file
-          .
-          .                       
-          .                      // body of the header file. 
+```C++
+#ifndef MeaningfulNameH         // first line of the header file  
+#define MeaningfulNameH         // second line of the header file
+
+                       
+                      // body of the header file. 
           
-/#endif  // MeaningfulNameH      // last line of the header file; note comment
-####2.4 Prolog
-•	The following standard Copyright Notice will appear first in the prolog in every file.
+#endif  // MeaningfulNameH      // last line of the header file; note comment
+```
+
+#### 2.4 Prolog
+The following standard Copyright Notice will appear first in the prolog in every file.
   
-“LEGAL NOTICE
+```
+LEGAL NOTICE
 This computer software was prepared by Battelle Memorial Institute, hereinafter the Contractor, under Contract No. DE-AC05-76RL0 1830 with the Department of Energy (DOE). NEITHER THE GOVERNMENT NOR THE CONTRACTOR MAKES ANY WARRANTY, EXPRESS OR IMPLIED, OR ASSUMES ANY LIABILITY FOR THE USE OF THIS SOFTWARE. This notice including this sentence must appear on any copies of this computer software.
 
 EXPORT CONTROL
@@ -105,10 +112,12 @@ Distributed as open-source under the terms of the Educational Community
 License version 2.0 (ECL 2.0). http://www.opensource.org/licenses/ecl2.php
  
 For further details, see: http://www.globalchange.umd.edu/models/gcam/” 
+```
 
-•	The following comment block should appear next.
+The following comment block should appear next.
 
-•	Author or authors
+```C++
+/•	Author or authors
 •	Creation Date
 •	Point of Contact
 •	Author or authors
@@ -124,8 +133,10 @@ For further details, see: http://www.globalchange.umd.edu/models/gcam/”
 * \date $Date$ Leave this exactly as written.
 * \version $Revision$ Leave this exactly as written.
 */
+```
+```
 
-####3 Naming Conventions
+#### 3 Naming Conventions
 The following table summarizes the naming conventions:
 Identifier	C	C++	Java
 package	n/a	shortname1
@@ -162,22 +173,25 @@ Filenames should only contain one period, to separate the file extension.
 ####3.4 Function Names
 Function names should preferably be an action verb. Boolean-valued functions (those that have two possible return values) should use the "is" prefix as in "isEmpty()".
   (C++) All functions must be prototyped, with the prototypes residing in header files.
-####3.5 Namespaces
+#### 3.5 Namespaces
 Namespace collision should be minimized without introducing cryptic naming conventions by using the C++ namespace or Java package constructs.
   (Java) Create a new Java package to group classes of related functionality. Package source and class files then reside in a convenient hierarchical directory structure that maps directly to the package name.
  
  
-###4 Style Guidelines
+### 4 Style Guidelines
 The primary purpose of style guidelines is to facilitate long-term maintenance. During maintenance, programmers who are usually not the original authors are responsible for understanding source code from a variety of applications. Having a common presentation format reduces confusion and speeds comprehension. Therefore, the following guidelines are specified based on the principles of good programming practice and readability. In the cases where two or more equally valid alternatives are available, one was selected to simplify specification. In the future, automated tools may be used to apply style guidelines to source code files.
-####4.1 Lines
-#####4.1.1 Line Length
+#### 4.1 Lines
+##### 4.1.1 Line Length
 All lines should be displayable without wrapping on an 80-character display. If wrapping is required, try to break at an operator, and start the next line with the operator vertically aligned. For example:
+```C++
     cout << "This is an example of a line which must be wrapped, value = "
          << value << endl;
-#####4.1.2 Statements Per Line
+```
+
+##### 4.1.2 Statements Per Line
 Each statement should begin on a new line.
-####4.2 Comments
-#####4.2.1 Automated Documentation Comments
+#### 4.2 Comments
+##### 4.2.1 Automated Documentation Comments
 For comments meant to be extracted by an automated documentation tool, follow the Java convention of using the standard C comment delimiters with an extra asterisk on the first one, as shown:
     /**
       * This is a module, class, function, or instance variable comment
