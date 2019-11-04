@@ -1,7 +1,7 @@
 ---
 layout: index
 title: GCAM Development Examples
-gcam-version: v5.1
+gcam-version: v5.2
 ---
 ## GCAM Development Examples
 

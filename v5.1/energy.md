@@ -3,7 +3,7 @@ layout: index
 title: GCAM Energy System
 prev: ssp.html
 next: aglu.html
-gcam-version: v5.2
+gcam-version: v5.1
 ---
 
 ## Overview
@@ -38,7 +38,7 @@ We have partitioned the energy system documentation as follows:
 
 ### Depletable Resources 
 
-GCAM models depletable resources (oil, unconventional oil, natural gas, coal, and uranium) using graded resource supply curves. The fossil resources are produced from these supply curves using a "Resource / Reserve" model.  In this approach as the market price of the resource increases, we look up the supply curve to determine the additional quantity available and move that quantity of "resource" into a "reserve".  We assume production of that reserve over some well / mine lifetime appropriate for each fuel.  Technical change can be applied to reduce the extraction cost of the "resource" in future years. Resource curves for fossil fuels are shown below.
+GCAM models depletable resources (oil, unconventional oil, natural gas, coal, and uranium) using graded resource supply curves. As cumulative extraction of these resources increases, the cost of extraction rises; however, technical change can be applied to reduce the extraction cost in future years. Resource curves for fossil fuels are shown below.
 
 <img src="gcam-figs/oil_supply_curve.png" width="750" height="300" />
 {: .fig}
@@ -157,7 +157,7 @@ The biomass liquids subsector includes up to eight technologies in each region, 
 | FT biofuels CCS level 1      | biomass |
 | FT biofuels CCS level 2      | biomass |
 
-The biomass liquids technologies include up to four "first-generation" biofuels in each region, defined as biofuels produced agricultural crops that are also used as food, animal feed, or other modeled uses (described in the [AgLU module](aglu.html)). The model tracks secondary feed outputs of biofuel production, as DDGS (dried distillers grains and solubles) from ethanol production, and as feedcakes from biodiesel production. Second-generation technologies consume the "biomass" or "biomassOil" commodities, which include purpose-grown bioenergy crops, as well as residues from forestry and agriculture, and municipal and industrial wastes.  Starting in 2020, second-generation biofuels (cellulosic ethanol and Fischer-Tropsch syn-fuels) are introduced, each with three levels of CCS: none, level 1, and level 2. The first CCS level generally consists of relatively pure and high-concentration CO2 sources (e.g., from gasifiers or fermenters), which have relatively low capture and compression costs. The second CCS level includes a broader set of sources (e.g., post-combustion emissions), and incurs higher costs but has a higher CO<sub>2</sub> removal fraction.
+The biomass liquids technologies include up to two "first-generation" biofuels in each region, defined as biofuels produced agricultural crops that are also used as food, animal feed, or other modeled uses (described in the [AgLU module](aglu.html)). Second-generation technologies consume the "biomass" or "biomassOil" commodities, which include purpose-grown bioenergy crops, as well as residues from forestry and agriculture, and municipal and industrial wastes.  Starting in 2020, second-generation biofuels (cellulosic ethanol and Fischer-Tropsch syn-fuels) are introduced, each with three levels of CCS: none, level 1, and level 2. The first CCS level generally consists of relatively pure and high-concentration CO2 sources (e.g., from gasifiers or fermenters), which have relatively low capture and compression costs. The second CCS level includes a broader set of sources (e.g., post-combustion emissions), and incurs higher costs but has a higher CO<sub>2</sub> removal fraction.
 
 ## Coal to Liquids
 

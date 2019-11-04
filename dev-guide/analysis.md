@@ -1,7 +1,7 @@
 ---
 layout: index
 title: GCAM Ecosystem of Models and Tools
-gcam-version: v5.1
+gcam-version: v5.2
 ---
 ## GCAM Ecosystem of Models and Tools
 

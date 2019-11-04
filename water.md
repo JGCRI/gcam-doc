@@ -3,7 +3,7 @@ layout: index
 title: The GCAM Water Module
 prev: aglu.html
 next: hector.html
-gcam-version: v5.1
+gcam-version: v5.2
 ---
 
 ## Water Demand

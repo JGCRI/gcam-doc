@@ -1,7 +1,7 @@
 ---
 layout: index
 title: Debugging
-gcam-version: v5.1
+gcam-version: v5.2
 ---
 ## Debugging: common issues
 
