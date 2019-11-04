@@ -298,7 +298,7 @@ Then under the `Info` tab change the build configuration to `Release`:
 Finally select menu option `Product -> Build` to build GCAM.  Once complete an executable will be copied to `<GCAM Workspace>/exe` and you can still use `run-gcam.command` to run it.  Note that to run GCAM from within Xcode, you must set the working directory to the `exe` directory within your workspace. This is done within the `Options` section of the current scheme.
 
 ### 4.3 Building with Visual Studio
-Users will need to have Microsoft Visual Studio C++ compiler installed (usually called for Windows Desktop).  Note that since GCAM 4.4 you will need a version which supports the C++ 14 standard.  Visual Studio 2015 is known to work.  Note Microsoft does provide a free option called ["Express"](https://www.microsoft.com/en-us/download/details.aspx?id=44914).  Users can find the project file under `<GCAM Workspace>/cvs/objects/build/vc10/objects.vcxproj`.  Once open you should change the `Solution Configurations` and `Solution Platform` to `Release` and `x64`:
+Users will need to have Microsoft Visual Studio C++ compiler installed (usually called for Windows Desktop).  Note that since GCAM 4.4 you will need a version which supports the C++ 14 standard.  Visual Studio 2015 is known to work.  Note Microsoft does provide a free option called ["Express"](https://visualstudio.microsoft.com/vs/express/).  Users can find the project file under `<GCAM Workspace>/cvs/objects/build/vc10/objects.vcxproj`.  Once open you should change the `Solution Configurations` and `Solution Platform` to `Release` and `x64`:
 
 ![Visual Studio build configuration](gcam-figs/vs-build-config.png)
 
