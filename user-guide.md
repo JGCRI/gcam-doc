@@ -3,7 +3,7 @@ layout: index
 title: GCAM User Guide
 prev: solver.html
 next: gcam-build.html
-gcam-version: v5.1 
+gcam-version: v5.2 
 ---
 ## Table Of Contents
   [1. Introduction](#gcam-intro)
@@ -173,6 +173,7 @@ scenarioName | Name of the scenario. This name will be embedded in output xml da
 debug-region | String that specifies which region is used for debugging output (see xmlDebugFileName), which provides a dump, by model period, of GCAM internal state variables which can be useful for debugging and understanding results.
 MAGICC-input-dir | Input directory for necessary MAGICC input files. This normally should not be changed.
 MAGICC-output-dir | Directory for MAGICC model output files.
+AbatedGasForCostCurves | Default: "CO2".  The name of the market/gas to change the price of and sum emissions for when calculating [Policy Costs](policies.html#policy-costs).  Note when [targeting multiple gasses](policies.html#linked-markets) you may specificy this value as `GHG;CO2;CH4;N2O;C2F6;CF4`, for example, to list all of the gasses to sum and they will be weighted according to the linked ghg policy
 
 #### 3.1.4 `<Bools>` Input Options
 

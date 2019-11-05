@@ -1,7 +1,7 @@
 ---
 layout: index
 title: GCAM Review Process
-gcam-version: v5.1
+gcam-version: v5.2
 devguide: dev-guide.html
 ---
 ## GCAM Review Process

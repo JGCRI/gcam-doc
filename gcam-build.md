@@ -3,7 +3,7 @@ layout: index
 title: GCAM Build Instructions
 prev: user-guide.html
 next: fusion.html
-gcam-version: v5.1 
+gcam-version: v5.2 
 ---
 
 ## 1.Introduction
@@ -119,7 +119,7 @@ make clean
 ```
 
 ### 2.3 Java
-Java is required by GCAM in order to store results in a [BaseX](http://basex.org) XML database, which itself is written in Java.  GCAM will use the Java Native Interface to interact with the database.  Since BaseX is written in Java it is inherently cross platform thus building it is not discussed here.  GCAM uses version 8.6.7 of the BaseX library, which is only supports Java 1.7+.  GCAM, therefore requires Java version 1.7 or newer.  The [official Oracle](http://www.oracle.com/technetwork/java/index.html) version or the [open source](http://openjdk.java.net) version should work (both are free to install).  Some additional notes:
+Java is required by GCAM in order to store results in a [BaseX](http://basex.org) XML database, which itself is written in Java.  GCAM will use the Java Native Interface to interact with the database.  Since BaseX is written in Java it is inherently cross platform thus building it is not discussed here.  GCAM uses version 8.6.7 of the BaseX library, which is only supports Java 1.7+.  GCAM, therefore requires Java version 1.7 or newer.  The [official Oracle](http://www.oracle.com/technetwork/java/index.html) version or the [open source](http://openjdk.java.net) version should work **however** Oracle recently changed their licensing terms and it may not be free.  We therefore reccommend the open source version.  Some additional notes:
 
 #### 2.3.1 Disable Java
 GCAM can be configured to compile without Java support, doing so implies GCAM results are not written to the BaseX database.  To disable Java edit `<GCAM Workspace>/cvs/objects/util/base/include/definitions.h` and set `__HAVE_JAVA__` to `0`:
@@ -142,11 +142,11 @@ Note that even if you turn off Java support you can still have GCAM generate the
 Which can subsequently be loaded into an XML database by using the [Model Interface](user-guide.html#modelinterface) by opening a database, choosing `File -> Manage DB`, then Click `Add`, finally select the `debug_db.xml` document to add to the database.  Note a _new_ database can be created by simply selecting an empty folder to open as a database (you will see a warning message about potentially deleting files **and you should pay attention to it**).
 
 #### 2.3.2 Java On Windows
-On Windows users can get by with just installing the Standard Runtime Environment (JRE) for running GCAM however when building the Java Development Kit (JDK) is recommended.  GCAM will expect the following header and lib files within `<GCAM Workspace>/libs`:
+On Windows users can get by with just installing the Standard Runtime Environment (JRE) for running GCAM however when building the Java Development Kit (JDK) is recommended.  Note the openJDK only provides a zip archive and does not come with a windows installer, which isn't strictly necessary for it to work with GCAM however users may find the version distributed by [Redhat](https://developers.redhat.com/products/openjdk/download) easier because it does provide a Windows installer.  GCAM will expect the following header and lib files within `<GCAM Workspace>/libs`:
 
 ```
 libs/java/include/jni.h
-libs/java/include/jni_md.h
+libs/java/include/win32/jni_md.h
 libs/java/lib/jvm.lib
 ```
 
@@ -160,7 +160,14 @@ C:\Program Files\Java\jdk1.8.0_102\lib
 In addtion the PATH variable may need to be updated so that GCAM can find the `jvm.dll`.  Note that this is the purpose of the `<GCAM Workspace>/exe/run-gcam.bat` wrapper.  Users can take a look at this file to understand how GCAM detects the JAVA_HOME and updates the PATH accordingly.
 
 #### 2.3.3 Java on Mac
-Note since GCAM now requires Java 1.7+ the old Apple supplied Java installation is no longer supported.  All versions of OS X can still use a more recent version of Java from Oracle/openJDK instead (**note** users must install the JDK, not the JRE).  Even if users on OS X 10.10+ install the Oracle/openJDK version of Java they may still be prompted to install the old Apple JDK when running GCAM or the Model Interface.  Note the purpose of the `<GCAM Workspace>/exe/run-gcam.command` wrapper is partially to detect and work around some of these issues.  For users that are being asked to install the old Apple JDK even if the newer version is installed they can try the following edit to the Java JDK Info.plist file in Terminal to resolve the issue:
+Note since GCAM now requires Java 1.7+ the old Apple supplied Java installation is no longer supported.  All versions of OS X can still use a more recent version of Java from Oracle/openJDK instead (**note** users must install the JDK, not the JRE).  Again we now reccommend users install the openJDK version.  Note, openJDK only provides a zip archive, to install on the Mac a user may simply run in the Terminal:
+
+```
+tar -zxf openjdk-12.0.1_osx-x64_bin.tar.gz
+sudo mv jdk-12.0.1.jdk /Library/Java/JavaVirtualMachines/
+```
+
+Even if users on OS X 10.10+ install the Oracle/openJDK version of Java they may still be prompted to install the old Apple JDK when running GCAM or the Model Interface.  Note the purpose of the `<GCAM Workspace>/exe/run-gcam.command` wrapper is partially to detect and work around some of these issues.  For users that are being asked to install the old Apple JDK even if the newer version is installed they can try the following edit to the Java JDK Info.plist file in Terminal to resolve the issue:
 
 ```
 JAVA_HOME=$(/usr/libexec/java_home)

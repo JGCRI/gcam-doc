@@ -1,7 +1,7 @@
 ---
 layout: index
 title: Global Change Assessment Model (GCAM)
-gcam-version: v5.1
+gcam-version: v5.2
 ---
 
 One of GCAM's uses is to explore the implications of different future policies. There are a number of types of policies that can be easily modeled in GCAM. The most common of these are discussed below.

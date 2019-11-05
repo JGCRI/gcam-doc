@@ -3,7 +3,7 @@ layout: index
 title: Economic Choice in GCAM
 prev: emissions.html
 next: en_technologies.html
-gcam-version: v5.1
+gcam-version: v5.2
 ---
 
 ## Introduction

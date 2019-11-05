@@ -3,7 +3,7 @@ layout: index
 title: The GCAM Macro-Economic System
 prev: overview.html
 next: ssp.html
-gcam-version: v5.1
+gcam-version: v5.2
 ---
 
 The socioeconomic componenta of GCAM set the scale of economic activity and associated demands for model simulations. Assumptions about population and per capita GDP growth for each of the 32 geo-political regions together determine the Gross Domestic Product (GDP). GDP and population both can drive the demands for a range of different demands within GCAM. Population and economic activity are used in GCAM through a one-way transfer of information to other GCAM components. For example, neither the price nor quantity of energy nor the quantity of energy services provided to the economy affect the calculation of the principle model output of the GCAM macro-economic system, GDP. 
