@@ -30,8 +30,14 @@
 	<hr/>
 	<p class="nav">
 	  <a href="{{site.github.url}}/index.html">[Home]</a>
-	  <a href="toc.html">[Table of Contents{% if page.gcam-version %}
+	  {% if page.devguide %}
+      <a href="../toc.html">[Table of Contents{% if page.gcam-version %}
 	    ({{page.gcam-version}}){% endif %}]</a>
+      <a href="../dev-guide.html">[Developer Guide Table of Contents]</a>
+	  {% else %}
+      <a href="toc.html">[Table of Contents{% if page.gcam-version %}
+	    ({{page.gcam-version}}){% endif %}]</a>
+	  {% endif %}
 	  {% if page.prev %}
 	  <a href="{{page.prev}}">[Previous page]</a>
 	  {% endif %}
