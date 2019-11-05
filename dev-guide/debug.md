@@ -2,6 +2,7 @@
 layout: index
 title: Debugging
 gcam-version: v5.1
+devguide: dev-guide.html
 ---
 ## Debugging: common issues
 
