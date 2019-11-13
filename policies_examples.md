@@ -47,7 +47,7 @@ Linked policies are used to tie the price of one policy to another. In the examp
 ```
 
 ## <a name="energy-constraint"> Energy Constraint </a>
-The following inputs will set a constraint on bioenergy use in the USA, limiting it to 10 EJ/yr. Note that the `input-tax` tag will need to be added to all model periods (the example only uses 2020 for brevity). Additionally, this tag needs to be added to all production technologies and regions that are included in the target. For example, if you wanted to include 1st generation bioenergy in this constraint, you would need to add a tag to those technologies in the refinery sector, as 1st generation bioenergy does not go through the "regional biomass" market. If you wanted to only constrain one type of bioenergy, then would only put the `input-tax` tag in the technology producing that type of bioenergy (e.g., you could include a technology with this `input-tax` in the biomass resource to limit MSW production only). This example sets an upper bound on production. If instead you wanted a lower bound, then you would use `input-subsidy` in the technology and `policyType` equals "subsidy" in the policy-portfolio-standard. 
+The following inputs will set a constraint on bioenergy use in the USA, limiting it to 10 EJ/yr. Note that the `input-tax` tag will need to be added to all model periods (the example only uses 2020 for brevity). Additionally, this tag needs to be added to all production technologies and regions that are included in the target. For example, if you wanted to include 1st generation bioenergy in this constraint, you would need to add a tag to those technologies in the refinery sector, as 1st generation bioenergy does not go through the "regional biomass" market. If you wanted to only constrain one type of bioenergy, then would only put the `input-tax` tag in the technology producing that type of bioenergy (e.g., you could include a technology with this `input-tax` in the biomass resource to limit MSW production only). This example sets an upper bound on production. If instead you wanted a lower bound, then you would use `input-subsidy` in the technology and `policyType` equals "subsidy" in the policy-portfolio-standard. If you wanted to set an exact constraint, you can use either a tax or a subsidy with the additional tag `<min-price year="2020" fillout="1">-100</min-price>` which will allow the tax or subsidy to go negative, effectively enabling either a tax or a subsidy within the same constraint. 
 
 ```
 <scenario>
@@ -57,9 +57,7 @@ The following inputs will set a constraint on bioenergy use in the USA, limiting
             <subsector name="regional biomass">
                <technology name="regional biomass">
                   <period year="2020">
-                     <input-tax name="bio-constraint">
-                        <coefficient>1.00</coefficient>
-                     </input-tax>
+                     <input-tax name="bio-constraint"/>
                   </period>
                   ...
                </technology>
