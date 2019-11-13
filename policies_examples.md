@@ -22,6 +22,30 @@ The following input file will create a carbon price of $1/tC (in $1990) in the U
 </scenario>
 ```
 
+## <a name="linked-policy"> Linked Policies </a>
+Linked policies are used to tie the price of one policy to another. In the example below, CO2 and CH4 are linked to a policy called "GHG"; that is, the price of the GHG market will affect the price applied to both CO2 and CH4. The `price-adjust` is the price multiplier used to convert units; the example below assumes that the GHG price is in 1990$/tC and converts that to CH4 using GWPs. The `demand-adjust` is a multiplier on the output when adding emissions to a common market to be used in constraint; in this example, GWPs are used to convert each gas to its CO2-equivalent value.
+
+```
+<scenario>
+   <world>
+      <region name="USA">
+         <linked-ghg-policy name="CO2">
+            <price-adjust fillout="1" year="1975">1</price-adjust>
+            <demand-adjust fillout="1" year="1975">3.667</demand-adjust>
+            <market>global</market>
+            <linked-policy>GHG</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+         <linked-ghg-policy name="CH4">
+            <price-adjust fillout="1" year="1975">5.7272</price-adjust>
+            <demand-adjust fillout="1" year="1975">21</demand-adjust>
+            <market>global</market>
+            <linked-policy>GHG</linked-policy>
+            <price-unit>1990$/GgCH4</price-unit>
+	...
+```
+
 ## <a name="energy-constraint"> Energy Constraint </a>
 The following inputs will set a constraint on bioenergy use in the USA, limiting it to 10 EJ/yr. Note that the `input-tax` tag will need to be added to all model periods (the example only uses 2020 for brevity). Additionally, this tag needs to be added to all production technologies and regions that are included in the target. For example, if you wanted to include 1st generation bioenergy in this constraint, you would need to add a tag to those technologies in the refinery sector, as 1st generation bioenergy does not go through the "regional biomass" market. If you wanted to only constrain one type of bioenergy, then would only put the `input-tax` tag in the technology producing that type of bioenergy (e.g., you could include a technology with this `input-tax` in the biomass resource to limit MSW production only). This example sets an upper bound on production. If instead you wanted a lower bound, then you would use `input-subsidy` in the technology and `policyType` equals "subsidy" in the policy-portfolio-standard. 
 
