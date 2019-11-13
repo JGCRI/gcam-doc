@@ -67,9 +67,8 @@ The following inputs will set a constraint on bioenergy use in the USA, limiting
         </supplysector>
         <policy-portfolio-standard name="bio-constraint">
 				<market>USA</market>
-				<policyType>tax</policyType>		
-				<isFixedTax>1</isFixedTax>
-				<fixedTax year="2020" fillout="1">10</fixedTax>
+				<policyType>tax</policyType>	
+				<constraint year="2020" fillout="1">10</constraint>
 		</policy-portfolio-standard>
     </region>
 	</world>
