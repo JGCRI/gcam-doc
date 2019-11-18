@@ -4,7 +4,44 @@ title: Global Change Assessment Model (GCAM)
 gcam-version: v5.2
 ---
 
-This page includes some examples of input files required to create policies. Note that each example will need to be tailored to your own needs.
+This page includes some examples of input files required to create policies. Note that each example will need to be tailored to your own needs. 
+
+## <a name="general-info"> General Information and Common Tags </a>
+There are several tags that you will see in many different policy examples. This section explains these options.
+
+### Basic Policy Types
+`ghgpolicy`: essentially a special case of `policy-portfolio-standard` that applies to emissions
+
+`policy-portfolio-standard`: a policy type that allows you to set up taxes, subsidies, constraints (in absolute value and share), and renewable energy standards
+
+### Price vs quantity policies
+`fixedTax`: An unsolved market, where the price (e.g., tax, subsidy) can be specified. If this is read in before a `constraint` for the same market, then it will be used as an initial guess for the constraint price.
+
+`constraint`: A solved the market. In years for which a value is set, the solver will find a price that ensures the constraint is met.
+
+### Specifying taxes vs. subsidies OR less than, greater than or equal to constraints
+`tax`: for a `fixedTax`, this will be added to the cost. for a `constraint`, the results in an upper bound (unless `min-price` is set). Note that mechanically the `constraint` value is set as a "supply" and the model will adjust the "demand" (by changing the price) to ensure the constraint is met.
+
+`subsidy`: for a `fixedTax`, this will be subtracted from the cost. for a `constraint`, the results in an lower bound (unless `min-price` is set). Note that mechanically the `constraint` value is set as a "demand" and the model will adjust the "supply" (by changing the price) to ensure the constraint is met.
+
+`RES`: In this case, the value of the `constraint` is ignored
+
+`min-price`: Default is zero, but if set to a negative value will result in an exact constraint.
+
+### Other Options
+
+`market`: a means of grouping different regions together. This can be set to any string. ALl regions that have a common string will add to/demand from the same market.
+
+### Setting up inputs for policies
+In addition to setting up a policy market using the `ghgpolicy` or `policy-portfolio-standard` options described above, you also need to indicate what is included in the policy.
+
+For `ghgpolicy`, the GHG objects are usually already in place. For example, MAC curves look at `market-name` (default CO2; be careful about units `mac-price-conversion`). But, you could always add more tags for constraints. For example, if you wanted to constrain electricity CO2 only, you could add `<CO2 name=”CO2_ELEC”>` to all of the electricity technologies (watch out for CCS) and then add a `ghgpolicy` constraining "CO2_ELEC".
+
+`input-tax`: This can be used with the `tax` policy and will add this input to the demand of a market OR add to tech cost.
+
+`input-subsidy`: This can be used with the `subsidy` policy and will add this input to supply of a market OR subtract from tech cost.
+
+`res-secondary-output`: This is used with the `RES` policy. It will add to supply OR subtract from tech cost.
 
 ## <a name="carbon-price"> Carbon Price </a>
 The following input file will create a carbon price of $1/tC (in $1990) in the USA, starting in the year 2020 and going through out the model time horizon. Additional regions can be added to this file. Regions with the same `market` name will use the same carbon price.
