@@ -137,3 +137,42 @@ The following input file will keep UnmanagedForest area in the USA GreatLakes re
      </world>
 </scenario>
 ```
+
+## <a name="res"> Energy Intensity Standard </a>
+The following inputs will set up a energy intensity standard. These policies differ from the [energy constraint](#energy-constraint) described above in that they specify a share of a sectoral output. The example below sets a biofuels target, where the biofuels constraint is set by adding an additional input of "BioFuelsCredits" into the refined liquids for transportation sector. This credit input is read in as a `miniCAM-energy-input`, so its units are EJ with its price in $/GJ just like any other energy input, and its input coefficient is simply the target percentage.  This sets the demand for "BioFuelsCredits". (In this example, an additional pass-through sector was created to apply the constraint just on transportation rather than on all refined liquids.)
+
+```
+   <supplysector name="refined liquids transport">
+            <subsector name="refined liquids transport">
+               <technology name="refined liquids transport">
+                  <period year="2020">
+                     <minicam-energy-input name="BioFuelsCredits">
+                        <coefficient>0.1</coefficient>
+                     </minicam-energy-input>
+                     <share-weight>1</share-weight>
+                     <minicam-energy-input name="refining">
+                        <coefficient>1</coefficient>
+                     </minicam-energy-input>
+                  </period>
+```
+
+The supply is created by putting a secondary output of "Biofuels Credits" on each of the biofuels liquids technologies, with an `output-ratio` of 1. The `output-ratio` specifies the quantity of "BioFuelsCredits" supplied for each GJ of biofuels produced. With a positive price of Biofuels Credits, the secondary output will have a value that reduces the biofuels technology costs and increases their market share.  If the constraint is not binding (there are more biofuels than required), the price of "BioFuelsCredits" will be zero and have no impact on share. 
+
+```
+<supplysector name="refining">
+            <subsector name="biomass liquids">
+               <technology name="cellulosic ethanol">
+                  <period year="2020">
+                     <res-secondary-output name="BioFuelsCredits">
+                        <output-ratio>1</output-ratio>
+                     </res-secondary-output>
+                  </period>
+```
+
+The "BioFuelsMarket" and policy are created by reading in the policy as an RES policy.
+
+```
+  <policy-portfolio-standard name="BioFuelsCredits">
+            <market>USA</market>
+            <policyType>RES</policyType>
+```
