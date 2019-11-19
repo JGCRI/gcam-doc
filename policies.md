@@ -4,7 +4,7 @@ title: Global Change Assessment Model (GCAM)
 gcam-version: v5.2
 ---
 
-One of GCAM's uses is to explore the implications of different future policies. There are a number of types of policies that can be easily modeled in GCAM. The most common of these are discussed below.
+One of GCAM's uses is to explore the implications of different future policies. There are a number of types of policies that can be easily modeled in GCAM. The most common of these are discussed below. Additionally, starting with GCAM v5.2, we have provided a `configuration_policy.xml` file to help users set up [emissions policies](#emissions-policies). This configuration includes a near-term CO2 price (`spa14_tax.xml`), a long-term CO2 price (`carbon_tax_0.xml`), and a file to link both to CO2 emissions in GCAM (`2025_target_finder.xml`).
 
 Table Of Contents
 
