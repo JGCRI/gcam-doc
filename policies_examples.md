@@ -35,7 +35,7 @@ There are several tags that you will see in many different policy examples. This
 ### Setting up inputs for policies
 In addition to setting up a policy market using the `ghgpolicy` or `policy-portfolio-standard` options described above, you also need to indicate what is included in the policy.
 
-For `ghgpolicy`, the GHG objects are usually already in place. For example, MAC curves look at `market-name` (default CO2; be careful about units `mac-price-conversion`). But, you could always add more tags for constraints. For example, if you wanted to constrain electricity CO2 only, you could add `<CO2 name=”CO2_ELEC”>` to all of the electricity technologies (watch out for CCS) and then add a `ghgpolicy` constraining "CO2_ELEC".
+For `ghgpolicy`, the GHG objects are usually already in place. For example, MAC curves look at `market-name` (default CO2; be careful about units [mac-price-conversion](policies.html#non-co2-markets). But, you could always add more tags for constraints. For example, if you wanted to constrain electricity CO2 only, you could add `<CO2 name=”CO2_ELEC”>` to all of the electricity technologies (watch out for CCS) and then add a `ghgpolicy` constraining "CO2_ELEC".
 
 `input-tax`: This can be used with the `tax` policy and will add this input to the demand of a market OR add to tech cost.
 
