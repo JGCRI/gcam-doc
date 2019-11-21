@@ -12,36 +12,36 @@ There are several tags that you will see in many different policy examples. This
 ### Basic Policy Types
 `ghgpolicy`: essentially a special case of `policy-portfolio-standard` that applies to emissions
 
-`policy-portfolio-standard`: a policy type that allows you to set up taxes, subsidies, constraints (in absolute value and share), and renewable energy standards
+`policy-portfolio-standard`: a policy type that allows you to set up taxes, subsidies, constraints, and renewable energy standards
 
 ### Price vs quantity policies
-`fixedTax`: An unsolved market, where the price (e.g., tax, subsidy) can be specified. If this is read in before a `constraint` for the same market, then it will be used as an initial guess for the constraint price.
+`fixedTax`: When provided on its own, this creates an unsolved market where the value specified here is added to (tax) or subtracted from (subsidy) the cost of technologies included in the policy. If this is read in before a `constraint` for the same market and model period, then it will be used as an initial guess for the constraint price.
 
-`constraint`: A solved the market. In years for which a value is set, the solver will find a price that ensures the constraint is met.
+`constraint`: Sets up a solved market. In years for which a value is set, the solver will find a price that ensures the constraint is met.
 
 ### Specifying taxes vs. subsidies OR less than, greater than or equal to constraints
-`tax`: for a `fixedTax`, this will be added to the cost. for a `constraint`, the results in an upper bound (unless `min-price` is set). Note that mechanically the `constraint` value is set as a "supply" and the model will adjust the "demand" (by changing the price) to ensure the constraint is met.
+`tax`: for a `fixedTax`, this will be added to the cost. For a `constraint`, the results in an upper bound unless `min-price` is set (see below). Note that mechanically the `constraint` value is set as a "supply" and the model will adjust the "demand" (by changing the price) to ensure the constraint is met.
 
-`subsidy`: for a `fixedTax`, this will be subtracted from the cost. for a `constraint`, the results in an lower bound (unless `min-price` is set). Note that mechanically the `constraint` value is set as a "demand" and the model will adjust the "supply" (by changing the price) to ensure the constraint is met.
+`subsidy`: For a `fixedTax` policy, the value supplied will be subtracted from the cost. For a `constraint` policy, a subsidy value results in an lower bound unless `min-price` is set (see below). Note that mechanically the `constraint` value is set as a "demand" and the model will adjust the "supply" (by changing the price) to ensure the constraint is met.
 
 `RES`: In this case, the value of the `constraint` is ignored
 
-`min-price`: Default is zero, but if set to a negative value will result in an exact constraint.
+`min-price`: Mechanically, this is the cut off price below which the model will consider an inequality constraint solved. If the price is below `min-price` and the supply (demand) is larger (smaller) than the constraint for a tax (subsidy), then the model will consider the market solved. The default is zero. If this is set to a large enough negative value, constraints must be met exactly. That is, production must equal the amount specified in the constraint rather than the constraint being an upper bound (for a tax) or a lower bound (for a subsidy) on production. This can be used with either a `tax` or `subsidy` policy. 
 
 ### Other Options
 
-`market`: a means of grouping different regions together. This can be set to any string. ALl regions that have a common string will add to/demand from the same market.
+`market`: a means of grouping different regions together. This can be set to any string. All regions that have a common string will add to/demand from the same market.
 
 ### Setting up inputs for policies
 In addition to setting up a policy market using the `ghgpolicy` or `policy-portfolio-standard` options described above, you also need to indicate what is included in the policy.
 
 For `ghgpolicy`, the GHG objects are usually already in place. For example, MAC curves look at `market-name` (default CO2; be careful about units [mac-price-conversion](policies.html#non-co2-markets). But, you could always add more tags for constraints. For example, if you wanted to constrain electricity CO2 only, you could add `<CO2 name=”CO2_ELEC”>` to all of the electricity technologies (watch out for CCS) and then add a `ghgpolicy` constraining "CO2_ELEC".
 
-`input-tax`: This can be used with the `tax` policy and will add this input to the demand of a market OR add to tech cost.
+`input-tax`: This can be used with the `tax` policy. This tag links the technology to the policy, adding its value to the cost of the technology. For constraints, the quantity of this input is added to the demand for the policy market.
 
-`input-subsidy`: This can be used with the `subsidy` policy and will add this input to supply of a market OR subtract from tech cost.
+`input-subsidy`: This can be used with the `subsidy` policy. This tag links the technology to the policy, subtracting its value from the cost of the technology. For constraints, the quantity of this input is added to the supply for the policy market.
 
-`res-secondary-output`: This is used with the `RES` policy. It will add to supply OR subtract from tech cost.
+`res-secondary-output`: This is used with the `RES` policy. The quantity of this output is added to the supply for the policy market.
 
 ## <a name="carbon-price"> Carbon Price </a>
 The following input file will create a carbon price of $1/tC (in $1990) in the USA, starting in the year 2020 and going through out the model time horizon. Additional regions can be added to this file. Regions with the same `market` name will use the same carbon price.
@@ -84,7 +84,7 @@ Linked policies are used to tie the price of one policy to another. In the examp
 ```
 
 ## <a name="energy-constraint"> Energy Constraint </a>
-The following inputs will set a constraint on bioenergy use in the USA, limiting it to 10 EJ/yr. Note that the `input-tax` tag will need to be added to all model periods (the example only uses 2020 for brevity). Additionally, this tag needs to be added to all production technologies and regions that are included in the target. For example, if you wanted to include 1st generation bioenergy in this constraint, you would need to add a tag to those technologies in the refinery sector, as 1st generation bioenergy does not go through the "regional biomass" market. If you wanted to only constrain one type of bioenergy, then would only put the `input-tax` tag in the technology producing that type of bioenergy (e.g., you could include a technology with this `input-tax` in the biomass resource to limit MSW production only). This example sets an upper bound on production. If instead you wanted a lower bound, then you would use `input-subsidy` in the technology and `policyType` equals "subsidy" in the policy-portfolio-standard. If you wanted to set an exact constraint, you can use either a tax or a subsidy with the additional tag `<min-price year="2020" fillout="1">-100</min-price>` which will allow the tax or subsidy to go negative, effectively enabling either a tax or a subsidy within the same constraint. 
+The following inputs will set a constraint on bioenergy use in the USA, limiting it to 10 EJ/yr. Note that the `input-tax` tag will need to be added to all model periods (the example only uses 2020 for brevity). Additionally, this tag needs to be added to all production technologies and regions that are included in the target. For example, corn ethanol, sugarcane ethanol, and biodiesel do not consume or produce "regional biomass" and therefore would be excluded from the policy below. If you wanted to include these options in this constraint, you would need to add a tag to those technologies in the refinery sector. If you wanted to only constrain one type of bioenergy, then would only put the `input-tax` tag in the technology producing that type of bioenergy (e.g., you could include `input-tax` in the biomass resource to limit MSW production only). This example sets an upper bound on production. If instead you wanted a lower bound, then you would use `input-subsidy` in the technology and `policyType` equals "subsidy" in the policy-portfolio-standard. If you wanted to set an exact constraint, you can use either a tax or a subsidy with the additional tag `<min-price year="2020" fillout="1">-100</min-price>` which will allow the tax or subsidy to go negative, effectively enabling either a tax or a subsidy within the same constraint. 
 
 ```
 <scenario>
@@ -111,7 +111,7 @@ The following inputs will set a constraint on bioenergy use in the USA, limiting
 ```
 
 ## <a name="land-constraint"> Land Constraint </a>
-The following input file will keep UnmanagedForest area in the USA GreatLakes region above 12 thous sq km, starting in the year 2020 and going through out the model time horizon. This could be converted to an upper bound by changing `policyType` to "tax". Note that the `land-constraint-policy` tag will need to be added to any `UnmanagedLandLeaf` you want to constraint. If more than one `UnmanagedLandLeaf` is given the same policy name ("reduced_deforestation" in this example) and market name (USA in this example), then the sum of those leafs will be constrained to the specified amount.
+The following input file will keep UnmanagedForest area in the USA GreatLakes region above 12 thous sq km, starting in the year 2020 and going through out the model time horizon. Because the policy type is specified as `<policyType>subsidy</policyType>` the model will add a subsidy to the associated market to achieve the specified 12 thous sq km target. If an upper bound was needed instead, this can be implemented by changing `policyType` to "tax" in the below xml example. In this case the opposite will occur, with the model adding a tax to the associated market to keep land use below the specified value. Note that the `land-constraint-policy` tag will need to be added to any `UnmanagedLandLeaf` you want to constraint. If more than one `UnmanagedLandLeaf` is given the same policy name ("reduced_deforestation" in this example) and market name (USA in this example), then the sum of those leafs will be constrained to the specified amount.
 
 ```
 <scenario>
@@ -139,7 +139,7 @@ The following input file will keep UnmanagedForest area in the USA GreatLakes re
 ```
 
 ## <a name="res"> Energy Intensity Standard </a>
-The following inputs will set up a energy intensity standard. These policies differ from the [energy constraint](#energy-constraint) described above in that they specify a share of a sectoral output. The example below sets a biofuels target, where the biofuels constraint is set by adding an additional input of "BioFuelsCredits" into the refined liquids for transportation sector. This credit input is read in as a `miniCAM-energy-input`, so its units are EJ with its price in $/GJ just like any other energy input, and its input coefficient is simply the target percentage.  This sets the demand for "BioFuelsCredits". (In this example, an additional pass-through sector was created to apply the constraint just on transportation rather than on all refined liquids.)
+The following inputs will set up a energy intensity standard. These policies differ from the [energy constraint](#energy-constraint) described above in that they specify a share of a sectoral output. The example below sets a biofuels target, where the biofuels constraint is set by adding an additional input of "BioFuelsCredits" into the refined liquids for transportation sector. This credit input is read in as a `minicam-energy-input`, so its units are EJ with its price in $/GJ just like any other energy input, and its input coefficient is simply the target percentage.  This sets the demand for "BioFuelsCredits". (In this example, an additional pass-through sector was created to apply the constraint just on transportation rather than on all refined liquids.)
 
 ```
    <supplysector name="refined liquids transport">

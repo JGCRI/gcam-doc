@@ -58,7 +58,7 @@ zero-cost-phase-in-time | Number of years over which to phase-in "below-zero" MA
 
 ## <a name="energy-production-policies"> Energy Production Policies </a>
 
-There are times in which users would like to explore the implications of a constraint on production or a minimum production requirement. This capability allows GCAM users to model policies such as renewable portfolio standards and biofuels standards. Across sectors, these constraints must be applied as quantity constraints, but they can be applied as share constraints within individual sectors (e.g., fraction of electricity that comes from solar power). In implementing these policies, users This can either be a lower bound or upper bound. The model will solve for the tax (upper bound) or subsidy (lower bound) required to reach the given constraint. Examples of [bioenergy constraints](policies_examples.html#energy-constraint) are provided.
+There are times in which users would like to explore the implications of a constraint on production or a minimum production requirement. This capability allows GCAM users to model policies such as renewable portfolio standards and biofuels standards. Across sectors, these constraints must be applied as quantity constraints, but they can be applied as share constraints within individual sectors (e.g., fraction of electricity that comes from solar power). In implementing these policies, this can either be a lower bound or upper bound. The model will solve for the tax (upper bound) or subsidy (lower bound) required to reach the given constraint. Examples of [bioenergy constraints](policies_examples.html#energy-constraint) are provided.
 
 ## <a name="land-use-policies"> Land-Use Policies </a>
 
