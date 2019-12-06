@@ -18,6 +18,7 @@ gcam-version: v5.2
 * [Trade](trade.html)
 * [Technology Representation](en_technologies.html)
 * [Policies and costs](policies.html)
+    * [Examples of how to implement policies in GCAM](policies_examples.html)
 * [Shared-Socioeconomic Pathways](ssp.html)
 * [GCAM-USA](gcam-usa.html)
 * [How to Get Started Running GCAM](user-guide.html)
