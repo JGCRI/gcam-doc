@@ -38,7 +38,7 @@ $$
 $$  
 
 $$
-{MarginalProfit}=\frac{ {MarginalRevenue}-{VariableCost} }{VariableCost}
+{MarginalProfit}=\frac{ {MarginalRevenue}-{VariableCost} }{|VariableCost|}
 $$
 
 * profit-shutdown-decider/**median-shutdown-point**: The midpoint of the profit shutdown function above
