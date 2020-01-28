@@ -12,6 +12,7 @@ gcam-version: v5.2
 * [Analysis Tools](dev-guide/analysis.html)
 * [Examples](dev-guide/examples.html)
 * [Debugging: Common Issues](dev-guide/debug.html)
+* [Testing Framework](dev-guide/test_framework.html)
 * [Additional Information](dev-guide/additional_info.html)
 
 
