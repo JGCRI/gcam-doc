@@ -22,7 +22,7 @@ If you have access to PNNL resources, then the core model proposal should be com
 
 #### Pull request
 
-After the coding changes are complete, a pull request should be opened either on GitHub (external developers) or on stash (internal developers). Please ensure your developments follow the [GCAM style](style.html) and that the description of your pull request is meaningful. Note that opening the pull request will automatically trigger the [GCAM testing framework](test_framework.html) which will ensure GCAM builds and runs on Windows and Linux and users can launch the validation runs.
+After the coding changes are complete, a pull request should be opened either on GitHub (external developers) or on stash (internal developers). Please ensure your developments follow the [GCAM style](style.html) and that the description of your pull request is meaningful. Note that opening the pull request on stash will automatically trigger the [GCAM testing framework](test_framework.html) which will ensure GCAM builds and runs on Windows and Linux and users can launch the validation runs.
  
 ### The Review
 
