@@ -34,11 +34,11 @@ The following section includes a glossary of parameters that characterize techno
 * **profit-shutdown-decider**: the profit shutdown decider indicates to decrease the output of technologies installed in prior time periods as the variable (fuel + emissions) costs approach the price of the commodity being produced. The functional form is as follows:  
 
 $$
-{OutputFraction}=1-{MaxShutDown}*\frac{ ({Midpoint}+1)^{steepness} }{ ({Midpoint}+1)^{steepness}+({ProfitRate}+1)^{steepness} }
+{OutputFraction}=1-{MaxShutDown}*\frac{ ({Midpoint}+1)^{steepness} }{ ({Midpoint}+1)^{steepness}+({MarginalProfit}+1)^{steepness} }
 $$  
 
 $$
-{ProfitRate}=\frac{ {PriceReceived}-{VariableCost} }{PriceReceived}
+{MarginalProfit}=\frac{ {MarginalRevenue}-{VariableCost} }{|VariableCost|}
 $$
 
 * profit-shutdown-decider/**median-shutdown-point**: The midpoint of the profit shutdown function above
