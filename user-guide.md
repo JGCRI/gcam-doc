@@ -226,7 +226,7 @@ Note that there is also a [batch functionality](#modelinterface-batch-modes) wit
 
 ### 3.3 <a name="target-finder"> Target finder </a>
 
-Enabling this mode for running GCAM involves specifying a [policy target file](#312-files-input-options) and enabling [find-path](#314-bools-input-options).  In addition when a user is running target finder with a negative emissions budget constraint they should be sure to set up the market, for example by reading in the policy file `carbon_tax_0.xml`.  When run in this mode GCAM will run a scenario several times to find the optimal path to satisfy the configured climate goal.  Running GCAM in such a mode can take quite a bit of time, one option to speed this up is to set `restart-period` to 22 in the [configuration file as noted above](#315-ints-input-options).  Example policy target files are supplied in `input/policy` and are self documented:
+Enabling this mode for running GCAM involves specifying a [policy target file](#312-files-input-options) and enabling [find-path](#314-bools-input-options).  When running the target finder, as is the case when running any policy, users should start from the `configuration_policy.xml` to ensure the market structures are properly set up.  When run in this mode GCAM will run a scenario several times to find the optimal path to satisfy the configured climate goal.  Running GCAM in such a mode can take quite a bit of time, one option to speed this up is to provide a good `initial-price-guess` as documented below.  Example policy target files are supplied in `input/policy` and are self documented:
 
 ```XML
 <policy-target-runner name="forcing_4p5">
@@ -268,6 +268,13 @@ Enabling this mode for running GCAM involves specifying a [policy target file](#
 
     <!-- first-tax-year | default: 2020 | The first year to start a tax in -->
     <first-tax-year>2020</first-tax-year>
+
+    <!-- initial-tax-guess | default: 5 | The first tax value to try, if a user
+                                          can provide a good initial guess it may
+                                          cut down on the total number of iterations
+                                          significantly.
+     -->
+    <initial-tax-guess>5.0</initial-tax-guess>
 
     <!-- forward-look | default: 0 | Allow forward looking behavior by skipping
          this many periods.
