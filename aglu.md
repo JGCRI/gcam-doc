@@ -16,7 +16,7 @@ of data is available in [PNNL Technical Report 21025](http://www.pnl.gov/main/pu
 
 ### Inputs
 
-GCAM's inputs include information on production, consumption, prices, land, carbon, and other emissions in the historical period in order to calibrate model parameters and functions that are used for modeling future periods. GCAM requires globally consistent data sets for each of its historical model periods as it solves for market equilibrium in these years as it does for future years. The GCAM data system can produce such data sets annually beginning in 1971. Currently, GCAM uses data from 1990, 2005, and 2010 to initialize the model, but could be initialized to any year beginning in 1971.
+GCAM's inputs include information on production, consumption, prices, land, carbon, and other emissions in the historical period in order to calibrate model parameters and functions that are used for modeling future periods. GCAM requires globally consistent data sets for each of its historical model periods as it solves for market equilibrium in these years as it does for future years. The GCAM data system can produce such data sets annually beginning in 1971. Currently, GCAM uses data from 1990, 2005, 2010, and 2015 to initialize the model, but could be initialized to any year beginning in 1971.
 
 <dl>
 <dt>Historical Production</dt> <dd>Inputs include historical production of all crops and forestry products for each of the AgLU regions for the model base years. We currently rely on a blend of FAO and GTAP data for these inputs. FAO includes country-level data over the entire historical period, while GCAM has sub-national information for a single year in time.</dd>

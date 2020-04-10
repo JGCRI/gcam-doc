@@ -171,7 +171,7 @@ Table 3 maps technology & SSP to either core, advanced (less expensive), or low 
 
 ### Fossil Fuel Assumptions
 
-Table 4 details assumptions made for fossil fuel supply. Similar to renewables, we do not vary the resource bases across SSPs, but instead vary cost of extraction and use. In particular, we adjust the technical change coefficient on future extraction costs to reflect differences in technological conditions across SSPs. To reflect differences in social acceptance, we use a cost adder that adjusts the cost to downstream users. The cost adder for 2100 is shown in Table 3; adders are linearly interpolated from $0 in 2010 to the 2100 value. The 2100 value is defined in relation to the carbon content of the resource; thus, a “medium” social acceptance will result in a different cost adder for different fuels.
+Table 4 details assumptions made for fossil fuel supply. Similar to renewables, we do not vary the resource bases across SSPs, but instead vary cost of extraction and use. In particular, we adjust the technical change coefficient on future extraction costs to reflect differences in technological conditions across SSPs. To reflect differences in social acceptance, we use a cost adder that adjusts the cost to downstream users. The cost adder for 2100 is shown in Table 3; adders are linearly interpolated from $0 in the final historical year to the 2100 value. The 2100 value is defined in relation to the carbon content of the resource; thus, a “medium” social acceptance will result in a different cost adder for different fuels.
 
 **Table 4a**: Fossil Fuel Assumptions across SSPs: Technical Change on Extraction Cost (% per year)
 {: .tbl}
