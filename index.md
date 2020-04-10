@@ -1,7 +1,7 @@
 ---
 layout: index
 title: Global Change Assessment Model (GCAM)
-gcam-version: v5.2
+gcam-version: v5.3
 ---
 
 The Global Change Assessment Model (GCAM) is a global model that represents the behavior of, and interactions between five systems: the energy system, water, agriculture and land use, the economy, and the climate. It is used in a wide range of different applications from the exploration of fundamental questions about the complex dynamics between human and Earth systems to the those associated with response strategies to address important environmental questions. GCAM is a community model stewarded by The Joint Global Change Research Institute (JGCRI). This wiki page provides the documentation for GCAM.

@@ -3,7 +3,7 @@ layout: index
 title: GCAM Energy System
 prev: ssp.html
 next: aglu.html
-gcam-version: v5.2
+gcam-version: v5.3
 ---
 
 ## Overview

@@ -1,7 +1,7 @@
 ---
 layout: index
 title: GCAM Testing Framework
-gcam-version: v5.2
+gcam-version: v5.3
 devguide: dev-guide.html
 ---
 ## GCAM Testing Framework

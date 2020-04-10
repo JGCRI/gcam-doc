@@ -3,7 +3,7 @@ layout: index
 title: Agriculture, Land-Use, and Bioenergy
 prev: energy.html
 next: water.html
-gcam-version: v5.2 
+gcam-version: v5.3 
 ---
 
 In GCAM, the model data for the agriculture and land use parts of the model comprises >300 subregions in terms of land use, formed by subdividing each of GCAM’s 32 global geo-political regions into water basins. Within each of these subregions, land is categorized into approximately a dozen types based on cover and use. Some of these types, such as tundra and desert, are not considered arable. Among arable land types, further divisions are made for lands historically in non-commercial uses such as forests and grasslands as well as commercial forestlands and croplands. Production of approximately twenty crops is currently modeled, with yields of each specific to each of the subregions and management types. For each crop, we include four different management types (with and without irrigation, high and low fertilizer). The model is designed to allow specification of different options for future crop management for each crop in each subregion.

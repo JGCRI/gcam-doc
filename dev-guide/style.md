@@ -1,7 +1,7 @@
 ---
 layout: index
 title: GCAM Style Guide
-gcam-version: v5.2
+gcam-version: v5.3
 devguide: dev-guide.html
 ---
 ## GCAM Style Guide
