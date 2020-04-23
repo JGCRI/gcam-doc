@@ -73,3 +73,29 @@ Calvin, K., Bond-Lamberty, B., Clarke, L., Edmonds, J., Eom, J., Hartin, C., Kim
 
 Thomson, A.M., Calvin, K.V., Smith, S.J., Kyle, G.P., Volke, A., Patel, P., Delgado-Arias, S., Bond-Lamberty, B., Wise, M.A., Clarke, L.E., Edmonds, J.A., 2011. RCP4.5: A pathway for stabilization of radiative forcing by 2100. *Climatic Change* 109. https://doi.org/10.1007/s10584-011-0151-4
 
+### GCAM-USA
+
+Feijoo, F., Iyer, G., Binsted, M. et al, 2020. US energy system transitions under cumulative emissions budgets. *Climatic Change* (2020). https://doi.org/10.1007/s10584-020-02670-0
+
+Ou, Y., West, J.J., Smith, S.J., Nolte, C.G. and Loughlin, D.H., 2020. Air pollution control strategies directly limiting national health damages in the US. *Nature Communications*, 11, 957 (2020). https://doi.org/10.1038/s41467-020-14783-2
+
+Iyer G., Brown, M., Cohen, S., Macknick, J., Patel, P., Wise, M., Binsted, M., et al., 2019. Improving consistency among models of overlapping scope in multi-sector studies: The case of electricity capacity expansion scenarios. *Renewable & Sustainable Energy Reviews*, 116, p.109416. https://doi.org/10.1016/j.rser.2019.109416
+
+Liu, L., Hejazi, M., Iyer, G. et al., 2019. Implications of water constraints on electricity capacity expansion in the United States. *Nature Sustainability* 2, 206–213 (2019). https://doi.org/10.1038/s41893-019-0235-0
+
+Wise, M., Patel, P., Khan, Z., Kim, S. H., Hejazi, M., & Iyer, G. (2019). Representing power sector detail and flexibility in a multisector model. *Energy Strategy Reviews*, 26, 100411. https://doi.org/10.1016/j.esr.2019.100411
+
+Feijoo, F., Iyer, G., Avraam, C., Siddiqui, S., Clarke L., Sankaranarayanan, S., Binsted, M., Patel, P., Patel, P., Prates N.C., Torres-Alfaro, E., Wise, M., 2018. Natural gas infrastructure development in the United States. *Applied Energy*, 228, 149–166. https://doi.org/10.1016/j.apenergy.2018.06.037
+
+Hodson, E.L., Brown, M., Cohen, S., Showalter, S., Wise, M., Wood, F., Caron, J., Feijoo, F., Iyer, G., Cleary, K., 2018. US Energy Sector Impacts of Technology Innovation, Fuel Price, and Electric Sector CO2 Policy: Results from the EMF 32 Model Intercomparison Study. *Energy Economics* 73, 352-370 (2018). https://doi.org/10.1016/j.eneco.2018.03.027
+
+Davidson, C., Dahowski, R., McJeon, H., Clarke, L., Iyer, G., Muratori, M., 2017. The value of CCS under current policy scenarios: NDCs and beyond. *Energy Procedia* 114, 7521-7527. https://doi.org/10.1016/j.egypro.2017.03.1885
+
+Iyer, G., Ledna, C., Clarke, L. et al., 2017. Measuring progress from nationally determined contributions to mid-century strategies. *Nature Climate Change* 7, 871–874 (2017). https://doi.org/10.1038/s41558-017-0005-9
+
+Iyer, G., Ledna, C., Clarke, L.E., McJeon, H., Edmonds, J. and Wise, M., 2017. GCAM-USA analysis of US electric power sector transitions. Richland, Washington: Pacific Northwest National Laboratory. https://www.pnnl.gov/main/publications/external/technical_reports/PNNL-26174.pdf
+
+Shi W., Ou Y., Smith S.J., Ledna C., Nolte C.G., Loughlin D.H., 2017. Projecting state-level air pollutant emissions using an integrated assessment model: GCAM-USA. *Applied Energy* 208, 511–521. https://doi.org/10.1016/j.apenergy.2017.09.122
+
+Zhou, Y., Clarke, L., Eom, J., Kyle, P., Patel, P., Kim, S.H., Dirks, J., Jensen, E., Liu, Y., Rice, J. and Schmidt, L., 2014. Modeling the effect of climate change on US state-level buildings energy demands in an integrated assessment framework. *Applied Energy*, 113, pp.1077-1088. https://doi.org/10.1016/j.apenergy.2013.08.034
+  
