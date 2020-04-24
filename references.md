@@ -73,6 +73,8 @@ Calvin, K., Bond-Lamberty, B., Clarke, L., Edmonds, J., Eom, J., Hartin, C., Kim
 
 Thomson, A.M., Calvin, K.V., Smith, S.J., Kyle, G.P., Volke, A., Patel, P., Delgado-Arias, S., Bond-Lamberty, B., Wise, M.A., Clarke, L.E., Edmonds, J.A., 2011. RCP4.5: A pathway for stabilization of radiative forcing by 2100. *Climatic Change* 109. https://doi.org/10.1007/s10584-011-0151-4
 
+Nakicenovic, N. and Swart, R. (eds.) Emissions Scenarios 2000: Special Report of the Intergovernmental Panel on Climate Change (Cambridge, U.K.: Cambridge University Press, 2001).
+
 ### GCAM-USA
 
 Feijoo, F., Iyer, G., Binsted, M. et al, 2020. US energy system transitions under cumulative emissions budgets. *Climatic Change* (2020). https://doi.org/10.1007/s10584-020-02670-0
