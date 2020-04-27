@@ -4,7 +4,7 @@ title: GCAM-USA
 gcam-version: v5.3 
 ---
 
-The Global Change Assessment Model (GCAM) and GCAM-USA
+The Global Change Analysis Model (GCAM) and GCAM-USA
 ------------------------------------------------------
 
 The GCAM model was expanded to include greater spatial detail in the USA region, referred to as GCAM-USA. In GCAM-USA the 50 U.S. states plus the District of Columbia (hereafter, the 51 states) are included as explicit regions that operate within the global GCAM model. Energy transformation (electricity generation and refined liquids production) and end-use demands (buildings, transportation, and industry) are modeled at the individual state level. Inter-state trade of all energy goods is considered, with state-specific consumer price mark-ups assigned for coal, natural gas, and refined liquids assigned based on price data from [EIA 2017b](gcam-usa.html#eia2017b).

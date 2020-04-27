@@ -1,6 +1,6 @@
 ---
 layout: index
-title: Global Change Assessment Model (GCAM)
+title: GCAM Policy Examples
 gcam-version: v5.3
 ---
 
