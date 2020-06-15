@@ -12,7 +12,7 @@ International trade in most commodities in GCAM is done by one of three methods:
 
 The Heckscher-Ohlin theorem explains trade using factor endowments and predicts that each country produces goods with more intensive use of its abundant factor of production (Peter Debaere, 2003; Vanek, 1968). The empirical use of the Heckscher-Ohlin approach assumes products are homogeneous across sources and traded in a single global market (i.e., fully integrated world market). Markets clear at the world level and each region will see the same global price and independently decide how much each will supply and demand of each commodity given that price. A region's net trade position is dynamic depending on economics, technical change, demand, growth, resources, etc.  Under this method for trading goods there is no modeled preference for a given region to demand a commodity from any other specific region. 
 
-The trade of agricultural and livestock proudcts were mostly modeled using the Heckscher-Ohlin approach in early version of GCAM (e.g., GCAM v4). But it has been updated to the Armington style trade modeling approach for most of the agricultural and livestock proudcts. Fodder_herb is modeled using the Heckscher-Ohlin approach and Fodder_grass is not traded. Also, major energy commodities such as coal, gas, oil, bio-energy, etc. are also traded in a single world market with the Heckscher-Ohlin approach.      
+The trade of agricultural products were mostly modeled using the Heckscher-Ohlin approach in early versions of GCAM (e.g., GCAM v4), and trade of livestock products was fixed in these versions. But GCAM has been updated to the Armington style trade modeling approach for most of the agricultural and livestock proudcts. However, FodderHerb is modeled using the Heckscher-Ohlin approach and FodderGrass is not traded. Also, major energy commodities such as coal, gas, oil, bio-energy, etc. are also traded in a single world market with the Heckscher-Ohlin approach.      
 
 
 ## Armington Style Trade
@@ -21,8 +21,8 @@ For the agricultural and livestock commodities in GCAM (except fodder crops and 
 
 The structural implementations of a "global-market" versus a "regional-market" representation are shown in Figure 1 with an example of corn trade.
 
-![AgLU Global Markets](gcam-figs/ag_global_mkt.png)<br/>
-![AgLU Regional Markets](gcam-figs/ag_regional_mkt.png)<br/>
+<img src="gcam-figs/ag_global_mkt.png" width="1500">
+<img src="gcam-figs/ag_regional_mkt.png" width="1500">
 Figure 1: Global (upper) and regional (lower) agricultural markets structures, for a representative crop and three representative regions.
 {: .fig}
 
@@ -33,9 +33,6 @@ In the regional-market representation, one additional sector per crop is added t
 
 Furthermore, the two market structures are also compared in Figure 2 with an example of a global wheat market equilibrium with demand and supply flows in 2010. 
 
-<!---
-![AgLU  market structure](gcam-figs/Wheat_global_regional.png)<br/>
--->
 <img src="gcam-figs/Wheat_global_regional.png"  width="1500"/>
 
 Figure 2: Global wheat market equilibrium in 2010: integrated world markets vs. segmented regional markets. In fully integrated world markets (a), arrows represent regional production and consumption volume flows and markets clear at the world level. In segmented regional markets (b), arrows in a single region represent domestic wheat supply, arrows between regions and the world represent trade volume flows, and markets clear at the regional level. Regional supplies are distinguished by color. The flows shown are in million tons (MT). Note that the scales are different in each diagram. Each tick mark represents 15 MT of wheat in Fig. 2a and 10 MT in Fig. 2b.
