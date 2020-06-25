@@ -21,8 +21,8 @@ For the agricultural and livestock commodities in GCAM (except fodder crops and 
 
 The structural implementations of a "global-market" versus a "regional-market" representation are shown in Figure 1 with an example of corn trade.
 
-<img src="gcam-figs/ag_global_mkt.png" width="1500">
-<img src="gcam-figs/ag_regional_mkt.png" width="1500">
+<img src="gcam-figs/ag_global_mkt.png" width="800">
+<img src="gcam-figs/ag_regional_mkt.png" width="800">  
 Figure 1: Global (upper) and regional (lower) agricultural markets structures, for a representative crop and three representative regions.
 {: .fig}
 
@@ -33,8 +33,7 @@ In the regional-market representation, one additional sector per crop is added t
 
 Furthermore, the two market structures are also compared in Figure 2 with an example of a global wheat market equilibrium with demand and supply flows in 2010. 
 
-<img src="gcam-figs/Wheat_global_regional.png"  width="1500"/>
-
+<img src="gcam-figs/Wheat_global_regional.png"  width="800"/>  
 Figure 2: Global wheat market equilibrium in 2010: integrated world markets vs. segmented regional markets. In fully integrated world markets (a), arrows represent regional production and consumption volume flows and markets clear at the world level. In segmented regional markets (b), arrows in a single region represent domestic wheat supply, arrows between regions and the world represent trade volume flows, and markets clear at the regional level. Regional supplies are distinguished by color. The flows shown are in million tons (MT). Note that the scales are different in each diagram. Each tick mark represents 15 MT of wheat in Fig. 2a and 10 MT in Fig. 2b.
 {: .fig}
 
