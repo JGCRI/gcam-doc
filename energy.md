@@ -3,7 +3,7 @@ layout: index
 title: GCAM Energy System
 prev: ssp.html
 next: aglu.html
-gcam-version: v5.2
+gcam-version: v5.3
 ---
 
 ## Overview
@@ -182,7 +182,7 @@ The structure of the natural gas supply and distribution in GCAM is shown below:
 Note that in this structure, biogas and coal gas compete for market share of the "gas processing" market, which is upstream of the gas pipeline and distribution sectors. This structure is intended to allow for substitution away from natural gas as the feedstock for the gaseous fuels used by the energy transformation and consumption sectors, as determined by the relative economics. The three subsectors of the gas processing sector, and the downstream sectors are described below.
 
 ### Natural Gas
-Natural gas accounts for almost 99% of the gaseous fuel production represented in GCAM's calibration year (2010). The natural gas commodity in GCAM includes all gaseous fuels produced at gas wells, the gaseous co-products from oil production, and gas produced from coal mines and coal seams. The natural gas commodity excludes natural gas liquids, and it excludes gas that is vented, flared, or re-injected. Further information is available in [Mapping the IEA Energy Balances](energy.html#mapping-the-iea-energy-balances) and [IEA (2011)](energy.html#iea2011).
+Natural gas accounts for almost 99% of the gaseous fuel production represented in GCAM's calibration year (2015). The natural gas commodity in GCAM includes all gaseous fuels produced at gas wells, the gaseous co-products from oil production, and gas produced from coal mines and coal seams. The natural gas commodity excludes natural gas liquids, and it excludes gas that is vented, flared, or re-injected. Further information is available in [Mapping the IEA Energy Balances](energy.html#mapping-the-iea-energy-balances) and [IEA (2011)](energy.html#iea2011).
 
 In the gas processing sector, the natural gas technology is assigned an input-output coefficient of 1, as natural gas plant fuel is not a disaggregated flow in the IEA energy balances.
 

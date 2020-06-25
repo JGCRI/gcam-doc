@@ -3,7 +3,7 @@ layout: index
 title: Earth System Module – Hector v2.0	
 prev: water.html
 next: emissions.html
-gcam-version: v5.2
+gcam-version: v5.3
 ---
 
 This section describes the carbon-cycle climate module - Hector - that is available for use in GCAM. MAGICC5.3 (Wigley, 2008) has traditionally been the only climate module available in GCAM. Hector v2.0 is the default climate model (Hartin et al., 2015) within GCAM.  Users still have the option of running MAGICC5.3 in GCAM5.1, however, we will not be supporting this option going forward.     

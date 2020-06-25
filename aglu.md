@@ -3,7 +3,7 @@ layout: index
 title: Agriculture, Land-Use, and Bioenergy
 prev: energy.html
 next: water.html
-gcam-version: v5.2 
+gcam-version: v5.3 
 ---
 
 In GCAM, the model data for the agriculture and land use parts of the model comprises >300 subregions in terms of land use, formed by subdividing each of GCAM’s 32 global geo-political regions into water basins. Within each of these subregions, land is categorized into approximately a dozen types based on cover and use. Some of these types, such as tundra and desert, are not considered arable. Among arable land types, further divisions are made for lands historically in non-commercial uses such as forests and grasslands as well as commercial forestlands and croplands. Production of approximately twenty crops is currently modeled, with yields of each specific to each of the subregions and management types. For each crop, we include four different management types (with and without irrigation, high and low fertilizer). The model is designed to allow specification of different options for future crop management for each crop in each subregion.
@@ -16,7 +16,7 @@ of data is available in [PNNL Technical Report 21025](http://www.pnl.gov/main/pu
 
 ### Inputs
 
-GCAM's inputs include information on production, consumption, prices, land, carbon, and other emissions in the historical period in order to calibrate model parameters and functions that are used for modeling future periods. GCAM requires globally consistent data sets for each of its historical model periods as it solves for market equilibrium in these years as it does for future years. The GCAM data system can produce such data sets annually beginning in 1971. Currently, GCAM uses data from 1990, 2005, and 2010 to initialize the model, but could be initialized to any year beginning in 1971.
+GCAM's inputs include information on production, consumption, prices, land, carbon, and other emissions in the historical period in order to calibrate model parameters and functions that are used for modeling future periods. GCAM requires globally consistent data sets for each of its historical model periods as it solves for market equilibrium in these years as it does for future years. The GCAM data system can produce such data sets annually beginning in 1971. Currently, GCAM uses data from 1990, 2005, 2010, and 2015 to initialize the model, but could be initialized to any year beginning in 1971.
 
 <dl>
 <dt>Historical Production</dt> <dd>Inputs include historical production of all crops and forestry products for each of the AgLU regions for the model base years. We currently rely on a blend of FAO and GTAP data for these inputs. FAO includes country-level data over the entire historical period, while GCAM has sub-national information for a single year in time.</dd>
@@ -88,7 +88,7 @@ calculated annually at the 300+ region level.</dd>
   
 ## Economic Modeling Approach
 
-In this section, we describe and discuss the approach we have developed for the economic modeling of agriculture, forestry, and land use in the Global Change Assessment Model (GCAM). We discuss the math determining land allocation in the model, as well as its interpretation. We explain the land nesting strategy and its implications, the math used in calibrating the model, and the types of data required for calibration (the data itself is discussed in later sections). We finish this section with an explanation and discussion of methods for introducing new crops and technologies into the competition beyond the calibration year. More information, including a comparison to other models, is available in Wise et al. (2014).
+In this section, we describe and discuss the approach we have developed for the economic modeling of agriculture, forestry, and land use in the Global Change Analysis Model (GCAM). We discuss the math determining land allocation in the model, as well as its interpretation. We explain the land nesting strategy and its implications, the math used in calibrating the model, and the types of data required for calibration (the data itself is discussed in later sections). We finish this section with an explanation and discussion of methods for introducing new crops and technologies into the competition beyond the calibration year. More information, including a comparison to other models, is available in Wise et al. (2014).
 
 <a name="logit"></a>
 

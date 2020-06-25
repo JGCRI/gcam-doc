@@ -1,7 +1,7 @@
 ---
 layout: index
-title: Global Change Assessment Model (GCAM)
-gcam-version: v5.2
+title: GCAM Policy Examples
+gcam-version: v5.3
 ---
 
 This page includes some examples of input files required to create policies. Note that each example will need to be tailored to your own needs. 

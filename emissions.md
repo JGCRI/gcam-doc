@@ -3,7 +3,7 @@ layout: index
 title: GCAM Emissions
 prev: hector.html
 next: choice.html
-gcam-version: v5.2
+gcam-version: v5.3
 ---
 
 ## Overview

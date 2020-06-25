@@ -3,14 +3,14 @@ layout: index
 title: The GCAM Macro-Economic System
 prev: overview.html
 next: ssp.html
-gcam-version: v5.2
+gcam-version: v5.3
 ---
 
 The socioeconomic componenta of GCAM set the scale of economic activity and associated demands for model simulations. Assumptions about population and per capita GDP growth for each of the 32 geo-political regions together determine the Gross Domestic Product (GDP). GDP and population both can drive the demands for a range of different demands within GCAM. Population and economic activity are used in GCAM through a one-way transfer of information to other GCAM components. For example, neither the price nor quantity of energy nor the quantity of energy services provided to the economy affect the calculation of the principle model output of the GCAM macro-economic system, GDP. 
 
 ### Inputs and Outputs
 
-GCAM's **inputs** include information on population and the rate of per capita income growth for each of GCAM's energy-economic regions. GCAM requires globally consistent data sets for each of its historical model periods, currently 1990, 2005, and 2010, to initialize the model. Each scenario requires assumptions about population and per capita GDP growth for future time periods.
+GCAM's **inputs** include information on population and the rate of per capita income growth for each of GCAM's energy-economic regions. GCAM requires globally consistent data sets for each of its historical model periods, currently 1990, 2005, 2010 and 2015, to initialize the model. Each scenario requires assumptions about population and per capita GDP growth for future time periods.
 
 * Population: The number of people living in each GCAM region in the benchmark and projection years.
 * GDP Per Capita Growth:   The annual average rate of growth for per capita GDP over each time step in the projection. Time steps are 5 years by default.
@@ -29,7 +29,7 @@ Where $$r$$=region, $$t$$=the period, $$tStep$$=number of years in the time step
 
 ## Calibration and Assumptions
 
-Historical population and observed GDP are used to calibrate a GCAM simulation using data from 1990, 2005, and 2010. Prognostic values for population and GDP per capita growth rates are provided by the user, though a default set is provided in the GCAM data base. Alternative assumptions associated with the SSPs are also immplemented in the GCAM implementation of the [Shared-Socioeconomic Pathways](ssp.html).
+Historical population and observed GDP are used to calibrate a GCAM simulation using data from 1990, 2005, 2010, and 2015. Prognostic values for population and GDP per capita growth rates are provided by the user, though a default set is provided in the GCAM data base. Alternative assumptions associated with the SSPs are also immplemented in the GCAM implementation of the [Shared-Socioeconomic Pathways](ssp.html).
 
 ## References
 
