@@ -7,8 +7,11 @@ gcam-version: v5.3
 ---
 
 ## Description
+TODO: This page currently only includes text copied from AgLU. Much more work needs to be done.
 
-### Variable Costs
+### Food, feed, and forestry
+
+#### Variable Costs
 
 Variable costs are defined here as the non-land costs of crop production, per-unit of crop.  We model the cost of fertilizer and water explicitly, including input-output coefficients and prices of each. Other components of variable cost are derived from USDA cost data.
 

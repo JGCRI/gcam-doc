@@ -22,6 +22,7 @@ gcam-version: v5.3
 * [Demand: Water](demand_water.html)
 * [Demand: Land](demand_land.html)
 * [Emissions](emissions.html)
+* [Climate](climate.html)
 
 ### Outputs
 * [Outputs: Quantity](outputs_quantity.html)
@@ -30,6 +31,8 @@ gcam-version: v5.3
 * [Outputs: Land](outputs_land.html)
 * [Outputs: Emissions](outputs_emissions.html)
 
-### More Detailed Information
-* [Land](details_land.html)
+
+### Alternative regional configurations of GCAM
+
+[GCAM-USA](gcam_usa.html)
 

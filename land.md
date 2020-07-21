@@ -6,13 +6,20 @@ next: supply_land.html
 gcam-version: v5.3 
 ---
 
-{:toc}
+## Inputs to the Model
+
+| Name | Resolution | Unit | Source |
+| :--- | :--- | :--- | :--- |
+| Historical land use and land cover | By GLU, land type, and year | thousand $$km^2$$ | [External data](inputs_land.html) |
+| Vegetation carbon density | By GLU and land type | kg per $$m^2$$ | [External data](inputs_land.html) |
+| Soil carbon density | By GLU and land type | kg per $$m^2$$ | [External data](inputs_land.html) |
+| Mature age | By GLU and land type | years | [External data](inputs_land.html) |
+| Soil time scale | By geopolitical region and land type | years | [External data](inputs_land.html) |
+| Value of unmanaged land | By GLU | 1975$ per thous $$km^2$$ | [External data](inputs_land.html) |
+| Profit rate of managed land | By GLU | 1975$ per thous $$km^2$$ | [Supply Model](supply_land.html) |
+| Logit exponents | By GLU and land node | Unitless | [External data](inputs_land.html) |
 
 ## Description
-
-### Land Regions
-
-For GCAM3.0 through GCAM4.4, the Agriculture and Land Use model subdivided the GCAM geopolitical regions into as many as 18 climatically defined agro-ecological zones (AEZs) developed by the GTAP group. GCAM5+ switches subregions to water basin-defined geographic land units (GLUs). The land data system files are produced by the [Moirai](https://github.com/JGCRI/moirai), described in Di Vittorio et al. (2016). 
 
 ### Economic Modeling Approach
 

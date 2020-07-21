@@ -8,12 +8,12 @@ gcam-version: v5.3
 
 ## Description of Outputs
 
-<dl>
-<dt>Land</dt> <dd>Outputs include land use and land cover for each of
-the land types included in GCAM (see Figure 1). This information is
-calculated annually for each of the AgLU subregions.</dd>
+| Name | Resolution | Unit | Query Name | XML Tag |
+| :--- | :--- | :--- | :--- | :--- |
+| Land use and land cover | By GLU, land type, and year | thousand $$km^2$$ | "detailed land allocation" | `land-allociation` |
+| Land use change emissions | By GLU and land type | MtC / year |  "LUC emissions by region" | `land-use-change-emission` |
+| Change in above ground carbon | By GLU and land type | MtC / year |  | `above-land-use-change-emission`|
+| Change in below ground carbon | By GLU and land type | MtC / year |  | `below-land-use-change-emission`|
+| Above ground carbon stock | By GLU and land type | MtC | "vegetative carbon stock by region" | `above-ground-carbon-stock` |
 
-<dt>Carbon</dt> <dd>Outputs include carbon stock and land-use change
-emissions of CO<sub>2</sub>. This information is calculated annually
-for each of the 300+ AgLU regions.</dd>
-</dl><br/>
+Other land-related outputs include production and consumption [quantities](outputs_quantity.html#foodfeedforestry), [prices](outputs_prices.html#foodfeedforestry), [trade](outputs_trade.html), and [emissions](outputs_emissions.html#agricultureandlanduse).

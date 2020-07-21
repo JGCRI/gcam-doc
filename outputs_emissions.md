@@ -8,7 +8,7 @@ gcam-version: v5.3
 
 ## Description of Outputs
 
-### Food, Feed, and Forestry
+### Agriculture and Land Use
 
 <dl>
 <dt>Other emissions</dt> <dd>Outputs include emissions of
