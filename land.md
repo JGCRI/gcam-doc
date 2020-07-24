@@ -7,17 +7,20 @@ gcam-version: v5.3
 ---
 
 ## Inputs to the Model
+**Table 1: Inputs required by the land model <sup>[1](#table_footnote)</sup>**
 
 | Name | Resolution | Unit | Source |
 | :--- | :--- | :--- | :--- |
-| Historical land use and land cover | By GLU, land type, and year | thousand $$km^2$$ | [External data](inputs_land.html) |
-| Vegetation carbon density | By GLU and land type | kg per $$m^2$$ | [External data](inputs_land.html) |
-| Soil carbon density | By GLU and land type | kg per $$m^2$$ | [External data](inputs_land.html) |
-| Mature age | By GLU and land type | years | [External data](inputs_land.html) |
-| Soil time scale | By geopolitical region and land type | years | [External data](inputs_land.html) |
-| Value of unmanaged land | By GLU | 1975$ per thous $$km^2$$ | [External data](inputs_land.html) |
+| Historical land use and land cover | By GLU, land type, and year | thousand $$km^2$$ | [Exogenous](inputs_land.html) |
+| Vegetation carbon density | By GLU and land type | kg per $$m^2$$ | [Exogenous](inputs_land.html) |
+| Soil carbon density | By GLU and land type | kg per $$m^2$$ | [Exogenous](inputs_land.html) |
+| Mature age | By GLU and land type | years | [Exogenous](inputs_land.html) |
+| Soil time scale | By geopolitical region and land type | years | [Exogenous](inputs_land.html) |
+| Value of unmanaged land | By GLU | 1975$ per thous $$km^2$$ | [Exogenous](inputs_land.html) |
 | Profit rate of managed land | By GLU | 1975$ per thous $$km^2$$ | [Supply Model](supply_land.html) |
-| Logit exponents | By GLU and land node | Unitless | [External data](inputs_land.html) |
+| Logit exponents | By GLU and land node | Unitless | [Exogenous](inputs_land.html) |
+
+
 
 ## Description
 
@@ -160,3 +163,45 @@ The land expansion cost curve is implemented as a “renewable” resource that 
 We have also included code to implement a crop technology that plants trees as densely as possible just for the purposes of storing carbon. Such a “carbon park” technology would allow us to explicitly include physical costs and demands for other inputs such as fertilizer and water when that modeling is available. This would clearly be a “managed” land option and would allow us some more options for modeling carbon policies. As with expansion costs/constraints, carbon parks are not a part of the current core configuration, but can be implemented through changes in input files.
 
 
+## IAMC Reference Card
+
+Land Cover
+- [X] Cropland
+- [X] Cropland irrigated
+- [X] Cropland food crops
+- [X] Cropland feed crops
+- [X] Cropland energy crops
+- [X] Forest
+- [X] Managed forest
+- [X] Natural forest
+- [X] Pasture
+- [X] Shrubland
+- [X] Built-up area
+
+Agriculture and forestry demands
+- [X] Agriculture food
+- [X] Agriculture food crops
+- [X] Agriculture food livestock
+- [X] Agriculture feed
+- [X] Agriculture feed crops
+- [X] Agriculture feed livestock
+- [X] Agriculture non-food
+- [X] Agriculture non-food crops
+- [X] Agriculture non-food livestock
+- [X] Agriculture bioenergy
+- [X] Agriculture residues
+- [X] Forest industrial roundwood
+- [ ] Forest fuelwood
+- [X] Forest residues
+
+Agricultural commodities
+- [X] Wheat
+- [X] Rice
+- [X] Other coarse grains
+- [X] Oilseeds
+- [X] Sugar crops
+- [X] Ruminant meat
+- [X] Non-ruminant meat and eggs
+- [X] Dairy products
+
+<a name="table_footnote">1</a>: Note that this table differs from the one provided on the [Land Inputs Page](inputs_land.html#description) in that it lists all inputs to the land model, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.

@@ -9,7 +9,7 @@ gcam-version: v5.3
 GCAM's external land inputs include information on land, carbon, other emissions, and the value of unmanaged land in the historical period. These inputs are required for each [global land unit](common_assumptions.html#global-land-units) and [historical year](common_assumptions.html#historical-years).
 
 
-## Inputs
+## External Inputs
 
 ### Description
 
@@ -21,8 +21,9 @@ GCAM's external land inputs include information on land, carbon, other emissions
 | Value of Unmanaged Land | GCAM requires profit rates for all land types in the historical period for calibration. Managed land profit is calculated in the <a href="inputs_supply.html">supply model</a>. For unmanaged land, however, the value is input into the model. | External Data Set | <a href="https://github.com/JGCRI/moirai">Moirai</a> | Raw data is by country, water basin, and land use. | million USD |
 | Share Parameters | GCAM requires the user to specify the logit exponents that determine the substitutability between different leafs and nodes in the land model.These parameters were chosen to produce land supply elasticities comparable to those found in the literature. | Assumption |  | Specified by land node | N/A |
 
+Table 1: External inputs used by the land model <sup>[1](#table_footnote)</sup>
 
-### Input Data
+### Data
 
 #### Historical Land Use and Land Cover
 The raw data used for historical land cover is provided in [Land_type_area_ha.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/LDS/Land_type_area_ha.csv). Crop-specific harvested area is provided in [FAO_ag_HA_ha_PRODSTAT.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/FAO_ag_HA_ha_PRODSTAT.csv). The data used to separate crops into irrigated and rainfed is provided in [MIRCA_irrHA_ha.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/LDS/MIRCA_irrHA_ha.csv) and [MIRCA_rfdHA_ha.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/LDS/MIRCA_rfdHA_ha.csv).
@@ -37,3 +38,6 @@ TODO: Add
 
 #### Share Parameters
 The logit exponents used in the land allocation module are provide in [A_LandNode_logit.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/A_LandNode_logit.csv) and [A_LandNode_logit_irr.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/A_LandNode_logit_irr.csv).
+
+
+<a name="table_footnote">1</a>: Note that this table differs from the one provided on the [Land Modeling Page](land.html#inputstothemodel) in that it only lists external inputs to the land model (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.
