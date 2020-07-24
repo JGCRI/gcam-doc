@@ -10,7 +10,7 @@ gcam-version: v5.3
 
 | Name | Resolution | Unit | Query Name | XML Tag |
 | :--- | :--- | :--- | :--- | :--- |
-| Land use and land cover | By GLU, land type, and year | thousand $$km^2$$ | "detailed land allocation" | `land-allociation` |
+| Land use and land cover | By GLU, land type, and year | thousand $$km^2$$ | <span id="detailed land allocation"><button onclick='getQuery("detailed land allocation", "detailed land allocation")'>detailed land allocation</button></span> | `land-allociation` |
 | Land use change emissions | By GLU and land type | MtC / year |  "LUC emissions by region" | `land-use-change-emission` |
 | Change in above ground carbon | By GLU and land type | MtC / year |  | `above-land-use-change-emission`|
 | Change in below ground carbon | By GLU and land type | MtC / year |  | `below-land-use-change-emission`|
