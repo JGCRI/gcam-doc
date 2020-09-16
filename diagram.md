@@ -7,7 +7,6 @@ gcam-version: v5.3
 ## GCAM Model Diagram
 
 
-
 <table>
 <tr>
 <td rowspan="4"> <b>Inputs</b> <br> <a href="inputs_supply.html"> <img src="gcam-figs/input_supply.png"></a> <br> <a href="inputs_land.html"> <img src="gcam-figs/input_land.png"></a> <br> <a href="inputs_economy.html"> <img src="gcam-figs/input_economy.png"></a> <br> <a href="inputs_demand.html"> <img src="gcam-figs/input_demand.png"></a></td>
