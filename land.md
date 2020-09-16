@@ -6,6 +6,17 @@ next: supply_land.html
 gcam-version: v5.3 
 ---
 
+# Table of Contents
+
+- [Inputs to the Model](#inputs-to-the-model)
+- [Description](#description)
+- [Equations](#equations)
+- [Insights and intuition](#insights-and-intuition)
+- [Modifying the model](#modifying-the-model)
+- [Policy options](#policy-options)
+- [IAMC Reference Card](#iamc-reference-card)
+- [References](#references)
+
 ## Inputs to the Model
 **Table 1: Inputs required by the land model <sup>[1](#table_footnote)</sup>**
 
@@ -205,3 +216,9 @@ Agricultural commodities
 - [X] Dairy products
 
 <a name="table_footnote">1</a>: Note that this table differs from the one provided on the [Land Inputs Page](inputs_land.html#description) in that it lists all inputs to the land model, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
+
+## References
+
+Houghton, R.A. 1999. The annual net flux of carbon to the atmosphere from changes in land use 1850-1990. Tellus 51B: 298-313.
+
+Wise, Marshall, Calvin, Katherine, Page Kyle, Patrick Luckow, James Edmonds.  2014. Economic and Physical Modeling of Land Use in GCAM 3.0 and an Application to Agricultural Productivity, Land, and Terrestrial Carbon.  Climate Change Economics. DOI 10.1142/S2010007814500031.
