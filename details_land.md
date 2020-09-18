@@ -86,3 +86,9 @@ Consider the example of a future scenario with a high global demand for a bioene
 
 Although GCAM is not structured as an optimization model, the allocation of production of crops and products across regions and subregions of the globe based on comparative advantage can be considered optimal in terms of maximizing global profits (which is not the same as minimizing land requirements). While each land subregion makes its own independent allocation, the subregions communicate these decisions with each other through economic markets. The global markets for agricultural and forest products react to these allocations by comparing global supplies to demands and adjusting prices to equilibrate supplies and demands. The resulting prices are sent back to each land subregion as signals as to how its land allocation should be changed.  The process of allocation and price adjustment continues until the markets are in equilibrium.  This market equilibrium is an economically efficient allocation of land resources among regions (Samuelson and Nordhaus, 1985).
 
+## Land Use Change Emissions
+When land is converted to forests, the vegetation carbon content of that new forest land exponentially approaches an exogenously-specified, region-dependent value in order to represent the finite time required for forests to grow, as shown in the figure below.
+
+![Figure 1](gcam-figs/forest_carbon_evolution.png)<br/>
+Figure 1: Timescales for forest regrowth in GCAM.
+{: .fig}

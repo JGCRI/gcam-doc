@@ -12,7 +12,6 @@ gcam-version: v5.3
 - [Description](#description)
 - [Equations](#equations)
 - [Insights and intuition](#insights-and-intuition)
-- [Modifying the model](#modifying-the-model)
 - [Policy options](#policy-options)
 - [IAMC Reference Card](#iamc-reference-card)
 - [References](#references)
@@ -30,7 +29,6 @@ gcam-version: v5.3
 | Value of unmanaged land | By GLU | 1975$ per thous $$km^2$$ | [Exogenous](inputs_land.html) |
 | Profit rate of managed land | By GLU | 1975$ per thous $$km^2$$ | [Supply Model](supply_land.html) |
 | Logit exponents | By GLU and land node | Unitless | [Exogenous](inputs_land.html) |
-
 
 
 ## Description
@@ -133,23 +131,58 @@ To calibrate the land allocator, the [share equation](land.html#shares) is inver
 
 See `calibrateLandAllocator` in [land_allocator.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/land_allocator/source/land_allocator.cpp) and `calculateShareWeights` in [land_node.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/land_allocator/source/land_node.cpp).
 
-### Vegetation Carbon
-TODO: Add
+### Carbon Emissions
+The total cumulative change in emissions is calculated as
 
-### Soil Carbon
-TODO: Add
+$$
+E^{veg/soil}_{t}=\Delta C_{t}=A_{t}*D^{veg/soil}_{t}-A_{t-1}*D^{veg/soil}_{t-1}
+$$
+
+where $$E$$ indicates carbon emissions due to a land use change in timestep $$t$$, $$C$$ indicates carbon stocks, $$A$$ indicates land area, and $$D$$ indicates the average carbon density of the land area. These emissions are allocated over time differently for [vegetation](#vegetation-carbon-emissions) and [soil](#soil-carbon-emissions) carbon.
+
+#### Vegetation Carbon Emissions
+
+If vegetation emissions are positive (i.e., $$E^{veg}_{t} > 0$$), then all emissions are released in the same year. That is, $$E^{veg}_{y} = E^{veg}_{t}$$.
+
+If vegetation emissions are negative, then these emissions are spread out over time using a sigmoid function: 
+
+$$
+E^{veg}_{y} = E^{veg}_{t} * \left[1 - e^{\frac{-3.0 * (y - t + 1)}{M}} \right]^2 - \left[1 - e^{\frac{-3.0 * (y - t)}{M}} \right]^2
+$$
+
+where $$t$$ is the time of land conversion, $$y$$ is the current year, $$M$$ is the mature age (specified by land type and region). 
+
+See `precalc_sigmoid_helper` in [land_carbon_densities.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/ccarbon_model/source/land_carbon_densities.cpp) for the implementation of the sigmoid and `calcAboveGroundCarbonEmission` in [asimple_carbon_calc.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/ccarbon_model/source/asimple_carbon_calc.cpp) for the calculation of vegetation carbon emissions. For more information on the sigmoid function and its sensitivity to mature age, see [Figure](details_land.html#land-use-change-emissions).
+
+#### Soil Carbon Emissions
+
+Soil carbon emissions follow an exponential approach:
+
+$$
+E^{soil}_{y} =  E^{soil}_{t} * \left[\left( 1.0 - e^{ -1.0 * \lambda * (y - t)} \right) - \left( 1.0 - e^{ -1.0 * \lambda * (y - t - 1)} \right)\right]
+$$
+
+where $$\lambda = log(2) / s / 10.0$$ and $$s$$ is the soil time scale (specified by region).
+
+See `calcBelowGroundCarbonEmission` in [asimple_carbon_calc.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/ccarbon_model/source/asimple_carbon_calc.cpp) for the calculation of soil carbon emissions. 
+
+### Carbon Stock
+
+Total carbon stock, $$C_y$$ in year $$y$$ is calculated as
+
+$$
+C_y = C_{y-1} - \left[E^{veg}_{y-1} + E^{soil}_{y-1}\right]
+$$
+
+where $$E^{veg}_{y}$$ are vegetation carbon emissions in year $$y$$ and $$E^{soil}_{y}$$ are soil carbon emissions in year $$y$$.
+
+See `calc` in [asimple_carbon_calc.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/ccarbon_model/source/asimple_carbon_calc.cpp).
 
 ## Insights and intuition
 TODO: Include references to key papers, describing the effect of changing various assumptions/inputs on land allocation
 
-## Modifying the model
-QUESTION: here or in separate page/child page?
-QUESTION: how do we want to structure/present this?
-
 ## Policy options 
-QUESTION: here or in modifying model?
-
-This section summarized some of the land-based policy options available in GCAM. More information on the trade-offs of these options is available in Calvin et al. (2014).
+This section summarizes some of the land-based policy options available in GCAM. More information on the trade-offs of these options is available in Calvin et al. (2014).
 
 ### Protecting Lands
 
@@ -172,7 +205,6 @@ The land expansion cost curve is implemented as a “renewable” resource that 
 ### Carbon Parks
 
 We have also included code to implement a crop technology that plants trees as densely as possible just for the purposes of storing carbon. Such a “carbon park” technology would allow us to explicitly include physical costs and demands for other inputs such as fertilizer and water when that modeling is available. This would clearly be a “managed” land option and would allow us some more options for modeling carbon policies. As with expansion costs/constraints, carbon parks are not a part of the current core configuration, but can be implemented through changes in input files.
-
 
 ## IAMC Reference Card
 

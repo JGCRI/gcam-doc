@@ -35,21 +35,7 @@ CO<sub>2</sub> emissions from gas flaring are not currently included in GCAM.
 
 ### <a name="co2-luc-emissions">CO<sub>2</sub> Emissions From Land-Use/Land-Use Change (LULUC)</a>
  
-Land-Use Change emissions are tracked separately. In general, emissions are estimated as:
-
-$$
-E_{r,t}=\Delta S_{r,t}=A_{r,t}*C_{r,t}-A_{r,t-1}*C_{r,t-1}
-$$
-
-Where E indicates carbon emissions, S indicates carbon stocks, A indicates land area, and C indicates the average carbon density of the land area, across all land use types.
-
-When land is converted to forests, the vegetation carbon content of that new forest land exponentially approaches an exogenously-specified, region-dependent value in order to represent the finite time required for forests to grow, as shown in the figure below.
-
-![Figure 1](gcam-figs/forest_carbon_evolution.png)<br/>
-Figure 1: Timescales for forest regrowth in GCAM.
-{: .fig}
-
-Changes in the carbon content of soils due to land-use change also exponentially approach an equilibrium value using a region-dependent timescale. This represents the timescales for carbon pool changes in soils.
+Land-Use Change emissions are tracked separately. See [Carbon Emissions](land.html#carbon-emissions).
 
 ## <a name="non-co2-overview">Non-CO<sub>2</sub> Emissions Overview</a>
 
