@@ -77,7 +77,6 @@ For soil carbon, we assume we assume both emissions and uptake are exponential, 
 GCAM tracks carbon stocks by calculating and storing cumulative land-use change emissions, and then applying those emissions as time proceeds. As land expands, we compute future uptake to be added to the carbon stock, and as land contracts we compute future emissions to subtract from the carbon stock.
 
 ## Equations 
-QUESTION: Should this be a child page?
 TODO: Add new land leaf equations
 
 The equations that determine land allocation and the resulting carbon emissions from land use and land cover change are described here.
@@ -178,9 +177,6 @@ where $$E^{veg}_{y}$$ are vegetation carbon emissions in year $$y$$ and $$E^{soi
 
 See `calc` in [asimple_carbon_calc.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/ccarbon_model/source/asimple_carbon_calc.cpp).
 
-## Insights and intuition
-TODO: Include references to key papers, describing the effect of changing various assumptions/inputs on land allocation
-
 ## Policy options 
 This section summarizes some of the land-based policy options available in GCAM. More information on the trade-offs of these options is available in Calvin et al. (2014).
 
@@ -205,6 +201,21 @@ The land expansion cost curve is implemented as a “renewable” resource that 
 ### Carbon Parks
 
 We have also included code to implement a crop technology that plants trees as densely as possible just for the purposes of storing carbon. Such a “carbon park” technology would allow us to explicitly include physical costs and demands for other inputs such as fertilizer and water when that modeling is available. This would clearly be a “managed” land option and would allow us some more options for modeling carbon policies. As with expansion costs/constraints, carbon parks are not a part of the current core configuration, but can be implemented through changes in input files.
+
+## Insights and intuition
+
+### Model evaluation
+The GCAM land model has been evaluated using a hindcast experiment, as shown in [Calvin et al. (2017)](https://www.worldscientific.com/doi/abs/10.1142/S2010007817500051) and [Snyder et al. (2017)](https://gmd.copernicus.org/articles/10/4307/2017/). A few insights emerge from these studies. First, GCAM cannot predict policy, but the inclusion of policies that exist in the real world (e.g., biofuels targets) improves the performance of the model. Second, the use of forecasted yields to drive land allocation decisions improves the performance of the model as compared to using observed yields. Third, GCAM does better at trends than interannual variability. Finally, GCAM does better at some crops and regions than other crops and regions.
+
+### Sensitivity to parameters
+The effect of a change in profitability of one land type on land allocation depends on the choice of parameters, as shown in [Zhao et al. (2020)](https://www.worldscientific.com/doi/abs/10.1142/S2010007820500049). Larger logit exponents will result in a stronger transition to a land type whose profit increases than would occur with lower logit exponents. Note that this paper replicates the GCAM land allocation mechanism in a simple offline example and does not use the full GCAM. 
+
+### Differences across regions
+The effect of an increase in one type of land depends on where that increase occurs and what it displaces because of differences in regional land allocation and carbon densities as shown in [Wise et al. (2015)](https://www.sciencedirect.com/science/article/pii/S0140988315001619). For example, expanding bioenergy in a forested region will result in higher carbon emissions per unit of fuel produced than expanding bioenergy in a non-forested region.
+
+### Implications of policy
+The choice of [policy options](#policy-options) in the land system has a dramatic effect on the resulting land allocation, resulting in changes in agricultural production, energy production, emissions, and prices. This result is demonstrated in [Calvin et al. (2014)](https://link.springer.com/article/10.1007/s10584-013-0897-y). For example, policies that place a value on carbon in the land system will result in a transition to high carbon ecosystems (i.e., reforestation and afforestation). Policies that incentivize low carbon energy systems, without any additional incentives in the land system, result in large-scale deployment of bioenergy.
+
 
 ## IAMC Reference Card
 
@@ -251,6 +262,14 @@ Agricultural commodities
 
 ## References
 
+Calvin, K., Wise, M., Kyle, P., Patel, P., Clarke, L., Edmonds, J., 2014. Trade-offs of different land and bioenergy policies on the path to achieving climate targets. *Climatic Change* 123, 691–704. https://doi.org/10.1007/s10584-013-0897-y.
+
+Calvin, K., Wise, M., Kyle, P., Clarke, L., Edmonds, J., 2017. A hindcast experiment using the GCAM 3.0 agriculture and land-use module. *Climate Change Economics* 8. https://doi.org/10.1142/S2010007817500051
+
 Houghton, R.A. 1999. The annual net flux of carbon to the atmosphere from changes in land use 1850-1990. Tellus 51B: 298-313.
 
+Snyder, A. C., Link, R. P., & Calvin, K. V. (2017). Evaluation of integrated assessment model hindcast experiments: A case study of the GCAM 3.0 land use module. Geoscientific Model Development, 10(12). https://doi.org/10.5194/gmd-10-4307-2017.
+
 Wise, Marshall, Calvin, Katherine, Page Kyle, Patrick Luckow, James Edmonds.  2014. Economic and Physical Modeling of Land Use in GCAM 3.0 and an Application to Agricultural Productivity, Land, and Terrestrial Carbon.  Climate Change Economics. DOI 10.1142/S2010007814500031.
+
+Wise, M., Hodson, E. L., Mignone, B. K., Clarke, L., Waldhoff, S., & Luckow, P. (2015). An approach to computing marginal land use change carbon intensities for bioenergy in policy applications. Energy Economics, 50, 337–347. https://doi.org/10.1016/j.eneco.2015.05.009
