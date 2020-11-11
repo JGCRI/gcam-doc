@@ -38,3 +38,13 @@ gcam-version: v5.3
 
 [GCAM-USA](gcam_usa.html)
 
+### Running and modifying GCAM
+
+Material on how to get started and use GCAM can be found on the following pages.
+
+* [How to Get Started Running GCAM](user-guide.html)
+* [How to Set Up and Build ](gcam-build.html)
+* [GCAM Fusion Usage Guide](fusion.html)
+* [GCAM Developer's Guide](dev-guide.html)
+* [Modifying GCAM scenarios through policies](policies.html)
+	* [Examples](policies_examples.html)

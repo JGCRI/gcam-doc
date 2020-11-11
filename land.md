@@ -182,21 +182,27 @@ This section summarizes some of the land-based policy options available in GCAM.
 
 ### Protecting Lands
 
-With this policy, we can set aside some land, removing it from economic competition. This will result in that land area being fixed across time and any land expansion/contraction will not affect this area. The default in GCAM is to protect 90% of all non-commercial ecosystems.
+With this policy, we can set aside some land, removing it from economic competition. This will result in that land area being fixed across time and any land expansion/contraction will not affect this area. The default in GCAM is to protect 90% of all non-commercial ecosystems. This protection level is specified in the GCAM data system; see `aglu.PROTECT_LAND_FRACT` in [constants.R](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/constants.R).
 
 ### Valuing Carbon in Land
 
-In a policy regime, we can choose to put a price on land-use change CO<sub>2</sub> emissions that is related to the price on fossil fuel and industrial CO<sub>2</sub> emissions. The land carbon price can be any multiplier of the fossil fuel carbon price. This factor is applied at the geopolitical region level, and can be differentiated across regions. We model this policy as a subsidy to land-owners for the holding carbon stocks, as opposed to a tax/subsidy on the change in carbon in land. Specifically, the subsidy is equal to the carbon price x the carbon density x a discount factor to account for the amount of time it takes carbon to accumulate x a discount factor to annualize the subsidy.  
+In a policy regime, we can choose to put a price on land-use change CO<sub>2</sub> emissions that is related to the price on fossil fuel and industrial CO<sub>2</sub> emissions. The land carbon price can be any multiplier of the fossil fuel carbon price. This factor is applied at the geopolitical region level, and can be differentiated across regions. We model this policy as a subsidy to land-owners for the holding carbon stocks, as opposed to a tax/subsidy on the change in carbon in land. Specifically, the subsidy is equal to the carbon price x the carbon density x a discount factor to account for the amount of time it takes carbon to accumulate x a discount factor to annualize the subsidy.
+
+An example file is included to implement this policy is included in GCAM; see [global_uct.xml](https://github.com/JGCRI/gcam-core/blob/master/input/policy/global_uct.xml).  
 
 ### Bioenergy Constraints
 
 We can impose constraints (lower or upper bounds) on bioenergy within GCAM. Under such a policy, GCAM will calculate the tax or subsidy required to ensure that the constraint is met. Note that by default a bioenergy constraint in GCAM (starting with v4.4) is imposed based on the amount of subsidy available for net negative emissions.
+
+See [Energy Constraint](policies_examples.html#energyconstraint) for an xml snippet.
 
 ### Land expansion costs/constraints
 
 One approach we have implemented and tested is to add a land expansion cost curve to targeted land types in specific regions. Specifically, we have added land expansion cost curves to unmanaged forest land in individual regions in which a carbon policy resulted in fast transformation from grassland to unmanaged forest. This method effectively adds a cost associated with converting to forests.  This cost can be interpreted as the cost of planting, watering, fire management, etc. required to grow trees on previously unforested land.
 
 The land expansion cost curve is implemented as a “renewable” resource that land must “purchase” on a per-unit of land basis. The cost curve can be set at a zero cost up to a predefined amount of land: e.g., base year allocation, pre-industrial allocation, etc. Beyond this point, the cost curve increases to either represent a physical expansion cost or an arbitrarily high cost that would act as a hard constraint on expansion. One drawback to this approach is that each cost curve adds a market equation that needs to be solved. The market should behave well, but adding markets should always be done with care as it does put additional burdens on the solution algorithm.
+
+See [Land Constraint](policies_examples.html#landconstraint) for an xml snippet.
 
 ### Carbon Parks
 
