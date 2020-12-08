@@ -8,16 +8,8 @@ gcam-version: v5.3
 
 ## Description of Outputs
 
-### Agriculture and Land Use
+| Name | Resolution | Unit | Query | XML Tag |
+| :--- | :--- | :--- | :--- | :--- |
+| |  |  | <span id="detailed land allocation"><button onclick='getQuery("detailed land allocation", "detailed land allocation")'>detailed land allocation</button></span> | `land-allocation` |
 
-<dl>
-<dt>Other emissions</dt> <dd>Outputs include emissions of
-CH<sub>4</sub>, N<sub>2</sub>O, NH<sub>3</sub>, SO<sub>2</sub>, CO,
-BC, OC, and NO<sub>x</sub>. Greenhouse gas emissions are produced from
-livestock, rice, and fertilizer application; these emissions can be
-reduced with the application of a carbon price. Pollutant emissions
-are produced from agricultural waste burning, forest fires,
-deforestation, and savannah burning. Livestock emissions are
-calculated annually at the 32 region level. All other emissions are
-calculated annually at the 300+ region level.</dd>
-</dl><br/>
+Outputs are specified in the `methodName` method of [xml_db_outputter.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/reporting/source/xml_db_outputter.cpp). 

@@ -8,11 +8,8 @@ gcam-version: v5.3
 
 ## Description of Outputs
 
-### Food, Feed, and Forestry
+| Name | Resolution | Unit | Query | XML Tag |
+| :--- | :--- | :--- | :--- | :--- |
+| |  |  | <span id="detailed land allocation"><button onclick='getQuery("detailed land allocation", "detailed land allocation")'>detailed land allocation</button></span> | `land-allocation` |
 
-<dl>
-<dt>Prices</dt> <dd>Outputs include the price of all food, feed,
-forestry, bioenergy and livestock commodities. This information is
-calculated annually, typically at a regional (i.e., 32-region)
-level.</dd>
-</dl><br/>
+Outputs are specified in the `methodName` method of [xml_db_outputter.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/reporting/source/xml_db_outputter.cpp). 

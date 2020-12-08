@@ -8,18 +8,8 @@ gcam-version: v5.3
 
 ## Description of Outputs
 
-### Food, Feed, and Forestry
+| Name | Resolution | Unit | Query | XML Tag |
+| :--- | :--- | :--- | :--- | :--- |
+| |  |  | <span id="detailed land allocation"><button onclick='getQuery("detailed land allocation", "detailed land allocation")'>detailed land allocation</button></span> | `land-allocation` |
 
-<dl>
-<dt>Production</dt> <dd>Outputs include production of all crops and forestry products; this information is calculated annually for each of the 300+ AgLU regions. GCAM also calculates production of livestock at the 32 region level.</dd>
-
-<dt>Consumption</dt> <dd>Outputs include food, non-food, bioenergy, and feed consumption of all crop, forestry, livestock, and bioenergy products; this information is calculated annually for each of the 32 geopolitical regions.</dd>
-
-<dt>Fertilizer</dt> <dd>Outputs include fertilizer use for each crop and management practice included in GCAM (see Figure 1). This information is
-calculated annually for each of the AgLU subregions.</dd>
-
-<dt>Water Withdrawals</dt> <dd>Outputs include water withdrawals by crop and management practice. This information is
-calculated annually for each of the AgLU subregions.</dd>
-
-<dt>Water Consumption</dt> <dd>Outputs include water consumption (both blue and green) by crop and management practice. This information is calculated annually for each of the AgLU subregions.</dd>
-</dl><br/>
+Outputs are specified in the `methodName` method of [xml_db_outputter.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/reporting/source/xml_db_outputter.cpp). 

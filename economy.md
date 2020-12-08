@@ -1,8 +1,8 @@
 ---
 layout: index
-title: Emissions
-prev: supply_energy.html
-next: outputs_emissions.html
+title: Economy
+prev: inputs_economy.html
+next: outputs_prices.html
 gcam-version: v5.3 
 ---
 
@@ -17,7 +17,7 @@ gcam-version: v5.3
 - [References](#references)
 
 ## Inputs to the Model
-**Table 1: Inputs required by the emissions model**
+**Table 1: Inputs required by the economic model <sup>[1](#table_footnote)</sup>**
 
 | Name | Resolution | Unit | Source |
 | :--- | :--- | :--- | :--- |
@@ -30,7 +30,7 @@ gcam-version: v5.3
 
 
 ## Equations 
-The equations that determine emissions are described here.
+The equations that determine economic variables are described here.
 
 #### Variable #1
 <Insert equations used to calculate variable #1>
@@ -50,6 +50,9 @@ This section summarizes some of the energy-based policy options available in GCA
 
 ## IAMC Reference Card
 <Add relevant parts of IAMC reference card>
+
+
+<a name="table_footnote">1</a>: Note that this table differs from the one provided on the [Supply Inputs Page](inputs_supply.html#description) in that it lists all inputs to the land model, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
 
 ## References
 
