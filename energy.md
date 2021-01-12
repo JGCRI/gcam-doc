@@ -282,7 +282,7 @@ If the base assumptions are not desired, user-specified building floorspace valu
 *Floorspace, world/+{name}region, region/+{name}gcam-consumer, gcam-consumer/+{name}nodeInput, nodeInput/+{name}building-node-input, building-node-input/+{year}base-building-size, building-node-input/+base-building-size, scenario, scenario/world*
 
 The figure below is an example XML of user-specified residential floorspace values for Maine. 
-<img src="gcam-figs/floorspace_Maine.png" width="686" height="406" /><br/> 
+<img src="gcam-figs/floorspace_Maine.PNG" width="686" height="406" /><br/> 
 
 ### Industry
 
