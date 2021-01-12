@@ -275,6 +275,14 @@ where *HDD* and *CDD* refer to heating and cooling degree days, respectively, η
 
 Within building services, the structures and functional forms are similar to any other GCAM sector, described in [Energy Technologies](en_technologies.html).
 
+**Exogenous Residential Floorspace**
+
+If the base assumptions are not desired, user-specified residential building floorspace values can be changed in a .csv file that is outside that datasystem. An XML can be generated from this .csv through Model Interface using the following header:
+
+*Floorspace, world/+{name}region, region/+{name}gcam-consumer, gcam-consumer/+{name}nodeInput, nodeInput/+{name}building-node-input, building-node-input/+{year}base-building-size, building-node-input/+base-building-size, scenario, scenario/world*
+
+Floorspace values are in billion m^2.
+
 ### Industry
 
 With the exception of cement and fertilizer, which are explicitly modeled in GCAM, the industrial sector is represented as a consumer of generic energy services and feedstocks. Within energy use there is cost-based competition between fuels, but with a low elasticity of substitution, as the specific uses of the energy are not specified. Cogeneration of electricity is tracked, and represented as a separate technology option for each fuel consumed by the industrial sector (other than electricity). Cogeneration technology options are characterized by higher capital costs, but are credited with the revenue from electricity sold; as such the deployment of cogeneration in any scenario will depend on future fuel and electricity prices. Output of aggregate industrial sectors is represented in generic terms.
