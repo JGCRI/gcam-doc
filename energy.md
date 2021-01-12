@@ -277,11 +277,12 @@ Within building services, the structures and functional forms are similar to any
 
 **Exogenous Residential Floorspace**
 
-If the base assumptions are not desired, user-specified residential building floorspace values can be changed in a .csv file that is outside that datasystem. An XML can be generated from this .csv through Model Interface using the following header:
+If the base assumptions are not desired, user-specified building floorspace values (in billion m^2) can be added in a .csv file that is outside that datasystem. An XML can be generated from this .csv through Model Interface using the following header:
 
 *Floorspace, world/+{name}region, region/+{name}gcam-consumer, gcam-consumer/+{name}nodeInput, nodeInput/+{name}building-node-input, building-node-input/+{year}base-building-size, building-node-input/+base-building-size, scenario, scenario/world*
 
-Floorspace values are in billion m^2.
+The figure below is an example XML of user-specified residential floorspace values for Maine. 
+<img src="gcam-figs/floorspace_Maine.png" width="686" height="406" /><br/> 
 
 ### Industry
 
