@@ -275,9 +275,9 @@ where *HDD* and *CDD* refer to heating and cooling degree days, respectively, η
 
 Within building services, the structures and functional forms are similar to any other GCAM sector, described in [Energy Technologies](en_technologies.html).
 
-**Exogenous Residential Floorspace**
+**Exogenous Floorspace**
 
-If the base assumptions are not desired, user-specified building floorspace values (in billion m^2) can be added in a .csv file that is outside that datasystem. An XML can be generated from this .csv through Model Interface using the following header:
+If the base assumptions are not desired, user-specified residential or commercial building floorspace values (in billion m^2) can be added in a .csv file that is outside that datasystem. An XML can be generated from this .csv through Model Interface using the following header:
 
 *Floorspace, world/+{name}region, region/+{name}gcam-consumer, gcam-consumer/+{name}nodeInput, nodeInput/+{name}building-node-input, building-node-input/+{year}base-building-size, building-node-input/+base-building-size, scenario, scenario/world*
 
