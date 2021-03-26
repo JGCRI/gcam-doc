@@ -133,7 +133,8 @@ The data specifying manufacturing water coefficients is specified in [Vassolo_mf
 | Historical demand for crops | Demand for agricultural commodities in the historical period; used for initialization/calibration of GCAM | External data | FAO | Specified by crop, use, country, and year | tons |
 | Historical demand for livestock | Demand for livestock commodities in the historical period; used for initialization/calibration of GCAM | External data | FAO | Specified by crop, use, country, and year | tons |
 | Historical demand for forest | Demand for forest products in the historical period; used for initialization/calibration of GCAM | External data | FAO | Specified by country and year | m<sup>3</sup> |
-| Income and price elasticity | Income and price elasticity of demand (only used for non-food demand) | Assumption |  | Specified by demand | unitless |
+| Income and price elasticity | Income and price elasticity of demand (for non-food, non-feed demand) | Assumption |  | Specified by demand | unitless |
+| Food demand parameters | Set of 11 parameters required for the food demand model | External data | [Ambrosia](https://github.com/jgcri/ambrosia) | | unitless |
 | Logit exponents | Share parameters dictating substitution between different commodities | Assumption |  | Specified by type demand | unitless |
 
 Table 3: External inputs used for demand of food, feed, and forestry <sup>[3](#table_footnote3)</sup>
@@ -161,6 +162,10 @@ Price and income elasticity are specified in [A_demand_supplysector.csv](https:/
 ##### Logit exponents
 
 Logit exponents are specified in [A_demand_supplysector.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/A_demand_supplysector.csv) and [A_demand_subsector.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/A_demand_subsector.csv).
+
+##### Food demand parameters
+
+Parameters needed for the food demand model are determined by a separate model, [Ambrosia](https://github.com/jgcri/ambrosia), and read into GCAM. The GCAM input files are [A_demand_food_nonstaples.csv](https://github.com/JGCRI/gcam-core/tree/master/input/gcamdata/inst/extdata/aglu/A_demand_food_nonstaples.csv) and [A_demand_food_staples.csv](https://github.com/JGCRI/gcam-core/tree/master/input/gcamdata/inst/extdata/aglu/A_demand_food_staples.csv).
 
 ## References
 
