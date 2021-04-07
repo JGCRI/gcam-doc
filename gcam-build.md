@@ -270,20 +270,20 @@ sudo apt install libboost-dev libboost-system-dev libboost-filesystem-dev libxer
 ...the following variables can be used:
 
 ```
-USRLIB = /usr/lib/x86_64-linux-gnu
+USRLIB=/usr/lib/x86_64-linux-gnu
 
-BOOST_LIB = $(USRLIB)
-BOOST_INCLUDE = /usr/include/boost
+BOOST_LIB=${USRLIB}
+BOOST_INCLUDE=/usr/include/boost
 
 # For Hector, which uses different definitions
-BOOSTLIB = $(BOOST_LIB)
-BOOSTROOT = $(BOOST_INCLUDE)
+BOOSTLIB=${BOOST_LIB}
+BOOSTROOT=${BOOST_INCLUDE}
 
-XERCES_LIB = $(USRLIB)
-XERCES_INCLUDE = /usr/include/xercesc
+XERCES_LIB=${USRLIB}
+XERCES_INCLUDE=/usr/include/xercesc
 
-JAVA_INCLUDE = /usr/lib/jvm/default-java/include
-JAVA_LIB = /usr/lib/jvm/default-java/jre/lib/amd64/server
+JAVA_INCLUDE=/usr/lib/jvm/default-java/include
+JAVA_LIB=/usr/lib/jvm/default-java/jre/lib/amd64/server
 ```
 
 ### 4.2 Building with Xcode
