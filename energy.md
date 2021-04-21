@@ -419,7 +419,9 @@ Note that the size classes shown are tailored to each region, depending on the d
 
 ## Energy Trade
 
-GCAM models trade for coal, gas, oil, and bioenergy using an Armington approach. That is regions are allowed to choose between domestically produced products or globally traded products when making a consumption decision. Other energy carriers (e.g., solar, wind, geothermal) are not traded. For more generalinformation, see the [discussion of approaches to international trade](trade.html).
+GCAM models trade for coal, gas, oil, and bioenergy using an Armington approach that is described below. Under this approach regions are allowed to choose between domestically produced products or globally traded products when making a consumption decision. This approach allows for the computation of a regionally distinct consumption price for fossil fuels based on the domestic and imported consumption. 
+
+Other energy carriers (e.g., solar, wind, geothermal) are not traded. For more generalinformation, see the [discussion of approaches to international trade](trade.html).
 
 ### Fossil fuel trade in GCAM
 
