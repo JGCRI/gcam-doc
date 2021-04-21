@@ -1,6 +1,6 @@
 ---
+title: "GCAM Energy System"
 layout: index
-title: GCAM Energy System
 prev: ssp.html
 next: aglu.html
 gcam-version: v5.3
@@ -45,8 +45,13 @@ GCAM models depletable resources (oil, unconventional oil, natural gas, coal, an
 <img src="gcam-figs/gas_supply_curve.png" width="750" height="300" />
 {: .fig}
 <img src="gcam-figs/coal_supply_curve.png" width="750" height="300" />
-**Illustrative examples of supply curves and totall supplies for fossil resources in GCAM (from GCAM 5.1.2)**
+**Illustrative examples of supply curves and totall supplies for fossil resources in GCAM (from GCAM 5.3)**
 {: .fig}
+
+
+#### Representation of unconventional oil as a technology within crude oil
+
+Unconventional oil and crude oil into 1 resource (crude oil). Note that the ability for countries to produce unconventional oil is maintained by adding it as a subresource and technology within crude oil. This structure allows GCAM to load all costs related to unconventional oil production directly as technology costs. Since unconventional oil is not a resource, unconventional oil now uses crude oil's global resource price.   
 
 
 ### Renewable Resources 
@@ -66,7 +71,7 @@ $$
 Where Q refers to the quantity of electricity produced, P the price, and the remaining parameters are exogenous, with the names in the XML input files corresponding to the names in the equation above. maxSubResource indicates the maximum quantity of wind energy that could be produced at any price, curve-exponent is a shape parameter, and mid-price indicates the price at which 50% of the maximum available resource is produced. The supply curves in each region are derived from bottom-up analysis documented in [Zhou et al. (2012)](energy.html#zhou2012). Note that in this supply curve formulation, the price is zero when the quantity is zero; this is because the wind resource supply curves only represent costs that increase with deployment due to the nature of the resources; these include factors such as increased transmission distances, reduced capacity factors, and more costly access to sites, among others. The remainder of the costs of wind electricity generation are in the technology and backup, described in the [electricity sector](energy.html#electricity).
 
 <img src="gcam-figs/wind.jpeg" width="900" height="500" /><br/>
-**Illustrative example of global gridded potential for wind electricity generation used in GCAM (from GCAM 5.1.2).**
+**Illustrative example of global gridded potential for wind electricity generation used in GCAM (from GCAM 5.3).**
 {: .fig}
 
 ## Solar
@@ -242,7 +247,7 @@ The wind and solar technologies are electrolysis technologies, but are specifica
 GCAM disaggregates the building sector into residential and commercial sectors and models three aggregate services (heating, cooling, and other). Within each region, each type of building and each service starts with a different mix of fuels supplying energy (see Figure below). The future evolution of building energy use is shaped by changes in (1) floorspace, (2) the level of building service per unit of floorspace, and (3) fuel and technology choices by consumers.  Floorspace depends on population, income, and exogenously specified satiation levels. The level of building service demands per unit of floorspace depend on climate, building shell conductivity, income, and satiation levels.
 
 <img src="gcam-figs/building_energy_2010.png" width="750" height="450" /><br/> 
-**Historical Per-capita Residential and Commercial Energy Use in 2010 (fron GCAM 5.1.2 calibration)**
+**Historical Per-capita Residential and Commercial Energy Use in 2010 (fron GCAM 5.3 calibration)**
 {: .fig}
 
 The approach used in the buildings sector is documented in [Clarke et al. 2018](energy.html#clarke2018), which has a focus on heating and cooling service and energy demands. The following section summarizes the functional forms linking regional socioeconomic conditions, exogenous assumptions about the buildings sector (e.g., technology characteristics), and endogenous factors (e.g., energy prices).
@@ -353,7 +358,7 @@ The non-fuel costs are estimated for some technologies (e.g., light-duty vehicle
 
 The specific values and sources of the input data assumptions to the transportation module of GCAM are documented in [Mishra et al. 2013](energy.html#mishra2013); this section identifies what variables are collected, for each country or region analyzed in detail in constructing GCAM's transportation input files. The identifying information for each transportation technology is provided in Table 2.
 
-**Table 2: Example transportation input data categories for a sample region (from GCAM 5.1.2)**.
+**Table 2: Example transportation input data categories for a sample region (from GCAM 5.3)**.
 {: .tbl}
 
 | Service   | Mode               | Size class          | Technology     | Fuel        |
@@ -414,7 +419,24 @@ Note that the size classes shown are tailored to each region, depending on the d
 
 ## Energy Trade
 
-GCAM models trade for coal, gas, oil, and bioenergy using a Heckscher-Ohlin paradigm. That is, trade for these products occurs freely into and out of global markets. Other energy carriers (e.g., solar, wind, geothermal) are not traded. For more information, see the [discussion of approaches to international trade](trade.html).
+GCAM models trade for coal, gas, oil, and bioenergy using an Armington approach. That is regions are allowed to choose between domestically produced products or globally traded products when making a consumption decision. Other energy carriers (e.g., solar, wind, geothermal) are not traded. For more generalinformation, see the [discussion of approaches to international trade](trade.html).
+
+### Fossil fuel trade in GCAM
+
+ The figure below depicts the fossil fuel trade structures (using coal as an example). In previous versions of GCAM, every region produced and consumed from a single global market. All crude oil, coal, and natural gas production was sent to a shared market, from which, every region consumed. Only net trade could be tracked and supply was affected by global rather than regional demand. The current structure maintains a global market (e.g. traded coal), but distinguishes between direct consumption of domestic resources and consumption of imported fossil fuels.
+ 
+ <img src="gcam-figs/Fossil_fuel_trade.png" width="900" height="400" /><br/>
+** Schematics of the structures for the flows of the "Coal" commodity in GCAM, with only 3 regions shown for simplicity.**
+{: .fig}
+ 
+#### Data calibration for fossil fuel trade
+
+Each region's share of the global (e.g. traded coal) market as well as the split for domestic and imported goods are calibrated in the final base year. IEA's data set cannot be used to make this calibration because it lacks a bilateral trade accounting. Instead the GCAM data system uses the UN's Comtrade data set to account for intraregional trade to avoid double counting any gross trade. For example trade done within an aggregated GCAM region (e.g. Germany trading with France both of which are in GCAM's EU-15 region) should not be counted as part of that region's gross trade. To avoid overestimating the amounts of gross trade, Comtrade's bilateral data set is used to exclude any intraregional trade. The Comtrade trade data is used to calculate gross trade for each region. This is then combined with the data on production and consumption of fossil fuels calculated within the data system (production is calculated from the fossil fuel supply curves and IEA data and consumption is initialized from IEA energy balances) to compute trade balances. These trade balances are then used to initialize data for the domestic and traded sectors using relevant shareweights and interpolation rules.
+
+
+#### Shareweight, interpolation and logit assumptions
+
+Each GCAM region splits their production between the global "traded" market (gross exports) and their 'domestic' supply; each region then consumes a mix of imported and domestic product. Each region's share of the global market ("traded") as well as the share between imported and domestic goods is calibrated to final base year data, but competes based on price in future periods. The share-weights calibrated in the final base year for domestic supply markets are interpolated to 1 in a distant future year (2300) because a) preferences are held constant in the short term while allowing price to dominate choices in the long term and b) there is some difficulty with water withdrawals when holding share-weights completely fixed. This is similar to the assumptions for agricultural trade. The competition between domestic goods and imported goods is assumed to be more preference driven, while the competition between regions in the traded market is more price driven. Following the convention of the "rule of two", each region has a logit of -3 for regional demand, and a logit of -6 for traded demand. The share weights of traded markets are held constant at the base year values so that countries that will run out of resources are not forced to export out their production which leads to large spikes in prices. The shareweights of the imported supply markets  are allowed to converge to 1 by 2100 for coal and gas, thus allowing countries to import more in case they run out of domestic supply. 
 
 ## Mapping the IEA Energy Balances
 
