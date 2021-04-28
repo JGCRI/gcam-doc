@@ -12,11 +12,11 @@ International trade in most commodities in GCAM is done by one of three methods:
 
 The Heckscher-Ohlin theorem explains trade using factor endowments and predicts that each country produces goods with more intensive use of its abundant factor of production (Peter Debaere, 2003; Vanek, 1968). The empirical use of the Heckscher-Ohlin approach assumes products are homogeneous across sources and traded in a single global market (i.e., fully integrated world market). Markets clear at the world level and each region will see the same global price and independently decide how much each will supply and demand of each commodity given that price. A region's net trade position is dynamic depending on economics, technical change, demand, growth, resources, etc.  Under this method for trading goods there is no modeled preference for a given region to demand a commodity from any other specific region. 
 
-The trade of agricultural products were mostly modeled using the Heckscher-Ohlin approach in early versions of GCAM (e.g., GCAM v4), and trade of livestock products was fixed in these versions. But GCAM has been updated to the Armington style trade modeling approach for most of the agricultural and livestock proudcts. However, FodderHerb is modeled using the Heckscher-Ohlin approach and FodderGrass is not traded. Also, major energy commodities such as coal, gas, oil, bio-energy, etc. are also traded in a single world market with the Heckscher-Ohlin approach.      
+The trade of agricultural products were mostly modeled using the Heckscher-Ohlin approach in early versions of GCAM (e.g., GCAM v4), and trade of livestock products was fixed in these versions. But GCAM has been updated to the Armington style trade modeling approach for most of the agricultural and livestock products. However, FodderHerb is still modeled using the Heckscher-Ohlin approach and FodderGrass is not traded. Also, major energy commodities such as coal, gas, oil, bio-energy, etc. are also traded in a single world market with the Heckscher-Ohlin approach.      
 
 
 ## Armington Style Trade
-For the agricultural and livestock commodities in GCAM (except fodder crops and fish & other meats), we use an Armington style distinction between domestic and imported goods. The Armington approach assumes products are differentiated by source and consumers view goods produced in different countries as imperfect substitutes (Armington, 1969). The theoretical background and the derivation of the logit-based Armington approach is documented in Zhao et al. (2020). In this approach, the competition between imports and domestic is governed by a logit. Imports are from a single global pool that draws from all regions and is also governed by a logit. The logit-based Armington approach requires a segmented regional market, as oppose to the integrated world market in the Heckscher-Ohlin approach. Thus, it allows differentiating regional prices and tracing gross trade flows. 
+For the agricultural, livestock, and forest commodities in GCAM (except fodder crops and fish & other meats), we use an Armington style distinction between domestic and imported goods. The Armington approach assumes products are differentiated by source, and consumers view goods produced in different countries as imperfect substitutes (Armington, 1969). The theoretical background and the derivation of the logit-based Armington approach are documented in Zhao et al. (2020). In this approach, the competition between imports and domestic is governed by a logit sharing function. Imports are from a single global pool that draws from all regions and is also governed by a logit. The logit-based Armington approach requires segmented regional markets, as opposed to the integrated world market in the Heckscher-Ohlin approach. Thus, it allows differentiating regional prices and tracing gross trade flows. 
 
 
 The structural implementations of a "global-market" versus a "regional-market" representation are shown in Figure 1 with an example of corn trade.
@@ -42,7 +42,32 @@ For each traded commodity with the logit-based Armington approach, this structur
 1. The global "traded commodity" is supplied by gross exports from each of GCAM's geopolitical regions.
 2. The "regional commodity" sector within each region allocates market share to domestic production versus imports of the global "traded commodity".
 
-The logit parameters are calibrated based on literature information of trade elasticities. For example, (1) livestock products have generally higher logit exponents (Hertel et al., 2007), and (2) the regional logit exponent and interantional logit exponent are tied with "rule of two" (Liu et al., 2004).
+The logit parameters are calibrated based on literature information of Armington trade elasticities (Table 1). For example, (1) livestock products have generally higher logit exponents (Hertel et al., 2007), and (2) the regional logit exponent and international logit exponent are tied with "rule of two" (Liu et al., 2004). 
+
+In addition, bilateral trade is not a default option in GCAM currently. However, there is a working branch of GCAM that enables bilateral trade modeling of agricultural products by further disaggregating international "traded sector" to regional "traded sector" following the Armington framework. 
+
+Table 1 Logit-based Armington parameters used in GCAM
+
+{: .fig}
+
+| Sector       | Regional | International |
+| ------------ | -------- | ------------- |
+| Corn         | -1.3     | -2.6          |
+| Fibercrop    | -2.5     | -5            |
+| Misccrop     | -2.41    | -4.82         |
+| Oilcrop      | -2.99    | -5.98         |
+| Othergrain   | -1.3     | -2.6          |
+| Palmfruit    | -2.99    | -5.98         |
+| Rice         | -2.9     | -5.8          |
+| Roottuber    | -2.41    | -4.82         |
+| Sugarcrop    | -2.7     | -5.4          |
+| Wheat        | -4.45    | -8.9          |
+| Beef         | -3.9     | -7.7          |
+| Dairy        | -3.7     | -7.3          |
+| Pork         | -4.4     | -8.8          |
+| Poultry      | -4.4     | -8.8          |
+| Sheep & Goat | -3.9     | -7.7          |
+| Forest       | -2.5     | -5            |
 
 ## Fixed Interregion Trade
 Livestock products were held fixed at their historical value for the rest of the simulation, in early versions of GCAM (e.g., GCAM v4). But they have been updated using the logit-based Armington approach.

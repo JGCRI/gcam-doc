@@ -23,7 +23,7 @@ GCAM's inputs include information on production, consumption, prices, land, carb
 
 <dt>Historical Consumption</dt> <dd>Inputs include food, non-food, bioenergy, and feed consumption of all crop and forestry products for each of the 32 geopolitical regions for the historical base years. We currently rely on IMAGE for animal feed and FAO data for all remaining inputs. Feed inputs also include secondary outputs of DDGS (dried distillers grains and solubles) from ethanol production, and feedcakes from biodiesel production.</dd>
 
-<dt>Historical Prices</dt> <dd>Inputs include the price of all food, feed, and forestry commodities for our historical base years. We currently use producer prices from FAO for these inputs.</dd>
+<dt>Historical Prices</dt> <dd>Inputs include the price of all food, feed, and forestry commodities for our historical base years. We currently use producer prices (or export prices when producer prices are not available, i.e., forest) from FAO for these inputs. </dd>
 
 <dt>Historical Land Cover and Use</dt> <dd>Inputs include land cover and land use for each of the GCAM land types and AgLU regions. We use information beginning in 1700 in order to spin-up the carbon cycle within GCAM. Currently, we use a blend of the Hurtt-Hyde land cover product from CMIP5, the SAGE potential vegetation map, and FAO/GTAP cropland area.</dd>
 
@@ -85,7 +85,7 @@ deforestation, and savannah burning. Livestock emissions are
 calculated annually at the 32 region level. All other emissions are
 calculated annually at the 300+ region level.</dd>
 </dl><br/>
-  
+
 ## Economic Modeling Approach
 
 In this section, we describe and discuss the approach we have developed for the economic modeling of agriculture, forestry, and land use in the Global Change Analysis Model (GCAM). We discuss the math determining land allocation in the model, as well as its interpretation. We explain the land nesting strategy and its implications, the math used in calibrating the model, and the types of data required for calibration (the data itself is discussed in later sections). We finish this section with an explanation and discussion of methods for introducing new crops and technologies into the competition beyond the calibration year. More information, including a comparison to other models, is available in Wise et al. (2014).
