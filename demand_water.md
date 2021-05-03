@@ -22,6 +22,7 @@ gcam-version: v5.3
 | Name | Resolution | Unit | Source |
 | :--- | :--- | :--- | :--- |
 | Agriculture water coefficients | GLU, GCAM commodity, water type (consumption, withdrawals, biophysical consumption) and year | $$km^3$$ per Mt | [Exogenous](inputs_demand.html) |
+| Agriculture production | GLU, GCAM commodity, and year | Mt per year | [Supply Model](supply_land.html) |
 
 
 ## Description
@@ -30,7 +31,7 @@ Water demand is calculated for six major sectors: [agriculture](#agriculture), [
 
 ### Agriculture
 
-Irrigated crop production tracks three types of water demands identified above: water withdrawals, water consumption, and biophysical water consumption. Here, "water withdrawals" refer to irrigation water applied to agricultural fields, and include evapo-transpiration requirements of crops that are met by irrigation water (i.e., "blue water"), plus any "field losses" of water. Note that upstream "conveyance losses"--i.e., water that leaks or evaporates from distribution canals--are represented in the water transport and distribution sectors, not in the crop technologies. The loss coefficients for conveyance and field losses are from the country-level estimates of [Rohwer et al. 2007](#rohwer2007). For irrigated crops, "water consumption" refers to the evapo-transpiration requirements of the crops that is met by irrigation water (i.e., "blue water"). Both water withdrawals and consumption exclude rainfall-derived water ("green water") consumed by crops grown in irrigated systems. "Biophysical water consumption", which applies equally to rainfed and irrigated technologies within any basin and crop type, is the sum of blue and green water requirements. It excludes any field or conveyance losses.
+Agriculture water demand is determined by exogenously specified water coefficients and endogenously determined crop production. For irrigated crop production, GCAM tracks three types of water demands identified above: water withdrawals, water consumption, and biophysical water consumption. Here, "water withdrawals" refer to irrigation water applied to agricultural fields, and include evapo-transpiration requirements of crops that are met by irrigation water (i.e., "blue water"), plus any "field losses" of water. Note that upstream "conveyance losses"--i.e., water that leaks or evaporates from distribution canals--are represented in the water transport and distribution sectors, not in the crop technologies. The loss coefficients for conveyance and field losses are from the country-level estimates of [Rohwer et al. 2007](#rohwer2007). For irrigated crops, "water consumption" refers to the evapo-transpiration requirements of the crops that is met by irrigation water (i.e., "blue water"). Both water withdrawals and consumption exclude rainfall-derived water ("green water") consumed by crops grown in irrigated systems. "Biophysical water consumption", which applies equally to rainfed and irrigated technologies within any basin and crop type, is the sum of blue and green water requirements. It excludes any field or conveyance losses.
 
 More documentation of the approach to modeling agricultural water demand in GCAM is available in [Chaturvedi et al. 2015](#chaturvedi2015) and [Hejazi et al. 2014](#hejazi2014)
 
@@ -57,13 +58,13 @@ The approach for modeling the water demands of primary energy production is docu
 
 ### Municipal uses
 
-Water withdrawals from [FAO Aquastat](water.html#fao2016) are assigned to a "municipal water" sector in each region that grows with population and GDP, with the demand levels moderated by assumed technical change. Municipal water prices come from the International Benchmarking Network for Water and Sanitation Utilities ([IBNET](water.html#ibnet)). The functional form used for projecting future municipal water demand takes future water price increases into account. 
+Water withdrawals from [FAO Aquastat](#fao2016) are assigned to a "municipal water" sector in each region that grows with population and GDP, with the demand levels moderated by assumed technical change. Municipal water prices come from the International Benchmarking Network for Water and Sanitation Utilities ([IBNET](#ibnet)). The functional form used for projecting future municipal water demand takes future water price increases into account. 
 
-Municipal water consumption is also modeled; the distinction between the two comes from an assumed overall municipal water supply efficiency, based on [Shiklomanov 2000](water.html#shiklomanov2000). Where the withdrawal volume indicates the total water input to the municipal water supply system, consumption indicates only the water that is used by consumers in a way that it is not returned to the immediate water environment.
+Municipal water consumption is also modeled; the distinction between the two comes from an assumed overall municipal water supply efficiency, based on [Shiklomanov 2000](#shiklomanov2000). Where the withdrawal volume indicates the total water input to the municipal water supply system, consumption indicates only the water that is used by consumers in a way that it is not returned to the immediate water environment.
 
 In the future, the ratio between withdrawals and consumption is assumed static, so both the withdrawals and consumption grow according to the equation above. Future work on adaptive measures can explore the potential changes to withdrawl and consumption intensities.
 
-For more information, see  [Hejazi et al. 2013](water.html#hejazi2013) and summarized in [Hejazi et al. 2014](water.html#hejazi2014).
+For more information, see  [Hejazi et al. 2013](#hejazi2013) and summarized in [Hejazi et al. 2014](#hejazi2014).
 
 ### Types of water in GCAM
 
@@ -71,6 +72,11 @@ For more information, see  [Hejazi et al. 2013](water.html#hejazi2013) and summa
 * **water consumption**: water use that permanently withdraws water from its source; water that is no longer available because it has evaporated, been transpired by plants, incorporated into products or crops, consumed by people or livestock, or otherwise removed from the immediate water environment ([Vickers 2001](#vickers2001)).
 * **biophysical water consumption**: total water required for crop evapo-transpiration; the sum of "blue" and "green" water in [Mekonnen and Hoekstra 2011](#mekonnen2011)
 * **seawater**: water from the oceans, including brackish estuaries, that is withdrawn for cooling thermo-electric power plants, or used in primary energy production.
+
+
+### Basin-To-Region and Basin-To-Sector Mapping
+
+Agricultural water demand is modeled at the basin level directly. Demands for water from other sectors are modeled at the geopolitical region and then mapped to the basin. For more information, see the detailed description of the [basin mapping](details_#basin-to-regionandbasin-to-sectormapping).
 
 
 ## Equations 
@@ -115,15 +121,11 @@ When water supply constraints are not imposed or when water prices and scarcity 
 
 <a name="chaturvedi2015">[Chaturvedi et al. 2015]</a> Chaturvedi, V., Hejazi, M., Edmonds, J., Clarke, L., Kyle, P., Davies, E., and Wise, M. 2013. Climate mitigation policy implications for global irrigation water demand. *Mitigation and Adaptation Strategies for Global Change* 20(3), pp 389-407. [Link](https://link.springer.com/article/10.1007/s11027-013-9497-4)
 
-<a name="cui2018">[Cui et al. 2018]</a> Cui, Ryna Yiyun, Katherine Calvin, Leon Clarke, Mohamad Hejazi, Son Kim, Page Kyle, Pralit Patel, Sean Turner and Marshall Wise (2018). *Regional responses to future, demand-driven water scarcity*. Environmental Research Letters, 13, 9. [Link](https://doi.org/10.1088/1748-9326/aad8f7)
-
 <a name="davies2013">[Davies et al. 2013]</a> Davies, E.G.R., Kyle, P., and Edmonds, J. 2013. An integrated assessment of global and regional water demands for electricity generation to 2095. *Advances in Water Resources* 52(3), pp 296-313. [Link](https://www.sciencedirect.com/science/article/pii/S0309170812003028)
 
 <a name="fao2016">[FAO Aquastat]</a> FAO. 2016. *AQUASTAT Main Database*, Food and Agriculture Organization of the United Nations (FAO). [Link](http://www.fao.org/faostat/en/)
 
 <a name="faostat2016">[FAOSTAT]</a> FAO. 2016. *FAOSTAT Statistics Database*, Food and Agriculture Organization of the United Nations (FAO). [Link](http://www.fao.org/nr/water/aquastat/data/query/index.html?lang=en)
-
-<a name="graham2018">[Graham et al. 2018]</a> Graham, N., E. Davies, M. I. Hejazi, K. Calvin, S. H. Kim, L. Helinksi, F.R. Miralles-Wilhelm, L Clarke, G.P. Kyle, P Patel, M.A. Wise, and C.R. Vernon (2018). *Water sector assumptions for the Shared Socioeconomic Pathways in an integrated modeling framework*. Water Resources Research, 54, [Link](https://doi.org/10.1029/2018WR023452)
 
 <a name="hejazi2013">[Hejazi et al. 2013]</a> Hejazi, M., J. Edmonds, V. Chaturvedi, E. Davies, and J. Eom. Scenarios of global municipal water-use demand projections over the 21st century. *Hydrological Sciences Journal* 58, pp 519-538. [Link](https://www.sciencedirect.com/science/article/pii/S0040162513001169)
 
@@ -133,11 +135,7 @@ When water supply constraints are not imposed or when water prices and scarcity 
 
 <a name="kenny2009">[Kenny et al. 2009]</a> Kenny, J., N. Barber, S. Hutson, K. Linsey, J. Lovelace, M. Maupin. *Estimated use of water in the United States in 2005* Circular 1344, U.S. Geological Survey, U.S. Department of the Interior, Reston, Virginia. [Link](https://pubs.usgs.gov/circ/1344/pdf/c1344.pdf)
 
-<a name="kim2016">[Kim et al. 2016]</a> Kim SK, Hejazi M, et al. (2016). *Balancing global water availability and use at basin scale in an integrated assessment model*. Climatic Change 136:217-231. [Link](http://link.springer.com/article/10.1007/s10584-016-1604-6/fulltext.html)
-
 <a name="kyle2013">[Kyle et al. 2013]</a> Davies, E.G.R., Kyle, P., and Edmonds, J. 2013. Kyle, P., E.G.R. Davies, J.J. Dooley, S.J. Smith, L.E. Clarke, J.A. Edmonds, and M.I Hejazi. 2013. Influence of climate change mitigation technology on global demands of water for electricity generation. *International Journal of Greenhouse Gas Control* 13, pp 112-123. [Link](https://www.sciencedirect.com/science/article/pii/S1750583612003179)
-
-<a name="liu2018">[Liu et al. 2018]</a> Liu Y., M. Hejazi, H. Li, X. Zhang, G. Leng (2018). *A  hydrological emulator for global applications - HE v1.0.0*. Geoscientific Model Development. [Link](https://www.geosci-model-dev.net/11/1077/2018/gmd-11-1077-2018.pdf)
 
 <a name="macknick2011">[Macknick et al. 2011]</a> Macknick, J., Newmark, R., Heath, G., and Hallett, K.C. 2011. *A Review of Operational Water Consumption and Withdrawal Factors for Electricity Generating Technologies*. NREL/TP-6A20-50900. National Renewable Energy Laboratory. [Link](https://www.nrel.gov/docs/fy11osti/50900.pdf)
 
@@ -149,21 +147,11 @@ When water supply constraints are not imposed or when water prices and scarcity 
 
 <a name="netl2008">[NETL 2008]</a> National Energy Technology Laboratory. *Water Requirements for Existing and Emerging Thermoelectric Plant Technologies*. DOE/NETL-402/080108, National Energy Technology Laboratory. [Link](http://www.circleofblue.org/wp-content/uploads/2010/08/Water-Requirements-for-Existing-and-Emerging-Thermoelectric-Technology.pdf)
 
-<a name="oecd2009">[OECD 2009]</a>. *Managing Water for All: An OECD Perspective on Pricing and Financing*, OECD, Paris. [Link](https://www.oecd.org/env/42350563.pdf)
-
 <a name="rohwer2007">[Rowher et al. 2007]</a> Rohwer, J., Gerten, D., and Lucht, W. 2007. *Development of Functional Irrigation Types for Improved Global Crop Modelling* PIK Report No. 104, Potsdam Institute for Climate Impact Research. [Link](https://www.pik-potsdam.de/research/publications/pikreports/.files/pr104.pdf)
 
-<a name="shiklomanov2000">[Shiklomanov 2000]</a> Shiklomanov, I. 2000. World water resources and water use: present assessment and outlook for 2025. pp. 160-203 in: Rijsberman, F.R. (Ed.), *World Water Scenarios: Analysis of Global Water Resources and Use*. Earthscan, London, UK. [Link](http://www.uni-frankfurt.de/45217769/Vassolo_Doell_WRR2005.pdf)
+<a name="shiklomanov2000">[Shiklomanov 2000]</a> Shiklomanov, I. 2000. World water resources and water use: present assessment and outlook for 2025. pp. 160-203 in: Rijsberman, F.R. (Ed.), *World Water Scenarios: Analysis of Global Water Resources and Use*. Earthscan, London, UK. 
 
 <a name="solley1998">[Solley et al. 1998]</a> Solley, W., R. Pierce, H. Perlman. 1998. *Estimated use of water in the United States in 1995* Circular 1200, U.S. Geological Survey, U.S. Department of the Interior, Reston, Virginia. [Link](https://pubs.usgs.gov/circ/1998/1200/report.pdf)
-
-<a name="turner2019a">[Turner et al. 2019a]</a> Turner S.W.D., M. Hejazi, C. Yonkofski, S. Kim, P. Kyle (2019a). *Influence of groundwater extraction costs and resource depletion limits on simulated global nonrenewable water withdrawals over the 21st century*. Earth's Future (2019), 10.1029/2018EF001105  [Link](https://doi.org/10.1029/2018EF001105)
-
-<a name="turner2019b">[Turner et al. 2019b]</a> Turner, Sean, Mohamad Hejazi, Katherine Calvin, Page Kyle, Sonny Kim (2019b). *A pathway of global food supply adaptation in a world with increasingly constrained groundwater*. Science of The Total Environment, 673, 165-176, [Link](https://doi.org/10.1016/j.scitotenv.2019.04.070).
-
-<a name="vassolo2005">[Vassolo and Döll 2005]</a> Vassolo, S., and Döll, P. 2005. Global-scale gridded estimates of thermoelectric power and manufacturing water use. *Water Resources Research* 41, W04010. [Link](http://www.uni-frankfurt.de/45217769/Vassolo_Doell_WRR2005.pdf)
-
-<a name="vernon2019">[Vernon 2019]</a> Vernon, C., M. Hejazi, S. Turner, Y. Liu, C. Braun, X. Li, and R. Link. *A Global Hydrologic Framework to Accelerate Scientific Discovery*. Journal of Open Research Software (2019). [Link](https://openresearchsoftware.metajnl.com/articles/10.5334/jors.245/)
 
 <a name="vickers2001">[Vickers 2001]</a> Vickers, A. 2001. *Handbook of Water Use and Conservation*. WaterPlow Press, Amherst, MA, USA. [Link](http://waterplowpress.com/)
 
