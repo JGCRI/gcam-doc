@@ -73,7 +73,6 @@ We have represented the water at the scale of major river basins. Currently 235 
 50|Italy-East Coast|100	|Africa-Red Sea-Gulf of Aden Coast|150|Micronesia|200|La Puna Region
 
 
-
 ### Global Land Units
 
 For GCAM3.0 through GCAM4.4, the Agriculture and Land Use model subdivided the GCAM geopolitical regions into as many as 18 climatically defined agro-ecological zones (AEZs) developed by the GTAP group. GCAM5+ switches subregions to water basin-defined geographic land units (GLUs). The land data system files are produced by the [Moirai](https://github.com/JGCRI/moirai), described in Di Vittorio et al. (2016). 
@@ -88,3 +87,7 @@ The GCAM data system can produce such data sets annually beginning in 1971. Curr
 ### Future Years
 
 Currently, GCAM models the future from 2020 to 2100 in 5 year time steps. The time step is variable and can be changed in [the data system](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/constants.R). 
+
+## Economic Choice
+
+GCAM represents choices among options using a logit function. For more information on economic choice, see [choice](choice.html).
