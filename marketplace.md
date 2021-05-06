@@ -26,8 +26,9 @@ gcam-version: v5.3
 
 ## Description
 
-<Add as many subsections and sub-subsections as needed to describe this area. Each subsection should have a short paragraph qualitatively describing the topic. Additional information can be included on a details_xyz.md page if needed>
+### Trade
 
+GCAM uses different approaches to modeling trade depending on the commodity. See [trade](details_trade.html) for more information.
 
 ## Equations 
 The equations used in the marketplace are described here.
