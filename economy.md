@@ -32,8 +32,15 @@ gcam-version: v5.3
 ## Equations 
 The equations that determine economic variables are described here.
 
-#### Variable #1
-<Insert equations used to calculate variable #1>
+#### GDP
+
+Regional GDP is calculated using a simple one-equation model:
+
+$$
+Equation 1: GDP_{r,t+1} = POP_{r,t+1}( 1+GRO_{r,t})^{tStep}( \frac{GDP_{r,t}}{POP_{r,t}} ) P^{ \alpha }_{r,t+1}
+$$
+
+Where $$r$$=region, $$t$$=the period, $$tStep$$=number of years in the time step, $$GDP_{r,t}$$=population in region $$r$$ in period $$t$$, $$POP_{r,t}$$=population in region $$r$$ in period $$t$$ and $$GRO_{r,t}$$=annual average per capita GDP growth rate in region $$r$$ in period $$t$$.
 
 See `method name` in [code_file.cpp](link to code on GitHub).
 
