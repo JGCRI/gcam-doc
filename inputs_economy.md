@@ -25,6 +25,7 @@ GCAM's economic inputs include information on population and income. These input
 
 Table 1: External inputs used for supply of energy<sup>[1](#table_footnote1)</sup>
 
+Note that for the Shared Socioeconomic Pathways (SSPs), different inputs are used for some variables. See [SSPs](ssp.html) for more information.
 
 ### Input Data
 

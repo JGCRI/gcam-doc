@@ -26,6 +26,8 @@ GCAM's supply inputs include information on production, prices, technology cost 
 
 Table 1: External inputs used for supply of energy<sup>[1](#table_footnote1)</sup>
 
+Note that for the Shared Socioeconomic Pathways (SSPs), different inputs are used for some variables. See [SSPs](ssp.html) for more information.
+
 #### Data
 
 ##### Variable #1
@@ -41,6 +43,8 @@ Table 1: External inputs used for supply of energy<sup>[1](#table_footnote1)</su
 
 Table 2: External inputs used for supply of water <sup>[2](#table_footnote2)</sup>
 
+Note that for the Shared Socioeconomic Pathways (SSPs), different inputs are used for some variables. See [SSPs](ssp.html) for more information.
+
 #### Data
 
 ##### Variable #1
@@ -55,6 +59,8 @@ Table 2: External inputs used for supply of water <sup>[2](#table_footnote2)</su
 |  |  | |  |  |
 
 Table 3: External inputs used for supply of food, feed, and forestry <sup>[3](#table_footnote3)</sup>
+
+Note that for the Shared Socioeconomic Pathways (SSPs), different inputs are used for some variables. See [SSPs](ssp.html) for more information.
 
 <dt>Historical Production</dt> <dd>Inputs include historical production of all crops and forestry products for each of the AgLU regions for the model base years. We currently rely on a blend of FAO and GTAP data for these inputs. FAO includes country-level data over the entire historical period, while GCAM has sub-national information for a single year in time.</dd>
 

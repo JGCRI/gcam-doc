@@ -25,6 +25,8 @@ GCAM's external land inputs include information on land, carbon, other emissions
 
 Table 1: External inputs used by the land model <sup>[1](#table_footnote)</sup>
 
+Note that for the Shared Socioeconomic Pathways (SSPs), different inputs are used for some variables. See [SSPs](ssp.html) for more information.
+
 ### Data
 
 #### Historical Land Use and Land Cover

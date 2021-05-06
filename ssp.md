@@ -40,31 +40,32 @@ To implement the SSPs within GCAM, we use the demographic and economic assumptio
 **Table 2**: Qualitative Assumptions across SSPs
 {: .tbl}
 
-| Category | Variable | SSP1 | SSP2 | SSP3 | SSP4 (High / Medium / Low Income ) | SSP5 |
-| :------------- |:------------- |:------------- |:------------- |:------------- |:------------- |:-------------|
-| Socioeconomics | Population in 2100 | 6.9 billion | 9 billion | 12.7 billion | 0.9 billion / 2.0 billion / 6.4 billion | 7.4 billion |
-|  | GDP per capita in 2100 | $46,306  | $33,307 | $12,092 | $123,244 / $30,937 / $7,388 | $83,496 |
-|Fossil Resources (Technological Change/Acceptance) | Coal | Med/Low | Med/Med | High/High | Med/Low / Med/Med / Med/High | High/High |
-| | Conventional Gas & Oil | Med/Med | Med/Med | Med/Med | High/Low / High/Low / High/Low | High/High |
-| | Unconventional Oil | Low/Med | Med/Med | Med/Med | Med/Low / Med/Low / Med/Low | High/High |
-| Electricity (Technology Cost) | Nuclear | High | Med | High | Low /Low / Low | Med |
-| | Renewables | Low | Med | High | Low / Low / Low | Med | 
-| | CCS | High | Med | Med | Low / Low / Low | Low |
-| Fuel Preference | Renewables | High| Med | Med | High / High / High | Med | 
-| | Traditional Biomass | Low | Low | High | Low / Low / High | Low | 
-| Energy Demand (Service Demands) | Buildings | Low | Med | Low | High / Med / Low | High |
-| | Transportation | Low | Med | Low |  High / Med / Low | High |
-| | Industry | Low | Med | Low | High / Med / Low | High |
-| Agriculture & Land Use | Food Demand | High | Med | Low | High / Med / Low | High |
-| | Meat Demand | Low | Med | High | Med / Med / Med | High |
-| | Productivity Growth | High | Med | Low | High / Med / Low | High | 
-| |Trade | Global | Global | Global | Regional / Regional / Local | Global |
-| |  SPA\* Policy |  Afforestation | Limited afforestation | No land policy | Afforestation / Limited afforestation / No land policy | Afforestation |
-| Pollutant Emissions | Emissions Factors | Low | Med | High | High / High / High | Low |
-| Marker | Model | IMAGE | MESSAGE-GLOBIOM | AIM | GCAM | REMIND-MAGPIE |
-|           | Reference  | Van Vuuren et al. (2016) | Riahi et al. (2016) | Fujimori et al. (2016) | Calvin et al. (2016) | Kriegler et al. (2016) |
-| Challenges | Challenges to Mitigation | Low | Medium | High | Low | High |
-|           | Challenges to Adaptation | Low | Medium | High | High | Low |
+| Category | Variable | SSP1 | SSP2 | SSP3 | SSP4 (High / Medium / Low Income ) | SSP5 | Link to Inputs |
+| :------------- |:------------- |:------------- |:------------- |:------------- |:------------- |:-------------|:-------------|
+| Socioeconomics | Population in 2100 | 6.9 billion | 9 billion | 12.7 billion | 0.9 billion / 2.0 billion / 6.4 billion | 7.4 billion | <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/socioeconomics/SSP_database_v9.csv">Socioeconomics</a> |
+|  | GDP per capita in 2100 | $46,306  | $33,307 | $12,092 | $123,244 / $30,937 / $7,388 | $83,496 | <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/socioeconomics/SSP_database_v9.csv">Socioeconomics</a> |
+|Fossil Resources (Technological Change/Acceptance) | Coal | Med/Low | Med/Med | High/High | Med/Low / Med/Med / Med/High | High/High | <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A10.TechChange_SSPs.csv">Technological Change</a> / <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A10.EnvironCost_SSPs.csvv">Acceptance</a> |
+| | Conventional Gas & Oil | Med/Med | Med/Med | Med/Med | High/Low / High/Low / High/Low | High/High | <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A10.TechChange_SSPs.csv">Technological Change</a> / <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A10.EnvironCost_SSPs.csvv">Acceptance</a> |
+| | Unconventional Oil | Low/Med | Med/Med | Med/Med | Med/Low / Med/Low / Med/Low | High/High | <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A10.TechChange_SSPs.csv">Technological Change</a> / <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A10.EnvironCost_SSPs.csvv">Acceptance</a> |
+| Electricity (Technology Cost) | Nuclear | High | Med | High | Low /Low / Low | Med |<a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A23.globaltech_capital_adv.csv">Low Costs</a>, <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A23.globaltech_capital_low.csv">High Costs</a> |
+| | Renewables | Low | Med | High | Low / Low / Low | Med | <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A23.globaltech_capital_adv.csv">Low Costs</a>, <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A23.globaltech_capital_low.csv">High Costs</a> |
+| | CCS | High | Med | Med | Low / Low / Low | Low | <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/zchunk_L261.Cstorage.R">CCS extraction costs</a> |
+| Fuel Preference | Renewables | High| Med | Med | High / High / High | Med | <a href="https://github.com/JGCRI/gcam-core/blob/master/input/extra/renewable_shareweights_ssp1_32.xml">SSP1</a> |
+| | Traditional Biomass | Low | Low | High | Low / Low / High | Low | <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.fuelprefElasticity_SSP15.csv">SSP1 and SSP5</a>, <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.fuelprefElasticity_SSP3.csv">SSP3</a>, <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.fuelprefElasticity_SSP4.csv">SSP4</a> |
+| Energy Demand (Service Demands) | Buildings | Low | Med | Low | High / Med / Low | High | Linked to income |
+| | Transportation | <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/UCD_trn_data_SSP1.csv">Low</a> and <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A54.tranSubsector_VOTT_ssp1_revised.csv">Low</a>| <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/UCD_trn_data_SSP2.csv">Med</a> | <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/UCD_trn_data_SSP3.csv">Low</a> |  <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/UCD_trn_data_SSP3.csv">High / Med / Low</a> | <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/UCD_trn_data_SSP5.csv">High</a> | Links are specific to SSP |
+| | Industry | Low | Med | Low | High / Med / Low | High | <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/zchunk_L232.industry.R">Industry</a> and <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/zchunk_L2321.cement.R">Cement </a> |
+| Agriculture & Land Use | Food Demand | High | Med | Low | High / Med / Low | High | Linked to income |
+| | Meat Demand | Low | Med | High | Med / Med / Med | High | <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/A_fuelprefElasticity_ssp1.csv">SSP1</a> |
+| | Productivity Growth | High | Med | Low | High / Med / Low | High | <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/zchunk_L2052.ag_prodchange_cost_irr_mgmt.R">Productivity Growth</a> |
+| |Trade | Global | Global | Global | Regional / Regional / Local | Global | |
+| |  SPA\* Policy |  Afforestation | Limited afforestation | No land policy | Afforestation / Limited afforestation / No land policy | Afforestation | |
+| Pollutant Emissions | Emissions Factors | Low | Med | High | High / High / High | Low | <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/zchunk_L251.en_ssp_nonco2.R">Emissions</a>|
+| Marker | Model | IMAGE | MESSAGE-GLOBIOM | AIM | GCAM | REMIND-MAGPIE | |
+|           | Reference  | Van Vuuren et al. (2016) | Riahi et al. (2016) | Fujimori et al. (2016) | Calvin et al. (2016) | Kriegler et al. (2016) | |
+| Challenges | Challenges to Mitigation | Low | Medium | High | Low | High | |
+|           | Challenges to Adaptation | Low | Medium | High | High | Low | |
+
 
 
 ### Electricity Assumptions

@@ -26,6 +26,8 @@ GCAM's demand inputs include information on consumption and prices in the histor
 
 Table 1: External inputs used for demand of energy<sup>[1](#table_footnote1)</sup>
 
+Note that for the Shared Socioeconomic Pathways (SSPs), different inputs are used for some variables. See [SSPs](ssp.html) for more information.
+
 #### Data
 
 ##### Variable #1
@@ -44,8 +46,9 @@ Table 1: External inputs used for demand of energy<sup>[1](#table_footnote1)</su
 | Agriculture water coefficients | Water coefficients for agricultural commodities, including blue (irrigation) and green (rain) water, includes data for a single year circa 2000 | External data set | <a href="http://waterfootprint.org/media/downloads/Report47-Appendix-II.zip">Mekonnen and Hoekstra</a> | Crop, country, water type (blue, green) | $$m^3$$ per ton |
 | Industrial manufacturing water coefficients | Water coefficients for industrial manufacturing for 1995 | External data set | [Vassolo and Döll 2005](#vassolo2005) | Continent and water type (withdrawals, consumption) | $$Mm^3$$ per year |
 
-
 Table 2: External inputs used for demand of water <sup>[2](#table_footnote2)</sup>
+
+Note that for the Shared Socioeconomic Pathways (SSPs), different inputs are used for some variables. See [SSPs](ssp.html) for more information.
 
 #### Data
 
@@ -66,6 +69,8 @@ The main data source used for estimating the manufacturing sector's water consum
 |  |  | |  |  |
 
 Table 3: External inputs used for demand of food, feed, and forestry <sup>[3](#table_footnote3)</sup>
+
+Note that for the Shared Socioeconomic Pathways (SSPs), different inputs are used for some variables. See [SSPs](ssp.html) for more information.
 
 <dt>Historical Consumption</dt> <dd>Inputs include food, non-food, bioenergy, and feed consumption of all crop and forestry products for each of the 32 geopolitical regions for the historical base years. We currently rely on IMAGE for animal feed and FAO data for all remaining inputs. Feed inputs also include secondary outputs of DDGS (dried distillers grains and solubles) from ethanol production, and feedcakes from biodiesel production.</dd>
 
