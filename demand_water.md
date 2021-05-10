@@ -21,8 +21,16 @@ gcam-version: v5.3
 
 | Name | Resolution | Unit | Source |
 | :--- | :--- | :--- | :--- |
-| Agriculture water coefficients | GLU, GCAM commodity, water type (consumption, withdrawals, biophysical consumption) and year | $$km^3$$ per Mt | [Exogenous](inputs_demand.html) |
-| Agriculture production | GLU, GCAM commodity, and year | Mt per year | [Supply Model](supply_land.html) |
+| Crop water coefficients | GLU, GCAM commodity, water type (consumption, withdrawals, biophysical consumption) and year | $$km^3$$ per Mt | [Exogenous](inputs_demand.html) |
+| Crop production | GLU, GCAM commodity, and year | Mt per year | [Supply Model](supply_land.html) |
+| Electricity water coefficients | GCAM region, technology, water type (consumption, withdrawals) and year | $$km^3$$ per EJ | [Exogenous](inputs_demand.html) |
+| Electricity production | GCAM region, technology, and year | EJ per year | [Supply Model](supply_energy.html) |
+| Livestock water coefficients | GCAM region, livestock type, water type (consumption, withdrawals, biophysical consumption) and year | $$km^3$$ per Mt | [Exogenous](inputs_demand.html) |
+| Livestock production | GCAM region, livestock type, and year | Mt per year | [Supply Model](supply_land.html) |
+| Primary energy water coefficients | GCAM region, fuel, water type (consumption, withdrawals, biophysical consumption) and year | $$km^3$$ per EJ | [Exogenous](inputs_demand.html) |
+| Primary energy production | GCAM region, fuel, and year | EJ per year | [Supply Model](supply_energy.html) |
+| Industry water coefficients | GCAM region, water type (consumption, withdrawals, biophysical consumption) and year | $$km^3$$ per EJ | [Exogenous](inputs_demand.html) |
+| Industry output | GCAM region and year | EJ per year | [Demand Model](demand_energy.html) |
 
 
 ## Description

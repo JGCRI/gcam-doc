@@ -21,7 +21,9 @@ gcam-version: v5.3
 
 | Name | Resolution | Unit | Source |
 | :--- | :--- | :--- | :--- |
-|  |  |  | [Exogenous](inputs_supply.html) |
+| Runoff supply curves (cost and availability) | Water basin and year | $$km^3$$ | [Exogenous](inputs_supply.html) |
+| Ground water supply curves (cost and availability) | Water basin and year | $$km^3$$ | [Exogenous](inputs_supply.html) |
+| Desalination cost | Water basin and year | $$km^3$$ | [Exogenous](inputs_supply.html) |
 
 
 ## Description
