@@ -44,7 +44,6 @@ For each traded commodity with the logit-based Armington approach, this structur
 
 The logit parameters are calibrated based on literature information of Armington trade elasticities (Table 1). For example, (1) livestock products have generally higher logit exponents (Hertel et al., 2007), and (2) the regional logit exponent and international logit exponent are tied with "rule of two" (Liu et al., 2004). 
 
-In addition, bilateral trade is not a default option in GCAM currently. However, there is a working branch of GCAM that enables bilateral trade modeling of agricultural products by further disaggregating international "traded sector" to regional "traded sector" following the Armington framework. 
 
 Table 1 Logit-based Armington parameters used in GCAM
 
