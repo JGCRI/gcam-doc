@@ -158,7 +158,107 @@ Users can also include [energy intensity standards](policies_examples.html#res),
 
 ## IAMC Reference Card
 
-{Add relevant parts of IAMC reference card}
+### Energy technology substitution
+
+Energy technology choice
+- [ ] No discrete technology choices
+- [X] Logit choice model
+- [ ] Production function
+- [ ] Linear choice (lowest cost)
+- [ ] Lowest cost with adjustment penalties
+
+Energy technology substitutability
+- [ ] Mostly high substitutability
+- [ ] Mostly low substitutability
+- [X] Mixed high and low substitutability
+
+Energy technology deployment
+- [ ] Expansion and decline constraints
+- [X] System integration constraints
+
+### Energy
+
+Electricity technologies
+- [X] Coal w/o CCS
+- [X] Coal w/ CCS
+- [X] Gas w/o CCS
+- [X] Gas w/ CCS
+- [X] Oil w/o CCS
+- [X] Oil w/ CCS
+- [X] Bioenergy w/o CCS
+- [X] Bioenergy w/ CCS
+- [X] Geothermal power
+- [X] Nuclear power
+- [X] Solar power
+- [X] Solar power-central PV
+- [X] Solar power-distributed PV
+- [X] Solar power-CSP
+- [X] Wind power
+- [X] Wind power-onshore
+- [X] Wind power-offshore
+- [X] Hydroelectric power
+- [ ] Ocean power
+
+Hydrogen production
+- [X] Coal to hydrogen w/o CCS
+- [X] Coal to hydrogen w/ CCS
+- [X] Natural gas to hydrogen w/o CCS
+- [X] Natural gas to hydrogen w/ CCS
+- [X] Oil to hydrogen w/o CCS
+- [X] Oil to hydrogen w/ CCS
+- [X] Biomass to hydrogen w/o CCS
+- [X] Biomass to hydrogen w/ CCS
+- [X] Nuclear thermochemical hydrogen
+- [X] Solar thermochemical hydrogen
+- [X] Electrolysis
+
+Refined liquids
+- [X] Coal to liquids w/o CCS
+- [X] Coal to liquids w/ CCS
+- [X] Gas to liquids w/o CCS
+- [X] Gas to liquids w/ CCS
+- [X] Bioliquids w/o CCS
+- [X] Bioliquids w/ CCS
+- [X] Oil refining
+
+Refined gases
+- [X] Coal to gas w/o CCS
+- [X] Coal to gas w/ CCS
+- [X] Oil to gas w/o CCS
+- [X] Oil to gas w/ CCS
+- [X] Biomass to gas w/o CCS
+- [X] Biomass to gas w/ CCS
+
+Heat generation
+- [X] Coal heat
+- [X] Natural gas heat
+- [X] Oil heat
+- [X] Biomass heat
+- [X] Geothermal heat
+- [X] Solarthermal heat
+- [X] CHP (coupled heat and power)
+
+### Grid Infrastructure
+
+Electricity
+- [X] Yes (aggregate)
+- [ ] Yes (spatially explicit)
+
+Gas
+- [X] Yes (aggregate)
+- [ ] Yes (spatially explicit)
+
+Heat
+- [X] Yes (aggregate)
+- [ ] Yes (spatially explicit)
+
+CO2
+- [X] Yes (aggregate)
+- [ ] Yes (spatially explicit)
+
+Hydrogen
+- [X] Yes (aggregate)
+- [ ] Yes (spatially explicit)
 
 <a name="table_footnote">1</a>: Note that this table differs from the one provided on the [Supply Inputs Page](inputs_supply.html#description) in that it lists all inputs to the land model, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
 

@@ -51,6 +51,20 @@ Livestock products were held fixed at their historical value for the rest of the
 ## No Trade of Secondary energy goods
 Note that secondary energy products such as [Electricity](energy.html#electricity) or [Refined Liquids](energy.html#refining) are assumed to not be traded at all between the GCAM geo-political regions.
 
+## IAMC Reference Card
+
+Trade 
+- [X] Coal
+- [X] Oil
+- [X] Gas
+- [X] Uranium
+- [ ] Electricity
+- [X] Bioenergy crops
+- [X] Food crops
+- [ ] Capital
+- [X] Emissions permits
+- [ ] Non-energy goods
+
 ## References
 
 Armington, P.S. (1969) A theory of demand for products distinguished by place of production. Staff Papers 16, 159-178. 

@@ -118,7 +118,7 @@ When water supply constraints are not imposed or when water prices and scarcity 
 
 ## IAMC Reference Card
 
-{Add relevant parts of IAMC reference card}
+Not applicable. The IAMC reference card does not have water demand related entries.
 
 <font size="-1">
 <a name="table_footnote">1</a>: Note that this table differs from the one provided on the [Demand Inputs Page](inputs_demand.html#description) in that it lists all inputs to the land model, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.

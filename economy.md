@@ -56,7 +56,46 @@ This section summarizes some of the energy-based policy options available in GCA
 <One paragraph summary of a key insight from one or more papers>
 
 ## IAMC Reference Card
-<Add relevant parts of IAMC reference card>
+
+Population
+- [X] Yes (exogenous)
+- [ ] Yes (endogenous)
+
+Population age structure
+- [ ] Yes (exogenous)
+- [ ] Yes (endogenous)
+
+Education level
+- [ ] Yes (exogenous)
+- [ ] Yes (endogenous)
+
+Urbanization rate
+- [ ] Yes (exogenous)
+- [ ] Yes (endogenous)
+
+GDP
+- [ ] Yes (exogenous)
+- [X] Yes (endogenous)
+
+Income distribution
+- [ ] Yes (exogenous)
+- [ ] Yes (endogenous)
+
+Employment rate
+- [ ] Yes (exogenous)
+- [ ] Yes (endogenous)
+
+Labor productivity
+- [X] Yes (exogenous)
+- [ ] Yes (endogenous)
+
+Total factor productivity
+- [X] Yes (exogenous)
+- [ ] Yes (endogenous)
+
+Autonomous energy efficiency improvements
+- [X] Yes (exogenous)
+- [ ] Yes (endogenous)
 
 
 <a name="table_footnote">1</a>: Note that this table differs from the one provided on the [Supply Inputs Page](inputs_supply.html#description) in that it lists all inputs to the land model, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.

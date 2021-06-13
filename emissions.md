@@ -164,7 +164,49 @@ allow-ef-increase | (optional) Allow emission factors to increase from their sta
 <One paragraph summary of a key insight from one or more papers>
 
 ## IAMC Reference Card
-<Add relevant parts of IAMC reference card>
+
+Greenhouse gases
+- [X] CO2 fossil fuels
+- [X] CO2 cement
+- [X] CO2 land use
+- [X] CH4 energy
+- [X] CH4 land use
+- [X] CH4 other
+- [X] N2O energy
+- [X] N2O land use
+- [X] N2O other
+- [X] CFCs
+- [X] HFCs
+- [X] SF6
+- [X] PFCs
+
+Pollutants
+- [X] CO energy
+- [X] CO land use
+- [X] CO other
+- [X] NOx energy
+- [X] NOx land use
+- [X] NOx other
+- [X] VOC energy
+- [X] VOC land use
+- [X] VOC other
+- [X] SO2 energy
+- [X] SO2 land use
+- [X] SO2 other
+- [X] BC energy
+- [X] BC land use
+- [X] BC other
+- [X] OC energy
+- [X] OC land use
+- [X] OC other
+- [X] NH3 energy
+- [X] NH3 land use
+- [X] NH3 other
+
+Carbon dioxide removal
+- [X] Bioenergy with CCS
+- [X] Reforestation
+- [X] Afforestation
 
 ## References
 

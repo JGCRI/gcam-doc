@@ -157,7 +157,47 @@ This section summarizes some of the energy-based policy options available in GCA
 
 ## IAMC Reference Card
 
-{Add relevant parts of IAMC reference card}
+Passenger transportation
+- [X] Passenger trains
+- [X] Buses
+- [X] Light Duty Vehicles (LDVs)
+- [X] Electric LDVs
+- [X] Hydrogen LDVs
+- [X] Hybrid LDVs
+- [X] Gasoline LDVs
+- [X] Diesel LDVs
+- [X] Passenger aircrafts
+- [X] CNG Buses
+- [X] CNG Three-wheelers
+- [X] Diesel Three-wheelers
+- [X] Electric Buses
+- [X] Electric Three-wheelers
+- [X] LPG/CNG LDVs
+
+Freight transportation
+- [X] Freight trains
+- [X] Heavy duty vehicles
+- [X] Freight aircrafts
+- [X] Freight ships
+
+Industry
+- [ ] Steel production
+- [ ] Aluminium production
+- [X] Cement production
+- [ ] Petrochemical production
+- [ ] Paper production
+- [ ] Plastics production
+- [ ] Pulp production
+
+Residential and commercial
+- [X] Space heating
+- [X] Space cooling
+- [ ] Cooking
+- [ ] Refrigeration
+- [ ] Washing
+- [ ] Lighting
+- [ ] Other electrical uses
+- [ ] Water heating
 
 <a name="table_footnote">1</a>: Note that this table differs from the one provided on the [Demand Inputs Page](inputs_demand.html#description) in that it lists all inputs to the land model, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
 

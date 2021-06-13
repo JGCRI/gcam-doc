@@ -71,7 +71,16 @@ This section summarizes some of the energy-based policy options available in GCA
 
 ## IAMC Reference Card
 
-{Add relevant parts of IAMC reference card}
+Agricultural commodities
+- [X] Wheat
+- [X] Rice
+- [X] Other coarse grains
+- [X] Oilseeds
+- [X] Sugar crops
+- [X] Ruminant meat
+- [X] Non-ruminant meat and eggs
+- [X] Dairy products
+
 
 
 <a name="table_footnote">1</a>: Note that this table differs from the one provided on the [Supply Inputs Page](inputs_supply.html#description) in that it lists all inputs to the land model, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
