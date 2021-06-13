@@ -124,9 +124,6 @@ GCAM models trade for coal, gas, oil, and bioenergy using an Armington approach 
 
 Other energy carriers (e.g., solar, wind, geothermal) are not traded. For more generalinformation, see the [discussion of approaches to international trade](trade.html).
 
-
-
-
 ## Equations 
 The equations that determine energy supply are described here.
 
@@ -140,14 +137,18 @@ $$
 
 Where Q refers to the quantity of electricity produced, P the price, and the remaining parameters are exogenous, with the names in the XML input files corresponding to the names in the equation above. maxSubResource indicates the maximum quantity of renewable energy that could be produced at any price, curve-exponent is a shape parameter, and mid-price indicates the price at which 50% of the maximum available resource is produced.
 
-See `method name` in [code_file.cpp](link to code on GitHub).
+See `annualsupply` in [smooth_renewable_subresource.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/resources/source/smooth_renewable_subresource.cpp).
 
 ## Policy options 
 This section summarizes some of the energy-based policy options available in GCAM. 
 
-### Policy type #1
+### Energy production policies
 
-{Insert paragraph describing a type of policy for this sector. Include links to xml input files on GitHub and/or the policies.html or policies_examples.html pages}
+Users can include [energy production policies](policies.html#energy-production-policies), which can constrain energy production or create incentives to increase or decrease production. 
+
+### Energy intensity standards
+
+Users can also include [energy intensity standards](policies_examples.html#res), such as a renewable energy standard.
 
 ## Insights and intuition
 
