@@ -22,7 +22,18 @@ GCAM's demand inputs include information on consumption and prices in the histor
 
 | Name | Description | Type | Source | Resolution | Unit |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-|  |  | |  |  |
+| Historical demand for energy | Demand for energy in the historical period; used for initialization/calibration of GCAM | External data | IEA | Specified by demand, fuel, country, and year |  ktoe and GWh |
+| Price elasticity of demand | Elasticity determining how demand responds to changes in price | Assumption | | Specified by demand |  unitless |
+| Value of time in transit multiplier | Factor multiplied by the wage rate to determine the value of time in transit, used in the transportation model | Assumption | | Specified by demand |  unitless |
+| Cost | Cost of production | Assumption | | Specified by technology and year |  1975$/kg or 1975$/GJ |
+| Default input-output coefficients | Default amount of input required per unit of output produced; can be overwritten by region-specific information derived from historical data | Assumption | | Specified by technology and year |  Various (e.g., GJ per kg, GJ per GJ) |
+| Default efficiencies | Default amount of output produced per unit of input; can be overwritten by region-specific information derived from historical data | Assumption | | Specified by technology and year |  Various (e.g., GJ per kg, GJ per GJ) |
+| CO<sub>2</sub> capture rates | Fraction of CO2 captured in CCS technologies. | Assumption |  | Specified by technology and year | unitless |
+| Retirement rules | For vintaged technologies, GCAM requires the user to specify the lifetime, and the parameters required for phased and profit-based shutdown. | Assumption |  | Specified by technology and year | Years (for lifetime), unitless for others |
+| Logit exponents | GCAM requires the user to specify the logit exponents that determine the substitutability between technologies. | Assumption |  | Specified by sector and subsector | N/A |
+| Share weight interpolation rules | These rules dictate how share weights (GCAM's calibration parameter) are specified in future years. | Assumption |  | Specified by sector and subsector | N/A |
+| Fuel preference elasticity | Elasticity dictating how share weights change with GDP per capita | Assumption | Specified by technology and year | unitless |
+
 
 Table 1: External inputs used for demand of energy<sup>[1](#table_footnote1)</sup>
 
@@ -30,8 +41,53 @@ Note that for the Shared Socioeconomic Pathways (SSPs), different inputs are use
 
 #### Data
 
-##### Variable #1
-<Insert links to the input files on Github>
+Throughout GCAM, the number in the name of assumption file indicates to which sector the file applies. Files with `A32` in the name are assumptions for industry, `A321` indicates cement, and `A322` indicates fertilizer. Files with `A44` in the name are assumptions for buildings. Files with `A54` in the name are assumptions for transportation. 
+
+##### Historical demand for energy
+
+GCAM uses IEA energy balances as a source for historical energy supply and demand. IEA data are proprietary and thus are not provided in the GCAM data repository. Instead, we provide all of the `R` code used to process the IEA data so that the user can replicate the processing _if_ they purchase the IEA data. In addition, we provide aggregated data after it has undergone processing so that GCAM input files can be created and used by the user community. 
+
+##### Elasticities of demand
+
+Price elasticity of demand is specified in [A32.demand.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A32.demand.csv), [A54.demand.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A54.demand.csv) .
+
+##### Cost
+
+Costs are specified in [A32.globaltech_cost.csv](https://github.com/JGCRI/gcam-core/tree/master/input/gcamdata/inst/extdata/energy/A32.globaltech_cost.csv), [A321.globaltech_cost.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A321.globaltech_cost.csv), [A44.cost_efficiency.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.cost_efficiency.csv)
+
+##### Default efficiencies
+Efficiencies are specified in [A32.globaltech_eff.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A32.globaltech_eff.csv), [A44.cost_efficiency.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.cost_efficiency.csv)
+.
+
+##### Default input-output coefficients
+
+Coefficients are specified in [A32.globaltech_coef.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A32.globaltech_coef.csv), [A321.globaltech_coef.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A321.globaltech_coef.csv),
+[A322.globaltech_coef.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A322.globaltech_coef.csv)
+
+##### CO<sub>2</sub> capture rates
+
+CO<sub>2</sub> capture rates for cement are specified in [A321.globaltech_co2capture.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A321.globaltech_co2capture.csv). Capture rates for fertilizer are specified in [A322.globaltech_co2capture.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A322.globaltech_co2capture.csv)
+
+##### Retirement rules
+
+Retirement rules are specified in [A322.globaltech_retirement.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A322.globaltech_retirement.csv), [A44.cost_efficiency.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.cost_efficiency.csv)
+
+
+##### Logit exponents
+
+Logit exponents are specified in [A32.sector.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A32.sector.csv), [A32.subsector_logit.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A32.subsector_logit.csv), [A321.subsector_logit.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A321.subsector_logit.csv), [A322.subsector_logit.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A322.subsector_logit.csv), [A44.sector.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.sector.csv),  [A44.subsector_logit.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.subsector_logit.csv), [A54.sector.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A54.sector.csv), and  [A54.tranSubsector_logit.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A54.tranSubsector_logit.csv). 
+
+#### Share weight interpolation rules
+
+Share weight interpolation rules are specified in [A32.subsector_shrwt.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A32.subsector_shrwt.csv), [A32.subsector_interp.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A32.subsector_interp.csv), [A321.subsector_shrwt.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A321.subsector_shrwt.csv), [A321.subsector_interp.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A321.subsector_interp.csv), [A322.subsector_shrwt.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A322.subsector_shrwt.csv), [A322.subsector_interp.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A322.subsector_interp.csv), [A44.subsector_shrwt.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.subsector_shrwt.csv), [A44.subsector_interp.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.subsector_interp.csv), [A54.globaltranTech_shrwt_revised.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A54.globaltranTech_shrwt_revised.csv), [A54.globaltranTech_interp_revised.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A54.globaltranTech_interp_revised.csv), [A54.tranSubsector_shrwt_revised.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A54.tranSubsector_shrwt_revised.csv), [A54.tranSubsector_interp_revised.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A54.tranSubsector_interp_revised.csv). For each sector, the file that ends `_interp` specifies the rule (e.g., fixed, linear) and the file that ends `_shrwt` indicates the value to interpolate to (if needed).
+
+##### Fuel preference elasticities
+
+Fuel preference elasticities are specified in [A32.fuelprefElasticity.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A32.fuelprefElasticity.csv), [A44.fuelprefElasticity.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A42.fuelprefElasticity.csv).
+
+##### Value of time in transit
+
+Multipliers used to determine the value of time in transit are specified in [A54.tranSubsector_VOTT_revised.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A54.tranSubsector_VOTT_revised.csv).
 
 ### Water
 
@@ -57,8 +113,7 @@ The raw data used for agricultural water coefficients is provided in [Mekonnen_H
 
 ##### Industrial manufacturing water coefficients
 
-The main data source used for estimating the manufacturing sector's water consumption is the [Vassolo and Döll 2005](#vassolo2005) global inventory of manufacturing and electric power water demands for a base year of 1995. The manufacturing water demands of each country are multiplied by an exogenous ratio of self-supply to total industrial withdrawals (about 0.8; this comes from US-specific data in [Kenny et al. 2009](#kenny2009)), and extrapolated to all historical years assuming a fixed ratio between industrial electricity and water demands. The values estimated from this bottom-up calculation are limited to a maximum of 85% of the corresponding nation and year's estimate of industrial water withdrawals in [FAO Aquastat](#fao2016). Note that in contrast to the methods documented in [Hejazi et al. 2014](#hejazi2014), we do not estimate the manufacturing sector's water demands as the difference between the Aquastat industrial withdrawals and GCAM's bottom-up estimates of electric power sector demands, due to methodological differences in estimation of power sector water demands. As noted in [Davies et al. 2013](#davies2013), power sector water demand estimates are sensitive to assumptions of the share of power plants using once-through flow cooling systems and the specific water intensities thereof. As such, the difference between the two (Aquastat industrial water and GCAM electricity water) is not deemed to return a reliable estimate of manufacturing water withdrawals in all regions and time periods. Future water demands by the industrial sector simply scale with industrial output.
-
+The data specifying manufacturing water coefficients is specified in [Vassolo_mfg_water.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/water/Vassolo_mfg_water.csv). Note that this data is derived from the [Vassolo and Döll 2005](#vassolo2005) global inventory of manufacturing and electric power water demands for a base year of 1995. The manufacturing water demands of each country are multiplied by an exogenous ratio of self-supply to total industrial withdrawals (about 0.8; this comes from US-specific data in [Kenny et al. 2009](#kenny2009)), and extrapolated to all historical years assuming a fixed ratio between industrial electricity and water demands. The values estimated from this bottom-up calculation are limited to a maximum of 85% of the corresponding nation and year's estimate of industrial water withdrawals in [FAO Aquastat](#fao2016). 
 
 ### Food / Feed / Forestry
 
@@ -66,24 +121,32 @@ The main data source used for estimating the manufacturing sector's water consum
 
 | Name | Description | Type | Source | Resolution | Unit |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-|  |  | |  |  |
+| Historical demand for crops | Demand for agricultural commodities in the historical period; used for initialization/calibration of GCAM | External data | FAO | Specified by crop, use, country, and year | tons |
+| Historical demand for livestock | Demand for livestock commodities in the historical period; used for initialization/calibration of GCAM | External data | FAO | Specified by crop, use, country, and year | tons |
+| Income and price elasticity | Income and price elasticity of demand (only used for non-food demand) | Assumption |  | Specified by demand | unitless |
+| Logit exponents | Share parameters dictating substitution between different commodities | Assumption |  | Specified by type demand | unitless |
 
 Table 3: External inputs used for demand of food, feed, and forestry <sup>[3](#table_footnote3)</sup>
 
 Note that for the Shared Socioeconomic Pathways (SSPs), different inputs are used for some variables. See [SSPs](ssp.html) for more information.
 
-<dt>Historical Consumption</dt> <dd>Inputs include food, non-food, bioenergy, and feed consumption of all crop and forestry products for each of the 32 geopolitical regions for the historical base years. We currently rely on IMAGE for animal feed and FAO data for all remaining inputs. Feed inputs also include secondary outputs of DDGS (dried distillers grains and solubles) from ethanol production, and feedcakes from biodiesel production.</dd>
-
-<dt>Historical Prices</dt> <dd>Inputs include the price of all food, feed, and forestry commodities for our historical base years. We currently use producer prices from FAO for these inputs.</dd>
-
-<dt>Price and Income Elasticities of Food</dt> <dd>Elasticity parameters that influence the response of food to demand to future changes in prices and income levels.</dd>
-</dl><br/>
-
-
 #### Data
 
-##### Variable #1
-<Insert links to the input files on Github>
+##### Historical demand for crops
+
+Historical demand for agricultural commodities is provided in separate files for [food](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/FAO_ag_Food_t_SUA.csv), [feed](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/FAO_ag_Feed_t_SUA.csv),  [export](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/FAO_ag_Exp_t_SUA.csv), and [import](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/FAO_ag_Imp_t_SUA.csv).
+
+##### Historical demand for livestock
+
+Historical demand for livestock commodities is provided in separate files for [food](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/FAO_an_Food_t_SUA.csv), [feed](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/FAO_an_Feed_t_SUA.csv),  [export](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/FAO_an_Exp_t_SUA.csv), and [import](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/FAO_an_Imp_t_SUA.csv).
+
+##### Income and price elasticity
+
+Price and income elasticity are specified in [A_demand_supplysector.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/A_demand_supplysector.csv).
+
+##### Logit exponents
+
+Logit exponents are specified in [A_demand_supplysector.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/A_demand_supplysector.csv) and [A_demand_subector.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/A_demand_subsector.csv).
 
 ## References
 
