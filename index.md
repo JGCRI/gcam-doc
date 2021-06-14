@@ -4,35 +4,48 @@ title: Global Change Analysis Model (GCAM)
 gcam-version: v5.3
 ---
 
-[New Documentation Home](diagram.html)
+<table>
+<tr>
+<td rowspan="4"> <b>Inputs</b> <br> <a href="inputs_supply.html"> <img src="gcam-figs/input_supply.png"></a> <br> <a href="inputs_land.html"> <img src="gcam-figs/input_land.png"></a> <br> <a href="inputs_economy.html"> <img src="gcam-figs/input_economy.png"></a> <br> <a href="inputs_demand.html"> <img src="gcam-figs/input_demand.png"></a></td>
+<td>  </td>
+<td> <b>Supply</b> <br> <a href="supply_energy.html"> <img src="gcam-figs/supply_energy.png"></a>  <a href="supply_water.html"> <img src="gcam-figs/supply_water.png"></a>  <a href="supply_land.html"> <img src="gcam-figs/supply_land.png"></a> </td>
+<td> </td>
+<td rowspan="4"> <b>Outputs</b> <br> <a href="outputs_quantity.html"> <img src="gcam-figs/output_quantity.png"></a> <br> <a href="outputs_prices.html"> <img src="gcam-figs/output_price.png"></a> <br> <a href="outputs_trade.html"> <img src="gcam-figs/output_trade.png"></a> <br> <a href="outputs_land.html"> <img src="gcam-figs/output_land.png"></a> <br> <a href="outputs_emissions.html"> <img src="gcam-figs/output_emissions.png"></a> </td>
+</tr>
+<tr>
+<td> <a href="land.html"> <img src="gcam-figs/land.png"></a>  </td>
+<td style="text-align: center; vertical-align: middle;" rowspan="2"> <a href="marketplace.html"> <img src="gcam-figs/marketplace.png"></a> </td>
+<td rowspan="2"> <a href="emissions.html"> <img src="gcam-figs/emissions.png"></a>  </td>
+</tr>
+<tr>
+<td>  <a href="economy.html"> <img src="gcam-figs/economy.png"></a> </td>
+</tr>
+<tr>
+<td>  </td>
+<td>  <b>Demand</b> <br> <a href="demand_energy.html"> <img src="gcam-figs/demand_energy.png"></a>  <a href="demand_water.html"> <img src="gcam-figs/demand_water.png"></a>  <a href="demand_land.html"> <img src="gcam-figs/demand_land.png"></a>  </td>
+<td>   </td>
+</tr>
+</table>
 
-The Global Change Analysis Model (GCAM) is a global model that represents the behavior of, and interactions between five systems: the energy system, water, agriculture and land use, the economy, and the climate. It is used in a wide range of different applications from the exploration of fundamental questions about the complex dynamics between human and Earth systems to the those associated with response strategies to address important environmental questions. GCAM is a community model stewarded by The Joint Global Change Research Institute (JGCRI). This wiki page provides the documentation for GCAM.
 
-An overview of GCAM is available at [GCAM Model Overview](overview.html). The five main systems in GCAM (energy, water, land, economics, and the climate), along with other key considerations in the construction annd use of the model are covered in the following pages.
+### Earth System
+[Hector](hector.html)
 
-* [Socioeconomics](macro-econ.html)
-* [Energy](energy.html)
-* [Agriculture, Land-Use, and Bioenergy](aglu.html)
-* [Water](water.html)
-* [Climate](hector.html) 
-* [Emissions](emissions.html)
-* [Economic Choice](choice.html)
-* [Solution and Computation](solver.html)
-* [Trade](trade.html)
-* [Technology Representation](en_technologies.html)
-* [Policies and costs](policies.html)
+### Alternative regional configurations of GCAM
 
-Special versions or representations of GCAM, including the representation of the Shared Socioeconoomic Pathways (SSPs) in  GCAM and the GCAM-USA model are covered in the following pages.
+[GCAM-USA](gcam_usa.html)
 
-* [Shared-Socioeconomic Pathways](ssp.html)
-* [GCAM-USA](gcam-usa.html)
+### Running and modifying GCAM
 
 Material on how to get started and use GCAM can be found on the following pages.
 
 * [How to Get Started Running GCAM](user-guide.html)
 * [How to Set Up and Build ](gcam-build.html)
 * [GCAM Fusion Usage Guide](fusion.html)
-
+* [GCAM Developer's Guide](dev-guide.html)
+* [Modifying GCAM scenarios through policies](policies.html)
+* [Examples](policies_examples.html)
+	
 GCAM is under continuing development. Informatiion on how this version of GCAM differs from previous versions, along documentation for previous versions can be found on the following pages.
 
 * [Updates from the Previous Release](updates.html)
