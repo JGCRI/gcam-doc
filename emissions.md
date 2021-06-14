@@ -1,36 +1,39 @@
 ---
+title: "Emissions"
 layout: index
-title: Emissions
 prev: supply_energy.html
 next: outputs_emissions.html
-gcam-version: v5.3 
+gcam-version: v5.3
 ---
+## Overview
+
+GCAM projects emissions of a suite of greenhouse gases (GHGs) and air pollutants:
+
+CO<sub>2</sub>, CH<sub>4</sub>, N<sub>2</sub>O, CF<sub>4</sub>, C<sub>2</sub>F<sub>6</sub>, SF<sub>6</sub>, HFC23, HFC32, HFC43-10mee, HFC125, HFC134a, HFC143a, HFC152a, HFC227ea, HFC236fa, HFC245fa, HFC365mfc, SO<sub>2</sub>, BC, OC, CO, VOCs, NO<sub>x</sub>, NH<sub>3</sub>
+
+Future emissions are determined by the evolution of drivers (such as energy consumption, land-use, and population) and technology mix. How this is represented in GCAM varies by emission type.
+
 
 # Table of Contents
 
 - [Inputs to the Model](#inputs-to-the-model)
 - [Description](#description)
 - [Equations](#equations)
-- [Insights and intuition](#insights-and-intuition)
 - [Policy options](#policy-options)
+- [References](#references)
 - [IAMC Reference Card](#iamc-reference-card)
 - [References](#references)
 
 ## Inputs to the Model
-**Table 1: Inputs required by the emissions model**
+**Table 1: Inputs to the Model**
 
 | Name | Resolution | Unit | Source |
 | :--- | :--- | :--- | :--- |
-|  |  |  | [Exogenous](inputs_supply.html) |
-
+|Emissions data by sector for NonCO2(Described in detailed in initialization section below)| country, sector,fuel,gas, year| $$Tg$$ | [Exogenous](inputs_supply.html) |
+|Activity data from GCAM by sector|By region, year, sector, fuel| $$EJ$$ | [Endogenous](inputs_supply.html) |
+|MACC assumptions|global by sector| $$Unitless$$ | [Exogenous](inputs_supply.html) |
 
 ## Description
-
-GCAM projects emissions of a suite of greenhouse gases (GHGs) and air pollutants:
-
-CO<sub>2</sub>, CH<sub>4</sub>, N<sub>2</sub>O, CF<sub>4</sub>, C<sub>2</sub>F<sub>6</sub>, SF<sub>6</sub>, HFC23, HFC32, HFC43-10mee, HFC125, HFC134a, HFC143a, HFC152a, HFC227ea, HFC236fa, HFC245fa, HFC365mfc, SO<sub>2</sub>, BC, OC, CO, VOCs, NO<sub>x</sub>, NH<sub>3</sub>
-
-Future emissions are determined by the evolution of drivers (such as energy consumption, land-use, and population) and technology mix. How this is represented in GCAM varies by emission type. 
 
 ### <a name="co2-emissions">CO<sub>2</sub> Emissions</a>
 
@@ -50,34 +53,74 @@ Land-Use Change emissions are tracked separately. See [Carbon Emissions](land.ht
 
 We summarize here some general points common to non-CO<sub>2</sub> emissions in GCAM
 
-Non-CO<sub>2</sub> emissions, both GHGs & air pollutants, originate from many sources and can be controlled using multiple abatement technologies.
+
+#### Initialization
+
+##### Data sources
+
+* Non-CO<sub>2</sub> emissions, both GHGs & air pollutants in GCAM are initialized from the [CEDS inventory](https://github.com/JGCRI/CEDS-dev)([Hoesly et al 2018](#Hoesly2018)). Standard CEDS output datasets are used for input, although the emissions by GCAM regions are also generated as prebuilt data. Only the pre-built data  should be distributed publicly (to parallel with the IEA energy data). The data covers emissions for all GCAM regions from 1970 to 2019.  Only anthropogenic emissions (including open burning) are processed.
+
+* The CEDS inventory do not contain emissions for grasslands, forest fires, deforestation and agricultural waste burning on fields. The data for these categories of emissions were added from the GFED LULC data set(as used in CMIP6). 
+
+* CEDS does not have a breakdown of emissions for road transport by mode. Therefore, GAINS emission factors by transport sectors (passenger, freight) and fuels to supplement the CEDS road emissions and derive emissions by different modes using emissions factors from the [GAINS data set](https://iiasa.ac.at/web/home/research/researchPrograms/air/ECLIPSEv5.html).
+
+* Additional information on fluorinated gases is from Guus Velders.
+
+##### Calibration year differences between CEDS and GCAM
+
+Figures 1 and 2 compare historical emissions from CEDS with the emissions from GCAM after initialization . Figure 1 compares global emissions by species and Figure 2 presents a scatter plot comparing emissions by species and year for each region.  As seen in the figures, emissions translate mostly correctly for all species of gases. 
+
+![Figure 1 : Comparison of global CEDS and GCAM emissions in calibration years](images/1a. Global_comparison_of_NonCO2Global.png)
+
+
+![Figure 2 : Comparison of regional CEDS and GCAM emissions in all calibration years](images/1b. Scatterplot comparing emissionsGlobal.png)
+
+However, there are two reasons for differences. The first is that of deforestation emissions from protected land which get zeroed out in GCAM since protected land is held constant in the calibration years. Also deforestation emissions in the final base year are initialized using deforestation coefficients calculated on the basis of deforestation over a 5 year period (2000 and 2005). This leads to a difference in the total deforestation emissions from the CEDS inventory when compared to the numbers initialized in  GCAM. 
+
+Second, the emissions from resource production are different between CEDS and GCAM in calibration years.This happens because the production of fossil fuels in GCAM is broken down by 'vintages' while the emissions factors are calculated in each model year based on total production in each year. When GCAM calculates the emissions, the emissions are calculated for each vintage using the emission factor from that year (for example, the 1975 vintage production will use the 1975 emission factor and the 2015 vintage will use the 2015 emission factor). Since older vintages will have higher emissions factors, the emissions in GCAM will be higher compared to CEDS inventory emissions.
+
+#### Modeling approach
+
 Modeling non-CO<sub>2</sub> abatement at the process level would require too much detail for the scales at which GCAM operates. We, therefore, use parameterized functions for future emissions controls (for air pollutants) and Marginal Abatement Cost (MAC) curves (for GHGs) to change emission factors over time. The emissions controls, which reduce emissions factors as a function of per-capita GDP in each region and time period, are based on the general understanding that pollutant control technologies are deployed as incomes rise (e.g., [Smith et al. 2005](#smith2005), although the functional form used in GCAM 5 is different than that in this reference). The MAC curves for GHGs are mapped directly to GCAM's technologies from the EPA's 2013 report on non-CO<sub>2</sub> greenhouse gas mitigation ([EPA 2013](#epa2013)).
 
 Note that technology shifts still play a role, since emission factors can differ between technologies.
 
-#### Drivers
-
 #####  Energy System Drivers
+
 * Emissions in the energy system can be driven by input (e.g., fuel consumed by a particular technology) or output (e.g., fuel or service produced by a particular technology).
 * Emissions information is technology-specific.  As a result, different technologies that produce the same output can have different emissions per unit of activity.
 * For most gases and species, we explicitly model the drivers for the emissions. However, for some (e.g., HFCs from fire extinguishers), the future emissions scale directly with population and/or GDP.
 
 #####  Agriculture and Land-Use Drivers
+
 * Emissions in the agriculture and land use system can be driven by output (e.g., for crop production) or land area (e.g., for forest fires).
 * Emissions are modeled at the level of agricultural technologies: region, water basin, crop type, and irrigation and management level. Note however that the underlying inventory data is far coarser, typically only available by sector and country. 
 
-#### Historical emissions
+#####  Naming Conventions
 
-Historical emissions are calibrated to match the [CEDS](https://github.com/JGCRI/CEDS) data. 
-
-####  Naming Conventions
 There are some naming conventions for a few emission species/sectors within GCAM that are useful to note.
 
 * Emissions from most agricultural activities are suffixed with "\_AGR", except for burning of agricultural waste on fields (AWB), which are suffixed with "\_AWB". (This allows us to separate emissions from these distinct processes from the same technology.) These are in addition to emissions named without a suffix. So to obtain total emissions, the three variants of a given species should be added (e.g., CH4 emissions is the sum of CH4, CH4"\_AGR", and CH4"\_AWB".)
 * Sulfur dioxide (SO<sub>2</sub>) emissions are currently differentiated by four metaregions (SO2\_1,SO2\_2,SO2\_3,SO2\_4). These are kept separate for purposes of feeding the emissions information to the climate model; for emissions estimation, these different categories should be added to obtain global totals.
 
+### Equations 
 
 #### <a name="non-co2-ghg-emissions">Non-CO<sub>2</sub> GHG Emissions</a>
+
+The non-CO<sub>2</sub> greenhouse gases include methane (CH<sub>4</sub>), nitrous oxide (N<sub>2</sub>O) and fluorinated gases. These emissions, *E*, are modeled for any given technology in time period *t* as:
+
+$$
+E_{t}=A_{t}*F_{t0}*(1-MAC(Cprice_{t})))
+$$
+
+where:
+
+| | |
+| :------------- |:-------------|
+| `F` | Emissions factor: base-year emissions per unit activity |
+| `A` | Activity level (e.g., output of a technology) |
+| `MAC` | Marginal Abatement Cost Curve |
+| `Eprice` | Emissions Price |
 
 Non-CO<sub>2</sub> GHG emissions are proportional to the activity except for any reductions in emission intensity due to the MAC curve. As noted above, the MAC curves are assigned to a wide variety of technologies, mapped directly from [EPA 2013](#epa2013). Under a carbon policy, emissions are reduced by an amount determined by the MAC curve.
 
@@ -87,7 +130,7 @@ Below-zero (i.e. “no cost”) MAC mitigation (e.g. MAC reduction percentage is
 
 Note that a species-specific emissions market can also be specified using advanced options, described below.
 
-##### Fluorinated Gases
+#### Fluorinated Gases
 
 Most fluorinated gas emissions are linked either to the industrial sector as a whole (e.g., semiconductor-related F-gas emissions are driven by growth in the "industry" sector), or population and GDP (e.g., fire extinguishers). As those drivers change, emissions will change. Additionally, we include abatement options based on EPA MAC curves.
 
@@ -95,12 +138,6 @@ SF<sub>6</sub> emissions from electric transformers scale with electricity consu
 
 #### <a name="air-pollutant-emissions">Air Pollutant Emissions</a>
 
-Emissions of air pollutants depend on the level of activity and any reduction in emission intensity due to pollution controls. By default, GCAM links air pollution controls to income (see equations below). Note that the GCAM implementation of the SSP scenarios used a different approach, incorporating region-, sector-, and fuel-specific pollutant emission factor pathways ([Calvin et al. 2017](#calvin2017), [Rao et al. 2017](#rao2017)). 
-
-## Equations 
-The equations that determine emissions are described here.
-
-### Air pollutant emissions
 Air pollutant emissions such as sulfur dioxide (SO<sub>s</sub>) and nitrogen oxides (NO<sub>x</sub>) are modeled as:
 
 $$
@@ -115,29 +152,9 @@ $$
 
 where *pcGDP* stands for the per-capita GDP, and *steepness* is an exogenous constant, specific to each technology and pollutant species, that governs the degree to which changes in per-capita GDP will be translated to emissions controls. The purpose here is to capture the general global trend of increasing pollutant controls over time, but does not capture regional and technological heterogeneity.
 
-See `method name` in [code_file.cpp](link to code on GitHub).
-
-### Non-CO2 GHG emissions
-
-The non-CO<sub>2</sub> greenhouse gases include methane (CH<sub>4</sub>), nitrous oxide (N<sub>2</sub>O) and fluorinated gases. These emissions, *E*, are modeled for any given technology in time period *t* as:
-
-$$
-E_{t}=A_{t}*F_{t0}*(1-MAC(Cprice_{t})))
-$$
-
-where:
-
-| | |
-| :------------- |:-------------|
-| F | Emissions factor: base-year emissions per unit activity |
-| A | Activity level (e.g., output of a technology) |
-| MAC | Marginal Abatement Cost Curve |
-| Eprice | Emissions Price |
-
-See `method name` in [code_file.cpp](link to code on GitHub).
+Note that the GCAM implementation of the SSP scenarios used a different approach, incorporating region-, sector-, and fuel-specific pollutant emission factor pathways ([Calvin et al. 2017](#calvin2017), [Rao et al. 2017](#rao2017)). 
 
 ## Policy options 
-This section summarizes some of the energy-based policy options available in GCAM. 
 
 ### Markets
 
@@ -153,15 +170,10 @@ In addition to the GDP control object, a linear-control object is also available
 
 XML Tag | Description
 ------------ | -------------
-end-year | Year by which emission factor should reach specified value
-start-year | (Optional) Start year after which EF should begin to decline. (defaults to final calibration year)
-final-emissions-coefficient | Emissions coefficient that should be set by end-year (and every year thereafter)
-allow-ef-increase | (optional) Allow emission factors to increase from their start-year value (default to false)
-
-## Insights and intuition
-
-### Paper/Topic #1
-<One paragraph summary of a key insight from one or more papers>
+`end-year` | Year by which emission factor should reach specified value
+`start-year` | (Optional) Start year after which EF should begin to decline. (defaults to final calibration year)
+`final-emissions-coefficient` | Emissions coefficient that should be set by end-year (and every year thereafter)
+`allow-ef-increase` | (optional) Allow emission factors to increase from their start-year value (default to false)
 
 ## IAMC Reference Card
 
@@ -200,13 +212,74 @@ Pollutants
 - [X] OC land use
 - [X] OC other
 - [X] NH3 energy
-- [X] NH3 land use
 - [X] NH3 other
+
+Pollutants
+- [X] CO energy
+- [X] CO land use
+- [X] CO other
+- [X] NOx energy
+- [X] NOx land use
+- [X] NOx other
+- [X] VOC energy
+- [X] VOC land use
+- [X] VOC other
+- [X] SO2 energy
+- [X] SO2 land use
+- [X] SO2 other
+- [X] BC energy
+- [X] BC land use
+- [X] BC other
+- [X] OC energy
+- [X] OC land use
+- [X] OC other
+- [X] NH3 energy
+- [X] NH3 land use
+- [X] NH3 energy
+- [X] NH3 other
+
+Climate indicators
+- [X] Concentration: CO2
+- [] Concentration: CH4
+- [] Concentration: N2O
+- [] Concentration: Kyoto gases
+- [X] Radiative forcing: CO2
+- [X] Radiative forcing: CH4
+- [X] Radiative forcing: N2O
+- [X] Radiative forcing: F-gases
+- [] Radiative forcing: Kyoto gases
+- [] Radiative forcing: aerosols
+- [] Radiative forcing: land albedo
+- [] Radiative forcing: AN3A
+- [X] Radiative forcing: total
+- [X] Temperature change
+- [] Sea level rise
+- [] Ocean acidification
 
 Carbon dioxide removal
 - [X] Bioenergy with CCS
 - [X] Reforestation
 - [X] Afforestation
+- [] Soil carbon enhancement
+- [] Direct air capture
+- [] Enhanced weathering
+
+Climate change impacts
+- [X] Agriculture
+- [X] Energy supply
+- [X] Energy demand
+- [] Economic output
+- [] Built capital
+- [] Inequality
+
+Co-Linkages
+- [] Energy security: Fossil fuel imports & exports (region)
+- [] Energy access: Household energy consumption
+- [] Air pollution & health: Source-based aerosol emissions
+- [] Air pollution & health: Health impacts of air Pollution
+- [] Food access
+- [] Water availability
+- [] Biodiversity
 
 ## References
 
@@ -214,11 +287,14 @@ Carbon dioxide removal
 
 <a name="cdiac2017">[CDIAC 2017]</a> Boden, T., and Andres, B. 2017, *National CO2 Emissions from Fossil-Fuel Burning, Cement Manufacture, and Gas Flaring: 1751-2014*, Carbon Dioxide Information Analysis Center, Oak Ridge National Laboratory. [Link](http://cdiac.ess-dive.lbl.gov/ftp/ndp030/nation.1751_2014.ems)
 
+<a name="edgar2011">[EDGAR 2011]</a> Joint Research Centre. 2011. *EDGAR - Emissions Database for Global Atmospheric Research: Global Emissions EDGAR v4.2*. doi:10.2904/EDGARv4.2. [Link](http://edgar.jrc.ec.europa.eu/overview.php?v=42)
 <a name="epa2011">[EPA 2011]</a> US EPA, 2011, *2011 National Emissions Inventory (NEI) Data*. United States Environmental Protection Agency, Office of Air Quality Planning and Standards. [Link](https://www.epa.gov/air-emissions-inventories/2011-national-emissions-inventory-nei-data)
 
 <a name="epa2013">[EPA 2013]</a> US EPA, 2013, *Global Mitigation of Non-CO<sub>2</sub> Greenhouse Gases: 2010-2030*. EPA-430-R-13-011, United States Environmental Protection Agency, Office of Atmospheric Programs. [Link](https://www.epa.gov/sites/production/files/2016-06/documents/mac_report_2013.pdf)
+<a name="lamarque2010">[Lamarque et al. 2010]</a> Lamarque, J.F., Bond, T. C., Eyring, V., et al. 2010. Historical (1850-2000) gridded anthropogenic and biomass burning emissions of reactive gases and aerosols: methodology and application, *Atmospheric Chemistry and Physics* 10(15): 7017–7039. doi:10.5194/acp-10-7017-2010. [Link](https://www.atmos-chem-phys.net/10/7017/2010/acp-10-7017-2010.html)
 
 <a name="rao2017">[Rao et al. 2017]</a> Rao, S., Klimont, Z., Smith, S., et al. 2017. Future air pollution int he Shared Socio-economic Pathways. *Global Environmental Change* 42: 246–358. doi:10.1016/j.gloenvcha.2016.05.012. [Link](https://www.sciencedirect.com/science/article/pii/S0959378016300723)
 
 <a name="smith2005">[Smith et al. 2005]</a> Smith, S.J., Pitcher, H., and Wigley, T. 2005. "Future Sulfur Dioxide Emissions" *Climatic Change* 3: 267-318. doi: 10.1007/s10584-005-6887-y. [Link](https://link.springer.com/article/10.1007/s10584-005-6887-y)
 
+<a name="Hoesly2018">[Hoesly et al. 2018]</a>Hoesly, R. M., Smith, S. J., Feng, L., Klimont, Z., Janssens-Maenhout, G., Pitkanen, T., Seibert, J. J., Vu, L., Andres, R. J., Bolt, R. M., Bond, T. C., Dawidowski, L., Kholod, N., Kurokawa, J.-I., Li, M., Liu, L., Lu, Z., Moura, M. C. P., O'Rourke, P. R., and Zhang, Q.: Historical (1750–2014) anthropogenic emissions of reactive gases and aerosols from the Community Emissions Data System (CEDS), *Geosci. Model Dev*., 11, 369–408, [Link](https://doi.org/10.5194/gmd-11-369-2018), 2018
