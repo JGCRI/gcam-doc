@@ -53,7 +53,23 @@ This section summarizes some of the energy-based policy options available in GCA
 
 ## IAMC Reference Card
 
-{Add relevant parts of IAMC reference card}
+Agriculture and forestry demands
+- [X] Agriculture food
+- [X] Agriculture food crops
+- [X] Agriculture food livestock
+- [X] Agriculture feed
+- [X] Agriculture feed crops
+- [X] Agriculture feed livestock
+- [X] Agriculture non-food
+- [X] Agriculture non-food crops
+- [X] Agriculture non-food livestock
+- [X] Agriculture bioenergy
+- [X] Agriculture residues
+- [X] Forest industrial roundwood
+- [ ] Forest fuelwood
+- [X] Forest residues
+
+
 
 <a name="table_footnote">1</a>: Note that this table differs from the one provided on the [Demand Inputs Page](inputs_demand.html#description) in that it lists all inputs to the land model, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
 
