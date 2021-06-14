@@ -40,36 +40,37 @@ To implement the SSPs within GCAM, we use the demographic and economic assumptio
 **Table 2**: Qualitative Assumptions across SSPs
 {: .tbl}
 
-| Category | Variable | SSP1 | SSP2 | SSP3 | SSP4 (High / Medium / Low Income ) | SSP5 |
-| :------------- |:------------- |:------------- |:------------- |:------------- |:------------- |:-------------|
-| Socioeconomics | Population in 2100 | 6.9 billion | 9 billion | 12.7 billion | 0.9 billion / 2.0 billion / 6.4 billion | 7.4 billion |
-|  | GDP per capita in 2100 | $46,306  | $33,307 | $12,092 | $123,244 / $30,937 / $7,388 | $83,496 |
-|Fossil Resources (Technological Change/Acceptance) | Coal | Med/Low | Med/Med | High/High | Med/Low / Med/Med / Med/High | High/High |
-| | Conventional Gas & Oil | Med/Med | Med/Med | Med/Med | High/Low / High/Low / High/Low | High/High |
-| | Unconventional Oil | Low/Med | Med/Med | Med/Med | Med/Low / Med/Low / Med/Low | High/High |
-| Electricity (Technology Cost) | Nuclear | High | Med | High | Low /Low / Low | Med |
-| | Renewables | Low | Med | High | Low / Low / Low | Med | 
-| | CCS | High | Med | Med | Low / Low / Low | Low |
-| Fuel Preference | Renewables | High| Med | Med | High / High / High | Med | 
-| | Traditional Biomass | Low | Low | High | Low / Low / High | Low | 
-| Energy Demand (Service Demands) | Buildings | Low | Med | Low | High / Med / Low | High |
-| | Transportation | Low | Med | Low |  High / Med / Low | High |
-| | Industry | Low | Med | Low | High / Med / Low | High |
-| Agriculture & Land Use | Food Demand | High | Med | Low | High / Med / Low | High |
-| | Meat Demand | Low | Med | High | Med / Med / Med | High |
-| | Productivity Growth | High | Med | Low | High / Med / Low | High | 
-| |Trade | Global | Global | Global | Regional / Regional / Local | Global |
-| |  SPA\* Policy |  Afforestation | Limited afforestation | No land policy | Afforestation / Limited afforestation / No land policy | Afforestation |
-| Pollutant Emissions | Emissions Factors | Low | Med | High | High / High / High | Low |
-| Marker | Model | IMAGE | MESSAGE-GLOBIOM | AIM | GCAM | REMIND-MAGPIE |
-|           | Reference  | Van Vuuren et al. (2016) | Riahi et al. (2016) | Fujimori et al. (2016) | Calvin et al. (2016) | Kriegler et al. (2016) |
-| Challenges | Challenges to Mitigation | Low | Medium | High | Low | High |
-|           | Challenges to Adaptation | Low | Medium | High | High | Low |
+| Category | Variable | SSP1 | SSP2 | SSP3 | SSP4 (High / Medium / Low Income ) | SSP5 | Link to Inputs |
+| :------------- |:------------- |:------------- |:------------- |:------------- |:------------- |:-------------|:-------------|
+| Socioeconomics | Population in 2100 | 6.9 billion | 9 billion | 12.7 billion | 0.9 billion / 2.0 billion / 6.4 billion | 7.4 billion | <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/socioeconomics/SSP_database_v9.csv">Socioeconomics</a> |
+|  | GDP per capita in 2100 | $46,306  | $33,307 | $12,092 | $123,244 / $30,937 / $7,388 | $83,496 | <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/socioeconomics/SSP_database_v9.csv">Socioeconomics</a> |
+|Fossil Resources (Technological Change/Acceptance) | Coal | Med/Low | Med/Med | High/High | Med/Low / Med/Med / Med/High | High/High | <a href="#table4">Table 4</a> |
+| | Conventional Gas & Oil | Med/Med | Med/Med | Med/Med | High/Low / High/Low / High/Low | High/High | <a href="#table4">Table 4</a> |
+| | Unconventional Oil | Low/Med | Med/Med | Med/Med | Med/Low / Med/Low / Med/Low | High/High | <a href="#table4">Table 4</a> |
+| Electricity (Technology Cost) | Nuclear | High | Med | High | Low /Low / Low | Med |<a href="#table3">Table 3</a> |
+| | Renewables | Low | Med | High | Low / Low / Low | Med | <a href="#table3">Table 3</a> |
+| | CCS | High | Med | Med | Low / Low / Low | Low | <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/zchunk_L261.Cstorage.R">CCS extraction costs</a> |
+| Fuel Preference | Renewables | High| Med | Med | High / High / High | Med | <a href="https://github.com/JGCRI/gcam-core/blob/master/input/extra/renewable_shareweights_ssp1_32.xml">SSP1</a> |
+| | Traditional Biomass | Low | Low | High | Low / Low / High | Low | <a href="#table5">Table 5</a> |
+| Energy Demand (Service Demands) | Buildings | Low | Med | Low | High / Med / Low | High | Linked to income |
+| | Transportation | <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/UCD_trn_data_SSP1.csv">Low</a> and <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A54.tranSubsector_VOTT_ssp1_revised.csv">Low</a>| <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/UCD_trn_data_SSP2.csv">Med</a> | <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/UCD_trn_data_SSP3.csv">Low</a> |  <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/UCD_trn_data_SSP3.csv">High / Med / Low</a> | <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/UCD_trn_data_SSP5.csv">High</a> | Links are specific to SSP |
+| | Industry | Low | Med | Low | High / Med / Low | High | <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/zchunk_L232.industry.R">Industry</a> and <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/zchunk_L2321.cement.R">Cement </a> |
+| Agriculture & Land Use | Food Demand | High | Med | Low | High / Med / Low | High | Linked to income |
+| | Meat Demand | Low | Med | High | Med / Med / Med | High | <a href="#table6">Table 6</a> |
+| | Productivity Growth | High | Med | Low | High / Med / Low | High | <a href="#table6">Table 6</a> |
+| | Trade | Global | Global | Global | Regional / Regional / Local | Global | <a href="#table6">Table 6</a> |
+| |  SPA\* Policy |  Afforestation | Limited afforestation | No land policy | Afforestation / Limited afforestation / No land policy | Afforestation | <a href="#table7">Table 7</a> |
+| Pollutant Emissions | Emissions Factors | Low | Med | High | High / High / High | Low | <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/zchunk_L251.en_ssp_nonco2.R">Emissions</a>|
+| Marker | Model | IMAGE | MESSAGE-GLOBIOM | AIM | GCAM | REMIND-MAGPIE | |
+|           | Reference  | Van Vuuren et al. (2016) | Riahi et al. (2016) | Fujimori et al. (2016) | Calvin et al. (2016) | Kriegler et al. (2016) | |
+| Challenges | Challenges to Mitigation | Low | Medium | High | Low | High | |
+|           | Challenges to Adaptation | Low | Medium | High | High | Low | |  
 
+<br/>
 
 ### Electricity Assumptions
  
-Table 3 maps technology & SSP to either core, advanced (less expensive), or low (more expensive). Costs are assumed to be equal across regions; however, resource bases for renewable energy technologies differ across regions, leading to differences in deployment in the future.  
+<a name="table3"></a>Table 3 maps technology & SSP to either core, advanced (less expensive), or low (more expensive). Costs are assumed to be equal across regions; however, resource bases for renewable energy technologies differ across regions, leading to differences in deployment in the future. Inputs are specified in the [Advanced Technology](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A23.globaltech_capital_adv.csv) and [Low Technology](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A23.globaltech_capital_low.csv) input files.
 
 **Table 3**: Capital Costs for Electric Power Plants across SSPs
 {: .tbl}
@@ -167,11 +168,13 @@ Table 3 maps technology & SSP to either core, advanced (less expensive), or low 
 <td><p>CORE</p></td>
 </tr>
 </tbody>
-</table>
+</table>  
+
+<br/>
 
 ### Fossil Fuel Assumptions
 
-Table 4 details assumptions made for fossil fuel supply. Similar to renewables, we do not vary the resource bases across SSPs, but instead vary cost of extraction and use. In particular, we adjust the technical change coefficient on future extraction costs to reflect differences in technological conditions across SSPs. To reflect differences in social acceptance, we use a cost adder that adjusts the cost to downstream users. The cost adder for 2100 is shown in Table 3; adders are linearly interpolated from $0 in the final historical year to the 2100 value. The 2100 value is defined in relation to the carbon content of the resource; thus, a “medium” social acceptance will result in a different cost adder for different fuels.
+<a name="table4"></a>Table 4 details assumptions made for fossil fuel supply. Similar to renewables, we do not vary the resource bases across SSPs, but instead vary cost of extraction and use. In particular, we adjust the technical change coefficient on future extraction costs to reflect differences in technological conditions across SSPs. To reflect differences in social acceptance, we use a cost adder that adjusts the cost to downstream users. The cost adder for 2100 is shown in Table 3; adders are linearly interpolated from $0 in the final historical year to the 2100 value. The 2100 value is defined in relation to the carbon content of the resource; thus, a “medium” social acceptance will result in a different cost adder for different fuels. Input values are specified in the [Technical Change](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A10.TechChange_SSPs.csv) and [Environmental Cost](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A10.EnvironCost_SSPs.csv) files.
 
 **Table 4a**: Fossil Fuel Assumptions across SSPs: Technical Change on Extraction Cost (% per year)
 {: .tbl}
@@ -194,9 +197,11 @@ Table 4 details assumptions made for fossil fuel supply. Similar to renewables, 
 | Conventional Oil | $0.20 | $0.20 | $0.20 | $0.98 | $0 |
 | Unconventional Oil | $0.21 | $0.21 | $0.21 | $1.06 | $0 |
 
+<br/>
+
 ### Building Energy Demand Assumptions
 
-Table 5 includes information on implementation of the SSPs for building energy demand. In particular we adjust the rate at which traditional bioenergy is phased out across SSPs. This is done in GCAM by adjusting the fuel preference elasticity, a parameter that links preferences (i.e., the share weight of the logit function) to per capita income. More negative fuel preference elasticities result in faster phase outs. This parameter is used to capture differences in intraregional inequality between SSP3 and SSP4; namely, we assume a faster phase out for the same income level in SSP3 than in SSP4.
+<a name="table5"></a>Table 5 includes information on implementation of the SSPs for building energy demand. In particular we adjust the rate at which traditional bioenergy is phased out across SSPs. This is done in GCAM by adjusting the fuel preference elasticity, a parameter that links preferences (i.e., the share weight of the logit function) to per capita income. More negative fuel preference elasticities result in faster phase outs. This parameter is used to capture differences in intraregional inequality between SSP3 and SSP4; namely, we assume a faster phase out for the same income level in SSP3 than in SSP4. Fuel preference elasticities are specified in the following input files: [SSP1 and SSP5](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.fuelprefElasticity_SSP15.csv), [SSP3](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.fuelprefElasticity_SSP3.csv), and [SSP4](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.fuelprefElasticity_SSP4.csv).
 
 **Table 5**: Building energy demand Assumptions
 {: .tbl}
@@ -223,9 +228,11 @@ Table 5 includes information on implementation of the SSPs for building energy d
 </tbody>
 </table>
 
+<br/>
+
 ### Agriculture and Land Use Assumptions
 
-Table 6 includes information on implementation of the SSPs for the agriculture and land-use sector. For agricultural productivity growth, we relate the parameters used in each SSP to the GCAM default assumptions. These assumptions are based on FAO projections through 2050, then held constant at 0.25%/yr post-2050. The projections in the near-term vary by crop, region, management practice (irrigated vs. rainfed), and year. As a result, there are literally thousands of parameters in a single scenario. For ease of presentation, we describe our assumptions for the individual SSPs with respect to the GCAM default. For food demand, all SSPs assume that growth in food demand is linked to income, using historical income-calorie relationships. To capture differences in food preferences and food waste, we adjust meat consumption and preferences in different SSPs. Finally, trade restrictions on agriculture and bioenergy are imposed in the SSP3 and SSP4.
+<a name="table6"></a>Table 6 includes information on implementation of the SSPs for the agriculture and land-use sector. For agricultural productivity growth, we relate the parameters used in each SSP to the GCAM default assumptions. These assumptions are based on FAO projections through 2050, then held constant at 0.25%/yr post-2050. The projections in the near-term vary by crop, region, management practice (irrigated vs. rainfed), and year. As a result, there are literally thousands of parameters in a single scenario. For ease of presentation, we describe our assumptions for the individual SSPs with respect to the GCAM default. For food demand, all SSPs assume that growth in food demand is linked to income, using historical income-calorie relationships. To capture differences in food preferences and food waste, we adjust meat consumption and preferences in different SSPs. Finally, trade restrictions on agriculture and bioenergy are imposed in the SSP3 and SSP4. Inputs for each are found in the following input files / data system processing files: [Meat Demand](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/A_fuelprefElasticity_ssp1.csv), [Agricultural Productivity Growth](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/zchunk_L2052.ag_prodchange_cost_irr_mgmt.R), and [Trade](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/zchunk_L243.bio_trade_input.R).
 
 **Table 6**: Agriculture and Land Use Assumptions across SSPs
 {: .tbl}
@@ -233,11 +240,13 @@ Table 6 includes information on implementation of the SSPs for the agriculture a
 | Variable  | SSP1 |  SSP2 | SSP3 | SSP4 (High / Med / Low Income )| SSP5 |
 |:----------------|:----------------|:----------------|:----------------|:----------------|:----------------|
 | Agricultural Productivity Growth | 50% above GCAM default | GCAM default | 50% below GCAM default | 50% above GCAM default / GCAM default / 50% below GCAM default | 50% above GCAM default |
-| Meat Demand | Meat demand limited to 1000 kcal/per/day. Shift in preferences among meat products away from beef, sheep, and goats. | Meat demand limited to 1100 kcal/per/day. | Meat demand limited to 1400 kcal/per/day.  | Meat demand limited to 1100kcal/per/day. | Meat demand limited to 1400 kcal/per/day. |
+| Meat Demand | Demand linked to income and price. Shift in preferences among meat products away from beef, sheep, and goats. | Demand linked to income and price. | Demand linked to income and price.  | Demand linked to income and price. | Demand linked to income and price. |
+
+<br/>
 
 ### Climate Policy
 
-To move from baseline scenarios to the RCP replications, we implemented the Shared Policy Assumptions (Kriegler et al., 2014) in GCAM. These assumptions are described in Table 7. For land policy, the relevant policy is phased in over several decades once the globally harmonized carbon price is imposed. For CO<sub>2</sub> prices prior to global cooperation, we impose the carbon price required to reach a region’s Copenhagen pledge in an SSP2 world in all SSPs. That is, the same carbon price in 2020 is used regardless of SSP. Note that these policy assumptions are not unique and alternative assumptions could be derived that are also consistent with the SSP storylines. Note that the land carbon price described in the table is absent any transaction costs; we further reduce carbon prices on land by 50% to capture these effects.
+<a name="table7"></a>To move from baseline scenarios to the RCP replications, we implemented the Shared Policy Assumptions (Kriegler et al., 2014) in GCAM. These assumptions are described in Table 7. For land policy, the relevant policy is phased in over several decades once the globally harmonized carbon price is imposed. For CO<sub>2</sub> prices prior to global cooperation, we impose the carbon price required to reach a region’s Copenhagen pledge in an SSP2 world in all SSPs. That is, the same carbon price in 2020 is used regardless of SSP. Note that these policy assumptions are not unique and alternative assumptions could be derived that are also consistent with the SSP storylines. Note that the land carbon price described in the table is absent any transaction costs; we further reduce carbon prices on land by 50% to capture these effects.
 
 **Table 7a**: Policy Assumptions across SSPs: First model time period with global cooperation (i.e., harmonized global carbon price)
 {: .tbl}
@@ -257,7 +266,9 @@ To move from baseline scenarios to the RCP replications, we implemented the Shar
 | Medium Income | Carbon Price on Land is Equal to Energy Carbon Price (i.e., UCT in Wise et al., 2009) | Carbon Price on Land is Equal to 50% of Energy Carbon Price | No Land Policy (i.e., FFICT in Wise et al., 2009) | Carbon Price on Land is Equal to 50% of Energy Carbon Price |Carbon Price on Land is Equal to Energy Carbon Price (i.e., UCT in Wise et al., 2009) |
 | Low Income |Carbon Price on Land is Equal to Energy Carbon Price (i.e., UCT in Wise et al., 2009) | Carbon Price on Land is Equal to 50% of Energy Carbon Price |No Land Policy (i.e., FFICT in Wise et al., 2009) |No Land Policy (i.e., FFICT in Wise et al., 2009) | Carbon Price on Land is Equal to Energy Carbon Price (i.e., UCT in Wise et al., 2009) |
 
-## Differences between Official SSPs and GCAM5.1 SSPs
+<br/>
+
+## Differences between Official SSPs and SSPs using the current model version
 
 The official SSPs (Calvin et al., 2017) were branched from GCAM4.0. There are several changes between versions that will have implications for SSP-related results. First, in the original SSPs (Calvin et al., 2017), electricity power plant costs were based off of the values used in GCAM4.0. We defined advanced and low as deviations from the core model. GCAM4.2, however, updated the power plant capital costs in the core, and established advanced and low technology costs. These values will be used going forward in the SSPs.  Second, GCAM5.1 includes different land regions and multiple land technologies (see below). These are likely to have effects on all land-related results. Third, GCAM4.4 introduced a net negative emissions constraint that wasn't present in the official SSPs. This will affect bioenergy use and net negative CO<sub>2</sub> emissions, particularly in 2.6 W/m<sup>2</sup> scenarios.
 

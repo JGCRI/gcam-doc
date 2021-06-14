@@ -2,14 +2,10 @@
 layout: index
 title: Trade Outputs
 prev: output_prices.html
-next: output_land.html
+next: outputs_land.html
 gcam-version: v5.3 
 ---
 
 ## Description of Outputs
 
-| Name | Resolution | Unit | Query | XML Tag |
-| :--- | :--- | :--- | :--- | :--- |
-| |  |  | <span id="detailed land allocation"><button onclick='getQuery("detailed land allocation", "detailed land allocation")'>detailed land allocation</button></span> | `land-allocation` |
-
-Outputs are specified in the `methodName` method of [xml_db_outputter.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/reporting/source/xml_db_outputter.cpp). 
+Trade is not directly output to the GCAM database. Instead, trade information can be derived by taking the difference between production and consumption of a particular commodity in a particular region. See [quantities](outputs_quantity.html) for information on how to get production and consumption.

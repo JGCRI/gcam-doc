@@ -264,6 +264,11 @@ Agricultural commodities
 - [X] Non-ruminant meat and eggs
 - [X] Dairy products
 
+Carbon dioxide removal
+- [X] Bioenergy with CCS
+- [X] Reforestation
+- [X] Afforestation
+
 <a name="table_footnote">1</a>: Note that this table differs from the one provided on the [Land Inputs Page](inputs_land.html#description) in that it lists all inputs to the land model, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
 
 ## References

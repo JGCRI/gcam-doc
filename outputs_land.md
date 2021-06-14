@@ -16,4 +16,4 @@ gcam-version: v5.3
 | Change in below ground carbon | By GLU and land type | MtC / year |  | `below-land-use-change-emission`|
 | Above ground carbon stock | By GLU and land type | MtC | <span id="vegetative carbon stock by region"><button onclick='getQuery("vegetative carbon stock by region", "vegetative carbon stock by region")'>vegetative carbon stock by region</button></span> | `above-ground-carbon-stock` |
 
-Outputs are specified in the `startVisitLandLeaf` and `startVisitCarbonCalc` methods of [xml_db_outputter.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/reporting/source/xml_db_outputter.cpp). Other land-related outputs include production and consumption [quantities](outputs_quantity.html#foodfeedforestry), [prices](outputs_prices.html#foodfeedforestry), [trade](outputs_trade.html), and [emissions](outputs_emissions.html#agricultureandlanduse).
+Outputs are specified in the `startVisitLandLeaf` and `startVisitCarbonCalc` methods of [xml_db_outputter.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/reporting/source/xml_db_outputter.cpp). 

@@ -122,8 +122,6 @@ where:
 | `MAC` | Marginal Abatement Cost Curve |
 | `Eprice` | Emissions Price |
 
-
-
 Non-CO<sub>2</sub> GHG emissions are proportional to the activity except for any reductions in emission intensity due to the MAC curve. As noted above, the MAC curves are assigned to a wide variety of technologies, mapped directly from [EPA 2013](#epa2013). Under a carbon policy, emissions are reduced by an amount determined by the MAC curve.
 
 The default set-up is that MAC curves use the scenario's carbon price (if any). The non-CO<sub>2</sub> GHG MACs are an exogenous input, and are read in as the percent of emissions abated as a function of the emissions prices. Note that they are read in with explicit cost points (i.e., piece-wise linear form), with no underlying equation describing the percentage of abatement as a function of the carbon price.
@@ -214,8 +212,6 @@ Pollutants
 - [X] OC land use
 - [X] OC other
 - [X] NH3 energy
-- [X] NH3 land use
-- [X] NH3 energy
 - [X] NH3 other
 
 Pollutants
@@ -292,17 +288,13 @@ Co-Linkages
 <a name="cdiac2017">[CDIAC 2017]</a> Boden, T., and Andres, B. 2017, *National CO2 Emissions from Fossil-Fuel Burning, Cement Manufacture, and Gas Flaring: 1751-2014*, Carbon Dioxide Information Analysis Center, Oak Ridge National Laboratory. [Link](http://cdiac.ess-dive.lbl.gov/ftp/ndp030/nation.1751_2014.ems)
 
 <a name="edgar2011">[EDGAR 2011]</a> Joint Research Centre. 2011. *EDGAR - Emissions Database for Global Atmospheric Research: Global Emissions EDGAR v4.2*. doi:10.2904/EDGARv4.2. [Link](http://edgar.jrc.ec.europa.eu/overview.php?v=42)
-
 <a name="epa2011">[EPA 2011]</a> US EPA, 2011, *2011 National Emissions Inventory (NEI) Data*. United States Environmental Protection Agency, Office of Air Quality Planning and Standards. [Link](https://www.epa.gov/air-emissions-inventories/2011-national-emissions-inventory-nei-data)
 
 <a name="epa2013">[EPA 2013]</a> US EPA, 2013, *Global Mitigation of Non-CO<sub>2</sub> Greenhouse Gases: 2010-2030*. EPA-430-R-13-011, United States Environmental Protection Agency, Office of Atmospheric Programs. [Link](https://www.epa.gov/sites/production/files/2016-06/documents/mac_report_2013.pdf)
-
 <a name="lamarque2010">[Lamarque et al. 2010]</a> Lamarque, J.F., Bond, T. C., Eyring, V., et al. 2010. Historical (1850-2000) gridded anthropogenic and biomass burning emissions of reactive gases and aerosols: methodology and application, *Atmospheric Chemistry and Physics* 10(15): 7017–7039. doi:10.5194/acp-10-7017-2010. [Link](https://www.atmos-chem-phys.net/10/7017/2010/acp-10-7017-2010.html)
 
 <a name="rao2017">[Rao et al. 2017]</a> Rao, S., Klimont, Z., Smith, S., et al. 2017. Future air pollution int he Shared Socio-economic Pathways. *Global Environmental Change* 42: 246–358. doi:10.1016/j.gloenvcha.2016.05.012. [Link](https://www.sciencedirect.com/science/article/pii/S0959378016300723)
 
 <a name="smith2005">[Smith et al. 2005]</a> Smith, S.J., Pitcher, H., and Wigley, T. 2005. "Future Sulfur Dioxide Emissions" *Climatic Change* 3: 267-318. doi: 10.1007/s10584-005-6887-y. [Link](https://link.springer.com/article/10.1007/s10584-005-6887-y)
 
-
 <a name="Hoesly2018">[Hoesly et al. 2018]</a>Hoesly, R. M., Smith, S. J., Feng, L., Klimont, Z., Janssens-Maenhout, G., Pitkanen, T., Seibert, J. J., Vu, L., Andres, R. J., Bolt, R. M., Bond, T. C., Dawidowski, L., Kholod, N., Kurokawa, J.-I., Li, M., Liu, L., Lu, Z., Moura, M. C. P., O'Rourke, P. R., and Zhang, Q.: Historical (1750–2014) anthropogenic emissions of reactive gases and aerosols from the Community Emissions Data System (CEDS), *Geosci. Model Dev*., 11, 369–408, [Link](https://doi.org/10.5194/gmd-11-369-2018), 2018
-

@@ -10,6 +10,18 @@ gcam-version: v5.3
 
 | Name | Resolution | Unit | Query | XML Tag |
 | :--- | :--- | :--- | :--- | :--- |
-| |  |  | <span id="detailed land allocation"><button onclick='getQuery("detailed land allocation", "detailed land allocation")'>detailed land allocation</button></span> | `land-allocation` |
+| Emissions<sup>[1,2](#table_footnote)</sup> |  Technology, Region<sup>[3](#table_footnote)</sup>, and Year | Various<sup>[4](#table_footnote)</sup>  | <span id="nonCO2 emissions by tech"><button onclick='getQuery("nonCO2 emissions by tech", "nonCO2 emissions by tech")'>nonCO2 emissions by tech</button></span> | `emissions` |
+| Land use change emissions | By GLU and land type | MtC / year | <span id="LUC emissions by region"><button onclick='getQuery("LUC emissions by region", "LUC emissions by region")'>LUC emissions by region</button></span> | `land-use-change-emission` |
+| Change in above ground carbon | By GLU and land type | MtC / year |  | `above-land-use-change-emission`|
+| Change in below ground carbon | By GLU and land type | MtC / year |  | `below-land-use-change-emission`|
 
-Outputs are specified in the `methodName` method of [xml_db_outputter.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/reporting/source/xml_db_outputter.cpp). 
+
+Outputs are specified in the `startVisitGHG`<sup>[5](#table_footnote)</sup> and `startVisitCarbonCalc` methods of [xml_db_outputter.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/reporting/source/xml_db_outputter.cpp). 
+
+<font size="-1">
+<a name="table_footnote">1</a>: While the query is called "nonCO2 emissions", it also includes CO<sub>2</sub> emissions.   <br/>
+<a name="table_footnote">2</a>: There is a long list of standard queries that report emissions outputs. The "nonCO2 emissions by tech" query listed above will report all emissions except for land use change CO<sub>2</sub> at the technology level. The other queries filter or aggregate those outputs. For example, the "CO2 emissions by region" query aggregates <i>emissions</i> to the region level for fossil fuel and industrial CO<sub>2</sub> only.   <br/>
+<a name="table_footnote">3</a>: Emissions are reported at the regional resolution of the sector. See <a href="common_assumptions.html#regionalresolution">Regional Resolution</a>      <br/>
+<a name="table_footnote">4</a>: Units vary. CO<sub>2</sub> emissions are reported in MtC/yr. Fluorinated gas emissions are reported in Gg of the specific gas per year. All other emissions are reported in Tg of the specific gas per year (e.g., CH<sub>4</sub> emissions are reported in TgCH<sub>4</sub> / yr).    <br/>
+<a name="table_footnote">5</a>: While the method is called <i>startVisitGHG</i>, it includes non-GHG emissions. However, land use change CO<sub>2</sub> emissions are not included in this method.     <br/>
+</font>

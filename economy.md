@@ -32,8 +32,15 @@ gcam-version: v5.3
 ## Equations 
 The equations that determine economic variables are described here.
 
-#### Variable #1
-<Insert equations used to calculate variable #1>
+#### GDP
+
+Regional GDP is calculated using a simple one-equation model:
+
+$$
+Equation 1: GDP_{r,t+1} = POP_{r,t+1}( 1+GRO_{r,t})^{tStep}( \frac{GDP_{r,t}}{POP_{r,t}} ) P^{ \alpha }_{r,t+1}
+$$
+
+Where $$r$$=region, $$t$$=the period, $$tStep$$=number of years in the time step, $$GDP_{r,t}$$=population in region $$r$$ in period $$t$$, $$POP_{r,t}$$=population in region $$r$$ in period $$t$$ and $$GRO_{r,t}$$=annual average per capita GDP growth rate in region $$r$$ in period $$t$$.
 
 See `method name` in [code_file.cpp](link to code on GitHub).
 
@@ -49,7 +56,46 @@ This section summarizes some of the energy-based policy options available in GCA
 <One paragraph summary of a key insight from one or more papers>
 
 ## IAMC Reference Card
-<Add relevant parts of IAMC reference card>
+
+Population
+- [X] Yes (exogenous)
+- [ ] Yes (endogenous)
+
+Population age structure
+- [ ] Yes (exogenous)
+- [ ] Yes (endogenous)
+
+Education level
+- [ ] Yes (exogenous)
+- [ ] Yes (endogenous)
+
+Urbanization rate
+- [ ] Yes (exogenous)
+- [ ] Yes (endogenous)
+
+GDP
+- [ ] Yes (exogenous)
+- [X] Yes (endogenous)
+
+Income distribution
+- [ ] Yes (exogenous)
+- [ ] Yes (endogenous)
+
+Employment rate
+- [ ] Yes (exogenous)
+- [ ] Yes (endogenous)
+
+Labor productivity
+- [X] Yes (exogenous)
+- [ ] Yes (endogenous)
+
+Total factor productivity
+- [X] Yes (exogenous)
+- [ ] Yes (endogenous)
+
+Autonomous energy efficiency improvements
+- [X] Yes (exogenous)
+- [ ] Yes (endogenous)
 
 
 <a name="table_footnote">1</a>: Note that this table differs from the one provided on the [Supply Inputs Page](inputs_supply.html#description) in that it lists all inputs to the land model, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.

@@ -1,8 +1,8 @@
 ---
 layout: index
 title: Economic Choice in GCAM
-prev: emissions.html
-next: en_technologies.html
+prev: common_assumptions.html
+next: common_assumptions.html
 gcam-version: v5.3
 ---
 
