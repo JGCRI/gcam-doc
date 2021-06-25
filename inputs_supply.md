@@ -120,25 +120,45 @@ Note that for the Shared Socioeconomic Pathways (SSPs), different inputs are use
 
 | Name | Description | Type | Source | Resolution | Unit |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-|  |  | |  |  |
+| Historical country-level production of crops | Production of agricultural commodities by country in the historical period; used for initialization/calibration of GCAM | External data | FAO | Specified by crop, country, and year | tons |
+| Historical country-level harvested area for crops | Harvested area for agricultural commodities by country in the historical period; used for initialization/calibration of GCAM | External data | FAO | Specified by crop, use, country, and year | ha |
+| Historical sub-national production of crops | Production of agricultural commodities by water basin in a single year; used for initialization/calibration of GCAM | External data | <a href="https://github.com/JGCRI/moirai">moirai</a> | Specified by crop, country and basin | tons |
+| Historical sub-national harvested area of crops | Harvested area of agricultural commodities by water basin in a single year; used for initialization/calibration of GCAM | External data | <a href="https://github.com/JGCRI/moirai">moirai</a> | Specified by crop, country and basin | ha |
+| Historical production of livestock | Production of livestock commodities in the historical period; used for initialization/calibration of GCAM | External data | FAO | Specified by crop, use, country, and year | tons |
+| Feed fractions for livestock | Fraction of feed by type | External data | IMAGE | Specified by commodity, feed system, feed type, IMAGE region and year (1970-2030) | unitless |
+| Livestock feed I-O coefficients | Amount of input per unit of output for livestock feed systems | External data | IMAGE | Specified by commodity, feed system, IMAGE region and year (1970-2030) | Dry feed to animal commodity ratio |
+| Historical cost of production | Historical cost of crop production in the USA | External data | <a href="http://www.ers.usda.gov/Data/CostsAndReturns/">USDA</a> | Specified by crop, type of cost, and year | various (e.g., $ per planted acre, $ per bushel) |
+| Historical prices | Historical prices of agriculture and livestock commodities; used for initialization/calibration of GCAM | External data | FAO | Specified by country, commodity, and year |  |
+| Agriculture productivity growth | Projected yields through 2050 for agricultural commodities | External data | FAO | Specified by country, commodity, and year |  |
+| Logit exponents | Share parameters dictating substitution between different feed options for livestock | Assumption |  | Specified by type of livestock | unitless |
+
 
 Table 3: External inputs used for supply of food, feed, and forestry <sup>[3](#table_footnote3)</sup>
 
 Note that for the Shared Socioeconomic Pathways (SSPs), different inputs are used for some variables. See [SSPs](ssp.html) for more information.
 
-<dt>Historical Production</dt> <dd>Inputs include historical production of all crops and forestry products for each of the AgLU regions for the model base years. We currently rely on a blend of FAO and GTAP data for these inputs. FAO includes country-level data over the entire historical period, while GCAM has sub-national information for a single year in time.</dd>
-
-<dt>Historical Prices</dt> <dd>Inputs include the price of all food, feed, and forestry commodities for our historical base years. We currently use producer prices from FAO for these inputs.</dd>
-
-<dt>Future Crop Yield Improvements</dt> <dd>Assumed rates of annual yield improvements for each of the crops and crop management options in each region.</dd>
-
-<dt>Other Variable Costs</dt> <dd>Per unit crop production cost of inputs that are not modeled explicitly in GCAM. Specifically, capital, operating, and labor costs other than land, water, and fertilizer</dd>
-
-
 #### Data
 
-##### Variable #1
-<Insert links to the input files on Github>
+##### Historical production and harvested area
+
+For both production and harvested area of crops, GCAM blends country level time series provided by the FAO with subnational information provided by [moirai](https://github.com/JGCRI/moirai) in a single year to determine historical production and harvested area for each [GCAM land region](common_assumptions.html#regional-resolution). FAO data is specified in [FAO_ag_Prod_t_PRODSTAT.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/FAO_ag_Prod_t_PRODSTAT.csv) and [FAO_ag_HA_ha_PRODSTAT.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/FAO_ag_HA_ha_PRODSTAT.csv). Moirai data is specified in [LDS_ag_prod_t.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/LDS/LDS_ag_prod_t.csv) and [LDS_ag_HA_ha.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/LDS/LDS_ag_HA_ha.csv). Livestock production is specified in [FAO_an_Prod_t_PRODSTAT.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/FAO_an_Prod_t_PRODSTAT.csv).
+
+##### Livestock feed information
+
+GCAM bases its historical livestock feed representation on the IMAGE model. GCAM requires information on [input-output coefficients](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/IMAGE/IMAGE_an_FeedIO_Rimg_C_Sys_Y.csv), [feed fractions](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/IMAGE/IMAGE_an_Feedfrac_Rimg_C_Sys_Fd_Y.csv), and [production mixes](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/IMAGE/IMAGE_an_Prodmixfrac_Rimg_C_Y.csv).
+
+##### Ag productivity growth
+
+GCAM captures change in yield due to increases in fertilizer use or irrigation endogenously. All other non-climate related factors driving yield increases are exogenously specified, with data specified in [FAO_ag_CROSIT.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/FAO_ag_CROSIT.csv).
+
+##### Prices
+
+GCAM uses producer prices to initialize the model (future prices are endogenous). Those prices are provide in [FAO_ag_an_ProducerPrice.csv.gz](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/FAO_ag_an_ProducerPrice.csv.gz).
+
+
+##### Cost of production
+
+The costs associated with land, irrigation, and fertilizer are endogenously determined in GCAM (see [Land Supply](supply_land.html). Other costs of production are exogenously specified and the data used for those costs can be found in [USDA_cost_data.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/USDA_cost_data.csv), with [USDA_item_cost.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/USDA_item_cost.csv) specifying which costs are included in GCAM. Note that we use cost information for the USA in all regions.
 
 <font size="-1"><a name="table_footnote1">1</a>: Note that this table differs from the one provided on the <a href="supply_energy.html#inputstothemodel">Energy Supply Modeling Page</a> in that it only lists external inputs to the supply model (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.<br/>    
 
