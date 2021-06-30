@@ -27,7 +27,7 @@ GCAM's inputs include information on production, consumption, prices, land, carb
 
 <dt>Historical Land Cover and Use</dt> <dd>Inputs include land cover and land use for each of the GCAM land types and AgLU regions. We use information beginning in 1700 in order to spin-up the carbon cycle within GCAM. Currently, we use a blend of the Hurtt-Hyde land cover product from CMIP5, the SAGE potential vegetation map, and FAO/GTAP cropland area.</dd>
 
-<dt>Terrestrial Carbon Densities</dt> <dd>Inputs include potential vegetation and soil carbon density (i.e., carbon density if the land grew to equilibrium) and a mature age. Currently, we derive vegetation carbon densities for crops from the FAO computed crop yield. All other carbon densities and mature ages come from Houghton (1999) and King (1997).</dd>
+<dt>Terrestrial Carbon Densities</dt> <dd>Inputs include potential vegetation and soil carbon density (i.e., carbon density if the land grew to equilibrium) and a mature age. Currently, we derive vegetation carbon densities for crops from the FAO computed crop yield, along with crop-specific assumptions about each crop's harvest index, water content, and root:shoot ratio. Tree crop carbon contents (e.g., apple orchards) are estimated from the yield, and literature-based estimates of the ratio between the carbon density and yield of each specific tree-derived crop commodity. All other carbon densities and mature ages come from Houghton (1999) and King et al. (1997).</dd>
 
 <dt>Other Historical Emissions</dt> <dd>Inputs include emissions of all non-CO<sub>2</sub> gases and species for each year and region. Data for BC and OC is from the RCP inventory (Lamarque et al., 2011). Data for all other gases and species is from EDGAR (European Commission, 2010).</dd>
 
@@ -85,7 +85,7 @@ deforestation, and savannah burning. Livestock emissions are
 calculated annually at the 32 region level. All other emissions are
 calculated annually at the 300+ region level.</dd>
 </dl><br/>
-  
+
 ## Economic Modeling Approach
 
 In this section, we describe and discuss the approach we have developed for the economic modeling of agriculture, forestry, and land use in the Global Change Analysis Model (GCAM). We discuss the math determining land allocation in the model, as well as its interpretation. We explain the land nesting strategy and its implications, the math used in calibrating the model, and the types of data required for calibration (the data itself is discussed in later sections). We finish this section with an explanation and discussion of methods for introducing new crops and technologies into the competition beyond the calibration year. More information, including a comparison to other models, is available in Wise et al. (2014).
