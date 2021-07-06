@@ -44,30 +44,20 @@ The main points can be summarized as:
 
 * Variable costs create price floors
 * Variable costs should be based on technology data. They should not be used as calibration parameters to adjust profits.
-* Variable costs should not include value-added categories of land, return to capital, and owner-wages.
+* Variable costs should not include land costs, value-added categories of land, return to capital, and owner-wages.
 
 
 ## Equations 
-The equations that determine food, feed, and forest supply are described here.
 
-#### Variable #1
-
-{Insert equations used to calculate variable #1}
-
-See `method name` in [code_file.cpp](link to code on GitHub).
+To be completed...
 
 ## Policy options 
-This section summarizes some of the energy-based policy options available in GCAM. 
 
-### Policy type #1
-
-{Insert paragraph describing a type of policy for this sector. Include links to xml input files on GitHub and/or the policies.html or policies_examples.html pages}
+To be completed...
 
 ## Insights and intuition
 
-### Paper/Topic #1
-
-{One paragraph summary of a key insight from one or more papers}
+To be completed...
 
 ## IAMC Reference Card
 

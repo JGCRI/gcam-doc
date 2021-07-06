@@ -66,7 +66,7 @@ Land-use change CO<sub>2</sub> emissions are calculated in GCAM using a simple a
 
 #### Vegetation Carbon
 
-For vegetation carbon, we distinguish between two different activities – land expansion and land contraction. In the event that land contracts, i.e., there is less land in the current period than the previous period, we assume that all emissions are released instantaneously.  In this event, the land-use change emissions for the current period from above ground carbon changes are equal to the change in above ground carbon stock. Emissions from above ground carbon changes for all other periods are equal to zero. In the event land expands, we spread the change in carbon stock across time depending on the length of time it takes for the vegetation to mature.  For crops, the mature age is typically set a 1 year, meaning that all carbon uptake occurs instantaneously. For forests, however, we assume it takes anywhere from 30 years to 100 years to uptake all of the carbon. We use an example of the Bertalanffy-Richards function.
+For vegetation carbon, we distinguish between two different activities – land expansion and land contraction. In the event that land allocated to a particular type contracts, i.e., there is less land in the current period than the previous period, we assume that all vegetation carbon emissions are released instantaneously.  In this event, the land-use change emissions for the current period from above ground carbon changes are equal to the change in above ground carbon stock. Emissions from above ground carbon changes for all other periods are equal to zero. In the event land expands, we spread the change in carbon stock across time depending on the length of time it takes for the vegetation to mature.  For crops, the mature age is typically set a 1 year, meaning that all carbon uptake occurs instantaneously. For forests, however, we assume it takes anywhere from 30 years to 100 years to uptake all of the carbon. We use an example of the Bertalanffy-Richards function (see [equation](#vegetation-carbon-emissions)).
 
 #### Soil Carbon
 
@@ -96,7 +96,7 @@ $$
 \pi_i = \left[{\sum_{j=1}^{N} \lambda_j \pi_j^\rho}\right]^{\frac{1}{\rho}}
 $$
 
-where $$\lambda_i$$ is the [profit scaler](land.html#calibration) for leaf of node $$i$$, $$\pi_i$$ is the [profit](land.html#profit) for leaf or node $$i$$, and $$\rho$$ is the [logit exponent](inputs_land.html#shareparameters).
+where $$\lambda_i$$ is the [profit scaler](land.html#calibration) for leaf of node $$i$$, $$\pi_i$$ is the [profit](land.html#profit) for node $$i$$, $$\pi_j$$ is the [profit](land.html#profit) for leaf or node $$j$$ contained within node $$i$$, and $$\rho$$ is the [logit exponent](inputs_land.html#shareparameters).
 
 See `calculateNodeProfitRates` in [land_node.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/land_allocator/source/land_node.cpp).
 
@@ -105,7 +105,7 @@ See `calculateNodeProfitRates` in [land_node.cpp](https://github.com/JGCRI/gcam-
 The share of each leaf or node is calculated as
 
 $$
-s_i = \frac{\lambda_i \pi_i^\rho}{\sum_{j=1}^{N} \lambda_j \pi_j^\rho}
+s_i = \frac{(\lambda_i \pi_i)^\rho}{\sum_{j=1}^{N} (\lambda_j \pi_j)^\rho}
 $$
 
 where $$s_i$$ is the share of leaf or node $$i$$, $$\lambda_i$$ is the [profit scaler](land.html#calibration) for leaf of node $i$, $$\pi_i$$ is the [profit](land.html#profit) for leaf or node $$i$$, and $$\rho$$ is the [logit exponent](inputs_land.html#shareparameters).
@@ -141,7 +141,7 @@ where $$E$$ indicates carbon emissions due to a land use change in timestep $$t$
 
 #### Vegetation Carbon Emissions
 
-If vegetation emissions are positive (i.e., $$E^{veg}_{t} > 0$$), then all emissions are released in the same year. That is, $$E^{veg}_{y} = E^{veg}_{t}$$.
+If vegetation emissions are positive (i.e., $$E^{veg}_{t} > 0$$), then all emissions are released in the current year, $$y$$. That is, $$E^{veg}_{y} = E^{veg}_{t}$$.
 
 If vegetation emissions are negative, then these emissions are spread out over time using a sigmoid function: 
 
@@ -158,10 +158,10 @@ See `precalc_sigmoid_helper` in [land_carbon_densities.cpp](https://github.com/J
 Soil carbon emissions follow an exponential approach:
 
 $$
-E^{soil}_{y} =  E^{soil}_{t} * \left[\left( 1.0 - e^{ -1.0 * \lambda * (y - t)} \right) - \left( 1.0 - e^{ -1.0 * \lambda * (y - t - 1)} \right)\right]
+E^{soil}_{y} =  E^{soil}_{t} * \left[\left( 1.0 - e^{ -1.0 * \kappa * (y - t)} \right) - \left( 1.0 - e^{ -1.0 * \kappa * (y - t - 1)} \right)\right]
 $$
 
-where $$\lambda = log(2) / s / 10.0$$ and $$s$$ is the soil time scale (specified by region).
+where $$\kappa = \frac{ log(2) }{ s / 10.0}$$ and $$s$$ is the soil time scale (specified by region).
 
 See `calcBelowGroundCarbonEmission` in [asimple_carbon_calc.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/ccarbon_model/source/asimple_carbon_calc.cpp) for the calculation of soil carbon emissions. 
 
