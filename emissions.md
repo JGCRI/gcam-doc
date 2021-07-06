@@ -11,7 +11,7 @@ GCAM projects emissions of a suite of greenhouse gases (GHGs) and air pollutants
 
 CO<sub>2</sub>, CH<sub>4</sub>, N<sub>2</sub>O, CF<sub>4</sub>, C<sub>2</sub>F<sub>6</sub>, SF<sub>6</sub>, HFC23, HFC32, HFC43-10mee, HFC125, HFC134a, HFC143a, HFC152a, HFC227ea, HFC236fa, HFC245fa, HFC365mfc, SO<sub>2</sub>, BC, OC, CO, VOCs, NO<sub>x</sub>, NH<sub>3</sub>
 
-Future emissions are determined by the evolution of drivers (such as energy consumption, land-use, and population) and technology mix. How this is represented in GCAM varies by emission type.
+Future emissions are determined by the evolution of drivers (such as energy consumption, land-use, and population), technology mix, and abatement measures. How this is represented in GCAM varies by emission type.
 
 
 # Table of Contents
@@ -31,7 +31,7 @@ Future emissions are determined by the evolution of drivers (such as energy cons
 | :--- | :--- | :--- | :--- |
 |Emissions data by sector for NonCO2(Described in detailed in initialization section below)| country, sector,fuel,gas, year| $$Tg$$ | [Exogenous](inputs_supply.html) |
 |Activity data from GCAM by sector|By region, year, sector, fuel| $$EJ$$ | [Endogenous](inputs_supply.html) |
-|MACC assumptions|global by sector| $$Unitless$$ | [Exogenous](inputs_supply.html) |
+|MACC assumptions| By region, sector, year | $$Unitless$$ | [Exogenous](inputs_supply.html) |
 
 ## Description
 
@@ -64,7 +64,7 @@ We summarize here some general points common to non-CO<sub>2</sub> emissions in 
 
 * CEDS does not have a breakdown of emissions for road transport by mode. Therefore, GAINS emission factors by transport sectors (passenger, freight) and fuels to supplement the CEDS road emissions and derive emissions by different modes using emissions factors from the [GAINS data set](https://iiasa.ac.at/web/home/research/researchPrograms/air/ECLIPSEv5.html).
 
-* Additional information on fluorinated gases is from Guus Velders.
+* Additional information on fluorinated gases is from the [2019 EPA Global Non-CO2 Greenhouse Gas Emission Projection & Mitigation Potential Report](https://www.epa.gov/global-mitigation-non-co2-greenhouse-gases/global-non-co2-greenhouse-gas-emission-projections).
 
 ##### Calibration year differences between CEDS and GCAM
 
@@ -75,13 +75,11 @@ Figures 1 and 2 compare historical emissions from CEDS with the emissions from G
 
 ![Figure 2 : Comparison of regional CEDS and GCAM emissions in all calibration years](images/1b. Scatterplot comparing emissionsGlobal.png)
 
-However, there are two reasons for differences. The first is that of deforestation emissions from protected land which get zeroed out in GCAM since protected land is held constant in the calibration years. Also deforestation emissions in the final base year are initialized using deforestation coefficients calculated on the basis of deforestation over a 5 year period (2000 and 2005). This leads to a difference in the total deforestation emissions from the CEDS inventory when compared to the numbers initialized in  GCAM. 
-
-Second, the emissions from resource production are different between CEDS and GCAM in calibration years.This happens because the production of fossil fuels in GCAM is broken down by 'vintages' while the emissions factors are calculated in each model year based on total production in each year. When GCAM calculates the emissions, the emissions are calculated for each vintage using the emission factor from that year (for example, the 1975 vintage production will use the 1975 emission factor and the 2015 vintage will use the 2015 emission factor). Since older vintages will have higher emissions factors, the emissions in GCAM will be higher compared to CEDS inventory emissions.
+However, there are reasons for the differences. One reason is that deforestation emissions from protected land are zeroed out in GCAM in the historical period since protected land is held constant in the calibration years. Also deforestation emissions in the final base year are initialized using deforestation coefficients calculated on the basis of deforestation over a 5 year period (2000 and 2005). This leads to a difference in the total deforestation emissions from the CEDS inventory when compared to the numbers initialized in  GCAM. 
 
 #### Modeling approach
 
-Modeling non-CO<sub>2</sub> abatement at the process level would require too much detail for the scales at which GCAM operates. We, therefore, use parameterized functions for future emissions controls (for air pollutants) and Marginal Abatement Cost (MAC) curves (for GHGs) to change emission factors over time. The emissions controls, which reduce emissions factors as a function of per-capita GDP in each region and time period, are based on the general understanding that pollutant control technologies are deployed as incomes rise (e.g., [Smith et al. 2005](#smith2005), although the functional form used in GCAM 5 is different than that in this reference). The MAC curves for GHGs are mapped directly to GCAM's technologies from the EPA's 2013 report on non-CO<sub>2</sub> greenhouse gas mitigation ([EPA 2013](#epa2013)).
+Modeling non-CO<sub>2</sub> abatement at the process level would require too much detail for the scales at which GCAM operates. We, therefore, use parameterized functions for future emissions controls (for air pollutants) and Marginal Abatement Cost (MAC) curves (for GHGs) to change emission factors over time. The emissions controls, which reduce emissions factors as a function of per-capita GDP in each region and time period, are based on the general understanding that pollutant control technologies are deployed as incomes rise (e.g., [Smith et al. 2005](#smith2005), although the functional form used in GCAM 5 is different than that in this reference). The MAC curves for GHGs are mapped directly to GCAM's technologies from the EPA's 2019 report on non-CO<sub>2</sub> greenhouse gas mitigation ([EPA 2019](#epa2019)).
 
 Note that technology shifts still play a role, since emission factors can differ between technologies.
 
@@ -122,7 +120,7 @@ where:
 | `MAC` | Marginal Abatement Cost Curve |
 | `Eprice` | Emissions Price |
 
-Non-CO<sub>2</sub> GHG emissions are proportional to the activity except for any reductions in emission intensity due to the MAC curve. As noted above, the MAC curves are assigned to a wide variety of technologies, mapped directly from [EPA 2013](#epa2013). Under a carbon policy, emissions are reduced by an amount determined by the MAC curve.
+Non-CO<sub>2</sub> GHG emissions are proportional to the activity except for any reductions in emission intensity due to the MAC curve. As noted above, the MAC curves are assigned to a wide variety of technologies, mapped directly from [EPA 2019](#epa2019). Under a carbon policy, emissions are reduced by an amount determined by the MAC curve.
 
 The default set-up is that MAC curves use the scenario's carbon price (if any). The non-CO<sub>2</sub> GHG MACs are an exogenous input, and are read in as the percent of emissions abated as a function of the emissions prices. Note that they are read in with explicit cost points (i.e., piece-wise linear form), with no underlying equation describing the percentage of abatement as a function of the carbon price.
 
@@ -138,7 +136,7 @@ SF<sub>6</sub> emissions from electric transformers scale with electricity consu
 
 #### <a name="air-pollutant-emissions">Air Pollutant Emissions</a>
 
-Air pollutant emissions such as sulfur dioxide (SO<sub>s</sub>) and nitrogen oxides (NO<sub>x</sub>) are modeled as:
+Air pollutant emissions such as sulfur dioxide (SO<sub>2</sub>) and nitrogen oxides (NO<sub>x</sub>) are modeled as:
 
 $$
 E_{t}=A_{t}*EF_{t0}*(1-EmCtrl(pcGDP_{t}))
@@ -290,7 +288,8 @@ Co-Linkages
 <a name="edgar2011">[EDGAR 2011]</a> Joint Research Centre. 2011. *EDGAR - Emissions Database for Global Atmospheric Research: Global Emissions EDGAR v4.2*. doi:10.2904/EDGARv4.2. [Link](http://edgar.jrc.ec.europa.eu/overview.php?v=42)
 <a name="epa2011">[EPA 2011]</a> US EPA, 2011, *2011 National Emissions Inventory (NEI) Data*. United States Environmental Protection Agency, Office of Air Quality Planning and Standards. [Link](https://www.epa.gov/air-emissions-inventories/2011-national-emissions-inventory-nei-data)
 
-<a name="epa2013">[EPA 2013]</a> US EPA, 2013, *Global Mitigation of Non-CO<sub>2</sub> Greenhouse Gases: 2010-2030*. EPA-430-R-13-011, United States Environmental Protection Agency, Office of Atmospheric Programs. [Link](https://www.epa.gov/sites/production/files/2016-06/documents/mac_report_2013.pdf)
+<a name="epa2019">[EPA 2019]</a> US EPA, 2019, *Global Non-CO<sub>2</sub> Greenhouse Gas Emission Projection & Mitigation Potential Report*. United States Environmental Protection Agency, Office of Atmospheric Programs. [Link](https://www.epa.gov/global-mitigation-non-co2-greenhouse-gases/global-non-co2-greenhouse-gas-emission-projections)
+
 <a name="lamarque2010">[Lamarque et al. 2010]</a> Lamarque, J.F., Bond, T. C., Eyring, V., et al. 2010. Historical (1850-2000) gridded anthropogenic and biomass burning emissions of reactive gases and aerosols: methodology and application, *Atmospheric Chemistry and Physics* 10(15): 7017–7039. doi:10.5194/acp-10-7017-2010. [Link](https://www.atmos-chem-phys.net/10/7017/2010/acp-10-7017-2010.html)
 
 <a name="rao2017">[Rao et al. 2017]</a> Rao, S., Klimont, Z., Smith, S., et al. 2017. Future air pollution int he Shared Socio-economic Pathways. *Global Environmental Change* 42: 246–358. doi:10.1016/j.gloenvcha.2016.05.012. [Link](https://www.sciencedirect.com/science/article/pii/S0959378016300723)
