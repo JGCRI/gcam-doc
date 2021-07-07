@@ -92,15 +92,19 @@ Multipliers used to determine the value of time in transit are specified in [A54
 ### Water
 
 
-
-
-
 #### Description
 
 | Name | Description | Type | Source | Resolution | Unit |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | Agriculture water coefficients | Water coefficients for agricultural commodities, including blue (irrigation) and green (rain) water, includes data for a single year circa 2000 | External data set | <a href="http://waterfootprint.org/media/downloads/Report47-Appendix-II.zip">Mekonnen and Hoekstra</a> | Crop, country, water type (blue, green) | $$m^3$$ per ton |
 | Industrial manufacturing water coefficients | Water coefficients for industrial manufacturing for 1995 | External data set | [Vassolo and Döll 2005](#vassolo2005) | Continent and water type (withdrawals, consumption) | $$Mm^3$$ per year |
+| Livestock water coefficients | Water coefficients for drinking and the servicing of livestock commodities, includes data for the period 1996-2005 | Mekonnen, M. M., & Hoekstra, A. Y. (2010). The green, blue and grey water footprint of farm animals and animal products. Volume 2: Appendices | External data set | livestock type | liters per head per day |
+| Electricity cooling system shares | Histroical shares of cooling system types associated with power plants aggregated to GCAM3 regions | UCS and Schakel Inventories | External data set | GCAM3 region, power plant type, cooling system type, water type (fresh, seawater), and year | Unitless |
+| Electricity water coefficients | Water withdrawal and consumption coefficients for power plants and cooling system types | External data set | Macknick et al., 2011 | fuel, power plant type, cooling system type, water type (fresh, seawater) | $$m^3$$ per MWh |
+| Primary energy water coefficients | Water coefficients for the consumption of water during the process of mining primary energy fuel sources | Maheu, A. (2009). Energy choices and their impacts on demand for water resources: An assessment of current and projected water consumption in global energy production. Unisféra. | External data set | global, fuel, mining technology, water type (consumption) | $$m^3$$ per TJ |
+| Municipal water withdrawals | Water withdrawal values for municipalities include data, as reported, from 1987 to 2017 | FAO Aquastat | External data set | GCAM region, year | $$km^3$$ |
+| Municipal water use efficiency | Water efficiency values for municipalities | Shiklomanov 2000 | Continent | Percent |
+| Municipal water cost | Price per unit of water delivered to municipalities | International Benchmarking Network for Water and Sanitation Utilities (IBNET) | External data set | Country | USD per $$km^3$$ |
 
 Table 2: External inputs used for demand of water <sup>[2](#table_footnote2)</sup>
 

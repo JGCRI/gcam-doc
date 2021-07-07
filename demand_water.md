@@ -103,13 +103,6 @@ where pcGDP is per-capita GDP, P is water price, and Tech stands for autonomous 
 
 See `calcDemand` in [minicam_price_elasticity_function.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/functions/source/minicam_price_elasticity_function.cpp).
 
-## Policy options 
-This section summarizes some of the energy-based policy options available in GCAM. 
-
-### Policy type #1
-
-{Insert paragraph describing a type of policy for this sector. Include links to xml input files on GitHub and/or the policies.html or policies_examples.html pages}
-
 ## Insights and intuition
 
 ### Dynamics of electricity cooling systems
