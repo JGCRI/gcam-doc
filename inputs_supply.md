@@ -107,7 +107,9 @@ Resource supply curves are specified for [fossil fuels](https://github.com/JGCRI
 
 | Name | Description | Type | Source | Resolution | Unit |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-|  |  | |  |  |
+| Surface water supply curves (cost and availability) | Xanthos derived total maximum runoff values, combined with accessible water calculation to determine water available at very low price and the level of accessible water for cost-curve inflection | Exogenous Data | Xanthos output | Water basin and year | $$km^3$$ available per USD |
+| Groundwater supply curves (cost and availability) | Amount of groundwater available in each basin at increasingly high graded levels | [Turner et al., 2019a](#turner2019a) | Water basin and year | $$km^3$$ available per USD |
+| Desalination cost | Cost of desalinated water within a basin which is available at high cost and available once the price of water within a basin surpasses a certain threshold | Exogenous Data | Global Constant | USD per $$km^3$$ |
 
 Table 2: External inputs used for supply of water <sup>[2](#table_footnote2)</sup>
 
@@ -115,8 +117,18 @@ Note that for the Shared Socioeconomic Pathways (SSPs), different inputs are use
 
 #### Data
 
-##### Variable #1
-<Insert links to the input files on Github>
+#### Surface water supply curves
+Surface water supply curves are based on runoff estimates from Xanthos, a detailed global hydrology model ([Liu et al. 2018](#liu2018); [Vernon et al. 2019](#vernon2019)). Xanthos accounts for surface and subsurface processes to compute runoff at 0.5° grid resolution. Global climate datasets are utilized in conjunction with Xanthos to determine historical annual average runoff aggregated for each basin ([Liu et al. 2018](#liu2018); [Turner et al., 2019a](#turner2019a); [Vernon et al. 2019](#vernon2019)). Of the total basin runoff, water available or accessible for human use takes into consideration requirements for ecosystem services, inaccessibility due to rapid flow and remote locations, and capacity of reservoir storage. Accessible fractions of total runoff vary across basins. Renewable water volumes up to the accessible fraction is available at nominal or low cost. Additional renewable water beyond the accessible fraction is available at a sharply higher cost to ensure availability of water for ecosystem services and to reflect capital investments necessary for reservoir expansion.
+Basin level runoff is specified in [xanthos_basin_runoff.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/water/xanthos_basin_runoff.csv). 
+Accessible fraction is specified in [xanthos_accessible_water.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/water/xanthos_accessible_water.csv).
+For additional accessible calculations, basin historical basin level demands are specified in [basin_water_demand_1990_2015.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/water/basin_water_demand_1990_2010.csv) and groundwater availability is specified in [groundwater_trend_watergap.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/water/groundwater_trend_watergap.csv).
+
+#### Groundwater supply curves
+Non-renewable groundwater supply curves are modeled as a graded depletable resource with a fixed amount of total groundwater availability. Basin level estimates of environmentally exploitable groundwater are aggregated from grid-scale data. Groundwater supply curves represent the relationship between exploitable groundwater and cost of extraction. As the available water within the initial grades is exhausted, the price for additional groundwater resources increases as a function of depth and geological complexity. Energy inputs and costs required for pumping are included for a rigorous estimate of the relationship between groundwater volume and extraction cost ([Turner et al., 2019a](#turner2019a); [Kim et al. 2016](#kim2016)).
+Graded groundwater availability is specified in [groundwater_constrained.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/water/groundwater_constrained.csv) with groundwater extraction trends found in [groundwater_trend_watergap.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/water/groundwater_trend_watergap.csv) and [groundwater_trend_gleeson.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/water/groundwater_trend_gleeson.csv).
+
+#### Desalination costs
+The costs of desalinated water reflects electrical energy input and capital and operational costs. Due to the high cost of desalination, desalinated water is only utilized when renewable and non-renewable water supplies are scarce and the cost of freshwater is high. Desalinated water representation is nested within the water distribution sectors where it competes with basin water supply from renewable and nonrenewable sources.
 
 ### Food / Feed / Forestry
 
@@ -163,6 +175,19 @@ GCAM uses producer prices to initialize the model (future prices are endogenous)
 ##### Cost of production
 
 The costs associated with land, irrigation, and fertilizer are endogenously determined in GCAM (see [Land Supply](supply_land.html). Other costs of production are exogenously specified and the data used for those costs can be found in [USDA_cost_data.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/USDA_cost_data.csv), with [USDA_item_cost.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/USDA_item_cost.csv) specifying which costs are included in GCAM. Note that we use cost information for the USA in all regions.
+
+## References
+
+<a name="kim2016">[Kim et al. 2016]</a> Kim SK, Hejazi M, et al. (2016). *Balancing global water availability and use at basin scale in an integrated assessment model*. Climatic Change 136:217-231. [Link](http://link.springer.com/article/10.1007/s10584-016-1604-6/fulltext.html)
+
+<a name="kyle2021">[Kyle et al. 2021]</a> Kyle, P., Hejazi, M., Kim, S., Patel, P., Graham, N., & Liu, Y. (2021). Assessing the future of global energy-for-water. Environmental Research Letters, 16(2), 024031.
+
+<a name="liu2018">[Liu et al. 2018]</a> Liu Y., M. Hejazi, H. Li, X. Zhang, G. Leng (2018). *A  hydrological emulator for global applications - HE v1.0.0*. Geoscientific Model Development. [Link](https://www.geosci-model-dev.net/11/1077/2018/gmd-11-1077-2018.pdf)
+
+<a name="turner2019a">[Turner et al. 2019a]</a> Turner S.W.D., M. Hejazi, C. Yonkofski, S. Kim, P. Kyle (2019a). *Influence of groundwater extraction costs and resource depletion limits on simulated global nonrenewable water withdrawals over the 21st century*. Earth's Future (2019), 10.1029/2018EF001105  [Link](https://doi.org/10.1029/2018EF001105)
+
+<a name="vernon2019">[Vernon 2019]</a> Vernon, C., M. Hejazi, S. Turner, Y. Liu, C. Braun, X. Li, and R. Link. *A Global Hydrologic Framework to Accelerate Scientific Discovery*. Journal of Open Research Software (2019). [Link](https://openresearchsoftware.metajnl.com/articles/10.5334/jors.245/)
+
 
 <font size="-1"><a name="table_footnote1">1</a>: Note that this table differs from the one provided on the <a href="supply_energy.html#inputstothemodel">Energy Supply Modeling Page</a> in that it only lists external inputs to the supply model (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.<br/>    
 
