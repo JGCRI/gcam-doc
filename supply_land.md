@@ -21,7 +21,16 @@ gcam-version: v5.3
 
 | Name | Resolution | Unit | Source |
 | :--- | :--- | :--- | :--- |
-|  |  |  | [Exogenous](inputs_supply.html) |
+| Land use and land cover | By GLU, land type, and year | thousand $$km^2$$ | [Land Allocator](land.html) |
+| Historical harvested area (used to calculate historical yield) | By GLU, crop, management practice, and year | thousand $$km^2$$ | [Exogenous](inputs_supply.html) |
+| Historical production (used to calculate historical yield) | By GLU, crop, management practice, and year | thousand $$km^2$$ | [Exogenous](inputs_supply.html) |
+| Agriculture productivity growth (used to calculate future yield) | By GLU, crop, management practice, year | % per year | [Exogenous](inputs_supply.html) |
+| Non-fertilizer, non-water, non-land variable cost of production | By GLU, crop, management practice, and year | 1975$/kg | [Exogenous](inputs_supply.html)  |
+| Fertilizer coefficients | By GLU, crop, management practice, and year | 1975$/kg | [Exogenous](inputs_supply.html)  |
+| Water coefficients | By GLU, crop, management practice, and year | 1975$/kg | [Exogenous](inputs_demand.html)  |
+| Commodity prices | By region, commodity, and year | 1975$/kg | [Marketplace](marketplace.html)  |
+| Fertilizer prices | By region, commodity, and year | 1975$/kg | [Marketplace](marketplace.html)  |
+| Water prices | By region, commodity, and year | 1975$/m3 | [Marketplace](marketplace.html)  |
 
 
 ## Description

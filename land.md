@@ -161,7 +161,7 @@ $$
 E^{soil}_{y} =  E^{soil}_{t} * \left[\left( 1.0 - e^{ -1.0 * \kappa * (y - t)} \right) - \left( 1.0 - e^{ -1.0 * \kappa * (y - t - 1)} \right)\right]
 $$
 
-where $$\kappa = \frac{ log(2) }{ s / 10.0}$$ and $$s$$ is the soil time scale (specified by region).
+where $$\kappa = \frac{ log(2) }{ s / 10.0}$$ and $$s$$ is the soil time scale, specified by region (see [inputs_land](inputs_land.html#description)).
 
 See `calcBelowGroundCarbonEmission` in [asimple_carbon_calc.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/ccarbon_model/source/asimple_carbon_calc.cpp) for the calculation of soil carbon emissions. 
 
