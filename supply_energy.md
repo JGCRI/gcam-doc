@@ -23,6 +23,8 @@ gcam-version: v5.3
 | :--- | :--- | :--- | :--- |
 |  |  |  | [Exogenous](inputs_supply.html) |
 
+<a name="table_footnote">1</a>: Note that this table differs from the one provided on the [Supply Inputs Page](inputs_supply.html#description) in that it lists all inputs to the energy model, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
+
 
 ## Description
 
@@ -40,11 +42,11 @@ In general, the costs of producing electricity from renewable energy forms consi
 
 ##### Wind
 
-All regions are assigned a wind energy supply curve, where the quantity is in exajoules (EJ) of electricity produced per year, and the price is in 1975$ per gigajoule (GJ) of electricity produced. Unlike fossil resources, uranium, or biomass, the quantities of wind energy are considered to be within "regional" markets; they can not be traded between the different modeled geopolitical regions. The [supply curves](details_energy.html#wind) in each region are derived from bottom-up analysis documented in [Zhou et al. (2012)](supply_energy.html#zhou2012). Note that in this supply curve formulation, the price is zero when the quantity is zero; this is because the wind resource supply curves only represent costs that increase with deployment due to the nature of the resources; these include factors such as increased transmission distances, reduced capacity factors, and more costly access to sites, among others. The remainder of the costs of wind electricity generation are in the technology and backup, described in the [electricity sector](supply_energy.html#electricity).
+All regions are assigned a onshore wind and offshore wind energy supply curves, where the quantity is in exajoules (EJ) of electricity produced per year, and the price is in 1975$ per gigajoule (GJ) of electricity produced. Unlike fossil resources, uranium, or biomass, the quantities of wind energy are considered to be within "regional" markets; they can not be traded between the different modeled geopolitical regions. The [supply curves](details_energy.html#wind) in each region are derived from bottom-up analysis documented in [Eurek et al. (2017)](supply_energy.html#eurek2017). Note that in this supply curve formulation, the price is zero when the quantity is zero; these include factors such as reduced capacity factors, and water depth for offshore wind. Region-specific grid connection costs are derived from data on wind resource distance to grid, also from [Eurek et al. (2017)](supply_energy.html#eurek2017). The remainder of the costs of wind electricity generation are in the technology and backup, described in the [electricity sector](supply_energy.html#electricity).
 
 ##### Solar
 
-Solar energy is modeled as two separate resources: "global solar resource" and "distributed_PV", where the latter refers only to photovoltaic installations on residential and commercial buildings. As with wind, both of these resources are indicated in terms of electricity production. Global solar resource is modeled as an unlimited resource, and with a very low price; unlike with wind, it is assumed that marginal resource-related costs do not escalate with deployment levels. The technology and backup-related costs are documented in the [electricity sector](#electricity). Capacity factors and costs vary by region and type of solar (e.g., distributed PV, CSP). See [solar](details_energy.html#solar) for more details.
+Solar energy is modeled as two separate resources: "global solar resource" and "distributed_PV", where the latter refers only to photovoltaic installations on residential and commercial buildings. As with wind, both of these resources are indicated in terms of electricity production. Global solar resource is modeled as an unlimited resource, and with a very low price; unlike with wind, it is assumed that marginal resource-related costs do not escalate with deployment levels. The technology and backup-related costs are documented in the [electricity sector](#electricity). Capacity factors and costs vary by region and type of solar (e.g., distributed photovoltaic (PV), concentrating solar power (CSP)). See [solar](details_energy.html#solar) for more details.
 
 
 ##### Geothermal
@@ -57,7 +59,7 @@ Hydropower is the simplest of all energy forms in GCAM; the quantity of hydropow
 
 ##### Biomass
 
-While most of the effort in modeling biomass supply is in the [agriculture and land use component](land.html), there is a renewable resource represented in the energy system, that generally refers to municipal and industrial wastes that can be used for energy purposes. The supply curves use the same functional form as printed in the Wind section above, and the specific quantities are documented in [Gregg and Smith (2010)](supply_energy.html#gregg2010). Unlike other resources, the waste biomass supply curve is assumed to grow with GDP, as prescribed by the exogenous supply elasticity of GDP, or "gdpSupplyElast".
+While most of the effort in modeling biomass supply is in the [agriculture and land use component](land.html), there is a renewable resource represented in the energy system, that generally refers to municipal and industrial wastes that can be used for energy purposes. The supply curves use the same functional form as described in the Wind section above, and the specific quantities are documented in [Gregg and Smith (2010)](supply_energy.html#gregg2010). Unlike other resources, the waste biomass supply curve is assumed to grow with GDP, as prescribed by the exogenous supply elasticity of GDP, or "gdpSupplyElast".
 
 ##### Traditional biomass
 
@@ -70,23 +72,23 @@ Broadly, the energy transformation sectors in GCAM consist of all supplysectors 
 
 #### Electricity
 
-The GCAM electricity sector models the conversion of primary fuels (e.g., coal, gas, oil, bioenergy) to electricity. For most fuels, GCAM includes several different technology options (e.g., pulverized coal, coal IGCC, etc.). Individual technologies compete for market share based on their technological characteristics (conversion efficiency in the production of products from inputs), and cost of inputs and price of outputs. The cost of a technology in any period depends on (1) its exogenously specified non-energy cost, (2) its endogenously calculated fuel cost, and (3) any cost of emissions, as determined by the climate policy. The first term, non-energy cost, represents capital, fixed and variable O&M costs incurred over the lifetime of the equipment (except for fuel or electricity costs). For electricity technologies, GCAM reads in each of these terms and computes the levelized cost of energy within the model. For example, the non-energy cost of coal-fired power plant is calculated as the sum of overnight capital cost (amortized using a capital recovery factor and converted to dollars per unit of energy output by applying a capacity factor), fixed and variable operations and maintenance costs. The second term, fuel or electricity cost, depends on the specified efficiency of the technology, which determines the amount of fuel or electricity required to produce each unit of output, as well as the cost of the fuel or electricity. For more information, see [electricity](details_energy.html#electricity).
+The GCAM electricity sector models the conversion of primary fuels (e.g., coal, gas, oil, bioenergy) to electricity. For most fuels, GCAM includes several different technology options (e.g., pulverized coal, coal integrated gasification combined cycle (IGCC), etc.). Individual technologies compete for market share based on their technological characteristics (conversion efficiency in the production of products from inputs), and cost of inputs and price of outputs. The cost of a technology in any period depends on (1) its exogenously specified non-energy cost, (2) its endogenously calculated fuel cost, and (3) any cost of emissions, as determined by the climate policy. The first term, non-energy cost, represents capital, fixed and variable O&M costs incurred over the lifetime of the equipment (except for fuel or electricity costs). For electricity technologies, GCAM reads in each of these terms and computes the levelized cost of energy within the model. For example, the non-energy cost of coal-fired power plant is calculated as the sum of overnight capital cost (amortized using a capital recovery factor and converted to dollars per unit of energy output by applying a capacity factor), fixed and variable operations and maintenance costs. The second term, fuel or electricity cost, depends on the specified efficiency of the technology, which determines the amount of fuel or electricity required to produce each unit of output, as well as the cost of the fuel or electricity. For more information, see [electricity](details_energy.html#electricity).
 
 #### Refining 
 
-The refining sector, or liquid fuels production sector, explicitly tracks all energy inputs, emissions, and costs involved with converting primary energy forms into liquid fuels. Liquid fuels include gasoline, diesel, kerosene, ethanol and many other liquid hydrocarbon fuels; for the full mapping see [Mapping the IEA Energy Balances](energy.html#mapping-the-iea-energy-balances). The refining sector includes subsectors of oil refining, biomass liquids, gas to liquids, and coal to liquids, each of which are described below. Each of these four subsectors is available starting in the first future time period, and the capital stocks of refineries are explicitly tracked.  For more information, see [refining](details_energy.html#refining).
+The refining sector, or liquid fuels production sector, explicitly tracks all energy inputs, emissions, and costs involved with converting primary energy forms into liquid fuels. Liquid fuels include gasoline, diesel, kerosene, ethanol and many other liquid hydrocarbon fuels; for the full mapping see [Mapping the IEA Energy Balances](details_inputs.html#mapping-the-iea-energy-balances). Although liquid fuels encompasses many products, GCAM only models a single "refined liquids" product that is consumed by all end-use sectors. The refining sector includes subsectors of oil refining, biomass liquids, gas to liquids, and coal to liquids, each of which are described below. Each of these four subsectors is available starting in the first future time period, and the capital stocks of refineries are explicitly tracked.  For more information, see [refining](details_energy.html#refining).
 
 ##### Oil Refining
 
-The oil refining subsector accounts for the vast majority of the historical output of the refining sector, globally and in all regions. Each region is assigned a single production technology for oil refining; as indicated in the figure above, this technology does not differentiate between conventional and unconventional oil, whose competition is explicitly modeled upstream of the refining sector. In a typical region, the oil refining technology consumes three energy inputs: crude oil, natural gas, and electricity (see [Figure](details_energy.html#oil-refining)). The coefficients of the oil refining production technology reflect whole-process inputs and liquid fuel outputs; there is no explicit tracking of the production and on-site use of intermediate products such as refinery gas (still gas). Electricity produced at refineries (both the fuel inputs and electricity outputs) is modeled in the electricity and/or industrial energy use sectors, as the IEA Energy Balances ([IEA 2012](energy.html#iea2012)) do not disaggregate autoproducer electric power plants at refineries from elsewhere. There is no oil refining technology option with CO<sub>2</sub> capture and storage (CCS) considered.
+The oil refining subsector accounts for the vast majority of the historical output of the refining sector, globally and in all regions. Each region is assigned a single production technology for oil refining; this technology does not differentiate between conventional and unconventional oil, whose competition is explicitly modeled upstream of the refining sector. In a typical region, the oil refining technology consumes three energy inputs: crude oil, natural gas, and electricity (see [Figure](details_energy.html#oil-refining)). The coefficients of the oil refining production technology reflect whole-process inputs and liquid fuel outputs; there is no explicit tracking of the production and on-site use of intermediate products such as refinery gas (still gas). Electricity produced at refineries (both the fuel inputs and electricity outputs) is modeled in the electricity and/or industrial energy use sectors, as the IEA Energy Balances ([IEA 2012](supply_energy.html#iea2012)) do not disaggregate autoproducer electric power plants at refineries from elsewhere. There is no oil refining technology option with CO<sub>2</sub> capture and storage (CCS) considered.
 
 ##### Biomass Liquids
 
-The biomass liquids subsector includes up to eight technologies in each region, with a global total of 11, listed in [Table](details_energy.html#biomass-liquids). The biomass liquids technologies include up to four "first-generation" biofuels in each region, defined as biofuels produced agricultural crops that are also used as food, animal feed, or other modeled uses (described in the [land module](land.html)). The model tracks secondary feed outputs of biofuel production, as DDGS (dried distillers grains and solubles) from ethanol production, and as feedcakes from biodiesel production. Second-generation technologies consume the "biomass" or "biomassOil" commodities, which include purpose-grown bioenergy crops, as well as residues from forestry and agriculture, and municipal and industrial wastes.  Starting in 2020, second-generation biofuels (cellulosic ethanol and Fischer-Tropsch syn-fuels) are introduced, each with three levels of CCS: none, level 1, and level 2. The first CCS level generally consists of relatively pure and high-concentration CO2 sources (e.g., from gasifiers or fermenters), which have relatively low capture and compression costs. The second CCS level includes a broader set of sources (e.g., post-combustion emissions), and incurs higher costs but has a higher CO<sub>2</sub> removal fraction.
+The biomass liquids subsector includes up to eight technologies in each region, with a global total of [11 production technologies](details_energy.html#biomass-liquids). The biomass liquids technologies include up to four "first-generation" biofuels in each region, defined as biofuels produced from agricultural crops that are also used as food, animal feed, or other modeled uses (described in the [land module](land.html)). The model tracks secondary feed outputs of first generation biofuel production, as DDGS (dried distillers grains and solubles) from ethanol production, and as feedcakes from biodiesel production. Second-generation technologies consume the "biomass" or "biomassOil" commodities, which include purpose-grown bioenergy crops, as well as residues from forestry and agriculture, and municipal and industrial wastes.  Starting in 2020, second-generation biofuels (cellulosic ethanol and Fischer-Tropsch syn-fuels) are introduced, each with three levels of CCS: none, level 1, and level 2. The first CCS level generally consists of relatively pure and high-concentration CO2 sources (e.g., from gasifiers or fermenters), which have relatively low capture and compression costs. The second CCS level includes a broader set of sources (e.g., post-combustion emissions), and incurs higher costs but has a higher CO<sub>2</sub> removal fraction.
 
 ##### Coal to Liquids
 
-The majority of the world's coal to liquids production is in South Africa ([IEA 2012](energy.html#iea2012)), but the technology is available to all regions in GCAM starting in the first future time period. Note that the CO<sub>2</sub> emissions intensity is substantially higher than all other liquid fuel production technologies, due to high process energy intensities, and high primary fuel carbon contents. Where crude oil refining emits about 5.5 kg of CO<sub>2</sub> per GJ of fuels produced, coal to liquids emits over 130 kg of CO<sub>2</sub> per GJ of fuel produced. The upstream emissions from fuel production by this pathway are substantially higher than the "tailpipe" emissions from combustion of the fuels produced (about 70 kg CO<sub>2</sub> per GJ). As with biomass liquids, two different production technologies with CCS are represented, with costs and CO<sub>2</sub> removal fractions based on [Dooley and Dahowski (2009)](energy.html#dooley2009).
+The majority of the world's coal to liquids production is in South Africa ([IEA 2012](supply_energy.html#iea2012)), but the technology is available to all regions in GCAM starting in the first future time period. Note that the CO<sub>2</sub> emissions intensity is substantially higher than all other liquid fuel production technologies, due to high process energy intensities, and high primary fuel carbon contents. Where crude oil refining emits about 5.5 kg of CO<sub>2</sub> per GJ of fuels produced, coal to liquids emits over 130 kg of CO<sub>2</sub> per GJ of fuel produced. The upstream emissions from fuel production by this pathway are substantially higher than the "tailpipe" emissions from combustion of the fuels produced (about 70 kg CO<sub>2</sub> per GJ). As with biomass liquids, two different production technologies with CCS are represented, with costs and CO<sub>2</sub> removal fractions based on [Dooley and Dahowski (2009)](supply_energy.html#dooley2009).
 
 ##### Gas to Liquids
 
@@ -112,17 +114,17 @@ The gas pipeline sector explicitly represents the energy consumed by compressors
 
 Heat is included as a final energy carrier in the IEA Energy Balances, and is intended to represent heat sold to third parties. That is, the use of heat and/or steam produced on-site at buildings and factories is simply reported as the energy consumption used to produce the heat and/or steam.
 
-In most regions in GCAM, heat is not explicitly represented as an energy commodity; instead, the reported fuel inputs to heat plants are assigned directly to the end use sectors that consume the heat (buildings and industry). Combined heat and power (CHP) is included as a technology option, but is located within the industrial energy use sector, and no inter-sectoral flow of heat is represented. However, in several regions where purchased heat accounts for a large share of the final energy use, GCAM does include a representation of district heat production, with four competing technology options, as described in [district services](details_energy.html#district-services)
+In most regions in GCAM, heat is not explicitly represented as an energy commodity; instead, the reported fuel inputs to heat plants are assigned directly to the end use sectors that consume the heat (buildings and industry). Combined heat and power (CHP) is included as a technology option, but is located within the industrial energy use sector, and no inter-sectoral flow of heat is represented. However, in several regions where purchased heat accounts for a large share of the final energy use, GCAM does include a representation of district heat production, with four competing technology options, as described in [district services](details_energy.html#district-services).
 
 #### Hydrogen
 
-Hydrogen in GCAM is modeled purely as a future energy commodity; while industrial scale volumes of hydrogen are currently produced (e.g., at oil refineries or ammonia plants), the present-day use of hydrogen is almost entirely for non-energy purposes. Hydrogen is not treated as a fuel in the IEA Energy Balances [IEA 2012](supply_energy.html#iea2012), or most other energy statistics. As such, the use of hydrogen as an energy carrier is assumed zero in the base years of GCAM, and starting in 2020 it is allowed to compete for market share supplying heat and power in the industrial sector, and for vehicle fuel in the transportation sector. The representation of hydrogen in GCAM includes 10 production technologies in two production sectors, with cost mark-ups to reflect levelized infrastructural costs, as well as variable transmission and distribution costs. The structure of the hydrogen production and distribution sectors and technologies in GCAM generally uses the structure of the U.S. Department of Energy's Hydrogen Analysis (H2A) models [DOE 2015](supply_energy.html#doe2015). As in the H2A model, the production of hydrogen takes place in two distinct sectors: H<sub>2</sub> Forecourt Production (i.e., on-site generation) and H<sub>2</sub> Central Production. Hydrogen can be produced from natural gas, coal, biomass, wind, and solar. See [hydrogen](details_energy.html#hydrogen) for more information.
+Hydrogen in GCAM is modeled purely as a future energy commodity; while industrial scale volumes of hydrogen are currently produced (e.g., at oil refineries or ammonia plants), the present-day use of hydrogen is almost entirely for non-energy purposes. Hydrogen is not treated as a fuel in the IEA Energy Balances [IEA 2012](supply_energy.html#iea2012), or most other energy statistics. As such, the use of hydrogen as an energy carrier is assumed zero in the base years of GCAM, and starting in 2020 it is allowed to compete for market share supplying heat and power in the industrial sector, and for vehicle fuel in the transportation sector. The representation of hydrogen in GCAM includes 10 production technologies in two production sectors, with cost mark-ups to reflect levelized infrastructural costs, as well as variable transmission and distribution costs. The structure of the hydrogen production and distribution sectors and technologies in GCAM generally uses the structure of the U.S. Department of Energy's Hydrogen Analysis (H2A) models [DOE 2015](supply_energy.html#doe2015). As in the H2A model, the production of hydrogen takes place in two distinct sectors: H<sub>2</sub> Forecourt Production (i.e., on-site generation) and H<sub>2</sub> Central Production. Hydrogen can be produced from natural gas, coal, biomass, nuclear (thermal splitting), and electrolysis (electricity, wind, and solar). See [hydrogen](details_energy.html#hydrogen) for more information.
 
 ### Energy Trade
 
 GCAM models trade for coal, gas, oil, and bioenergy using an Armington approach that is described in [fossil fuel trade](details_energy.html#fossil-fuel-trade). Under this approach regions are allowed to choose between domestically produced products or globally traded products when making a consumption decision. This approach allows for the computation of a regionally distinct consumption price for fossil fuels based on the domestic and imported consumption. 
 
-Other energy carriers (e.g., solar, wind, geothermal) are not traded. For more generalinformation, see the [discussion of approaches to international trade](trade.html).
+Other primary energy carriers (e.g., solar, wind, geothermal) are not traded and all secondary fuels (e.g., electricity, refined liquids, hydrogen) are not traded inter-regionally. For more generalinformation, see the [discussion of approaches to international trade](trade.html).
 
 ## Equations 
 The equations that determine energy supply are described here.
@@ -152,9 +154,7 @@ Users can also include [energy intensity standards](policies_examples.html#res),
 
 ## Insights and intuition
 
-### Paper/Topic #1
-
-{One paragraph summary of a key insight from one or more papers}
+To be completed...
 
 ## IAMC Reference Card
 
@@ -209,7 +209,7 @@ Hydrogen production
 - [X] Biomass to hydrogen w/o CCS
 - [X] Biomass to hydrogen w/ CCS
 - [X] Nuclear thermochemical hydrogen
-- [X] Solar thermochemical hydrogen
+- [ ] Solar thermochemical hydrogen
 - [X] Electrolysis
 
 Refined liquids
@@ -234,8 +234,8 @@ Heat generation
 - [X] Natural gas heat
 - [X] Oil heat
 - [X] Biomass heat
-- [X] Geothermal heat
-- [X] Solarthermal heat
+- [ ] Geothermal heat
+- [ ] Solarthermal heat
 - [X] CHP (coupled heat and power)
 
 ### Grid Infrastructure
@@ -260,7 +260,6 @@ Hydrogen
 - [X] Yes (aggregate)
 - [ ] Yes (spatially explicit)
 
-<a name="table_footnote">1</a>: Note that this table differs from the one provided on the [Supply Inputs Page](inputs_supply.html#description) in that it lists all inputs to the land model, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
 
 ## References
 
@@ -269,6 +268,8 @@ Hydrogen
 <a name="dooley2009">[Dooley and Dahowski 2009]</a> Dooley, J.J., and Dahowski, R.T. 2009. Large-scale U.S. unconventional fuels production and the role of carbon dioxide capture and storage technologies in reducing their greenhouse gas emissions. *Energy Procedia* 1(1), pp. 4225-4232. [Link](http://www.sciencedirect.com/science/article/pii/S1876610209008765)
 
 <a name="enerdata2014">[Enerdata 2014]</a> Enerdata, 2016. *The Future of Gas-to-Liquid (GTL) Industry*. [Link](http://www.enerdata.net/enerdatauk/press-and-publication/energy-news-001/future-gas-liquid-gtl-industry_29879.html)
+
+<a name="eurek2017">[Eurek et al. 2017]</a> Eurek, K., P. Sullivan, M. Gleason, D. Hettinger, D. Heimiller, A. Lopez (2017). An improved global wind resource estimate for integrated assessment models. Energy Economics, 64.
 
 <a name="glebova2013">[Glebova 2013]</a> Glebova, O. 2013. *Gas to Liquids: Historical Development and Future Prospects*, Report NG 80, Oxford Institute for Energy Studies. [Link](https://www.oxfordenergy.org/wpcms/wp-content/uploads/2013/12/NG-80.pdf)
 
@@ -283,9 +284,5 @@ Hydrogen
 <a name="iha2000">[IHA 2000]</a> International Hydropower Association, et al., 2000, *Hydropower and the World's Energy Future*. [Link](http://www.ieahydro.org/media/ffab53b0/Hydropower%20and%20the%20World's%20Energy%20Future%20.pdf)
 
 <a name="linden1976">[Linden et al. 1976]</a> Linden, H.R., Bodle, W.W., Lee, B.S., and Vyas, K.C. 1976. Production of high-btu gas from coal. *Annual Reviews of Energy* 1, pp. 65-86. [Link](http://www.annualreviews.org/doi/pdf/10.1146/annurev.eg.01.110176.000433)
-
-<a name="mahasenan2005">[Mahasenan et al. 2005]</a> Mahasenan, N., Dahowski, R.T., and Davidson, C.L. 2005. The role of carbon dioxide capture and storage in reducing emissions from cement plants in North America. *Proceedings of the 7th International Conference on Greenhouse Gas Control Technologies* 1, pp. 901-909. [Link](https://www.sciencedirect.com/science/article/pii/B9780080447049500914)
-
-<a name="zhou2012">[Zhou et al. 2012]</a> Zhou, Y., Luckow, P., Smith, S.J., and Clarke, L. 2012. Evaluation of global onshore wind energy potential and generation costs. *Environmental Science and Technology* 46(14), pp. 7857-7864. [Link](http://pubs.acs.org/doi/abs/10.1021/es204706m)
 
 <a name="zwart2006">[Zwart et al. 2006]</a> Zwart, R., Boerrigter, H., Deurwaarder, E.P., van der Meijden, C.M., and van Paasen, S.V.B. 2006. *Production of Synthetic Natural Gas (SNG) from Biomass: Development and operation of an integrated bio-SNG system*. Report ECN-E-06-018, Energy Research Centre of the Netherlands. [Link](https://www.ecn.nl/docs/library/report/2006/e06018.pdf)

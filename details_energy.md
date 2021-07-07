@@ -1,6 +1,6 @@
 ---
 layout: index
-title: The GCAM Water Model
+title: Additional details about the energy model
 prev: supply_energy.html
 next: supply_energy.html
 gcam-version: v5.3 
@@ -26,17 +26,13 @@ The figures below show some illustrative examples of supply curves used within G
 
 #### Representation of unconventional oil as a technology within crude oil
 
-Unconventional oil and crude oil are merged into 1 resource (crude oil). Note that the ability for countries to produce unconventional oil is maintained by adding it as a subresource and technology within crude oil. This structure allows GCAM to load all costs and energy inputs related to unconventional oil production directly as technology costs. Since unconventional oil is combined with crude oil,they share a single price that governs supply expansion.   
+Unconventional oil and crude oil are represented as distinct subresources within a single resource (crude oil). Combining these oil types into a one resource allows for a single price that governs supply expansion. The additional costs and energy inputs related to unconventional oil production are represented in the technology contained within the unconventional oil subresource.
 
 ### Renewable Resources
 
 #### Wind
 
-The supply curves in each region are derived from bottom-up analysis documented in [Zhou et al. (2012)](details_energy.html#zhou2012).
-
-<img src="gcam-figs/wind.jpeg" width="900" height="500" /><br/>
-**Illustrative example of global gridded potential for wind electricity generation used in GCAM **
-{: .fig}
+The supply curves in each region are derived from bottom-up analysis documented in [Eurek et al. (2017)](details_energy.html#eurek2017).
 
 #### Solar
 
@@ -65,10 +61,10 @@ In the schematic of the energy system depicted below, the energy transformation 
 The nesting structure of the electric sector is shown in the figure below, with a focus on one repesentative technology.
 
 <img src="gcam-figs/elec_structure.png" width="900" height="200" /><br/>
-**Schematic showing the nesting structure of the electric sector, with levels for choices between fuels, technologies, and cooling systems. Note that this is a simplification of the actual structure used, which includes "pass-through" sectors, because GCAM sectors are only allowed two levels of nesting.**
+**Schematic showing the nesting structure of the electric sector, with levels for choices between fuels, technologies, and cooling systems. Note that this is a simplification of the actual structure used, which includes "pass-through" sectors.**
 {: .fig}
 
-Details on the assumptions used in GCAM (e.g., cost, efficiency, capacity factors, etc.) is documented in [Muratori et al. 2017](energy.html#muratori2017). GCAM also includes the water inputs to electricity generation, in a third nest, as shown in the figure above. That is, within any thermo-electric generation technology, there is modeled competition between up to five different cooling system types; this is documented in the [water demand section](demand_water.html).
+Details on the assumptions used in GCAM (e.g., cost, efficiency, capacity factors, etc.) are documented in [Inputs for Modeling Supply](inputs_supply.html#energy). GCAM also includes the water inputs to electricity generation, in a third nest, as shown in the figure above. That is, within any thermo-electric generation technology, there is modeled competition between up to five different cooling system types; this is documented in the [water demand section](demand_water.html).
 
 ### Refining
 
@@ -162,13 +158,15 @@ The wind and solar technologies are electrolysis technologies, but are specifica
 
 #### Data calibration for fossil fuel trade
 
-Each region's share of the global (e.g. traded coal) market as well as the split for domestic and imported goods are calibrated in the final base year. IEA's data set cannot be used to make this calibration because it lacks a bilateral trade accounting. Instead the GCAM data system uses the UN's Comtrade data set to account for intraregional trade to avoid double counting any gross trade. For example trade done within an aggregated GCAM region (e.g. Germany trading with France both of which are in GCAM's EU-15 region) should not be counted as part of that region's gross trade. To avoid overestimating the amounts of gross trade, Comtrade's bilateral data set is used to exclude any intraregional trade. The Comtrade trade data is used to calculate gross trade for each region. This is then combined with the data on production and consumption of fossil fuels calculated within the data system (production is calculated from the fossil fuel supply curves and IEA data and consumption is initialized from IEA energy balances) to compute trade balances. These trade balances are then used to initialize data for the domestic and traded sectors using relevant shareweights and interpolation rules.
+Each region's share of the global (e.g. traded coal) market as well as the split for domestic and imported goods are calibrated in the final base year. IEA's data set cannot be used to make this calibration because it lacks a bilateral trade accounting. Instead the GCAM data system uses the UN's Comtrade data set to account for intraregional trade to avoid double counting any gross trade. For example trade done within an aggregated GCAM region (e.g. Germany trading with France, both of which are in GCAM's EU-15 region) should not be counted as part of that region's gross trade. The Comtrade trade data is used to calculate gross trade for each region. This is then combined with the data on production and consumption of fossil fuels calculated within the data system (production is calculated from the fossil fuel supply curves and IEA data and consumption is initialized from IEA energy balances) to compute trade balances. 
 
 ## References
 
 <a name="denholm2008">[Denholm 2008]</a> Denholm, P. 2008. *Supply Curves for Rooftop Solar PV-Generated Electricity for the United States*, Technical Report NREL/TP-6A0-44073, National Renewable Energy Laboratory. [Link](http://www.nrel.gov/docs/fy09osti/44073.pdf)
 
 <a name="doe2015">[DOE 2015]</a> U.S. Department of Energy. 2015. *DOE H2A Production Analysis*, DOE Hydrogen and Fuel Cells Program. [Link](https://www.hydrogen.energy.gov/h2a_production.html)
+
+<a name="eurek2017">[Eurek et al. 2017]</a> Eurek, K., P. Sullivan, M. Gleason, D. Hettinger, D. Heimiller, A. Lopez (2017). An improved global wind resource estimate for integrated assessment models. Energy Economics, 64.
 
 <a name="iea2007">[IEA 2007]</a> International Energy Agency, 2007, *Tracking Industrial Energy Efficiency and CO<sub>2</sub> Emissions*, International Energy Agency, Paris, France. [Link](https://www.iea.org/publications/freepublications/publication/tracking_emissions.pdf)
 
