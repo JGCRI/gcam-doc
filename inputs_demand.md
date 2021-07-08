@@ -33,6 +33,7 @@ GCAM's demand inputs include information on consumption and prices in the histor
 | Logit exponents | GCAM requires the user to specify the logit exponents that determine the substitutability between technologies. | Assumption |  | Specified by sector and subsector | N/A |
 | Share weight interpolation rules | These rules dictate how share weights (GCAM's calibration parameter) are specified in future years. | Assumption |  | Specified by sector and subsector | N/A |
 | Fuel preference elasticity | Elasticity dictating how share weights change with GDP per capita | Assumption | Specified by technology and year | unitless |
+| Satiation levels | Assumed satiation values for floorspace and residential energy services | Assumption | | Specified by demand, service, and region | m2/pers or EJ/pers |
 
 
 Table 1: External inputs used for demand of energy<sup>[1](#table_footnote1)</sup>
@@ -56,8 +57,8 @@ Price elasticity of demand is specified in [A32.demand.csv](https://github.com/J
 Costs are specified in [A32.globaltech_cost.csv](https://github.com/JGCRI/gcam-core/tree/master/input/gcamdata/inst/extdata/energy/A32.globaltech_cost.csv), [A321.globaltech_cost.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A321.globaltech_cost.csv), [A44.cost_efficiency.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.cost_efficiency.csv)
 
 ##### Default efficiencies
-Efficiencies are specified in [A32.globaltech_eff.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A32.globaltech_eff.csv), [A44.cost_efficiency.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.cost_efficiency.csv)
-.
+
+Efficiencies are specified in [A32.globaltech_eff.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A32.globaltech_eff.csv), [A44.cost_efficiency.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.cost_efficiency.csv), and [A44.tech_eff_mult_RG3.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.tech_eff_mult_RG3.csv).
 
 ##### Default input-output coefficients
 
@@ -88,6 +89,10 @@ Fuel preference elasticities are specified in [A32.fuelprefElasticity.csv](https
 ##### Value of time in transit
 
 Multipliers used to determine the value of time in transit are specified in [A54.tranSubsector_VOTT_revised.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A54.tranSubsector_VOTT_revised.csv).
+
+#### Satiation levels
+
+Satiation levels are specified in [A44.satiation_flsp](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.satiation_flsp.csv) and [A44.demand_satiation_mult](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.demand_satiation_mult.csv).
 
 ### Water
 
