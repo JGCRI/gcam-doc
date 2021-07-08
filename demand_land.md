@@ -39,17 +39,12 @@ The equations that determine food, feed, and forest demand are described here.
 See `method name` in [code_file.cpp](link to code on GitHub).
 
 ## Policy options 
-This section summarizes some of the energy-based policy options available in GCAM. 
 
-### Policy type #1
-
-{Insert paragraph describing a type of policy for this sector. Include links to xml input files on GitHub and/or the policies.html or policies_examples.html pages}
+To be completed...
 
 ## Insights and intuition
 
-### Paper/Topic #1
-
-{One paragraph summary of a key insight from one or more papers}
+To be completed...
 
 ## IAMC Reference Card
 
@@ -66,7 +61,7 @@ Agriculture and forestry demands
 - [X] Agriculture bioenergy
 - [X] Agriculture residues
 - [X] Forest industrial roundwood
-- [ ] Forest fuelwood
+- [X] Forest fuelwood
 - [X] Forest residues
 
 

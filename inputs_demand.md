@@ -132,6 +132,7 @@ The data specifying manufacturing water coefficients is specified in [Vassolo_mf
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | Historical demand for crops | Demand for agricultural commodities in the historical period; used for initialization/calibration of GCAM | External data | FAO | Specified by crop, use, country, and year | tons |
 | Historical demand for livestock | Demand for livestock commodities in the historical period; used for initialization/calibration of GCAM | External data | FAO | Specified by crop, use, country, and year | tons |
+| Historical demand for forest | Demand for forest products in the historical period; used for initialization/calibration of GCAM | External data | FAO | Specified by country and year | m<sup>3</sup> |
 | Income and price elasticity | Income and price elasticity of demand (only used for non-food demand) | Assumption |  | Specified by demand | unitless |
 | Logit exponents | Share parameters dictating substitution between different commodities | Assumption |  | Specified by type demand | unitless |
 
@@ -148,6 +149,10 @@ Historical demand for agricultural commodities is provided in separate files for
 ##### Historical demand for livestock
 
 Historical demand for livestock commodities is provided in separate files for [food](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/FAO_an_Food_t_SUA.csv), [feed](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/FAO_an_Feed_t_SUA.csv),  [export](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/FAO_an_Exp_t_SUA.csv), and [import](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/FAO_an_Imp_t_SUA.csv).
+
+##### Historical forest data
+
+Historical data for forest demand is determined by [production](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/FAO_For_Prod_m3_FORESTAT.csv), [export](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/FAO_For_Exp_m3_FORESTAT.csv), and [import](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/FAO_For_Imp_m3_FORESTAT.csv) data.
 
 ##### Income and price elasticity
 

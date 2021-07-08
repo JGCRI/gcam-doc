@@ -27,7 +27,7 @@ gcam-version: v5.3
 | Mature age | By GLU and land type | years | [Exogenous](inputs_land.html) |
 | Soil time scale | By geopolitical region and land type | years | [Exogenous](inputs_land.html) |
 | Value of unmanaged land | By GLU | 1975$ per thous $$km^2$$ | [Exogenous](inputs_land.html) |
-| Profit rate of managed land | By GLU | 1975$ per thous $$km^2$$ | [Supply Model](supply_land.html) |
+| Profit rate of managed land | By GLU | 1975$ per thous $$km^2$$ | [Land Supply Module](supply_land.html) |
 | Logit exponents | By GLU and land node | Unitless | [Exogenous](inputs_land.html) |
 
 
