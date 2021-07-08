@@ -32,9 +32,9 @@ GCAM's demand inputs include information on consumption and prices in the histor
 | Retirement rules | For vintaged technologies, GCAM requires the user to specify the lifetime, and the parameters required for phased and profit-based shutdown. | Assumption |  | Specified by technology and year | Years (for lifetime), unitless for others |
 | Logit exponents | GCAM requires the user to specify the logit exponents that determine the substitutability between technologies. | Assumption |  | Specified by sector and subsector | N/A |
 | Share weight interpolation rules | These rules dictate how share weights (GCAM's calibration parameter) are specified in future years. | Assumption |  | Specified by sector and subsector | N/A |
-| Fuel preference elasticity | Elasticity dictating how share weights change with GDP per capita | Assumption | Specified by technology and year | unitless |
+| Fuel preference elasticity | Elasticity dictating how share weights change with GDP per capita | Assumption | | Specified by technology and year | unitless |
 | Satiation levels | Assumed satiation values for floorspace and residential energy services | Assumption | | Specified by demand, service, and region | m2/pers or EJ/pers |
-
+| Income elasticity of demand | Elasticity determining how demand responds to changes in per capita output for industry and cement | Assumption | | Specified by demand | unitless
 
 Table 1: External inputs used for demand of energy<sup>[1](#table_footnote1)</sup>
 
@@ -50,7 +50,7 @@ GCAM uses IEA energy balances as a source for historical energy supply and deman
 
 ##### Elasticities of demand
 
-Price elasticity of demand is specified in [A32.demand.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A32.demand.csv), [A54.demand.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A54.demand.csv) .
+Price elasticity of demand is specified in [A32.demand.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A32.demand.csv), and [A54.demand.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A54.demand.csv). Income elasticities of demand for industry and cement are specified in [A32.inc_elas_output.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/socioeconomics/A32.inc_elas_output.csv) and [A321.inc_elas_output.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/socioeconomics/A321.inc_elas_output.csv).
 
 ##### Cost
 
