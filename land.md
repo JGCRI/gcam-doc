@@ -1,6 +1,6 @@
 ---
 layout: index
-title: The GCAM Land Model
+title: The GCAM Land Allocation Module
 prev: diagram.html
 next: supply_land.html
 gcam-version: v5.3 
@@ -8,7 +8,7 @@ gcam-version: v5.3
 
 # Table of Contents
 
-- [Inputs to the Model](#inputs-to-the-model)
+- [Inputs to the Module](#inputs-to-the-module)
 - [Description](#description)
 - [Equations](#equations)
 - [Insights and intuition](#insights-and-intuition)
@@ -16,8 +16,8 @@ gcam-version: v5.3
 - [IAMC Reference Card](#iamc-reference-card)
 - [References](#references)
 
-## Inputs to the Model
-**Table 1: Inputs required by the land model <sup>[1](#table_footnote)</sup>**
+## Inputs to the Module
+**Table 1: Inputs required by the land allocation module <sup>[1](#table_footnote)</sup>**
 
 | Name | Resolution | Unit | Source |
 | :--- | :--- | :--- | :--- |
@@ -30,6 +30,7 @@ gcam-version: v5.3
 | Profit rate of managed land | By GLU | 1975$ per thous $$km^2$$ | [Land Supply Module](supply_land.html) |
 | Logit exponents | By GLU and land node | Unitless | [Exogenous](inputs_land.html) |
 
+<br/>
 
 ## Description
 
@@ -39,11 +40,11 @@ In this section, we describe and discuss the approach we have developed for the 
 
 #### Land Sharing Approach 
 
-Economic land use decisions in GCAM are based on a logit model of sharing based on relative inherent profitability of using land for competing purposes. In GCAM, there is a distribution of profit behind each competing land use within a region. The share of land allocated to any given use is based on the probability that that use has a highest profit among the competing uses. For more information, see the detailed description of the [land sharing approach](details_land.html#landsharingapproach).
+Economic land use decisions in GCAM are based on a logit model of sharing based on relative inherent profitability of using land for competing purposes. In GCAM, there is a distribution of profit behind each competing land use within a region. The share of land allocated to any given use is based on the probability that that use has a highest profit among the competing uses. For more information, see the detailed description of the [land sharing approach](details_land.html#land-sharing-approach).
 
 #### Land Nesting Strategy
 
-The way land types are nested in GCAM, in combination with the logit exponents used, determines the substitutability of different land types in the model in future periods. Figure 1 shows the nesting diagram of land with a subregion. Note that crops are further divided beyond what is in Figure 1, nesting irrigated/rainfed and hi/lo fertilizer. For more information, see the detailed description of the [land nesting strategy](details_land.html#landnestingstrategy).
+The way land types are nested in GCAM, in combination with the logit exponents used, determines the substitutability of different land types in the model in future periods. Figure 1 shows a simplified nesting diagram of land with a subregion. Note that crops are further divided beyond what is in Figure 1, nesting irrigated/rainfed and hi/lo fertilizer. For more information, see the detailed description of the [land nesting strategy](details_land.html#land-nesting-strategy).
 
 ![AgLU Land Nesting Diagram](gcam-figs/AgLUTree.bmp)<br/>
 Figure 1: AgLU Land Nest
@@ -55,10 +56,10 @@ The inclusion of multiple management types for each crop within each subregion o
 
 #### Calibration
 
-While the profit-based logit land sharing is fairly straightforward, it must be calibrated to match historical data on land use shares and profit rates in the base year. The calibration method solves for parameters that adjust observed profit rates, which are based on base year data, such that they equal the potential average profit rates implied by base year shares and the assumed average price of unmanaged land. In future model periods, the calibration profit scalers calculated in the final historical period are used to adjust the future profit rates in the logit sharing and profit equations. For more information, see the detailed description of the [calibration](details_land.html#calibration). Additional information is also provided on [modeling new land uses or crops](details_land.html#modelinglandusesandcropsthatarenewtoaregion) and [crop outliers](details_land.html$#cropoutliers).
+While the profit-based logit land sharing is fairly straightforward, it must be calibrated to match historical data on land use shares and profit rates in the base year. The calibration method solves for parameters that adjust observed profit rates, which are based on base year data, such that they equal the potential average profit rates implied by base year shares and the assumed average price of unmanaged land. In future model periods, the calibration profit scalers calculated in the final historical period are used to adjust the future profit rates in the logit sharing and profit equations. For more information, see the detailed description of the [calibration](details_land.html#calibration). Additional information is also provided on [modeling new land uses or crops](details_land.html#modeling-land-uses-and-crops-that-are-new-to-a-region) and [crop outliers](details_land.html#crop-outliers).
 
 #### Regional Production and Comparative Advantage
-In its determination of the economic allocation of crop production and land use across regions of the globe, GCAM follows the basic economic principle of comparative advantage. In simplest terms, countries or regions will produce more of what they are better at and import more of what they are not as good at producing.  For more information, see the detailed description of [comparative advantage](details_land.html#regionalproductionandcomparativeadvantage).
+In its determination of the economic allocation of crop production and land use across regions of the globe, GCAM follows the basic economic principle of comparative advantage. In simplest terms, countries or regions will produce more of what they are better at and import more of what they are not as good at producing.  For more information, see the detailed description of [comparative advantage](details_land.html#regional-production-and-comparative-advantage).
 
 ### Terrestrial Carbon Approach
 
@@ -84,7 +85,7 @@ The equations that determine land allocation and the resulting carbon emissions 
 ### Profit
 
 #### Leaf profit
-Profit for managed land leafs is calculated in the [supply module](supply_land.html) and passed to the land allocator. Profit for unmanaged land leafs is [input](inputs_land.html#valueofunmanagedland) into the model. Within the land allocator, this profit is adjusted if land-related policies are included.
+Profit for managed land leafs is calculated in the [supply module](supply_land.html) and passed to the land allocator. Profit for unmanaged land leafs is [input](inputs_land.html#value-of-unmanaged-land) into the model. Within the land allocator, this profit is adjusted if land-related policies are included.
 
 See `setProfitRate` in [land_leaf.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/land_allocator/source/land_leaf.cpp) and `setUnmanagedLandProfitRate` in [unmanaged_land_leaf.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/land_allocator/source/unmanaged_land_leaf.cpp).
 
@@ -96,7 +97,7 @@ $$
 \pi_i = \left[{\sum_{j=1}^{N} \lambda_j \pi_j^\rho}\right]^{\frac{1}{\rho}}
 $$
 
-where $$\lambda_i$$ is the [profit scaler](land.html#calibration) for leaf of node $$i$$, $$\pi_i$$ is the [profit](land.html#profit) for node $$i$$, $$\pi_j$$ is the [profit](land.html#profit) for leaf or node $$j$$ contained within node $$i$$, and $$\rho$$ is the [logit exponent](inputs_land.html#shareparameters).
+where $$\lambda_i$$ is the [profit scaler](land.html#calibration) for leaf or node $$i$$, $$\pi_i$$ is the [profit](land.html#profit) for node $$i$$, $$\pi_j$$ is the [profit](land.html#profit) for leaf or node $$j$$ contained within node $$i$$, and $$\rho$$ is the [logit exponent](inputs_land.html#share-parameters).
 
 See `calculateNodeProfitRates` in [land_node.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/land_allocator/source/land_node.cpp).
 
@@ -108,13 +109,13 @@ $$
 s_i = \frac{(\lambda_i \pi_i)^\rho}{\sum_{j=1}^{N} (\lambda_j \pi_j)^\rho}
 $$
 
-where $$s_i$$ is the share of leaf or node $$i$$, $$\lambda_i$$ is the [profit scaler](land.html#calibration) for leaf of node $i$, $$\pi_i$$ is the [profit](land.html#profit) for leaf or node $$i$$, and $$\rho$$ is the [logit exponent](inputs_land.html#shareparameters).
+where $$s_i$$ is the share of leaf or node $$i$$, $$\lambda_i$$ is the [profit scaler](land.html#calibration) for leaf or node $$i$$, $$\pi_i$$ is the [profit](land.html#profit) for leaf or node $$i$$, and $$\rho$$ is the [logit exponent](inputs_land.html#share-parameters).
 
 See `calcLandShares` in [land_leaf.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/land_allocator/source/land_leaf.cpp) and [land_node.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/land_allocator/source/land_node.cpp).
 
 ### Land Area
 
-To calculate land area, GCAM works its way down the [nesting tree](land.html#landnestingstrategy), starting from the top where total land area in a region is provided as an [input](inputs_land.html#HistoricalLandCoverandUse). For each node or leaf below, the area is calculated as
+To calculate land area, GCAM works its way down the [nesting tree](land.html#land-nesting-strategy), starting from the top where total land area in a region is provided as an [input](inputs_land.html#Historical-Land-Cover-and-Use). For each node or leaf below, the area is calculated as
 
 $$
 a_i = a_{above} * s_i
@@ -194,7 +195,7 @@ An example file is included to implement this policy is included in GCAM; see [g
 
 We can impose constraints (lower or upper bounds) on bioenergy within GCAM. Under such a policy, GCAM will calculate the tax or subsidy required to ensure that the constraint is met. Note that by default a bioenergy constraint in GCAM (starting with v4.4) is imposed based on the amount of subsidy available for net negative emissions.
 
-See [Energy Constraint](policies_examples.html#energyconstraint) for an xml snippet.
+See [Energy Constraint](policies_examples.html#energy-constraint) for an xml snippet.
 
 ### Land expansion costs/constraints
 
@@ -202,7 +203,7 @@ One approach we have implemented and tested is to add a land expansion cost curv
 
 The land expansion cost curve is implemented as a “renewable” resource that land must “purchase” on a per-unit of land basis. The cost curve can be set at a zero cost up to a predefined amount of land: e.g., base year allocation, pre-industrial allocation, etc. Beyond this point, the cost curve increases to either represent a physical expansion cost or an arbitrarily high cost that would act as a hard constraint on expansion. One drawback to this approach is that each cost curve adds a market equation that needs to be solved. The market should behave well, but adding markets should always be done with care as it does put additional burdens on the solution algorithm.
 
-See [Land Constraint](policies_examples.html#landconstraint) for an xml snippet.
+See [Land Constraint](policies_examples.html#land-constraint) for an xml snippet.
 
 ### Carbon Parks
 

@@ -8,22 +8,23 @@ gcam-version: v5.3
 
 # Table of Contents
 
-- [Inputs to the Model](#inputs-to-the-model)
+- [Inputs to the Module](#inputs-to-the-module)
 - [Description](#description)
 - [Equations](#equations)
 - [Insights and intuition](#insights-and-intuition)
-- [Policy options](#policy-options)
 - [IAMC Reference Card](#iamc-reference-card)
 - [References](#references)
 
 ## Inputs to the Model
-**Table 1: Inputs required by the supply model <sup>[1](#table_footnote)</sup>**
+**Table 1: Inputs required by the supply module <sup>[1](#table_footnote)</sup>**
 
 | Name | Resolution | Unit | Source |
 | :--- | :--- | :--- | :--- |
 | Runoff supply curves (cost and availability) | Water basin and year | $$km^3$$ | [Exogenous](inputs_supply.html) |
 | Ground water supply curves (cost and availability) | Water basin and year | $$km^3$$ | [Exogenous](inputs_supply.html) |
 | Desalination cost | Water basin and year | $$km^3$$ | [Exogenous](inputs_supply.html) |
+
+<a name="table_footnote">1</a>: Note that this table differs from the one provided on the [Supply Inputs Page](inputs_supply.html#description) in that it lists all inputs to the water supply module, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
 
 
 ## Description
@@ -50,7 +51,7 @@ Conveyance losses and improvements to water distribution efficiencies are includ
 
 ### Water markets
 
-Water supplies and demands at each basin are balanced through a market mechanism in which prices for water (shadow price) are adjusted until water demands are constrained to available supply. Additional documentation of this capability is available in [Kim et al. 2016](#kim2016), [Turner et al. 2019ab](#turner2019a), [Graham et al. 2018](#graham2018), and [Cui et al. 2018](#cui2018). For additional information, see the detailed description on [water markets](details_#watermarkets).
+Water supplies and demands at each basin are balanced through a market mechanism in which prices for water (shadow price) are adjusted until water demands are constrained to available supply. Additional documentation of this capability is available in [Kim et al. 2016](#kim2016), [Turner et al. 2019ab](#turner2019a), [Graham et al. 2018](#graham2018), and [Cui et al. 2018](#cui2018). For additional information, see the detailed description on [water markets](details_water.html#water-markets).
 
 ### Water subsidies and water rights
 
@@ -70,7 +71,6 @@ Co-linkages
 - [X] Water availability
 
 
-<a name="table_footnote">1</a>: Note that this table differs from the one provided on the [Supply Inputs Page](inputs_supply.html#description) in that it lists all inputs to the land model, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
 
 ## References
 

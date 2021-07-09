@@ -8,7 +8,7 @@ gcam-version: v5.3
 
 # Table of Contents
 
-- [Inputs to the Model](#inputs-to-the-model)
+- [Inputs to the Module](#inputs-to-the-module)
 - [Description](#description)
 - [Equations](#equations)
 - [Insights and intuition](#insights-and-intuition)
@@ -16,8 +16,8 @@ gcam-version: v5.3
 - [IAMC Reference Card](#iamc-reference-card)
 - [References](#references)
 
-## Inputs to the Model
-**Table 1: Inputs required by the supply model <sup>[1](#table_footnote)</sup>**
+## Inputs to the Module
+**Table 1: Inputs required by the supply module <sup>[1](#table_footnote)</sup>**
 
 | Name | Resolution | Unit | Source |
 | :--- | :--- | :--- | :--- |
@@ -32,10 +32,11 @@ gcam-version: v5.3
 | Fertilizer prices | By region, commodity, and year | 1975$/kg | [Marketplace](marketplace.html)  |
 | Water prices | By region, commodity, and year | 1975$/m3 | [Marketplace](marketplace.html)  |
 
+<a name="table_footnote">1</a>: Note that this table differs from the one provided on the [Supply Inputs Page](inputs_supply.html#food-feed-and-forestry) in that it lists all inputs to the land supply module, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
+
 
 ## Description
 
-{Add as many subsections and sub-subsections as needed to describe this area. Each subsection should have a short paragraph qualitatively describing the topic. Additional information can be included on a details_xyz.md page if needed}
 
 ### Variable Costs
 
@@ -82,7 +83,6 @@ Agricultural commodities
 
 
 
-<a name="table_footnote">1</a>: Note that this table differs from the one provided on the [Supply Inputs Page](inputs_supply.html#description) in that it lists all inputs to the land model, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
 
 ## References
 

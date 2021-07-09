@@ -84,7 +84,7 @@ Share weight interpolation rules are specified in [A32.subsector_shrwt.csv](http
 
 ##### Fuel preference elasticities
 
-Fuel preference elasticities are specified in [A32.fuelprefElasticity.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A32.fuelprefElasticity.csv), [A44.fuelprefElasticity.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A42.fuelprefElasticity.csv).
+Fuel preference elasticities are specified in [A32.fuelprefElasticity.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A32.fuelprefElasticity.csv), [A44.fuelprefElasticity.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.fuelprefElasticity.csv).
 
 ##### Value of time in transit
 
@@ -160,7 +160,7 @@ Price and income elasticity are specified in [A_demand_supplysector.csv](https:/
 
 ##### Logit exponents
 
-Logit exponents are specified in [A_demand_supplysector.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/A_demand_supplysector.csv) and [A_demand_subector.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/A_demand_subsector.csv).
+Logit exponents are specified in [A_demand_supplysector.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/A_demand_supplysector.csv) and [A_demand_subsector.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/A_demand_subsector.csv).
 
 ## References
 

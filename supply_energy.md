@@ -8,7 +8,7 @@ gcam-version: v5.3
 
 # Table of Contents
 
-- [Inputs to the Model](#inputs-to-the-model)
+- [Inputs to the Module](#inputs-to-the-module)
 - [Description](#description)
 - [Equations](#equations)
 - [Insights and intuition](#insights-and-intuition)
@@ -16,14 +16,14 @@ gcam-version: v5.3
 - [IAMC Reference Card](#iamc-reference-card)
 - [References](#references)
 
-## Inputs to the Model
-**Table 1: Inputs required by the supply model <sup>[1](#table_footnote)</sup>**
+## Inputs to the Module
+**Table 1: Inputs required by the supply module <sup>[1](#table_footnote)</sup>**
 
 | Name | Resolution | Unit | Source |
 | :--- | :--- | :--- | :--- |
 |  |  |  | [Exogenous](inputs_supply.html) |
 
-<a name="table_footnote">1</a>: Note that this table differs from the one provided on the [Supply Inputs Page](inputs_supply.html#description) in that it lists all inputs to the energy model, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
+<a name="table_footnote">1</a>: Note that this table differs from the one provided on the [Supply Inputs Page](inputs_supply.html#description) in that it lists all inputs to the energy supply module, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
 
 
 ## Description
@@ -99,12 +99,12 @@ While a minor contributor to liquid fuels production globally (about 0.1%; [IEA 
 The three subsectors of the gas processing sector, and the downstream sectors are described below. See [gas processing](details_energy.html#gas-processing) for an overview of the structure.
 
 ##### Natural Gas
-Natural gas accounts for almost 99% of the gaseous fuel production represented in GCAM's calibration year (2015). The natural gas commodity in GCAM includes all gaseous fuels produced at gas wells, the gaseous co-products from oil production, and gas produced from coal mines and coal seams. The natural gas commodity excludes natural gas liquids, and it excludes gas that is vented, flared, or re-injected. Further information is available in [Mapping the IEA Energy Balances](supply_energy.html#mapping-the-iea-energy-balances) and [IEA (2011)](supply_energy.html#iea2011). In the gas processing sector, the natural gas technology is assigned an input-output coefficient of 1, as natural gas plant fuel is not a disaggregated flow in the IEA energy balances.
+Natural gas accounts for almost 99% of the gaseous fuel production represented in GCAM's calibration year (2015). The natural gas commodity in GCAM includes all gaseous fuels produced at gas wells, the gaseous co-products from oil production, and gas produced from coal mines and coal seams. The natural gas commodity excludes natural gas liquids, and it excludes gas that is vented, flared, or re-injected. Further information is available in [Mapping the IEA Energy Balances](details_inputs.html#mapping-the-iea-energy-balances) and [IEA (2011)](supply_energy.html#iea2011). In the gas processing sector, the natural gas technology is assigned an input-output coefficient of 1, as natural gas plant fuel is not a disaggregated flow in the IEA energy balances.
 
 ##### Coal Gasification
 The GCAM coal gasification technology in historical years represents gas works gas, or town gas, that is produced from coal. It does not include blast furnace gas, coke oven gas, and other coal-derived gaseous fuels that are by-products of other activities, and typically consumed on-site. Many regions produced no coal gas in 2010. In future periods, the technology represents a broader suite of coal gasification processes that are capable of producing a commodity that competes for market share with natural gas. See [Linden et al. 1976](supply_energy.html#linden1976) for a review of technologies for producing pipeline-grade gaseous fuels from coal.
 
-###### Biomass Gasification
+##### Biomass Gasification
 In historical years, biomass gasification, or biogas, is considered to be gases captured from landfills, sludge, and agricultural wastes, that are used to provide heat and power. As with coal gasification, in future periods, biomass gasification is intended to represent a suite of processes that convert biomass feedstocks into pipeline-grade gaseous fuels that can be used by a variety of end users. For a technical description see [Zwart et al. 2006](supply_energy.html#zwart2006).
 
 ##### Gas Pipeline, Delivered Gas, and Wholesale Gas
@@ -124,7 +124,7 @@ Hydrogen in GCAM is modeled purely as a future energy commodity; while industria
 
 GCAM models trade for coal, gas, oil, and bioenergy using an Armington approach that is described in [fossil fuel trade](details_energy.html#fossil-fuel-trade). Under this approach regions are allowed to choose between domestically produced products or globally traded products when making a consumption decision. This approach allows for the computation of a regionally distinct consumption price for fossil fuels based on the domestic and imported consumption. 
 
-Other primary energy carriers (e.g., solar, wind, geothermal) are not traded and all secondary fuels (e.g., electricity, refined liquids, hydrogen) are not traded inter-regionally. For more generalinformation, see the [discussion of approaches to international trade](trade.html).
+Other primary energy carriers (e.g., solar, wind, geothermal) are not traded and all secondary fuels (e.g., electricity, refined liquids, hydrogen) are not traded inter-regionally. For more generalinformation, see the [discussion of approaches to international trade](details_trade.html).
 
 ## Equations 
 The equations that determine energy supply are described here.

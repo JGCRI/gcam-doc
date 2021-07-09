@@ -237,8 +237,7 @@ The choice model in the land system is not currently configurable like
 in the energy system.  Instead, land use choices are always made using
 the Modified Logit.  Logit exponents are specified directly in the
 container object using the `<logit-exponent>` tag.  Land use choice is
-described further in the [Agriculture and Land Use](AgLU.html#logit)
-chapter.
+described further in the [land section](details_land.html#landsharingapproach).
 
 ## Notes and References
 

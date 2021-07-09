@@ -8,14 +8,14 @@ gcam-version: v5.3
 
 # Table of Contents
 
-- [Inputs to the Model](#inputs-to-the-model)
+- [Inputs to the Module](#inputs-to-the-module)
 - [Description](#description)
 - [Equations](#equations)
 - [Insights and intuition](#insights-and-intuition)
 - [IAMC Reference Card](#iamc-reference-card)
 
-## Inputs to the Model
-**Table 1: Inputs required by the economic model <sup>[1](#table_footnote)</sup>**
+## Inputs to the Module
+**Table 1: Inputs required by the economic module <sup>[1](#table_footnote)</sup>**
 
 | Name | Resolution | Unit | Source |
 | :--- | :--- | :--- | :--- |
@@ -45,7 +45,7 @@ See `initialGDPcalc` in [gdp.cpp](https://github.com/JGCRI/gcam-core/blob/master
 
 ## Insights and intuition
 
-### Paper/Topic #1
+### Socioeconomic growth and demand
 
 Changes in future per capita GDP and population will affect the final demand for energy, food, and forestry. For example, increases in population will increase regional consumption proportionally, while changes in per capita GDP affect consumption through income elasticities (See [demand inputs](inputs_demand.html)). Thus, different assumptions of future GDP and population growth across different socioeconomic scenarios may play key roles in driving to an alternative future. In addition, regional heterogeneity in future GDP and population growth, leading to heterogeneous regional demand growth, is also a critical driver to future changes in regional supply, biophysical responses, and trade patterns.
 
@@ -92,5 +92,5 @@ Autonomous energy efficiency improvements
 - [ ] Yes (endogenous)
 
 
-<a name="table_footnote">1</a>: Note that this table differs from the one provided on the [Supply Inputs Page](inputs_supply.html#description) in that it lists all inputs to the land model, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
+<a name="table_footnote">1</a>: Note that this table differs from the one provided on the [Economy Inputs Page](inputs_economy.html#description) in that it lists all inputs to the economy module, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
 
