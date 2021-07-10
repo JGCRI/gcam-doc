@@ -20,11 +20,13 @@ GCAM's demand inputs include information on consumption and prices in the histor
 
 #### Description
 
+Table 1: External inputs used for demand of energy<sup>[1](#table_footnote1)</sup>
+
 | Name | Description | Type | Source | Resolution | Unit |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | Historical demand for energy | Demand for energy in the historical period; used for initialization/calibration of GCAM | External data | IEA | Specified by demand, fuel, country, and year |  ktoe and GWh |
 | Price elasticity of demand | Elasticity determining how demand responds to changes in price | Assumption | | Specified by demand |  unitless |
-| Value of time in transit multiplier | Factor multiplied by the wage rate to determine the value of time in transit, used in the transportation model | Assumption | | Specified by demand |  unitless |
+| Value of time in transit multiplier | Factor multiplied by the wage rate to determine the value of time in transit, used in the transportation module | Assumption | | Specified by demand |  unitless |
 | Cost | Cost of production | Assumption | | Specified by technology and year |  1975$/kg or 1975$/GJ |
 | Default input-output coefficients | Default amount of input required per unit of output produced; can be overwritten by region-specific information derived from historical data | Assumption | | Specified by technology and year |  Various (e.g., GJ per kg, GJ per GJ) |
 | Default efficiencies | Default amount of output produced per unit of input; can be overwritten by region-specific information derived from historical data | Assumption | | Specified by technology and year |  Various (e.g., GJ per kg, GJ per GJ) |
@@ -36,7 +38,7 @@ GCAM's demand inputs include information on consumption and prices in the histor
 | Satiation levels | Assumed satiation values for floorspace and residential energy services | Assumption | | Specified by demand, service, and region | m2/pers or EJ/pers |
 | Income elasticity of demand | Elasticity determining how demand responds to changes in per capita output for industry and cement | Assumption | | Specified by demand | unitless
 
-Table 1: External inputs used for demand of energy<sup>[1](#table_footnote1)</sup>
+<font size="-1"><a name="table_footnote1">1</a>: Note that this table differs from the one provided on the <a href="demand_energy.html#inputs-to-the-module">Energy Demand Modeling Page</a> in that it only lists external inputs to the demand module (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.</font>
 
 Note that for the Shared Socioeconomic Pathways (SSPs), different inputs are used for some variables. See [SSPs](ssp.html) for more information.
 
@@ -99,6 +101,8 @@ Satiation levels are specified in [A44.satiation_flsp](https://github.com/JGCRI/
 
 #### Description
 
+Table 2: External inputs used for demand of water <sup>[2](#table_footnote2)</sup>
+
 | Name | Description | Type | Source | Resolution | Unit |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | Agriculture water coefficients | Water coefficients for agricultural commodities, including blue (irrigation) and green (rain) water, includes data for a single year circa 2000 | External data set | <a href="http://waterfootprint.org/media/downloads/Report47-Appendix-II.zip">Mekonnen and Hoekstra</a> | Crop, country, water type (blue, green) | $$m^3$$ per ton |
@@ -111,7 +115,7 @@ Satiation levels are specified in [A44.satiation_flsp](https://github.com/JGCRI/
 | Municipal water use efficiency | Water efficiency values for municipalities | Shiklomanov 2000 | Continent | Percent |
 | Municipal water cost | Price per unit of water delivered to municipalities | International Benchmarking Network for Water and Sanitation Utilities (IBNET) | External data set | Country | USD per $$km^3$$ |
 
-Table 2: External inputs used for demand of water <sup>[2](#table_footnote2)</sup>
+<font size="-1"><a name="table_footnote2">2</a>: Note that this table differs from the one provided on the <a href="demand_water.html#inputs-to-the-module">Water Demand Modeling Page</a> in that it only lists external inputs to the demand module (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.</font>
 
 Note that for the Shared Socioeconomic Pathways (SSPs), different inputs are used for some variables. See [SSPs](ssp.html) for more information.
 
@@ -128,6 +132,8 @@ The data specifying manufacturing water coefficients is specified in [Vassolo_mf
 
 #### Description
 
+Table 3: External inputs used for demand of food, feed, and forestry <sup>[3](#table_footnote3)</sup>
+
 | Name | Description | Type | Source | Resolution | Unit |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | Historical demand for crops | Demand for agricultural commodities in the historical period; used for initialization/calibration of GCAM | External data | FAO | Specified by crop, use, country, and year | tons |
@@ -137,7 +143,7 @@ The data specifying manufacturing water coefficients is specified in [Vassolo_mf
 | Food demand parameters | Set of 11 parameters required for the food demand model | External data | [Ambrosia](https://github.com/jgcri/ambrosia) | | unitless |
 | Logit exponents | Share parameters dictating substitution between different commodities | Assumption |  | Specified by type demand | unitless |
 
-Table 3: External inputs used for demand of food, feed, and forestry <sup>[3](#table_footnote3)</sup>
+<font size="-1"><a name="table_footnote3">3</a>: Note that this table differs from the one provided on the <a href="demand_land.html#inputs-to-the-module">Food, Feed, and Forestry Demand Modeling Page</a> in that it only lists external inputs to the demand module (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.</font>  
 
 Note that for the Shared Socioeconomic Pathways (SSPs), different inputs are used for some variables. See [SSPs](ssp.html) for more information.
 
@@ -165,7 +171,7 @@ Logit exponents are specified in [A_demand_supplysector.csv](https://github.com/
 
 ##### Food demand parameters
 
-Parameters needed for the food demand model are determined by a separate model, [Ambrosia](https://github.com/jgcri/ambrosia), and read into GCAM. The GCAM input files are [A_demand_food_nonstaples.csv](https://github.com/JGCRI/gcam-core/tree/master/input/gcamdata/inst/extdata/aglu/A_demand_food_nonstaples.csv) and [A_demand_food_staples.csv](https://github.com/JGCRI/gcam-core/tree/master/input/gcamdata/inst/extdata/aglu/A_demand_food_staples.csv).
+Parameters needed for the food demand module are determined by a separate model, [Ambrosia](https://github.com/jgcri/ambrosia), and read into GCAM. The GCAM input files are [A_demand_food_nonstaples.csv](https://github.com/JGCRI/gcam-core/tree/master/input/gcamdata/inst/extdata/aglu/A_demand_food_nonstaples.csv) and [A_demand_food_staples.csv](https://github.com/JGCRI/gcam-core/tree/master/input/gcamdata/inst/extdata/aglu/A_demand_food_staples.csv).
 
 ## References
 
@@ -184,8 +190,5 @@ Parameters needed for the food demand model are determined by a separate model, 
 <a name="vassolo2005">[Vassolo and Döll 2005]</a> Vassolo, S., and Döll, P. 2005. Global-scale gridded estimates of thermoelectric power and manufacturing water use. *Water Resources Research* 41, W04010. [Link](http://www.uni-frankfurt.de/45217769/Vassolo_Doell_WRR2005.pdf)
 
 
-<font size="-1"><a name="table_footnote1">1</a>: Note that this table differs from the one provided on the <a href="demand_energy.html#inputstothemodel">Energy Demand Modeling Page</a> in that it only lists external inputs to the supply model (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.<br/>    
+    
 
-<a name="table_footnote2">2</a>: Note that this table differs from the one provided on the <a href="demand_water.html#inputstothemodel">Water Demand Modeling Page</a> in that it only lists external inputs to the supply model (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.<br/>  
-
-<a name="table_footnote3">3</a>: Note that this table differs from the one provided on the <a href="demand_land.html#inputstothemodel">Food, Feed, and Forestry Demand Modeling Page</a> in that it only lists external inputs to the supply model (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.</font>  
