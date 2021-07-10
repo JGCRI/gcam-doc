@@ -23,6 +23,7 @@ gcam-version: v5.3
 | Runoff supply curves (cost and availability) | Water basin and year | $$km^3$$ | [Exogenous](inputs_supply.html) |
 | Ground water supply curves (cost and availability) | Water basin and year | $$km^3$$ | [Exogenous](inputs_supply.html) |
 | Desalination cost | Water basin and year | $$km^3$$ | [Exogenous](inputs_supply.html) |
+| Water prices | By basin and year | 1975$/m3 | [Marketplace](marketplace.html)  |
 
 <a name="table_footnote">1</a>: Note that this table differs from the one provided on the [Supply Inputs Page](inputs_supply.html#description) in that it lists all inputs to the water supply module, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
 

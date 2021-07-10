@@ -30,7 +30,7 @@ gcam-version: v5.3
 | Water coefficients | By GLU, crop, management practice, and year | 1975$/kg | [Exogenous](inputs_demand.html)  |
 | Commodity prices | By region, commodity, and year | 1975$/kg | [Marketplace](marketplace.html)  |
 | Fertilizer prices | By region, commodity, and year | 1975$/kg | [Marketplace](marketplace.html)  |
-| Water prices | By region, commodity, and year | 1975$/m3 | [Marketplace](marketplace.html)  |
+| Water prices | By basin and year | 1975$/m3 | [Marketplace](marketplace.html)  |
 
 <a name="table_footnote">1</a>: Note that this table differs from the one provided on the [Supply Inputs Page](inputs_supply.html#food-feed-and-forestry) in that it lists all inputs to the land supply module, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
 
