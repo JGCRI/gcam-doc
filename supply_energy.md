@@ -21,7 +21,15 @@ gcam-version: v5.3
 
 | Name | Resolution | Unit | Source |
 | :--- | :--- | :--- | :--- |
-|  |  |  | [Exogenous](inputs_supply.html) |
+| Historical energy supply (used for calibration) | By region, fuel, flow, and year | EJ/yr | [Exogenous](inputs_supply.html) |
+| Resource supply curves | By region, resource, and grade | EJ and 1975$/GJ | [Exogenous](inputs_supply.html) |
+| Technology costs | By region, technology, and year | 1975$/GJ | [Exogenous](inputs_supply.html) |
+| Logit exponents | By region, sector or subsector, and year | unitless | [Exogenous](inputs_supply.html) |
+| Share weight interpolation rules | By region, technology or subsector, and year | unitless | [Exogenous](inputs_supply.html) |
+| Efficiency or input-output coefficient | By region, technology or subsector, and year | unitless | [Exogenous](inputs_supply.html) |
+| Energy commodity prices | By region, fuel, and year | 1975$/GJ | [Marketplace](marketplace.html) |
+| GHG value | By region, technology, gas, and year | 1975$/GJ | [Emissions](emissions.html) |
+
 
 <a name="table_footnote">1</a>: Note that this table differs from the one provided on the [Supply Inputs Page](inputs_supply.html#description) in that it lists all inputs to the energy supply module, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
 
@@ -127,9 +135,45 @@ GCAM models trade for coal, gas, oil, and bioenergy using an Armington approach 
 Other primary energy carriers (e.g., solar, wind, geothermal) are not traded and all secondary fuels (e.g., electricity, refined liquids, hydrogen) are not traded inter-regionally. For more generalinformation, see the [discussion of approaches to international trade](details_trade.html).
 
 ## Equations 
-The equations that determine energy supply are described here.
 
-### Renewable resource supply curves
+The equations that determine energy supply are described here. 
+
+### Total technology cost
+
+The total cost for a technology is the sum of the cost of the technology, the cost of its inputs, and any GHG value:
+
+$$
+C = t + \sum_{j=1}^{n} i_j + \sum_{k=1}^{m} g_k - \sum_{l=1}^{o} v_l
+$$
+
+Where $$C$$ is the total cost, $$t$$$ is the exogenously specified technology cost (capturing capital cost and operating & maintenance costs), $$i_j$$ is the cost of input $$j$$ (e.g., a fuel),  $$g_k$$ is the GHG value of gas $$k$$, and $$v_l$$ is the value of secondary output $$l$$. Costs vary by region, technology, and year. 
+
+See `calcCost` for total cost calculation,  `getTotalInputCost` for the calculation of input costs, and `calcSecondaryValue` for the calculation of secondary values including the GHG value. All three methods are specified in [technology.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/technologies/source/technology.cpp).
+
+### Technology or subsector share
+
+GCAM uses one of [two different logit formulations](choice.html#the-logit) to calculate the shares for each technology or subsector. 
+
+The first option, also known as the `relative-cost-logit`, is:
+
+$$
+s_i = \frac{\alpha_i c_i^\gamma}{\sum_{j=1}^{N} \alpha_j c_j^\gamma}
+$$
+
+where $$s_i$$ is the share of technology or subsector $$i$$, $$alpha_i$$ is the share weight, $$c_i$$ is the cost of technology or subsector $$i$$, and $$beta$$ is the logit exponent.
+
+The second option, also known as the `absolute-cost-logit`, is: 
+
+$$
+s_i = \frac{\alpha_i \exp(\beta c_i)}{\sum_{j=1}^{N} \alpha_j
+\exp(\beta c_j)}.
+$$
+
+where $$s_i$$ is the share of technology or subsector $$i$$, $$alpha_i$$ is the share weight, $$c_i$$ is the cost of technology or subsector $$i$$, and $$beta$$ is the logit exponent.
+
+See [relative cost logit](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/functions/source/relative_cost_logit.cpp) and [absolute cost logit](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/functions/source/absolute_cost_logit.cpp).
+
+### Renewable resource supply
 
 The specific supply curve in each region for wind and solar is assigned three parameters, detailed in the following equation:
 

@@ -21,8 +21,15 @@ gcam-version: v5.3
 
 | Name | Resolution | Unit | Source |
 | :--- | :--- | :--- | :--- |
-|  |  |  | [Exogenous](inputs_demand.html) |
-
+| Historical energy demand (used for calibration) | By region, technology, and year | EJ/yr | [Exogenous](inputs_demand.html) |
+| Cost | By region, technology, and year | 1975$/GJ | [Exogenous](inputs_demand.html) |
+| Income and price elasticity | By region, demand, and year | unitless | [Exogenous](inputs_demand.html) |
+| GDP per capita | By region and year | thous 1990$ per person | [Economy module](economy.html) |
+| Population | By region and year | thousand | [Economy](economy.html) |
+| Commodity prices | By region, commodity, and year | 1975$/GJ | [Marketplace](marketplace.html) |
+| Logit exponents | By region, sector or subsector, and year | unitless | [Exogenous](inputs_demand.html) |
+| Share weight interpolation rules | By region, technology or subsector, and year | unitless | [Exogenous](inputs_demand.html) |
+| Fuel preference elasticity | By region, technology or subsector, and year | unitless | [Exogenous](inputs_demand.html) |
 
 ## Description
 
@@ -102,6 +109,29 @@ The non-fuel costs are estimated for some technologies (e.g., light-duty vehicle
 
 ## Equations 
 The equations that determine energy demand are described here.
+
+### Technology or subsector share
+
+GCAM uses one of [two different logit formulations](choice.html#the-logit) to calculate the shares for each technology or subsector. 
+
+The first option, also known as the `relative-cost-logit`, is:
+
+$$
+s_i = \frac{\alpha_i c_i^\gamma}{\sum_{j=1}^{N} \alpha_j c_j^\gamma}
+$$
+
+where $$s_i$$ is the share of technology or subsector $$i$$, $$alpha_i$$ is the share weight, $$c_i$$ is the cost of technology or subsector $$i$$, and $$beta$$ is the logit exponent.
+
+The second option, also known as the `absolute-cost-logit`, is: 
+
+$$
+s_i = \frac{\alpha_i \exp(\beta c_i)}{\sum_{j=1}^{N} \alpha_j
+\exp(\beta c_j)}.
+$$
+
+where $$s_i$$ is the share of technology or subsector $$i$$, $$alpha_i$$ is the share weight, $$c_i$$ is the cost of technology or subsector $$i$$, and $$beta$$ is the logit exponent.
+
+See [relative cost logit](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/functions/source/relative_cost_logit.cpp) and [absolute cost logit](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/functions/source/absolute_cost_logit.cpp).
 
 #### Per Capita floorspace
 
