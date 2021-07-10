@@ -24,7 +24,7 @@ gcam-version: v5.3
 | Historical energy supply (used for calibration) | By region, fuel, flow, and year | EJ/yr | [Exogenous](inputs_supply.html) |
 | Resource supply curves | By region, resource, and grade | EJ and 1975$/GJ | [Exogenous](inputs_supply.html) |
 | Technology costs | By region, technology, and year | 1975$/GJ | [Exogenous](inputs_supply.html) |
-| Logit exponents | By region, sector or subsector, and year | unitless | [Exogenous](inputs_supply.html) |
+| Logit exponents | By region and sector or subsector | unitless | [Exogenous](inputs_supply.html) |
 | Share weight interpolation rules | By region, technology or subsector, and year | unitless | [Exogenous](inputs_supply.html) |
 | Efficiency or input-output coefficient | By region, technology or subsector, and year | unitless | [Exogenous](inputs_supply.html) |
 | Energy commodity prices | By region, fuel, and year | 1975$/GJ | [Marketplace](marketplace.html) |

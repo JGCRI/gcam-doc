@@ -31,6 +31,10 @@ gcam-version: v5.3
 | Primary energy production | GCAM region, fuel, and year | EJ per year | [Supply Model](supply_energy.html) |
 | Industry water coefficients | GCAM region, water type (consumption, withdrawals, biophysical consumption) and year | $$km^3$$ per EJ | [Exogenous](inputs_demand.html) |
 | Industry output | GCAM region and year | EJ per year | [Demand Model](demand_energy.html) |
+| Income and price elasticity | By region, demand, and year | unitless | [Exogenous](inputs_demand.html) |
+| GDP per capita | By region and year | thous 1990$ per person | [Economy module](economy.html) |
+| Population | By region and year | thousand | [Economy](economy.html) |
+
 
 
 ## Description

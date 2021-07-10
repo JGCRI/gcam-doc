@@ -27,7 +27,7 @@ gcam-version: v5.3
 | GDP per capita | By region and year | thous 1990$ per person | [Economy module](economy.html) |
 | Population | By region and year | thousand | [Economy](economy.html) |
 | Commodity prices | By region, commodity, and year | 1975$/GJ | [Marketplace](marketplace.html) |
-| Logit exponents | By region, sector or subsector, and year | unitless | [Exogenous](inputs_demand.html) |
+| Logit exponents | By region and sector or subsector | unitless | [Exogenous](inputs_demand.html) |
 | Share weight interpolation rules | By region, technology or subsector, and year | unitless | [Exogenous](inputs_demand.html) |
 | Fuel preference elasticity | By region, technology or subsector, and year | unitless | [Exogenous](inputs_demand.html) |
 
