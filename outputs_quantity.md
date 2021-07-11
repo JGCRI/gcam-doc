@@ -20,7 +20,7 @@ Outputs are specified in the `startVisitOutput`, `startVisitResource`, `startVis
 
 <font size="-1">
 <a name="table_footnote">1</a>: There is a long list of standard queries that report quantity outputs. The "physical output" query listed above will report all outputs at the technology level. The "inputs" query listed above will report all inputs to each technology. The other queries filter or aggregate those outputs. For example, the "outputs by sector" query aggregates <i>physical-output</i> to the sector level; the "elec gen by gen tech" query filters the <i>physical-output</i> for electricity generating technologies. The "primary energy consumption by region (direct equivalent)" aggregates all energy-related inputs, providing a total energy consumption by fuel, region, and year. <br/>
-<a name="table_footnote">2</a>: Outputs are reported at the regional resolution of the sector. See <a href="common_assumptions.html#regionalresolution">Regional Resolution</a>  <br/>
+<a name="table_footnote">2</a>: Outputs are reported at the regional resolution of the sector. See <a href="common_assumptions.html#regional-resolution">Regional Resolution</a>  <br/>
 <a name="table_footnote">3</a>: Units vary. In general, energy-related outputs are reported in EJ/yr, agricultural outputs are in Mt/yr, forestry outputs are in million m<sup>3</sup>/yr, and water outputs are in km<sup>3</sup>/yr.  <br/>
 <a name="table_footnote">4</a>: Supply and demand can be reported by market. The market name contains both region and commodity information. For example, <i>globalcrude oil</i> is the globally traded crude oil market and <i>USACorn</i> is Corn market in the USA. Some markets will have both a global and a regional supply or demand.
 </font>
