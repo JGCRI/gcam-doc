@@ -32,7 +32,9 @@ gcam-version: v5.3
 | Share weight interpolation rules | By region, technology or subsector, and year | unitless | [Exogenous](inputs_demand.html) |
 | Fuel preference elasticity | By region, technology or subsector, and year | unitless | [Exogenous](inputs_demand.html) |
 
-<a name="table_footnote">1</a>: Note that this table differs from the one provided on the [Demand Inputs Page](inputs_demand.html#description) in that it lists all inputs to the energy demand module, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.  
+<font size="-1">
+<a name="table_footnote">1</a>: Note that this table differs from the one provided on the <a href="inputs_demand.html#energy">Demand Inputs Page</a> in that it lists all inputs to the energy demand module, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
+</font>
 
 ## Description
 

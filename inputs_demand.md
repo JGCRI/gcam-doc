@@ -128,7 +128,7 @@ The raw data used for agricultural water coefficients is provided in [Mekonnen_H
 
 The data specifying manufacturing water coefficients is specified in [Vassolo_mfg_water.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/water/Vassolo_mfg_water.csv). Note that this data is derived from the [Vassolo and Döll 2005](#vassolo2005) global inventory of manufacturing and electric power water demands for a base year of 1995. The manufacturing water demands of each country are multiplied by an exogenous ratio of self-supply to total industrial withdrawals (about 0.8; this comes from US-specific data in [Kenny et al. 2009](#kenny2009)), and extrapolated to all historical years assuming a fixed ratio between industrial electricity and water demands. The values estimated from this bottom-up calculation are limited to a maximum of 85% of the corresponding nation and year's estimate of industrial water withdrawals in [FAO Aquastat](#fao2016). 
 
-### Food / Feed / Forestry
+### Food, Feed, and Forestry
 
 #### Description
 

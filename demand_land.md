@@ -8,7 +8,7 @@ gcam-version: v5.3
 
 # Table of Contents
 
-- [Inputs to the Model](#inputs-to-the-model)
+- [Inputs to the Module](#inputs-to-the-module)
 - [Description](#description)
 - [Equations](#equations)
 - [Insights and intuition](#insights-and-intuition)
@@ -16,8 +16,9 @@ gcam-version: v5.3
 - [IAMC Reference Card](#iamc-reference-card)
 - [References](#references)
 
-## Inputs to the Model
-**Table 1: Inputs required by the demand model <sup>[1](#table_footnote)</sup>**
+## Inputs to the Module
+
+**Table 1: Inputs required by the demand module <sup>[1](#table_footnote)</sup>**
 
 | Name | Resolution | Unit | Source |
 | :--- | :--- | :--- | :--- |
@@ -29,7 +30,13 @@ gcam-version: v5.3
 | Scale parameter, self-price elasticity, cross-price elasticity, income elasticity, regional bias, price scaling parameters (for food demand) | By region | unitless | [Exogenous](inputs_demand.html) |
 | Logit exponents | By region and sector or subsector | unitless |  [Exogenous](inputs_demand.html) |
 | GDP per capita | By region and year | thous 1990$ per person | [Economy module](economy.html) |
-| Population | By region and year | thousand | [Economy](economy.html) |
+| Population | By region and year | thousand | [Economy module](economy.html) |
+
+<font size="-1">
+<a name="table_footnote">1</a>: Note that this table differs from the one provided on the <a href="inputs_demand.html#food-feed-and-forestry">Demand Inputs Page</a> in that it lists all inputs to the land demand module, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
+</font>
+
+<br/>
 
 ## Description
 
@@ -104,7 +111,6 @@ Agriculture and forestry demands
 
 
 
-<a name="table_footnote">1</a>: Note that this table differs from the one provided on the [Demand Inputs Page](inputs_demand.html#description) in that it lists all inputs to the land model, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
 
 ## References
 
