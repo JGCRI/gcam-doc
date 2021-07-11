@@ -8,7 +8,12 @@ gcam-version: v5.4
 
 This page provides more detailed explanations of the descriptions provided in the [Energy Supply](supply_energy.html) and [Energy Demand](demand_energy.html) modeling pages.
 
-{:toc}
+## Table of Contents
+
+- [Resources](#resources)
+- [Energy Transformation](#energy-transformation)
+- [Trade](#trade)
+- [References](#references)
 
 ## Resources
 

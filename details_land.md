@@ -8,7 +8,17 @@ gcam-version: v5.4
 
 This page provides more detailed explanations of the descriptions provided in the [land](land.html) modeling page.
 
-{:toc}
+## Table of Contents
+
+- [Land Sharing Approach](#land-sharing-approach)
+- [Land Nesting Strategy](#land-nesting-strategy)
+- [Calibration](#calibration)
+- [Modeling Land Uses and Crops that are New to a Region](#modeling-land-uses-and-crops-that-are-new-to-a-region)
+- [Crop Outliers](#crop-outliers)
+- [Regional Production and Comparative Advantage](#regional-production-and-comparative-advantage)
+- [Land Use Change Emissions](#land-use-change-emissions)
+- [References](#references)
+
 
 ## Land Sharing Approach 
 
@@ -92,3 +102,8 @@ When land is converted to forests, the vegetation carbon content of that new for
 ![Figure 1](gcam-figs/forest_carbon_evolution.png)<br/>
 Figure 1: Timescales for forest regrowth in GCAM.
 {: .fig}
+
+## References
+
+Samuelson, Paul A.; William D Nordhaus (2004), Economics, McGraw-Hill, ISBN 0-07-287205-5
+
