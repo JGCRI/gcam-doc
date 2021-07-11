@@ -31,6 +31,13 @@ gcam-version: v5.4
 | Logit exponents | By region and sector or subsector | unitless | [Exogenous](inputs_demand.html) |
 | Share weight interpolation rules | By region, technology or subsector, and year | unitless | [Exogenous](inputs_demand.html) |
 | Fuel preference elasticity | By region, technology or subsector, and year | unitless | [Exogenous](inputs_demand.html) |
+| Energy intensities of EFW processes (desalination, abstraction, treatment, distribution, wastewater treatment) | Global | GJ per $$m^3$$ | [Exogenous](inputs_demand.html) |
+| Irrigation water withdrawals | By region, GLU, crop, and year | $$km^3$$ per year | [GCAM water demand](demand_water.html) |
+| Municipal water withdrawals | By region and year | $$km^3$$ per year | [Water demand module](demand_water.html) |
+| Industrial water withdrawals | By region and year | $$km^3$$ per year | [Water demand module](demand_water.html) |
+| Desalinated water production | By region and year | $$km^3$$ per year | [Water supply module](supply_water.html) |
+| Shares of wastewater treated | By region and year | Unitless | [Exogenous](inputs_demand.html) |
+| Non-renewable groundwater supply curves - electricity inputs | 20 grades per geopolitical region and GLU | GJ per $$m^3$$ | [Exogenous](inputs_demand.html) |
 
 <font size="-1">
 <a name="table_footnote">1</a>: Note that this table differs from the one provided on the <a href="inputs_demand.html#energy">Demand Inputs Page</a> in that it lists all inputs to the energy demand module, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
@@ -89,6 +96,32 @@ The time value term is only used for modeling the competition between passenger 
 
 Transportation services in GCAM are ultimately supplied by [transportation technologies](en_technologies.html#transportation-technologies), which take inputs of energy and produce outputs of service-distance (e.g., passenger-km, tonne-km) (see [equation](#transportation-technology-cost) below). The non-fuel costs are estimated for some technologies (e.g., light-duty vehicles) from exogenous assumptions about vehicle capital costs, non-fuel operations and maintenance costs, financing assumptions, and annual vehicle utilization (vehicle-km per year). For others, such as all freight technologies and passenger bus and rail, the non-fuel cost is estimated by deducting estimated fuel costs from reported total service costs (e.g., [BTS 2015](demand_energy.html#bts2015)). In either case, the non-fuel cost is converted to dollars per vehicle-km for the equation above. The model then computes market shares of the different technologies as described in [logit choice](choice.html).
 
+### Energy for water
+
+#### System boundaries
+The specific system boundaries are explained in [Kyle et al. (2016)](demand_energy.html#kyle2016), and are set so as to include all energy for activities whose primary output is water, and to exclude from this domain production technologies that use both energy and water as inputs to produce some other good. For example, in thermoelectric power generation, energy is applied to water, and several studies of energy-for-water (e.g., [Sanders and Webber 2012](demand_energy.html#sanders2012)) have included it. This is not represented in GCAM as an "energy-for-water" process; rather, GCAM's representation of thermoelectric power generation consists of technologies that consume inputs of energy and water, and produce electricity as an output. The system boundaries of "energy-for-water" (EFW) consist of the following activities:
+
+* Water abstraction
+* Water treatment
+* Water distribution
+* Wastewater treatment
+
+Within the following sectors:
+
+* Desalinated water supply
+* Irrigated crop production
+* Industrial manufacturing
+* Municipal water supply
+
+#### Modeling Energy-for-Water
+The modeling approach is documented in [Kyle et al. (2021)](demand_energy.html#kyle2021), and consists of the following steps:
+
+* Estimation of water flow volumes of EFW processes and sectors
+* Multiplication of water flow volumes by assumed energy intensities
+* Adjustment of historical energy consumption in the commercial and industrial sectors to accommodate explicitly represented EFW
+
+
+
 ## Equations 
 The equations that determine energy demand are described here.
 
@@ -115,7 +148,7 @@ where $$s_i$$ is the share of technology or subsector $$i$$, $$alpha_i$$ is the 
 
 See [relative cost logit](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/functions/source/relative_cost_logit.cpp) and [absolute cost logit](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/functions/source/absolute_cost_logit.cpp).
 
-#### Per Capita floorspace
+### Per Capita floorspace
 
 The demand for per-capita floorspace, *f*, in future time period *t* is shown below. In this and subsequent equations, "satiation" indicates the level of service demand at which increases in income do not lead to further demands for services.
 
@@ -125,7 +158,7 @@ $$
 
 where *s* is the exogenous satiation level of per-capita floorspace, *μ* is the per-capita GDP at 50% of the satiation level, *a* is an exogenous tuning parameter, *P* is the total levelized cost of the modeled energy services per unit floorspace, *I* is per capita GDP, and $$\beta$$ is the price elasticity of averaged energy services.
 
-#### Building service demand
+### Building service demand
 
 The demands of generic services per unit floorspace, *d*, are shown in the equation below:
 
@@ -145,7 +178,7 @@ $$
 
 where *HDD* and *CDD* refer to heating and cooling degree days, respectively, η is the exogenous average building shell conductance, R is the exogenous average floor-to-surface ratio of buildings, IG is the internal gain heat from other building services, and λ is an exogenous internal gain scaler. In this way, the demands of heating and cooling services per unit of floorspace may vary depending on changes in climate, building shell characteristics, and the amount of internal gain heat coming from other modeled services.
 
-#### Transportation service demand
+### Transportation service demand
 
 The demand ($$D$$) for transportation services (e.g., passenger-km, tonne-km) in region $$r$$ and time period $$t$$ is given by the following equation:
 
@@ -170,7 +203,7 @@ In the equation above, $$j$$ refers to any of N technologies within subsector $$
 
 See `getGeneralizedPrice` and `getTimeValue` in [tran_subsector.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/sectors/source/tran_subsector.cpp).
 
-#### Transportation technology cost
+### Transportation technology cost
 
 The costs of transportation technologies are computed as follows, for technology $$j$$ in subsector $$i$$, region $$r$$, and time period $$t$$:
 
@@ -183,7 +216,7 @@ In this equation, $$P_f$$ stands for the fuel price, $$I$$ is the vehicle fuel i
 See `calcCost` in [tran_technology.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/technologies/source/tran_technology.cpp).
 
 
-#### Industry service demand
+### Industry service demand
 
 The demand ($$D$$) for industrial services in region $$r$$ and time period $$t$$ is given by the following equation:
 
@@ -195,7 +228,7 @@ Where $$Y$$ is the per-capita GDP, $$P$$ is the total service price aggregated a
 
 See `calcDemand` in [minicam_price_elasticity_function.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/functions/source/minicam_price_elasticity_function.cpp).
 
-#### Fertilizer demand
+### Fertilizer demand
 
 The demand for fertilizer is determined by the fertilizer input-output coefficient and the level of crop production, i.e.,
 
@@ -206,6 +239,36 @@ $$
 where $$D_{r,t}$$ is the demand for fertilizer in region $$r$$ at time $$t$$, $$Prod_{j,t}$$ is the crop production for technology $$j$$ at time $$t$$, $$Coef__{j,t}$$ is the fertilizer input-output coefficient for technology $$j$$ at time $$t$$, and $j$ is the set of all agricultural technologies within region $$r$$.
 
 See `production` in [ag_production_techology.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/technologies/source/ag_production_technology.cpp).
+
+### Energy for water
+
+The primary equation used in estimating energy-for-water by sector and process is as follows:
+
+$$
+EFW_{s,p}=W_{s,p}*EI_{s,p}
+$$
+
+Where $$EFW$$ is energy-for-water, $$s$$ is sector, $$p$$ is process, $$W$$ is water flow volume, and $$EI$$ is energy intensity. The energy intensity values for each process and sector were shown in the table above, and the water flow volumes are generally determined in [GCAM water demand](demand_water.html).
+
+Non-renewable groundwater pumping energy intensity is estimated in Superwell for any well *i* according to the following equations, reproduced from [superwell.R](https://github.com/JGCRI/superwell/blob/master/R/superwell.R):
+
+$$
+Power_{i}=\frac{SpecificWeight*TotalHead_{i}*WellYield_{i}}{PumpEfficiency*WattsPerKW}
+$$
+
+$$
+ElectricEnergyPerYear_{i}=Power_{i}*\frac{AnnualOperationTime}{SecondsPerHour}
+$$
+
+$$
+ElectricEnergyIntensity_{i}=\frac{ElectricEnergyPerYear_{i}}{WellYield_{i}*AnnualOperationTime}
+$$
+
+Where $$Power$$ is in $$kW$$, $$SpecificWeight$$ is in $$kg/m^2/s^2$$, $$WellYield$$ is in $$m^3/s$$, PumpEfficiency is unitless, assumed to be 50%, and $$WattsPerKW$$ is a constant, equal to 1000.
+
+$$ElectricEnergyPerYear$$ is in $$kWh/yr$$, $$AnnualOperationTime$$ is in seconds per year, and $$SecondsPerHour$$ is a constant, equal to 3600.
+
+$$ElectricEnergyIntensity$$ is in $$kWh/m^3$$.
 
 ## Policy options 
 
@@ -220,6 +283,10 @@ Changes in climate will affect residential energy demand [(Zhou et al. 2013)](ht
 ### Future changes in energy demand
 
 Residential energy will increase by the end of the century given the projected increase in population and GDP. The implementation of a climate policy promotes the electrification of the sector [(Eom et al.,  2013)](https://www.sciencedirect.com/science/article/pii/S0360544212006214).
+
+### Modeling Energy-for-water in GCAM
+
+[Kyle et al. (2021)](demand_energy.html#kyle2021) demonstrate a surprisingly small net impact on future global energy use from disaggregating energy-for-water in GCAM, as the water-related demands of electricity often parallel the future projected energy growth in the commercial and industrial sectors from which EFW energy is re-allocated. For example, energy for industrial water abstraction, treatment, and post-use wastewater treatment scale with the sector's water demands, which are driven by the sector's output, which is also what drives its demands for energy in the first place. So, representing energy-for-water explicitly in the model does not necessarily cause a departure in projected future energy demands, depending on the sector and region. The study also demonstrates that efforts to improve water provision and quality, as specified in Sustainable Development Goal #6, build off of one another in terms of energy-for-water. Expanding municipal water access to all people will increase the volume of wastewater generated, and parallel efforts to treat the maximum possible portion of wastewater will further increase the energy required for wastewater treatment, to levels that are multiples above a "business-as-usual" scenario.
 
 ## IAMC Reference Card
 
@@ -282,15 +349,27 @@ Residential and commercial
 
 <a name="kyle2011">[Kyle and Kim 2011]</a> Kyle, P., and Kim, S. 2011. Long-term implications of alternative light-duty vehicle technologies for global greenhouse gas emissions and primary energy demands. *Energy Policy* 39, pp. 3012-3024. [Link](http://www.sciencedirect.com/science/article/pii/S0301421511001960)
 
+<a name="kyle2016">[Kyle et al. 2016]</a> Kyle, P., Johnson, N., Davies, E., Bijl, D.L., Mouratiadou, I., Bevione, M., Drouet, L., Fujimori, S., Liu, Y., and Hejazi, M. 2016. Setting the system boundaries of “energy for water” for integrated modeling. *Environmental Science & Technology 50(17), 8930-8931. [Link](https://pubs.acs.org/doi/abs/10.1021/acs.est.6b01066)
+
+<a name="kyle2021">[Kyle et al. 2021]</a> Kyle, P., Hejazi, M., Kim, S., Patel, P., Graham, N., and Liu, Y. 2021. Assessing the future of global energy-for-water. *Environmental Research Letters* 16(2), 024031. [Link](https://iopscience.iop.org/article/10.1088/1748-9326/abd8a9)
+
+<a name="liu2016">[Liu et al. 2016]</a> Liu, Y., Hejazi, M., Kyle, P., Kim, S., Davies, E., Miralles, D., Teuling, A., He, Y., and Niyogi, D. 2016. Global and Regional Evaluation of Energy for Water. *Environmental Science & Technology* 50(17), 9736-9745. [Link](https://pubs.acs.org/doi/abs/10.1021/acs.est.6b01065)
+
 <a name="mahasenan2005">[Mahasenan et al. 2005]</a> Mahasenan, N., Dahowski, R.T., and Davidson, C.L. 2005. The role of carbon dioxide capture and storage in reducing emissions from cement plants in North America. *Proceedings of the 7th International Conference on Greenhouse Gas Control Technologies* 1, pp. 901-909. [Link](https://www.sciencedirect.com/science/article/pii/B9780080447049500914)
 
 <a name="mishra2013">[Mishra et al. 2013]</a> Mishra, G.S., Kyle, P., Teter, J., Morrison, G.M., Kim, S., and Yeh, S. 2013. *Transportation Module of Global Change Assessment Model (GCAM): Model Documentation*, Research Report UCD-ITS-RR-13-05, Institute of Transportation Studies, University of California, Davis. [Link] (https://itspubs.ucdavis.edu/wp-content/themes/ucdavis/pubs/download_pdf.php?id=1884)
 
 <a name="polzin2005">[Polzin and Chu 2005]</a> Polzin, S., and Chu, X. 2005. *Public Transit in America: Results from the 2001 National Household Travel Survey*, Center for Urban Transportation Research, University of South Florida, Tampa. [Link](http://www.nctr.usf.edu/pdf/527-09.pdf)
 
+<a name="rohwer2007">[Rohwer et al. 2007]</a> Rohwer, J., Gerten, D., and Lucht, W. 2007. *Development of Functional Irrigation Types for Improved Global Crop Modelling*. PIK Report No. 104, Potsdam Institute for Climate Impact Research. [Link](https://www.pik30 potsdam.de/research/publications/pikreports/.files/pr104.pdf)
+
+<a name="sanders2012">[Sanders and Webber 2012]</a> Sanders, K., and Webber, M. 2012. Evaluating the energy consumed for water use in the United States. *Environmental Research Letters* 7(3), 0034034. [Link](https://iopscience.iop.org/article/10.1088/1748-9326/7/3/034034/meta)
+
 <a name="shafer1998">[Shafer 1998]</a> Shafer, A. 1998. The global demand for motorized mobility. *Transportation Research Part A: Policy and Practice* 32(6), pp. 455-477. [Link](http://www.sciencedirect.com/science/article/pii/S0965856498000044)
 
 <a name="shafer2000">[Shafer and Victor 2000]</a> Shafer, A., and Victor, D. 2000. The future mobility of the world population. *Transportation Research Part A: Policy and Practice* 34(3), pp. 171-205. [Link](http://www.sciencedirect.com/science/article/pii/S0965856498000718)
+
+<a name="turner2019">[Turner et al. 2019]</a> Turner, S.W.D., Hejazi, M., Yonkofski, C., Kim, S.H., and Kyle, P. 2019. Influence of groundwater extraction costs and resource depletion limits on simulated global nonrenewable water withdrawals over the twenty-first century. *Earth’s Future* 7, 123-135. [Link](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2018EF001105)
 
 <a name="vtpi2013">[VTPI 2013]</a> Victoria Transport Policy Institute. 2013. Chapter 5.2: Travel Time, in *Transportation Costs and Benefits II: Techniques, Estimates and Implications*, Victoria Transport Policy Institute. [Link](http://www.vtpi.org/tca/tca0502.pdf)
 
