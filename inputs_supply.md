@@ -24,7 +24,7 @@ GCAM's supply inputs include information on production, prices, technology cost 
 
 | Name | Description | Type | Source | Resolution | Unit |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| Historical supply of energy | Supply of energy in the historical period; used for initialization/calibration of GCAM | External data | IEA | Specified by fuel, transformation sector, country, and year |  ktoe and GWh |
+| Historical supply of energy | Supply of energy in the historical period; used for initialization/calibration of GCAM | External data | [IEA](#iea2019) | Specified by fuel, transformation sector, country, and year |  ktoe and GWh |
 | CO<sub>2</sub> capture rates | Fraction of CO2 captured in CCS technologies. | Assumption |  | Specified by technology and year | unitless |
 | Retirement rules | For vintaged technologies, GCAM requires the user to specify the lifetime, and the parameters required for phased and profit-based shutdown. | Assumption |  | Specified by technology and year | Years (for lifetime), unitless for others |
 | Logit exponents | GCAM requires the user to specify the logit exponents that determine the substitutability between technologies. | Assumption |  | Specified by sector and subsector | N/A |
@@ -38,6 +38,10 @@ GCAM's supply inputs include information on production, prices, technology cost 
 | Default efficiencies | Default amount of output produced per unit of input; can be overwritten by region-specific information derived from historical data | Assumption | | Specified by technology and year | GJ per GJ |
 | Default input-output coefficients | Default amount of input required per unit of output produced; can be overwritten by region-specific information derived from historical data | Assumption | | Specified by technology and year |  GJ per GJ |
 | Resource supply curves | Mapping between cost and resource extraction. Resource extraction is cumulative for deplatable resources and annual for renewable resources | External data | Various | Specified by resource and year |  EJ for extraction, 1975$/GJ for cost |
+| Historical non-CO<sub>2</sub> emissions | Historical emissions of non-CO<sub>2</sub> | External data | [CEDS](https://github.com/JGCRI/CEDS)  | Specified by country, technology, gas, and year | Various |
+| CO<sub>2</sub> emissions coefficients | Default carbon content of fuels | External data | [CDIAC](#cdiac2017) and [IEA](#iea2019)  | Specified by fuel | kgC / GJ |
+| Historical CO<sub>2</sub> emissions | Historical emissions of CO<sub>2</sub> | External data | [CDIAC](#cdiac2017) | Specified by nation and year | ktC per year |
+
 
 <font size="-1">
 <a name="table_footnote1">1</a>: Note that this table differs from the one provided on the <a href="supply_energy.html#inputs-to-the-module">Energy Supply Modeling Page</a> in that it only lists external inputs to the supply module (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.<br/>    
@@ -104,6 +108,12 @@ Resource supply curves are specified for [fossil fuels](https://github.com/JGCRI
 [traditional biomass](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A17.tradbio_curves.csv), 
 [onshore wind](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/NREL_onshore_energy.csv) and [offshore wind](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/NREL_offshore_energy.csv).
 
+##### Emissions 
+
+Default carbon contents of fuels are specified in [A_PrimaryFuelCCoef.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/emissions/A_PrimaryFuelCCoef.csv). Historical CO<sub>2</sub> emissions are provided in [CDIAC_CO2_by_nation.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/emissions/CDIAC_CO2_by_nation.csv).
+
+Historical non-CO<sub>2</sub> emissions information is provided in several files within the [CEDS folder]((https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/emissions/CEDS).
+
 ### Water
 
 #### Description
@@ -158,6 +168,7 @@ The costs of desalinated water reflects electrical energy input and capital and 
 | Historical prices | Historical prices of agriculture and livestock commodities; used for initialization/calibration of GCAM | External data | FAO | Specified by country, commodity, and year |  |
 | Agriculture productivity growth | Projected yields through 2050 for agricultural commodities | External data | FAO | Specified by country, commodity, and year |  |
 | Logit exponents | Share parameters dictating substitution between different feed options for livestock | Assumption |  | Specified by type of livestock | unitless |
+| Historical non-CO<sub>2</sub> emissions | Historical emissions of non-CO<sub>2</sub> | External data | [CEDS](https://github.com/JGCRI/CEDS)  | Specified by country, technology, gas, and year | Various |
 
 <font size="-1">
 <a name="table_footnote3">3</a>: Note that this table differs from the one provided on the <a href="supply_land.html#inputs-to-the-module">Land Supply Modeling Page</a> in that it only lists external inputs to the supply module (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.<br/>    
@@ -190,7 +201,16 @@ GCAM uses producer prices to initialize the model (future prices are endogenous)
 
 The costs associated with land, irrigation, and fertilizer are endogenously determined in GCAM (see [Land Supply](supply_land.html)). Other costs of production are exogenously specified and the data used for those costs can be found in [USDA_cost_data.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/USDA_cost_data.csv), with [USDA_item_cost.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/USDA_item_cost.csv) specifying which costs are included in GCAM. Note that we use cost information for the USA in all regions.
 
+##### Emissions 
+
+Historical non-CO<sub>2</sub> emissions information is provided in several files within the [CEDS folder]((https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/emissions/CEDS).
+
+
 ## References
+
+<a name="cdiac2017">[CDIAC 2017]</a> Boden, T., and Andres, B. 2017, *National CO2 Emissions from Fossil-Fuel Burning, Cement Manufacture, and Gas Flaring: 1751-2014*, Carbon Dioxide Information Analysis Center, Oak Ridge National Laboratory. [Link](http://cdiac.ess-dive.lbl.gov/ftp/ndp030/nation.1751_2014.ems)
+
+<a name="iea2019">[IEA 2019]</a> International Energy Agency, 2019, *Energy Balances of OECD Countries 1960-2017 and Energy Balances of Non-OECD Countries 1971-2017*, International Energy Agency, Paris, France. 
 
 <a name="kim2016">[Kim et al. 2016]</a> Kim SK, Hejazi M, et al. (2016). *Balancing global water availability and use at basin scale in an integrated assessment model*. Climatic Change 136:217-231. [Link](http://link.springer.com/article/10.1007/s10584-016-1604-6/fulltext.html)
 
@@ -202,8 +222,3 @@ The costs associated with land, irrigation, and fertilizer are endogenously dete
 
 <a name="vernon2019">[Vernon 2019]</a> Vernon, C., M. Hejazi, S. Turner, Y. Liu, C. Braun, X. Li, and R. Link. *A Global Hydrologic Framework to Accelerate Scientific Discovery*. Journal of Open Research Software (2019). [Link](https://openresearchsoftware.metajnl.com/articles/10.5334/jors.245/)
 
-
-
-<a name="table_footnote2">2</a>: Note that this table differs from the one provided on the <a href="supply_water.html#inputstothemodel">Water Supply Modeling Page</a> in that it only lists external inputs to the supply model (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.<br/>  
-
-<a name="table_footnote3">3</a>: Note that this table differs from the one provided on the <a href="supply_land.html#inputstothemodel">Food, Feed, and Forestry Supply Modeling Page</a> in that it only lists external inputs to the supply model (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.</font>  

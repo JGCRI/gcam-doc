@@ -41,6 +41,8 @@ Table 1: External inputs used for demand of energy<sup>[1](#table_footnote1)</su
 | Desalinated water production | Water produced through desalination, used to estimate energy-for-water | External data | FAO Aquastat | By nation | $$km^3$$ per year |
 | Shares of wastewater treated | Shares of wastewater treated, used to estimate energy-for-water | External data | [Liu et al. 2016](#liu2016) |  By nation | Unitless |
 | Non-renewable groundwater supply curves - electricity inputs | Electricity inputs to groundwater production | External data | <a href="https://github.com/JGCRI/superwell">Superwell</a> | 20 grades per geopolitical region and GLU | GJ per $$m^3$$ |
+| Historical non-CO<sub>2</sub> emissions | Historical emissions of non-CO<sub>2</sub> | External data | [CEDS](https://github.com/JGCRI/CEDS)  | Specified by country, technology, gas, and year | Various |
+
 
 <font size="-1"><a name="table_footnote1">1</a>: Note that this table differs from the one provided on the <a href="demand_energy.html#inputs-to-the-module">Energy Demand Modeling Page</a> in that it only lists external inputs to the demand module (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.</font>
 <br/>
@@ -100,6 +102,10 @@ Multipliers used to determine the value of time in transit are specified in [A54
 #### Satiation levels
 
 Satiation levels are specified in [A44.satiation_flsp](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.satiation_flsp.csv) and [A44.demand_satiation_mult](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.demand_satiation_mult.csv).
+
+##### Emissions 
+
+Historical non-CO<sub>2</sub> emissions information is provided in several files within the [CEDS folder]((https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/emissions/CEDS).
 
 ### Water
 
