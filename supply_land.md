@@ -59,8 +59,72 @@ The main points can be summarized as:
 
 ## Equations 
 
-To be completed...
+### Profit rate
 
+Profit rate for all agricultural production technologies is calculated as:
+
+$$
+profitRate = 1e9*( price + subsidy - varCost - inputCosts + secondaryValue ) * yield + impliedSubsidy
+$$
+
+where $$price$$ is the commodity price, $$subsidy$$ is any exogenously-specified subsidy, $$varCost$$ is the non-land variable cost, $$inputCosts$$ are the costs of inputs (e.g., fertilizer, water), $$yield$$ is the yield for the technology, and $$impliedSubsidy$$ is an implicit subsidy calculated in the calibration periods to ensure profits are above a specified threshold. Note that the subsidy is multiplied by $$1e9$$, as the land allocator expects profit rates in 1975$/billion m<sup>2</sup>.
+
+See `calcProfitRate` in [ag_production_technology.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/technologies/source/ag_production_technology.cpp).
+
+### Supply
+
+Agricultural supply is calculated as:
+
+$$
+supply = yield * land
+$$
+
+where $$yield$$ is the yield for the technology and $$land$$ is the land allocation (retrieved from the [land allocation module](land.html)).
+
+See `calcSupply` in [ag_production_technology.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/technologies/source/ag_production_technology.cpp).
+
+### Yield
+
+For technologies that have production in the historical period, yield for the historical period is calculated as:
+
+$$
+yield = supply / land
+$$
+
+For all technologies, future yield is calculated as:
+
+$$
+yield_{t} = yield_{t-1} * (1 + APG)^{timestep}
+$$
+
+where $$yield_{t}$$ is the yield in time $$t$$, $$APG$$ is the agricultural productivity growth rate and $$timestep$$ is the number of years between $$t$$ and $$t-1$$.
+
+See `initCalc` in [ag_production_technology.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/technologies/source/ag_production_technology.cpp).
+
+## Livestock production
+
+GCAM uses one of [two different logit formulations](choice.html#the-logit) to calculate the shares for each technology or subsector. For livestock, subsectors represent different production systems, where technologies represent different feed sources.
+
+The first option, also known as the `relative-cost-logit`, is:
+
+$$
+s_i = \frac{\alpha_i c_i^\gamma}{\sum_{j=1}^{N} \alpha_j c_j^\gamma}
+$$
+
+where $$s_i$$ is the share of technology or subsector $$i$$, $$alpha_i$$ is the share weight, $$c_i$$ is the cost of technology or subsector $$i$$, and $$beta$$ is the logit exponent.
+
+The second option, also known as the `absolute-cost-logit`, is: 
+
+$$
+s_i = \frac{\alpha_i \exp(\beta c_i)}{\sum_{j=1}^{N} \alpha_j
+\exp(\beta c_j)}.
+$$
+
+where $$s_i$$ is the share of technology or subsector $$i$$, $$alpha_i$$ is the share weight, $$c_i$$ is the cost of technology or subsector $$i$$, and $$beta$$ is the logit exponent.
+
+See [relative cost logit](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/functions/source/relative_cost_logit.cpp) and [absolute cost logit](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/functions/source/absolute_cost_logit.cpp).
+
+ 
 ## Policy options 
 
 To be completed...
