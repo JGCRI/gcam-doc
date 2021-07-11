@@ -1,8 +1,8 @@
 ---
 layout: index
 title: Details about emissions in GCAM
-prev: 
-next: 
+prev: emissions.html
+next: emissions.html
 gcam-version: v5.4
 ---
 
