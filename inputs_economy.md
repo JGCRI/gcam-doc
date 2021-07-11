@@ -28,6 +28,7 @@ Table 1: External inputs used for economics<sup>[1](#table_footnote1)</sup>
 <a name="table_footnote">1</a>: Note that this table differs from the one provided on the <a href="economy.html#inputs-to-the-module">Economy Modeling Page</a> in that it only lists external inputs to the economics module (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.
 </font>
 
+<br/>
 Note that for the Shared Socioeconomic Pathways (SSPs), different inputs are used for some variables. See [SSPs](ssp.html) for more information.
 
 ### Input Data

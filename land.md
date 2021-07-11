@@ -30,6 +30,8 @@ gcam-version: v5.4
 | Profit rate of managed land | By GLU | 1975$ per thous $$km^2$$ | [Land Supply Module](supply_land.html) |
 | Logit exponents | By GLU and land node | Unitless | [Exogenous](inputs_land.html) |
 
+<a name="table_footnote">1</a>: Note that this table differs from the one provided on the [Land Inputs Page](inputs_land.html#description) in that it lists all inputs to the land module, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
+
 <br/>
 
 ## Description
@@ -270,7 +272,6 @@ Carbon dioxide removal
 - [X] Reforestation
 - [X] Afforestation
 
-<a name="table_footnote">1</a>: Note that this table differs from the one provided on the [Land Inputs Page](inputs_land.html#description) in that it lists all inputs to the land model, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
 
 ## References
 

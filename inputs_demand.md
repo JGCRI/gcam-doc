@@ -39,6 +39,7 @@ Table 1: External inputs used for demand of energy<sup>[1](#table_footnote1)</su
 | Income elasticity of demand | Elasticity determining how demand responds to changes in per capita output for industry and cement | Assumption | | Specified by demand | unitless
 
 <font size="-1"><a name="table_footnote1">1</a>: Note that this table differs from the one provided on the <a href="demand_energy.html#inputs-to-the-module">Energy Demand Modeling Page</a> in that it only lists external inputs to the demand module (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.</font>
+<br/>
 
 Note that for the Shared Socioeconomic Pathways (SSPs), different inputs are used for some variables. See [SSPs](ssp.html) for more information.
 
@@ -117,6 +118,7 @@ Table 2: External inputs used for demand of water <sup>[2](#table_footnote2)</su
 
 <font size="-1"><a name="table_footnote2">2</a>: Note that this table differs from the one provided on the <a href="demand_water.html#inputs-to-the-module">Water Demand Modeling Page</a> in that it only lists external inputs to the demand module (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.</font>
 
+<br/>
 Note that for the Shared Socioeconomic Pathways (SSPs), different inputs are used for some variables. See [SSPs](ssp.html) for more information.
 
 #### Data
@@ -145,6 +147,7 @@ Table 3: External inputs used for demand of food, feed, and forestry <sup>[3](#t
 
 <font size="-1"><a name="table_footnote3">3</a>: Note that this table differs from the one provided on the <a href="demand_land.html#inputs-to-the-module">Food, Feed, and Forestry Demand Modeling Page</a> in that it only lists external inputs to the demand module (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.</font>  
 
+<br/>
 Note that for the Shared Socioeconomic Pathways (SSPs), different inputs are used for some variables. See [SSPs](ssp.html) for more information.
 
 #### Data

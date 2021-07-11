@@ -13,6 +13,7 @@ GCAM's external land inputs include information on land, carbon, other emissions
 
 ### Description
 
+Table 1: External inputs used by the land model <sup>[1](#table_footnote)</sup>
 | Name | Description | Type | Source | Resolution | Unit |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | Historical Land Use and Land Cover | Land area by region, land type and year. Land cover data is provided beginning in 1700 in order to spin-up the carbon cycle within GCAM. Crop-specific harvested area is used to downscale FAO data to a subnational level; however this data is only available for a single year. Similarly, the division between irrigated and rainfed land is only available for a single year only. | External Data Set | <a href="https://github.com/JGCRI/moirai">Moirai</a> | Raw data is by country, water basin and land type. | thousand $$km^2$$ |
@@ -23,8 +24,11 @@ GCAM's external land inputs include information on land, carbon, other emissions
 | Share Parameters | GCAM requires the user to specify the logit exponents that determine the substitutability between different leafs and nodes in the land model. These parameters were chosen to produce land supply elasticities comparable to those found in the literature, although it should be noted that there is not a transformation between logit exponents and supply elasticities for all land types. | Assumption |  | Specified by land node | N/A |
 | Parameters to introduce a new land type | For land types that do not exist in the historical period, GCAM requires parameters to introduce these land types in the future. Specifically, GCAM needs to know how that land type will compete with other land types in its nest _if_ it were to have equal profit. | Assumption | | Currently specified globally, but could be specified by region and water basin | Share |
 
-Table 1: External inputs used by the land model <sup>[1](#table_footnote)</sup>
+<font size="-1">
+<a name="table_footnote">1</a>: Note that this table differs from the one provided on the <a href="land.html#inputs-to-the-module">Land Modeling Page</a> in that it only lists external inputs to the land module (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.
+</font>
 
+<br/>
 Note that for the Shared Socioeconomic Pathways (SSPs), different inputs are used for some variables. See [SSPs](ssp.html) for more information.
 
 ### Data
@@ -51,6 +55,3 @@ The logit exponents used in the land allocation module are provide in [A_LandNod
 The calibration parameters for bioenergy are in [A_bio_ghost_share.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/A_bio_ghost_share.csv).
 
 
-<font size="-1">
-<a name="table_footnote">1</a>: Note that this table differs from the one provided on the <a href="land.html#inputstothemodel">Land Modeling Page</a> in that it only lists external inputs to the land model (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.
-</font>

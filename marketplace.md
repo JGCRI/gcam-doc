@@ -13,7 +13,7 @@ gcam-version: v5.4
 - [Policy options](#policy-options)
 - [Insights and intuition](#insights-and-intuition)
 
-## Inputs to the Model
+## Inputs to the Module
 **Table 1: Inputs required by the marketplace module**
 
 | Name | Resolution | Unit | Source |

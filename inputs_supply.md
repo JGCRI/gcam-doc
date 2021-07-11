@@ -20,6 +20,8 @@ GCAM's supply inputs include information on production, prices, technology cost 
 
 #### Description
 
+**Table 1: External inputs used for supply of energy<sup>[1](#table_footnote1)</sup>**
+
 | Name | Description | Type | Source | Resolution | Unit |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | Historical supply of energy | Supply of energy in the historical period; used for initialization/calibration of GCAM | External data | IEA | Specified by fuel, transformation sector, country, and year |  ktoe and GWh |
@@ -37,8 +39,11 @@ GCAM's supply inputs include information on production, prices, technology cost 
 | Default input-output coefficients | Default amount of input required per unit of output produced; can be overwritten by region-specific information derived from historical data | Assumption | | Specified by technology and year |  GJ per GJ |
 | Resource supply curves | Mapping between cost and resource extraction. Resource extraction is cumulative for deplatable resources and annual for renewable resources | External data | Various | Specified by resource and year |  EJ for extraction, 1975$/GJ for cost |
 
+<font size="-1">
+<a name="table_footnote1">1</a>: Note that this table differs from the one provided on the <a href="supply_energy.html#inputs-to-the-module">Energy Supply Modeling Page</a> in that it only lists external inputs to the supply module (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.<br/>    
+</font>
 
-Table 1: External inputs used for supply of energy<sup>[1](#table_footnote1)</sup>
+<br/>
 
 Note that for the Shared Socioeconomic Pathways (SSPs), different inputs are used for some variables. See [SSPs](ssp.html) for more information.
 
@@ -103,13 +108,19 @@ Resource supply curves are specified for [fossil fuels](https://github.com/JGCRI
 
 #### Description
 
+**Table 2: External inputs used for supply of water <sup>[2](#table_footnote2)</sup>**
+
 | Name | Description | Type | Source | Resolution | Unit |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | Surface water supply curves (cost and availability) | Xanthos derived total maximum runoff values, combined with accessible water calculation to determine water available at very low price and the level of accessible water for cost-curve inflection | Exogenous Data | Xanthos output | Water basin and year | $$km^3$$ available per USD |
 | Groundwater supply curves (cost and availability) | Amount of groundwater available in each basin at increasingly high graded levels | [Turner et al., 2019a](#turner2019a) | Water basin and year | $$km^3$$ available per USD |
 | Desalination cost | Cost of desalinated water within a basin which is available at high cost and available once the price of water within a basin surpasses a certain threshold | Exogenous Data | Global Constant | USD per $$km^3$$ |
 
-Table 2: External inputs used for supply of water <sup>[2](#table_footnote2)</sup>
+<font size="-1">
+<a name="table_footnote2">2</a>: Note that this table differs from the one provided on the <a href="supply_water.html#inputs-to-the-module">Water Supply Modeling Page</a> in that it only lists external inputs to the supply module (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.<br/>    
+</font>
+
+<br/>
 
 Note that for the Shared Socioeconomic Pathways (SSPs), different inputs are used for some variables. See [SSPs](ssp.html) for more information.
 
@@ -132,6 +143,8 @@ The costs of desalinated water reflects electrical energy input and capital and 
 
 #### Description
 
+**Table 3: External inputs used for supply of food, feed, and forestry <sup>[3](#table_footnote3)</sup>**
+
 | Name | Description | Type | Source | Resolution | Unit |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | Historical country-level production of crops | Production of agricultural commodities by country in the historical period; used for initialization/calibration of GCAM | External data | FAO | Specified by crop, country, and year | tons |
@@ -146,8 +159,11 @@ The costs of desalinated water reflects electrical energy input and capital and 
 | Agriculture productivity growth | Projected yields through 2050 for agricultural commodities | External data | FAO | Specified by country, commodity, and year |  |
 | Logit exponents | Share parameters dictating substitution between different feed options for livestock | Assumption |  | Specified by type of livestock | unitless |
 
+<font size="-1">
+<a name="table_footnote3">3</a>: Note that this table differs from the one provided on the <a href="supply_land.html#inputs-to-the-module">Land Supply Modeling Page</a> in that it only lists external inputs to the supply module (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.<br/>    
+</font>
 
-Table 3: External inputs used for supply of food, feed, and forestry <sup>[3](#table_footnote3)</sup>
+<br/>
 
 Note that for the Shared Socioeconomic Pathways (SSPs), different inputs are used for some variables. See [SSPs](ssp.html) for more information.
 
@@ -187,7 +203,6 @@ The costs associated with land, irrigation, and fertilizer are endogenously dete
 <a name="vernon2019">[Vernon 2019]</a> Vernon, C., M. Hejazi, S. Turner, Y. Liu, C. Braun, X. Li, and R. Link. *A Global Hydrologic Framework to Accelerate Scientific Discovery*. Journal of Open Research Software (2019). [Link](https://openresearchsoftware.metajnl.com/articles/10.5334/jors.245/)
 
 
-<font size="-1"><a name="table_footnote1">1</a>: Note that this table differs from the one provided on the <a href="supply_energy.html#inputstothemodel">Energy Supply Modeling Page</a> in that it only lists external inputs to the supply model (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.<br/>    
 
 <a name="table_footnote2">2</a>: Note that this table differs from the one provided on the <a href="supply_water.html#inputstothemodel">Water Supply Modeling Page</a> in that it only lists external inputs to the supply model (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.<br/>  
 
