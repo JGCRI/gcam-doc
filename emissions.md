@@ -118,6 +118,7 @@ where:
 | `A` | Activity level (e.g., output of a technology) |
 | `MAC` | Marginal Abatement Cost Curve |
 | `Eprice` | Emissions Price |
+<br/>
 
 Non-CO<sub>2</sub> GHG emissions are proportional to the activity except for any reductions in emission intensity due to the MAC curve. As noted above, the MAC curves are assigned to a wide variety of technologies, mapped directly from [EPA 2019](#epa2019). Under a carbon policy, emissions are reduced by an amount determined by the MAC curve.
 

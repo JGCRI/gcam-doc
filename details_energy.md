@@ -20,9 +20,10 @@ The figures below show some illustrative examples of supply curves used within G
 {: .fig}
 <img src="gcam-figs/gas_supply_curve.png" width="750" height="300" />
 {: .fig}
-<img src="gcam-figs/coal_supply_curve.png" width="750" height="300" />
-**Illustrative examples of supply curves and total supplies for fossil resources in GCAM **
+<img src="gcam-figs/coal_supply_curve.png" width="750" height="300" /><br/>
+**Illustrative examples of supply curves and total supplies for fossil resources in GCAM**
 {: .fig}
+
 
 #### Representation of unconventional oil as a technology within crude oil
 

@@ -35,6 +35,7 @@ gcam-version: v5.3
 <font size="-1">
 <a name="table_footnote">1</a>: Note that this table differs from the one provided on the <a href="inputs_demand.html#energy">Demand Inputs Page</a> in that it lists all inputs to the energy demand module, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
 </font>
+<br/>
 
 ## Description
 

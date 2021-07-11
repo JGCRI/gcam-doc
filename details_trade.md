@@ -49,7 +49,7 @@ Livestock products were held fixed at their historical value for the rest of the
 
 
 ## No Trade of Secondary energy goods
-Note that secondary energy products such as [Electricity](energy.html#electricity) or [Refined Liquids](energy.html#refining) are assumed to not be traded at all between the GCAM geo-political regions.
+Note that secondary energy products such as [Electricity](supply_energy.html#electricity) or [Refined Liquids](supply_energy.html#refining) are assumed to not be traded at all between the GCAM geo-political regions.
 
 ## IAMC Reference Card
 
