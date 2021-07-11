@@ -1,7 +1,7 @@
 ---
 layout: index
 title: Global Change Analysis Model (GCAM)
-gcam-version: v5.3
+gcam-version: v5.4
 ---
 
 <table>

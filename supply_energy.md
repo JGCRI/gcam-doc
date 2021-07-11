@@ -3,7 +3,7 @@ layout: index
 title: Supply of Energy
 prev: inputs_supply.html
 next: outputs_quantity.html
-gcam-version: v5.3 
+gcam-version: v5.4
 ---
 
 # Table of Contents

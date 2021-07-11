@@ -3,7 +3,7 @@ layout: index
 title: Inputs for Modeling Demand
 prev: diagram.html
 next: demand_land.html
-gcam-version: v5.3 
+gcam-version: v5.4
 ---
 
 GCAM's demand inputs include information on consumption and prices in the historical period in order to calibrate model parameters. Additional parameters related to income and price elasticities are needed for modeling future periods. GCAM requires demand data to be globally consistent with [supply data](inputs_supply.html) for each of its historical model periods as it solves for market equilibrium in these years as it does for future years. These inputs are required for each [region](common_assumptions.html#regional-resolution) and [historical year](common_assumptions.html#historical-years).

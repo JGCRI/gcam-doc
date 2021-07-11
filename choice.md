@@ -3,7 +3,7 @@ layout: index
 title: Economic Choice in GCAM
 prev: common_assumptions.html
 next: common_assumptions.html
-gcam-version: v5.3
+gcam-version: v5.4
 ---
 
 ## Introduction
