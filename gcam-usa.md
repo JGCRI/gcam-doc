@@ -29,6 +29,21 @@ Inter-state electricity trade: Our reference scenario assumes that groups of sta
 
 Refining: Our reference scenario assumes expansion of relatively mature crude oil refining technologies and also relatively immature and nascent technologies such as biomass to liquids (BTL), coal to liquids (CTL), and gas to liquids (GTL) to meet growing demands for liquid fuels. Since oil refining is a mature technology with established supporting infrastructure, including facilities to bring in crude oil and institutional infrastructure such as licensing, our reference scenario assumes that any expansion takes place in the states that currently engage in oil refining and that the relative competitiveness of those states remains constant over time. Even though biomass to liquids (BTL) technologies are not as mature as those of oil refining, the deployment of BTL refineries has markededly increased in the recent past due to renewable fuel standards and the ease of transporting biomass resources. As such, BTL production is already distributed across the country in a way that captures the distribution of feedstocks for biomass refining. In our reference scenario, we assume that the current distribution of BTL production will remain largely static in the coming years, which in turn largely relies on the assumption that biomass production will occur in the same locations as today. For coal to liquids (CTL) and gas to liquids (GTL) technologies, our reference scenario assumes that states that produce more coal and gas resources are more likely to deploy CTL and GTL refineries. By extension, states without any coal and gas production are not expected to deploy CTL and GTL refineries. Hence, we assume that CTL and GTL refineries will be located close to the production of coal and gas resources. These assumptions are understandably conservative and ignore the possibility that new crude oil, coal, and gas resources might be discovered in the future, or that new types of bioenergy feedstocks could shift the geographic distribution of biofuel production. In addition, our assumptions also ignore the possibility that resources can be shipped from states with those resources to states without the resources and refineries to produce liquid fuels can be deployed in the latter states. For example, coal and gas are currently transported long distances for power production. Nevertheless, developing the required infrastructure to transport resources (e.g. gas pipelines) is an expensive and often protracted process, and hence our reference scenario assumes that only states with substantial resources are expected to refine coal and gas into liquid fuels. 
 
+Water demand: Our reference scenario entails modest declines in water withdrawals through mid-century, with relatively flat water demands thereafter. The decline in demand is driven by a reduction in power sector cooling water, which is partially offset by increased withdrawals from the agriculture, livestock, manufacturing, and municipal sectors. These dynamics are in turn driven by assumptions for each individual water demand sector.
+ 
+Irrigation, livestock, and primary energy (mining) water demands remain calculated at the USA regional level and are consistent with the global GCAM. For each sector, per-unit water requirements are held constant through the end of the century. Water demands for these sectors are downscaled to the state-level and then mapped to the basin-level based on aggregated grid-level demand data from [Huang et al. 2018](gcam-usa.html#huang2018) (see Water section of this page for more detailed information on the downscaling methodology). State-basin shares are held constant at their 2010 values for all future periods, implying that the historical distribution of these water demands remains constant over time.
+
+Municipal water demands follow a similar structure to global GCAM, but are modeled at the state level and driven by state level socioeconomics. All states' withdrawal-to-consumption ratio improves at a constant technological change rate, consistent with the global GCAM. Manufacturing water demands are calculated from state level U.S. Energy Information Administration (EIA) data for industrial energy consumption for historical years. This is then matched with USGS water demand data to obtain state-specific water demand coefficients. These coefficients are held constant through the end of the century.
+
+Electricity sector water demands evolve in a similar manner as global GCAM. Power plant cooling water demands respond to the growth in electricity demand and change in electricity mix discussed above. Additionally, we make four key assumptions about the future evolution of power plant cooling systems:
+* Freshwater once-through cooling systems are not built in future model periods 
+* For fuel type + power plant combinations that exist in historical periods, historical cooling shares inform the future competition between cooling systems
+* If a fuel type (e.g. nuclear) shifts from one power plant type to another (e.g. nuclear gen II to nuclear gen III), future cooling system shares for the new plant type are informed by historical cooling system shares for the historical plant type
+* If no historical information is available for a power plant type, all non-once-through cooling systems compete for market shares based on price alone
+Overall, despite growing electricity demand, the assumption of no new freshwater once-through cooling systems, the shift towards less water-intensive generation technologies (e.g. natural gas, renewables), and the reduced reliance on more water-intensive technologies (e.g. coal, nuclear) result in diminishing power sector water demands in the GCAM-USA Reference scenario.
+
+Water supply: Our reference scenario adopts the renewable and non-renewable water supplies that are calculated and implemented for all water basins in the USA region in the global GCAM. 
+
 
 Interpretation of GCAM-USA results
 ==================================
@@ -126,6 +141,7 @@ For electricity trade between states we group states roughly into the 15 "grid r
 
 <span id="_Ref277591668" class="anchor"></span>Modeled electricity markets based on NEMS.
 
+
 Refining sector
 ===============
 
@@ -138,12 +154,10 @@ For biomass liquids, the energy output (biofuel production) for the whole USA is
 Liquid fuels used as industrial feedstocks for the whole nation are then disaggregated to states on the basis of the sum of asphalt and petrochemical feedstocks consumption in each state. Natural gas used as feedstocks (i.e., used for non-energy purposes) is not explicitly accounted in the EIA SEDS database. This is not surprising as (a) unlike liquid fuels, there is nothing different about the natural gas used as feedstocks from that used for energy, and (b) the characterization of gas as "feedstock" as opposed to "energy" is a difficult one which is only done post-hoc based on product yields, and only in some energy inventories. Moreover, in many cases (e.g. ammonia production, hydrogen production), even the "feedstock" uses of natural gas entail 100% release of fuel carbon as CO<sub>2</sub>. In any case, the IEA-based national estimate of natural gas feedstocks is disaggregated to states on the basis of each state's share of the whole nation's use of (liquid fuel) petrochemical feedstocks, which are used as a proxy for the size of the chemicals industry in each state. This amount of gas is then deducted from the SEDS estimate of industrial energy use of gas in each state. Note also that most of the natural gas "feedstocks" in the US (estimated in the IEA Energy Balances) are for ammonia production; see [IEA 2009](gcam-usa.html#iea2009) for a description of the accounting methods. Because ammonia production is explicitly modeled, this national estimate of natural gas feedstocks in GCAM is considerably lower than the number in the IEA Energy Balances.
 
 
-
 Renewable Energy
 ================
 
 Renewable energy resources are modeled at the state level.  Renewable technologies include a separation between state-specific resource cost curves, which represent marginal costs that increase with deployment, plus technology capital costs that are the same in all states, but whose costs are levelized in the model with state-specific capacity factors. The escalation of the supply curve reflects reducing capacity factors as the most optimal locations are used first. Wind, utility-scale PV and CSP curves are developed from [Eurek et al. 2016](gcam-usa.html#eurek2016). Geothermal resources are from [Lopez et al. 2012](gcam-usa.html#lopez2012). Supply curves for residential rooftop PV are obtained from [Denholm and Margolis 2008](gcam-usa.html#denholm2008).  As in rest of GCAM, we model hydropower generation as an exogenous output. Our exogenous output assumptions are developed to i.) match state-level hydro outputs in 2015 to actual generation in 2015 and ii.) align long-term hydro generation with AEO-2020 projections. Specifically, we obtain 2020 state-level fixed outputs by applying growth rates to 2015 fixed outputs based on historical data from EIA. We then use national level hydropower generation projections from AEO-2020 [EIA 2020](gcam-usa.html#eia2020) and apply national growth-rates to all states for model years beyond 2020. Beyond 2050, we assume constant outputs through 2100.
-
 
 
 Carbon-Dioxide Capture and Geologic Storage
@@ -159,9 +173,49 @@ In keeping with the US electricity-specific CCS modeling presented in [Wise et a
 
 <span id="_Ref277591731" class="anchor"></span>Carbon storage potential by electricity market.
 
+
+Water
+===========================================
+
+Water supplies and demands are modeled in GCAM-USA. Water market behavior that constrains the demand for water based on the available supply and price of water is implemented in GCAM-USA similar to the core GCAM model. Water supplies in GCAM-USA utilize the existing water supply structure from the core GCAM model, which is modeled at the 235 global basin scale. For the USA, water is supplied from 23 distinct water basins. Some of these basins are shared with neighboring regions, Canada, Mexico and the Caribbean. As in the core GCAM, three distinct sources of water are represented:  renewable surface runoff (including renewable groundwater), nonrenewable or fossil groundwater, and desalination.
+
+Water demands in GCAM-USA are represented at the state-level for the electricity generation, manufacturing, and municipal sectors. For the primary energy/mining, livestock, and agriculture sectors - activities which are not repressented at the state-level in GCAM-USA - water demands are inherited from the national level or agriculture land units and then mapped to state-level shares.
+
+## National Water Demand Drivers
+For primary energy/mining, livestock, and agriculture (irrigation), which remain modeled at the aggregate USA level, water demands are disaggregated and downscaled (mapped) in two parts. First, the USA region (national) water demands are downscaled to state-level water demand, and second, these state-level water demands are mapped to the basin-level (where supplies and demands are balanced). National to state downscaling employ USGS historical water withdrawals in order to calibrate historical state level demands.
+
+State-to-basin intersections in GCAM-USA allow for alternative sharing of water demands, from multiple states to a single basin and/or multiple basins to a single state. This secondary downscaling (mapping) process is completed for each sector in GCAM-USA using 0.5 x 0.5-degree gridded water demands from [Huang et al. 2018](gcam-usa.html#huang2018) to calculate the 5-year running mean of demands (weighted averages) at the state-basin intersection. State-basin shares are calculated from USA regional demands by finding the percentage of demands within basin i that correspond to state j from the historical [Huang et al. 2018](gcam-usa.html#huang2018) data. Thus, demands remain calculated at the USA region level and are shared to the state-basin level based on historical shares.
+
+State-basin shares are held constant for future periods at their 2010 values, implying that historical bias or weighting remain constant. Although national water demands for primary energy/mining, livestock and agriculture have been merely downscaled to the state-level, the historical calibration of state-level water demands provides more detailed accounting of water demands. Additions and/or subtractions to alternative water supply costs at the state-level could differentiate water demands from the national demand representation (core GCAM).
+
+## State Water Demand Drivers
+Water demands from municipal, manufacturing, and electricity generation are modeled at the state level in GCAM-USA. USGS historical water withdrawal data is used to calibrate municipal and manufacturing sector water demands directly, while endogenous competition between cooling technologies exists in the electric power sector. For these sectors, state-level water demands only need to be mapped from state-to-basin level. The process is similar to the USA region downscaling, where the competition between basins in a state is pre-determined by the historical share of water demands as calculated by [Huang et al. 2018](gcam-usa.html#huang2018). There is also competition within coastal state-basin combinations for water from that particular basin or from desalination. This competition follows the structure of global GCAM. 
+
+### Municipal
+Future municipal water demands in GCAM-USA are driven by state-level population and GDP growth (see Socio-economics section for more information on how state-level socioeconomic drivers are developed for GCAM-USA).
+
+### Manufacturing
+Future manufacturing water demands in GCAM-USA are driven by growth in industrial activity at the state level, with state-specific water intensities calculated from USGS historical data.
+
+### Electricity Generation
+Electricity water demands in GCAM-USA utilize the recently introduced subsector nesting capability (node/leaf structure) that allows for more than two levels of nesting (subsector/technology). This allows all relevant costs (capital costs for both the power plant and cooling system, operations & maintenance costs) and inputs (fuel, water) to be applied to a single technology and avoids the need for a pass-through sector which is implemented in the global version of GCAM. Future water demands are determined endogenously; cooling system choice is influenced by the cost of providing cooling water (from surface runoff and groundwater recharge, nonrenewable groundwater, and desalinated water sources).
+
+To calibrate cooling shares and water demands in the power sector, historical cooling system shares by fuel type and state are calculated from Union of Concerned Scientists (UCS) data on electricity generation by power plant, fuel, and cooling technology. Due to missing data, national averages of cooling technologies are often applied to states for various fuels and power plant types.  To avoid introducing the option of sea water cooling in non-coastal states, we calculate two different national averages of cooling technology shares: one for coastal states and one for non-coastal states. These national averages are then applied, as needed, to states with missing data. 
+
+State-level technology share-weights, which influence the competition between cooling systems within a given generation technology (e.g. gas (CC) (once through) vs. gas (CC) (recirculating)) are assigned according to the following rules / assumptions:
+
+* First, we assume that if the generation technology (e.g. gas CC) exists in the historical period for a given state, the cooling technology share weights are held constant in the future.
+* Second, if a generation technology did not exist in the historical period for a given state but is expected to exist in the future (e.g. solar CSP), all available cooling technologies are assigned the same share weights.
+* Third, if a fuel and generation technology combination did exist in the historical period, but switches to a new power plant type (i.e. Nuclear Gen II -> Nuclear Gen III), the cooling technologies shares for the old generation technology in that particular state are set as share weights for the new generation technology (e.g. Nuclear Gen 3 will have the same cooling tech share weights as Nuclear Gen 2).  
+* Finally, consistent with the 32-region model, we assume that new fresh water once-through cooling systems are not allowed in the future.
+
+This approach differs somewhat from the global GCAM, where future cooling shares are exogenously specified by region. Historically calibrated share-weights are not carried forward into the future in the global model. 
+
+
 Non-CO2 GHGs
 ============
 Note that at this time the specification of Non-CO2 greenhouse gases in GCAM-USA is incomplete.  This is an active area of development.  However for this reason the climate model will be disabled in GCAM-USA scenarios.
+
 
 References
 ===============
@@ -179,6 +233,8 @@ References
 <a name="denholm2008">[Denholm and Margolis 2008]</a> Denholm, P. and R. Margolis. 2008. Supply Curves for Rooftop Solar PV-Generated Electricity for the United States. National Renewable Energy Laboratory, Technical Report NREL / TP-6A0-44073, November 2008.
 
 <a name="eurek2016">[Eurek et al. 2016]</a> Eurek, K, W Cole, D Bielen, N Blair, S Cohen, B Frew, J Ho, V Krishnan, T Mai, B Sigrin, D Steinberg. 2016. Regional Energy Deployment System (ReEDS) Model Documentation: Version 2016. <https://www.nrel.gov/docs/fy17osti/67067.pdf>
+
+<a name="huang2018">[Huang et al. 2018]</a> Huang, Z., Hejazi, M., Li, X., Tang, Q., Leng, G., Liu, Y., Döll, P., Eisner, S., Gerten, D., Hanasaki, N. and Wada, Y., 2018. Reconstruction of global gridded monthly sectoral water withdrawals for 1971-2010 and analysis of their spatiotemporal patterns. Hydrology and Earth System Sciences Discussions, 22, pp.2117-2133.
 
 <a name="iyer2017">[Iyer et al. 2017]</a> Iyer GC, LE Clarke, JA Edmonds, GP Kyle, CM Ledna, HC McJeon, and MA Wise. 2017. "GCAM-USA Analysis of U.S. Electric Power Sector Transitions." Pacific Northwest National Laboratory.
 
