@@ -16,7 +16,7 @@ Table Of Contents
 * [Emissions-Related Policies](#emissions-policies)
 * [Calculating Emissions Policy Costs](#policy-costs)
 
-## <a name="emissions-policies"> Emissions-Related Policies </a>
+## <a name="emissions-policies"/> Emissions-Related Policies 
 
 There are three main policy approaches that can be applied in GCAM to reduce emissions of CO<sub>2</sub> or other greenhouse gases: carbon or GHG prices, emissions constraints, or climate constraints. In all cases, GCAM implements the policy approach by placing a price on emissions. This price then filters down through all the systems in GCAM and alters production and demand. For example, a price on carbon would put a cost on emitting fossil fuels. This cost would then influence the cost of producing electricity from fossil-fired power plants that emit CO<sub>2</sub>, which would then influence their relative cost compared to other electricity generating technologies and increase the price of electricity. The increased price of electricity would then make its way to consumers that use electricity, decreasing its competitiveness relative to other fuels and leading to a decrease in electricity demand. The three policy approaches are described below.
 
@@ -26,7 +26,7 @@ There are three main policy approaches that can be applied in GCAM to reduce emi
 
 * Climate constraints: GCAM users can specify a climate variable (e.g., concentration or radiative forcing) target for a particular year. Users determine whether that target can be exceeded prior to the target year. GCAM will adjust carbon prices in order to find the least cost path to reaching the target. (Note that this type of policy increases model run time significantly.)
 
-### <a name="linked-markets"> Linked Emission Markets </a>
+### <a name="linked-markets"/> Linked Emission Markets
 
 Emissions prices of different GHGs can be linked together for a multi-gas policy using the linked-ghg-policy object. For example, in the default [linked_ghg_policy.xml](https://github.com/JGCRI/gcam-core/blob/master/input/policy/linked_ghg_policy.xml) file in the GCAM release, all non-CO<sub>2</sub> GHGs are linked to the market for CO<sub>2</sub>. Also, see [example](policies_examples.html#linked-policy)
 
@@ -41,7 +41,7 @@ This flexibility allows CO<sub>2</sub>-only, CO<sub>2</sub>-equivalent, or non-C
 
 Note that the GCAM default set-up includes economic feedbacks for methane and nitrous oxide. This is an idealized assumption, but might not happen in real-world policies. For example, in many current systems agricultural emissions are offsets only – e.g., they get paid to reduce emissions, but are not charged for any remaining emissions. (So to simulate this type of policy, price-adjust would be set to zero).
 
-### <a name="non-co2-markets"> Markets For non-CO<sub>2</sub> Emission Species</a>
+### <a name="non-co2-markets"/> Markets For non-CO<sub>2</sub> Emission Species
 
 Markets in GCAM can be set for any emission species. (e.g., CH<sub>4</sub> -only market, NOx market, etc.)
 
@@ -56,11 +56,13 @@ mac-price-conversion | Value to multiply market price by to convert to unit expe
 Note | mac-price-conversion can also be set to -1, which is a flag to turn off all use of the MAC curve. This is useful for sensitivity studies.
 zero-cost-phase-in-time | Number of years over which to phase-in "below-zero" MAC curve reductions (default = 25 years)
 
-## <a name="energy-production-policies"> Energy Production Policies </a>
+<br/>
+
+## <a name="energy-production-policies"/> Energy Production Policies
 
 There are times in which users would like to explore the implications of a constraint on production or a minimum production requirement. This capability allows GCAM users to model policies such as renewable portfolio standards and biofuels standards. Across sectors, these constraints must be applied as quantity constraints, but they can be applied as share constraints within individual sectors (e.g., fraction of electricity that comes from solar power). In implementing these policies, this can either be a lower bound or upper bound. The model will solve for the tax (upper bound) or subsidy (lower bound) required to reach the given constraint. Examples of [bioenergy constraints](policies_examples.html#energy-constraint) are provided.
 
-## <a name="land-use-policies"> Land-Use Policies </a>
+## <a name="land-use-policies"/> Land-Use Policies 
 
 There are a number of ways that policies can be applied directly to influence the land sector in GCAM. These include the following.
 
@@ -72,7 +74,7 @@ There are a number of ways that policies can be applied directly to influence th
 
 * Land constraints: GCAM users can constraint the amount of land of a particular type in a given region. Under such a policy, GCAM will calculate the tax or subsidy required to ensure that the constraint is met. See [example](policies_examples.html#land-constraint).
 
-## <a name="policy-costs"> Calculating Emissions Policy Costs </a>
+## <a name="policy-costs"/> Calculating Emissions Policy Costs 
 
 The cost of GHG emissions mitigation is a concept that is not uniquely defined. A wide range of measures are used in the literature. These include, the price of carbon (or as appropriate given the policy) needed to achieve a desired emission mitigation goal, reduction in Gross Domestic Product (GDP), consumption loss, deadweight loss, and equivalent variation. Beyond that the concept of net cost, which includes the benefits of emissions mitigation as well as the resource cost of emissions reduction and the social cost of carbon are also encountered. GCAM makes no attempt to calculate the benefits.
 
