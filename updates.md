@@ -3,13 +3,22 @@ layout: index
 title: Recent updates
 prev: fusion.html
 next: 
-gcam-version: v5.3
+gcam-version: v5.4
 ---
 
-Several changes have been made to GCAM since the last release version (v5.2). The key updates are:
-
-1. GCAM's final historical year has been updated to **2015**.
-2. GCAM has been renamed to the "Global Change Analysis Model".
-3. Livestock trade has been updated to use an Armington-style approach, instead of fixing trade at historic values.
-4. A number of bug fixes (e.g., a correction to the MAC technical change) and minor enhancements (e.g., adding the `stop-year` capability)
+Several changes have been made to GCAM since the last release version (v5.3). The key updates are:
+ 1. Updated technology costs for electricity and transportation technologies
+ 2. Emissions: using CEDS as data source, updated to 2015, new MAC curves
+ 3. Trade: improved trade for fossil fuels, forestry, and agriculture
+ 4. Included water markets in GCAM-USA
+ 5. Energy for water
+ 6. New food demand representation
+ 7. Solver improvements and library changes
+ 8. gcamdata updated to use drake and work with dplyr 1.0.0
+ 9. Removed unused code
+ 10. Minor updates and bugfixes
+ 11. Optional features (not turned on by default):   
+	- Direct Air Capture  
+	- Ability to specify exogenous floorspace pathways  
+	- Ability to scale CH<sub>4</sub> and N<sub>2</sub>O emissions to EPA inventories  
 
