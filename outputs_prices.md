@@ -11,6 +11,8 @@ gcam-version: v5.4
 | Name | Resolution | Unit | Query | XML Tag |
 | :--- | :--- | :--- | :--- | :--- |
 | Price<sup>[1](#table_footnote1)</sup> | Market<sup>[2](#table_footnote2)</sup> and Year  | Various<sup>[3](#table_footnote3)</sup> | <span id="prices of all markets"><button onclick='getQuery("prices of all markets", "prices of all markets")'>prices of all markets</button></span> | `price` |
+| Food demand prices | Region, Type and Year  | 2005$/Mcal/day | <span id="food demand prices"><button onclick='getQuery(food demand prices", "food demand prices")'>food demand prices</button></span> | `price-paid` |
+
 
 <br/>
 Outputs are specified in the `startVisitMarket` method of [xml_db_outputter.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/reporting/source/xml_db_outputter.cpp). 
