@@ -206,6 +206,11 @@ Please use the appropriate methods on your platform for installing Java.  Please
 #### 2.3.5 Third party Jar files used by the Model Interface
 Users should copy into `<GCAM Workspace>/libs/jars` a copy of all of the third party libraries used by GCAM / the ModelInterface including the BaseX library.  You may obtain these from the Mac or Windows Release Package or from the [ModelInterface Releases on Github](https://github.com/JGCRI/modelinterface/releases).
 
+#### 2.3.6 BaseX
+BaseX is an XML database used for writing out comprehensive GCAM model output. Most users will be set-up for using BaseX by copying libraries
+and model interface files from a distribution version of GCAM as discussed above. If for some reason you are downloading BaseX directly from the [BaseX web site](https://basex.org/download/)
+note that the BaseX.jar library must be renamed exactly as `BaseX-9.5.0.jar`. 
+
 ### 2.4 Eigen
 Eigen is used by GCAM to provide linear algebra algorithms, utilities, and data structures which are used during the solution process.  Eigen is a modern C++ template library which is header only.  In other words, users do not need to compile and install Eigen.  Instead they just need to download the latest release "source code" from [the Eigen Git repo](https://gitlab.com/libeigen/eigen/-/archive/master/eigen-master.tar.gz) and copy it into their `libs/`, unzip, and rename / symlink the folder to be called just "eigen" (no version number).
 
