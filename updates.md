@@ -6,6 +6,8 @@ next:
 gcam-version: v5.4
 ---
 
+GCAM v5.4: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5093192.svg)](https://doi.org/10.5281/zenodo.5093192)
+
 Several changes have been made to GCAM since the last release version (v5.3). The key updates are:
  1. Updated technology costs for electricity and transportation technologies
  2. Emissions: using CEDS as data source, updated to 2015, new MAC curves
