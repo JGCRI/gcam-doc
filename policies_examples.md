@@ -1,12 +1,12 @@
 ---
 layout: index
 title: GCAM Policy Examples
-gcam-version: v5.3
+gcam-version: v5.4
 ---
 
 This page includes some examples of input files required to create policies. Note that each example will need to be tailored to your own needs. 
 
-## <a name="general-info"> General Information and Common Tags </a>
+## <a name="general-info"/> General Information and Common Tags 
 There are several tags that you will see in many different policy examples. This section explains these options. The use of these tags is demonstrated in the examples that follow this section.
 
 ### Basic Policy Types
@@ -60,7 +60,7 @@ The following policy examples are provided in this section.
 * [Energy Intensity Standard](#res)
 
 
-## <a name="carbon-price"> Carbon Price </a>
+## <a name="carbon-price"/> Carbon Price
 The following input file will create a carbon price of $1/tC (in $1990) in the USA, starting in the year 2020 and going through out the model time horizon. Additional regions can be added to this file. Regions with the same `market` name will use the same carbon price.
 
 ```
@@ -76,7 +76,7 @@ The following input file will create a carbon price of $1/tC (in $1990) in the U
 </scenario>
 ```
 
-## <a name="linked-policy"> Linked Policies </a>
+## <a name="linked-policy"/> Linked Policies
 Linked policies are used to tie the price of one policy to another. In the example below, CO2 and CH4 are linked to a policy called "GHG"; that is, the price of the GHG market will affect the price applied to both CO2 and CH4. The `price-adjust` is the price multiplier used to convert units; the example below assumes that the GHG price is in 1990$/tC and converts that to CH4 using GWPs. The `demand-adjust` is a multiplier on the output when adding emissions to a common market to be used in constraint; in this example, GWPs are used to convert each gas to its CO2-equivalent value.
 
 ```
@@ -100,7 +100,7 @@ Linked policies are used to tie the price of one policy to another. In the examp
 	...
 ```
 
-## <a name="energy-constraint"> Energy Constraint </a>
+## <a name="energy-constraint"/> Energy Constraint 
 The following inputs will set a constraint on bioenergy use in the USA, limiting it to 10 EJ/yr. Note that the `input-tax` tag will need to be added to all model periods (the example only uses 2020 for brevity). Additionally, this tag needs to be added to all production technologies and regions that are included in the target. For example, corn ethanol, sugarcane ethanol, and biodiesel do not consume or produce "regional biomass" and therefore would be excluded from the policy below. If you wanted to include these options in this constraint, you would need to add a tag to those technologies in the refinery sector. 
 
 This example sets an upper bound on production. If instead you wanted a lower bound, then you would use `input-subsidy` in the technology and `policyType` equals "subsidy" in the policy-portfolio-standard. If you wanted to set an exact constraint, you can use either a tax or a subsidy with the additional tag `<min-price year="2020" fillout="1">-100</min-price>` which will allow the tax or subsidy to go negative, effectively enabling either a tax or a subsidy within the same constraint.
@@ -131,7 +131,7 @@ If you wanted to only constrain one type of bioenergy, then would only put the `
 </scenario>
 ```
 
-## <a name="land-constraint"> Land Constraint </a>
+## <a name="land-constraint"/> Land Constraint 
 The following input file will keep UnmanagedForest area in the USA GreatLakes region above 12 thous sq km, starting in the year 2020 and going through out the model time horizon. Because the policy type is specified as `<policyType>subsidy</policyType>` the model will add a subsidy to the associated market to achieve the specified 12 thous sq km target. 
 
 If an upper bound was needed instead, this can be implemented by changing `policyType` to "tax" in the below xml example. In this case the opposite will occur, with the model adding a tax to the associated market to keep land use below the specified value. 
@@ -163,7 +163,7 @@ Note that the `land-constraint-policy` tag will need to be added to any `Unmanag
 </scenario>
 ```
 
-## <a name="res"> Energy Intensity Standard </a>
+## <a name="res"/> Energy Intensity Standard
 The following inputs will set up a energy intensity standard. These policies differ from the [energy constraint](#energy-constraint) described above in that they specify a share of a sectoral output. The example below sets a biofuels target, where the biofuels constraint is set by adding an additional input of "BioFuelsCredits" into the refined liquids for transportation sector. This credit input is read in as a `minicam-energy-input`, so its units are EJ with its price in $/GJ just like any other energy input, and its input coefficient is simply the target percentage.  This sets the demand for "BioFuelsCredits". (In this example, an additional pass-through sector called "refined liquids transport" was created to apply the constraint just on transportation rather than on all refined liquids. "refined liquids transport" is then used as the input to the transportation technologies.)
 
 ```

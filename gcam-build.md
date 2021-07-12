@@ -3,7 +3,7 @@ layout: index
 title: GCAM Build Instructions
 prev: user-guide.html
 next: fusion.html
-gcam-version: v5.3 
+gcam-version: v5.4 
 ---
 
 ## 1.Introduction
@@ -17,8 +17,15 @@ GCAM provides a generic [Makefile](#41-building-with-makefile) as well as [Xcode
 * [Boost C++ Libraries](http://www.boost.org), details [here](#21-boost)
 * [Xerces C++ XML Parser](http://xerces.apache.org), details [here](#22-xerces-xml-parser)
 * [Java](http://www.oracle.com/technetwork/java/index.html), required to write XML DB results.  See [below](#23-java) for more details.
+* [Eigen](https://eigen.tuxfamily.org), provides linear algebra routines for solution.  See [below](#24-eigen) for more details.
+* [Intel TBB](https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/onetbb.html), provides algorithms and utilities for parallel processing.  See [below](#25-intel-tbb) for more details.
 
-All of these libraries can also be installed through package managers:
+In addition users will have to download the [Hector submodule](#3-compiling-hector).
+
+## 2. Building Third Party Libraries
+This section details where to get and how to build the additional software required to re-compile and run GCAM.  In addition some notes beyond those provided by the source as it pertains to GCAM.  All of these required software are open source and/or available free of charge. **Note:** Mac and Windows binary packages (with the exception of Boost due to its large size) will already include these libraries and users only need to follow these instructions if they have a specific need to rebuild them.
+
+Most of these libraries can also be installed through package managers:
 
 |        | Homebrew (MacOS)                | Aptitude (Debian/Ubuntu)                                     |
 |        | `brew install <package>`        | `sudo apt install <package>`                                 |
@@ -26,13 +33,8 @@ All of these libraries can also be installed through package managers:
 | Boost  | `boost`                         | `libboost-dev` `libboost-system-dev libboost-filesystem-dev` |
 | Xerces | `xerces-c`                      | `libxerces-c-dev`                                            |
 | Java   | (Cask) `brew cask install java` | `default-jre` `default-jdk`                                  |
+| TBB    | `tbb`                           | `libtbb-dev`                                                 |
 
-In addition users will have to download the [Hector submodule](#3-compiling-hector).
-
-*Note that, in a departure from past releases*, in addition to compiling the C++ GCAM code, creating a GCAM executable now also requires compiling hector and (if not using the release version of the libraries) compiling boost libraries.
-
-## 2. Building Third Party Libraries
-This section details where to get and how to build the additional software required to re-compile and run GCAM.  In addition some notes beyond those provided by the source as it pertains to GCAM.  All of these required software are open source and/or available free of charge. **Note:** Mac and Windows binary packages (with the exception of Boost due to its large size) will already include these libraries and users only need to follow these instructions if they have a specific need to rebuild them.
 
 ### 2.1 Boost
 Boost includes many general purpose utilities for the C++ language and helps GCAM compile correctly across most platforms.  The library can be downloaded from [Boost](http://www.boost.org/users/download).  The version released with GCAM was 1.62 however any recent version should work.  GCAM now requires the header files and to build the `system` and `filesystem` libraries.  The Xcode and Visual Studio project files will expect boost to be located in `<GCAM Workspace>/libs` and where the folder unziped after downloading `boost_1_62_0` is either renamed or symlinked to `boost-lib`.  When building using the Makefile they can be located anywhere and are referenced by setting [an environment variable](#41-building-with-makefile).
@@ -119,7 +121,7 @@ make clean
 ```
 
 ### 2.3 Java
-Java is required by GCAM in order to store results in a [BaseX](http://basex.org) XML database, which itself is written in Java.  GCAM will use the Java Native Interface to interact with the database.  Since BaseX is written in Java it is inherently cross platform thus building it is not discussed here.  GCAM uses version 8.6.7 of the BaseX library, which is only supports Java 1.7+.  GCAM, therefore requires Java version 1.7 or newer.  The [official Oracle](http://www.oracle.com/technetwork/java/index.html) version or the [open source](http://openjdk.java.net) version should work **however** Oracle recently changed their licensing terms and it may not be free.  We therefore reccommend the open source version.  Some additional notes:
+Java is required by GCAM in order to store results in a [BaseX](http://basex.org) XML database, which itself is written in Java.  GCAM will use the Java Native Interface to interact with the database.  Since BaseX is written in Java it is inherently cross platform thus building it is not discussed here.  GCAM uses version 9.5.0 of the BaseX library, which is only supports Java 1.7+.  GCAM, therefore requires Java version 1.7 or newer.  The [official Oracle](http://www.oracle.com/technetwork/java/index.html) version or the [open source](http://openjdk.java.net) version should work **however** Oracle recently changed their licensing terms and it may not be free.  We therefore recommend the open source version.  Some additional notes:
 
 #### 2.3.1 Disable Java
 GCAM can be configured to compile without Java support, doing so implies GCAM results are not written to the BaseX database.  To disable Java edit `<GCAM Workspace>/cvs/objects/util/base/include/definitions.h` and set `__HAVE_JAVA__` to `0`:
@@ -160,7 +162,7 @@ C:\Program Files\Java\jdk1.8.0_102\lib
 In addtion the PATH variable may need to be updated so that GCAM can find the `jvm.dll`.  Note that this is the purpose of the `<GCAM Workspace>/exe/run-gcam.bat` wrapper.  Users can take a look at this file to understand how GCAM detects the JAVA_HOME and updates the PATH accordingly.
 
 #### 2.3.3 Java on Mac
-Note since GCAM now requires Java 1.7+ the old Apple supplied Java installation is no longer supported.  All versions of OS X can still use a more recent version of Java from Oracle/openJDK instead (**note** users must install the JDK, not the JRE).  Again we now reccommend users install the openJDK version.  Note, openJDK only provides a zip archive, to install on the Mac a user may simply run in the Terminal:
+Note since GCAM now requires Java 1.7+ the old Apple supplied Java installation is no longer supported.  All versions of OS X can still use a more recent version of Java from Oracle/openJDK instead (**note** users must install the JDK, not the JRE).  Again we now recommend users install the openJDK version.  Note, openJDK only provides a zip archive, to install on the Mac a user may simply run in the Terminal:
 
 ```
 tar -zxf openjdk-12.0.1_osx-x64_bin.tar.gz
@@ -203,6 +205,22 @@ Please use the appropriate methods on your platform for installing Java.  Please
 
 #### 2.3.5 Third party Jar files used by the Model Interface
 Users should copy into `<GCAM Workspace>/libs/jars` a copy of all of the third party libraries used by GCAM / the ModelInterface including the BaseX library.  You may obtain these from the Mac or Windows Release Package or from the [ModelInterface Releases on Github](https://github.com/JGCRI/modelinterface/releases).
+
+#### 2.3.6 BaseX
+BaseX is an XML database used for writing out comprehensive GCAM model output. Most users will be set-up for using BaseX by copying libraries
+and model interface files from a distribution version of GCAM as discussed above. If for some reason you are downloading BaseX directly from the [BaseX web site](https://basex.org/download/)
+note that the BaseX.jar library must be renamed exactly as `BaseX-9.5.0.jar`. 
+
+### 2.4 Eigen
+Eigen is used by GCAM to provide linear algebra algorithms, utilities, and data structures which are used during the solution process.  Eigen is a modern C++ template library which is header only.  In other words, users do not need to compile and install Eigen.  Instead they just need to download the latest release "source code" from [the Eigen Git repo](https://gitlab.com/libeigen/eigen/-/archive/master/eigen-master.tar.gz) and copy it into their `libs/`, unzip, and rename / symlink the folder to be called just "eigen" (no version number).
+
+### 2.5 Intel TBB
+The Intel / OneAPI Thread Building Blocks (TBB) library is a collection of utilities and algorithms to facilitate parallel processing.  We rely on TBB to utilize multiple CPU/cores to speed up GCAM runs.  Users can download pre-built binaries for Windows, Mac, and select Linux distributions (and it can often be found in package managers such as those noted above).  The prebuilt binaries can be downloaded from [the Intel TBB Github repo](https://github.com/oneapi-src/oneTBB/releases).  You can unzip it into your `libs` directory and rename/symlink to just `tbb` (no version numbers). Note users can easily disable GCAM Parallel by editing `utils/base/include/definitions.h` and changing `GCAM_PARALLEL_ENABLED` from `1` to `0` or alternatively updating their build platform:
+* Makefile: defining the environment variable `export USE_GCAM_PARALLEL=0`
+* Xcode edit Build Settings -> Preprocessor Macros -> add `GCAM_PARALLEL_ENABLED=0`
+* Visual edit Project -> objects-main Properties -> C/C++ -> Preprocessor -> Preprocessor Definitions -> add `GCAM_PARALLEL_ENABLED=0`
+
+**Warning**: users may want to disable `GCAM_PARALLEL_ENABLED`, or set the `max-parallelism` in their `configuration.xml` to `1`, for any scenario that they will need to be able to **exactly** reproduce.  Since when running with parallelism we can get slightly different round off errors, which in turn could take a different route through the solver.  Ultimately all supplies and demands will be with in tolerance, however sometimes things like land use change emissions can be noticeably different in some land regions even if the market for the ag commodities are within tolerance.
 
 ## 3 Compiling Hector
 [Hector](hector.html) is the simple climate developed at JGCRI.  It is available from the hector project's [Github repository](https://github.com/JGCRI/hector).  
@@ -247,9 +265,12 @@ export XERCES_LIB=${HOME}/libs/xercesc/lib
 export JARS_LIB=${HOME}/libs/jars/*
 export JAVA_INCLUDE=${JAVA_HOME}/include
 export JAVA_LIB=${JAVA_HOME}/jre/lib/server
+export EIGEN_INCLUDE=${HOME}/libs/eigen
+export TBB_INCLUDE=${HOME}/libs/tbb/include
+export TBB_LIB=${HOME}/libs/tbb/lib
 ```
 
-(Note that unlike the other variables, `JARS_LIB` points to all of the jar _files_, **not** the jar _directory_, which is why the `*` wildcard is necessary. `JARS_LIB` may also be set to point to multiple different files by concatenating the paths, e.g. `export JARS_LIB=/path/to/BaseX-8.6.7.jar:/path/to/joost-0.9.1.jar:${HOME}/libs/jars/*`).
+(Note that unlike the other variables, `JARS_LIB` points to all of the jar _files_, **not** the jar _directory_, which is why the `*` wildcard is necessary. `JARS_LIB` may also be set to point to multiple different files by concatenating the paths, e.g. `export JARS_LIB=/path/to/BaseX-9.5.0.jar:/path/to/joost-0.9.1.jar:${HOME}/libs/jars/*`).
 
 With these environment variables set a user can simple run:
 
@@ -270,20 +291,20 @@ sudo apt install libboost-dev libboost-system-dev libboost-filesystem-dev libxer
 ...the following variables can be used:
 
 ```
-USRLIB = /usr/lib/x86_64-linux-gnu
+USRLIB=/usr/lib/x86_64-linux-gnu
 
-BOOST_LIB = $(USRLIB)
-BOOST_INCLUDE = /usr/include/boost
+BOOST_LIB=${USRLIB}
+BOOST_INCLUDE=/usr/include/boost
 
 # For Hector, which uses different definitions
-BOOSTLIB = $(BOOST_LIB)
-BOOSTROOT = $(BOOST_INCLUDE)
+BOOSTLIB=${BOOST_LIB}
+BOOSTROOT=${BOOST_INCLUDE}
 
-XERCES_LIB = $(USRLIB)
-XERCES_INCLUDE = /usr/include/xercesc
+XERCES_LIB=${USRLIB}
+XERCES_INCLUDE=/usr/include/xercesc
 
-JAVA_INCLUDE = /usr/lib/jvm/default-java/include
-JAVA_LIB = /usr/lib/jvm/default-java/jre/lib/amd64/server
+JAVA_INCLUDE=/usr/lib/jvm/default-java/include
+JAVA_LIB=/usr/lib/jvm/default-java/jre/lib/amd64/server
 ```
 
 ### 4.2 Building with Xcode

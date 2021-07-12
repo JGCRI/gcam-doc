@@ -1,9 +1,9 @@
 ---
 layout: index
 title: Economic Choice in GCAM
-prev: emissions.html
-next: en_technologies.html
-gcam-version: v5.3
+prev: common_assumptions.html
+next: common_assumptions.html
+gcam-version: v5.4
 ---
 
 ## Introduction
@@ -237,8 +237,7 @@ The choice model in the land system is not currently configurable like
 in the energy system.  Instead, land use choices are always made using
 the Modified Logit.  Logit exponents are specified directly in the
 container object using the `<logit-exponent>` tag.  Land use choice is
-described further in the [Agriculture and Land Use](AgLU.html#logit)
-chapter.
+described further in the [land section](details_land.html#landsharingapproach).
 
 ## Notes and References
 
