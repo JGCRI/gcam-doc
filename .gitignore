@@ -1,6 +1,8 @@
 # The generated website files are in _site
 _site
 
+.jekyll-metadata
+
 # Emacs stuff
 *~
 \#*#
