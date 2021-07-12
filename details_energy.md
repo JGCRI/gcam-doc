@@ -14,6 +14,7 @@ This page provides more detailed explanations of the descriptions provided in th
 - [Energy Transformation](#energy-transformation)
 - [Trade](#trade)
 - [Energy for water](#energy-for-water)
+- [Optional Exogenous Floorspace](#optional-exogenous-floorspace)
 - [References](#references)
 
 ## Resources
@@ -215,6 +216,19 @@ With the exception of water abstraction, the energy intensities by sector and pr
 | Municipal | Wastewater Treatment | Electricity | 0.597 |
 
 Electricity used for non-renewable groundwater pumping is represented in future periods, using exogenous supply curves that have been constructed from simulated groundwater pumping over an 80 year period in <a href="https://github.com/JGCRI/superwell">Superwell</a>. The methods used are documented in [Turner et al. 2019](details_energy.html#turner2019) and [Kyle et al. (2021)](details_energy.html#kyle2021). From the Superwell output, supply curves are constructed for each GCAM region and water basin that consist of 20 "graded" points, each of which is assigned a total quantity of water, a non-energy-related cost of well construction and operation, and an electricity input-output coefficient. The grades are binned according to estimated total cost, using exogenous electricity prices; due to changes in electricity prices over time, the relative total costs of these grades may change over time.
+
+## Optional Exogenous Floorspace
+
+If the base assumptions are not desired, user-specified residential or commercial building floorspace values (in billion m<sup>2</sup>) can be added in a `.csv` file that is outside that datasystem. An XML can be generated from this `.csv` through Model Interface using the following header:
+
+```
+Floorspace, world/+{name}region, region/+{name}gcam-consumer, gcam-consumer/+{name}nodeInput, nodeInput/+{name}building-node-input, 
+building-node-input/+{year}base-building-size, building-node-input/+base-building-size, scenario, scenario/world
+```
+
+The figure below is an example XML of user-specified residential floorspace values for Maine. 
+
+<img src="gcam-figs/floorspace_Maine.PNG" width="343" height="203" /><br/>
 
 
 ## References
