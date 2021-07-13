@@ -6,6 +6,8 @@ gcam-version: v5.4
 
 This documentation describes GCAM v5.4 ([![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5093192.svg)](https://doi.org/10.5281/zenodo.5093192))
 
+
+**GCAM diagram. Click on each box for a more detailed description of that element.**
 <table>
 <tr>
 <td rowspan="4"> <b>Inputs</b> <br> <a href="inputs_supply.html"> <img src="gcam-figs/input_supply.png"></a> <br> <a href="inputs_land.html"> <img src="gcam-figs/input_land.png"></a> <br> <a href="inputs_economy.html"> <img src="gcam-figs/input_economy.png"></a> <br> <a href="inputs_demand.html"> <img src="gcam-figs/input_demand.png"></a></td>
