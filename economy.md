@@ -19,7 +19,7 @@ gcam-version: v5.4
 
 | Name | Resolution | Unit | Source |
 | :--- | :--- | :--- | :--- |
-| Population | Region and year | millions | [Exogenous](inputs_economy.html) |
+| Population | Region and year | thousands | [Exogenous](inputs_economy.html) |
 | Labor productivity growth rate | Region and year | unitless | [Exogenous](inputs_economy.html) |
 | Labor force participation rate | Region and year | unitless | [Exogenous](inputs_economy.html) |
 | Base year GDP | Region | million 1990$ | [Exogenous](inputs_economy.html) |
