@@ -112,7 +112,7 @@ Resource supply curves are specified for [fossil fuels](https://github.com/JGCRI
 
 Default carbon contents of fuels are specified in [A_PrimaryFuelCCoef.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/emissions/A_PrimaryFuelCCoef.csv). Historical CO<sub>2</sub> emissions are provided in [CDIAC_CO2_by_nation.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/emissions/CDIAC_CO2_by_nation.csv).
 
-Historical non-CO<sub>2</sub> emissions information is provided in several files within the [CEDS folder]((https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/emissions/CEDS).
+Historical non-CO<sub>2</sub> emissions information is provided in the GCAM release as "pre-built" data aggregated to GCAM regions, technologies, and fuels. Users that want to build using CEDS raw data, for example to build for different regional aggregations, will need to generate CEDS data using the open-source [CEDS system](https://github.com/JGCRI/CEDS) and place the resulting emissions data by country, fuel, and sector within the [CEDS folder](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/emissions/CEDS).
 
 ### Water
 
@@ -203,7 +203,7 @@ The costs associated with land, irrigation, and fertilizer are endogenously dete
 
 ##### Emissions 
 
-Historical non-CO<sub>2</sub> emissions information is provided in several files within the [CEDS folder]((https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/emissions/CEDS).
+Historical non-CO<sub>2</sub> emissions information is provided in the GCAM release as "pre-built" data aggregated to GCAM regions, technologies, and fuels. Users that want to build using CEDS raw data, for example to build for different regional aggregations, will need to generate CEDS data using the open-source [CEDS system](https://github.com/JGCRI/CEDS) and place the resulting emissions data by country, fuel, and sector within the [CEDS folder](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/emissions/CEDS).
 
 
 ## References
