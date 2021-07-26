@@ -39,7 +39,7 @@ A general overview of GCAM is also provided [here](overview.html).
 
 ### Alternative regional configurations of GCAM
 
-[GCAM-USA](gcam_usa.html)
+[GCAM-USA](gcam-usa.html)
 
 ### Running and modifying GCAM
 
@@ -52,7 +52,7 @@ Material on how to get started and use GCAM can be found on the following pages.
 * [Modifying GCAM scenarios through policies](policies.html)
 * [Examples](policies_examples.html)
 	
-GCAM is under continuing development. Informatiion on how this version of GCAM differs from previous versions, along documentation for previous versions can be found on the following pages.
+GCAM is under continuing development. Information on how this version of GCAM differs from previous versions, along documentation for previous versions can be found on the following pages.
 
 * [Updates from the Previous Release](updates.html)
 * [GCAM-3](v3.2/toc.html)
@@ -60,4 +60,6 @@ GCAM is under continuing development. Informatiion on how this version of GCAM d
 * [GCAM-4.3](v4.3/toc.html)
 * [GCAM-4.4](v4.4/toc.html)
 * [GCAM-5.1](v5.1/toc.html)
+* [GCAM-5.2](v5.2/toc.html)
+* [GCAM-5.3](v5.3/toc.html)
 
