@@ -39,6 +39,7 @@ gcam-version: v5.4
   - [Solution and Computation](solver.html)
   - [Technology Representation](en_technologies.html)
   - [Shared-Socioeconomic Pathways](ssp.html)
+  - [References](references.html)
 * [How to Get Started Running GCAM](user-guide.html)
 * [How to Set Up and Build ](gcam-build.html)
 * [GCAM Developer's Guide](dev-guide.html)

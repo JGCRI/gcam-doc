@@ -32,7 +32,7 @@ This documentation describes GCAM v5.4 ([![DOI](https://zenodo.org/badge/DOI/10.
 </table>
 
 <br/>
-A general overview of GCAM is also provided [here](overview.html).
+A general overview of GCAM is also provided [here](overview.html). A list of papers using GCAM is provided [here](references.html).
 
 ### Earth System
 [Hector](hector.html)
@@ -50,7 +50,7 @@ Material on how to get started and use GCAM can be found on the following pages.
 * [GCAM Fusion Usage Guide](fusion.html)
 * [GCAM Developer's Guide](dev-guide.html)
 * [Modifying GCAM scenarios through policies](policies.html)
-* [Examples](policies_examples.html)
+	- [Examples](policies_examples.html)
 	
 GCAM is under continuing development. Information on how this version of GCAM differs from previous versions, along documentation for previous versions can be found on the following pages.
 
