@@ -124,9 +124,9 @@ $$α_i$$ = the shareweight of the technology.
 
 $$β$$ = the logit coefficient, which determines how large a cost difference is required to produce a given difference in market share. 
 
-Shareweights are used to represent societal preferences, infrastructure buildup, and barriers or accelerants to market entry. Consistent with GCAM’s treatment of other new and emerging technologies, we set shareweights for DACCS technologies to zero in 2020, and linearly increase to 1 by 2100 for most scenarios. This means that by 2100, DACCS technologies are competing solely based on their cost minus the subsidy for removing carbon dioxide from the atmosphere (again, equal to the carbon emissions price). 
+Shareweights are used to represent societal preferences, infrastructure buildup, and barriers or accelerants to market entry. Consistent with GCAM’s treatment of other new and emerging technologies, we set shareweights for DACCS technologies to zero in 2020, and linearly increase to 1 by 2050 for most scenarios. This means that by 2100, DACCS technologies are competing solely based on their cost minus the subsidy for removing carbon dioxide from the atmosphere (again, equal to the carbon emissions price). 
 
-In each region, the base year service demand (i.e., the sum of “no DAC” + “DAC” technologies for which the share of each technology is computed) is set at an arbitrarily-high value of 2000 MtC per year, with the deployment share of DAC technologies being determined by the sum of their energy, water, and non-energy costs, minus any carbon price subsidy.
+In each region, the base year service demand (i.e., the sum of “no DAC” + “DAC” technologies for which the share of each technology is computed) is set for the USA region at an arbitrarily-high value of 2000 MtC per year, with the deployment share of DAC technologies being determined by the sum of their energy, water, and non-energy costs, minus any carbon price subsidy.  Base year service demand for other regions is scaled linearly by each regions cumulative onshore carbon storage capacity relative to the USA region.
 
 
 
