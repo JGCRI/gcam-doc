@@ -25,6 +25,7 @@ Table 1: External inputs used for demand of energy<sup>[1](#table_footnote1)</su
 | Name | Description | Type | Source | Resolution | Unit |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | Historical demand for energy | Demand for energy in the historical period; used for initialization/calibration of GCAM | External data | IEA | Specified by demand, fuel, country, and year |  ktoe and GWh |
+| Historical demand for floorspace | Demand for floorspace in the historical period; used for initialization/calibration of GCAM | External data | IEA, Odyssee, Other | Specified by country, and year |  BM2 and m2/pers |
 | Price elasticity of demand | Elasticity determining how demand responds to changes in price | Assumption | | Specified by demand |  unitless |
 | Value of time in transit multiplier | Factor multiplied by the wage rate to determine the value of time in transit, used in the transportation module | Assumption | | Specified by demand |  unitless |
 | Cost | Cost of production | Assumption | | Specified by technology and year |  1975$/kg or 1975$/GJ |
@@ -35,7 +36,8 @@ Table 1: External inputs used for demand of energy<sup>[1](#table_footnote1)</su
 | Logit exponents | GCAM requires the user to specify the logit exponents that determine the substitutability between technologies. | Assumption |  | Specified by sector and subsector | N/A |
 | Share weight interpolation rules | These rules dictate how share weights (GCAM's calibration parameter) are specified in future years. | Assumption |  | Specified by sector and subsector | N/A |
 | Fuel preference elasticity | Elasticity dictating how share weights change with GDP per capita | Assumption | | Specified by technology and year | unitless |
-| Satiation levels | Assumed satiation values for floorspace and residential energy services | Assumption | | Specified by demand, service, and region | m2/pers or EJ/pers |
+| Residential floorspace parameters | Estimated parameters for residential floorspace demand | Analysis/Assumption | | Specified by region | m2/pers and unitless |
+| Satiation levels | Assumed satiation values for commerical floorspace and building energy services | Assumption | | Specified by demand, service, and region | m2/pers and EJ/pers |
 | Income elasticity of demand | Elasticity determining how demand responds to changes in per capita output for industry and cement | Assumption | | Specified by demand | unitless
 | Energy intensities | Energy intensity for energy-for-water processes (desalination, abstraction, treatment, distribution, wastewater treatment) | External data |  [Liu et al. 2016](#liu2016) | Global | GJ per $$m^3$$ |
 | Desalinated water production | Water produced through desalination, used to estimate energy-for-water | External data | FAO Aquastat | By nation | $$km^3$$ per year |
@@ -99,9 +101,13 @@ Fuel preference elasticities are specified in [A32.fuelprefElasticity.csv](https
 
 Multipliers used to determine the value of time in transit are specified in [A54.tranSubsector_VOTT_revised.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A54.tranSubsector_VOTT_revised.csv).
 
+#### Residential floorspace parameters
+
+The parameters for the estimation of residential floorspace demand are listed in [A44.flsp_param.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.flsp_param.csv)
+
 #### Satiation levels
 
-Satiation levels are specified in [A44.satiation_flsp](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.satiation_flsp.csv) and [A44.demand_satiation_mult](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.demand_satiation_mult.csv).
+Satiation levels for energy services are specified in [A44.demand_satiation_mult](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.demand_satiation_mult.csv). For commercial floorspace, the satiation values are specified in [A44.satiation_flsp](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.satiation_flsp.csv). 
 
 ##### Emissions 
 
