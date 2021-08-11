@@ -26,7 +26,8 @@ gcam-version: v5.4
 | Historical floorspace demand (used for calibration) | By region and year | BM2/yr | [Exogenous](inputs_demand.html) |
 | Cost | By region, technology, and year | 1975$/GJ | [Exogenous](inputs_demand.html) |
 | Income and price elasticity | By region, demand, and year | unitless | [Exogenous](inputs_demand.html) |
-| Floorspace-demand parameters | By region | unitless | [Exogenous](inputs_demand.html) |
+| Residential floorspace demand parameters | By region | unitless | [Exogenous](inputs_demand.html) |
+| Satiation levels | By region | m2/pers and EJ/pers | [Exogenous](inputs_demand.html) |
 | GDP per capita | By region and year | thous 1990$ per person | [Economy module](economy.html) |
 | Population | By region and year | thousand | [Economy](economy.html) |
 | Habitable Land | By region and year | thousand km2 | [Land](land.html) |
@@ -51,7 +52,7 @@ gcam-version: v5.4
 
 ### Buildings
 
-GCAM disaggregates the building sector into residential and commercial sectors and models three aggregate services (heating, cooling, and other). Within each region, each type of building and each service starts with a different mix of fuels supplying energy (see Figure below). The future evolution of building energy use is shaped by changes in (1) floorspace, (2) the level of building service per unit of floorspace, and (3) fuel and technology choices by consumers. Floorspace depends on population, income, population density, and exogenously estimated parameters and satiation levels. Note that GCAM also includes the option to specify [floorspace exogenously](details_energy.html#optional-exogenous-floorspace). The level of building service demands per unit of floorspace depend on climate, building shell conductivity, affordability, and satiation levels. The approach used in the buildings sector is documented in [Clarke et al. 2018](demand_energy.html#clarke2018), which has a focus on heating and cooling service and energy demands. Within building services, the structures and functional forms are similar to any other GCAM sector, described in [Energy Technologies](en_technologies.html).
+GCAM disaggregates the building sector into residential and commercial sectors and models three aggregate services (heating, cooling, and other). Within each region, each type of building and each service starts with a different mix of fuels supplying energy (see Figure below). The future evolution of building energy use is shaped by changes in (1) floorspace, (2) the level of building service per unit of floorspace, and (3) fuel and technology choices by consumers. Residential floorspace depends on population, income, population density, and exogenously estimated parameters. Commercial floorspace depends on population, income, the average price of energy services, and exogenously specified satiation levels. Note that GCAM also includes the option to specify [floorspace exogenously](details_energy.html#optional-exogenous-floorspace). The level of building service demands per unit of floorspace depend on climate, building shell conductivity, affordability, and satiation levels. The approach used in the buildings sector is documented in [Clarke et al. 2018](demand_energy.html#clarke2018), which has a focus on heating and cooling service and energy demands. Within building services, the structures and functional forms are similar to any other GCAM sector, described in [Energy Technologies](en_technologies.html).
 
 ### Industry
 
