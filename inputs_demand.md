@@ -107,7 +107,7 @@ The parameters for the estimation of residential floorspace demand are listed in
 
 #### Satiation levels
 
-Satiation levels for energy services are specified in [A44.demand_satiation_mult](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.demand_satiation_mult.csv). For commercial floorspace, the satiation values are specified in [A44.satiation_flsp](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.satiation_flsp.csv). 
+Satiation levels for energy services are specified in [A44.demand_satiation_mult.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.demand_satiation_mult.csv). For commercial floorspace, the satiation values are specified in [A44.satiation_flsp.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.satiation_flsp.csv). 
 
 ##### Emissions 
 
