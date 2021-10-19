@@ -3,12 +3,12 @@ layout: index
 title: Demand for Water
 prev: inputs_demand.html
 next: outputs_quantity.html
-gcam-version: v5.3 
+gcam-version: v5.4 
 ---
 
 # Table of Contents
 
-- [Inputs to the Model](#inputs-to-the-model)
+- [Inputs to the Module](#inputs-to-the-module)
 - [Description](#description)
 - [Equations](#equations)
 - [Insights and intuition](#insights-and-intuition)
@@ -16,26 +16,35 @@ gcam-version: v5.3
 - [IAMC Reference Card](#iamc-reference-card)
 - [References](#references)
 
-## Inputs to the Model
-**Table 1: Inputs required by the demand model <sup>[1](#table_footnote)</sup>**
+## Inputs to the Module
+
+**Table 1: Inputs required by the demand module <sup>[1](#table_footnote)</sup>**
 
 | Name | Resolution | Unit | Source |
 | :--- | :--- | :--- | :--- |
 | Crop water coefficients | GLU, GCAM commodity, water type (consumption, withdrawals, biophysical consumption) and year | $$km^3$$ per Mt | [Exogenous](inputs_demand.html) |
-| Crop production | GLU, GCAM commodity, and year | Mt per year | [Supply Model](supply_land.html) |
+| Crop production | GLU, GCAM commodity, and year | Mt per year | [Land Supply Module](supply_land.html) |
 | Electricity water coefficients | GCAM region, technology, water type (consumption, withdrawals) and year | $$km^3$$ per EJ | [Exogenous](inputs_demand.html) |
-| Electricity production | GCAM region, technology, and year | EJ per year | [Supply Model](supply_energy.html) |
+| Electricity production | GCAM region, technology, and year | EJ per year | [Energy Supply Module](supply_energy.html) |
 | Livestock water coefficients | GCAM region, livestock type, water type (consumption, withdrawals, biophysical consumption) and year | $$km^3$$ per Mt | [Exogenous](inputs_demand.html) |
-| Livestock production | GCAM region, livestock type, and year | Mt per year | [Supply Model](supply_land.html) |
+| Livestock production | GCAM region, livestock type, and year | Mt per year | [Land Supply Module](supply_land.html) |
 | Primary energy water coefficients | GCAM region, fuel, water type (consumption, withdrawals, biophysical consumption) and year | $$km^3$$ per EJ | [Exogenous](inputs_demand.html) |
-| Primary energy production | GCAM region, fuel, and year | EJ per year | [Supply Model](supply_energy.html) |
+| Primary energy production | GCAM region, fuel, and year | EJ per year | [Energy Supply Module](supply_energy.html) |
 | Industry water coefficients | GCAM region, water type (consumption, withdrawals, biophysical consumption) and year | $$km^3$$ per EJ | [Exogenous](inputs_demand.html) |
-| Industry output | GCAM region and year | EJ per year | [Demand Model](demand_energy.html) |
+| Industry output | GCAM region and year | EJ per year | [Energy Demand Module](demand_energy.html) |
+| Income and price elasticity | By region, demand, and year | unitless | [Exogenous](inputs_demand.html) |
+| GDP per capita | By region and year | thous 1990$ per person | [Economy Module](economy.html) |
+| Population | By region and year | thousand | [Economy](economy.html) |
 
+<font size="-1">
+<a name="table_footnote">1</a>: Note that this table differs from the one provided on the <a href="inputs_demand.html#water">Demand Inputs Page</a> in that it lists all inputs to the water demand module, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
+</font>
+
+<br/>
 
 ## Description
 
-Water demand is calculated for six major sectors: [agriculture](#agriculture), [electricity generation](#electricitygeneration), [industrial manufacturing](#industrialmanufacturing), [primary energy production](#primaryenergyproduction), [livestock](#livestock), and [municipal uses](#municipaluses). For each sector, up to four types of water demand are represented (see [Types of water in GCAM](#TypesOfWaterInGCAM))
+Water demand is calculated for six major sectors: [agriculture](#agriculture), [electricity generation](#electricity-generation), [industrial manufacturing](#industrial-manufacturing), [primary energy production](#primary-energy-production), [livestock](#livestock), and [municipal uses](#municipal-uses). For each sector, up to four types of water demand are represented (see [Types of water in GCAM](#types-of-water-in-gcam))
 
 ### Agriculture
 
@@ -84,7 +93,7 @@ For more information, see  [Hejazi et al. 2013](#hejazi2013) and summarized in [
 
 ### Basin-To-Region and Basin-To-Sector Mapping
 
-Agricultural water demand is modeled at the basin level directly. Demands for water from other sectors are modeled at the geopolitical region and then mapped to the basin. For more information, see the detailed description of the [basin mapping](details_#basin-to-regionandbasin-to-sectormapping).
+Agricultural water demand is modeled at the basin level directly. Demands for water from other sectors are modeled at the geopolitical region and then mapped to the basin. For more information, see the detailed description of the [basin mapping](details_water.html#basin-to-region-and-basin-to-sector-mapping).
 
 
 ## Equations 
@@ -103,13 +112,6 @@ where pcGDP is per-capita GDP, P is water price, and Tech stands for autonomous 
 
 See `calcDemand` in [minicam_price_elasticity_function.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/functions/source/minicam_price_elasticity_function.cpp).
 
-## Policy options 
-This section summarizes some of the energy-based policy options available in GCAM. 
-
-### Policy type #1
-
-{Insert paragraph describing a type of policy for this sector. Include links to xml input files on GitHub and/or the policies.html or policies_examples.html pages}
-
 ## Insights and intuition
 
 ### Dynamics of electricity cooling systems
@@ -121,7 +123,6 @@ When water supply constraints are not imposed or when water prices and scarcity 
 Not applicable. The IAMC reference card does not have water demand related entries.
 
 <font size="-1">
-<a name="table_footnote">1</a>: Note that this table differs from the one provided on the [Demand Inputs Page](inputs_demand.html#description) in that it lists all inputs to the land model, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
 <a name="elec_footnote">2</a>: Note that because of the limits to the supplysector/subsector/technology structure of the energy system technologies in GCAM, this additional "cooling system" level of nesting is achieved through the use of “pass-through” technologies and sectors. To help with interpretation of the model output, the electric sector queries have been written to report these cooling system technologies under the "electricity" sector, but the raw input XML files and model output nevertheless have the fully disaggregated structure.
 </font>
 

@@ -3,12 +3,22 @@ layout: index
 title: The GCAM Land Model
 prev: land.html
 next: land.html
-gcam-version: v5.3 
+gcam-version: v5.4 
 ---
 
 This page provides more detailed explanations of the descriptions provided in the [land](land.html) modeling page.
 
-{:toc}
+## Table of Contents
+
+- [Land Sharing Approach](#land-sharing-approach)
+- [Land Nesting Strategy](#land-nesting-strategy)
+- [Calibration](#calibration)
+- [Modeling Land Uses and Crops that are New to a Region](#modeling-land-uses-and-crops-that-are-new-to-a-region)
+- [Crop Outliers](#crop-outliers)
+- [Regional Production and Comparative Advantage](#regional-production-and-comparative-advantage)
+- [Land Use Change Emissions](#land-use-change-emissions)
+- [References](#references)
+
 
 ## Land Sharing Approach 
 
@@ -22,16 +32,16 @@ Finally, because the logit sharing approach reflects non-linear representations 
 
 ## Land Nesting Strategy
 
-The strategy for nesting competing land uses and nesting nests of competing land uses has involved some expert judgment, as does the choice of logit exponents that govern substitution within each of the level of the nesting structure. Note that calibration and reproduction of historical results does not depend on the nesting strategy or the logit exponents used. Instead, these assumptions affect future period results as conditions or policies change from history.
+The strategy for nesting both competing land uses and nests of competing land uses has involved some expert judgment, as does the choice of logit exponents that govern substitution within each of the level of the nesting structure. Note that in standard GCAM runs, calibration and reproduction of historical results does not depend on the nesting strategy or the logit exponents used. Instead, these assumptions affect future period results as conditions or policies change from history.
 
 Before discussing our nesting approach, it is useful to consider the space of possible nesting strategies. One approach is that of a single nest: the assumption that the land regions are small enough that all competing options are equally substitutable.  This assumption implies that it is just as easy to switch from forest to wheat as it is to switch from corn to wheat. However, this conversion would not happen unless wheat was more profitable than forest or corn.  With a high enough logit exponent for this single nest, the land sharing approaches an optimal “winner-take-all” result in that all land within a region will be dedicated to the most profitable product in that region. A single nest with a high exponent represents the extreme end of unconstrained optimization in which there is no transition cost or other hurdle for switching from one land type to another.
 
 The other extreme is that of no substitution. This would be accomplished with near zero or zero logit exponents, whether in a single nest or multiple nests. This implies that either it is physically impossible or the transition costs are too high to allow switching from one land type to another. Currently, in GCAM, we use zero logit exponents in a very limited number of situations, where we do not want any substitution (e.g., we do not allow cropland to expand into desert or tundra).  However, in most situations, we employ positive logit exponents and allow economics to dictate the land allocation within a region. 
 
-Our approach is to use a nesting strategy that allows the logit exponents to reflect differences in substitutability across land categories. Figure 1 shows the nesting diagram of land with a subregion. At the top is all land, which is divided into two main types of nodes: agro-forestry land and the remaining categories of land that are not suitable for agriculture. This second category could be divided further if useful. The next node layer contains two further nodes: all agro-forestry, non-pasture land and all pasture land. The pasture land node contains two competing uses (land leaves in the code): managed pasture (that which feeds marketed livestock) and unmanaged pasture.
+Our approach is to use a nesting strategy that allows the logit exponents to reflect differences in substitutability across land categories. Figure 1 shows the nesting diagram of land with a subregion. At the top is all land, which is divided into two main types of nodes: agro-forestry land and the remaining categories of land that are not suitable for agriculture. This second category could be divided further if useful. The next node layer contains two further nodes: all agro-forestry, non-pasture land and all pasture land. The pasture land node contains two competing uses (land leaves in the code): managed pasture (that which feeds marketed livestock) and unmanaged pasture. The figure also indicates which file in the `gcamdata` system processes the inputs for each type of land (e.g., processing for purple leafs is found in [zchunk_L2242.land_input_4_irr_mgmt.R](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/zchunk_L2242.land_input_4_irr_mgmt.R) and [zchunk_batch_land_input_4_IRR_MGMT_xml.R](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/zchunk_batch_land_input_4_IRR_MGMT_xml.R), with the final inputs set in a file called `land_input_4_IRR_MGMT.xml`).
 
 
-![AgLU Land Nesting Diagram](gcam-figs/AgLUTree.bmp)<br/>
+![AgLU Land Nesting Diagram](gcam-figs/AgLUTreeDetailed.png)<br/>
 Figure 1: AgLU Land Nest
 {: .fig}
 
@@ -52,7 +62,7 @@ In future model periods, the calibration profit scalers are used to adjust the f
 
 The calibration process can accommodate gaps or imprecisions in the profit data for the crops and land uses in base year calibration data set. Changing the values of inputs such as land prices, product prices, and product variable costs will change the values of the calibration parameters internal to the model. Algebraically, the calibration parameters adjust or compensate to make the profit rates consistent with the base year shares and crop yields. In most situations, these changes will not affect model results either in the calibration year or future years. The calibration is to an extent self-correcting.
 
-However, there are a few important exceptions to this rule.  First, as discussed in the [supply modeling](supply_land.html#VariableCosts), variable costs introduce price floors and thus, increasing these values may result in some regions ceasing production in future years.  Second, exceptions occur when we introduce crops, technologies, or policies that are not part of the base year calibration data set. One example is when new biomass crops are introduced. To introduce a new crop or a new crop technology, the model has to evaluate how its profitability compares to all other crops and uses of land. In this case, the actual values of the prices and costs that determine profits do matter. In the biomass example, it is important not only to have the variable costs and yields of the biomass correct, we also have to have the magnitudes of the profits of the competing crops correct for the competition to be valid. That means we have to have the prices and costs for all of the crops correct. Calibration cannot compensate for this problem. 
+However, there are a few important exceptions to this rule.  First, as discussed in the [supply modeling](supply_land.html#variable-costs), variable costs introduce price floors and thus, increasing these values may result in some regions ceasing production in future years.  Second, exceptions occur when we introduce crops, technologies, or policies that are not part of the base year calibration data set. One example is when new biomass crops are introduced. To introduce a new crop or a new crop technology, the model has to evaluate how its profitability compares to all other crops and uses of land. In this case, the actual values of the prices and costs that determine profits do matter. In the biomass example, it is important not only to have the variable costs and yields of the biomass correct, we also have to have the magnitudes of the profits of the competing crops correct for the competition to be valid. That means we have to have the prices and costs for all of the crops correct. Calibration cannot compensate for this problem. 
 
 The same would be true for introducing new technologies for growing existing crops that are part of the calibration data set. For example, if we introduce a new management technique for growing corn to compete with the existing technique, the variable costs for both the new technology and the existing technology would have to be correct for the competition to be valid.
 
@@ -87,8 +97,13 @@ Consider the example of a future scenario with a high global demand for a bioene
 Although GCAM is not structured as an optimization model, the allocation of production of crops and products across regions and subregions of the globe based on comparative advantage can be considered optimal in terms of maximizing global profits (which is not the same as minimizing land requirements). While each land subregion makes its own independent allocation, the subregions communicate these decisions with each other through economic markets. The global markets for agricultural and forest products react to these allocations by comparing global supplies to demands and adjusting prices to equilibrate supplies and demands. The resulting prices are sent back to each land subregion as signals as to how its land allocation should be changed.  The process of allocation and price adjustment continues until the markets are in equilibrium.  This market equilibrium is an economically efficient allocation of land resources among regions (Samuelson and Nordhaus, 1985).
 
 ## Land Use Change Emissions
-When land is converted to forests, the vegetation carbon content of that new forest land exponentially approaches an exogenously-specified, region-dependent value in order to represent the finite time required for forests to grow, as shown in the figure below.
+When land is converted to forests, the vegetation carbon content of that new forest land gradually approaches an exogenously-specified, region- and land-type-dependent value. The rate at which this value is reached depends on the mature age of forests. Mature age is specified by region, GLU, and land type. In the figure below, the rate of growth as a function of time since planting is shown for four different mature ages. In this figure, the y-axis indicates the percentage of the exogenously-specified, region- and land-type-dependent value accumulated.
 
 ![Figure 1](gcam-figs/forest_carbon_evolution.png)<br/>
 Figure 1: Timescales for forest regrowth in GCAM.
 {: .fig}
+
+## References
+
+Samuelson, Paul A.; William D Nordhaus (2004), Economics, McGraw-Hill, ISBN 0-07-287205-5
+

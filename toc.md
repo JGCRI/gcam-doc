@@ -1,26 +1,44 @@
 ---
 layout: index
 title: Table of Contents
-gcam-version: v5.3
+gcam-version: v5.4
 ---
 ## GCAM Documentation Topics
 
 
 * [GCAM Model Overview](overview.html)
-* [Socioeconomics](macro-econ.html)
-* [Energy](energy.html)
-* [Agriculture, Land-Use, and Bioenergy](aglu.html)
-* [Water](water.html)
-* [Climate](hector.html) 
+* Inputs
+	- [Demand](inputs_demand.html)
+	- [Economy](inputs_economy.html)
+	- [Land](inputs_land.html)
+	- [Supply](inputs_supply.html)
+* [Economy](economy.html)
+* [Land](land.html)
+* [Marketplace](marketplace.html)
+* Supply
+	- [Energy](supply_energy.html)
+	- [Water](supply_water.html)
+	- [Land](supply_land.html)
+* Demand
+	- [Energy](demand_energy.html)
+	- [Water](demand_water.html)
+	- [Land](demand_land.html)
 * [Emissions](emissions.html)
-* [Economic Choice](choice.html)
-* [Solution and Computation](solver.html)
-* [Trade](trade.html)
-* [Technology Representation](en_technologies.html)
+* Outputs
+	- [Emissions](outputs_emissions.html)
+	- [Land](outputs_land.html)
+	- [Prices](outputs_prices.html)
+	- [Quantity](outputs_quantity.html)
+	- [Trade](outputs_trade.html)
+* [Climate](hector.html) 
 * [Policies and costs](policies.html)
-    * [Examples of how to implement policies in GCAM](policies_examples.html)
-* [Shared-Socioeconomic Pathways](ssp.html)
+    - [Examples of how to implement policies in GCAM](policies_examples.html)
 * [GCAM-USA](gcam-usa.html)
+* Additional information:
+  - [Economic Choice](choice.html)
+  - [Solution and Computation](solver.html)
+  - [Technology Representation](en_technologies.html)
+  - [Shared-Socioeconomic Pathways](ssp.html)
 * [How to Get Started Running GCAM](user-guide.html)
 * [How to Set Up and Build ](gcam-build.html)
 * [GCAM Developer's Guide](dev-guide.html)

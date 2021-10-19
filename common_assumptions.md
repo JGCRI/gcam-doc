@@ -3,7 +3,7 @@ layout: index
 title: Common Assumptions
 prev: diagram.html
 next: inputs_demand.html
-gcam-version: v5.3 
+gcam-version: v5.4 
 ---
 
 These assumptions are shared throughout the GCAM model.
@@ -11,6 +11,45 @@ These assumptions are shared throughout the GCAM model.
 ## Regional Resolution
 
 ### Geopolitical Regions
+
+GCAM subdivides the world into 32 geopolitical regions, representing countries or collections of countries (see Table below).
+
+| GCAM Region	| Countries |
+|:-------------:|:---------:|
+| Africa\_Eastern	| Burundi, Comoros, Djibouti, Eritrea, Ethiopia, Kenya, Madagascar, Mauritius, Reunion, Rwanda, Sudan, Somalia, Uganda |
+| Africa\_Northern | Algeria, Egypt, Western Sahara, Libya, Morocco, Tunisia |
+| Africa\_Southern | Angola, Botswana, Lesotho, Mozambique, Malawi, Namibia, Swaziland, Tanzania, Zambia, Zimbabwe |
+| Africa\_Western	 | Benin, Burkina Faso, Central African Republic, Cote d’Ivoire, Cameroon, Democratic Republic of the Congo, Congo, Cape Verde, Gabon, Ghana, Guinea, Gambia, Guinea-Bissau, Equatorial Guinea, Liberia, Mali, Mauritania, Niger, Nigeria, Senegal, Sierra Leone, Sao Tome and Principe, Chad, Togo |
+| Argentina | Argentina |
+| Australia\_NZ	| Australia, New Zealand |
+| Brazil | Brazil |
+| Canada	    | Canada |
+| Central America and the Caribbean	 | Aruba, Anguilla, Netherlands Antilles, Antigua & Barbuda, Bahamas, Belize, Bermuda, Barbados, Costa Rica, Cuba, Cayman Islands, Dominica, Dominican Republic, Guadeloupe, Grenada, Guatemala, Honduras, Haiti, Jamaica, Saint Kitts and Nevis, Saint Lucia, Montserrat, Martinique, Nicaragua, Panama, El Salvador, Trinidad and Tobago, Saint Vincent and the Grenadines |
+| Central Asia | Armenia, Azerbaijan, Georgia, Kazakhstan, Kyrgyzstan, Mongolia, Tajikistan, Turkmenistan, Uzbekistan |
+| China | China |
+| Colombia | Colombia |
+| EU-12 | Bulgaria, Cyprus, Czech Republic, Estonia, Hungary, Lithuania, Latvia, Malta, Poland, Romania, Slovakia, Slovenia |
+| EU-15         |	Andorra, Austria, Belgium, Denmark, Finland, France, Germany, Greece, Greenland, Ireland, Italy, Luxembourg, Monaco, Netherlands, Portugal, Sweden, Spain, United Kingdom |
+| Europe\_Eastern | Belarus, Moldova, Ukraine |
+| European Free Trade Association |Iceland, Norway, Switzerland |
+| Europe\_Non\_EU | Albania, Bosnia and Herzegovina, Croatia, Macedonia, Montenegro, Serbia, Turkey |
+| India | India |
+| Indonesia | Indonesia |
+| Japan |	Japan |
+| Mexico | Mexico |
+| Middle East | United Arab Emirates, Bahrain, Iran, Iraq, Israel, Jordan, Kuwait, Lebanon, Oman, Palestine, Qatar, Saudi Arabia, Syria, Yemen |
+| Pakistan | Pakistan |
+| Russia | Russia |
+| South Africa | South Africa |
+| South America\_Northern	| French Guiana, Guyana, Suriname, Venezuela |
+| South America\_Southern	| Bolivia, Chile, Ecuador, Peru, Paraguay, Uruguay |
+| South Asia | Afghanistan, Bangladesh, Bhutan, Sri Lanka, Maldives, Nepal |
+| Southeast Asia | American Samoa, Brunei Darussalam, Cocos (Keeling) Islands, Cook Islands, Christmas Island, Fiji, Federated States of Micronesia, Guam, Cambodia, Kiribati, Lao Peoples Democratic Republic, Marshall Islands, Myanmar, Northern Mariana Islands, Malaysia, Mayotte, New Caledonia, Norfolk Island, Niue, Nauru, Pacific Islands Trust Territory, Pitcairn Islands, Philippines, Palau, Papua New Guinea, Democratic Peoples Republic of Korea, French Polynesia, Singapore, Solomon Islands, Seychelles, Thailand, Tokelau, Timor Leste, Tonga, Tuvalu, Viet Nam, Vanuatu, Samoa |
+| South Korea | South Korea |
+| Taiwan | Taiwan |
+| USA | United States |
+
+Table: Mapping from GCAM region to country
 
 ### Global River Basins
 
@@ -72,6 +111,7 @@ We have represented the water at the scale of major river basins. Currently 235 
 49|Dniester|99|Eastern Jordan-Syria|149|Niger|199|Limpopo
 50|Italy-East Coast|100	|Africa-Red Sea-Gulf of Aden Coast|150|Micronesia|200|La Puna Region
 
+<br/>
 
 ### Global Land Units
 

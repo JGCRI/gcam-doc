@@ -5,11 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>GCAM {{page.gcam-version}} Documentation: {{page.title}}</title>
 
-    <link rel="stylesheet" href="/stylesheets/styles.css">
-    <link rel="stylesheet" href="/stylesheets/github-dark.css">
-    <link rel="shortcut icon" href="/images/logo.gif">
-    <script src="/javascripts/scale.fix.js"></script>
-    <script src="/javascripts/load_queries.js"></script>
+    <link rel="stylesheet" href="{{site.url}}/stylesheets/styles.css">
+    <link rel="stylesheet" href="{{site.url}}/stylesheets/github-dark.css">
+    <link rel="shortcut icon" href="{{site.url}}/images/logo.gif">
+    <script src="{{site.url}}/javascripts/scale.fix.js"></script>
+    <script src="{{site.url}}/javascripts/load_queries.js"></script>
     <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
@@ -30,7 +30,7 @@
         </ul>
 	<hr/>
 	<p class="nav">
-	  <a href="{{site.github.url}}/index.html">[Home]</a>
+	  <a href="{{site.url}}/index.html">[Home]</a>
 	  {% if page.devguide %}
       <a href="../toc.html">[Table of Contents{% if page.gcam-version %}
 	    ({{page.gcam-version}}){% endif %}]</a>

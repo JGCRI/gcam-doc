@@ -3,31 +3,30 @@ layout: index
 title: Economy
 prev: inputs_economy.html
 next: outputs_prices.html
-gcam-version: v5.3 
+gcam-version: v5.4 
 ---
 
 # Table of Contents
 
-- [Inputs to the Model](#inputs-to-the-model)
+- [Inputs to the Module](#inputs-to-the-module)
 - [Description](#description)
 - [Equations](#equations)
 - [Insights and intuition](#insights-and-intuition)
-- [Policy options](#policy-options)
 - [IAMC Reference Card](#iamc-reference-card)
-- [References](#references)
 
-## Inputs to the Model
-**Table 1: Inputs required by the economic model <sup>[1](#table_footnote)</sup>**
+## Inputs to the Module
+**Table 1: Inputs required by the economic module <sup>[1](#table_footnote)</sup>**
 
 | Name | Resolution | Unit | Source |
 | :--- | :--- | :--- | :--- |
-|  |  |  | [Exogenous](inputs_supply.html) |
-
+| Population | Region and year | thousands | [Exogenous](inputs_economy.html) |
+| Labor productivity growth rate | Region and year | unitless | [Exogenous](inputs_economy.html) |
+| Labor force participation rate | Region and year | unitless | [Exogenous](inputs_economy.html) |
+| Base year GDP | Region | million 1990$ | [Exogenous](inputs_economy.html) |
 
 ## Description
 
-<Add as many subsections and sub-subsections as needed to describe this area. Each subsection should have a short paragraph qualitatively describing the topic. Additional information can be included on a details_xyz.md page if needed>
-
+The socioeconomic component of GCAM sets the scale of economic activity and associated demands for model simulations. Assumptions about population and per capita GDP growth for each of the 32 geo-political regions together determine the Gross Domestic Product (GDP). GDP and population both can drive the demands for a range of different demands within GCAM. Population and economic activity are used in GCAM through a one-way transfer of information to other GCAM components. For example, neither the price nor quantity of energy nor the quantity of energy services provided to the economy affect the calculation of the principle model output of the GCAM macro-economic system, GDP.
 
 ## Equations 
 The equations that determine economic variables are described here.
@@ -37,23 +36,18 @@ The equations that determine economic variables are described here.
 Regional GDP is calculated using a simple one-equation model:
 
 $$
-Equation 1: GDP_{r,t+1} = POP_{r,t+1}( 1+GRO_{r,t})^{tStep}( \frac{GDP_{r,t}}{POP_{r,t}} ) P^{ \alpha }_{r,t+1}
+Equation 1: GDP_{r,t+1} = POP_{r,t+1} * LF_{r,t+1} * *( 1+GRO_{r,t+1})^{tStep}( \frac{GDP_{r,t}}{POP_{r,t}LF_{r,t}} ) * (\frac{P_{r,t+1}}{P_{r,t}})^\alpha
 $$
 
-Where $$r$$=region, $$t$$=the period, $$tStep$$=number of years in the time step, $$GDP_{r,t}$$=population in region $$r$$ in period $$t$$, $$POP_{r,t}$$=population in region $$r$$ in period $$t$$ and $$GRO_{r,t}$$=annual average per capita GDP growth rate in region $$r$$ in period $$t$$.
+Where $$r$$=region, $$t$$=the period, $$tStep$$=number of years in the time step, $$GDP_{r,t}$$=population in region $$r$$ in period $$t$$, $$POP_{r,t}$$=population in region $$r$$ in period $$t$$, $$LF_{r,t}$$=labor force participation in region $$r$$ in period $$t$$ and $$GRO_{r,t}$$=labor productivity growth rate in region $$r$$ in period $$t$$. The last term is an energy-price feedback, where $$P_{r,t}$$ is the price of energy services and $$\alpha$$ is a feedback elasticity (e.g., the percentage change in GDP for a percentage change in price). Note that $$\alpha$$ is set to zero in GCAM, effectively removing this term from the calculation of GDP.  
 
-See `method name` in [code_file.cpp](link to code on GitHub).
-
-## Policy options 
-This section summarizes some of the energy-based policy options available in GCAM. 
-
-### Policy type #1
-<Insert paragraph describing a type of policy for this sector. Include links to xml input files on GitHub and/or the policies.html or policies_examples.html pages>
+See `initialGDPcalc` and `adjustGDP` in [gdp.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/containers/source/gdp.cpp).
 
 ## Insights and intuition
 
-### Paper/Topic #1
-<One paragraph summary of a key insight from one or more papers>
+### Socioeconomic growth and demand
+
+Changes in future per capita GDP and population will affect the final demand for energy, food, and forestry. For example, increases in population will increase regional consumption proportionally, while changes in per capita GDP affect consumption through income elasticities (See [demand inputs](inputs_demand.html)). Thus, different assumptions of future GDP and population growth across different socioeconomic scenarios may play key roles in driving to an alternative future. In addition, regional heterogeneity in future GDP and population growth, leading to heterogeneous regional demand growth, is also a critical driver to future changes in regional supply, biophysical responses, and trade patterns.
 
 ## IAMC Reference Card
 
@@ -98,7 +92,5 @@ Autonomous energy efficiency improvements
 - [ ] Yes (endogenous)
 
 
-<a name="table_footnote">1</a>: Note that this table differs from the one provided on the [Supply Inputs Page](inputs_supply.html#description) in that it lists all inputs to the land model, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
-
-## References
+<a name="table_footnote">1</a>: Note that this table differs from the one provided on the [Economy Inputs Page](inputs_economy.html#description) in that it lists all inputs to the economy module, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
 

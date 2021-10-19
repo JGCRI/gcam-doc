@@ -3,7 +3,7 @@ layout: index
 title: Energy Technologies
 prev: choice.html
 next: solver.html
-gcam-version: v5.3 
+gcam-version: v5.4 
 ---
 
 This page documents the parameters and functional forms found within technologies in GCAM's energy system. In the heirarchy of the information in the XML input and output files, the technology is located at the following level:
