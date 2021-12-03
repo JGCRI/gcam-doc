@@ -12,7 +12,7 @@ This section is for users that wish to compile GCAM C++ source code into an exec
 * For use on general POSIX systems or a version of Mac or Windows for which the released binary was not compatible.
 * To add new features or otherwise customize the model.
 
-GCAM provides a generic [Makefile](#41-building-with-makefile) as well as [Xcode](#42-building-with-xcode) and [Visual Studio](#43-building-with-visual-studio) project files.  **Note** as of GCAM 4.4 compiling GCAM requires a C++ compiler with support for the C++ 14 language standard.  In addtion, it relies on the following third party libraries.  Mac and Windows users should be able to use the libraries provided, otherwise see the section on [building third party libraries](#2-building-third-party-libraries).
+GCAM provides a generic [Makefile](#41-building-with-makefile) as well as [Xcode](#42-building-with-xcode) and [Visual Studio](#43-building-with-visual-studio) project files.  **Note** as of GCAM 4.4 compiling GCAM requires a C++ compiler with support for the C++ 14 language standard.  In addition, it relies on the following third party libraries.  Mac and Windows users should be able to use the libraries provided, otherwise see the section on [building third party libraries](#2-building-third-party-libraries).
 
 * [Boost C++ Libraries](http://www.boost.org), details [here](#21-boost)
 * [Xerces C++ XML Parser](http://xerces.apache.org), details [here](#22-xerces-xml-parser)
@@ -89,7 +89,7 @@ GCAM requires the 64-bit version of the library to be built.  This means you sho
 <GCAM Workspace>/libs/xercesc/lib
 ```
 
-In addtion you should copy `xerces-c_3_1.dll` into `<GCAM Workspace>/exe`.
+In addition you should copy `xerces-c_3_1.dll` into `<GCAM Workspace>/exe`.
 
 #### 2.2.2 Xerces Mac or POSIX
 GCAM requires the 64-bit version of the library to be built.  In addition users have had trouble linking with the `cURL` library which isn't necessary for running GCAM so you could disable that.  The follow could be used as a template for building the library:
@@ -159,7 +159,7 @@ C:\Program Files\Java\jdk1.8.0_102\include
 C:\Program Files\Java\jdk1.8.0_102\lib
 ```
 
-In addtion the PATH variable may need to be updated so that GCAM can find the `jvm.dll`.  Note that this is the purpose of the `<GCAM Workspace>/exe/run-gcam.bat` wrapper.  Users can take a look at this file to understand how GCAM detects the JAVA_HOME and updates the PATH accordingly.
+In addition the PATH variable may need to be updated so that GCAM can find the `jvm.dll`.  Note that this is the purpose of the `<GCAM Workspace>/exe/run-gcam.bat` wrapper.  Users can take a look at this file to understand how GCAM detects the JAVA_HOME and updates the PATH accordingly.
 
 #### 2.3.3 Java on Mac
 Note since GCAM now requires Java 1.7+ the old Apple supplied Java installation is no longer supported.  All versions of OS X can still use a more recent version of Java from Oracle/openJDK instead (**note** users must install the JDK, not the JRE).  Again we now recommend users install the openJDK version.  Note, openJDK only provides a zip archive, to install on the Mac a user may simply run in the Terminal:
@@ -196,7 +196,7 @@ JAVA_HOME=$(/usr/libexec/java_home)
 ln -s ${JAVA_HOME}/include include
 # Note the following works for Java 1.7/8
 ln -s ${JAVA_HOME}/jre/lib/server lib
-# The following is requred for Java 9/10
+# The following is required for Java 9/10
 # ln -s ${JAVA_HOME}/lib/server lib
 ```
 
