@@ -11,6 +11,7 @@ gcam-version: v5.4
 * [Review Process](dev-guide/review.html)
 * [Analysis Tools](dev-guide/analysis.html)
 * [Examples](dev-guide/examples.html)
+* [XML Parse](dev-guide/rapid_parse.html)
 * [Debugging: Common Issues](dev-guide/debug.html)
 * [Testing Framework](dev-guide/test_framework.html)
 * [Additional Information](dev-guide/additional_info.html)

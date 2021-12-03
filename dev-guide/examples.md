@@ -531,6 +531,11 @@ to use `STATE` with `SIMPLE` or `ARRAY`.  You should add this flag to any Da
 definition who's data will get set during a call to `World::calc`, as described
 in [Centrally Managed State Variables](#centrally-managed-state-variables).
 
+#### DEFINE\_VARIABLE including NOT_PARSABLE
+
+
+The `NOT_PARSABLE` flag was added when we switched to automatic generation of the XML parsing.  It is used to indicate which Data should not be able to be set via XML parse, such as variables which are model output only.  Note, it may also be [set](rapid_parse.html#tagging-data-as-not_parsable) in some cases when [special parsing](rapid_parse.html#example-of-aparsable-special-case) behaviors are required as well.
+
 ### Add your new class to `gcam_data_containers.h`
 Since the `GCAMFusion` object determines which GCAM objects it will access at runtime it potentially needs to be able to traverse *all* GCAM objects.  Thus we maintain a header file that includes all GCAM objects that `DEFINE_DATA` that GCAM Fusion may need to access in `util/base/include/gcam_data_containers.h`.  Thus if you add a new class you must also include the header file to your new class in `gcam_data_containers.h` as well.
 
@@ -744,11 +749,16 @@ combinations.
 
 ### Factory
 
-A generic templated factory that can create any member of a
-[SubClassFamilyVector](#define_data---and-define_data_with_parent--) given the XML
-name.  This class is currently not used however could be employed to replace all
-of the various Factory singleton classes that currently exist in GCAM.  It would
-really be useful when/if we generate all XML Parsing code by the compiler.
+A generic templated factory that which utilizes the [SubClassFamilyVector](#define_data---and-define_data_with_parent--) to provide two methods:
+- `Factory::canCreateType`: Will take an XML node name as an argument and return `true` if any of the classes in `SubClassFamilyVector`'s `getXMLNameStatic()` matches and false otherwise.  Note, the class must also be constructable (i.e. not abstact) to return `true`.
+- `Factory::createType`: Will take an XML node name as an argument and return a new instance of the class in `SubClassFamilyVector` whos `getXMLNameStatic()` matches.  If no class matches `0` is returned and a warning will be generated.  One major caveat is this method assumes that each class can be constructed with an constructor which takes no arguments.  If the class does require arguments to the constructor you will get a compile time error such as:
+```
+In file included from /Users/pralitp/model/gcam-core/cvs/objects/util/base/source/xml_parse_helper.cpp:81:
+../../util/base/include/factory.h:119:25: error: no matching constructor for initialization of 'typename boost::remove_pointer<decltype(aType)>::type' (aka 'LinearControl')
+                    new typename boost::remove_pointer<decltype( aType )>::type : aCurrResult;
+```
+
+This class allows us to replace all of the various Factory singleton classes that used to exist in GCAM and is a critical part of the [generic XML Parse code generation](rapid_parse.html#xml-parse-call-structure).
 
 
 
