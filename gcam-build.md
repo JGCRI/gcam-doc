@@ -15,7 +15,7 @@ This section is for users that wish to compile GCAM C++ source code into an exec
 GCAM provides a generic [Makefile](#41-building-with-makefile) as well as [Xcode](#42-building-with-xcode) and [Visual Studio](#43-building-with-visual-studio) project files.  **Note** as of GCAM 4.4 compiling GCAM requires a C++ compiler with support for the C++ 14 language standard.  In addition, it relies on the following third party libraries.  Mac and Windows users should be able to use the libraries provided, otherwise see the section on [building third party libraries](#2-building-third-party-libraries).
 
 * [Boost C++ Libraries](http://www.boost.org), details [here](#21-boost)
-* [Xerces C++ XML Parser](http://xerces.apache.org), details [here](#22-xerces-xml-parser)
+* [Rapid XML](http://rapidxml.sourceforge.net/index.htm), although typically installed via Boost.  More details [here](#22-rapid-xml)
 * [Java](http://www.oracle.com/technetwork/java/index.html), required to write XML DB results.  See [below](#23-java) for more details.
 * [Eigen](https://eigen.tuxfamily.org), provides linear algebra routines for solution.  See [below](#24-eigen) for more details.
 * [Intel TBB](https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/onetbb.html), provides algorithms and utilities for parallel processing.  See [below](#25-intel-tbb) for more details.
@@ -31,7 +31,6 @@ Most of these libraries can also be installed through package managers:
 |        | `brew install <package>`        | `sudo apt install <package>`                                 |
 |--------|---------------------------------|--------------------------------------------------------------|
 | Boost  | `boost`                         | `libboost-dev` `libboost-system-dev libboost-filesystem-dev` |
-| Xerces | `xerces-c`                      | `libxerces-c-dev`                                            |
 | Java   | (Cask) `brew cask install java` | `default-jre` `default-jdk`                                  |
 | TBB    | `tbb`                           | `libtbb-dev`                                                 |
 
@@ -77,48 +76,10 @@ cd <GCAM Workspace>/libs/boost-lib
 ./b2 stage
 ```
 
-### 2.2 Xerces XML Parser
-We use the Xerces C++ XML parser for reading in XML, the format in which all GCAM inputs and configurations are specified in.  The library can be downloaded from [Apache](http://xerces.apache.org/mirrors.cgi), the C++ version is the one to get.  The version released with GCAM was 3.1.1 but any recent version should work.
-Once you expand the xerces zip or tar file, you can find detailed installation instructions for building and installing the library in `doc/html/index.html`.  You can follow the instructions there appropriate for your platform.
+### 2.2 Rapid XML
+We use the Rapid XML parser for reading in XML, the format in which all GCAM inputs and configurations are specified in.  The library can be downloaded from [here](https://sourceforge.net/project/platformdownload.php?group_id=189621&sel_platform=1227).  However, we generally use the copy which is included as part of [Boost](http://boost.org/).
 
-#### 2.2.1 Xerces Windows Notes
-GCAM requires the 64-bit version of the library to be built.  This means you should change the build configuration to `Release` and the Solution Platform to `x64` when building the library.  Only the core library is needed, the command line tools and tests are not necessary.  Once built you can copy (or symlink using `mklink /D`, note administrative privileges may be required to run this command) the build artifacts to where the [Visual Studio](#43-building-with-visual-studio) project file is expecting them:
-
-```
-<GCAM Workspace>/libs/xercesc/include
-<GCAM Workspace>/libs/xercesc/lib
-```
-
-In addition you should copy `xerces-c_3_1.dll` into `<GCAM Workspace>/exe`.
-
-#### 2.2.2 Xerces Mac or POSIX
-GCAM requires the 64-bit version of the library to be built.  In addition users have had trouble linking with the `cURL` library which isn't necessary for running GCAM so you could disable that.  The follow could be used as a template for building the library:
-
-Set the following environment variables:
-
-* `XERCES_SRC`: Set to the top-level directory created when you unpacked the xerces zip or tar file.
-* `XERCES_INSTALL`:  Set to the directory in which you want to install xerces.
-
-Example:  
-
-```
-export XERCES_SRC=$HOME/GCAM/build/xerces-c-3.1.1
-export XERCES_INSTALL=<GCAM Workspace>/libs/xercesc
-```
-
-With these variables set, you can configure and build xerces as follows:
-
-```
-cd $XERCES_SRC
-./configure CFLAGS="-arch x86_64" CXXFLAGS="-arch x86_64" --prefix=$XERCES_INSTALL --disable-netaccessor-curl
-make install
-```
-
-After installing xerces, you can optionally delete all the intermediate files that were generated during the xerces build by running:
-
-```	
-make clean
-```
+If for whatever reason you would prefer to use the standalone version you can set the preprocessor macro `USE_STANDALONE_RAPIDXML=1` and ensure the header files for that stand alone copy can be found in the include search paths of your compiler.
 
 ### 2.3 Java
 Java is required by GCAM in order to store results in a [BaseX](http://basex.org) XML database, which itself is written in Java.  GCAM will use the Java Native Interface to interact with the database.  Since BaseX is written in Java it is inherently cross platform thus building it is not discussed here.  GCAM uses version 9.5.0 of the BaseX library, which is only supports Java 1.7+.  GCAM, therefore requires Java version 1.7 or newer.  The [official Oracle](http://www.oracle.com/technetwork/java/index.html) version or the [open source](http://openjdk.java.net) version should work **however** Oracle recently changed their licensing terms and it may not be free.  We therefore recommend the open source version.  Some additional notes:
@@ -260,8 +221,6 @@ The core of the Makefile configuration is located under `<GCAM Workspace>/cvs/ob
 export CXX=g++
 export BOOST_INCLUDE=${HOME}/libs/boost-lib
 export BOOST_LIB=${HOME}/libs/boost-lib/stage/lib
-export XERCES_INCLUDE=${HOME}/libs/xercesc/include
-export XERCES_LIB=${HOME}/libs/xercesc/lib
 export JARS_LIB=${HOME}/libs/jars/*
 export JAVA_INCLUDE=${JAVA_HOME}/include
 export JAVA_LIB=${JAVA_HOME}/jre/lib/server
@@ -285,7 +244,7 @@ Note the `-j 8` is simply to compile multiple sources files at a time (set as ap
 Assuming the libraries were installed via the `apt` package manager using a command like the following:
 
 ```
-sudo apt install libboost-dev libboost-system-dev libboost-filesystem-dev libxerces-c-dev default-jre default-jdk
+sudo apt install libboost-dev libboost-system-dev libboost-filesystem-dev default-jre default-jdk
 ```
 
 ...the following variables can be used:
@@ -299,9 +258,6 @@ BOOST_INCLUDE=/usr/include/boost
 # For Hector, which uses different definitions
 BOOSTLIB=${BOOST_LIB}
 BOOSTROOT=${BOOST_INCLUDE}
-
-XERCES_LIB=${USRLIB}
-XERCES_INCLUDE=/usr/include/xercesc
 
 JAVA_INCLUDE=/usr/lib/jvm/default-java/include
 JAVA_LIB=/usr/lib/jvm/default-java/jre/lib/amd64/server
