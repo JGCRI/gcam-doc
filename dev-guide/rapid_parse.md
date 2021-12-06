@@ -24,14 +24,14 @@ devguide: dev-guide.html
   - [The generic Factory and no argument constructors](#the-generic-factory-and-no-argument-constructors)
 
 ## Background
-We have been using the Xerces C++ XML parser to parse the XML inputs for GCAM for as long as I recall.  It is widely considered stable, mature, and the most complete XML parsing library for C++.  Providing for and adhering to all of the W3C XML standards, most of which we do not actually take advantage of in GCAM.
+We have been using the Xerces C++ XML parser to parse the XML inputs for GCAM for quite a long time.  It is widely considered stable, mature, and the most complete XML parsing library for C++.  Providing for and adhering to all of the W3C XML standards, most of which we do not actually take advantage of in GCAM.
 
 GCAM uses the DOM or "Document Object Model" method of parsing XML which translates the XML tags and attributes to corresponding C++ structures which can be examined, modified, or traversed in any way a user sees fit.  Xerces / the W3C standard also provides the alternative SAX, or Streaming API for XML, where the idea is the parser will notify you when it reads the next element, attribute, close element, etc and you handle these tags as they come up.  Such a method _seemed_ like a much better approach for what GCAM needed (more on that in a bit).
 
 To actually translate the DOM XML into GCAM structures each GCAM "CONTAINER" implements the `IParsable` interface which is basically just the `XMLParse` method that takes a DOM node which represents that class.  For instance the `Resource` object will get the `<resource name="coal">` element.  That class will then check the node attributes and loop over the child nodes to parse it's member variables.  Overall the structure of the `XMLParse` methods is pretty straightforward `if(nodeName == "price")` then set `mPrice` to those values.  We have a number of utility methods in `XMLHelper` to deal with parsing a "CONTAINER" or "ARRAY" with certain built in _features_ such as `nocreate` or `fillout`.  Although this code is relatively straightforward it is scattered through out GCAM in hundreds of classes, thus a road block to switching XML parse methods or libraries.
 
 ### Is switching XML parse method / libraries even worth it?
-To answer this question I set up some simple standalone experiment: use the XML library to "inspect" every single XML element and attribute and just run that over the largest XML file we currently handle `all_aglu_emissions_IRR_MGMT.xml` which currently is just over 300 MB in size.  I decided to test the current Xerces DOM parsing, and compare it to SAX which I _thought_ would be significantly faster.  In the Table below you can see that was not the case.  At this point I decided to search for alternatives which may be out there and found this really good [Stack Overflow discussion of C++ XML Parsers](https://stackoverflow.com/questions/9387610/what-xml-parser-should-i-use-in-c) which points out if you are looking for blazing speed and are willing to compromise on features `rapidxml` is your library.
+To answer this question we set up some simple standalone experiment: use the XML library to "inspect" every single XML element and attribute and just run that over the largest XML file we currently handle `all_aglu_emissions_IRR_MGMT.xml` which currently is just over 300 MB in size.  We test the current Xerces DOM parsing, and compare it to SAX which we _thought_ would be significantly faster.  In the Table below you can see that was not the case.  Thus a search for alternatives which may be out there seemed necessary and found this really good [Stack Overflow discussion of C++ XML Parsers](https://stackoverflow.com/questions/9387610/what-xml-parser-should-i-use-in-c) which points out: if you are looking for blazing speed and are willing to compromise on features `rapidxml` is your library.
 
 | test |  time    | memory |
 | ---- |  ----    | ------ |
@@ -39,7 +39,7 @@ To answer this question I set up some simple standalone experiment: use the XML 
 | Xerces/SAX  | 11s   | 1   MB |
 | Rapid (DOM) | 3s    | 900 MB |
 
-
+  
 From these test we can see actually the different Xerces parsers run in a very similar time.  There is an incredible difference in memory usage however which seems to be where SAX parsing's real advantage lies.  Rapid XML indeed is much faster and an in between in terms of memory usage. Although at this point we are not concerned with memory usage as GCAM's actual memory use high will far eclipse the usage during XML Parse.  So let's take a closer look at Rapid XML to understand why it is so fast and are it's trade off ones we can live with.
 
 ### Rapid XML Parser
@@ -59,7 +59,7 @@ From this perspective it is easy to see why Rapid XML needs the XML as a single 
 It seems Xerces DOM parsing isn't that bad in terms of parsing performance, however all of these low level optimizations in Rapid XML add up to a significant performance boost.
 
 ## Converting GCAM's XMLParse
-Reading and inspecting an XML file is all well and good but completely side steps the biggest road block: having to convert thousands of lines of code for parsing XML from Xerces to Rapid XML.  Luckily when designing GCAM Fusion we were forward thinking and put in place a number of things that would let us have the C++ compiler *generate* the vast majority of the XML Parse code for us.  Given templates and template meta programming can be quite confusing to even experienced C++ programmers I figure it would be good to detail exactly how this works here.
+Reading and inspecting an XML file is all well and good but completely side steps the biggest road block: having to convert thousands of lines of code for parsing XML from Xerces to Rapid XML.  Luckily when designing GCAM Fusion we were forward thinking and put in place a number of things that would let us have the C++ compiler *generate* the vast majority of the XML Parse code for us.  Given templates and template meta programming can be quite confusing to even experienced C++ programmers it would be good to detail exactly how this works here.
 
 ### GCAM Fusion Data declarations and their relationship to XML Parse
 The basic premise of [GCAM Fusion](examples.html#gcam-fusion-related-documentation) is if we define our classes and member variables in some very [particular way](examples.html#writing-new-gcam-components):
@@ -93,17 +93,17 @@ DEFINE_DATA(
 )
 ```
 
-Then we can have utilities that can process and traverse these Data in a automated and generic way.  All of the member variables are tied together in `DEFINE_DATA` such that we can loop over them all.  The `DEFINE_SUBCLASS_FAMILY` and `DEFINE_DATA_WITH_PARENT` allows us to deal with inheritance and know all of the subclasses that are related to each other.  The `DEFINE_VARIABLE` statements tie a number of useful tid-bits of information together including the C++ data type, the C++ variable name, the "human readable name" (which we _happened_ to choose based off the XML parse names), as well as arbitrary flags we can associate. You may have noticed the `NOT_PARSABLE` flag which wasn't actually defined in the original GCAM Fusion but we add in now, and will describe more in a bit.
+Then we can have utilities that can process and traverse these Data in an automated and generic way.  All of the member variables are tied together in `DEFINE_DATA` such that we can loop over them all.  The `DEFINE_SUBCLASS_FAMILY` and `DEFINE_DATA_WITH_PARENT` allows us to deal with inheritance and know all of the subclasses that are related to each other.  The `DEFINE_VARIABLE` statements tie a number of useful tid-bits of information together including the C++ data type, the C++ variable name, the "human readable name" (which we _happened_ to choose based off the XML parse names), as well as arbitrary flags we can associate. You may have noticed the `NOT_PARSABLE` flag which wasn't actually defined in the original GCAM Fusion but we add in now, and will describe more in a bit.
 
 ### XML Parse Call Structure
 To describe the new process let's start from a high level with the function call structure then describe in more detail how each of those steps work.
 
 * `XMLParseHelper::parseXML`: This is the top level where we give it the XML file to parse and a pointer to the "root" container, i.e. `Scenario*`, which serves as a context for parsing that XML file.  The XML file gets read and parsed as described above.  The given container gets wrapped in a `Data` class which is the light weight wrapper GCAM Fusion uses to tie together all of the pieces of information in the `DEFINE_VARIABLE` statements.  To begin recursively processing the XML we use the `ParseChildData` helper class:
 * `ParseChildData`: Because GCAM Fusion has to [dynamically come up with the "Data Vector"](examples.html#expanddatavector) (a `boost::fusion::vector` of *all* of the Data member variable declarations) depending on the actual subclass instantiated at run time (i.e. `SupplySector` or `AgProductionSector`) we have to have a templated "call back" that can accept any combination of Data vectors.  `ParseChildData` declares the call back function:
-* `ParseChildData::processDataVector`: This is where we loop over the Data vector and attempt to match up the child XML tags.  For each XML tag, if the current parsing CONTAINER is a subclass of `AParsable` we ask it to perform any custom parsing behavior; if the XML was not parsed by custom behavior we check `XMLParseHelper::tagsMatch` to see if the current child Data matches the current XML node; if they do match we use `XMLParseHelper::parseData` to convert the XML into the data structure wrapped in the current Data; finally if no Data matched we issue an "Unrecognized XML" warning and move on to the next.  See [below](#parsechilddataprocessdatavector) for more details on how this works.
+* `ParseChildData::processDataVector`: This is where we loop over the Data vector and attempt to match up the child XML tags.  For each XML tag, if the current parsing CONTAINER is a subclass of `AParsable` we first ask it to perform any custom parsing behavior; if the XML was not parsed by custom behavior we check `XMLParseHelper::tagsMatch` to see if the current child Data matches the current XML node; if they do match we use `XMLParseHelper::parseData` to convert the XML into the data structure wrapped in the current Data; finally if no Data matched we issue an "Unrecognized XML" warning and move on to the next.  See [below](#parsechilddataprocessdatavector) for more details on how this works.
 * `AParsable::XMLParse`: Similar to the old `IParsable::XMLParse` GCAM CONTAINER classes could derive and implement `XMLParse` and can then be responsible for defining some custom behavior to parse some XML elements.  Classes that implement this method will get called with a *reference* to the child XML nodes.  If the subclass is able to parse that node they should return true, otherwise default parsing behavior will be attempted to parse that XML node.  Because classes will get access to the XML Node by reference they could, for instance, skip ahead and parse multiple child nodes at a time to avoid having them parsed by default behavior as well.  See [below](#example-of-aparsable-special-case) for more details on how this works.
-* `XMLParseHelper::tagsMatch`: Check if the current Data should be responsible for holding the "value" of the current XML node.  This method needs to handle the case for SIMPLE data where we just check if the data name and XML node name match but also CONTAINER data where we might need a Factory to determine if any subclass matches XML names.  See [below](#xmlparsehelpertagsmatch) for more details on how this works.
-* `XMLParseHelper::parseData`: If the tags match then this templated method will be used to convert the XML into the C++ data structure with the Data object wraps.  Here we obviously need different behavior different Data flags such as SIPMLE, ARRAY, or CONTAINER and support the various "processing flags" such as `fillout`, `delete`, and `nocreate`.  Finally it may recursively restart this function call chain starting at `ParseChildData` to handle child elements of CONTAINER Data.  See [below](#xmlparsehelperparsedata) for more details on how this works.
+* `XMLParseHelper::tagsMatch`: Check if the current Data should be responsible for holding the "value" of the current XML node.  This method needs to handle the case for SIMPLE data where we just check if the Data name and XML node name match but also CONTAINER data where we might need a Factory to determine if any subclass matches XML names.  See [below](#xmlparsehelpertagsmatch) for more details on how this works.
+* `XMLParseHelper::parseData`: If the tags match then this templated method will be used to convert the XML into the C++ data structure which the Data object wraps.  Here we obviously need different behavior for different Data flags such as SIPMLE, ARRAY, or CONTAINER and support the various "processing XML flags" such as `fillout`, `delete`, and `nocreate`.  Finally it may recursively restart this function call chain starting at `ParseChildData` to handle child elements of CONTAINER Data.  See [below](#xmlparsehelperparsedata) for more details on how this works.
 
 #### ParseChildData::processDataVector
 This method essentially replaces the `if / else` manual tag matching of the old XMLParse methods.  It uses the DataVector concept from GCAM Fusion to loop over Data member variable declarations and check if `tagsMatch` and `parseData` if they do.  Given the various C++ data types it must deal with and the dynamic nature of the declarations it is heavily reliant on templates and template meta-programming (albeit at a high level):
@@ -218,7 +218,7 @@ bool MACControl::XMLParse(rapidxml::xml_node<char>* & aNode) {
 ```
 
 #### XMLParseHelper::tagsMatch
-When looping each XML element we need to figure out which Data member variable that element matches up with (if any).  For SIMPLE and ARRAY type Data members it is straightforward, just check if the data name matches the node name of the current XML.
+When looping over each XML element we need to figure out which Data member variable that element matches up with (if any).  For SIMPLE and ARRAY type Data members it is straightforward, just check if the data name matches the node name of the current XML.
 ```
 // Specialization for non-containers
 template<typename DataType>
@@ -234,7 +234,7 @@ bool>::type tagsMatchI(const std::string& aXMLTag, const DataType& aData) {
 }
 ```
 
-For CONTAINER type such as `Sector*` it is a bit more complicated.  For these we do not check the data name but instead need to check the getXMLNameStatic() for each of the valid subtypes, such as `SupplySector*` or `AgProductionSector*`, etc.  We have numerous factory classes which take care of this sort of thing.  As mentioned earlier given the way we do our GCAM Fusion declarations it knows the inheritance relationships and as such when we first created GCAM Fusion we had developed a generic [Factory](examples.html#factory).  Which can then be used in specializations of `tagsMatch` for CONTAINER Data.  And of course obviates the need for the hand written factory classes we used to have.
+For CONTAINER type such as `Sector*` it is a bit more complicated.  For these we do not check the data name but instead need to check the getXMLNameStatic() for each of the valid subtypes, such as `SupplySector*` or `AgProductionSector*`, etc.  We used to have numerous factory classes which take care of this sort of thing.  As mentioned earlier given the way we do our GCAM Fusion declarations it knows the inheritance relationships and as such when we first created GCAM Fusion we had developed a generic [Factory](examples.html#factory).  Which can then be used in specializations of `tagsMatch` for CONTAINER Data.  And of course obviates the need for the hand written factory classes we used to have.
 ```
 // Specialization for a containers
 template<typename DataType>
@@ -324,7 +324,7 @@ For CONTAINER Data we need to first determine if an instance of the class alread
 
 If a match was found we first handle the `delete` attribute flag: delete and remove the instance and ignore the rest of the XML.
 
-If no match was found, we first need to handle check if the `nocreate` or `delete` flag was set in which case we issue a warning and ignore the rest of the XML.  If not we need to create a new instance and insert it into the array of data.  To create the new instance we should use a Factory method to ensure we create the appropriate subclass.  And we can use the [generic Factory](examples.html#factory) utility which will loop over subclass declared in the the `DEFINE_SUBCLASS_FAMILY` GCAM Fusion declaration and check if the `getXMLNameStatic()` matches the current XML node name.
+If no match was found, we first need to check if the `nocreate` or `delete` flag was set in which case we issue a warning and ignore the rest of the XML.  If not we need to create a new instance and insert it into the array of data.  To create the new instance we should use a Factory method to ensure we create the appropriate subclass.  And we can use the [generic Factory](examples.html#factory) utility which will loop over subclass declared in the the `DEFINE_SUBCLASS_FAMILY` GCAM Fusion declaration and check if the `getXMLNameStatic()` matches the current XML node name.
 
 Finally we recursively process the child XML using `ParseChildData` helper class to kick off the chain of function calls all over again.  Using the current CONTAINER as the new parsing context and the child XML nodes of the current XML node.
 ```
@@ -552,7 +552,7 @@ inline ILogger::WarningLevel lexical_cast<ILogger::WarningLevel, std::string>(co
 However if the Data is more complex to parse and requires more information such as attributes you will need to mark the data `NOT_PARSABLE` and implement the custom parsing behavior by subclassing [AParsable](#example-of-aparsable-special-case).
 
 ### Unresolved symbol error during linking
-This is most common when you are implementing some custom XMLParse routing and still need to use the `XMLParseHelper` utilities to continue parsing of child data from that point.  If you get a linker error such as the following:
+This is most common when you are implementing some custom XMLParse routing and still need to use the `XMLParseHelper` utilities to continue parsing some of child data from that point.  If you get a linker error such as the following:
 ```
 Undefined symbols for architecture x86_64:
   "void XMLParseHelper::parseData<Data<Solver*, 4> >(boost::property_tree::detail::rapidxml::xml_node<char> const*, Data<Solver*, 4>&)", referenced from:
@@ -580,7 +580,7 @@ void XMLParseHelper::parseData<Data<std::vector<ITechnologyContainer*>, CONTAINE
 ```
 
 ### The generic Factory and no argument constructors
-To facilitate creating new GCAM "CONTAINER" classes we utilize the generic [Factory](examples.html#factory) to both check if XML names match as well as to actually create an instance of the object.  However, for the later there is one important caveat: the constructor for the object needs to have no arguments.
+To facilitate creating new instances of GCAM "CONTAINER" classes we utilize the generic [Factory](examples.html#factory) to both check if XML names match as well as to actually create an instance of the object.  However, for the later there is one important caveat: the constructor for the object needs to have no arguments.
 
 If your new GCAM CONTAINER class requires an argument in the constructor you will get a compile time error such as:
 ```
@@ -589,5 +589,5 @@ In file included from /Users/pralitp/model/gcam-core/cvs/objects/util/base/sourc
                     new typename boost::remove_pointer<decltype( aType )>::type : aCurrResult;
 ```
 
-To work around this you could avoid the argument and instead create a new method to set the values during `completeInit` which was what was done for instance with `Subsector::setNames`.  If won't work, such as if the argument value needs to be used to initialize data structures so they can be parsed, then you will need to subclass [AParsable](#example-of-aparsable-special-case) and implement custom parsing behavior and potentially a custom factory to create your objects.
+To work around this you could avoid the argument and instead create a new method to set the values during `completeInit` which was what was done for instance with `Subsector::setNames`.  If that won't work, such as if the constructor argument value needs to be used to initialize data structures so they can be parsed, then you will need to subclass [AParsable](#example-of-aparsable-special-case) and implement custom parsing behavior and potentially a custom factory to create your objects.
 
