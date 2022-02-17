@@ -124,7 +124,7 @@ where:
 
 `MAC`-related parameters:
 
-XML Tag | Description |
+| XML Tag | Description |
 | :------------- |:-------------|
 | `tech-change` | annual improvement of reduction potential defined in MAC curve|
 | `mac-phase-in-time` | MAC phase-in periods (see description below)|
@@ -140,9 +140,9 @@ The parameter technological change (`tech-change`) represents annual improvement
 $$
 R_{t_2, p}=R_{t_1, p}*(1+TC_{t_2})^{t_2-t_1}
 $$
-where $R_{t_1, p}$ and $R_{t_2, p}$ represent MAC reduction in year $t_1$ and $t_2$ at emission price $p$, respectively. $TC_{t_2}$ is the tech.change in $t_2$.  
+where $$R_{t_1, p}$$ and $$R_{t_2, p}$$ represent MAC reduction in year $$t_1$$ and $$t_2$$ at emission price $$p$$, respectively. $$TC_{t_2}$$ is the tech.change in $$t_2$$.  
 
-In general, MAC curve is an aggregated representation of physical changes (retrofit, technology upgrade, process optimization), and in real world, these changes take time to finish. If omitting these "time costs" or other institutional barriers, the first MAC year (as well as the carbon price year) would lead to a dramatic yet sometimes unrealistic MAC-driven emission reductions. `mac-phase-in-time` offers users an option to make additional adjustment for the existing MAC eductions due to factors other than "zero-cost" emission reductions and technological changes. A primary purpose is to smoothly phase in MACs in early modeling periods, so `mac-phase-in-time` can be applied to make the reduction in those first several modeling periods more realistic; A second purpose is to allow users to explore scenarios when different regions have different MAC phase-in periods. The default `mac-phase-in-time` is 25 years.
+In general, MAC curve is an aggregated representation of physical changes (retrofit, technology upgrade, process optimization), and in real world, these changes take time to finish. If omitting these "time costs" or other institutional barriers, the first MAC year (as well as the carbon price year) would lead to a dramatic yet sometimes unrealistic MAC-driven emission reductions. `mac-phase-in-time` offers users an option to make additional adjustment for the existing MAC reductions due to factors other than "zero-cost" emission reductions and technological changes. A primary purpose is to smoothly phase in MACs in early modeling periods, so `mac-phase-in-time` can be applied to make the reduction in those first several modeling periods more realistic; A second purpose is to allow users to explore scenarios when different regions have different MAC phase-in periods. The default `mac-phase-in-time` is 25 years.
 
 Below-zero (i.e. “no cost”) MAC mitigation (e.g. MAC reduction percentage is > 0 at zero emission price) are applied in the reference case and phased in over several decades. (This can be turned off by setting the `no-zero-cost-reductions` option to 1 within a MAC curve.) Here, below-zero MAC mitigation is assumed to be unaffected by `tech-change`, despite that it is not necessarily unreasonable in general to think that technological change would impact below-zero options, as well. 
 
@@ -159,7 +159,7 @@ SF<sub>6</sub> emissions from electric transformers scale with electricity consu
 Air pollutant emissions such as sulfur dioxide (SO<sub>2</sub>) and nitrogen oxides (NO<sub>x</sub>) are modeled as:
 
 $$
-E_{t}=A_{t}*{EF}_{t0}*(1-EmCtrl(pc{GDP}_{t}))
+E_{t}=A_{t}*EF_{t0}*(1-EmCtrl(pcGDP_{t}))
 $$
 
 where EmCtrl is a function that represents decreasing emissions intensity as per-capita income increases:
