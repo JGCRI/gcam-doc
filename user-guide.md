@@ -186,6 +186,7 @@ BatchMode | Activates [GCAM batch mode](#gcam-batch-mode) operation. A valid `Ba
 find-path | [Turn on path finding capability](#target-finder). A valid `policy-target-file` must also be specified.
 createCostCurve | Turns on calculation of a CO2 cost curve. The model will be run multiple times to generate a CO2 cost curve, which will be integrated to estimate total policy costs. 
 debugChecking | Turns on some internal consistency checks.
+QuitFirstFailure | When set to 1, the model will abort a scenario (skip remaining periods, print output, and exit) after the first failed period. This feature is not available when running in target finder mode.
 
 #### 3.1.5 `<Ints>` Input Options
 
