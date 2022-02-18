@@ -185,7 +185,23 @@ This section summarizes some of the land-based policy options available in GCAM.
 
 ### Protecting Lands
 
-With this policy, we can set aside some land, removing it from economic competition. This will result in that land area being fixed across time and any land expansion/contraction will not affect this area. The default in GCAM is to protect 90% of all non-commercial ecosystems. This protection level is specified in the GCAM data system; see `aglu.PROTECT_LAND_FRACT` in [constants.R](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/constants.R).
+With this policy, we can set aside some land, removing it from economic competition. This will result in that land area being fixed across time and any land expansion/contraction will not affect this area. 
+
+The default in GCAM is to protect 90% of all non-commercial ecosystems. This protection level is specified in the GCAM data system; see `aglu.PROTECTION_DATA_SOURCE_DEFAULT` in [constants.R](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/constants.R).Users can define a custom percentage of protected lands using the parameter `aglu.PROTECT_DEFAULT`.
+
+#### Protection constraints based on land suitability and protection constraints
+Users can also specify spatially distinct levels of land availability by setting the parameter `aglu.PROTECTION_DATA_SOURCE_DEFAULT` to FALSE. In this case, levels of available land for expansion are decided based on levels of suitability (as defined by Zabel et al. 2014) and protection constraints(as defined by the IUCN.) There are 7 mutually exclusive types of land based on these suitability and protection constraints. They are, 
+
+1. Unsuitable and Unprotected
+2. Suitable and Unprotected
+3. Suitable with a high level of protection that is intact
+4. Suitable with a high level of protection that is deforested
+5. Suitable with a low level of protection
+6. Unsuitable with a high value of protection
+7. Unsuitable with a low value of protection. 
+
+When a user chooses to use the spatially distinct protection constraints, by default land that is classified as Suitable and Unprotected (No 2 from the above) will be made available for expansion. The user can make other types of land available using the parameter `aglu.NONPROTECT_LAND_STATUS` in `constants.R` 
+
 
 ### Valuing Carbon in Land
 
@@ -286,3 +302,6 @@ Snyder, A. C., Link, R. P., & Calvin, K. V. (2017). Evaluation of integrated ass
 Wise, Marshall, Calvin, Katherine, Page Kyle, Patrick Luckow, James Edmonds.  2014. Economic and Physical Modeling of Land Use in GCAM 3.0 and an Application to Agricultural Productivity, Land, and Terrestrial Carbon.  Climate Change Economics. DOI 10.1142/S2010007814500031.
 
 Wise, M., Hodson, E. L., Mignone, B. K., Clarke, L., Waldhoff, S., & Luckow, P. (2015). An approach to computing marginal land use change carbon intensities for bioenergy in policy applications. Energy Economics, 50, 337–347. https://doi.org/10.1016/j.eneco.2015.05.009
+
+Zabel, Florian, Birgitta Putzenlechner, and Wolfram Mauser. "Global agricultural land resources-a high resolution suitability evaluation and its perspectives until 2100 under climate change conditions." PloS one 9.9 (2014): e107522.
+
