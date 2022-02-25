@@ -228,14 +228,14 @@ GCAM has the capability to model three technologies which consume thermal and/or
 In GCAM, DACCS technologies indirectly compete with (a) emissions abatement; and (b) other carbon removal technologies such as BECCS and afforestation based on its cost and the subsidy paid for CO2 removal (i.e., the carbon emissions price). This competition is created by defining an additional "no-DAC" technology which does not capture carbon and has zero cost. 
 
 
-![dac_structure](https://user-images.githubusercontent.com/48569483/138292828-f82a5393-df48-4d29-8a12-93a98b5d4109.png)
+<img src="gcam-figs/dac_structure.png" width="500" height="250" /><br/>
 
 
 
 **Schematic of DACCS technology competition in GCAM's CO2 Removal (CDR) Sector**
 
 
-
+{: .fig}
 
 
 ## Equations 
