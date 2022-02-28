@@ -235,7 +235,6 @@ In GCAM, DACCS technologies indirectly compete with (a) emissions abatement; and
 **Schematic of DACCS technology competition in GCAM's CO2 Removal (CDR) Sector**
 
 
-{: .fig}
 
 
 ## Equations 
