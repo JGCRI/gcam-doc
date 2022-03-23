@@ -135,7 +135,7 @@ GCAM-USA includes state-specific retirement assumptions for existing nuclear pow
 Electricity Trade
 =================
 
-For electricity trade between states we group states roughly into the 15 "grid regions" consistent with the North American Electric Reliability Corporation regions. Whereby states within the same sub-region can trade freely within that sub-region, trade between regions may be limited.
+For electricity trade between states we group states roughly into the 15 "grid regions" consistent with the North American Electric Reliability Corporation regions. Whereby states within the same sub-region can trade freely within that sub-region, as previously described. Trade between grid regions is driven by economic competition and is calculated as gross trade volumes utilizing two specific datasets to determine, first, overall net trade ([EIA 2018c](gcam-usa.html#eia2018c)), and the trade between Power Control Areas (PCAs) [Chini et al. 2018](gcam-usa.html#chini2018) which are aggregated to estimate the import-to-export ratio applied to each of the 15 grid regions which convert net trade to gross trade.
 
 <img src="gcam-figs/gcam-usa-grid-regions.png" width="488" height="282" />
 
@@ -223,6 +223,8 @@ References
 <a name="calvin2014">[Calvin et al. 2014]</a> Calvin KV, MA Wise, GP Kyle, PL Patel, LE Clarke, and JA Edmonds. 2014. "Trade-offs of different land and bioenergy policies on the path to achieving climate targets." Climatic Change 123(3-4):691-704. doi:10.1007/s10584-013-0897-y
 
 <a name="calvin2019">[Calvin et al. 2019]</a> Calvin, K., Patel, P., Clarke, L., Asrar, G., Bond-Lamberty, B., Cui, R. Y., Di Vittorio, A., Dorheim, K., Edmonds, J., Hartin, C., Hejazi, M., Horowitz, R., Iyer, G., Kyle, P., Kim, S., Link, R., McJeon, H., Smith, S. J., Snyder, A., Waldhoff, S., and Wise, M.: GCAM v5.1: representing the linkages between energy, water, land, climate, and economic systems, Geosci. Model Dev., 12, 677–698, <https://doi.org/10.5194/gmd-12-677-2019>, 2019.
+
+<a name="chini2018">[Chini et al. 2018]</a> Chini, C. M., Djehdian, L. A., Lubega, W. N., & Stillwell, A. S. (2018). Virtual water transfers of the US electric grid. Nature Energy, 3(12), 1115-1123. <https://doi.org/10.1038/s41560-018-0266-1>, 2018
 
 <a name="dahowski2005">[Dahowski et al. 2005]</a> Dahowski, R., Dooley, J., Davidson, C., Bachu, S., Gupta, N., 2005. Building the Cost Curves for CO<sub>2</sub> Storage: North America. IEA Greenhouse Gas R&D Programme, Cheltenham, UK.
 
