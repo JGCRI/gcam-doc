@@ -135,7 +135,7 @@ GCAM-USA includes state-specific retirement assumptions for existing nuclear pow
 Electricity Trade
 =================
 
-For electricity trade between states we group states roughly into the 15 "grid regions" consistent with the North American Electric Reliability Corporation regions. Whereby states within the same sub-region can trade freely within that sub-region, as previously described. Trade between grid regions is driven by economic competition and is calculated as gross trade volumes utilizing two specific datasets to determine, first, overall net trade ([EIA 2018c](gcam-usa.html#eia2018c)), and the trade between Power Control Areas (PCAs) [Chini et al. 2018](gcam-usa.html#chini2018) which are aggregated to estimate the import-to-export ratio applied to each of the 15 grid regions which convert net trade to gross trade.
+For electricity trade between states we group states roughly into the 15 "grid regions" consistent with the North American Electric Reliability Corporation regions. Whereby states within the same sub-region can trade freely within that sub-region, as previously described. Trade between grid regions is driven by economic competition and is calculated as gross trade volumes utilizing two specific datasets to determine, first, overall net trade ([EIA 2018c](gcam-usa.html#eia2018c)), and the trade between Power Control Areas (PCAs) [Chini et al. 2018](gcam-usa.html#chini2018) which are used to disaggregate net trade to gross imports and exports for each grid region.
 
 <img src="gcam-figs/gcam-usa-grid-regions.png" width="488" height="282" />
 
