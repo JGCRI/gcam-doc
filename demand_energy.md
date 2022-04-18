@@ -231,11 +231,13 @@ In GCAM, DACCS technologies indirectly compete with (a) emissions abatement; and
 <img src="gcam-figs/dac_structure.png" width="500" height="250" /><br/>
 
 
-
 **Schematic of DACCS technology competition in GCAM's CO2 Removal (CDR) Sector**
 
+In GCAM-USA, same technological assumptions have been applied to US states. The assumptions for the energy and financial inputs for DAC follow those from the global DAC technologies in the same SSP scenario ([Fuhrman et. al. 2021](https://iopscience.iop.org/article/10.1088/1748-9326/ac2db0)) (so users should use the same SSP files for global and GCAM-USA DAC add-ons).  These assumptions are applied to the 50 states and Washington, D.C. in GCAM-USA. The existing assumptions for energy and geologic carbon storage supply in each state and grid region further determine the relative attractiveness of a given state for DACCS deployment within GCAM (see figure below). 
 
+<img src="gcam-figs/dac_state_level_C_storage.png" width="500" height="250" /><br/>
 
+**Share of cumulative carbon storage potential by state. State-level DAC deployment is positively assoicated with the carbon storage potential. Carbon storage assumptions can be found in GCAM data system (gcam-usa/Dooley CCS USA.csv)**
 
 ## Equations 
 The equations that determine energy demand are described here.
@@ -391,7 +393,9 @@ Residential and commercial
 
 <a name="fuhrman2020a">[Fuhrman et al. 2020a]</a> Fuhrman J, McJeon H, Patel P, Doney S C, Shobe W M and Clarens A F 2020 Food–energy–water implications of negative emissions technologies in a +1.5 °C future Nat. Clim. Chang. 10 920–7 [Link](http://dx.doi.org/10.1038/s41558-020-0876-z)
 
-<a name="fuhrman2020b">[Fuhrman et al. 2020b]</a> Fuhrman J Clarens A F, McJeon H, Patel P, Ou Y, Doney S C, Shobe W M and Pradhan S 2021. The role of negative emissions in meeting China’s 2060 carbon neutrality goal Oxford Open Clim. Chang. 1 1–15 [Link](https://academic.oup.com/oocc/article/1/1/kgab004/6284217)
+<a name="fuhrman2020b">[Fuhrman et al. 2020b]</a> Fuhrman J, Clarens A F, McJeon H, Patel P, Ou Y, Doney S C, Shobe W M and Pradhan S 2021. The role of negative emissions in meeting China’s 2060 carbon neutrality goal Oxford Open Clim. Chang. 1 1–15 [Link](https://academic.oup.com/oocc/article/1/1/kgab004/6284217)
+
+<a name="fuhrman2021">[Fuhrman et al. 2021]</a> Fuhrman J, Clarens A F, Calvin K, Doney S C, Edmonds J A, O'Rourke P, Patel P, Pradhan S, Shobe W M and McJeon H 2021. The role of direct air capture and negative emissions technologies in the shared socioeconomic pathways towards +1.5 °C and +2 °C futures Environ. Res. Lett. 16 114012 [Link](https://iopscience.iop.org/article/10.1088/1748-9326/ac2db0)
 
 <a name="iea2007">[IEA 2007]</a> International Energy Agency, 2007, *Tracking Industrial Energy Efficiency and CO<sub>2</sub> Emissions*, International Energy Agency, Paris, France. [Link](https://www.iea.org/publications/freepublications/publication/tracking_emissions.pdf)
 
