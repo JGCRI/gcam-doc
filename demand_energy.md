@@ -233,11 +233,11 @@ In GCAM, DACCS technologies indirectly compete with (a) emissions abatement; and
 
 **Schematic of DACCS technology competition in GCAM's CO2 Removal (CDR) Sector**
 
-In GCAM-USA, same technological assumptions have been applied to US states. The assumptions for the energy and financial inputs for DAC follow those from the global DAC technologies in the same SSP scenario ([Fuhrman et. al. 2021](https://iopscience.iop.org/article/10.1088/1748-9326/ac2db0)) (so users should use the same SSP files for global and GCAM-USA DAC add-ons).  These assumptions are applied to the 50 states and Washington, D.C. in GCAM-USA. The existing assumptions for energy and geologic carbon storage supply in each state and grid region further determine the relative attractiveness of a given state for DACCS deployment within GCAM (see figure below). 
+In GCAM-USA, the same technological assumptions used for the 32 core regions have been applied to US states. The assumptions for the energy and financial inputs for DAC follow those from the global DAC technologies in the same SSP scenario ([Fuhrman et. al. 2021](https://iopscience.iop.org/article/10.1088/1748-9326/ac2db0)) (so users should use the same SSP files for global and GCAM-USA DAC add-ons).  These assumptions are applied to the 50 states and Washington, D.C. in GCAM-USA. The existing assumptions for energy and geologic carbon storage supply in each state and grid region further determine the relative attractiveness of a given state for DACCS deployment within GCAM (see figure below). 
 
 <img src="gcam-figs/dac_state_level_C_storage.png" width="500" height="250" /><br/>
 
-**Share of cumulative carbon storage potential by state. State-level DAC deployment is positively assoicated with the carbon storage potential. Carbon storage assumptions can be found in GCAM data system (gcam-usa/Dooley CCS USA.csv)**
+**Share of cumulative carbon storage potential by state. State-level DAC potential is positively correlated with the carbon storage potential. Carbon storage assumptions can be found in GCAM data system (gcam-usa/Dooley CCS USA.csv)**
 
 ## Equations 
 The equations that determine energy demand are described here.
