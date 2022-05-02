@@ -96,7 +96,7 @@ See `setProfitRate` in [land_leaf.cpp](https://github.com/JGCRI/gcam-core/blob/m
 The average profit of a node is calculated as 
 
 $$
-\pi_i = \left[{\sum_{j=1}^{N} \lambda_j \pi_j^\rho}\right]^{\frac{1}{\rho}}
+\pi_i = \left[{\sum_{j=1}^{N} \lambda_j^\rho \pi_j^\rho}\right]^{\frac{1}{\rho}}
 $$
 
 where $$\lambda_i$$ is the [profit scaler](land.html#calibration) for leaf or node $$i$$, $$\pi_i$$ is the [profit](land.html#profit) for node $$i$$, $$\pi_j$$ is the [profit](land.html#profit) for leaf or node $$j$$ contained within node $$i$$, and $$\rho$$ is the [logit exponent](inputs_land.html#share-parameters).
