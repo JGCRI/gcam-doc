@@ -38,7 +38,7 @@ Table 1: External inputs used for demand of energy<sup>[1](#table_footnote1)</su
 | Share weight interpolation rules | These rules dictate how share weights (GCAM's calibration parameter) are specified in future years. | Assumption |  | Specified by sector and subsector | N/A |
 | Fuel preference elasticity | Elasticity dictating how share weights change with GDP per capita | Assumption | | Specified by technology and year | unitless |
 | Residential floorspace parameters | Estimated parameters for residential floorspace demand | Analysis/Assumption | | Specified by region | m2/pers and unitless |
-| Thermal load parameters | Degree days, shell conductivity, internal gains and building-to-surface ratio | External Data/Assumption | | Specified by region | Various |
+| Thermal load parameters | Degree days, shell conductivity, internal gains and floorspace-to-surface ratio | External Data/Assumption | | Specified by region | Various |
 | Historical service prices | Prices by sector in the base years. Used to calibrate satiation impedance | External Data | | Specified by region, service, and period | 1975$/unit|
 | Satiation levels | Assumed satiation values for commerical floorspace and building energy services | Assumption | | Specified by demand, service, and region | m2/pers and EJ/pers |
 | Income elasticity of demand | Elasticity determining how demand responds to changes in per capita output for industry and cement | Assumption | | Specified by demand | unitless
