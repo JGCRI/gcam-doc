@@ -23,10 +23,12 @@ gcam-version: v5.4
 | Name | Resolution | Unit | Source |
 | :--- | :--- | :--- | :--- |
 | Historical energy demand (used for calibration) | By region, technology, and year | EJ/yr | [Exogenous](inputs_demand.html) |
+| Historical service demand (used for calibration) | By region, technology, service, and year | EJ/yr | [Exogenous](inputs_demand.html) |
 | Historical floorspace demand (used for calibration) | By region and year | BM2/yr | [Exogenous](inputs_demand.html) |
 | Cost | By region, technology, and year | 1975$/GJ | [Exogenous](inputs_demand.html) |
 | Income and price elasticity | By region, demand, and year | unitless | [Exogenous](inputs_demand.html) |
 | Residential floorspace demand parameters | By region | unitless | [Exogenous](inputs_demand.html) |
+| Thermal load parameters | By region | various| [Exogenous](inputs_demand.html) |
 | Satiation levels | By region | m2/pers and EJ/pers | [Exogenous](inputs_demand.html) |
 | GDP per capita | By region and year | thous 1990$ per person | [Economy module](economy.html) |
 | Population | By region and year | thousand | [Economy](economy.html) |
@@ -54,8 +56,8 @@ gcam-version: v5.4
 ### Buildings
 
 GCAM disaggregates the building sector into residential and commercial sectors and models floorspace and three aggregate services (heating, cooling, and other). Within building services, the structures and functional forms are similar to any other GCAM sector, described in [Energy Technologies](en_technologies.html). 
-The residential sector is divided in different socioeconomic groups (i.e., income deciles). The income deciles within each region will have the same population, what means, 10% of regional population in each period. In calibration years, the region-level GDP allocated to each income decile is based on historical income distribution data from different sources (UNU WIDER, LIS, PovCal). The income distribution across income deciles in future model periods for different regions is estimated using an innovative data-driven method, based on principal component analysis (PCA), that has been demonstrated to perform better than the extensively applied lognormal approach.
-Residential floorspace, building service and energy demand, and direct GHG and air pollutant emissions from the residential sector will be reported at income-decile level, which allows to capture within-region consumer dynamics that broaden and enrich the scope of analysis.
+The residential sector is divided in different socioeconomic groups (i.e., income deciles). The income deciles within each region have the same population, what means, 10% of regional population in each period. In calibration years, the region-level GDP allocated to each income decile is based on historical income distribution data from different sources (UNU WIDER, LIS, PovCal). The income distribution across income deciles in future model periods for different regions is estimated using an innovative data-driven method, based on principal component analysis (PCA).
+Residential floorspace, building service and energy demand, and direct GHG and air pollutant emissions from the residential sector are reported at income-decile level, which allows to capture within-region consumer dynamics that broaden and enrich the scope of analysis.
 
 #### Floorspace
 **Residential floorspace** depends on different variables that have been identified as significant by analyzing household-level microdata, namely population, income, population density, and regional preferences. There are some key points that are incorporated into the model based on the analysis of historical data:
@@ -65,21 +67,26 @@ Residential floorspace, building service and energy demand, and direct GHG and a
 	* Per capita floorspace in rural areas (lower pop density) is higher than in urban areas (higher pop density)
 	* The cross-regional data (historical observations) shows that, comparing two wealthy economies with “high” per capita income, the region with the higher population density (e.g., Japan) demands less per capita floorspace.
 * Comparing some similar countries, with high per capita income and low population density (e.g., USA and Canada or Australia), there are substantial differences in observed floorspace demand. Therefore, the function includes some “unobservable” effects over time to reflect these observed differences.
+
 After testing alternative functional forms, the Gompertz-type function resulted to be the best alternative to fit the cross-regional observed data for all regions with different incomes and population densities. Additional details and parameters on the function are below. Note that total region-level residential floorspace is calculated by adding up the floorspace across different socioeconomic groups. Floorspace for each group is the product between per capita floorspace and subregional population. 
 
-**Commercial floorspace** depends on population, income, the average price of energy services, and exogenously specified satiation levels. It is estimated using the “satiation demand” function, described in [Eom et al. 2013]( https://www.sciencedirect.com/science/article/pii/S0360544212006214). Therefore, commercial floorspace will increase as per capita GDP increases until a satiation point is achieved.
+**Commercial floorspace** depends on population, income, and exogenously specified satiation levels. It is estimated using the “satiation demand” function, described in [Eom et al. 2013]( https://www.sciencedirect.com/science/article/pii/S0360544212006214). Therefore, commercial floorspace will increase as per capita GDP increases until a satiation point is achieved.
+
 Finally, note that GCAM also includes the option to specify [floorspace exogenously](details_energy.html#optional-exogenous-floorspace).
 
 #### Building energy demand
 
-The future evolution of building energy use within each region, socioeconomic group, type of building, and service is shaped by changes in (1) floorspace, (2) the level of building service per unit of floorspace, and (3) fuel and technology choices by consumers, which are driven by fuel and non-fuel cost, shareweights and logit parameters.
+The future evolution of building energy use within each region, socioeconomic group, type of building, and service is shaped by changes in (1) floorspace, (2) the level of building service per unit of floorspace, and (3) fuel and technology choices by consumers, which are driven by fuel and non-fuel cost, shareweights and logit parameters ([(Clarke et al.,  2018)](https://www.sciencedirect.com/science/article/pii/S0140988318300112), [(Sampedro et al., 2022)](https://iopscience.iop.org/article/10.1088/1748-9326/ac43df)).
 Focusing on service demand, the model disaggregates three energy services for each building type: heating, cooling, and “other” services. Heating and cooling are considered thermal services, while “other” is categorized as generic. GCAM has a flexible structure, so it is possible to implement a more detailed service disaggregation if data is available. For example, given the large amount of data available, GCAM-USA models 14 residential services, namely cooling, heating, cooking, lighting, water heating, clothes dryer, clothes washer, computers, dishwashers, freezers, furnace fans, refrigerators, televisions, and other energy services. 
+
 In addition, the model distinguishes between “modern” versus “traditional” services. Traditional services include services provided by coal and traditional biomass. Modern services are the main energy source in developed economies, and it is set that their demand will increase as income raises, until a satiation level is achieved. Therefore, the demand for modern energy services depends on historical trends, satiation levels, service affordability (income/ServicePrice), and the thermal load, which includes a range of parameters:
 * Heating/cooling degree days (HDD or CDD) represent how much (in degrees), and for how long (in days) the temperature was below (above) a determined level. The model includes the option to read in HDDs and CDDs from different Earth-System models, and with and without incorporating the future effects of climate change. 
 * Building shell conductivity: this parameter combines indices for cooling and heating conductivity in a single value, so it indicates the “overall” building efficiency. The parameter can be set per region and sector (residential/commercial), and by default, it assumes a gradual efficiency improvement up to 2040 based on projections from the Annual Energy Outlook (U.S. EIA), with no further improvement for the longer term. 
 * R is the ratio of floorspace to building area. By default, it is assumed to be 5.5 for all regions without varying over time. It could also be set per region and sector. 
 * IG represents the internal gains per unit of floorspace associated with the heat released by “other” energy services (f.e. appliances) dividing the final energy of other services by the efficiency of each technology. λ is the internal-gains-scalar that adjusts the internal gains for the different regions by multiplying the regional internal gains with the ratio of degree days to USA degree days.
+
 On the other hand, future demand of traditional services does not follow the same path as modern sources. Historical data clearly shows that the consumption of these traditional fuels decreases as income rises. Therefore, demand for traditional services is driven by a functional form that represents the inverse of service affordability, measured as the income divided by the service price. Using affordability instead of income allows to capture some price dynamics that may have an impact on specific scenarios. For example, in a low-carbon scenario with a higher price of coal, the phase-out of residential coal would be even faster, as would be expected in real world.
+
 Finally, we note that the absolute demand for each service is obtained by multiplying the demand per unit of service by the total floorspace.
 
 
@@ -361,6 +368,8 @@ Changes in climate will affect residential energy demand [(Zhou et al. 2013)](ht
 ### Future changes in energy demand
 
 Residential energy will increase by the end of the century given the projected increase in population and GDP. The implementation of a climate policy promotes the electrification of the sector [(Eom et al.,  2013)](https://www.sciencedirect.com/science/article/pii/S0360544212006214).
+
+Alternative income distribution pathways will impact residential energy demand, emissions, and powe sector investments [(Sampedro et al., 2022)](https://iopscience.iop.org/article/10.1088/1748-9326/ac43df).
 
 ### Modeling Energy-for-water in GCAM
 
