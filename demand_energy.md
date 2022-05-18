@@ -229,7 +229,7 @@ where HDD and CDD refer to heating and cooling degree days, respectively, η is 
 
 Demand for a traditional service (s, heating or orthers), fuel (f, coal or TradBio) in region r, period t, and for consumer group i, will be estimated based on per capita GDP (I), service price (P), two calibration parameters (X and Y), and a bias adder that will be calculated at region level and split equally across consumers.
 
-$$ d_{t,r,i,f,s}=\frac{X_{f,s}}{\frac{I_{t,r,i}}{P_{t,r,f,s}}+ Y_{f,s}} + k_{r} $$
+$$ d_{t,r,i,f,s}=\frac{X_{f,s}}{\frac{I_{t,r,i}}{P_{t,r,f,s}}+ Y_{f,s}} + k_{r,f,s} $$
 
 
 ### Transportation service demand
