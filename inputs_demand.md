@@ -26,7 +26,7 @@ Table 1: External inputs used for demand of energy<sup>[1](#table_footnote1)</su
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | Historical demand for energy | Demand for energy in the historical period; used for initialization/calibration of GCAM | External data | IEA | Specified by demand, fuel, country, and year |  ktoe and GWh |
 | Historical demand for floorspace | Demand for floorspace in the historical period; used for initialization/calibration of GCAM | External data | IEA, Odyssee, Other | Specified by country, and year |  BM2 and m2/pers |
-| Historical service demand | Shares of residential and commercial TFE by service and region | External data | Various | Specified by country, and year |  Shares |
+| Historical service demand | Shares of residential and commercial TFE by service and region | External data | Various | Specified by country, service, and year |  Shares |
 | Price elasticity of demand | Elasticity determining how demand responds to changes in price | Assumption | | Specified by demand |  unitless |
 | Value of time in transit multiplier | Factor multiplied by the wage rate to determine the value of time in transit, used in the transportation module | Assumption | | Specified by demand |  unitless |
 | Cost | Cost of production | Assumption | | Specified by technology and year |  1975$/kg or 1975$/GJ |
@@ -39,7 +39,7 @@ Table 1: External inputs used for demand of energy<sup>[1](#table_footnote1)</su
 | Fuel preference elasticity | Elasticity dictating how share weights change with GDP per capita | Assumption | | Specified by technology and year | unitless |
 | Residential floorspace parameters | Estimated parameters for residential floorspace demand | Analysis/Assumption | | Specified by region | m2/pers and unitless |
 | Thermal load parameters | Degree days, shell conductivity, internal gains and building-to-surface ratio | External Data/Assumption | | Specified by region | Various |
-| Historical service prices | Prices by sector in the base years. Used to calibrate satiation impedance | External Data | | Specified by region and period | 1975$/unit|
+| Historical service prices | Prices by sector in the base years. Used to calibrate satiation impedance | External Data | | Specified by region, service, and period | 1975$/unit|
 | Satiation levels | Assumed satiation values for commerical floorspace and building energy services | Assumption | | Specified by demand, service, and region | m2/pers and EJ/pers |
 | Income elasticity of demand | Elasticity determining how demand responds to changes in per capita output for industry and cement | Assumption | | Specified by demand | unitless
 | Energy intensities | Energy intensity for energy-for-water processes (desalination, abstraction, treatment, distribution, wastewater treatment) | External data |  [Liu et al. 2016](#liu2016) | Global | GJ per $$m^3$$ |
