@@ -219,9 +219,9 @@ $$ d_{t}=k * [1-exp(-\frac{ln(2)}{\mu}\frac{I_{t}}{P_{t}})] $$
 
 where k is a calibration parameter that captures satiation effects, and the other parameters are the same as the equation above (commercial floorspace), with the exception that here P refers to the price of the service. Space heating (h) and cooling (c) from modern services use a similar approach with some additional considerations, shown below:
 
-$$ h_{t,r,i}=k_{r}*(HDD_{t,r}*\eta_{t,r,i}*R_{t,r,i}-\lambda_{h,r}*IG_{t,r,i})[1-exp(-\frac{ln(2)}{\mu_{r}}\frac{I_{t,r,i}}{P_{t,r}})] $$
+$$ h_{t,r,i}=k_{r} * (HDD_{t,r}*\eta_{t,r,i}*R_{t,r,i}-\lambda_{h,r}*IG_{t,r,i}) * [1-exp(-\frac{ln(2)}{\mu_{r}}\frac{I_{t,r,i}}{P_{t,r}})] $$
 
-$$ c_{t,r,i}=k_{r}*(CDD_{t,r}*\eta_{t,r,i}*R_{t,r,i}-\lambda_{c,r}*IG_{t,r,i})[1-exp(-\frac{ln(2)}{\mu_{r}}\frac{I_{t,r,i}}{P_{t,r}})] $$
+$$ c_{t,r,i}=k_{r} * (CDD_{t,r}*\eta_{t,r,i}*R_{t,r,i}-\lambda_{c,r}*IG_{t,r,i}) * [1-exp(-\frac{ln(2)}{\mu_{r}}\frac{I_{t,r,i}}{P_{t,r}})] $$
 
 where HDD and CDD refer to heating and cooling degree days, respectively, η is the exogenous average building shell conductance, R is the exogenous average floor-to-surface ratio of buildings, IG is the internal gain heat from other building services, and λ is an exogenous internal gain scaler. In this way, the demands of heating and cooling services per unit of floorspace may vary depending on changes in climate, building shell characteristics, and the amount of internal gain heat coming from other modeled services. The function shows that the two calibration parameters (k and μ) are estimated at region level (they don’t have the i sub-index). Note that the prices used in the estimation of the calibration parameters (P) are equal for all consumers due to lack of subnational data.
 
@@ -229,7 +229,7 @@ where HDD and CDD refer to heating and cooling degree days, respectively, η is 
 
 Demand for a traditional service (s, heating or orthers), fuel (f, coal or TradBio) in region r, period t, and for consumer group i, will be estimated based on per capita GDP (I), service price (P), two calibration parameters (X and Y), and a bias adder that will be calculated at region level and split equally across consumers.
 
-$$ d_{t,r,i,f,s}=\frac{X_{f,s}}{\frac{I_{t,r,i}}{P_{t,r,f,s}}+ Y_{f,s}} $$
+$$ d_{t,r,i,f,s}=\frac{X_{f,s}}{\frac{I_{t,r,i}}{P_{t,r,f,s}}+ Y_{f,s}} + k_{r} $$
 
 
 ### Transportation service demand
@@ -380,7 +380,7 @@ Changes in climate will affect residential energy demand [(Zhou et al. 2013)](ht
 
 Residential energy will increase by the end of the century given the projected increase in population and GDP. The implementation of a climate policy promotes the electrification of the sector [(Eom et al.,  2013)](https://www.sciencedirect.com/science/article/pii/S0360544212006214).
 
-Alternative income distribution pathways will impact residential energy demand, emissions, and powe sector investments [(Sampedro et al., 2022)](https://iopscience.iop.org/article/10.1088/1748-9326/ac43df).
+Alternative income distribution pathways will impact residential energy demand, emissions, and power sector investments [(Sampedro et al., 2022)](https://iopscience.iop.org/article/10.1088/1748-9326/ac43df).
 
 ### Modeling Energy-for-water in GCAM
 
