@@ -52,48 +52,42 @@ GCAM disaggregates the building sector into residential and commercial sectors a
 
 ### Industry
 
-Eight detailed industrial sectors are explicitly modeled in GCAM: Iron & Steel, Chemicals, Aluminum, Cement, Fertilizer, Construction, Mining energy use, and Agricultural energy use. IEA energy balances are used to calibrate the sectoral energy consumption (except in Cement and Fertilizer where historical energy use is estimated bottom-up). Sectoral outputs such as physical commodity flows (Mt) are calibrated based on historical data from different industrial associations. For each sector, the future demand growth is driven by GDP, income elasticities, and price elasticities.The current industry representation does not consider global trade. For each region, demand for industrial products equals to production in the region in the same period. Output of the detailed industry sectors is represented in physical outputs (Mt) and/or Energy output (GJ).
+Eight detailed industrial sectors are explicitly modeled in GCAM: Iron & Steel, Chemicals, Aluminum, Cement, Fertilizer, Construction, Mining energy use, and Agricultural energy use. IEA energy balances are used to calibrate the sectoral energy consumption (except in Cement and Fertilizer where historical energy use is estimated bottom-up). Sectoral outputs such as physical commodity flows are calibrated based on historical data from different industrial associations. For each sector, the future demand growth is driven by GDP, income elasticities, and price elasticities. The current industry representation does not consider global trade. For each region, demand for industrial products equals to production in the region in the same period. Output of the detailed industry sectors is represented in physical outputs (Mt) and/or energy output (GJ).
 
-The remaining industrial sectors are collectively modeled as "Other industry", and represented as a consumer of generic energy services and feedstocks. Within "Other industry" energy use there is cost-based competition between fuels, but with a low elasticity of substitution, as the specific uses of the energy are not specified. Cogeneration of electricity is tracked, and represented as a separate technology option for each fuel consumed by "Other industry" (other than electricity). Output of aggregate industrial sectors is represented in generic terms.
+The remaining industrial sectors are collectively modeled as "Other industry", and represented as a consumer of generic energy services and feedstocks. Within "Other industry" there is cost-based competition between fuels, but with a low elasticity of substitution, as the specific uses of the energy are not specified. Cogeneration of electricity is tracked, and represented as a separate technology option for each fuel consumed by "Other industry" (other than electricity). Output of aggregate industrial sectors is represented in generic terms.
 
 #### Iron and Steel
 
 The Iron and Steel sector in GCAM consists of three distinct subsectors: Basic Oxygen Furnace (BOF), Electric Arc Furnace (EAF), and EAF with Direct Reduced Iron (DRI). Each subsector includes several competing technologies, such as w/ & w/o CCS, hydrogen, and biomass. Globally consistent cost assumptions for technologies in each subsector are estimated from the literature ([Ren et al. 2021](demand_energy.html#Ren2021)
-;[Santos 2013](demand_energy.html#Santos2013)). Historical Iron and steel energy use is calibrated using energy data from IEA (sectors included are IRONSTL, TBLASTFUR, EBLASTFUR, TCOKEOVS, and ECOKEOVs) and steel production from the World Steel Association (WSA). Intensity coefficient values (GJ per kg steel) for each technology (and associated fuels) are obtained from a literature review ([Ren et al. 2021](demand_energy.html#Ren2021);[Santos 2013](demand_energy.html#Santos2013)) and used to calculate bottom-up energy consumption from WSA steel production data. Intensity coefficients are then scaled by the ratio of energy consumption from IEA energy balances to the bottom-up energy consumption values, in order to obtain the regional intensity coefficients which are consistent with the calibrated IEA energy data. The share of scrap use in steel production for major regions comes from the Bureau of International Recycling. 
-
-
-
-
-Van Ruijven, Bas J., et al. "Long-term model-based projections of energy use and CO2 emissions from the global steel and cement industries." Resources, Conservation and Recycling 112 (2016): 15-36.
+;[Santos 2013](demand_energy.html#Santos2013)). Historical Iron and steel energy use is calibrated using energy data from IEA (flow sectors include IRONSTL, TBLASTFUR, EBLASTFUR, TCOKEOVS, and ECOKEOVs) and steel production from the World Steel Association (WSA). Intensity coefficient values (GJ per kg steel) for each technology (and associated fuels) are obtained from the literature ([Ren et al. 2021](demand_energy.html#Ren2021);[Santos 2013](demand_energy.html#Santos2013)) and used to calculate bottom-up energy consumption from WSA steel production data. Intensity coefficients are then scaled by the ratio of energy consumption from IEA energy balances to the bottom-up energy consumption values, in order to obtain the regional intensity coefficients which are consistent with the calibrated IEA energy data. The share of scrap use in steel production for major regions comes from the Bureau of International Recycling. The income elasticities that drive future iron and steel production across GCAM regions are estimated using NLIT (Non-linear inverse with time-efficiency-factor) function ([Van Ruijven et al. 2016](demand_energy.html#VanRuijven2016)).
 
 <img src="gcam-figs/iron_steel.jpg" width="400" height="500" /><br/>
-Structure of GCAM's representation of iron and steel production technologies and subsectors.{: .fig}
+GCAM's representation of iron and steel production technologies and subsectors.{: .fig}
 
 #### Chemicals
 
-In GCAM, this industrial sector represents the chemical and petrochemical industry, which is the largest industrial consumer of oil and gas. Historical chemicals energy use and feedstocks are calibrated from IEA energy balances (sectors included are CHEMICAL and NECHEM). For regions that only have feedstock use but no energy consumption in the IEA data, feedstocks are adjusted to zero (e.g., Africa_Eastern and South Asia). Technology options for decarbonizing the chemicals industry include hydrogen technologies, which can be used to replace fossil fuels as process heat in the chemical industry, and CCS technologies, as this industrial group contains some processes (e.g., ethylene oxide production) that emit relatively pure CO2, and others (e.g., ethylene production) that may qualify for CCS due to the magnitude of the facility-level emissions volumes. 
+This industrial sector represents the chemicals and petrochemicals industry, which is the largest industrial consumer of oil and gas. Historical chemicals energy use and feedstocks are calibrated from IEA energy balances (sectors include CHEMICAL and NECHEM). For regions that only have feedstock use but no energy consumption in the IEA data, feedstocks are adjusted to zero (e.g., Africa_Eastern and South Asia). Technology options for decarbonizing the chemicals industry include hydrogen and CCS technologies.
 
 <img src="gcam-figs/Chemicals.png" width="400" height="500" /><br/>
 GCAM's representation of Chemicals sector.{: .fig}
 
 #### Aluminum
 
-The primary aluminum production in GCAM involves two main steps: (1) alumina refining, to refine bauxite ore into alumina, and (2) aluminum smelting, to convert alumina to aluminum. Alumina refining has multiple competing technologies, with and without CCS. Aluminum production uses only electricity, and uses alumina as an input. The aluminum and alumina subsectors are calibrated using production and energy use data from the International Aluminum Association (IAA). This data from IAA is provided by broader aggregate regions and is down-scaled to individual countries and GCAM regions using country-level data on electrolytic aluminum production from United States Geological Survey (USGS). For countries with recorded energy use but no production, energy use is adjusted to zero. The intensity coefficients for alumina/aluminum production technologies are estimated from IEA energy data and the estimated country-level production data. Alumina input coefficient is unitless (Mt alumina per Mt aluminum). All others are GJ of energy per kg of alumina/aluminum produced.
-
+The primary aluminum production in GCAM involves two main steps: (1) alumina refining, to refine bauxite ore into alumina, and (2) aluminum smelting, to convert alumina to aluminum. Alumina refining has multiple competing technologies, with and without CCS. Aluminum production uses only electricity, and uses alumina as an input. The aluminum and alumina subsectors are calibrated using production and energy use data from the International Aluminum Association (IAA). This data from IAA is provided by broader aggregate regions and is down-scaled to individual countries and GCAM regions using country-level data on electrolytic aluminum production from the United States Geological Survey (USGS). For countries with recorded energy use but no production, energy use is adjusted to zero. The intensity coefficients for alumina/aluminum production technologies are estimated from IEA energy data and the country-level production data.
 
 <img src="gcam-figs/aluminum.png" width="400" height="500" /><br/>
 GCAM's representation of Aluminum sector.{: .fig}
 
 #### Construction
 
-This sector includes energy use and feedstocks for construction of buildings, roads, railways, utility projects, and other civil engineering projects, as classified in the IEA energy balances (CONSTRUC flow). In 2017, refined liquids made up 51% of construction energy use, electricity was 26%, gas was 15%, and coal was 6%. Construction feedstocks are primarily bitumen.Historical and base year construction energy use and feedstocks are calibrated using IEA energy balances. Sectors included are Construction (CONSTRUC) and Non-energy use in construction (NECONSTRUC). 
+This sector includes energy use and feedstocks for construction of buildings, roads, railways, utility projects, and other civil engineering projects, as classified in the IEA energy balances (CONSTRUC and NECONSTRUC flow). In 2017, refined liquids made up 51% of construction energy use, electricity was 26%, gas was 15%, and coal was 6%. Construction feedstocks are primarily bitumen. Historical and base year construction energy use and feedstocks are calibrated using IEA energy balances.
 
 <img src="gcam-figs/Construction.png" width="400" height="500" /><br/>
 GCAM's representation of Construction sector.{: .fig}
 
 #### Mining Energy use
 
-In GCAM, mining sector includes mining of metal ores and other materials such as stone, sand, clay, peat, and chemical/fertilizer minerals, as classified in the IEA energy balances (MINING flow). Mine operations are largely dependent on fossil fuels for on-site generation. Alternative technologies included in this sector are electrification, biomass, and hydrogen.
+In GCAM, mining energy use includes mining of metal ores and other materials such as stone, sand, clay, peat, and chemical/fertilizer minerals, as classified in the IEA energy balances (MINING flow). Mine operations are largely dependent on fossil fuels for on-site generation. Alternative technologies included in this sector are electrification, biomass, and hydrogen.
 
 <img src="gcam-figs/Mining.png" width="400" height="500" /><br/>
 GCAM's representation of Mining sector.{: .fig}
@@ -480,6 +474,8 @@ Residential and commercial
 <a name="shafer2000">[Shafer and Victor 2000]</a> Shafer, A., and Victor, D. 2000. The future mobility of the world population. *Transportation Research Part A: Policy and Practice* 34(3), pp. 171-205. [Link](http://www.sciencedirect.com/science/article/pii/S0965856498000718)
 
 <a name="turner2019">[Turner et al. 2019]</a> Turner, S.W.D., Hejazi, M., Yonkofski, C., Kim, S.H., and Kyle, P. 2019. Influence of groundwater extraction costs and resource depletion limits on simulated global nonrenewable water withdrawals over the twenty-first century. *Earth’s Future* 7, 123-135. [Link](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2018EF001105)
+
+<a name="VanRuijven2016">[Van Ruijven et al. 2016]</a> Van Ruijven, Bas J., et al. "Long-term model-based projections of energy use and CO2 emissions from the global steel and cement industries." Resources, Conservation and Recycling 112 (2016): 15-36.
 
 <a name="vtpi2013">[VTPI 2013]</a> Victoria Transport Policy Institute. 2013. Chapter 5.2: Travel Time, in *Transportation Costs and Benefits II: Techniques, Estimates and Implications*, Victoria Transport Policy Institute. [Link](http://www.vtpi.org/tca/tca0502.pdf)
 
