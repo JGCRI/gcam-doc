@@ -236,9 +236,9 @@ The GCAM-USA Reference scenario reflects current rules and legislation, with one
 | :--- | :--- |
 | Electric Generation | New Source Performance Standards applied to 2020 - 2100 for all pollutants. | 
 | Buildings | Code of Federal Regulations Standards of Performance for New Residential Wood Heaters applied to 2020 - 2100 for PM2.5, PM10, BC, and OC. | 
-| Onroad Transportation | N/A |
+| Onroad Transportation | A combined set of federal and state policies as implemented in EPA's MOVES2014 model. For example including: Tier 3 standards Heavy Duty GHG Rule (Phase I), and Light Duty GHG Rule. |
 | Nonroad Transportation | EPA Category 3 marine engine sulfur limit of 1,000 ppm for marine fuels applied to 2015 - 2100 for SO2 for domestic shipping. |
-| Industrial Energy Use | N/A | 
+| Industrial Energy Use | A combined set of federal and state policies as implemented in Argonne National Laboratory's GREET 2014 model. | 
 | Process (industry, urban, cement) | A GDP control is applied to 2015 - 2100 for all supplysectors and technologies. |
 | Refining and related | N/A | 
 
