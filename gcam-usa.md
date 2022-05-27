@@ -228,7 +228,7 @@ For electric generation, only the GCAM-USA configuration with water technologies
 
 For industrial energy use, emission factors for future years are applied assuming industrial sector vintaging is being used, which could lead to discontinuity if not.
 
-The GCAM-USA Reference scenario reflects current rules and legislation, with one additional GDP control in place. These assumptions are shown in Table 2.
+Note that the air pollutant representation in GCAM-USA takes a different paradigm than in core GCAM. Air pollutant emissions are implemented as a CLE (Current LEgislation) scenario, reflecting current rules and legislation with one additional GDP control in place, although the impact of any endogenous technology changes are taken into account. This is done to support work on energy-emissions interactions over the next 20-30 years (out to 2050). Some emissions start to increase again by that point. This behavior is especially seen in nonroad transportation due to minimal legislation represented that impacts future year emissions as well as a lack of GDP control. Table 2 reflects the CLE approach by sector.
 
 **Table 2: Summary of controls applied by sector**
 
