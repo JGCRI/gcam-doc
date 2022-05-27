@@ -239,7 +239,7 @@ The GCAM-USA Reference scenario reflects current rules and legislation, with one
 | Onroad Transportation | N/A |
 | Nonroad Transportation | EPA Category 3 marine engine sulfur limit of 1,000 ppm for marine fuels applied to 2015 - 2100 for SO2 for domestic shipping. |
 | Industrial Energy Use | N/A | 
-| Process (industry, urban, cement) | A GDP control is applied to 2015 - 2100 for all supplysectors and technologies. The reasoning for this is explained further in Section 2.6 under Maximum Reduction and Steepness. |
+| Process (industry, urban, cement) | A GDP control is applied to 2015 - 2100 for all supplysectors and technologies. |
 | Refining and related | N/A | 
 
 
