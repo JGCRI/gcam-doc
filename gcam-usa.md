@@ -234,7 +234,7 @@ Note that the air pollutant representation in GCAM-USA takes a different paradig
 
 | Sector | Assumptions |
 | :--- | :--- |
-| Electric Generation | New Source Performance Standards applied to 2020 - 2100 for all pollutants. | 
+| Electric Generation | New Source Performance Standards applied to 2020 - 2100 for all pollutants except NH3. | 
 | Buildings | Code of Federal Regulations Standards of Performance for New Residential Wood Heaters applied to 2020 - 2100 for PM2.5, PM10, BC, and OC. | 
 | Onroad Transportation | A combined set of federal and state policies as implemented in EPA's MOVES2014 model. For example including: Tier 3 standards Heavy Duty GHG Rule (Phase I), and Light Duty GHG Rule. |
 | Nonroad Transportation | EPA Category 3 marine engine sulfur limit of 1,000 ppm for marine fuels applied to 2015 - 2100 for SO2 for domestic shipping. |
