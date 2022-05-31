@@ -89,7 +89,7 @@ Retirement rules are specified in [A322.globaltech_retirement.csv](https://githu
 
 Logit exponents are specified in [A32.sector.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A32.sector.csv), [A32.subsector_logit.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A32.subsector_logit.csv), [A321.subsector_logit.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A321.subsector_logit.csv), [A322.subsector_logit.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A322.subsector_logit.csv), [A44.sector.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.sector.csv),  [A44.subsector_logit.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.subsector_logit.csv), [A54.sector.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A54.sector.csv), and  [A54.tranSubsector_logit.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A54.tranSubsector_logit.csv). 
 
-#### Share weight interpolation rules
+##### Share weight interpolation rules
 
 Share weight interpolation rules are specified in [A32.subsector_shrwt.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A32.subsector_shrwt.csv), [A32.subsector_interp.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A32.subsector_interp.csv), [A321.subsector_shrwt.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A321.subsector_shrwt.csv), [A321.subsector_interp.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A321.subsector_interp.csv), [A322.subsector_shrwt.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A322.subsector_shrwt.csv), [A322.subsector_interp.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A322.subsector_interp.csv), [A44.subsector_shrwt.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.subsector_shrwt.csv), [A44.subsector_interp.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.subsector_interp.csv), [A54.globaltranTech_shrwt_revised.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A54.globaltranTech_shrwt_revised.csv), [A54.globaltranTech_interp_revised.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A54.globaltranTech_interp_revised.csv), [A54.tranSubsector_shrwt_revised.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A54.tranSubsector_shrwt_revised.csv), [A54.tranSubsector_interp_revised.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A54.tranSubsector_interp_revised.csv). For each sector, the file that ends `_interp` specifies the rule (e.g., fixed, linear) and the file that ends `_shrwt` indicates the value to interpolate to (if needed).
 
@@ -101,11 +101,15 @@ Fuel preference elasticities are specified in [A32.fuelprefElasticity.csv](https
 
 Multipliers used to determine the value of time in transit are specified in [A54.tranSubsector_VOTT_revised.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A54.tranSubsector_VOTT_revised.csv).
 
-#### Residential floorspace parameters
+##### Residential floorspace parameters
 
-The parameters for the estimation of residential floorspace demand are listed in [A44.flsp_param.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.flsp_param.csv)
+The parameters (a,b,c) for the estimation of residential floorspace demand are calculated within the model DS (LA144.building_det_flsp) and saved in L144.flsp_param.
+The econometric analysis is developed using different global floorspace data sources, which are used for floorspace calibration (e.g., IEA, Odyssee).
+Considering the subnational data availability for the US, and its different behaviour in terms of residential floorspace demand (higher observed floorpace than other regions with similar per capita income or population density),
+parameters for the US are different from the global values, and have been estimated outside the model and are included in the Constants.R file (to ensure everything is consistent when/if the GCAM-USA module is disabled).  
 
-#### Satiation levels
+
+##### Satiation levels
 
 Satiation levels for energy services are specified in [A44.demand_satiation_mult.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.demand_satiation_mult.csv). For commercial floorspace, the satiation values are specified in [A44.satiation_flsp.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.satiation_flsp.csv). 
 
