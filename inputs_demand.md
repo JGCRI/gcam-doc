@@ -113,7 +113,10 @@ Multipliers used to determine the value of time in transit are specified in [A54
 
 ##### Residential floorspace parameters
 
-The parameters for the estimation of residential floorspace demand are listed in [A44.flsp_param.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.flsp_param.csv)
+The parameters (a,b,c) for the estimation of residential floorspace demand are calculated within the model DS (LA144.building_det_flsp) and saved in L144.flsp_param.
+The econometric analysis is developed using different global floorspace data sources, which are used for floorspace calibration (e.g., IEA, Odyssee).
+Considering the subnational data availability for the US, and its different behaviour in terms of residential floorspace demand (higher observed floorpace than other regions with similar per capita income or population density),
+parameters for the US are different from the global values, and have been estimated outside the model and are included in the Constants.R file (to ensure everything is consistent when/if the GCAM-USA module is disabled).  
 
 ##### Thermal load parameters
 

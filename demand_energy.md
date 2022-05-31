@@ -29,7 +29,7 @@ gcam-version: v5.4
 | Income and price elasticity | By region, demand, and year | unitless | [Exogenous](inputs_demand.html) |
 | Residential floorspace demand parameters | By region | unitless | [Exogenous](inputs_demand.html) |
 | Thermal load parameters | By region | various| [Exogenous](inputs_demand.html) |
-| Satiation levels | By region | m2/pers and EJ/pers | [Exogenous](inputs_demand.html) |
+| Satiation levels | By region and building type / service| m2/pers and EJ/pers | [Exogenous](inputs_demand.html) |
 | GDP per capita | By region and year | thous 1990$ per person | [Economy module](economy.html) |
 | Population | By region and year | thousand | [Economy](economy.html) |
 | Subregional income distribution| By region and year | shares| [Economy](economy.html) |
