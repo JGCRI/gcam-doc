@@ -23,10 +23,14 @@ gcam-version: v5.4
 | Name | Resolution | Unit | Source |
 | :--- | :--- | :--- | :--- |
 | Historical energy demand (used for calibration) | By region, technology, and year | EJ/yr | [Exogenous](inputs_demand.html) |
+| Historical floorspace demand (used for calibration) | By region and year | BM2/yr | [Exogenous](inputs_demand.html) |
 | Cost | By region, technology, and year | 1975$/GJ | [Exogenous](inputs_demand.html) |
 | Income and price elasticity | By region, demand, and year | unitless | [Exogenous](inputs_demand.html) |
+| Residential floorspace demand parameters | By region | unitless | [Exogenous](inputs_demand.html) |
+| Satiation levels | By region and building type / service | m2/pers and EJ/pers | [Exogenous](inputs_demand.html) |
 | GDP per capita | By region and year | thous 1990$ per person | [Economy module](economy.html) |
 | Population | By region and year | thousand | [Economy](economy.html) |
+| Habitable Land | By region and year | thousand km2 | [Land](land.html) |
 | Commodity prices | By region, commodity, and year | 1975$/GJ | [Marketplace](marketplace.html) |
 | Logit exponents | By region and sector or subsector | unitless | [Exogenous](inputs_demand.html) |
 | Share weight interpolation rules | By region, technology or subsector, and year | unitless | [Exogenous](inputs_demand.html) |
@@ -48,7 +52,7 @@ gcam-version: v5.4
 
 ### Buildings
 
-GCAM disaggregates the building sector into residential and commercial sectors and models three aggregate services (heating, cooling, and other). Within each region, each type of building and each service starts with a different mix of fuels supplying energy (see Figure below). The future evolution of building energy use is shaped by changes in (1) floorspace, (2) the level of building service per unit of floorspace, and (3) fuel and technology choices by consumers. Floorspace depends on population, income, the average price of energy services, and exogenously specified satiation levels. Note that GCAM also includes the option to specify [floorspace exogenously](details_energy.html#optional-exogenous-floorspace). The level of building service demands per unit of floorspace depend on climate, building shell conductivity, affordability, and satiation levels. The approach used in the buildings sector is documented in [Clarke et al. 2018](demand_energy.html#clarke2018), which has a focus on heating and cooling service and energy demands. Within building services, the structures and functional forms are similar to any other GCAM sector, described in [Energy Technologies](en_technologies.html).
+GCAM disaggregates the building sector into residential and commercial sectors and models three aggregate services (heating, cooling, and other). Within each region, each type of building and each service starts with a different mix of fuels supplying energy (see Figure below). The future evolution of building energy use is shaped by changes in (1) floorspace, (2) the level of building service per unit of floorspace, and (3) fuel and technology choices by consumers. Residential floorspace depends on population, income, population density, and exogenously estimated parameters. Commercial floorspace depends on population, income, the average price of energy services, and exogenously specified satiation levels. Note that GCAM also includes the option to specify [floorspace exogenously](details_energy.html#optional-exogenous-floorspace). The level of building service demands per unit of floorspace depend on climate, building shell conductivity, affordability, and satiation levels. The approach used in the buildings sector is documented in [Clarke et al. 2018](demand_energy.html#clarke2018), which has a focus on heating and cooling service and energy demands. Within building services, the structures and functional forms are similar to any other GCAM sector, described in [Energy Technologies](en_technologies.html).
 
 ### Industry
 
@@ -150,7 +154,21 @@ See [relative cost logit](https://github.com/JGCRI/gcam-core/blob/master/cvs/obj
 
 ### Per Capita floorspace
 
-The demand for per-capita floorspace, *f*, in future time period *t* is shown below. In this and subsequent equations, "satiation" indicates the level of service demand at which increases in income do not lead to further demands for services.
+#### Residential
+
+The demand for residential per-capita floorspace, f, in future time period t is shown below:
+
+$$ f_{t,r} = (UnadjSat_{r} – a * log(PD_{t,r})) * exp(-b * exp(-c * log(GDPpc_{t,r})))  + k_{r} $$
+
+`UnadjSat` is the maximum per capita floorspace value a consumer demands at his maximum income level. Below this satiation point, the marginal utility of floorspace is positive. Above that point, the marginal utility is negative. As shown in the equation, this value is adjusted based on the population density (`PD`), which is calculated as the population divided by “habitable” land (all land except “rock and dessert” and “tundra” ). `GDPpc` is per capita GDP.  
+`a`, `b`, and `c` are constant parameters that have been estimated in the econometric analysis developed in the model data system ([LA144.building_det_flsp.R](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/zchunk_LA144.building_det_flsp.R#L400)). They represent the effect of the population density and the per capita income, respectively, in the estimation of per capita floorspace.  
+Note that for USA, parameters have been estimated outside the model (using subnational data) and are read in by the DS.  
+Finally, parameter `k` is the regional bias adder, which represents the difference between the observed and estimated per capita floorspace in the final calibration year (2015). It captures the “unobservable” effects that cannot be captured with the used variables, and it is kept constant over the whole time horizon.
+
+
+#### Commercial
+
+The demand for per-capita commercial floorspace, *f*, in future time period *t* is shown below. In this equation, "satiation" indicates the level of service demand at which increases in income do not lead to further demand.
 
 $$
 f_{t}=(s-a)[1-exp(-\frac{ln(2)}{\mu}I_{t}(\frac{P_{t}}{P_{t0}})^\beta)]+a
@@ -160,7 +178,7 @@ where *s* is the exogenous satiation level of per-capita floorspace, *μ* is the
 
 ### Building service demand
 
-The demands of generic services per unit floorspace, *d*, are shown in the equation below:
+The demands of generic services per unit floorspace, *d*, are shown in the equation below. Note that the satiation level indicates the demand at which increases in income do not lead to further demands for services (above this point, marginal utility of the service becomes negative).
 
 $$
 d_{t}=k[1-exp(-\frac{ln(2)}{\mu}\frac{I_{t}}{P_{t}})]
