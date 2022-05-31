@@ -1,9 +1,9 @@
 ---
+title: "The GCAM Land Allocation Module"
 layout: index
-title: The GCAM Land Allocation Module
 prev: diagram.html
 next: supply_land.html
-gcam-version: v5.4 
+gcam-version: v6
 ---
 
 # Table of Contents
@@ -78,6 +78,20 @@ For soil carbon, we assume we assume both emissions and uptake are exponential, 
 #### Carbon Stocks
 
 GCAM tracks carbon stocks by calculating and storing cumulative land-use change emissions, and then applying those emissions as time proceeds. As land expands, we compute future uptake to be added to the carbon stock, and as land contracts we compute future emissions to subtract from the carbon stock.
+
+#### Initialization of carbon density data for soil and vegetation carbon
+
+The latest soil and vegetation carbon densities are initialized from inputs which are processed by the `moirai` land data system. `moirai` processes fine resolution soil carbon inputs from the Soilgrids dataset (Hengl et al. 2017) and similar vegetation carbon inputs from Spawn et al. (2020). These raw carbon densities represent the year 2010.  
+
+Soil carbon densities represent top soil (depth of 0-30 cm) and vegetation carbon densities are a sum of above and below ground biomass densities. As mentioned above, GCAM requires a steady state carbon density and not just the contemporary carbon density. The steady state carbon density is compatible with the GCAM methodology to represent land use transitions.   
+
+`moirai` thus calculates 6 "states" of carbon for each GLU land type combination when aggregating up the carbon densities from the gridcell level to the GLU land type level. The user can select any state of carbon by changing the constant `aglu.CARBON_STATE` in [constants.R](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/constants.R#L373). The 6 states are,  `median_value` (median of all available grid cells), `min_value` (minimum of all available grid cells), `max_value` (maximum of all available grid cells),`weighted_average` (weighted average of all available grid cells using the land area as a weight), `q1_value` (first quartile of all available grid cells) and `q3_value` (3rd quartile of all available grid cells).  
+
+The `q3_value` is the default for GCAM since it is the most representative of the steady state. 
+
+Note that the user can also change the data source for carbon densities itself to use the Houghton (1999) carbon densities by changing the parameter `aglu.CARBON_DATA_SOURCE` to "houghton" in [constants.R](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/constants.R#L368).  
+
+Users interested in the `moirai` processing of the input data can refer to the detailed harmonization process described in the [moirai Github repo]( https://github.com/JGCRI/moirai/tree/master/ancillary).
 
 ## Equations 
 TODO: Add new land leaf equations
@@ -187,10 +201,9 @@ This section summarizes some of the land-based policy options available in GCAM.
 
 With this policy, we can set aside some land, removing it from economic competition. This will result in that land area being fixed across time and any land expansion/contraction will not affect this area. 
 
-The default in GCAM is to protect 90% of all non-commercial ecosystems. This protection level is specified in the GCAM data system; see `aglu.PROTECTION_DATA_SOURCE_DEFAULT` in [constants.R](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/constants.R#L344). Users can define a custom percentage of protected lands using the parameter `aglu.PROTECT_DEFAULT`.
 
-#### Protection constraints based on land suitability and protection constraints
-Users can also specify spatially distinct levels of land availability by setting the parameter `aglu.PROTECTION_DATA_SOURCE_DEFAULT` to `FALSE`. In this case, levels of available land for expansion are decided based on levels of suitability (as defined by Zabel et al. 2014) and protection constraints (as defined by the IUCN). There are 7 mutually exclusive types of land based on these suitability and protection constraints. They are:
+#### (GCAM defualt) Protection constraints based on land suitability and protection constraints
+By default, levels of available land for expansion are decided based on levels of suitability (as defined by Zabel et al. 2014) and protection constraints (as defined by the IUCN). There are 7 mutually exclusive types of land based on these suitability and protection constraints. They are:
 
 1. Unsuitable and Unprotected
 2. Suitable and Unprotected
@@ -200,8 +213,11 @@ Users can also specify spatially distinct levels of land availability by setting
 6. Unsuitable with a high value of protection
 7. Unsuitable with a low value of protection. 
 
-When a user chooses to use the spatially distinct protection constraints, by default land that is classified as Suitable and Unprotected (No 2 from the above) will be made available for expansion. The user can make other types of land available using the parameter `aglu.NONPROTECT_LAND_STATUS` in [constants.R](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/constants.R#L341).
+By default land that is classified as Suitable and Unprotected (No 2 from the above) will be made available for expansion. The user can make other types of land available using the parameter `aglu.NONPROTECT_LAND_STATUS` in [constants.R](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/constants.R#L362).
 
+#### Specifying alternative percentage of available/protected land 
+
+ The users can also set their own protection level, which is specified in the GCAM data system; see `aglu.PROTECTION_DATA_SOURCE_DEFAULT` in [constants.R](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/constants.R#L359). Users can define a custom percentage of protected lands using the parameter `aglu.PROTECT_DEFAULT`.
 
 ### Valuing Carbon in Land
 
@@ -295,9 +311,13 @@ Calvin, K., Wise, M., Kyle, P., Patel, P., Clarke, L., Edmonds, J., 2014. Trade-
 
 Calvin, K., Wise, M., Kyle, P., Clarke, L., Edmonds, J., 2017. A hindcast experiment using the GCAM 3.0 agriculture and land-use module. *Climate Change Economics* 8. https://doi.org/10.1142/S2010007817500051
 
+Hengl, T., Mendes de Jesus, J., Heuvelink, G. B., Ruiperez Gonzalez, M., Kilibarda, M., Blagotic, A., . & Guevara, M. A. (2017). SoilGrids250m: Global gridded soil information based on machine learning. PLoS one, 12(2), e0169748.
+
 Houghton, R.A. 1999. The annual net flux of carbon to the atmosphere from changes in land use 1850-1990. Tellus 51B: 298-313.
 
 Snyder, A. C., Link, R. P., & Calvin, K. V. (2017). Evaluation of integrated assessment model hindcast experiments: A case study of the GCAM 3.0 land use module. Geoscientific Model Development, 10(12). https://doi.org/10.5194/gmd-10-4307-2017.
+
+Spawn, S.A., Sullivan, C.C., Lark, T.J. et al. Harmonized global maps of above and belowground biomass carbon density in the year 2010. Sci Data 7, 112 (2020)
 
 Wise, Marshall, Calvin, Katherine, Page Kyle, Patrick Luckow, James Edmonds.  2014. Economic and Physical Modeling of Land Use in GCAM 3.0 and an Application to Agricultural Productivity, Land, and Terrestrial Carbon.  Climate Change Economics. DOI 10.1142/S2010007814500031.
 
