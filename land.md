@@ -83,15 +83,15 @@ GCAM tracks carbon stocks by calculating and storing cumulative land-use change 
 
 The latest soil and vegetation carbon densities are initialized from inputs which are processed by the `moirai` land data system. `moirai` processes fine resolution soil carbon inputs from the Soilgrids dataset (Hengl et al. 2017) and similar vegetation carbon inputs from Spawn et al. (2020). These raw carbon densities represent the year 2010.  
 
-soil carbon densities represent top soil (depth of 0-30 cms) and vegetation carbon densities are a sum of above and below ground biomass densities. As mentioned above, GCAM requires a steady state carbon density and not just the contemporary carbon density. The steady state carbon density is compatible with the GCAM methodology to represent land use transitions.   
+Soil carbon densities represent top soil (depth of 0-30 cm) and vegetation carbon densities are a sum of above and below ground biomass densities. As mentioned above, GCAM requires a steady state carbon density and not just the contemporary carbon density. The steady state carbon density is compatible with the GCAM methodology to represent land use transitions.   
 
-`moirai` thus calculates 6 "states" of carbon for each GLU land type combination when aggregating up the carbon densities from the gridcell level to the GLU land type level. The user can select any state of carbon by changing the constant `aglu.CARBON_STATE` in constants.R. The 6 states are,  `median_value` (median of all available grid cells), `min_value` (minimum of all available grid cells), `max_value` (maximum of all available grid cells),`weighted_average` (weighted average of all available grid cells using the land area as a weight), `q1_value` (first quartile of all available grid cells) and `q3_value` (3rd quartile of all available grid cells).  
+`moirai` thus calculates 6 "states" of carbon for each GLU land type combination when aggregating up the carbon densities from the gridcell level to the GLU land type level. The user can select any state of carbon by changing the constant `aglu.CARBON_STATE` in [constants.R](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/constants.R#L373). The 6 states are,  `median_value` (median of all available grid cells), `min_value` (minimum of all available grid cells), `max_value` (maximum of all available grid cells),`weighted_average` (weighted average of all available grid cells using the land area as a weight), `q1_value` (first quartile of all available grid cells) and `q3_value` (3rd quartile of all available grid cells).  
 
 The `q3_value` is the default for GCAM since it is the most representative of the steady state. 
 
-Note that the user can also change the data source for carbon densities itself to use the Houghton (1999) carbon densities by changing the parameter `aglu.CARBON_DATA_SOURCE` to "houghton" in constants.R.  
+Note that the user can also change the data source for carbon densities itself to use the Houghton (1999) carbon densities by changing the parameter `aglu.CARBON_DATA_SOURCE` to "houghton" in [constants.R](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/constants.R#L368).  
 
-Users interested in the `moirai` processing of the input data can refer to the detailed harmonization process described here - https://github.com/JGCRI/moirai/tree/master/ancillary
+Users interested in the `moirai` processing of the input data can refer to the detailed harmonization process described in the [moirai Github repo]( https://github.com/JGCRI/moirai/tree/master/ancillary).
 
 ## Equations 
 TODO: Add new land leaf equations
@@ -213,11 +213,11 @@ By default, levels of available land for expansion are decided based on levels o
 6. Unsuitable with a high value of protection
 7. Unsuitable with a low value of protection. 
 
-By default land that is classified as Suitable and Unprotected (No 2 from the above) will be made available for expansion. The user can make other types of land available using the parameter `aglu.NONPROTECT_LAND_STATUS` in [constants.R](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/constants.R#L341).
+By default land that is classified as Suitable and Unprotected (No 2 from the above) will be made available for expansion. The user can make other types of land available using the parameter `aglu.NONPROTECT_LAND_STATUS` in [constants.R](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/constants.R#L362).
 
 #### Specifying alternative percentage of available/protected land 
 
- The users can also set their own protection level, which is specified in the GCAM data system; see `aglu.PROTECTION_DATA_SOURCE_DEFAULT` in [constants.R](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/constants.R#L344). Users can define a custom percentage of protected lands using the parameter `aglu.PROTECT_DEFAULT`.
+ The users can also set their own protection level, which is specified in the GCAM data system; see `aglu.PROTECTION_DATA_SOURCE_DEFAULT` in [constants.R](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/constants.R#L359). Users can define a custom percentage of protected lands using the parameter `aglu.PROTECT_DEFAULT`.
 
 ### Valuing Carbon in Land
 
