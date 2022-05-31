@@ -174,6 +174,17 @@ In keeping with the US electricity-specific CCS modeling presented in [Wise et a
 <span id="_Ref277591731" class="anchor"></span>Carbon storage potential by electricity market.
 
 
+Direct Air Capture
+===========================================
+
+In GCAM-USA, the [same technological assumptions](demand_energy.html#direct-air-capture-for-carbon-dioxide-removal) used for the 32 core regions have been applied to US states. The assumptions for the energy and financial inputs for DAC follow those from the global DAC technologies in the same SSP scenario ([Fuhrman et. al. 2021](https://iopscience.iop.org/article/10.1088/1748-9326/ac2db0)) (so users should use the same SSP files for global and GCAM-USA DAC add-ons).  These assumptions are applied to the states in GCAM-USA. The existing assumptions for energy and geologic carbon storage supply in each state and grid region further determine the relative attractiveness to deploy DACCS in a given state within GCAM (see figure below). 
+
+<img src="gcam-figs/dac_state_level_C_storage.png" width="500" height="250" /><br/>
+
+Share of cumulative carbon storage potential by state. State-level DAC potential is directly correlated with the carbon storage potential. Carbon storage assumptions can be found in GCAM data system in [Dooley_CCS_USA](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/gcam-usa/Dooley_CCS_USA.csv).
+
+
+
 Water
 ===========================================
 
@@ -235,6 +246,8 @@ References
 <a name="denholm2008">[Denholm and Margolis 2008]</a> Denholm, P. and R. Margolis. 2008. Supply Curves for Rooftop Solar PV-Generated Electricity for the United States. National Renewable Energy Laboratory, Technical Report NREL / TP-6A0-44073, November 2008.
 
 <a name="eurek2016">[Eurek et al. 2016]</a> Eurek, K, W Cole, D Bielen, N Blair, S Cohen, B Frew, J Ho, V Krishnan, T Mai, B Sigrin, D Steinberg. 2016. Regional Energy Deployment System (ReEDS) Model Documentation: Version 2016. <https://www.nrel.gov/docs/fy17osti/67067.pdf>
+
+<a name="fuhrman2021">[Fuhrman et al. 2021]</a> Fuhrman J, Clarens A F, Calvin K, Doney S C, Edmonds J A, O'Rourke P, Patel P, Pradhan S, Shobe W M and McJeon H 2021. The role of direct air capture and negative emissions technologies in the shared socioeconomic pathways towards +1.5 °C and +2 °C futures Environ. Res. Lett. 16 114012 [Link](https://iopscience.iop.org/article/10.1088/1748-9326/ac2db0)
 
 <a name="huang2018">[Huang et al. 2018]</a> Huang, Z., Hejazi, M., Li, X., Tang, Q., Leng, G., Liu, Y., Döll, P., Eisner, S., Gerten, D., Hanasaki, N. and Wada, Y., 2018. Reconstruction of global gridded monthly sectoral water withdrawals for 1971-2010 and analysis of their spatiotemporal patterns. Hydrology and Earth System Sciences Discussions, 22, pp.2117-2133.
 
