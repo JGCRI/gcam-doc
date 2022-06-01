@@ -174,6 +174,13 @@ XML Tag | Description
 `final-emissions-coefficient` | Emissions coefficient that should be set by end-year (and every year thereafter)
 `allow-ef-increase` | (optional) Allow emission factors to increase from their start-year value (default to false)
 
+#### Emissions Control Drop Folder
+There is a method in the GCAM data system that allows users to selectively specify both new vintage emissions factors and existing vintage retrofits for technologies, replacing the current smooth GDP control for those technologies, without changing any model code. This is done through reading all CSV inputs within a folder, and using this new data to replace any previous emissions control data. Two options are available. The main option is to specify a NSPS for a technology, by either a specific country or region and either at a specific year (most useful for countries with near-term policies in place), or at a certain per capita GDP level. The NSPS is functionally applied to the model as an emission factor. Retrofits can also be specified (this is only applicable to technologies with a lifetime > 1 period).
+
+Retrofits are implemented as a linear-control object such that the emissions factor linearly declines from the specified starting year to the specified end point, for the specified technology vintage. The code automatically removes the existing GDP control object for any technology for which either a NSPS or retrofit is specified.
+
+For instructions on how to implement this, see the README at `input/gcamdata/inst/extdata/emissions/user_emission_controls/README.md`.
+
 <br/>
 
 ## IAMC Reference Card
