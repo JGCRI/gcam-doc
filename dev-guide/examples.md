@@ -117,9 +117,9 @@ C++ classes.
 
 To accomplish our goals set out earlier for coming up with a high level API for
 implementing two-way feedbacks with GCAM we need to:  
-* Provide a way to traverse the heirarchical GCAM strucuture from a high level.
+* Provide a way to traverse the hierarchical GCAM structure from a high level.
 * Avoid forcing users to become familiar with the internals of GCAM, instead
-  leveraging their knowledge of the XML strucuture.  
+  leveraging their knowledge of the XML structure.  
 * Avoid putting too much burden on GCAM developers to maintain the API when
   developing new capabilities.  
 
@@ -127,7 +127,7 @@ implementing two-way feedbacks with GCAM we need to:
 Our first challenge is that, while we currently have a mapping from XML name to
 data objects (such as XMLParse, toInputXML, or XMLDB output),  it is mostly a
 manual process replicated in EACH of these cases where it is needed. It would be
-better if we associated that name just one time together with the declartion of
+better if we associated that name just one time together with the declaration of
 the variable. 
 
 We can illustrate this with a pseudocode example.  C++ only needs to know what
@@ -162,7 +162,7 @@ class Sector {
 
 In addition to the names, we need to be able to loop over the data members so
 that we could search for some particular member variable.  We need to tie each
-of these varaibles together so we can know which variables to loop over:
+of these variables together so we can know which variables to loop over:
 
 
 ```cpp
@@ -509,7 +509,7 @@ as Region, Sector, etc (i.e. `/discrete-choice-function/logit-exponent` is
 valid).  Note that the variable definition may be a vector, such as with
 subsector or just a single object such as with discrete-choice-function.  We
 just use the CONTAINER tag to handle both cases.  The reason is for container
-thery may be filtered by [NamedFilter](#filter-objects) or
+they may be filtered by [NamedFilter](#filter-objects) or
 [YearFilter](#filter-objects).  If the data being held is
 vector&lt;Subsector\*&gt; for instance this allows us to search only the one
 that matches the name: `/subsector[@name='coal']/share-weight`.  If the data
@@ -530,6 +530,11 @@ defined to combine with those other flags: `STATE`.  In fact it only makes sen
 to use `STATE` with `SIMPLE` or `ARRAY`.  You should add this flag to any Data
 definition who's data will get set during a call to `World::calc`, as described
 in [Centrally Managed State Variables](#centrally-managed-state-variables).
+
+#### DEFINE\_VARIABLE including NOT_PARSABLE
+
+
+The `NOT_PARSABLE` flag was added when we switched to automatic generation of the XML parsing.  It is used to indicate which Data should not be able to be set via XML parse, such as variables which are model output only.  Note, it may also be [set](rapid_parse.html#tagging-data-as-not_parsable) in some cases when [special parsing](rapid_parse.html#example-of-aparsable-special-case) behaviors are required as well.
 
 ### Add your new class to `gcam_data_containers.h`
 Since the `GCAMFusion` object determines which GCAM objects it will access at runtime it potentially needs to be able to traverse *all* GCAM objects.  Thus we maintain a header file that includes all GCAM objects that `DEFINE_DATA` that GCAM Fusion may need to access in `util/base/include/gcam_data_containers.h`.  Thus if you add a new class you must also include the header file to your new class in `gcam_data_containers.h` as well.
@@ -629,7 +634,7 @@ or
 
 
 By adding the `STATE` tag it allows us to search, using GCAM Fusion, for all of
-the objects with that tag.  A new class `ManageStateVaraibles` is responsible
+the objects with that tag.  A new class `ManageStateVariables` is responsible
 doing the search as well as all of the other state maintenance as discussed
 below.  Note that state data is collected each period so as to keep the number
 of values to store and copy remains reasonable.  To do this we:
@@ -648,7 +653,7 @@ parallel enabled there is just 1 scratch state.  However, when parallel
 calculations are enabled there is one scratch space for each thread.  
 
 Since we need to be able to quickly copy over scratch state we need to store the
-data contigiously.  Thus in order to keep several copies of state and quickly
+data contiguously.  Thus in order to keep several copies of state and quickly
 replace it is important we keep that total number of state variables to a
 reasonable amount.  Currently we observe 300,000 to 700,000 double values
 depending on the model period which is ~ 2 - 5 MB worth of memory per scratch
@@ -701,7 +706,7 @@ void ManageStateVariables::copyState() {
 
 
 
-Note that with GCAM parallel `Value::sCentralValue` is a thread local variable thus each variable can be indpendently set by each thread that is accessing that code.  What this means in practical terms is for instance that the electricity technology Gas CC could have calculated different costs at the same exact time depending on which computation thread is asking.
+Note that with GCAM parallel `Value::sCentralValue` is a thread local variable thus each variable can be independently set by each thread that is accessing that code.  What this means in practical terms is for instance that the electricity technology Gas CC could have calculated different costs at the same exact time depending on which computation thread is asking.
 
 
 
@@ -744,11 +749,16 @@ combinations.
 
 ### Factory
 
-A generic templated factory that can create any member of a
-[SubClassFamilyVector](#define_data---and-define_data_with_parent--) given the XML
-name.  This class is currently not used however could be employed to replace all
-of the various Factory singleton classes that currently exist in GCAM.  It would
-really be useful when/if we generate all XML Parsing code by the compiler.
+A generic templated factory that which utilizes the [SubClassFamilyVector](#define_data---and-define_data_with_parent--) to provide two methods:
+- `Factory::canCreateType`: Will take an XML node name as an argument and return `true` if any of the classes in `SubClassFamilyVector`'s `getXMLNameStatic()` matches and false otherwise.  Note, the class must also be construct-able (i.e. not abstract) to return `true`.
+- `Factory::createType`: Will take an XML node name as an argument and return a new instance of the class in `SubClassFamilyVector` whos `getXMLNameStatic()` matches.  If no class matches `0` is returned and a warning will be generated.  One major caveat is this method assumes that each class can be constructed with an constructor which takes no arguments.  If the class does require arguments to the constructor you will get a compile time error such as:
+```
+In file included from /Users/pralitp/model/gcam-core/cvs/objects/util/base/source/xml_parse_helper.cpp:81:
+../../util/base/include/factory.h:119:25: error: no matching constructor for initialization of 'typename boost::remove_pointer<decltype(aType)>::type' (aka 'LinearControl')
+                    new typename boost::remove_pointer<decltype( aType )>::type : aCurrResult;
+```
+
+This class allows us to replace all of the various Factory singleton classes that used to exist in GCAM and is a critical part of the [generic XML Parse code generation](rapid_parse.html#xml-parse-call-structure).
 
 
 
@@ -757,10 +767,10 @@ C++11/14 Features:
 
 
 
-Some code written in GCAM Fusion take advantge of some new language
+Some code written in GCAM Fusion take advantage of some new language
 features. While not always necessary they proved useful. Note this isn't the
 full breadth of the new C++11/14 features, just the ones you may find in GCAM
-Fusion. In addtion there are some classes, such as regular expressions, which
+Fusion. In addition there are some classes, such as regular expressions, which
 are also part of the new standard however I will not talk about them since it
 doesn't change any language expressions that may be confusing to C++ coders.
 
@@ -771,9 +781,9 @@ doesn't change any language expressions that may be confusing to C++ coders.
 You may see variables declared as the `auto` type. It is however not a type;
 instead, it allows the developer to elide the variable type and allow the
 compiler to set the appropriate type at compile time. If the compiler can't
-figure it out unambigously then it will raise an error. This is particularly
-useful when dealing with templated typedefs and nested or derivived types, where
-the type defininitions can get quite complex. For example, it is easier to write
+figure it out unambiguously then it will raise an error. This is particularly
+useful when dealing with templated typedefs and nested or derived types, where
+the type definitions can get quite complex. For example, it is easier to write
 and understand: 
 
 ```cpp
@@ -799,7 +809,7 @@ void someFunc(ContainerData<SomeKindOfArrayOfContainerType> aData ) {
 
 ### decltype(..)
 
-The `decltype` declaraiton allows you to copy the type of some other
+The `decltype` declaration allows you to copy the type of some other
 variable. This is useful for deriving other types.  For example, this
 declaration gives the const iterator associated with a container.  It isn't
 necessary to specify, or even know, the exact type of the container:
