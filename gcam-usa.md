@@ -17,7 +17,7 @@ Note that several aspects of the energy system are still modeled at the aggregat
 Story-line for the GCAM-USA reference scenario 
 ==============================================
 
-There are many ways in which the U.S. energy system might evolve over the coming decade, and any scenario will be a reflection of the storyline that supports it. The Reference scenario for the energy system modeled in GCAM-USA is intended to be a scenario with a reference set of assumptions to compare scenarios constructed with alternative assumptions. Broadly, our reference scenario is constructed with an underlying storyline that historical trends continue in the near term due to inertia in the system and continuation of current policies; however, in the long term, outcomes are largely driven by economic forces. This section describes the embedded assumptions in the storyline for our reference scenario for five key elements of the scenario: i.) Socioeconomics and energy demands, ii.) Electricity demand, iii.) Electricity supply,  iv.) Inter-state electricity trade, and v.) Refining. Further details about our assumptions for remaining sectors are presented in the following sections of this documentation. Alternative reference scenarios can be constructed by adjusting assumptions in the model. 
+There are many ways in which the U.S. energy system might evolve over the coming decade, and any scenario will be a reflection of the storyline that supports it. The Reference scenario for the energy system modeled in GCAM-USA is intended to be a scenario with a reference set of assumptions to compare scenarios constructed with alternative assumptions. Broadly, our reference scenario is constructed with an underlying storyline that historical trends continue in the near term due to inertia in the system and continuation of current policies; however, in the long term, outcomes are largely driven by economic forces. This section describes the embedded assumptions in the storyline for our reference scenario for seven key elements of the scenario: i.) Socioeconomics and energy demands, ii.) Electricity demand, iii.) Electricity supply,  iv.) Inter-state electricity trade, v.) Refining, vi.) Water, and vii.) Emissions. Further details about our assumptions for remaining sectors are presented in the following sections of this documentation. Alternative reference scenarios can be constructed by adjusting assumptions in the model. 
 
 Socioeconomics and energy demands: Our Reference scenario assumes a growing U.S. economy and growing but gradually peaking population through the end of the century and, consequently, growing service demands in all end-use sectors. In addition, our scenario assumes a continuation of current energy efficiency policies (e.g. building efficiency standards). However, our scenario assumes increasing final energy demands due to growing service demands with no expansion or strengthening of efficiency policies. 
 
@@ -43,6 +43,8 @@ Electricity sector water demands evolve in a similar manner as global GCAM. Powe
 Overall, despite growing electricity demand, the assumption of no new freshwater once-through cooling systems, the shift towards less water-intensive generation technologies (e.g. natural gas, renewables), and the reduced reliance on more water-intensive technologies (e.g. coal, nuclear) result in diminishing power sector water demands in the GCAM-USA Reference scenario.
 
 Water supply: Our reference scenario adopts the renewable and non-renewable water supplies that are calculated and implemented for all water basins in the USA region in the global GCAM. 
+
+Emissions: Future air pollutant emissions assumptions are implemented to reflect current rules and legislation. This approach results in a near-term reduction in emissions for the sectors that currently have regulations applied to them. The specific regulations by sector are listed below (Table 2). Further into the future, around 2050 on, some emissions begin to increase again. This happens in sectors with minimal legislation to continue reducing emissions, and where no GDP control is applied. Without the addition of legislation and/or a GDP control, emissions continue to increase as their drivers (whether population or energy consumption) also increase. 
 
 
 Interpretation of GCAM-USA results
@@ -219,28 +221,26 @@ Note that at this time the specification of Non-CO2 greenhouse gases in GCAM-USA
 Air Pollutants
 ============
 #### Methodology and Key Data Sources 
-GCAM-USA includes state-level emissions from the following air pollutants: BC, OC, PM<sub>2.5</sub>, PM<sub>10</sub>, NOx, SO<sub>2</sub>, NMVOC, CO, and NH<sub>3</sub> for the following aggregate sectors: electric generation, buildings, onroad transportation, nonroad transportation, industrial energy use, industry processes, urban processes, cement, and refining and related. Depending on the emissions and energy data available, either emission factors (EFs) or input emissions are used. These EFs or emissions are calibrated in all historical years to the US [National Emissions Inventory](gcam-usa.html#nei) (NEI), allowing for state-level representations of pollutant emissions. Annual data at the state level from [EPA Tier 1 CAPS](gcam-usa.html#epatier1) was used to scale some of the NEI data to get a more accurate distribution of emissions for years in between, or before, NEI years. National totals for historical years are scaled to [Community Emissions Data System](gcam-usa.html#ceds) (CEDS) values for most sectors at the national level both for consistency over time and with the global GCAM model, and because CEDS values are updated annually, providing up to date estimates. Future emission factors are set, by vintage where available in GCAM, according to current air pollution control regulations. Outlier emission factors are reset to national median values to avoid spurious results. In some sectors, supplemental data from [MOVES](gcam-usa.html#moves), [MARKAL](gcam-usa.html#markal), [GREET](gcam-usa.html#greet), [IMO](gcam-usa.html#imo), and various other EPA sources.
+GCAM-USA includes state-level emissions of the following air pollutants: BC, OC, PM<sub>2.5</sub>, PM<sub>10</sub>, NOx, SO<sub>2</sub>, NMVOC, CO, and NH<sub>3</sub> for the following aggregate sectors: electric generation, buildings, transportation, industrial energy use, industry processes, urban processes, cement, and refining/oil and gas. Depending on the emissions and energy data available, either emission factors (EFs) or input emissions are used. These EFs or emissions are calibrated in all historical years to the US [National Emissions Inventory](gcam-usa.html#nei) (NEI). Annual data at the state level from [EPA Tier 1 CAPS](gcam-usa.html#epatier1) was used to scale some of the NEI data to get a more accurate distribution of emissions for years in between, or before, NEI years (2008, 2011, 2014, 2017). National totals for historical years are scaled to [Community Emissions Data System](gcam-usa.html#ceds) (CEDS) values for most sectors at the national level both for consistency over time and with the global GCAM model, and because CEDS values are updated annually, providing up to date estimates of recent emissions trends. Future emission factors are set, by vintage where available in GCAM, according to current air pollution control regulations. More information about these regulations and future emissions behavior is provided below. Outlier emission factors are reset to national median values to avoid spurious results.
 
 #### Additional Information and Assumptions
-BC and OC: The NEI does not include BC/OC emissions. These are derived from PM<sub>2.5</sub> emissions using BC/OC ratios. There can be some inconsistency between GCAM USA BC/OC emissions and PM<sub>2.5</sub> emissions. In practice this is usually not a significant issue because most analysis uses either BC/OC (climate-focused analysis) or PM<sub>2.5</sub> (air pollution focused analysis) emissions, but not both.
-
-For electric generation, only the GCAM-USA configuration with water technologies is supported.
-
-For industrial energy use, emission factors for future years are applied assuming industrial sector vintaging is being used, which could lead to discontinuity if not.
-
-Note that the air pollutant representation in GCAM-USA takes a different paradigm than in core GCAM. Air pollutant emissions are implemented as a CLE (Current LEgislation) scenario, reflecting current rules and legislation with one additional GDP control in place, although the impact of any endogenous technology changes are taken into account. This is done to support work on energy-emissions interactions over the next 20-30 years (out to 2050). Some emissions start to increase again by that point. This behavior is especially seen in nonroad transportation due to minimal legislation represented that impacts future year emissions as well as a lack of GDP control. Table 2 reflects the CLE approach by sector.
+The air pollutant representation in GCAM-USA employs a different paradigm than in core GCAM. Future air pollutant emissions factors are implemented as a CLE (Current LEgislation) scenario, reflecting current rules and legislation. There is one additional GDP control applied to the process sectors (industry, urban, and cement). For non-combustion emissions such as these, the GCAM driver is a combination of population and income driven. Because of this we use generic controls to make sure these process emissions don't continuously grow into the future. This implementation is focused on energy-emissions interactions over the next 20-30 years (out to 2050); some emissions begin to increase again after 2050 as the underlying activity drivers increase and emissions factors remain constant (i.e., do not reflect furhter emission controls). This behavior is especially seen in nonroad transportation due to minimal legislation represented that impacts future year emissions as well as a lack of GDP control. Table 2 outlines the CLE approach by sector.
 
 **Table 2: Summary of controls applied by sector**
 
 | Sector | Assumptions |
 | :--- | :--- |
-| Electric Generation | New Source Performance Standards applied to 2020 - 2100 for all pollutants except NH<sub>3</sub>. | 
-| Buildings | Code of Federal Regulations Standards of Performance for New Residential Wood Heaters applied to 2020 - 2100 for PM<sub>2.5</sub>, PM<sub>10</sub>, BC, and OC. | 
-| Onroad Transportation | A combined set of federal and state policies as implemented in EPA's MOVES2014 model. For example including: Tier 3 standards Heavy Duty GHG Rule (Phase I), and Light Duty GHG Rule. |
-| Nonroad Transportation | EPA Category 3 marine engine sulfur limit of 1,000 ppm for marine fuels applied to 2015 - 2100 for SO<sub>2</sub> for domestic shipping. |
-| Industrial Energy Use | A combined set of federal and state policies as implemented in Argonne National Laboratory's GREET 2014 model. | 
+| Electric Generation | New Source Performance Standards [EPA 2015](gcam-usa.html#epa2015) applied to 2020 - 2100 for all pollutants except NH<sub>3</sub>. | 
+| Buildings | [Code of Federal Regulations](gcam-usa.html#cfr) Standards of Performance for New Residential Wood Heaters applied to 2020 - 2100 for PM<sub>2.5</sub>, PM<sub>10</sub>, BC, and OC. | 
+| Onroad Transportation | A combined set of federal and state policies as implemented in EPA's MOVES2014 model. For example including: [Tier 3 standards Heavy Duty GHG Rule](gcam-usa.html#tier3heavy) (Phase I), and [Light Duty GHG Rule](gcam-usa.html#ghglight). |
+| Nonroad Transportation | [EPA Category 3 marine engine sulfur limit](gcam-usa.html#sulfur) of 1,000 ppm for marine fuels applied to 2015 - 2100 for SO<sub>2</sub> for domestic shipping. |
+| Industrial Energy Use | A combined set of federal and state policies as implemented in Argonne National Laboratory's [GREET 2014](gcam-usa.html#greet) model. | 
 | Process (industry, urban, cement) | A GDP control is applied to 2015 - 2100 for all supplysectors and technologies. |
 | Refining and related | N/A | 
+
+BC and OC: The NEI does not include BC/OC emissions. BC/OC emissions factors are derived from PM<sub>2.5</sub> emissions using BC/OC ratios. This can lead to some inconsistency between GCAM USA BC/OC emissions and PM<sub>2.5</sub> emissions. In practice this is usually not a significant issue because most analysis uses either BC/OC (climate-focused analysis) or PM<sub>2.5</sub> (air pollution focused analysis) emissions, but not both.
+
+For the power sector, only the GCAM-USA configuration with endogenous cooling technologies (elec_segments_water_USA.xml) is supported. For industrial energy use, emission factors for future years are applied assuming industrial sector vintaging (industry_vintage_USA.xml) is being used, which could lead to discontinuity if not.
 
 
 References
@@ -252,6 +252,8 @@ References
 
 <a name="ceds">[Community Emissions Data System]</a> O'Rourke, P. R, Smith, S. J., Mott, A., Ahsan, H., McDuffie, E. E., Crippa, M., Klimont, S., McDonald, B., Z., Wang, Nicholson, M. B, Feng, L., and Hoesly, R. M. (2021, February 05). CEDS v-2021-02-05 Emission Data 1975-2019 (Version Feb-05-2021). https://github.com/JGCRI/CEDS/releases/tag/2021_4_21_Release.
 
+<a name="cfr">[Code of Federal Regulations]</a> Code of Federal Regulations Title 40, Chapter 1, Subchapter C, Part 60, Subpart AAA. <https://www.ecfr.gov/current/title-40/chapter-I/subchapter-C/part-60/subpart-AAA>
+
 <a name="dahowski2005">[Dahowski et al. 2005]</a> Dahowski, R., Dooley, J., Davidson, C., Bachu, S., Gupta, N., 2005. Building the Cost Curves for CO<sub>2</sub> Storage: North America. IEA Greenhouse Gas R&D Programme, Cheltenham, UK.
 
 <a name="dahowski2011">[Dahowski et al. 2011]</a> Dahowski, R., Davidson, C., Dooley, J., 2011. Comparing large scale CCS deployment potential in the USA and China: A detailed analysis based on country-specific CO<sub>2</sub> transport & storage cost curves. Energy Procedia 4, 2732-2739.
@@ -261,6 +263,8 @@ References
 <a name="denholm2008">[Denholm and Margolis 2008]</a> Denholm, P. and R. Margolis. 2008. Supply Curves for Rooftop Solar PV-Generated Electricity for the United States. National Renewable Energy Laboratory, Technical Report NREL / TP-6A0-44073, November 2008.
 
 <a name="eurek2016">[Eurek et al. 2016]</a> Eurek, K, W Cole, D Bielen, N Blair, S Cohen, B Frew, J Ho, V Krishnan, T Mai, B Sigrin, D Steinberg. 2016. Regional Energy Deployment System (ReEDS) Model Documentation: Version 2016. <https://www.nrel.gov/docs/fy17osti/67067.pdf>
+
+<a name="greet">[GREET 2014]</a> Argonne National Laboratory. 2014. GREET v1.2.0 11425. <https://greet.es.anl.gov/>
 
 <a name="huang2018">[Huang et al. 2018]</a> Huang, Z., Hejazi, M., Li, X., Tang, Q., Leng, G., Liu, Y., Döll, P., Eisner, S., Gerten, D., Hanasaki, N. and Wada, Y., 2018. Reconstruction of global gridded monthly sectoral water withdrawals for 1971-2010 and analysis of their spatiotemporal patterns. Hydrology and Earth System Sciences Discussions, 22, pp.2117-2133.
 
@@ -292,19 +296,17 @@ References
 
 <a name="eia2020">[EIA 2020]</a> U.S. Energy Information Agency (EIA 2020) Annual Energy Outlook 2020 with projections to 2050. <https://www.eia.gov/outlooks/aeo/> (2020).
 
-<a name="epa2015">[EPA 2015]</a> U.S. Environmental Protection Agency. 2015. Standards of Performance for Greenhouse Gas Emissions from New, Modified, and Reconstructed Stationary Sources: Electric Utility Generating Units, 80 Federal Register 205 (23 October 2015) (40 CFR parts 60, 70, 71, and 98): 64513, 64546-64547, https://www.gpo.gov/fdsys/pkg/FR-2015-10-23/pdf/2015-22837.pdf (Accessed 16 December 2016).  
+<a name="epa2015">[EPA 2015]</a> U.S. Environmental Protection Agency. 2015. Standards of Performance for Greenhouse Gas Emissions from New, Modified, and Reconstructed Stationary Sources: Electric Utility Generating Units, 80 Federal Register 205 (23 October 2015) (40 CFR parts 60, 70, 71, and 98): 64513, 64546-64547, <https://www.gpo.gov/fdsys/pkg/FR-2015-10-23/pdf/2015-22837.pdf> (Accessed 16 December 2016).  
 
-<a name="epatier1">[EPA Tier 1 CAPS]</a> U.S. Environmental Protection Agency. 2016. Air Pollutant Emissions Trends Data, State Tier 1 CAPS Trends. https://www.epa.gov/air-emissions-inventories/air-pollutant-emissions-trends-data.
+<a name="epatier1">[EPA Tier 1 CAPS]</a> U.S. Environmental Protection Agency. 2016. Air Pollutant Emissions Trends Data, State Tier 1 CAPS Trends. <https://www.epa.gov/air-emissions-inventories/air-pollutant-emissions-trends-data>.
 
-<a name="greet">[GREET]</a> Argonne National Laboratory. 2014. GREET v1.2.0 11425. For model information, please contact greet@anl.gov. doi: 10.11578/GREET-Excel-2014/dc.20200803.5.
+<a name="nei">[National Emissions Inventory]</a> U.S. Environmental Protection Agency. 2008, 2011, 2014, 2017. National Emissions Inventory. <https://www.epa.gov/air-emissions-inventories/national-emissions-inventory-nei>.
 
-<a name="imo">[IMO]</a> International Maritime Organization. 2020. Fourth IMO GHG Study 2020. https://safety4sea.com/wp-content/uploads/2020/08/MEPC-75-7-15-Fourth-IMO-GHG-Study-2020-Final-report-Secretariat.pdf.
+<a name="tier3heavy">[Tier 3 standards Heavy Duty GHG Rule]</a> U.S. Environmental Protection Agency. Final Rule for Control of Air Pollution from Motor Vehicles: Tier 3 Motor Vehicle Emission and Fuel Standards. <https://www.epa.gov/regulations-emissions-vehicles-and-engines/final-rule-control-air-pollution-motor-vehicles-tier-3>.
 
-<a name="markal">[MARKAL]</a> Lenox, C., R. Dodder, C. Gage, Dan Loughlin, O. Kaplan, AND W. Yelverton. EPA U.S. Nine-region MARKAL DATABASE, DATABASE DOCUMENTATION. US Environmental Protection Agency, Cincinnati, OH, EPA/600/B-13/203, 2013. https://cfpub.epa.gov/si/si_public_record_report.cfm?Lab=NRMRL&dirEntryId=278925.
+<a name="ghglight">[Light Duty GHG Rule]</a> U.S. Environmental Protection Agency. Final Rule to Revise Existing National GHG Emissions Standards for Passenger Cars and Light Trucks Through Model Year 2026. <https://www.epa.gov/regulations-emissions-vehicles-and-engines/final-rule-revise-existing-national-ghg-emissions>.
 
-<a name="moves">[MOVES]</a> U.S. EPA Office of Transportation and Air Quality. Population and Activity of Onroad Vehicles. MOVES 2014. https://cfpub.epa.gov/si/si_public_record_report.cfm?Lab=OTAQ&dirEntryId=309336 (Accessed 25 February 2022).
-
-<a name="nei">[National Emissions Inventory]</a> U.S. Environmental Protection Agency. 2008, 2011, 2014, 2017. National Emissions Inventory. https://www.epa.gov/air-emissions-inventories/national-emissions-inventory-nei.
+<a name="sulfur">[EPA Category 3 marine engine sulfur limit]</a> U.S. Environmental Protection Agency. EPA Guidance on ECA Marine Fuel.  <https://www.epa.gov/sites/default/files/2015-10/documents/420b14097.pdf>. (2014).
 
 <a name="wise2007">[Wise et al. 2007]</a> Wise, M., Dooley, J., Dahowski, R., Davidson, C., 2007. Modeling the impacts of climate policy on the deployment of carbon dioxide capture and geologic storage across electric power regions in the United States. International Journal of Greenhouse Gas Control 1, 261-270.
 
