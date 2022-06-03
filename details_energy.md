@@ -142,17 +142,17 @@ Another accounting issue that pertains to district heating is that the regions w
 
 ### Hydrogen
 
-The structure of the hydrogen production and distribution sectors and technologies in GCAM generally uses the structure of the U.S. Department of Energy's Hydrogen Analysis (H2A) models [DOE 2015](details_energy.html#doe2015), and is shown in the figure below.
+The structure of the hydrogen production and distribution sectors in GCAM is shown in the figure below, along with approximate energy input-output coefficients of each stage.
 
 <img src="gcam-figs/hydrogen.png" width="600" height="400" /><br/>
 **Hydrogen structure, with example input-output coefficients shown.**
 {: .fig}
 
-As in the H2A model [IHA 2000](details_energy.html#iha2000), the production of hydrogen takes place in two distinct sectors: H<sub>2</sub> Forecourt Production (i.e., on-site generation) and H<sub>2</sub> Central Production. The hydrogen produced at central facilities incurs additional cost mark-ups to reflect the distribution costs, whereas forecourt production typically entails higher energy intensities on the production side, and higher per-unit costs. Central production also has a greater diversity of feedstock options, described below.
+The most common hydrogen production technology today is natural gas steam reforming, though coal chemical transformation is the dominant technology in China [IEA 2007](details_energy.html#iea2007). In GCAM, all regions have access to all technologies when hydrogen as an energy carrier becomes available; hydrogen can be produced from up to 7 primary energy sources. Three of these sources (coal, gas, and biomass) include production technologies with CCS, characterized by higher costs and higher energy intensities, but lower CO<sub>2</sub> emissions.
 
-The most common hydrogen production technology today is natural gas steam reforming, though coal chemical transformation is the dominant technology in China [IEA 2007](details_energy.html#iea2007). In GCAM, all regions have access to all technologies when hydrogen as an energy carrier becomes available; as shown in the figure above, hydrogen can be produced from up to 7 primary energy sources. Three of these sources (coal, gas, and biomass) include production technologies with CCS, characterized by higher costs and higher energy intensities, but lower CO<sub>2</sub> emissions.
+Direct wind and solar electrolysis are specifically disaggregated from grid-based electrolysis because these uses of wind and solar energy do not incur any backup-related costs, unlike in the electricity sector where backup costs increase as a function of their share of total grid capacity (see [electricity](supply_energy.html#electricity)). Compared with grid-based electrolysis, these technologies also avoid the cost markups of electricity transmission and distribution. Each region's costs of wind- and solar-based electrolysis are based on region-specific renewable resource supply curves and capacity factors, as well as the levelized cost of the electrolyzers, which are similarly a function of the renewable capacity factors. The nuclear technology represents thermal splitting, which does not use electricity as an intermediate energy product.
 
-The wind and solar technologies are electrolysis technologies, but are specifically disaggregated because these uses of wind and solar energy do not incur any backup-related costs, unlike in the electricity sector where backup costs increase as a function of their share of total grid capacity (see [electricity](supply_energy.html#electricity)). In contrast, the nuclear technology represents thermal splitting, which does not use electricity as an intermediate energy product.
+Hydrogen produced centrally can be distributed through two means: pipeline and liquefied hydrogen truck. The electricity and freight trucking input-output coefficients of each pathway are based on Argonne's Hydrogen Delivery Scenario Analysis Model (HDSAM) [ANL 2015](details_energy.html#anl2015), and reflect the respective requirements for refrigeration, compression, transportation, and storage by each distribution pathway. For end users, further energy may be required for additional compression and/or refrigeration, depending on the pathway. For example, vehicles use hydrogen that is at a higher pressure than the pipeline distribution network, and the additional on-site compression energy requirements of the dispensing stations is part of the electricity input-output coefficient to wholesale dispensing. Dispensing is generally used for hydrogen that is held at high pressure and/or low temperatures for end-use purposes (e.g., vehicles and other mobile applications), whereas delivery is used for stationary sources where storage volume is not as constrained (e.g., buildings and industrial facilities). Forecourt (i.e., on-site) production is represented as natural gas and electricity-based technologies within the delivery and dispensing sectors. These technologies typically have high levelized costs than the corresponding central technologies, due to lower capacity factors and smaller scales, but do not incur the cost markups and energy requirements of the distribution system.
 
 ## Trade
 
@@ -233,9 +233,9 @@ The figure below is an example XML of user-specified residential floorspace valu
 
 ## References
 
-<a name="denholm2008">[Denholm 2008]</a> Denholm, P. 2008. *Supply Curves for Rooftop Solar PV-Generated Electricity for the United States*, Technical Report NREL/TP-6A0-44073, National Renewable Energy Laboratory. [Link](http://www.nrel.gov/docs/fy09osti/44073.pdf)
+<a name="anl2015">[ANL 2015]</a> Argonne National Laboratory, 2015, *Hydrogen delivery scenario analysis model (HDSAM)*, Argonne National Laboratory. [Link](https://hdsam.es.anl.gov/index.php?content=hdsam)
 
-<a name="doe2015">[DOE 2015]</a> U.S. Department of Energy. 2015. *DOE H2A Production Analysis*, DOE Hydrogen and Fuel Cells Program. [Link](https://www.hydrogen.energy.gov/h2a_production.html)
+<a name="denholm2008">[Denholm 2008]</a> Denholm, P. 2008. *Supply Curves for Rooftop Solar PV-Generated Electricity for the United States*, Technical Report NREL/TP-6A0-44073, National Renewable Energy Laboratory. [Link](http://www.nrel.gov/docs/fy09osti/44073.pdf)
 
 <a name="eurek2017">[Eurek et al. 2017]</a> Eurek, K., P. Sullivan, M. Gleason, D. Hettinger, D. Heimiller, A. Lopez (2017). An improved global wind resource estimate for integrated assessment models. Energy Economics, 64.
 
