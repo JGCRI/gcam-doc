@@ -126,7 +126,7 @@ In most regions in GCAM, heat is not explicitly represented as an energy commodi
 
 #### Hydrogen
 
-Hydrogen in GCAM is modeled purely as a future energy commodity; while industrial scale volumes of hydrogen are currently produced (e.g., at oil refineries or ammonia plants), the present-day use of hydrogen is almost entirely for non-energy purposes. Hydrogen is not treated as a fuel in the IEA Energy Balances [IEA 2019](supply_energy.html#iea2019), or most other energy statistics. As such, the use of hydrogen as an energy carrier is assumed zero in the base years of GCAM, and starting in 2020 it is allowed to compete for market share supplying heat and power in the industrial sector, and for vehicle fuel in the transportation sector. The representation of hydrogen in GCAM includes 10 production technologies in two production sectors, with cost mark-ups to reflect levelized infrastructural costs, as well as variable transmission and distribution costs. The structure of the hydrogen production and distribution sectors and technologies in GCAM generally uses the structure of the U.S. Department of Energy's Hydrogen Analysis (H2A) models [DOE 2015](supply_energy.html#doe2015). As in the H2A model, the production of hydrogen takes place in two distinct sectors: H<sub>2</sub> Forecourt Production (i.e., on-site generation) and H<sub>2</sub> Central Production. Hydrogen can be produced from natural gas, coal, biomass, nuclear (thermal splitting), and electrolysis (electricity, wind, and solar). See [hydrogen](details_energy.html#hydrogen) for more information.
+Hydrogen is represented as a commodity in future time periods that is available for various energy and industrial processes. Hydrogen is not treated as a fuel in the IEA Energy Balances [IEA 2019](supply_energy.html#iea2019), or most other energy statistics. As such, the representation excludes the on-site production and use of hydrogen at oil refineries, ammonia plants, and other present-day industrial facilities.  The representation of hydrogen in GCAM includes 10 “central” production technologies, as well as 2 “forecourt” (i.e. on-site) production technologies, which may have higher costs due to the economies of scale and higher capacity factors of central production, but the forecourt technologies avoid the costs and energy requirements of distribution. The hydrogen distribution representation differentiates a range of hydrogen commodities whose costs largely reflect the various temperatures and pressures at which hydrogen is transported and stored for different end-use applications. Production technology costs and energy intensities are from the U.S. Department of Energy’s Hydrogen Analysis (H2A) models [DOE 2021](supply_energy.html#doe2021), and the distribution costs and energy intensities are from Argonne’s Hydrogen Delivery Scenario Analysis Model (HDSAM) [ANL 2015](supply_energy.html#anl2015). See [hydrogen](details_energy.html#hydrogen) for more information.
 
 ### Energy Trade
 
@@ -306,6 +306,8 @@ Hydrogen
 
 
 ## References
+
+<a name="anl2015">[ANL 2015]</a> Argonne National Laboratory, 2015, *Hydrogen delivery scenario analysis model (HDSAM)*, Argonne National Laboratory. [Link](https://hdsam.es.anl.gov/index.php?content=hdsam)
 
 <a name="deloitte2008">[Deloitte 2008]</a> Deloitte Development LLC, 2008, *Geothermal Risk Mitigation Strategies Report*, prepared for Department of Energy, Office of Energy Efficiency and Renewable Energy, Geothermal Program. [Link](https://www1.eere.energy.gov/geothermal/pdfs/geothermal_risk_mitigation.pdf)
 
