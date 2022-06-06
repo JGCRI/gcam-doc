@@ -3,7 +3,7 @@ layout: index
 title: Trade in GCAM
 prev: 
 next: 
-gcam-version: v5.4
+gcam-version: v6
 ---
 
 International trade in most commodities in GCAM is done by one of three methods: (1) Heckscher-Ohlin or single global markets, (2) global trade with regionally-differentiated markets with Armington-like preferences between domestic and imported commodities, and (3) fixed interregional trade.  Other approaches for trade can also be implemented in the GCAM framework (such as [GCAM USA](gcam-usa.html) where logit based decisions are made to facilitating trade between the 50-states).

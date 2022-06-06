@@ -3,7 +3,7 @@ layout: index
 title: Supply of Water
 prev: inputs_supply.html
 next: outputs_quantity.html
-gcam-version: v5.4 
+gcam-version: v6 
 ---
 
 # Table of Contents
@@ -58,13 +58,15 @@ Water supplies and demands at each basin are balanced through a market mechanism
 
 The water distribution sector for each demand category includes the cost of water transport, distribution and/or treatment and other adjustments such as subsidies, in addition to the resource cost of water. Thus, water prices for each demand category is differentiated. This framework provides a covenient location for including water subsidies or reduced water costs from allocation rights for irrigated agriculture. In GCAM, the price of water for agriculture use has been reduced to 5% of the general water price (see `water.IRR_PRICE_SUBSIDY_MULT` in [constants.R](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/constants.R)). This factor is based on an OECD report on water pricing ([OECD 2009](#oecd2009)) which indicates that industrial and household water users pay more than 100 times as much as agriculture users. In some regions, the marginal cost of irrigated water use is zero. Crop growth requires substantial water inputs and the profitability of agricultural relies on the low cost of water provisions. Without this subsidy, historical calibration of agriculture production in GCAM is not possible for historically water scarce regions with high cost of water. Water subsidies for irrigated agriculture have not been differentiated by region and basin, and improved understanding of regional differences in water subsidies and their impact on agriculture production remain for future work.
 
-## Equations 
-
-To be completed...
-
 ## Insights and intuition
 
-To be completed...
+### Future changes in climate and socioeconomic systems will drive both the availability and use of water resources, leading to evolutions in scarcity.
+
+While human systems dominate changes in water scarcity independent of socioeconomic or climate future, the sign of these changes depend particularly on the socioeconomic scenario. Under specific socioeconomic futures, human-driven water scarcity reductions occur in up to 44% of the global land area by the end of the century.[Turner et al. 2019](https://iopscience.iop.org/article/10.1088/1748-9326/ab639b/meta)
+
+### Agricultural impacts of sustainable water use in the United States
+
+The implementation of future sustainable water governance measures will require additional investments that allow farmers to maximize production while minimizing water withdrawals to avoid potentially detrimental revenue losses.[Graham et al. 2021](https://www.nature.com/articles/s41598-021-96243-5)
 
 ## IAMC Reference Card
 

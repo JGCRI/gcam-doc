@@ -1,7 +1,7 @@
 ---
 layout: index
 title: GCAM Developer's Guide
-gcam-version: v5.4
+gcam-version: v6
 ---
 ## GCAM Development Guide
 

@@ -3,7 +3,7 @@ title: "Emissions"
 layout: index
 prev: supply_energy.html
 next: outputs_emissions.html
-gcam-version: v5.4
+gcam-version: v6
 ---
 ## Overview
 
@@ -154,6 +154,57 @@ where *pcGDP* stands for the per-capita GDP, and *steepness* is an exogenous con
 Note that the GCAM implementation of the SSP scenarios used a different approach, incorporating region-, sector-, and fuel-specific pollutant emission factor pathways ([Calvin et al. 2017](#calvin2017), [Rao et al. 2017](#rao2017)). 
 
 ## Policy options 
+
+Users are allowed to selectively specify both new vintage specific emissions factors and existing vintage retrofits for technologies when calculating emissions. Users can also specify a GDP level at which emissions controls are applied to the model. 
+
+Users can also spcify marginal abatement cost curves (MACC) for emissions in the model. These can be specified by the user directly or the user can also select to apply precalculated MACC curves from the EPA to the GCAM sectors. Note that the EPA sectors were harmonized with the GCAM sectors when calculating these MACC curves. MACC are applied as technological change and there are different levels of these changes applied for the different SSPs. 
+
+There are three main policy approaches that can be applied in GCAM to reduce emissions of CO<sub>2</sub> or other greenhouse gases: carbon or GHG prices, emissions constraints, or climate constraints. In all cases, GCAM implements the policy approach by placing a price on emissions. This price then filters down through all the systems in GCAM and alters production and demand. For example, a price on carbon would put a cost on emitting fossil fuels. This cost would then influence the cost of producing electricity from fossil-fired power plants that emit CO<sub>2</sub>, which would then influence their relative cost compared to other electricity generating technologies and increase the price of electricity. The increased price of electricity would then make its way to consumers that use electricity, decreasing its competitiveness relative to other fuels and leading to a decrease in electricity demand. The three policy approaches are described below.
+
+* Carbon or GHG prices: GCAM users can directly specify the price of carbon or GHGs. Given a carbon price, the resulting emissions will vary depending on other scenario drivers, such as population, GDP, resources, and technology. See [example](policies_examples.html#carbon-price).
+
+* Emissions constraints. GCAM users can specify the total amount of emissions (CO<sub>2</sub> or GHG) as well. GCAM will then calculate the price of carbon needed to reach the constraint in each period of the constraint.
+
+* Climate constraints: GCAM users can specify a climate variable (e.g., concentration or radiative forcing) target for a particular year. Users determine whether that target can be exceeded prior to the target year. GCAM will adjust carbon prices in order to find the least cost path to reaching the target. (Note that this type of policy increases model run time significantly.)
+
+### <a name="linked-markets"/> Linked Emission Markets
+
+Emissions prices of different GHGs can be linked together for a multi-gas policy using the linked-ghg-policy object. For example, in the default [linked_ghg_policy.xml](https://github.com/JGCRI/gcam-core/blob/master/input/policy/linked_ghg_policy.xml) file in the GCAM release, all non-CO<sub>2</sub> GHGs are linked to the market for CO<sub>2</sub>. Also, see [example](policies_examples.html#linked-policy)
+
+The parameter price-adjust is used to convert prices (e.g., 100 year GWPs in the default set-up) and demand-adjust is used to convert demand units (e.g., to common units of carbon equivalents).
+These can be changed by year if desired.
+
+Setting price-adjust to zero means that there is no economic feedback for the price of this GHG. MAC curves, however, will still operate under the default set-up (whereby MAC curves are driven by CO<sub>2</sub> prices). This can be changed separately for energy/industrial/urban CH<sub>4</sub>, agricultural CH<sub>4</sub> (CH4\_AGR), and CH<sub>4</sub> from agricultural waste burning (CH4\_AWB), LUC CO<sub>2</sub> emissions (e.g. CO2_LUC).
+
+Note that you must first create a policy by reading in a <ghgpolicy> object (by reading an an XML with this object first, see the various policy files in the GCAM release) and then you can define how this links to any emissions (through <linked-ghg-policy> objects).
+
+This flexibility allows CO<sub>2</sub>-only, CO<sub>2</sub>-equivalent, or non-CO<sub>2</sub> markets/constraints for various ‚Äúbaskets‚Äù of emissions as needed.
+
+Note that the GCAM default set-up includes economic feedbacks for methane and nitrous oxide. This is an idealized assumption, but might not happen in real-world policies. For example, in many current systems agricultural emissions are offsets only ‚Äì e.g., they get paid to reduce emissions, but are not charged for any remaining emissions. (So to simulate this type of policy, price-adjust would be set to zero).
+
+### <a name="non-co2-markets"/> Markets For non-CO<sub>2</sub> Emission Species
+
+Markets in GCAM can be set for any emission species. (e.g., CH<sub>4</sub> -only market, NOx market, etc.)
+
+Note that it generally does not make sense to set up an emissions market unless the model has a direct way to reduce emissions. (e.g. you‚Äôve added relevant MAC curves.) For example, in [Shi et al. (2017)](policies.html#shi2017) US electricity sector SO<sub>2</sub> and NO<sub>x</sub> markets were used to represent current policies that cap emissions in certain states. MAC curves for existing power plants were added to allow emissions to change in response to market prices. 
+
+xml inputs within the MAC curve that will be needed to set-up new markets are:
+
+XML Tag | Description
+------------ | -------------
+market-name | Name of market from which the price used by the MAC curve will be obtained (default = "CO2")
+mac-price-conversion | Value to multiply market price by to convert to unit expected by the MAC curve (for example, converting from $/tC to $/tCO2eq) (default  = 1)
+Note | mac-price-conversion can also be set to -1, which is a flag to turn off all use of the MAC curve. This is useful for sensitivity studies.
+zero-cost-phase-in-time | Number of years over which to phase-in "below-zero" MAC curve reductions (default = 25 years)
+
+<br/>
+
+
+## Insights and Intuition
+
+### Effects of combined mitigation pathways for CO2 and NonCO2 gases
+
+Stabilizing climate change well below 2???∞C and towards 1.5???∞C requires comprehensive mitigation of all greenhouse gases (GHG), including both CO2 and non-CO2 GHG emissions.comprehensive GHG abatement that fully integrates non-CO2 mitigation measures in addition to a net-zero CO2 commitment can help achieve 1.5???∞C stabilization. While decarbonization-driven fuel switching mainly reduces non-CO2 emissions from fuel extraction and end use, targeted non-CO2 mitigation measures can significantly reduce fluorinated gas emissions from industrial processes and cooling sectors.[(Ou et al. 2021)](https://www.nature.com/articles/s41467-021-26509-z)
 
 ### Markets
 

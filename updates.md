@@ -3,7 +3,7 @@ layout: index
 title: Recent updates
 prev: fusion.html
 next: 
-gcam-version: v5.4
+gcam-version: v6
 ---
 
 GCAM v5.4: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5093192.svg)](https://doi.org/10.5281/zenodo.5093192)

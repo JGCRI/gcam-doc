@@ -3,7 +3,7 @@ layout: index
 title: Demand for Water
 prev: inputs_demand.html
 next: outputs_quantity.html
-gcam-version: v5.4 
+gcam-version: v6 
 ---
 
 # Table of Contents
@@ -117,6 +117,10 @@ See `calcDemand` in [minicam_price_elasticity_function.cpp](https://github.com/J
 ### Dynamics of electricity cooling systems
 
 When water supply constraints are not imposed or when water prices and scarcity is low, the shares of different cooling systems in the electricity generation sector tend to largely reflect the exogenous share-weight assumptions, which follow the assumptions and logic of [Davies et al. 2013](#davies2013). On the other hand, when water supply constraints are imposed and regional water scarcity escalates, the cost of water use directly affects the choice of cooling system. Most regions shift from once-through to recirculating systems over time, but regions that use primarily seawater at present are assumed to continue to do so in all future time periods.
+
+### Future evolution of virtual water trading in the United States electricity sector
+
+Future transformations in the electricity sector could entail major shifts in power sector technology mixes and electricity trade, with consequences for the trading of virtual water. Under a business-as-usual scenario, virtual water trading in 2050 decreases by 3% relative to 2015 levels. By contrast, virtual water trading increases respectively by 3%, 26%, and 32%, in scenarios characterized by higher socioeconomic growth, higher potential for transmission expansion, and low-carbon transitions.[(Graham et al. 2021)](https://iopscience.iop.org/article/10.1088/1748-9326/ac3289/meta) 
 
 ## IAMC Reference Card
 
