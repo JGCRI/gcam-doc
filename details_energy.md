@@ -142,7 +142,7 @@ Another accounting issue that pertains to district heating is that the regions w
 
 ### Hydrogen
 
-The structure of the hydrogen production and distribution sectors in GCAM is shown in the figure below, along with approximate energy input-output coefficients of each stage.
+Structure of hydrogen transmission, distribution and end use, with illustrative input-output coefficients (GJ of energy input per GJ of hydrogen) showing the approximate energy requirements of each stage of hydrogen compression, refrigeration, transportation, and storage, is shown in the figure below. 
 
 <img src="gcam-figs/hydrogen.png" width="600" height="400" /><br/>
 **Hydrogen structure, with example input-output coefficients shown.**
