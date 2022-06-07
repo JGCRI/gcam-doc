@@ -62,11 +62,11 @@ The water distribution sector for each demand category includes the cost of wate
 
 ### Future changes in climate and socioeconomic systems will drive both the availability and use of water resources, leading to evolutions in scarcity.
 
-While human systems dominate changes in water scarcity independent of socioeconomic or climate future, the sign of these changes depend particularly on the socioeconomic scenario. Under specific socioeconomic futures, human-driven water scarcity reductions occur in up to 44% of the global land area by the end of the century.[Turner et al. 2019](https://iopscience.iop.org/article/10.1088/1748-9326/ab639b/meta)
+While human systems dominate changes in water scarcity independent of socioeconomic or climate future, the sign of these changes depend particularly on the socioeconomic scenario. Under specific socioeconomic futures, human-driven water scarcity reductions occur in up to 44% of the global land area by the end of the century. [Turner et al. 2019](https://iopscience.iop.org/article/10.1088/1748-9326/ab639b/meta)
 
 ### Agricultural impacts of sustainable water use in the United States
 
-The implementation of future sustainable water governance measures will require additional investments that allow farmers to maximize production while minimizing water withdrawals to avoid potentially detrimental revenue losses.[Graham et al. 2021](https://www.nature.com/articles/s41598-021-96243-5)
+The implementation of future sustainable water governance measures will require additional investments that allow farmers to maximize production while minimizing water withdrawals to avoid potentially detrimental revenue losses. [Graham et al. 2021](https://www.nature.com/articles/s41598-021-96243-5)
 
 ## IAMC Reference Card
 

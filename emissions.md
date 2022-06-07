@@ -48,7 +48,7 @@ GCAM endogenously estimates CO<sub>2</sub> fossil-fuel related emissions based o
 
 GCAM can be considered as a process model for CO<sub>2</sub> emissions and reductions. CO<sub>2</sub> emissions change over time as fuel consumption in GCAM endogenously changes. Application of Carbon Capture and Storage (CCS) is explicitly considered as separate technological options for a number of processes, such as electricity generation and fertilizer manufacturing. The GCAM, in effect, produces a Marginal Abatement Curve for CO<sub>2</sub> as a carbon-price is applied within the model.
 
-CO<sub>2</sub> emissions from limestone used in cement production are also estimated. Limestone consumption has one global emissions factor, however, each region’s IO coefficient (limestone / cement) is calibrated to return CDIAC estimates ([CDIAC 2017](#cdiac2017)). (CO<sub>2</sub> from fuel consumed in producing limestone is estimated in the same manner as other fuel consumption.)
+CO<sub>2</sub> emissions from limestone used in cement production are also estimated. Limestone consumption has one global emissions factor, however, each region's IO coefficient (limestone / cement) is calibrated to return CDIAC estimates ([CDIAC 2017](#cdiac2017)). (CO<sub>2</sub> from fuel consumed in producing limestone is estimated in the same manner as other fuel consumption.)
 
 CO<sub>2</sub> emissions from gas flaring are not currently included in GCAM.
 
@@ -125,7 +125,7 @@ Non-CO<sub>2</sub> GHG emissions are proportional to the activity except for any
 
 The default set-up is that MAC curves use the scenario's carbon price (if any). The non-CO<sub>2</sub> GHG MACs are an exogenous input, and are read in as the percent of emissions abated as a function of the emissions prices. Note that they are read in with explicit cost points (i.e., piece-wise linear form), with no underlying equation describing the percentage of abatement as a function of the carbon price.
 
-Below-zero (i.e. “no cost”) MAC mitigation (e.g. MAC reduction percentage is > 0 at zero carbon price) are applied in the reference case and phased in over several decades. (This can be turned off by setting the no-zero-cost-reductions option to 1 within a MAC curve.)
+Below-zero (i.e. no cost) MAC mitigation (e.g. MAC reduction percentage is > 0 at zero carbon price) are applied in the reference case and phased in over several decades. (This can be turned off by setting the no-zero-cost-reductions option to 1 within a MAC curve.)
 
 Note that a species-specific emissions market can also be specified using advanced options, described below.
 
@@ -157,38 +157,38 @@ Note that the GCAM implementation of the SSP scenarios used a different approach
 
 Users are allowed to selectively specify both new vintage specific emissions factors and existing vintage retrofits for technologies when calculating emissions. Users can also specify a GDP level at which emissions controls are applied to the model. 
 
-Users can also spcify marginal abatement cost curves (MACC) for emissions in the model. These can be specified by the user directly or the user can also select to apply precalculated MACC curves from the EPA to the GCAM sectors. Note that the EPA sectors were harmonized with the GCAM sectors when calculating these MACC curves. MACC are applied as technological change and there are different levels of these changes applied for the different SSPs. 
+Users can also specify marginal abatement cost curves (MACC) for emissions in the model. These can be specified by the user directly or the user can also select to apply pre-calculated MACC curves from the EPA to the GCAM sectors. Note that the EPA sectors were harmonized with the GCAM sectors when calculating these MACC curves. MACC are applied with technological change applied over time and there are different levels of change applied for the different SSPs. 
 
-There are three main policy approaches that can be applied in GCAM to reduce emissions of CO<sub>2</sub> or other greenhouse gases: carbon or GHG prices, emissions constraints, or climate constraints. In all cases, GCAM implements the policy approach by placing a price on emissions. This price then filters down through all the systems in GCAM and alters production and demand. For example, a price on carbon would put a cost on emitting fossil fuels. This cost would then influence the cost of producing electricity from fossil-fired power plants that emit CO<sub>2</sub>, which would then influence their relative cost compared to other electricity generating technologies and increase the price of electricity. The increased price of electricity would then make its way to consumers that use electricity, decreasing its competitiveness relative to other fuels and leading to a decrease in electricity demand. The three policy approaches are described below.
+There are three main policy approaches that can be applied in GCAM to reduce emissions of CO<sub>2</sub> or other greenhouse gases: a fixed carbon or GHG price, emissions constraints, or climate constraints. In all cases, GCAM implements the policy approach by placing a price on emissions. This price then filters down through all the systems in GCAM and alters production and demand. For example, a price on carbon would put a cost on emitting fossil fuels. This cost would then influence the cost of producing electricity from fossil-fired power plants that emit CO<sub>2</sub>, which would then influence their relative cost compared to other electricity generating technologies and increase the price of electricity. The increased price of electricity would then make its way to consumers that use electricity, potentially decreasing its competitiveness relative to other fuels. The three policy approaches are described below.
 
 * Carbon or GHG prices: GCAM users can directly specify the price of carbon or GHGs. Given a carbon price, the resulting emissions will vary depending on other scenario drivers, such as population, GDP, resources, and technology. See [example](policies_examples.html#carbon-price).
 
 * Emissions constraints. GCAM users can specify the total amount of emissions (CO<sub>2</sub> or GHG) as well. GCAM will then calculate the price of carbon needed to reach the constraint in each period of the constraint.
 
-* Climate constraints: GCAM users can specify a climate variable (e.g., concentration or radiative forcing) target for a particular year. Users determine whether that target can be exceeded prior to the target year. GCAM will adjust carbon prices in order to find the least cost path to reaching the target. (Note that this type of policy increases model run time significantly.)
+* Climate constraints: GCAM users can specify a climate variable (e.g., concentration or radiative forcing) target. Users determine whether that target can be exceeded (overshoot) prior to the target year. GCAM will adjust carbon prices in order to find the least cost path to reaching the target. Note when running in this mode GCAM will need to run the scenario several times to find the optimal path to reach the climate target, thus taking significantly longer to run.
 
-### <a name="linked-markets"/> Linked Emission Markets
+### Linked Emission Markets
 
 Emissions prices of different GHGs can be linked together for a multi-gas policy using the linked-ghg-policy object. For example, in the default [linked_ghg_policy.xml](https://github.com/JGCRI/gcam-core/blob/master/input/policy/linked_ghg_policy.xml) file in the GCAM release, all non-CO<sub>2</sub> GHGs are linked to the market for CO<sub>2</sub>. Also, see [example](policies_examples.html#linked-policy)
 
-The parameter price-adjust is used to convert prices (e.g., 100 year GWPs in the default set-up) and demand-adjust is used to convert demand units (e.g., to common units of carbon equivalents).
-These can be changed by year if desired.
+The parameter `price-adjust` is used to convert prices and `demand-adjust` is used to convert demand units (typically to convert to a common units of carbon equivalents using the individual gasses Global Warming Potential).
+These can be changed by year as well in order to, for example, phase in a gas into the policy.
 
-Setting price-adjust to zero means that there is no economic feedback for the price of this GHG. MAC curves, however, will still operate under the default set-up (whereby MAC curves are driven by CO<sub>2</sub> prices). This can be changed separately for energy/industrial/urban CH<sub>4</sub>, agricultural CH<sub>4</sub> (CH4\_AGR), and CH<sub>4</sub> from agricultural waste burning (CH4\_AWB), LUC CO<sub>2</sub> emissions (e.g. CO2_LUC).
+Setting price-adjust to zero means that there is no economic feedback for the price of this GHG. MAC curves, however, will still operate under the default set-up (whereby MAC curves are driven by CO<sub>2</sub> prices). This can be changed separately for energy/industrial/urban CH<sub>4</sub>, agricultural CH<sub>4</sub> (CH4_AGR), and CH<sub>4</sub> from agricultural waste burning (CH4_AWB), Land Use Change CO<sub>2</sub> emissions (e.g. CO2_LUC).
 
-Note that you must first create a policy by reading in a <ghgpolicy> object (by reading an an XML with this object first, see the various policy files in the GCAM release) and then you can define how this links to any emissions (through <linked-ghg-policy> objects).
+Note that you must first create a policy by reading in a `<ghgpolicy>` object in your configuration before attempting to read in a linked GHG policy that needs to link to it.
 
-This flexibility allows CO<sub>2</sub>-only, CO<sub>2</sub>-equivalent, or non-CO<sub>2</sub> markets/constraints for various “baskets” of emissions as needed.
+This flexibility allows CO<sub>2</sub>-only, CO<sub>2</sub>-equivalent, or non-CO<sub>2</sub> markets/constraints for various baskets of emissions as needed.
 
-Note that the GCAM default set-up includes economic feedbacks for methane and nitrous oxide. This is an idealized assumption, but might not happen in real-world policies. For example, in many current systems agricultural emissions are offsets only – e.g., they get paid to reduce emissions, but are not charged for any remaining emissions. (So to simulate this type of policy, price-adjust would be set to zero).
+Note that the GCAM default set-up includes economic feedbacks for methane and nitrous oxide. This is an idealized assumption, but might not happen in real-world policies. For example, in many current systems agricultural emissions are offsets only e.g., they get paid to reduce emissions, but are not charged for any remaining emissions. (So to simulate this type of policy, `price-adjust` would be set to zero).
 
-### <a name="non-co2-markets"/> Markets For non-CO<sub>2</sub> Emission Species
+### Markets For non-CO<sub>2</sub> Emission Species
 
 Markets in GCAM can be set for any emission species. (e.g., CH<sub>4</sub> -only market, NOx market, etc.)
 
-Note that it generally does not make sense to set up an emissions market unless the model has a direct way to reduce emissions. (e.g. you’ve added relevant MAC curves.) For example, in [Shi et al. (2017)](policies.html#shi2017) US electricity sector SO<sub>2</sub> and NO<sub>x</sub> markets were used to represent current policies that cap emissions in certain states. MAC curves for existing power plants were added to allow emissions to change in response to market prices. 
+Note that it generally does not make sense to set up an emissions market unless the model has a direct way to reduce emissions. For instance, you've added relevant MAC curves, or explicit technology options with differing emissions rates. For example, in [Shi et al. (2017)](policies.html#shi2017) US electricity sector SO<sub>2</sub> and NO<sub>x</sub> markets were used to represent current policies that cap emissions in certain states. MAC curves for existing power plants were added to allow emissions to change in response to market prices. 
 
-xml inputs within the MAC curve that will be needed to set-up new markets are:
+XML inputs within the MAC curve that will be needed to set-up new markets are:
 
 XML Tag | Description
 ------------ | -------------
@@ -204,7 +204,7 @@ zero-cost-phase-in-time | Number of years over which to phase-in "below-zero" MA
 
 ### Effects of combined mitigation pathways for CO2 and NonCO2 gases
 
-Stabilizing climate change well below 2???�C and towards 1.5???�C requires comprehensive mitigation of all greenhouse gases (GHG), including both CO2 and non-CO2 GHG emissions.comprehensive GHG abatement that fully integrates non-CO2 mitigation measures in addition to a net-zero CO2 commitment can help achieve 1.5???�C stabilization. While decarbonization-driven fuel switching mainly reduces non-CO2 emissions from fuel extraction and end use, targeted non-CO2 mitigation measures can significantly reduce fluorinated gas emissions from industrial processes and cooling sectors.[(Ou et al. 2021)](https://www.nature.com/articles/s41467-021-26509-z)
+Stabilizing climate change well below 2&#176;C and towards 1.5&#176;C requires comprehensive mitigation of all greenhouse gases (GHG), including both CO2 and non-CO2 GHG emissions. While decarbonization-driven fuel switching mainly reduces non-CO2 emissions from fuel extraction and end use, targeted non-CO2 mitigation measures can significantly reduce fluorinated gas emissions from industrial processes and cooling sectors. [(Ou et al. 2021)](https://www.nature.com/articles/s41467-021-26509-z)
 
 ### Markets
 
@@ -278,7 +278,7 @@ Carbon dioxide removal
 
 ## References
 
-<a name="calvin2017">[Calvin et al. 2017]</a> Calvin, K., Bond-Lamberty, B., Clarke, L., et al. 2017. The SSP4: a world of deepening inequality. *Global Environmental Change* 42: 284–296. doi:10.1016/j.gloenvcha.2016.06.010. [Link](https://www.sciencedirect.com/science/article/pii/S095937801630084X)
+<a name="calvin2017">[Calvin et al. 2017]</a> Calvin, K., Bond-Lamberty, B., Clarke, L., et al. 2017. The SSP4: a world of deepening inequality. *Global Environmental Change* 42: 284-296. doi:10.1016/j.gloenvcha.2016.06.010. [Link](https://www.sciencedirect.com/science/article/pii/S095937801630084X)
 
 <a name="cdiac2017">[CDIAC 2017]</a> Boden, T., and Andres, B. 2017, *National CO2 Emissions from Fossil-Fuel Burning, Cement Manufacture, and Gas Flaring: 1751-2014*, Carbon Dioxide Information Analysis Center, Oak Ridge National Laboratory. [Link](http://cdiac.ess-dive.lbl.gov/ftp/ndp030/nation.1751_2014.ems)
 
@@ -287,10 +287,10 @@ Carbon dioxide removal
 
 <a name="epa2019">[EPA 2019]</a> US EPA, 2019, *Global Non-CO<sub>2</sub> Greenhouse Gas Emission Projection & Mitigation Potential Report*. United States Environmental Protection Agency, Office of Atmospheric Programs. [Link](https://www.epa.gov/global-mitigation-non-co2-greenhouse-gases/global-non-co2-greenhouse-gas-emission-projections)
 
-<a name="lamarque2010">[Lamarque et al. 2010]</a> Lamarque, J.F., Bond, T. C., Eyring, V., et al. 2010. Historical (1850-2000) gridded anthropogenic and biomass burning emissions of reactive gases and aerosols: methodology and application, *Atmospheric Chemistry and Physics* 10(15): 7017–7039. doi:10.5194/acp-10-7017-2010. [Link](https://www.atmos-chem-phys.net/10/7017/2010/acp-10-7017-2010.html)
+<a name="lamarque2010">[Lamarque et al. 2010]</a> Lamarque, J.F., Bond, T. C., Eyring, V., et al. 2010. Historical (1850-2000) gridded anthropogenic and biomass burning emissions of reactive gases and aerosols: methodology and application, *Atmospheric Chemistry and Physics* 10(15): 7017-7039. doi:10.5194/acp-10-7017-2010. [Link](https://www.atmos-chem-phys.net/10/7017/2010/acp-10-7017-2010.html)
 
-<a name="rao2017">[Rao et al. 2017]</a> Rao, S., Klimont, Z., Smith, S., et al. 2017. Future air pollution int he Shared Socio-economic Pathways. *Global Environmental Change* 42: 246–358. doi:10.1016/j.gloenvcha.2016.05.012. [Link](https://www.sciencedirect.com/science/article/pii/S0959378016300723)
+<a name="rao2017">[Rao et al. 2017]</a> Rao, S., Klimont, Z., Smith, S., et al. 2017. Future air pollution int he Shared Socio-economic Pathways. *Global Environmental Change* 42: 246-358. doi:10.1016/j.gloenvcha.2016.05.012. [Link](https://www.sciencedirect.com/science/article/pii/S0959378016300723)
 
 <a name="smith2005">[Smith et al. 2005]</a> Smith, S.J., Pitcher, H., and Wigley, T. 2005. "Future Sulfur Dioxide Emissions" *Climatic Change* 3: 267-318. doi: 10.1007/s10584-005-6887-y. [Link](https://link.springer.com/article/10.1007/s10584-005-6887-y)
 
-<a name="Hoesly2018">[Hoesly et al. 2018]</a>Hoesly, R. M., Smith, S. J., Feng, L., Klimont, Z., Janssens-Maenhout, G., Pitkanen, T., Seibert, J. J., Vu, L., Andres, R. J., Bolt, R. M., Bond, T. C., Dawidowski, L., Kholod, N., Kurokawa, J.-I., Li, M., Liu, L., Lu, Z., Moura, M. C. P., O'Rourke, P. R., and Zhang, Q.: Historical (1750–2014) anthropogenic emissions of reactive gases and aerosols from the Community Emissions Data System (CEDS), *Geosci. Model Dev*., 11, 369–408, [Link](https://doi.org/10.5194/gmd-11-369-2018), 2018
+<a name="Hoesly2018">[Hoesly et al. 2018]</a>Hoesly, R. M., Smith, S. J., Feng, L., Klimont, Z., Janssens-Maenhout, G., Pitkanen, T., Seibert, J. J., Vu, L., Andres, R. J., Bolt, R. M., Bond, T. C., Dawidowski, L., Kholod, N., Kurokawa, J.-I., Li, M., Liu, L., Lu, Z., Moura, M. C. P., O'Rourke, P. R., and Zhang, Q.: Historical (1750-2014) anthropogenic emissions of reactive gases and aerosols from the Community Emissions Data System (CEDS), *Geosci. Model Dev*., 11, 369-408, [Link](https://doi.org/10.5194/gmd-11-369-2018), 2018

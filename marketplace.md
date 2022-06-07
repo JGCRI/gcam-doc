@@ -41,6 +41,3 @@ GCAM users can directly specify the price of carbon or GHGs. Given a carbon pric
 
 ## Insights and intuition
 
-### Implications of Limiting CO2 Concentrations for Land Use and Energy
-
-Land-use modification strategies reduce the cost of limiting atmospheric CO2 concentrations, but can make crop prices rise and transform human diets, for example, when people consume less beef and other carbon-intensive protein sources. The rate at which crop productivity is improved has a strong influence on emissions from land-use change. Thus, the technology used for growing crops is potentially as important for limiting atmospheric CO2 as are approaches like CO2 capture and storage[(Wise et al. 2009)](https://www.science.org/doi/full/10.1126/science.1168475).

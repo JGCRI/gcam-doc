@@ -120,7 +120,7 @@ When water supply constraints are not imposed or when water prices and scarcity 
 
 ### Future evolution of virtual water trading in the United States electricity sector
 
-Future transformations in the electricity sector could entail major shifts in power sector technology mixes and electricity trade, with consequences for the trading of virtual water. Under a business-as-usual scenario, virtual water trading in 2050 decreases by 3% relative to 2015 levels. By contrast, virtual water trading increases respectively by 3%, 26%, and 32%, in scenarios characterized by higher socioeconomic growth, higher potential for transmission expansion, and low-carbon transitions.[(Graham et al. 2021)](https://iopscience.iop.org/article/10.1088/1748-9326/ac3289/meta) 
+Future transformations in the electricity sector could entail major shifts in power sector technology mixes and electricity trade, with consequences for the trading of virtual water. Under a business-as-usual scenario, virtual water trading in 2050 decreases by 3% relative to 2015 levels. By contrast, virtual water trading increases respectively by 3%, 26%, and 32%, in scenarios characterized by higher socioeconomic growth, higher potential for transmission expansion, and low-carbon transitions. [(Graham et al. 2021)](https://iopscience.iop.org/article/10.1088/1748-9326/ac3289/meta) 
 
 ## IAMC Reference Card
 
