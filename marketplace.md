@@ -3,7 +3,7 @@ layout: index
 title: Marketplace
 prev: economy.html
 next: outputs_prices.html
-gcam-version: v5.4 
+gcam-version: v6 
 ---
 
 # Table of Contents
@@ -41,4 +41,3 @@ GCAM users can directly specify the price of carbon or GHGs. Given a carbon pric
 
 ## Insights and intuition
 
-To be completed...

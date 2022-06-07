@@ -3,7 +3,7 @@ layout: index
 title: External Inputs to the Land Model
 prev: diagram.html
 next: land.html
-gcam-version: v5.4 
+gcam-version: v6 
 ---
 
 GCAM's external land inputs include information on land, carbon, other emissions, and the value of unmanaged land in the historical period. These inputs are required for each [global land unit](common_assumptions.html#global-land-units) and [historical year](common_assumptions.html#historical-years).

@@ -3,7 +3,7 @@ layout: index
 title: Demand for Energy
 prev: inputs_demand.html
 next: outputs_quantity.html
-gcam-version: v5.4 
+gcam-version: v6 
 ---
 
 # Table of Contents
@@ -333,7 +333,7 @@ In each region, the base year service demand for the CO2 removal sector (current
 
 ## Policy options 
 
-To be completed...
+There are a number of policy available to the user when it comes to energy demand. Many of these policy options are implemented as a part of the SSP scenarios. For example, there are different income elasticities for demand that are implemented for the different industry sectors such as intron-steel, aluminum and chemicals.  
 
 ## Insights and intuition
 

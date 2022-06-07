@@ -229,7 +229,13 @@ An example file is included to implement this policy is included in GCAM; see [g
 
 We can impose constraints (lower or upper bounds) on bioenergy within GCAM. Under such a policy, GCAM will calculate the tax or subsidy required to ensure that the constraint is met. Note that by default a bioenergy constraint in GCAM (starting with v4.4) is imposed based on the amount of subsidy available for net negative emissions.
 
+
 See [Energy Constraint](policies_examples.html#energy-constraint) for an xml snippet.
+
+### Carbon densities
+
+As mentioned above the user can also select different "states" of carbon other than the "q3_state" (which is considered the steady state). These include the weighted average, median, q1, min or max value. These can be selected in constant `aglu.CARBON_STATE` in [constants.R](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/constants.R#L373).
+
 
 ### Land expansion costs/constraints
 
