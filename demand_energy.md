@@ -3,7 +3,7 @@ title: "Demand for Energy"
 layout: index
 prev: inputs_demand.html
 next: outputs_quantity.html
-gcam-version: v6.0
+gcam-version: v6
 ---
 
 # Table of Contents
@@ -52,7 +52,7 @@ GCAM disaggregates the building sector into residential and commercial sectors a
 
 ### Industry
 
-Nine detailed industrial sectors are modeled in GCAM. These include six manufacturing sectors (Iron & Steel, Chemicals, Aluminum, Cement, Fertilizer, and Other Industry) and three non-manufacturing sectors (Construction, Mining energy use, and Agricultural energy use). IEA energy balances are used to calibrate the sectoral energy consumption (except in Cement and Fertilizer where historical energy use is estimated bottom-up). Sectoral outputs such as physical commodity flows are calibrated based on historical data from different industrial associations. For each sector, the future industrial output growth is driven by GDP, income elasticities, and price elasticities. The current industry representation does not consider global trade. Output of the detailed industry sectors is represented in physical outputs (Mt) and/or generic terms (GJ).
+Nine detailed industrial sectors are modeled in GCAM. These include six manufacturing sectors (Iron & Steel, Chemicals, Aluminum, Cement, Fertilizer, and Other Industry) and three non-manufacturing sectors (Construction, Mining energy use, and Agricultural energy use). IEA energy balances are used to calibrate the sectoral energy consumption (except in Cement and Fertilizer where historical energy use is estimated bottom-up). Sectoral outputs such as physical commodity flows are calibrated based on historical data from different industrial associations. For each sector, the future industrial output growth is driven by GDP, income elasticities, and price elasticities. The current industry representation does not consider global trade. Output of the detailed industry sectors is represented in physical outputs (Mt) and/or generic terms (EJ of energy services).
 
 The remaining industrial sectors are collectively modeled as "Other industry", and represented as a consumer of generic energy services and feedstocks. Within "Other industry" there is cost-based competition between fuels, but with a low elasticity of substitution, as the specific uses of the energy are not specified. Cogeneration of electricity is tracked, and represented as a separate technology option for each fuel consumed by "Other industry" (other than electricity). Output of aggregate industrial sectors is represented in generic terms.
 
@@ -61,43 +61,49 @@ The remaining industrial sectors are collectively modeled as "Other industry", a
 The Iron and Steel sector in GCAM consists of three distinct subsectors: Basic Oxygen Furnace (BOF), Electric Arc Furnace with scrap (EAF), and EAF with Direct Reduced Iron (DRI). Each subsector includes several competing technologies, such as fossil fuels w/ & w/o CCS, electricity, hydrogen, and biomass. Globally consistent cost assumptions for technologies in each subsector are estimated from the literature ([Ren et al. 2021](demand_energy.html#Ren2021)
 ;[Santos 2013](demand_energy.html#Santos2013)). Historical Iron and steel energy use is calibrated using energy data from IEA (flow codes include IRONSTL, TBLASTFUR, EBLASTFUR, TCOKEOVS, and ECOKEOVs; for definitions see [IEA 2021](demand_energy.html#iea2021)) and steel production from the World Steel Association (WSA). The income elasticities that drive future iron and steel production across GCAM regions are estimated using NLIT (Non-linear inverse with time-efficiency-factor) function ([Van Ruijven et al. 2016](demand_energy.html#VanRuijven2016)).
 
-<img src="gcam-figs/iron_steel.jpg" width="400" height="500" /><br/>
-GCAM's representation of iron and steel production technologies and subsectors.{: .fig}
+<img src="gcam-figs/iron_steel.jpg" width="680" height="450" /><br/>
+GCAM's representation of iron and steel production technologies and subsectors.
+{: .fig}
 
 #### Chemicals
 
 The chemicals sector represents the chemicals and petrochemicals industry, which is the largest industrial consumer of oil and gas. The chemicals sector is disaggregated into chemicals energy use and feedstocks. Historical chemicals energy use and feedstocks are calibrated from IEA energy balances (flow codes include CHEMICAL and NECHEM). For regions that only have feedstock use but no energy consumption in the IEA data, feedstocks are adjusted to zero (e.g., Africa_Eastern and South Asia).
 
-<img src="gcam-figs/Chemicals.png" width="400" height="500" /><br/>
-GCAM's representation of Chemicals sector.{: .fig}
+<img src="gcam-figs/Chemicals.png" width="680" height="450" /><br/>
+GCAM's representation of Chemicals sector.
+{: .fig}
 
 #### Aluminum
 
 The aluminum production in GCAM involves two main steps: (1) alumina refining, to refine bauxite ore into alumina, and (2) aluminum smelting, to convert alumina to aluminum. Alumina refining has multiple competing technologies, such as coal, refined liquids, gas, and biomass with and without CCS. Aluminum smelting uses alumina as an input and consumes electricity. The aluminum and alumina subsectors are calibrated using production and energy use data from the International Aluminum Association (IAA). This data from IAA is provided by broader aggregate regions and is down-scaled to individual countries and GCAM regions using country-level data on electrolytic aluminum production from the United States Geological Survey (USGS). For countries with recorded energy use but no production, energy use is adjusted to zero. The intensity coefficients for alumina/aluminum production technologies are estimated from IEA energy data and the country-level production data.
 
-<img src="gcam-figs/aluminum.png" width="400" height="500" /><br/>
-GCAM's representation of Aluminum sector.{: .fig}
+<img src="gcam-figs/aluminum.png" width="680" height="450" /><br/>
+GCAM's representation of Aluminum sector.
+{: .fig}
 
 #### Construction
 
 The construction sector includes energy use and feedstocks for construction of buildings, roads, railways, utility projects, and other civil engineering projects, as classified in the IEA energy balances (CONSTRUC and NECONSTRUC flow codes). Historical and base year construction energy use and feedstocks are calibrated using IEA energy balances. In 2017, refined liquids made up 51% of construction energy use, electricity was 26%, gas was 15%, and coal was 6%. Construction feedstocks are primarily bitumen. Construction energy use is further disaggregated into mobile and stationary uses. The reason for doing this is that the mobile equipment relies 100% on liquid hydrocarbon fuels at present, with no options for substitution, whereas the stationary uses rely on a variety of fuels whose relative shares can be expected to be price-elastic. For calibration, 80% of the liquid fuel consumption for construction energy-use is assigned to mobile equipment, and 20% is assigned to the stationary uses. In future time periods, battery-electric and hydrogen-powered technology options are allowed to compete for market share within the mobile segment.
 
-<img src="gcam-figs/Construction.png" width="400" height="500" /><br/>
-GCAM's representation of Construction sector.{: .fig}
+<img src="gcam-figs/Construction.png" width="680" height="450" /><br/>
+GCAM's representation of Construction sector.
+{: .fig}
 
 #### Mining Energy use
 
 In GCAM, mining energy use includes mining of metal ores and other materials such as stone, sand, clay, peat, and chemical/fertilizer minerals, as classified in the IEA energy balances (MINING flow). To better represent technology competition and fuel substitution, mining energy use is also disaggregated into mobile and stationary uses, in similar fashion to construction energy use described above. 
 
-<img src="gcam-figs/Mining.png" width="400" height="500" /><br/>
-GCAM's representation of Mining sector.{: .fig}
+<img src="gcam-figs/Mining.png" width="680" height="450" /><br/>
+GCAM's representation of Mining sector.
+{: .fig}
 
 #### Agricultural Energy use
 
 Agricultural Energy use includes energy use to operate machinery and equipment, and for heating, cooling, and power in buildings. Refined liquids currently make up about half of agricultural energy consumption, and electricity about a quarter. To better represent technology competition and fuel substitution, agricultural energy use is also disaggregated into mobile and stationary uses, with hydrogen and battery-electric mobile technologies introduced in future periods.
 
-<img src="gcam-figs/Agriculture_energy.png" width="400" height="500" /><br/>
-GCAM's representation of Agricultural energy use sector.{: .fig}
+<img src="gcam-figs/Agriculture_energy.png" width="680" height="450" /><br/>
+GCAM's representation of Agricultural energy use sector.
+{: .fig}
 
 #### Cement
 
