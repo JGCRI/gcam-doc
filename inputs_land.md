@@ -40,7 +40,8 @@ The raw data used for historical land cover is provided in [Land_type_area_ha.cs
 Historical harvested area by crop and country is provided in [FAO_ag_HA_ha_PRODSTAT.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/FAO_ag_HA_ha_PRODSTAT.csv).
 
 #### Terrestrial Carbon Information
-The mature age and carbon density information used in GCAM is provided in [Various_CarbonData_LTsage.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/Various_CarbonData_LTsage.csv). 
+The mature age and carbon density information used in GCAM is provided in [Various_CarbonData_LTsage.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/Various_CarbonData_LTsage.csv).
+Crops that use C4 photosynthesis and tree crops are each disaggregated in the land allocator; the specific FAO crops that are mapped to these categories are indicated in  [FAO_ag_items_PRODSTAT.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/FAO_ag_items_PRODSTAT.csv). The vegetation carbon densities of tree crops are estimated according to an assumed ratio between crop yield and vegetation carbon density for each specific type of tree crop, in [Various_Tree_C_yield_ratios.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/Various_Tree_C_yield_ratios.csv) 
 
 #### Soil time scale
 The soil time scale is provided in [A_soil_time_scale_R.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/A_soil_time_scale_R.csv)
