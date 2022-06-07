@@ -1,7 +1,7 @@
 ---
 layout: index
 title: GCAM Policy Examples
-gcam-version: v5.4
+gcam-version: v6
 ---
 
 This page includes some examples of input files required to create policies. Note that each example will need to be tailored to your own needs. 
