@@ -1,9 +1,9 @@
 ---
+title: "Demand for Energy"
 layout: index
-title: Demand for Energy
 prev: inputs_demand.html
 next: outputs_quantity.html
-gcam-version: v5.4 
+gcam-version: v6
 ---
 
 # Table of Contents
@@ -23,10 +23,14 @@ gcam-version: v5.4
 | Name | Resolution | Unit | Source |
 | :--- | :--- | :--- | :--- |
 | Historical energy demand (used for calibration) | By region, technology, and year | EJ/yr | [Exogenous](inputs_demand.html) |
+| Historical floorspace demand (used for calibration) | By region and year | BM2/yr | [Exogenous](inputs_demand.html) |
 | Cost | By region, technology, and year | 1975$/GJ | [Exogenous](inputs_demand.html) |
 | Income and price elasticity | By region, demand, and year | unitless | [Exogenous](inputs_demand.html) |
+| Residential floorspace demand parameters | By region | unitless | [Exogenous](inputs_demand.html) |
+| Satiation levels | By region and building type / service | m2/pers and EJ/pers | [Exogenous](inputs_demand.html) |
 | GDP per capita | By region and year | thous 1990$ per person | [Economy module](economy.html) |
 | Population | By region and year | thousand | [Economy](economy.html) |
+| Habitable Land | By region and year | thousand km2 | [Land](land.html) |
 | Commodity prices | By region, commodity, and year | 1975$/GJ | [Marketplace](marketplace.html) |
 | Logit exponents | By region and sector or subsector | unitless | [Exogenous](inputs_demand.html) |
 | Share weight interpolation rules | By region, technology or subsector, and year | unitless | [Exogenous](inputs_demand.html) |
@@ -48,11 +52,62 @@ gcam-version: v5.4
 
 ### Buildings
 
-GCAM disaggregates the building sector into residential and commercial sectors and models three aggregate services (heating, cooling, and other). Within each region, each type of building and each service starts with a different mix of fuels supplying energy (see Figure below). The future evolution of building energy use is shaped by changes in (1) floorspace, (2) the level of building service per unit of floorspace, and (3) fuel and technology choices by consumers. Floorspace depends on population, income, the average price of energy services, and exogenously specified satiation levels. Note that GCAM also includes the option to specify [floorspace exogenously](details_energy.html#optional-exogenous-floorspace). The level of building service demands per unit of floorspace depend on climate, building shell conductivity, affordability, and satiation levels. The approach used in the buildings sector is documented in [Clarke et al. 2018](demand_energy.html#clarke2018), which has a focus on heating and cooling service and energy demands. Within building services, the structures and functional forms are similar to any other GCAM sector, described in [Energy Technologies](en_technologies.html).
+GCAM disaggregates the building sector into residential and commercial sectors and models three aggregate services (heating, cooling, and other). Within each region, each type of building and each service starts with a different mix of fuels supplying energy (see Figure below). The future evolution of building energy use is shaped by changes in (1) floorspace, (2) the level of building service per unit of floorspace, and (3) fuel and technology choices by consumers. Residential floorspace depends on population, income, population density, and exogenously estimated parameters. Commercial floorspace depends on population, income, the average price of energy services, and exogenously specified satiation levels. Note that GCAM also includes the option to specify [floorspace exogenously](details_energy.html#optional-exogenous-floorspace). The level of building service demands per unit of floorspace depend on climate, building shell conductivity, affordability, and satiation levels. The approach used in the buildings sector is documented in [Clarke et al. 2018](demand_energy.html#clarke2018), which has a focus on heating and cooling service and energy demands. Within building services, the structures and functional forms are similar to any other GCAM sector, described in [Energy Technologies](en_technologies.html).
 
 ### Industry
 
-With the exception of cement and fertilizer, which are explicitly modeled in GCAM, the industrial sector is represented as a consumer of generic energy services and feedstocks. Within energy use there is cost-based competition between fuels, but with a low elasticity of substitution, as the specific uses of the energy are not specified. Cogeneration of electricity is tracked, and represented as a separate technology option for each fuel consumed by the industrial sector (other than electricity). Cogeneration technology options are characterized by higher capital costs, but are credited with the revenue from electricity sold; as such the deployment of cogeneration in any scenario will depend on future fuel and electricity prices. Output of aggregate industrial sectors is represented in generic terms.
+Nine detailed industrial sectors are modeled in GCAM. These include six manufacturing sectors (Iron & Steel, Chemicals, Aluminum, Cement, Fertilizer, and Other Industry) and three non-manufacturing sectors (Construction, Mining energy use, and Agricultural energy use). IEA energy balances are used to calibrate the sectoral energy consumption (except in Cement and Fertilizer where historical energy use is estimated bottom-up). Sectoral outputs such as physical commodity flows are calibrated based on historical data from different industrial associations. For each sector, the future industrial output growth is driven by GDP, income elasticities, and price elasticities. The current industry representation does not consider global trade. Output of the detailed industry sectors is represented in physical outputs (Mt) and/or generic terms (EJ of energy services).
+
+The remaining industrial sectors are collectively modeled as "Other industry", and represented as a consumer of generic energy services and feedstocks. Within "Other industry" there is cost-based competition between fuels, but with a low elasticity of substitution, as the specific uses of the energy are not specified. Cogeneration of electricity is tracked, and represented as a separate technology option for each fuel consumed by "Other industry" (other than electricity). Output of aggregate industrial sectors is represented in generic terms.
+
+#### Iron and Steel
+
+The Iron and Steel sector in GCAM consists of three distinct subsectors: Basic Oxygen Furnace (BOF), Electric Arc Furnace with scrap (EAF), and EAF with Direct Reduced Iron (DRI). Each subsector includes several competing technologies, such as fossil fuels w/ & w/o CCS, electricity, hydrogen, and biomass. Globally consistent cost assumptions for technologies in each subsector are estimated from the literature ([Ren et al. 2021](demand_energy.html#Ren2021)
+;[Santos 2013](demand_energy.html#Santos2013)). Historical Iron and steel energy use is calibrated using energy data from IEA (flow codes include IRONSTL, TBLASTFUR, EBLASTFUR, TCOKEOVS, and ECOKEOVs; for definitions see [IEA 2021](demand_energy.html#iea2021)) and steel production from the World Steel Association (WSA). The income elasticities that drive future iron and steel production across GCAM regions are estimated using NLIT (Non-linear inverse with time-efficiency-factor) function ([Van Ruijven et al. 2016](demand_energy.html#VanRuijven2016)).
+
+<img src="gcam-figs/iron_steel.jpg" width="680" height="450" /><br/>
+GCAM's representation of iron and steel production technologies and subsectors.
+{: .fig}
+
+#### Chemicals
+
+The chemicals sector represents the chemicals and petrochemicals industry, which is the largest industrial consumer of oil and gas. The chemicals sector is disaggregated into chemicals energy use and feedstocks. Historical chemicals energy use and feedstocks are calibrated from IEA energy balances (flow codes include CHEMICAL and NECHEM). For regions that only have feedstock use but no energy consumption in the IEA data, feedstocks are adjusted to zero (e.g., Africa_Eastern and South Asia).
+
+<img src="gcam-figs/Chemicals.png" width="680" height="450" /><br/>
+GCAM's representation of Chemicals sector.
+{: .fig}
+
+#### Aluminum
+
+The aluminum production in GCAM involves two main steps: (1) alumina refining, to refine bauxite ore into alumina, and (2) aluminum smelting, to convert alumina to aluminum. Alumina refining has multiple competing technologies, such as coal, refined liquids, gas, and biomass with and without CCS. Aluminum smelting uses alumina as an input and consumes electricity. The aluminum and alumina subsectors are calibrated using production and energy use data from the International Aluminum Association (IAA). This data from IAA is provided by broader aggregate regions and is down-scaled to individual countries and GCAM regions using country-level data on electrolytic aluminum production from the United States Geological Survey (USGS). For countries with recorded energy use but no production, energy use is adjusted to zero. The intensity coefficients for alumina/aluminum production technologies are estimated from IEA energy data and the country-level production data.
+
+<img src="gcam-figs/aluminum.png" width="680" height="450" /><br/>
+GCAM's representation of Aluminum sector.
+{: .fig}
+
+#### Construction
+
+The construction sector includes energy use and feedstocks for construction of buildings, roads, railways, utility projects, and other civil engineering projects, as classified in the IEA energy balances (CONSTRUC and NECONSTRUC flow codes). Historical and base year construction energy use and feedstocks are calibrated using IEA energy balances. In 2017, refined liquids made up 51% of construction energy use, electricity was 26%, gas was 15%, and coal was 6%. Construction feedstocks are primarily bitumen. Construction energy use is further disaggregated into mobile and stationary uses. The reason for doing this is that the mobile equipment relies 100% on liquid hydrocarbon fuels at present, with no options for substitution, whereas the stationary uses rely on a variety of fuels whose relative shares can be expected to be price-elastic. For calibration, 80% of the liquid fuel consumption for construction energy-use is assigned to mobile equipment, and 20% is assigned to the stationary uses. In future time periods, battery-electric and hydrogen-powered technology options are allowed to compete for market share within the mobile segment.
+
+<img src="gcam-figs/Construction.png" width="680" height="450" /><br/>
+GCAM's representation of Construction sector.
+{: .fig}
+
+#### Mining Energy use
+
+In GCAM, mining energy use includes mining of metal ores and other materials such as stone, sand, clay, peat, and chemical/fertilizer minerals, as classified in the IEA energy balances (MINING flow). To better represent technology competition and fuel substitution, mining energy use is also disaggregated into mobile and stationary uses, in similar fashion to construction energy use described above. 
+
+<img src="gcam-figs/Mining.png" width="680" height="450" /><br/>
+GCAM's representation of Mining sector.
+{: .fig}
+
+#### Agricultural Energy use
+
+Agricultural Energy use includes energy use to operate machinery and equipment, and for heating, cooling, and power in buildings. Refined liquids currently make up about half of agricultural energy consumption, and electricity about a quarter. To better represent technology competition and fuel substitution, agricultural energy use is also disaggregated into mobile and stationary uses, with hydrogen and battery-electric mobile technologies introduced in future periods.
+
+<img src="gcam-figs/Agriculture_energy.png" width="680" height="450" /><br/>
+GCAM's representation of Agricultural energy use sector.
+{: .fig}
 
 #### Cement
 
@@ -150,7 +205,21 @@ See [relative cost logit](https://github.com/JGCRI/gcam-core/blob/master/cvs/obj
 
 ### Per Capita floorspace
 
-The demand for per-capita floorspace, *f*, in future time period *t* is shown below. In this and subsequent equations, "satiation" indicates the level of service demand at which increases in income do not lead to further demands for services.
+#### Residential
+
+The demand for residential per-capita floorspace, f, in future time period t is shown below:
+
+$$ f_{t,r} = (UnadjSat_{r} – a * log(PD_{t,r})) * exp(-b * exp(-c * log(GDPpc_{t,r})))  + k_{r} $$
+
+`UnadjSat` is the maximum per capita floorspace value a consumer demands at his maximum income level. Below this satiation point, the marginal utility of floorspace is positive. Above that point, the marginal utility is negative. As shown in the equation, this value is adjusted based on the population density (`PD`), which is calculated as the population divided by “habitable” land (all land except “rock and dessert” and “tundra” ). `GDPpc` is per capita GDP.  
+`a`, `b`, and `c` are constant parameters that have been estimated in the econometric analysis developed in the model data system ([LA144.building_det_flsp.R](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/zchunk_LA144.building_det_flsp.R#L400)). They represent the effect of the population density and the per capita income, respectively, in the estimation of per capita floorspace.  
+Note that for USA, parameters have been estimated outside the model (using subnational data) and are read in by the DS.  
+Finally, parameter `k` is the regional bias adder, which represents the difference between the observed and estimated per capita floorspace in the final calibration year (2015). It captures the “unobservable” effects that cannot be captured with the used variables, and it is kept constant over the whole time horizon.
+
+
+#### Commercial
+
+The demand for per-capita commercial floorspace, *f*, in future time period *t* is shown below. In this equation, "satiation" indicates the level of service demand at which increases in income do not lead to further demand.
 
 $$
 f_{t}=(s-a)[1-exp(-\frac{ln(2)}{\mu}I_{t}(\frac{P_{t}}{P_{t0}})^\beta)]+a
@@ -160,7 +229,7 @@ where *s* is the exogenous satiation level of per-capita floorspace, *μ* is the
 
 ### Building service demand
 
-The demands of generic services per unit floorspace, *d*, are shown in the equation below:
+The demands of generic services per unit floorspace, *d*, are shown in the equation below. Note that the satiation level indicates the demand at which increases in income do not lead to further demands for services (above this point, marginal utility of the service becomes negative).
 
 $$
 d_{t}=k[1-exp(-\frac{ln(2)}{\mu}\frac{I_{t}}{P_{t}})]
@@ -315,7 +384,7 @@ In each region, the base year service demand for the CO2 removal sector (current
 
 ## Policy options 
 
-To be completed...
+There are a number of policy available to the user when it comes to energy demand. Many of these policy options are implemented as a part of the SSP scenarios. For example, there are different income elasticities for demand that are implemented for the different industry sectors such as intron-steel, aluminum and chemicals.  
 
 ## Insights and intuition
 
@@ -357,10 +426,10 @@ Freight transportation
 - [X] Freight ships
 
 Industry
-- [ ] Steel production
-- [ ] Aluminium production
+- [X] Steel production
+- [X] Aluminium production
 - [X] Cement production
-- [ ] Petrochemical production
+- [X] Petrochemical production
 - [ ] Paper production
 - [ ] Plastics production
 - [ ] Pulp production
@@ -396,6 +465,8 @@ Residential and commercial
 
 <a name="iea2007">[IEA 2007]</a> International Energy Agency, 2007, *Tracking Industrial Energy Efficiency and CO<sub>2</sub> Emissions*, International Energy Agency, Paris, France. [Link](https://www.iea.org/publications/freepublications/publication/tracking_emissions.pdf)
 
+<a name="iea2021">[IEA 2021]</a> International Energy Agency, 2007, *World Energy Balances Database Documentation*, International Energy Agency, Paris, France. [Link](http://wds.iea.org/wds/pdf/worldbal_documentation.pdf)
+
 <a name="keith2018">[Keith et al 2018]</a> Keith, D. W., Holmes, G., St Angelo, D., and Heidel, K. “A Process for Capturing CO 2 from the Atmosphere” (2018) [Link](https://doi.org/10.1016/j.joule.2018.05.006) 
 
 <a name="kim2006">[Kim et al. 2006]</a> Kim, S., Edmonds, J., Lurz, J., Smith, S.J., and Wise, M. 2006. The objECTS Framework for integrated Assessment: Hybrid Modeling of Transportation. *The Energy Journal* 27, Special Issue: Hybrid Modeling of Energy-Environment Policies: Reconciling Bottom-up and Top-down, pp. 63-91. [Link](http://www.iaee.org/en/publications/ejarticle.aspx?id=2168)
@@ -416,15 +487,21 @@ Residential and commercial
 
 <a name="polzin2005">[Polzin and Chu 2005]</a> Polzin, S., and Chu, X. 2005. *Public Transit in America: Results from the 2001 National Household Travel Survey*, Center for Urban Transportation Research, University of South Florida, Tampa. [Link](http://www.nctr.usf.edu/pdf/527-09.pdf)
 
+<a name="Ren2021">[Ren et al. 2021]</a> Ren, Ming, et al. "Decarbonizing China's iron and steel industry from the supply and demand sides for carbon neutrality." Applied Energy298 (2021): 117209. (Supplementary Material)
+
 <a name="rohwer2007">[Rohwer et al. 2007]</a> Rohwer, J., Gerten, D., and Lucht, W. 2007. *Development of Functional Irrigation Types for Improved Global Crop Modelling*. PIK Report No. 104, Potsdam Institute for Climate Impact Research. [Link](https://www.pik30 potsdam.de/research/publications/pikreports/.files/pr104.pdf)
 
 <a name="sanders2012">[Sanders and Webber 2012]</a> Sanders, K., and Webber, M. 2012. Evaluating the energy consumed for water use in the United States. *Environmental Research Letters* 7(3), 0034034. [Link](https://iopscience.iop.org/article/10.1088/1748-9326/7/3/034034/meta)
+
+<a name="Santos2013">[Santos 2013]</a> Santos, S. "Iron and steel ccs study (techno-economics integrated steel mill)." IEAGHG, Cheltenham 1 (2013).
 
 <a name="shafer1998">[Shafer 1998]</a> Shafer, A. 1998. The global demand for motorized mobility. *Transportation Research Part A: Policy and Practice* 32(6), pp. 455-477. [Link](http://www.sciencedirect.com/science/article/pii/S0965856498000044)
 
 <a name="shafer2000">[Shafer and Victor 2000]</a> Shafer, A., and Victor, D. 2000. The future mobility of the world population. *Transportation Research Part A: Policy and Practice* 34(3), pp. 171-205. [Link](http://www.sciencedirect.com/science/article/pii/S0965856498000718)
 
 <a name="turner2019">[Turner et al. 2019]</a> Turner, S.W.D., Hejazi, M., Yonkofski, C., Kim, S.H., and Kyle, P. 2019. Influence of groundwater extraction costs and resource depletion limits on simulated global nonrenewable water withdrawals over the twenty-first century. *Earth’s Future* 7, 123-135. [Link](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2018EF001105)
+
+<a name="VanRuijven2016">[Van Ruijven et al. 2016]</a> Van Ruijven, Bas J., et al. "Long-term model-based projections of energy use and CO2 emissions from the global steel and cement industries." Resources, Conservation and Recycling 112 (2016): 15-36.
 
 <a name="vtpi2013">[VTPI 2013]</a> Victoria Transport Policy Institute. 2013. Chapter 5.2: Travel Time, in *Transportation Costs and Benefits II: Techniques, Estimates and Implications*, Victoria Transport Policy Institute. [Link](http://www.vtpi.org/tca/tca0502.pdf)
 

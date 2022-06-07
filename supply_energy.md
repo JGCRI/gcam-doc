@@ -3,7 +3,7 @@ layout: index
 title: Supply of Energy
 prev: inputs_supply.html
 next: outputs_quantity.html
-gcam-version: v5.4
+gcam-version: v6
 ---
 
 # Table of Contents
@@ -198,7 +198,13 @@ Users can also include [energy intensity standards](policies_examples.html#res),
 
 ## Insights and intuition
 
-To be completed...
+### Long-term temperature change and variability are expected to have significant impacts on future electric capacity and investments.
+
+Temperature-induced capital investments are highly sensitive to both long-term socioeconomic assumptions and spatial heterogeneity of fuel prices and capital stock characteristics, which underscores the importance of a comprehensive approach to inform long-term electric sector planning. [Khan et al. 2021](https://www.nature.com/articles/s41467-021-21785-1)
+
+### Technology is crucial for Canadian oil sands development in deep decarbonization scenarios.
+
+DAC helps maintain oil sands production in the most ambitious global decarbonization scenario (net-zero GHG by 2050), without which low international oil demand makes Canadian oil sands production uncompetitive. Canadian oil sands production thus depends highly on the availability of lower carbon extraction technologies and international oil demand, which to a certain extent relies on the availability and global deployment of negative emissions technologies. [Bergero et al. 2022](https://www.sciencedirect.com/science/article/pii/S2211467X22000049?via%3Dihub)
 
 ## IAMC Reference Card
 

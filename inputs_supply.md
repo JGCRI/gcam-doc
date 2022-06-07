@@ -3,7 +3,7 @@ layout: index
 title: Inputs for Modeling Supply
 prev: diagram.html
 next: supply_land.html
-gcam-version: v5.4 
+gcam-version: v6 
 ---
 
 GCAM's supply inputs include information on production, prices, technology cost and performance, and other emissions in the historical period in order to calibrate model parameters. In addition, GCAM's supply modeling requires information on future technology cost and performance and emissions factors for future periods. GCAM requires that supply data is globally consistent with [demand data](inputs_demand.html) for each of its historical model periods as it solves for market equilibrium in these years as it does for future years. These inputs are required for each [region](common_assumptions.html#regional-resolution) and [historical year](common_assumptions.html#historical-years).

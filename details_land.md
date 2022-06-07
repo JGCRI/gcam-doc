@@ -3,7 +3,7 @@ layout: index
 title: The GCAM Land Model
 prev: land.html
 next: land.html
-gcam-version: v5.4 
+gcam-version: v6 
 ---
 
 This page provides more detailed explanations of the descriptions provided in the [land](land.html) modeling page.

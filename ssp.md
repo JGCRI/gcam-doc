@@ -3,7 +3,7 @@ layout: index
 title: GCAM Shared-Socioeconomic Pathways
 prev: macro-econ.html
 next: energy.html
-gcam-version: v5.4 
+gcam-version: v6 
 ---
 
 ## Overview of the SSPs
