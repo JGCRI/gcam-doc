@@ -126,7 +126,7 @@ In most regions in GCAM, heat is not explicitly represented as an energy commodi
 
 #### Hydrogen
 
-Hydrogen in GCAM is modeled purely as a future energy commodity; while industrial scale volumes of hydrogen are currently produced (e.g., at oil refineries or ammonia plants), the present-day use of hydrogen is almost entirely for non-energy purposes. Hydrogen is not treated as a fuel in the IEA Energy Balances [IEA 2019](supply_energy.html#iea2019), or most other energy statistics. As such, the use of hydrogen as an energy carrier is assumed zero in the base years of GCAM, and starting in 2020 it is allowed to compete for market share supplying heat and power in the industrial sector, and for vehicle fuel in the transportation sector. The representation of hydrogen in GCAM includes 10 production technologies in two production sectors, with cost mark-ups to reflect levelized infrastructural costs, as well as variable transmission and distribution costs. The structure of the hydrogen production and distribution sectors and technologies in GCAM generally uses the structure of the U.S. Department of Energy's Hydrogen Analysis (H2A) models [DOE 2015](supply_energy.html#doe2015). As in the H2A model, the production of hydrogen takes place in two distinct sectors: H<sub>2</sub> Forecourt Production (i.e., on-site generation) and H<sub>2</sub> Central Production. Hydrogen can be produced from natural gas, coal, biomass, nuclear (thermal splitting), and electrolysis (electricity, wind, and solar). See [hydrogen](details_energy.html#hydrogen) for more information.
+Hydrogen is represented as a commodity in future time periods that is available for various energy and industrial processes. Hydrogen is not treated as a fuel in the IEA Energy Balances [IEA 2019](supply_energy.html#iea2019), or most other energy statistics. As such, the representation excludes the on-site production and use of hydrogen at oil refineries, ammonia plants, and other present-day industrial facilities.  The representation of hydrogen in GCAM includes 10 “central” production technologies, as well as 2 “forecourt” (i.e. on-site) production technologies, which may have higher costs due to the economies of scale and higher capacity factors of central production, but the forecourt technologies avoid the costs and energy requirements of distribution. The hydrogen distribution representation differentiates a range of hydrogen commodities whose costs largely reflect the various temperatures and pressures at which hydrogen is transported and stored for different end-use applications. Production technology costs and energy intensities are from the U.S. Department of Energy’s Hydrogen Analysis (H2A) models [NREL 2018](supply_energy.html#nrel2018), and the distribution costs and energy intensities are from Argonne’s Hydrogen Delivery Scenario Analysis Model (HDSAM) [ANL 2015](supply_energy.html#anl2015). See [hydrogen](details_energy.html#hydrogen) for more information.
 
 ### Energy Trade
 
@@ -313,7 +313,11 @@ Hydrogen
 
 ## References
 
+<a name="anl2015">[ANL 2015]</a> Argonne National Laboratory, 2015, *Hydrogen delivery scenario analysis model (HDSAM)*, Argonne National Laboratory. [Link](https://hdsam.es.anl.gov/index.php?content=hdsam)
+
 <a name="deloitte2008">[Deloitte 2008]</a> Deloitte Development LLC, 2008, *Geothermal Risk Mitigation Strategies Report*, prepared for Department of Energy, Office of Energy Efficiency and Renewable Energy, Geothermal Program. [Link](https://www1.eere.energy.gov/geothermal/pdfs/geothermal_risk_mitigation.pdf)
+
+<a name="doe2021">[ANL 2015]</a> Argonne National Laboratory, 2015, *Hydrogen delivery scenario analysis model (HDSAM)*, Argonne National Laboratory. [Link](https://hdsam.es.anl.gov/index.php?content=hdsam)
 
 <a name="dooley2009">[Dooley and Dahowski 2009]</a> Dooley, J.J., and Dahowski, R.T. 2009. Large-scale U.S. unconventional fuels production and the role of carbon dioxide capture and storage technologies in reducing their greenhouse gas emissions. *Energy Procedia* 1(1), pp. 4225-4232. [Link](http://www.sciencedirect.com/science/article/pii/S1876610209008765)
 
@@ -336,5 +340,7 @@ Hydrogen
 <a name="iha2000">[IHA 2000]</a> International Hydropower Association, et al., 2000, *Hydropower and the World's Energy Future*. [Link](http://www.ieahydro.org/media/ffab53b0/Hydropower%20and%20the%20World's%20Energy%20Future%20.pdf)
 
 <a name="linden1976">[Linden et al. 1976]</a> Linden, H.R., Bodle, W.W., Lee, B.S., and Vyas, K.C. 1976. Production of high-btu gas from coal. *Annual Reviews of Energy* 1, pp. 65-86. [Link](http://www.annualreviews.org/doi/pdf/10.1146/annurev.eg.01.110176.000433)
+
+<a name="nrel2018">[NREL 2018]</a> National Renewable Energy Laboratory, 2018, *H2A: Hydrogen Analysis Production Models*, National Renewable Energy Laboratory. [Link](https://www.nrel.gov/hydrogen/h2a-production-models.html)
 
 <a name="zwart2006">[Zwart et al. 2006]</a> Zwart, R., Boerrigter, H., Deurwaarder, E.P., van der Meijden, C.M., and van Paasen, S.V.B. 2006. *Production of Synthetic Natural Gas (SNG) from Biomass: Development and operation of an integrated bio-SNG system*. Report ECN-E-06-018, Energy Research Centre of the Netherlands. [Link](https://www.ecn.nl/docs/library/report/2006/e06018.pdf)
