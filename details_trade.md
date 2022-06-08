@@ -73,7 +73,7 @@ The logit parameters are calibrated based on literature information of Armington
 | Sheep & Goat | -3.9     | -7.7          |
 | Forest       | -2.5     | -5            |
 
-
+<br />
 ## Fixed Interregion Trade
 Livestock products were held fixed at their historical value for the rest of the simulation, in early versions of GCAM (e.g., GCAM v4). But they have been updated using the logit-based Armington approach.
 
