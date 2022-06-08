@@ -107,6 +107,7 @@ As in the remainder of GCAM, the transportation sector in GCAM-USA is disaggrega
 | Truck | refined liquids | Distillate fuel oil in transportation |
 | Truck | gas | Distillate fuel oil in transportation |
 
+<br />
 Industrial energy allocations require more complicated processing steps, due to the refinery sector's energy use being included in the industry sector of SEDS, as well as the need to assign nation-level electricity co-generation at industrial facilities. The national estimates of cogeneration by fuel are from the IEA's Autoproducer CHP Plants, defined as facilities whose power production is primarily in support of activities that are on-site. No state-and fuel-level inventory of co-generation was available, so fuel consumption by the whole industrial sector is used to derive the state-wise proportional allocations of both the fuel inputs and electricity outputs to/from cogeneration.
 
 As in the remainder of the model, cement and N fertilizer are modeled specifically by state, with the state-wise allocation of energy consumption and physical outputs based on the value of shipments of the corresponding NAICS code. Specifically, cement is disaggregated by the value of shipments from *3273: Cement and concrete product manufacturing*. Fertilizer is disaggregated by *3253: Pesticide, fertilizer, and other agricultural chemical mfg*. States with zero output from these industries in the historical years are assumed to remain that way in future years as well.
@@ -247,8 +248,9 @@ The GCAM-USA air pollutant representation is focused on energy-emissions interac
 | Nonroad Transportation | [EPA Category 3 marine engine sulfur limit](gcam-usa.html#sulfur) of 1,000 ppm for marine fuels applied to 2015 - 2100 for SO<sub>2</sub> for domestic shipping. |
 | Industrial Energy Use | A combined set of federal and state policies as implemented in Argonne National Laboratory's [GREET 2014](gcam-usa.html#greet) model. | 
 | Process (industry, urban, cement) | A GDP control is applied to 2015 - 2100 for all supplysectors and technologies. |
-| Refining and related | N/A | 
+| Refining and related | N/A |
 
+<br />
 BC and OC: The NEI does not include BC/OC emissions. BC/OC emissions factors are derived from PM<sub>2.5</sub> emissions using BC/OC ratios. This can lead to some inconsistency between GCAM USA BC/OC emissions and PM<sub>2.5</sub> emissions. In practice this is usually not a significant issue because most analysis uses either BC/OC (climate-focused analysis) or PM<sub>2.5</sub> (air pollution focused analysis) emissions, but not both.
 
 For the power sector, only the GCAM-USA configuration with endogenous cooling technologies (elec_segments_water_USA.xml) is compatible with GCAM-USA air pollutant emissions. For industrial energy use, emission factors for future years are applied assuming industrial sector vintaging (industry_vintage_USA.xml) is being used; not utilizing the industry vintaging feature could lead to discontinuity in future air pollutant emissions.
