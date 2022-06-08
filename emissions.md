@@ -225,6 +225,16 @@ XML Tag | Description
 `final-emissions-coefficient` | Emissions coefficient that should be set by end-year (and every year thereafter)
 `allow-ef-increase` | (optional) Allow emission factors to increase from their start-year value (default to false)
 
+<br />
+#### Emissions Control Drop Folder
+There is a method in the GCAM data system that allows users to selectively specify both new vintage emissions factors and existing vintage retrofits (base-year or future) for technologies, replacing the current smooth GDP control for those technologies, without changing any model code. The user just needs to place any number of CSV input files into a folder, and the system will generate XML input files that will use this new data to replace any previous emission factors and/or GDP control functions. Two options are available. The first, and main, option is to specify a New Source Performance Standard (NSPS) for a technology, which is the emission factor that newly built technologies should have (often specified by air pollution control regulations). The NSPS is functionally applied as an emission factor. The second option is to specify retrofits (only applicable to technologies with a lifetime > 1 period). Retrofits are implemented as a linear-control object such that the emissions factor linearly declines from its value in a specified start year to its end year, for the specified technology vintage. The code automatically removes the existing GDP control object for any technology for which either a NSPS or retrofit is specified.
+
+Both retrofits and NSPS can be specified by either a specific GCAM region, GCAM meta-region, or all regions. These can also be specified to occur at a specific year (most useful for countries with near-term policies in place) or at a user-specified per capita GDP level.
+
+The system will generate two sets of output .xml files. One for core GCAM inputs (that are now a standard part of the configuration file) and a separate set of “user” input files which are intended for changes that are specific to a project, but not part of the GCAM core model.
+
+For instructions on how to implement this, see the [README](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/emissions/emission_controls/README.md) in the emissions user_emission_controls folder in the data system.
+
 <br/>
 
 ## IAMC Reference Card
