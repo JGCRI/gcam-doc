@@ -107,7 +107,7 @@ There are some naming conventions for a few emission species/sectors within GCAM
 The non-CO<sub>2</sub> greenhouse gases include methane (CH<sub>4</sub>), nitrous oxide (N<sub>2</sub>O) and fluorinated gases. These emissions, *E*, are modeled for any given technology in time period *t* as:
 
 $$
-E_{t}=A_{t}*F_{t0}*(1-MAC(Cprice_{t})))
+E_{t}=A_{t}*F_{t0}*(1-MAC(Eprice_{t})))
 $$
 
 where:
@@ -121,11 +121,30 @@ where:
 
 <br/>
 
-Non-CO<sub>2</sub> GHG emissions are proportional to the activity except for any reductions in emission intensity due to the MAC curve. As noted above, the MAC curves are assigned to a wide variety of technologies, mapped directly from [EPA 2019](#epa2019). Under a carbon policy, emissions are reduced by an amount determined by the MAC curve.
+
+`MAC`-related parameters:
+
+| XML Tag | Description |
+| :------------- |:-------------|
+| `tech-change` | annual improvement of reduction potential defined in MAC curve|
+| `mac-phase-in-time` | MAC phase-in periods (see description below)|
+
+<br/>
+
+Non-CO<sub>2</sub> GHG emissions are proportional to the activity except for any reductions in emission intensity due to the MAC curve. As noted above, the MAC curves are assigned to a wide variety of technologies, mapped directly from [EPA 2019](#epa2019) ([Ou et al. 2021](#ou2021a)). Under a carbon policy, emissions are reduced by an amount determined by the MAC curve.
 
 The default set-up is that MAC curves use the scenario's carbon price (if any). The non-CO<sub>2</sub> GHG MACs are an exogenous input, and are read in as the percent of emissions abated as a function of the emissions prices. Note that they are read in with explicit cost points (i.e., piece-wise linear form), with no underlying equation describing the percentage of abatement as a function of the carbon price.
 
-Below-zero (i.e. no cost) MAC mitigation (e.g. MAC reduction percentage is > 0 at zero carbon price) are applied in the reference case and phased in over several decades. (This can be turned off by setting the no-zero-cost-reductions option to 1 within a MAC curve.)
+The parameter technological change (`tech-change`) represents annual improvement of reduction potential at all prices (essentially shifting the entire MAC curve to the right). For non-CO2 GHGs, MAC is typically defined in the initial available year (typically 2025), while tech.change starts from the next modeling period (i.e. 2030) to adjust the base-year MAC. `tech-change` from 2030 to 2050 is backward calculated from the maximum mitigation potential in [EPA 2019](#epa2019), and tech.change after 2050 is assumed to be the average of pre-2050 tech.change (since current EPA mitigation report only contains mitigation potential till 2050) ([Ou et al. 2021](#ou2021a)). 
+
+$$
+R_{t_2, p}=R_{t_1, p}*(1+TC_{t_2})^{t_2-t_1}
+$$
+where $$R_{t_1, p}$$ and $$R_{t_2, p}$$ represent MAC reduction in year $$t_1$$ and $$t_2$$ at emission price $$p$$, respectively. $$TC_{t_2}$$ is the tech.change in $$t_2$$.  
+
+In general, MAC curve is an aggregated representation of physical changes (retrofit, technology upgrade, process optimization), and in real world, these changes take time to finish. If omitting these "time costs" or other institutional barriers, the first MAC year (as well as the carbon price year) would lead to a dramatic yet sometimes unrealistic MAC-driven emission reductions. `mac-phase-in-time` offers users an option to make additional adjustment for the existing MAC reductions due to factors other than "zero-cost" emission reductions and technological changes. A primary purpose is to smoothly phase in MACs in early modeling periods, so `mac-phase-in-time` can be applied to make the reduction in those first several modeling periods more realistic; A second purpose is to allow users to explore scenarios when different regions have different MAC phase-in periods. The default `mac-phase-in-time` is 25 years.
+
+Below-zero (i.e. “no cost”) MAC mitigation (e.g. MAC reduction percentage is > 0 at zero emission price) are applied in the reference case and phased in over several decades. (This can be turned off by setting the `no-zero-cost-reductions` option to 1 within a MAC curve.) Here, below-zero MAC mitigation is assumed to be unaffected by `tech-change`, despite that it is not necessarily unreasonable in general to think that technological change would impact below-zero options, as well. 
 
 Note that a species-specific emissions market can also be specified using advanced options, described below.
 
@@ -300,6 +319,8 @@ Carbon dioxide removal
 <a name="lamarque2010">[Lamarque et al. 2010]</a> Lamarque, J.F., Bond, T. C., Eyring, V., et al. 2010. Historical (1850-2000) gridded anthropogenic and biomass burning emissions of reactive gases and aerosols: methodology and application, *Atmospheric Chemistry and Physics* 10(15): 7017-7039. doi:10.5194/acp-10-7017-2010. [Link](https://www.atmos-chem-phys.net/10/7017/2010/acp-10-7017-2010.html)
 
 <a name="rao2017">[Rao et al. 2017]</a> Rao, S., Klimont, Z., Smith, S., et al. 2017. Future air pollution int he Shared Socio-economic Pathways. *Global Environmental Change* 42: 246-358. doi:10.1016/j.gloenvcha.2016.05.012. [Link](https://www.sciencedirect.com/science/article/pii/S0959378016300723)
+
+<a name="ou2021a">[Ou et al. 2021]</a> Ou, Y., Roney, C., Alsalam, J., et al. 2021. Deep mitigation of CO2 and non-CO2 greenhouse gases toward 1.5 °C and 2 °C futures. *Nature Communications* 12. doi:10.1038/s41467-021-26509-z [Link](https://www.nature.com/articles/s41467-021-26509-z)
 
 <a name="smith2005">[Smith et al. 2005]</a> Smith, S.J., Pitcher, H., and Wigley, T. 2005. "Future Sulfur Dioxide Emissions" *Climatic Change* 3: 267-318. doi: 10.1007/s10584-005-6887-y. [Link](https://link.springer.com/article/10.1007/s10584-005-6887-y)
 
