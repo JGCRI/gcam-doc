@@ -1,7 +1,7 @@
 ---
 layout: index
 title: GCAM Policies
-gcam-version: v5.4
+gcam-version: v6
 ---
 
 One of GCAM's uses is to explore the implications of different future policies. There are a number of types of policies that can be easily modeled in GCAM. The most common of these are discussed below. Additionally, starting with GCAM v5.2, we have provided a `configuration_policy.xml` file to help users set up [emissions policies](#emissions-policies). This configuration includes a near-term CO2 price (`spa14_tax.xml`), a long-term CO2 price (`carbon_tax_0.xml`), and a file to link both to CO2 emissions in GCAM (`2025_target_finder.xml`).
@@ -70,7 +70,9 @@ There are a number of ways that policies can be applied directly to influence th
 
 * Valuing carbon in land: When applying a price on carbon through any of the emissions-related policy approaches, GCAM users can choose whether that price extends to land use change CO<sub>2</sub> emissions. This policy is modeled as a subsidy to land-owners for the holding carbon stocks as opposed to a price on the emissions themselves.
 
-* Bioenergy constraints: GCAM users can impose constraints on bioenergy within GCAM. Under such a policy, GCAM will calculate the tax or subsidy required to ensure that the constraint is met. By default a bioenergy constraint in GCAM is imposed based on the amount of subsidy available for net negative emissions. See [example](policies_examples.html#energy-constraint).
+* Bioenergy constraints: GCAM users can impose constraints on bioenergy within GCAM. Under such a policy, GCAM will calculate the tax or subsidy required to ensure that the constraint is met. By default two bioenergy related constraints are enabled in GCAM and described below.  Alternative approaches could be used for more direct constraints as show in the [examples](policies_examples.html#energy-constraint).
+  * Negative emissions budget: This constraint limits the total *gross value* of all negative emissions, be it bioenergy or otherwise, to a certain fraction of GDP as defined by `energy.NEG_EMISS_GDP_BUDGET_PCT` in [constants.R](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/constants.R#L470).  To enforce the constraint the model will scale back the value of the subsidy given to bioenergy to stay within the budget.  Thus limiting the value but not necessarily the quantity of negative emissions.  Note this budget is also applied to the valuation of carbon in land when running such a policy, however the actual value of those emissions are not included in this budget at the moment.
+  * Biomass externality cost: We include an additional constraint which is meant to represent the costs paid for various externalities resulting from large scale production of purpose grown bioenergy crops.  This constraint is represented with an increasing cost with higher levels of production as defined in [A27.GrdRenewRsrcCurves.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A27.GrdRenewRsrcCurves.csv).
 
 * Land constraints: GCAM users can constraint the amount of land of a particular type in a given region. Under such a policy, GCAM will calculate the tax or subsidy required to ensure that the constraint is met. See [example](policies_examples.html#land-constraint).
 

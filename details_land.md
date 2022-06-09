@@ -3,7 +3,7 @@ layout: index
 title: The GCAM Land Model
 prev: land.html
 next: land.html
-gcam-version: v5.4 
+gcam-version: v6 
 ---
 
 This page provides more detailed explanations of the descriptions provided in the [land](land.html) modeling page.
@@ -45,7 +45,7 @@ Our approach is to use a nesting strategy that allows the logit exponents to ref
 Figure 1: AgLU Land Nest
 {: .fig}
 
-The agro-forestry (non-pasture) node contains three competing nodes: shrub and grass lands, forest lands, and croplands. Shrublands and grasslands are separated from the rest as they are both classified as unmanaged land categories and we want to control their substitutability between each other separately. Finally, the forestland node competes with the total cropland node. Within forestland, there are managed and unmanaged forest leaves,  and we have added a woody biomass option there in some regions and scenarios. Under cropland are all food and other agriculture products (e.g., corn, wheat, sugars, etc.), including biomass crops, along with an unmanaged land category called other arable land. Note that several crops are included explicitly in the CropLand node, and the grouping of “AllOtherCrops” is simply a convenience for this figure.  Additionally, crops are further divided beyond what is in Figure 1, nesting irrigated/rainfed and hi/lo fertilizer.
+The agro-forestry (non-pasture) node contains three competing nodes: shrub and grass lands, forest lands, and croplands. Shrublands and grasslands are separated from the rest as they are both classified as unmanaged land categories and we want to control their substitutability between each other separately. Finally, the forestland node competes with the total cropland node. Within forestland, there are managed and unmanaged forest leaves,  and we have added a woody biomass option there in some regions and scenarios. Under cropland are all food and other agriculture products (e.g., corn, wheat, sugars, etc.), including biomass crops, along with an unmanaged land category called other arable land. Note that only a subset of the GCAM crop commodities are shown in this figure. Additionally, crops are further divided beyond what is in Figure 1, into irrigated/rainfed and hi/lo fertilizer.
 
 With this specification, we can make substitution across categories
 more or less difficult by choosing lower or higher logit parameters.

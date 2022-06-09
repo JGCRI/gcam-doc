@@ -3,7 +3,7 @@ layout: index
 title: Trade in GCAM
 prev: 
 next: 
-gcam-version: v5.4
+gcam-version: v6
 ---
 
 International trade in most commodities in GCAM is done by one of three methods: (1) Heckscher-Ohlin or single global markets, (2) global trade with regionally-differentiated markets with Armington-like preferences between domestic and imported commodities, and (3) fixed interregional trade.  Other approaches for trade can also be implemented in the GCAM framework (such as [GCAM USA](gcam-usa.html) where logit based decisions are made to facilitating trade between the 50-states).
@@ -53,13 +53,18 @@ The logit parameters are calibrated based on literature information of Armington
 | ------------ | -------- | ------------- |
 | Corn         | -1.3     | -2.6          |
 | Fibercrop    | -2.5     | -5            |
+| Fruits     | -2.41    | -4.82         |
+| Legumes     | -2.41    | -4.82         |
 | Misccrop     | -2.41    | -4.82         |
-| Oilcrop      | -2.99    | -5.98         |
+| NutsSeeds     | -2.41    | -4.82         |
+| OilCrop      | -2.99    | -5.98         |
+| OilPalm    | -2.99    | -5.98         |
 | Othergrain   | -1.3     | -2.6          |
-| Palmfruit    | -2.99    | -5.98         |
 | Rice         | -2.9     | -5.8          |
 | Roottuber    | -2.41    | -4.82         |
+| Soybean      | -2.99    | -5.98         |
 | Sugarcrop    | -2.7     | -5.4          |
+| Vegetables     | -2.41    | -4.82         |
 | Wheat        | -4.45    | -8.9          |
 | Beef         | -3.9     | -7.7          |
 | Dairy        | -3.7     | -7.3          |
@@ -68,7 +73,7 @@ The logit parameters are calibrated based on literature information of Armington
 | Sheep & Goat | -3.9     | -7.7          |
 | Forest       | -2.5     | -5            |
 
-
+<br />
 ## Fixed Interregion Trade
 Livestock products were held fixed at their historical value for the rest of the simulation, in early versions of GCAM (e.g., GCAM v4). But they have been updated using the logit-based Armington approach.
 

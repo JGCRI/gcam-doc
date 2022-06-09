@@ -3,7 +3,7 @@ layout: index
 title: Earth System Module – Hector v2.0	
 prev: water.html
 next: emissions.html
-gcam-version: v5.4
+gcam-version: v6
 ---
 
 This section describes the carbon-cycle climate module - Hector - that is available for use in GCAM. MAGICC5.3 (Wigley, 2008) has traditionally been the only climate module available in GCAM. Hector v2.0 is the default climate model (Hartin et al., 2015) within GCAM.  Users still have the option of running MAGICC5.3 in GCAM5.1, however, we will not be supporting this option going forward.     
@@ -86,6 +86,10 @@ At every time step Hector calculates and outputs key climate variables.
 
 ## Getting and Installing Hector for Use with GCAM
 For users who are running GCAM with the Mac or Windows Release Package, Hector support is already compiled in.  For users compiling from source or interested in getting the Hector source, please see the [Hector section in How to Set Up and Build GCAM](gcam-build.html#3-compiling-hector).
+
+## Policy options
+
+By default, Hector's carbon cycle model treats the entire land surface as a single, homogeneous ecosystem. However, it is possible to introduce some land surface heterogeneity by splitting the land surface into several different biomes with distinct parameters. This is explained in detail [here](https://jgcri.github.io/hector/articles/multiple-biomes.html)
 
 ## IAMC Reference Card
 

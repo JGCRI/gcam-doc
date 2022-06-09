@@ -1,35 +1,85 @@
-digraph hydrogen{
-	regional_biomass[label = "Biomass", color=green,style=filled];
-	regional_coal[label = "Coal", color=black, fontcolor = white, style=filled];
-	regional_natural_gas[label = "Gas",color=blue, fontcolor = white, style=filled];
-	elect_td_ind[label = "Electricity", color=yellow;style=filled];
-	nuclearFuelGenX[label = "Nuclear\nFuel", color=orange,style=filled];
-	wind[label = "Wind", color=skyblue,style=filled];
-	solar[label = "Solar", color=red,style=filled];
+digraph asdf{
+	subgraph cluster1{
+		color = white;
+		gas[label = "Gas", style = filled, color = blue, fontcolor = white];
+		electricity[label = "Electricity", style = filled, color = red];
+		h2_central[label = "H2 central production", style = filled, color = indigo, fontcolor = white];
+	}
 
-	h2_central_production[label = "H2 Central\nProduction", color=indigo,style=filled;fontcolor=white];
-	h2_distribution[label = "H2 distribution", color=indigo,style=filled;fontcolor=white];
-	h2_forecourt_production[label = "H2 Forecourt\nProduction", color=indigo,style=filled;fontcolor=white];
-	h2_enduse[label = "H2 Enduse", color=indigo,style=filled;fontcolor=white];
+	h2_pipe[label = "H2 pipeline", style = filled, color = indigo, fontcolor = white];
+	h2_truck[label = "H2 delivery truck", style = filled, color = indigo, fontcolor = white];
+	h2_del_retail[label = "H2 retail delivery", style = filled, color = indigo, fontcolor = white]
+	h2_disp_retail[label = "H2 retail dispensing", style = filled, color = indigo, fontcolor = white];
 
-	industry[label = "Industry", color=steelblue1;style=filled;fontcolor=white];
-	transportation[label = "Transportation", color=steelblue1;style=filled;fontcolor=white];
+	subgraph cluster2{
+		h2_disp[label = "H2 wholesale\ndispensing", style = filled, color = indigo, fontcolor = white];
+		h2_disp_fc_elec[label = "Forecourt\nelectrolysis", style = filled, color = indigo, fontcolor = white];
+		h2_disp_fc_gas[label = "Forecourt\nNGSR", style = filled, color = indigo, fontcolor = white];
+		h2_disp_pipeline[label = "H2 pipeline tech", style = filled, color = indigo, fontcolor = white];
+		h2_disp_truck[label = "H2 truck tech", style = filled, color = indigo, fontcolor = white];
+		
+		h2_disp_fc_elec->h2_disp;
+		h2_disp_fc_gas->h2_disp;
+		h2_disp_pipeline->h2_disp;
+		h2_disp_truck->h2_disp;
+	}
+	subgraph cluster3{
+		h2_del_pipeline[label = "H2 pipeline tech", style = filled, color = indigo, fontcolor = white];
+		h2_del_truck[label = "H2 truck tech", style = filled, color = indigo, fontcolor = white];
+		h2_del[label = "H2 wholesale delivery", style = filled, color = indigo, fontcolor = white]
 
-	regional_biomass->h2_central_production[label = 2.2];
-	regional_coal->h2_central_production[label = 1.6];
-	regional_natural_gas->h2_central_production[label = 1.4];
-	elect_td_ind->h2_central_production[label = 1.6];
-	nuclearFuelGenX->h2_central_production[label = 1.2];
-	wind->h2_central_production[label = 1.6];
-	solar->h2_central_production[label = 1.6];
+		h2_del_pipeline->h2_del;
+		h2_del_truck->h2_del;
 
-	regional_natural_gas->h2_forecourt_production[label = 1.8];
-	elect_td_ind->h2_forecourt_production[label = 1.6];
+	}
+	
+	subgraph cluster4{
+		h2_ind[label = "H2 industrial", style = filled, color = indigo, fontcolor = white]
+		h2_ind_fc_elec[label = "On-site\nelectrolysis", style = filled, color = indigo, fontcolor = white];
+		
+		h2_ind_fc_elec->h2_ind;
+	}
+	
+	subgraph cluster5{
+		color = white;
+		industry[label = "Industrial\nStationary\nUses", style = filled, color = seagreen1];
+		mobile[label = "Industrial\nMobile\nEquipment", style = filled, color = seagreen1];
+		truck[label = "Heavy-Duty\nTrucks", style = filled, color = brown, fontcolor = white]
+		ldv[label = "Light-Duty\nVehicles", style = filled, color = brown, fontcolor = white]
+		nonroad[label = "Non-road\nTransport", style = filled, color = brown, fontcolor = white]
+		bld[label = "Buildings", style = filled, color = steelblue1];
+	}
+	
+	gas->h2_disp_fc_gas[label = "1.31", color=blue, fontcolor = blue];
+	electricity->h2_disp_fc_gas[label = "0.149", color = red];
+	electricity->h2_disp_fc_elec[label = "1.71", color = red];
 
-	h2_central_production->h2_distribution[label = 1];
-	h2_distribution->h2_enduse[label = 1];
-	h2_forecourt_production->h2_enduse[label = 1];
+	electricity->h2_ind_fc_elec[label = "1.56", color = red];
+	
+	h2_central->h2_pipe[color = indigo];
+	electricity->h2_pipe[label = "0.017", color = red];
+	h2_central->h2_truck[color = indigo];
+	electricity->h2_truck[label = "0.277", color = red];
+	truck->h2_truck[label = "1.33 tkm/GJ", style = "dashed", color = brown];
+	h2_pipe->h2_del_pipeline[color = indigo];
+	h2_truck->h2_del_truck[color = indigo];
+	h2_pipe->h2_disp_pipeline[color = indigo];
+	electricity->h2_disp_pipeline[label = "0.149", color = red];
+	electricity->h2_disp_truck[label = "0.016", color = red];
+	electricity->h2_del_truck[label = "0.016", color = red];
+	h2_truck->h2_disp_truck[color = indigo];
+	
+	h2_del->h2_del_retail[color = indigo];
+	h2_del->h2_ind[color = indigo];
+	h2_disp->h2_disp_retail[color = indigo];
+	
+	h2_del_retail->bld[color = indigo];
+	
+	h2_ind->industry[color = indigo];
+	
+	h2_disp->mobile[color = indigo];
+	h2_disp->nonroad[color = indigo];
+	h2_disp_retail->ldv[color = indigo];
+	h2_disp_retail->truck[color = indigo];
 
-	h2_enduse->industry;
-	h2_enduse->transportation;
 }
