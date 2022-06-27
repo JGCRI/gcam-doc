@@ -1,16 +1,16 @@
 ---
 layout: index
-title: Earth System Module – Hector v2.0	
+title: Earth System Module – Hector v2.5.0	
 prev: water.html
 next: emissions.html
 gcam-version: v6
 ---
 
-This section describes the carbon-cycle climate module - Hector - that is available for use in GCAM. MAGICC5.3 (Wigley, 2008) has traditionally been the only climate module available in GCAM. Hector v2.0 is the default climate model (Hartin et al., 2015) within GCAM.  Users still have the option of running MAGICC5.3 in GCAM5.1, however, we will not be supporting this option going forward.     
+This section describes the carbon-cycle climate module - Hector - that is available for use in GCAM. MAGICC5.3 (Wigley, 2008) has traditionally been the only climate module available in GCAM. Hector v2.5.0 is the default climate model (Hartin et al., 2015) within GCAM.  Users still have the option of running MAGICC5.3 in GCAM5.1, however, we will not be supporting this option going forward.     
 
 Hector, an open-source, object-oriented, reduced-form global climate carbon-cycle model, is written in C++. This model runs essentially instantaneously while still representing the most critical global-scale earth system processes. Hector has a three-part main carbon cycle: a one-pool atmosphere, three-pool land, and 4-pool ocean. The model’s terrestrial carbon cycle includes primary production and respiration fluxes, accommodating arbitrary geographic divisions into, e.g., ecological biomes or political units. Hector actively solves the inorganic carbon system in the surface ocean, directly calculating air– sea fluxes of carbon and ocean pH. Hector reproduces the global historical trends of atmospheric [CO<sub>2</sub>], radiative forcing, and surface temperatures. The model simulates all four Representative Concentration Pathways (RCPs) with equivalent rates of change of key variables over time compared to current observations, MAGICC, and models from CMIP5 (Hartin et al., 2015). Hector’s flexibility, open-source nature, and modular design facilitates a broad range of research in various areas. 
 
-There most notable change between Hector v1.1 and Hector v2.0 is the inclusion of a one-dimensional ocean heat diffusion model - DOECLIM (Kriegler, 2005; Tanaka and Kriegler, 2007). With this addition, Hector v2.0 exhibits improved vertical ocean heat uptake, as well as surface response to radiative forcing. (https://github.com/JGCRI/hector/pull/206)
+There most notable change between Hector v1.1 and Hector v2.5.0 is the inclusion of a one-dimensional ocean heat diffusion model - DOECLIM (Kriegler, 2005; Tanaka and Kriegler, 2007). With this addition, Hector v2.5.0 exhibits improved vertical ocean heat uptake, as well as surface response to radiative forcing. (https://github.com/JGCRI/hector/pull/206)
 https://github.com/JGCRI/hector/releases
 
 ![Hector Carbon Cycle diagram](gcam-figs/hector_box_model.png)<br/>
@@ -48,11 +48,11 @@ Table 1: Emissions and sources from each sector passed to Hector.
 | HFC245fa| Industrial Processes | |
 | HFC365mfc| Industrial Processes | not included in Hector |
 
-<sup>*</sup> CO<sub>2</sub> emissions from the AgLU sector are separate from CO<sub>2</sub> emissions from the Energy sector. Any change in atmospheric carbon, occurs as a function of anthropogenic fossil fuel and industrial emissions (F<sub>A</sub>), land-use change emissions (F<sub>LC</sub>), and the atmospheri-ocean (F<sub>O</sub>) and atmosphere-land (F<sub>L</sub>) carbon fluxes. 
+<sup>*</sup> CO<sub>2</sub> emissions from the AgLU sector are separate from CO<sub>2</sub> emissions from the Energy sector. Any change in atmospheric carbon, occurs as a function of anthropogenic fossil fuel and industrial emissions (F<sub>A</sub>), land-use change emissions (F<sub>LC</sub>), and the atmospheric-ocean (F<sub>O</sub>) and atmosphere-land (F<sub>L</sub>) carbon fluxes. 
 
 dC<sub>atm</sub>/dt = F<sub>A</sub>(t) + F<sub>LC</sub>(t) - F<sub>O</sub>(t) - F<sub>L</sub>(t)
 
-Land carbon pools change as a result of NPP, RH and land-use change fluxes, whose effects are partiioned among the carbon pools (Hartin et al., 2015).
+Land carbon pools change as a result of NPP, RH and land-use change fluxes, whose effects are partitioned among the carbon pools (Hartin et al., 2015).
 
 ## Hector Outputs
 At every time step Hector calculates and outputs key climate variables.  
@@ -60,8 +60,8 @@ At every time step Hector calculates and outputs key climate variables.
 <dt>Atmosphere</dt>
 <dd><ul>
 	<li>Global mean temperature change</li> 
-	<li>Radiative forcing of all emissions</li>
-	<li>Atmospheric CO<sub>2</sub> concentrations.</li>
+	<li>Total radiative forcing & radiative forcing of individual emissions</li>
+	<li>Atmospheric CO<sub>2</sub> concentrations</li>
 	</ul>
 </dd>
 <dt>Land</dt>
@@ -78,8 +78,8 @@ At every time step Hector calculates and outputs key climate variables.
 	<li>Carbon pools (high and low latitude surface, intermediate and deep)</li>
 	<li>Carbonate system (DIC, pCO<sub>2 </sub>, CO<sub>3</sub><sup>2-</sup>, pH, aragonite and calcite 
 	saturations)</li>
-	<li>surface ocean temperature</li>
-	<li>oceanic heat flux</li>
+	<li>Surface ocean temperature</li>
+	<li>Oceanic heat flux</li>
 	</ul>
 </dd>
 </dl>
@@ -89,27 +89,28 @@ For users who are running GCAM with the Mac or Windows Release Package, Hector s
 
 ## Policy options
 
-By default, Hector's carbon cycle model treats the entire land surface as a single, homogeneous ecosystem. However, it is possible to introduce some land surface heterogeneity by splitting the land surface into several different biomes with distinct parameters. This is explained in detail [here](https://jgcri.github.io/hector/articles/multiple-biomes.html)
+By default, Hector's carbon cycle model treats the entire land surface as a single, homogeneous ecosystem. However, it is possible to introduce some land surface heterogeneity by splitting the land surface into several different biomes with distinct parameters. This is explained in detail [here](https://jgcri.github.io/hector/articles/multiple-biomes.html).
 
 ## IAMC Reference Card
 
 Climate indicators
-- [X] Concentration: CO2
-- [X] Concentration: CH4
-- [X] Concentration: N2O
-- [ ] Concentration: Kyoto gases
-- [X] Radiative forcing: CO2
-- [X] Radiative forcing: CH4
-- [X] Radiative forcing: N2O
-- [X] Radiative forcing: F-gases
-- [X] Radiative forcing: Kyoto gases
-- [X] Radiative forcing: aerosols
-- [X] Radiative forcing: land albedo
-- [X] Radiative forcing: AN3A
-- [X] Radiative forcing: total
-- [X] Temperature change
-- [ ] Sea level rise
-- [X] Ocean acidification
+
+  * [X] Concentration: CO~2~
+  * [X] Concentration: CH~4~
+  * [X] Concentration: N~2~O
+  * [ ] Concentration: Kyoto gases
+  * [X] Radiative forcing: CO~2~
+  * [X] Radiative forcing: CH~4~
+  * [X] Radiative forcing: N~2~O
+  * [X] Radiative forcing: F-gases
+  * [X] Radiative forcing: Kyoto gases
+  * [X] Radiative forcing: aerosols
+  * [X] Radiative forcing: land albedo
+  * [X] Radiative forcing: AN3A
+  * [X] Radiative forcing: total
+  * [X] Temperature change
+  * [ ] Sea level rise
+  * [X] Ocean acidification
 
 ## References
 1. Hartin, C. A., Patel, P., Schwarber, A., Link, R. P., and
@@ -124,5 +125,4 @@ Climate indicators
    doi:10.5194/bg-13-4329-2016, 2016. [link](http://www.biogeosciences.net/13/4329/2016/bg-13-4329-2016.html)  
 3. Wigley, T. M. (2008), MAGICC/SENGEN 5.3: User manual (version 2),
    edited, p. 80, NCAR, Boulder CO.  
-4. [Hector wiki](https://github.com/JGCRI/hector/wiki)
-
+4. [online Hector manual](https://jgcri.github.io/hector/)
