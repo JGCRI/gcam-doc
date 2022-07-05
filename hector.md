@@ -6,7 +6,7 @@ next: emissions.html
 gcam-version: v6
 ---
 
-This section describes the carbon-cycle climate module - Hector - that is available for use in GCAM. MAGICC5.3 (Wigley, 2008) has traditionally been the only climate module available in GCAM. Hector v2.5.0 is the default climate model (Hartin et al., 2015) within GCAM.  Users still have the option of running MAGICC5.3 in GCAM5.1, however, we will not be supporting this option going forward.     
+This section describes the carbon-cycle climate module - Hector - that is available for use in GCAM. MAGICC5.3 (Wigley, 2008) has traditionally been the only climate module available in GCAM. Hector v2.5.0 is the default climate model (Hartin et al., 2015) within GCAM. Users still have the option of running MAGICC5.3 in GCAM5.1, but we will not be supporting this option going forward.    
 
 Hector, an open-source, object-oriented, reduced-form global climate carbon-cycle model, is written in C++. This model runs essentially instantaneously while still representing the most critical global-scale earth system processes. Hector has a three-part main carbon cycle: a one-pool atmosphere, three-pool land, and 4-pool ocean. The model’s terrestrial carbon cycle includes primary production and respiration fluxes, accommodating arbitrary geographic divisions into, e.g., ecological biomes or political units. Hector actively solves the inorganic carbon system in the surface ocean, directly calculating air– sea fluxes of carbon and ocean pH. Hector reproduces the global historical trends of atmospheric [CO<sub>2</sub>], radiative forcing, and surface temperatures. The model simulates all four Representative Concentration Pathways (RCPs) with equivalent rates of change of key variables over time compared to current observations, MAGICC, and models from CMIP5 (Hartin et al., 2015). Hector’s flexibility, open-source nature, and modular design facilitates a broad range of research in various areas. 
 
@@ -18,7 +18,7 @@ Figure 1: Representation of Hector’s carbon cycle, land, atmosphere, and ocean
 {: .fig}
 
 ## GCAM-Hector interactions
-Currently the GCAM sectors interact with Hector via emissions.  At every time step, emissions from GCAM are passed to Hector. Hector converts these emissions to concentrations when necessary, and calculates the associated radiative forcing, as well as the response of the climate system (e.g., temperature, carbon-fluxes, etc.). Hector's climate information can be used as a climate constraint for in a [GCAM policy run](policies.html).
+Currently the GCAM sectors interact with Hector via emissions.  At every time step, emissions from GCAM are passed to Hector. Hector converts these emissions to concentrations when necessary, and calculates the associated radiative forcing, as well as the response of the climate system and earth system (e.g., temperature, carbon-fluxes, etc.). Hector's climate information can be used as a climate constraint for in a [GCAM policy run](policies.html).
 
 Table 1: Emissions and sources from each sector passed to Hector.  
 {: .fig}
@@ -98,7 +98,7 @@ By default, Hector's carbon cycle model treats the entire land surface as a sing
 
 **Hector Parameters** 
 
-Hector has many parameters can be user adjusted, see the [online Hector manual](https://jgcri.github.io/hector/) for more information. 
+Hector has many parameters can be user adjusted; see the [online Hector manual](https://jgcri.github.io/hector/) for more information. 
 
 **Constraints** 
 
