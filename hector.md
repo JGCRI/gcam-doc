@@ -18,7 +18,7 @@ Figure 1: Representation of Hector’s carbon cycle, land, atmosphere, and ocean
 {: .fig}
 
 ## GCAM-Hector interactions
-Currently the GCAM sectors interact with Hector via their emissions.  At every time step, emissions from GCAM are passed to Hector. Hector converts these emissions to concentrations when necessary, and calculates the associated radiative forcing, as well as the response of the climate system (e.g., temperature, carbon-fluxes, etc.)  
+Currently the GCAM sectors interact with Hector via emissions.  At every time step, emissions from GCAM are passed to Hector. Hector converts these emissions to concentrations when necessary, and calculates the associated radiative forcing, as well as the response of the climate system (e.g., temperature, carbon-fluxes, etc.). Hector's climate information can be used as a climate constraint for in a [GCAM policy run](policies.html).
 
 Table 1: Emissions and sources from each sector passed to Hector.  
 {: .fig}
@@ -89,7 +89,20 @@ For users who are running GCAM with the Mac or Windows Release Package, Hector s
 
 ## Policy options
 
+Hector is a flexible, simple climate model. Users can run Hector under various configurations, parameters, and constraints. 
+
+**Hector Configurations** 
+
 By default, Hector's carbon cycle model treats the entire land surface as a single, homogeneous ecosystem. However, it is possible to introduce some land surface heterogeneity by splitting the land surface into several different biomes with distinct parameters. This is explained in detail [here](https://jgcri.github.io/hector/articles/multiple-biomes.html).
+
+
+**Hector Parameters** 
+
+Hector has many parameters can be user adjusted, see the [online Hector manual](https://jgcri.github.io/hector/) for more information. 
+
+**Constraints** 
+
+The Hector model can be run subject to *constraints* that force the model to have a certain behavior. Technically, this means that the model's components output user-provided data as opposed to their own calculations, similar to the [data mode](http://www.cesm.ucar.edu/models/cesm1.0/cesm/cesm_doc_1_0_4/x42.html) of a CESM sub-model. Currently, the available constraints include CO~2~ concentrations, total radiative forcing, and temperature. 
 
 ## IAMC Reference Card
 
@@ -125,4 +138,4 @@ Climate indicators
    doi:10.5194/bg-13-4329-2016, 2016. [link](http://www.biogeosciences.net/13/4329/2016/bg-13-4329-2016.html)  
 3. Wigley, T. M. (2008), MAGICC/SENGEN 5.3: User manual (version 2),
    edited, p. 80, NCAR, Boulder CO.  
-4. [online Hector manual](https://jgcri.github.io/hector/)
+4. [Online Hector manual](https://jgcri.github.io/hector/)
