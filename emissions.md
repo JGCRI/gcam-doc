@@ -221,9 +221,10 @@ zero-cost-phase-in-time | Number of years over which to phase-in "below-zero" MA
 
 ## Insights and Intuition
 
-### Effects of combined mitigation pathways for CO2 and NonCO2 gases
+### NonCO2 GHG abatement
 
-Stabilizing climate change well below 2&#176;C and towards 1.5&#176;C requires comprehensive mitigation of all greenhouse gases (GHG), including both CO2 and non-CO2 GHG emissions. While decarbonization-driven fuel switching mainly reduces non-CO2 emissions from fuel extraction and end use, targeted non-CO2 mitigation measures can significantly reduce fluorinated gas emissions from industrial processes and cooling sectors. [(Ou et al. 2021)](https://www.nature.com/articles/s41467-021-26509-z)
+In summary, nonCO2 GHG emissions can be controlled by three mechanisms. First, changes in activity (phasing out of carbon-intensive fuels due to climate policy) will reduce non-CO2 GHG emissions (e.g. fugitive CH4 from natural gas production). Second, for emission sources without explicit representation of the underlying activity, emission reductions are calculated off of [MAC curves](#equations) that are parametrized to abatement technologies and abatement levels. While decarbonization-driven fuel switching mainly reduces non-CO2 emissions from fuel extraction and end use, targeted non-CO2 mitigation measures can significantly reduce fluorinated gas emissions from industrial processes and cooling sectors. [(Ou et al. 2021)](https://www.nature.com/articles/s41467-021-26509-z). Finally, carbon prices can be directly passed to nonCO2 GHGs, see [example](policies_examples.html#linked-policy). 
+
 
 ### Markets
 
