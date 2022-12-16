@@ -6,6 +6,27 @@ next:
 gcam-version: v6
 ---
 
+GCAM v6.0 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6619287.svg)](https://doi.org/10.5281/zenodo.6619287):
+1. A new residential floorspace expansion model.
+2. Bio-energy updates: additional limits to "unsustainable" deployment
+3. Default hotelling rate for climate stabilization scenarios is now 3%.
+4. Split out 6 detailed industrial sectors from the aggregate industry sector.
+5. Updated Hydrogen production, distribution, and end-use technologies.
+6. A new protected lands definition.
+7. Expanded crop commodities.
+8. Use spatially explicit soil and vegetation carbon data from Moirai.
+9. HFC MAC curve fixes.
+10. New pollutant emissions controls.
+11. Add direct air capture as a mitigation option in GCAM-USA.
+12. Gross electricity trade in GCAM-USA.
+13. Add GHGs to GCAM-USA.
+14. Add pollutant emissions to GCAM-USA.
+15. Solution improvements, particularly related to water markets.
+16. Change the XML parser library to RapidXML.
+17. Add the ability to exit the model early due to solution failure.
+18. Reduce memory usage (offsets additional memory from expanded crop commodities).
+19. `gcamdata`: Renv and user modification chunks.
+
 GCAM v5.4: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5093192.svg)](https://doi.org/10.5281/zenodo.5093192)
 
 Several changes have been made to GCAM since the last release version (v5.3). The key updates are:
