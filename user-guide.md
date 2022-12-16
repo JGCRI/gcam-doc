@@ -340,6 +340,8 @@ Note as of GCAM 4.4 the ModelInterface package on the Mac will by default save t
 <string>$USER_HOME</string>
 ```
 
+If you have problems with the model interface, the log file may provide useful information. The default setup, for example run-model-interface.bat, sends logging messages to `logs/model_interface_log.txt`.
+
 #### <a name="interactive-mode"> 3.4.1 Interactive Mode </a>
 
 Please see the [Quick Start](#22-viewing-model-results) section for the basics on how to open an database and run queries.  The `Scenarios` and `Regions` sections get populated automatically from the GCAM results that are stored in the database.  The `Queries` are loaded from a query file.  You can check the `model_interface.properties` file which is located in the folder as the `ModelInterface.jar` or if using the `ModelInterface.app` on the Mac in your home directory:
