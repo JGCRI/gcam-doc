@@ -181,7 +181,6 @@ The Intel / OneAPI Thread Building Blocks (TBB) library is a collection of utili
 * Xcode edit Build Settings -> Preprocessor Macros -> add `GCAM_PARALLEL_ENABLED=0`
 * Visual edit Project -> objects-main Properties -> C/C++ -> Preprocessor -> Preprocessor Definitions -> add `GCAM_PARALLEL_ENABLED=0`
 
-**Warning**: users may want to disable `GCAM_PARALLEL_ENABLED`, or set the `max-parallelism` in their `configuration.xml` to `1`, for any scenario that they will need to be able to **exactly** reproduce.  Since when running with parallelism we can get slightly different round off errors, which in turn could take a different route through the solver.  Ultimately all supplies and demands will be with in tolerance, however sometimes things like land use change emissions can be noticeably different in some land regions even if the market for the ag commodities are within tolerance.
 
 ## 3 Compiling Hector
 [Hector](hector.html) is the simple climate developed at JGCRI.  It is available from the hector project's [Github repository](https://github.com/JGCRI/hector).  
