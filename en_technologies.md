@@ -51,6 +51,29 @@ $$
 
 * s-curve-shutdown-decider/**steepness**: shape parameter; see equation above
 * s-curve-shutdown-decider/**half-life**: the number of years at which point half of the cohort is assumed retired (see equation above)
+* **exogenous-shutdown-decider**: The exogenous shutdown decider scales the output of a vintaged technology in years after it's initial operating period. The output can be scaled above or below the technology vintage's original output. It should be noted that the exogenous shutdown decider and s-curve shutdown decider serve similar functions and generally should not be used together; however, the exogenous shutdown decider and profit shutdown decider reflect different dynamics and can be used in combination.
+* exogenous-shutdown-decider/**output-scalar**: For a vintaged technology, the ratio of its output in some year to its output from its initial operating period. An example setup is shown below:
+```
+	<region name="USA">
+		<supplysector name="electricity">
+			<subsector name="coal">
+				<stub-technology name="coal (conv pul)">
+					<period year="2015">
+						<exogenous-shutdown-decider name="exogenous-shutdown">
+							<output-scalar year="2020">0.5</output-scalar>
+							<output-scalar year="2025">0.3</output-scalar>
+							<output-scalar year="2030">0.2</output-scalar>
+							<output-scalar year="2035">0.1</output-scalar>
+							<output-scalar year="2040">0</output-scalar>
+							<output-scalar year="2045">0</output-scalar>
+							<output-scalar year="2050">0</output-scalar>
+						</exogenous-shutdown-decider>
+					</period>
+				</stub-technology >
+			</subsector>
+		</supplysector>
+	</region>
+```
 * **secondary-output(name)**: the primary output of a technology is the supplysector where it is located. Secondary outputs are used for technologies that produce multiple modeled outputs (e.g., combined heat and power). As with energy inputs, the secondary output name must match the name of another market.
 * secondary-output/**output-ratio**: the ratio of the secondary output to the primary output.
 * secondary-output/**pMultiplier**: the multiplier on revenue from the secondary output. If set to 1, then the technology cost will be reduced by the output-ratio times the price of the secondary output commodity; if zero, then the technology cost will not be credited for any revenue for producing the secondary output.
