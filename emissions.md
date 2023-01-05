@@ -50,7 +50,9 @@ GCAM can be considered as a process model for CO<sub>2</sub> emissions and reduc
 
 CO<sub>2</sub> emissions from limestone used in cement production are also estimated. Limestone consumption has one global emissions factor, however, each region's IO coefficient (limestone / cement) is calibrated to return CDIAC estimates ([CDIAC 2017](#cdiac2017)). (CO<sub>2</sub> from fuel consumed in producing limestone is estimated in the same manner as other fuel consumption.)
 
-CO<sub>2</sub> emissions from gas flaring are not currently included in GCAM.
+### <a name="co2-luc-emissions"/> Fugitive CO<sub>2</sub> Emissions From Fossil Fuel Production (Oil, Gas, and Coal)
+
+Fugitive CO<sub>2</sub> emissions from fossil resource production are also included in GCAM. These include CO<sub>2</sub> emissions resulting from natural gas flaring that occurs at the point of extraction (e.g., oil well flares) as well as CO<sub>2</sub> gas released from oil, gas, or coal resources during the process of extraction. Fugitive CO<sub>2</sub> emissions from fossil resource production in GCAM are initialized from the [CEDS inventory](https://github.com/JGCRI/CEDS) ([Hoesly et al 2018](#Hoesly2018)) and are modeled using the  [Non-CO2 emissions](emissions.html#non-co2-overview) approach.
 
 ### <a name="co2-luc-emissions"/>CO<sub>2</sub> Emissions From Land-Use and Land-Cover Change (LULCC)
  
@@ -58,7 +60,7 @@ Land-Use and Land-Cover Change emissions are tracked separately. See [Carbon Emi
 
 ### <a name="non-co2-overview"/>Non-CO<sub>2</sub> Emissions Overview
 
-We summarize here some general points common to non-CO<sub>2</sub> emissions in GCAM
+We summarize here some general points common to non-CO<sub>2</sub> emissions in GCAM. Note that the data sources and modeling approach of fugitive CO<sub>2</sub> emissions from fossil fuel production follow those of Non-CO<sub>2</sub> GHGs.
 
 
 #### Initialization
