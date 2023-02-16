@@ -21,6 +21,9 @@ gcam-version: v6
 
 <br/>
 Outputs are specified in the `startVisitGHG`<sup>[5](#table_footnote)</sup> and `startVisitCarbonCalc` methods of [xml_db_outputter.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/reporting/source/xml_db_outputter.cpp). 
+<br/> <br/>
+Note that the query "CO<sub>2</sub> emissions by region" represents gross CO<sub>2</sub> emissions for a region and is equal to the sum of all emissions from "CO<sub>2</sub> emissions by tech (excluding resource production)" and all emissions from "CO<sub>2</sub> emissions by resource production". A region's net CO<sub>2</sub> emissions can be calculated by adding "CO<sub>2</sub> emissions by region" and "LUC emissions by region".
+<br/> <br/>
 
 <font size="-1">
 <a name="table_footnote">1</a>: A full list of gases included in GCAM is provided on the <a href="emissions.html#iamc-reference-card">emissions page</a>.  <br/>
