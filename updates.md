@@ -11,7 +11,7 @@ GCAM v6.0 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6619287.svg)](http
 2. Bio-energy updates: additional limits to "unsustainable" deployment
 3. Default hotelling rate for climate stabilization scenarios is now 3%.
 4. Split out 6 detailed industrial sectors from the aggregate industry sector.
-5. Updated Hydrogen production, distribution, and end-use technologies.
+5. [Updated Hydrogen production, distribution, and end-use technologies.](cmp/CMP_359-Hydrogen_and_transportation.pdf)
 6. A new protected lands definition.
 7. Expanded crop commodities.
 8. Use spatially explicit soil and vegetation carbon data from Moirai.
