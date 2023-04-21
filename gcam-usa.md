@@ -226,11 +226,11 @@ This approach differs somewhat from the global GCAM, where future cooling shares
 
 Non-CO2 GHGs
 ===========
-GCAM-USA represents state-level CH4 and N2O emissions in electricity, buildings, industrial energy use, industry processes, urban processes, refining, and N Fetilizer sectors. HFCs are represented in building sector (for residential and commercial cooling). SF6 are use in electricity transmission system (electricity_net_ownuse at grid level). Emissions from resource production and agricutral sectors have not been downscaled to states yet.
+GCAM-USA represents state-level CH4 and N2O emissions in electricity, buildings, industrial energy use, industry processes, urban processes, refining, and N Fetilizer sectors. HFCs are represented in building sector (for residential and commercial cooling). SF6 are used in electricity transmission system (electricity_net_ownuse at grid level). Resource production and agricultural activity are still represented at the national level; thus, emissions from these sectors are at the national level and are not currently downscaled to states.
 
-Historical CH4 and N2O emissions in industry processes and urban processes are calibrated to the [2022 U.S. State-level Non-CO2 GHG Mitigation Report](gcam-usa.html#epa2022). Emissions in other sectors used the same emission factors from region "USA" in the global 32-region model, developed from the [2019 EPA Global Non-CO2 Greenhouse Gas Emission Projection & Mitigation Potential Report](emissions.html#epa2019).
+Historical CH4 and N2O emissions in industrial processes and urban processes are calibrated to the [2022 U.S. State-level Non-CO2 GHG Mitigation Report](gcam-usa.html#epa2022). Emissions in other sectors used the same emission factors from region "USA" in the global 32-region model, developed from the [2019 EPA Global Non-CO2 Greenhouse Gas Emission Projection & Mitigation Potential Report](emissions.html#epa2019).
 
-In the current version, marginal abatement cost(MAC) curves are assumed to be the same as region "USA" in the global 32-region model.
+In the current version, marginal abatement cost (MAC) curves are assumed to be the same as the "USA" region in the 32-region GCAM model.
 
 
 Air Pollutants
