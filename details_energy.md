@@ -164,6 +164,10 @@ Hydrogen produced centrally can be distributed through two means: pipeline and l
 **Schematics of the structures for the flows of the "Coal" commodity in GCAM, with only 3 regions shown for simplicity.**
 {: .fig}
 
+#### Natural gas trade
+
+ Natural gas has been further disaggregated into traded pipeline gas and traded liquefied natural gas (LNG). LNG is traded at the global market level, while pipeline gas is traded in 6 regional markets: North America, Latin America, Europe, Russia+, Africa and Middle East, and Asia-Pacific. Each GCAM region will export to only one of the regional pipeline markets, but can potentially inmport from multiple. The choice to have each region export from only one network is largely driven by convenience / simplicity; the pipeline networks a given region can import from is informed by bilateral UN Comtrade data on country-level gas trade (see below).
+ 
 #### Data calibration for fossil fuel trade
 
 Each region's share of the global (e.g. traded coal) market as well as the split for domestic and imported goods are calibrated in the final base year. IEA's data set cannot be used to make this calibration because it lacks a bilateral trade accounting. Instead the GCAM data system uses the UN's Comtrade data set to account for intraregional trade to avoid double counting any gross trade. For example trade done within an aggregated GCAM region (e.g. Germany trading with France, both of which are in GCAM's EU-15 region) should not be counted as part of that region's gross trade. The Comtrade trade data is used to calculate gross trade for each region. This is then combined with the data on production and consumption of fossil fuels calculated within the data system (production is calculated from the fossil fuel supply curves and IEA data and consumption is initialized from IEA energy balances) to compute trade balances. 
