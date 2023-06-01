@@ -1,4 +1,4 @@
----
+ ---
 title: "Emissions"
 layout: index
 prev: supply_energy.html
@@ -50,7 +50,9 @@ GCAM can be considered as a process model for CO<sub>2</sub> emissions and reduc
 
 CO<sub>2</sub> emissions from limestone used in cement production are also estimated. Limestone consumption has one global emissions factor, however, each region's IO coefficient (limestone / cement) is calibrated to return CDIAC estimates ([CDIAC 2017](#cdiac2017)). (CO<sub>2</sub> from fuel consumed in producing limestone is estimated in the same manner as other fuel consumption.)
 
-CO<sub>2</sub> emissions from gas flaring are not currently included in GCAM.
+### <a name="co2-luc-emissions"/> Fugitive CO<sub>2</sub> Emissions From Fossil Fuel Production (Oil, Gas, and Coal)
+
+Fugitive CO<sub>2</sub> emissions from fossil resource production are also included in GCAM. These include CO<sub>2</sub> emissions resulting from natural gas flaring that occurs at the point of extraction (e.g., oil well flares) as well as CO<sub>2</sub> gas released from oil, gas, or coal resources during the process of extraction. See the IPCC Guidelines for national GHG Inventories chapter on fugitive emissions ([IPCC2019](#IPCC2019)) for more information. Fugitive CO<sub>2</sub> emissions from fossil resource production in GCAM are initialized from the [CEDS inventory](https://github.com/JGCRI/CEDS) ([Hoesly et al 2018](#Hoesly2018)) and are modeled using the  [Non-CO2 emissions](emissions.html#non-co2-overview) approach. Note that unconventional oil fugitive CO2 emissions are initialized in a slightly different way as described below.
 
 ### <a name="co2-luc-emissions"/>CO<sub>2</sub> Emissions From Land-Use and Land-Cover Change (LULCC)
  
@@ -58,7 +60,7 @@ Land-Use and Land-Cover Change emissions are tracked separately. See [Carbon Emi
 
 ### <a name="non-co2-overview"/>Non-CO<sub>2</sub> Emissions Overview
 
-We summarize here some general points common to non-CO<sub>2</sub> emissions in GCAM
+We summarize here some general points common to non-CO<sub>2</sub> emissions in GCAM. Note that the data sources and modeling approach of fugitive CO<sub>2</sub> emissions from fossil fuel production follow those of Non-CO<sub>2</sub> GHGs.
 
 
 #### Initialization
@@ -66,6 +68,8 @@ We summarize here some general points common to non-CO<sub>2</sub> emissions in 
 ##### Data sources
 
 * Non-CO<sub>2</sub> emissions, both GHGs & air pollutants in GCAM are initialized from the [CEDS inventory](https://github.com/JGCRI/CEDS) ([Hoesly et al 2018](#Hoesly2018)). Standard CEDS output datasets are used for input, although the emissions by GCAM regions are also generated as prebuilt data. Only the pre-built data  should be distributed publicly (to parallel with the IEA energy data). The data covers emissions for all GCAM regions from 1970 to 2019.  Only anthropogenic emissions (including open burning) are processed.
+
+* Non-CO<sub>2</sub> and fugitive CO<sub>2</sub> emissions from unconventional oil production are initialized using emissions factors derived from the IPCC Guidelines for national GHG Inventories chapter on fugitive emissions ([IPCC 2019](#IPCC2019)). These emissions factors are used to calculate emissions in future periods for regions that do not have historical production, and to disaggregate historical conventional and unconventional oil emissions for regions that do.
 
 * The CEDS inventory do not contain emissions for grasslands, forest fires, deforestation and agricultural waste burning on fields. The data for these categories of emissions were added from the GFED LULC data set(as used in CMIP6). 
 
@@ -326,3 +330,5 @@ Carbon dioxide removal
 <a name="smith2005">[Smith et al. 2005]</a> Smith, S.J., Pitcher, H., and Wigley, T. 2005. "Future Sulfur Dioxide Emissions" *Climatic Change* 3: 267-318. doi: 10.1007/s10584-005-6887-y. [Link](https://link.springer.com/article/10.1007/s10584-005-6887-y)
 
 <a name="Hoesly2018">[Hoesly et al. 2018]</a>Hoesly, R. M., Smith, S. J., Feng, L., Klimont, Z., Janssens-Maenhout, G., Pitkanen, T., Seibert, J. J., Vu, L., Andres, R. J., Bolt, R. M., Bond, T. C., Dawidowski, L., Kholod, N., Kurokawa, J.-I., Li, M., Liu, L., Lu, Z., Moura, M. C. P., O'Rourke, P. R., and Zhang, Q.: Historical (1750-2014) anthropogenic emissions of reactive gases and aerosols from the Community Emissions Data System (CEDS), *Geosci. Model Dev*., 11, 369-408, [Link](https://doi.org/10.5194/gmd-11-369-2018), 2018
+
+<a name="IPCC2019">[IPCC 2019]</a>Boettcher, C., Garg, A., Mbuthi, P.N., Oliver, S.J., Quadrelli, R., Randles, C.A., Rodrigues de Souza, R., Singh, A.K., Strogies, M., Tadlya, K., Uvarova, N., Watterson, J.D., Weitz, M.M., Yamba, F.D., Yu, S., and Zhu, S. 2019. Chapter 4: Fugitive Emissions in 2019 Refinement to the 2006 IPCC Guidelines for National Greenhouse Gas Inventories. [Link](https://www.ipcc-nggip.iges.or.jp/public/2019rf/pdf/2_Volume2/19R_V2_4_Ch04_Fugitive_Emissions.pdf)
