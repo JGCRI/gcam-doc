@@ -168,9 +168,9 @@ Hydrogen produced centrally can be distributed through two means: pipeline and l
 
  Natural gas has been further disaggregated into traded pipeline gas and traded liquefied natural gas (LNG). LNG is traded at the global market level, while pipeline gas is traded in 6 regional markets: North America, Latin America, Europe, Russia+, Africa and Middle East, and Asia-Pacific (see figures). Each GCAM region will export to only one of the regional pipeline markets, but can potentially import from multiple. The choice to have each region export from only one network is largely driven by convenience / simplicity; the pipeline networks a given region can import from is informed by bilateral UN Comtrade data on country-level gas trade (see the following section).
  
-<img src="gcam-figs/ng_pipeline_map.png"/><br/>
-<img src="gcam-figs/ng_pipeline_venn.png"/><br/>
-
+<img src="gcam-figs/ng_pipeline_map.png" width="900" height="400" /><br/>
+{: .fig}
+<img src="gcam-figs/ng_pipeline_venn.png" width="900" height="400" /><br/>
 **Regional gas pipeline networks. Western hemisphere (N.Amer and LA) pipeline networks are isolated. Eastern hemisphere networks partially overlap. Arrows on the map indicate additional pipeline networks that specific regions may import from, in addition to its own. Regions are located in the circles for the pipeline networks from which they import (up to 3).  The boxes for each region are color coded to match the primary network that region is a part of (i.e., the one it exports to).** 
 {: .fig}
  
