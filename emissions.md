@@ -1,4 +1,4 @@
- ---
+---
 title: "Emissions"
 layout: index
 prev: supply_energy.html
