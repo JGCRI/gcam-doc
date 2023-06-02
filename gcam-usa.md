@@ -108,9 +108,9 @@ As in the remainder of GCAM, the transportation sector in GCAM-USA is disaggrega
 | Truck | gas | Distillate fuel oil in transportation |
 
 <br />
-Industrial energy allocations require more complicated processing steps, due to the refinery sector's energy use being included in the industry sector of SEDS, as well as the need to assign nation-level electricity co-generation at industrial facilities. The national estimates of cogeneration by fuel are from the IEA's Autoproducer CHP Plants, defined as facilities whose power production is primarily in support of activities that are on-site. No state-and fuel-level inventory of co-generation was available, so fuel consumption by the whole industrial sector is used to derive the state-wise proportional allocations of both the fuel inputs and electricity outputs to/from cogeneration.
+Industrial energy allocations require more complicated processing steps, due to the refinery sector's energy use being included in the industry sector of SEDS, as well as the need to assign nation-level electricity co-generation at industrial facilities. The national estimates of cogeneration by fuel are from the IEA's Autoproducer CHP Plants, defined as facilities whose power production is primarily in support of activities that are on-site. No state-and fuel-level inventory of co-generation was available, so fuel consumption by the whole industrial sector is used to derive the state-wise proportional allocations of both the fuel inputs and electricity outputs to/from cogeneration. Currently, the "other industrial energy use" supplysector represents the remaining industrial energy use other than sectors such as cement, N fertilizer, and refinery. This "other industrial energy use" supplysector represents fuel-level competition without breaking out detailed industrial services (iron, steel, chemical etc.).  
 
-As in the remainder of the model, cement and N fertilizer are modeled specifically by state, with the state-wise allocation of energy consumption and physical outputs based on the value of shipments of the corresponding NAICS code. Specifically, cement is disaggregated by the value of shipments from *3273: Cement and concrete product manufacturing*. Fertilizer is disaggregated by *3253: Pesticide, fertilizer, and other agricultural chemical mfg*. States with zero output from these industries in the historical years are assumed to remain that way in future years as well.
+As in the remainder of the model, cement and N fertilizer are modeled specifically by state, with the state-wise allocation of energy consumption and physical outputs based on the value of shipments of the corresponding NAICS code. Specifically, cement is disaggregated by the value of shipments from *3273: Cement and concrete product manufacturing*. Fertilizer is disaggregated by *3253: Pesticide, fertilizer, and other agricultural chemical mfg*. States with zero output from these industries in the historical years are assumed to remain that way in future years as well. 
 
 
 Electricity generation
@@ -225,8 +225,13 @@ This approach differs somewhat from the global GCAM, where future cooling shares
 
 
 Non-CO2 GHGs
-============
-Note that at this time the specification of Non-CO2 greenhouse gases in GCAM-USA is incomplete.  This is an active area of development.  However for this reason the climate model will be disabled in GCAM-USA scenarios.
+===========
+GCAM-USA represents state-level CH4 and N2O emissions in the electricity, buildings, industrial energy use, industrial processes, urban processes, refining, and N fertilizer sectors. HFC emissions are represented in the buildings sector (for residential and commercial cooling). SF6 emissions associated with the electricity transmission system are represented at grid-region level (in the electricity_net_ownuse sector). Resource production and agricultural activity are still represented at the national level; thus, emissions from these sectors are also represented at the national level and are not currently downscaled to states.
+
+Historical CH4 and N2O emissions in industrial processes and urban processes are calibrated to the [2022 U.S. State-level Non-CO2 GHG Mitigation Report](gcam-usa.html#epa2022). Emissions in other sectors are represented using the same emission factors as the "USA" region in the 32-region GCAM, developed from the [2019 EPA Global Non-CO2 Greenhouse Gas Emission Projection & Mitigation Potential Report](emissions.html#epa2019).
+
+Currently, GCAM-USA uses the same marginal abatement cost (MAC) curves as the "USA" region in the 32-region GCAM.
+
 
 Air Pollutants
 ============
@@ -312,7 +317,11 @@ References
 
 <a name="eia2020">[EIA 2020]</a> U.S. Energy Information Agency (EIA 2020) Annual Energy Outlook 2020 with projections to 2050. <https://www.eia.gov/outlooks/aeo/> (2020).
 
-<a name="epa2015">[EPA 2015]</a> U.S. Environmental Protection Agency. 2015. Standards of Performance for Greenhouse Gas Emissions from New, Modified, and Reconstructed Stationary Sources: Electric Utility Generating Units, 80 Federal Register 205 (23 October 2015) (40 CFR parts 60, 70, 71, and 98): 64513, 64546-64547, <https://www.gpo.gov/fdsys/pkg/FR-2015-10-23/pdf/2015-22837.pdf> (Accessed 16 December 2016).  
+<a name="epa2015">[EPA 2015]</a> U.S. Environmental Protection Agency. 2015. Standards of Performance for Greenhouse Gas Emissions from New, Modified, and Reconstructed Stationary Sources: Electric Utility Generating Units, 80 Federal Register 205 (23 October 2015) (40 CFR parts 60, 70, 71, and 98): 64513, 64546-64547, <https://www.gpo.gov/fdsys/pkg/FR-2015-10-23/pdf/2015-22837.pdf> (Accessed 16 December 2016). 
+
+<a name="epa2019">[EPA 2019]</a> U.S. Environmental Protection Agency. 2019. Global Non-CO2 Greenhouse Gas Emission Projections & Mitigation Potential: 2015-2050, <https://www.epa.gov/global-mitigation-non-co2-greenhouse-gases/us-state-level-non-co2-ghg-mitigation-report> (Accessed 17 March 2023).  
+
+<a name="epa2022">[EPA 2022]</a> U.S. Environmental Protection Agency. 2022. U.S. State-level Non-CO2 GHG Mitigation Report, <https://www.epa.gov/global-mitigation-non-co2-greenhouse-gases/us-state-level-non-co2-ghg-mitigation-report> (Accessed 17 March 2023).  
 
 <a name="epatier1">[EPA Tier 1 CAPS]</a> U.S. Environmental Protection Agency. 2016. Air Pollutant Emissions Trends Data, State Tier 1 CAPS Trends. <https://www.epa.gov/air-emissions-inventories/air-pollutant-emissions-trends-data>.
 
