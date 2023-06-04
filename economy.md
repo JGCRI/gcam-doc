@@ -35,27 +35,28 @@ Since GCAM v7, GCAM incorporates a macroeconomic module that allows for fully en
 
 
 
-<img src="gcam-figs/GCAM_macro_schematic.png" alt="Schematic of the major components of the GCAM macroeconomic model (earlier version in blue; the version in this CMP in blue and orange)" style="zoom: 33%;" />
+<img src="gcam-figs/GCAM_macro_schematic.png" alt="Schematic of the major components of the GCAM macroeconomic model (earlier version in blue; the version in this CMP in blue and orange)" style="zoom: 33%;" /><br/>
+Figure 1: Schematic of the major components of the GCAM macroeconomic model (earlier version in blue; the version in this CMP in blue and orange
+{: .fig}
 
-Figure 1: Schematic of the major components of the GCAM macroeconomic model (earlier version in blue; the version in this CMP in blue and orange {: .fig}
 
 ### GCAM-macro (KLEM) Description 
 
-At the heart of the "production" of GDP in the macroeconomic model is the materials sector ($$X$$). The materials sector is the source of all net output not originating in the energy system ($E$). $$X_{M}$$ represents the sale of new final goods and services. Additionally, the materials sector consumes all net $E$ output, measured here as efficiency-weighted end-use energy. $$X_{M}$$ therefore serves as the retailer to the economy.
+At the heart of the "production" of GDP in the macroeconomic model is the materials sector ($$X$$). The materials sector is the source of all net output not originating in the energy system ($$E$$). $$X_{M}$$ represents the sale of new final goods and services. Additionally, the materials sector consumes all net $E$ output, measured here as efficiency-weighted end-use energy. $$X_{M}$$ therefore serves as the retailer to the economy.
 
 
 
 $$
-\begin{equation} 
-
 X_M = F_M (X_{K,M}, X_{L,M}, X_{E,M})  
-
-\end{equation}
 $$
 
-$X_{i,j} = \text{sale of product i to sector j, } i=K,L,E,M \text{ and } j=M$
+$$
+X_{i,j} = \text{sale of product i to sector j, } i=K,L,E,M \text{ and } j=M
+$$
 
-$F_M \text{ is the production function for materials, with output of } X_M.$
+$$
+F_M \text{ is the production function for materials, with output of } X_M.
+$$
 
 The production function $$F_M$$ is homogeneous of degree one and thus carries all of the properties of such functions.
 
@@ -118,7 +119,7 @@ Across regions, net exports must sum to zero:
 $$
 0 = \sum_R NX_{i,R}
 $$
-where $i=E,K,M$ and $R=regions$.
+where $$i=E,K,M$$ and $$R=regions$$.
 
 For code updates, see scripts in [national_account.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/containers/source/national_account.cpp).
 
@@ -132,19 +133,19 @@ A SAM organizes an economy's transactions and resource transfers between product
 
 A SAM is a series of double-entry bookkeeping accounts for which each row has a corresponding column and vice versa. An important feature of a SAM is that row sums and the corresponding column sums **MUST** be equal. This system of equalities enables post-calculation cross-checks on GCAM macro-economy solutions. If a row and column are not equal, the model has failed to solve correctly. The GCAM-macro SAM follows the approach developed by Hogan and Manne (Hogan and Manne 1978) and is given in Figure 2. In the SAM accounting framework that we have developed, light green cells report inter-industry transactions. While important for ensuring consistency in our representation of the macro economy, these transactions are not part of the GDP.
 
-The GDP is the value of new, final goods and services produced in a given year. Entries in the gold cells represent purchases of new, final goods and services by three categories of economic agents. Our aggregate agents are households and government ($HH+G$), capital ($Cap$), and the rest of the world ($ROW$). Our materials sector ($M$) is the retailer to the economy, and thus, all sales of new, final goods and services are sold by the materials sector ($M$), with one important exception, the net export of energy products to the $ROW$. GDP is the sum of $C+I+G+net exports$ or the sum of all of the values in the gold cells.
+The GDP is the value of new, final goods and services produced in a given year. Entries in the gold cells represent purchases of new, final goods and services by three categories of economic agents. Our aggregate agents are households and government ($$HH+G$$), capital ($$Cap$$), and the rest of the world ($$ROW$$). Our materials sector ($$M$$) is the retailer to the economy, and thus, all sales of new, final goods and services are sold by the materials sector ($$M$$), with one important exception, the net export of energy products to the $$ROW$$. GDP is the sum of $$C+I+G+net exports$$ or the sum of all of the values in the gold cells.
 
-Because each row and column must sum to exactly the same thing, we can also calculate our GDP as the sum of payments to factors of production, reported in the blue cells. That is, GDP also equals payments to the primary factors of production, which we aggregate into payments to capital ($K$) and labor ($L$). By definition, all primary factor rewards are paid to either households ($HH$) or government ($G$).
+Because each row and column must sum to exactly the same thing, we can also calculate our GDP as the sum of payments to factors of production, reported in the blue cells. That is, GDP also equals payments to the primary factors of production, which we aggregate into payments to capital ($$K$$) and labor ($$L$$). By definition, all primary factor rewards are paid to either households ($$HH$$) or government ($$G$$).
 
-Another useful cross-check that is enabled by the SAM is the savings-investment cross-check where Savings ($S$) plus net international financial transfers ($NX$) equals Investment ($I$). Note that we have chosen to include energy-consuming consumer durable goods purchases, such as cars and household appliances, in our capital account (rather than lumped into consumption). They are not formally investment purchases but represent part of the underlying energy-using infrastructure of the economy. The net international financial transfers will be inherited from the historical national accounts data. In the data system, we provide a constant to allow users to phase it out by a certain year or hold it constant for all years. It is currently configured to phase out by 2035.
+Another useful cross-check that is enabled by the SAM is the savings-investment cross-check where Savings ($$S$$) plus net international financial transfers ($$NX$$) equals Investment ($$I$$). Note that we have chosen to include energy-consuming consumer durable goods purchases, such as cars and household appliances, in our capital account (rather than lumped into consumption). They are not formally investment purchases but represent part of the underlying energy-using infrastructure of the economy. The net international financial transfers will be inherited from the historical national accounts data. In the data system, we provide a constant to allow users to phase it out by a certain year or hold it constant for all years. It is currently configured to phase out by 2035.
 
-Another example of a useful cross-check is the equality between net exports of new, final goods and services and offsetting international capital transfers. That is, both the "$ROW$" column and "$ROW$" row must sum to zero.
+Another example of a useful cross-check is the equality between net exports of new, final goods and services and offsetting international capital transfers. That is, both the "$$ROW$$" column and "$$ROW$$" row must sum to zero.
 
 
 
-<img src="gcam-figs/GCAM_macro_SAM.png" alt="GCAM-macro (KLEM) Social Accounting Matrix" style="zoom:50%;" />
-
-Figure 2: GCAM-macro (KLEM) Social Accounting Matrix {: .fig}
+<img src="gcam-figs/GCAM_macro_SAM.png" alt="GCAM-macro (KLEM) Social Accounting Matrix" style="zoom:50%;" /><br/>
+Figure 2: GCAM-macro (KLEM) Social Accounting Matrix
+{: .fig}
 
 ### Historical Data for Calibration
 
