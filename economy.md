@@ -62,7 +62,7 @@ The production function $$F_M$$ is homogeneous of degree one and thus carries al
 We implement the materials production function as a nested constant elasticity of substitution (CES) production function:
 
 $$
-X_M = \left( a \left( bX_{L,M}^{\eta} + KX_{K,M}^{\eta} \right)^{\frac{\rho}{\eta}} + cX_{E,M}^{\rho} \right)^{\frac{1}{\rho}}
+X_M = \left( a \left( bX_{L,M}^{\eta} + X_{K,M}^{\eta} \right)^{\frac{\rho}{\eta}} + cX_{E,M}^{\rho} \right)^{\frac{1}{\rho}}
 $$
 where $$a$$, $$b$$, $$c$$, $$\rho$$, and $$\eta$$ are constants.
 
