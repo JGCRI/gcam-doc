@@ -122,6 +122,8 @@ where $i=E,K,M$ and $R=regions$.
 
 For code updates, see scripts in [national_account.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/containers/source/national_account.cpp).
 
+
+
 ### GCAM-macro (KLEM) Social Accounting Matrix
 
 The two-way interactions between energy and the economy require the articulation of a set of simplifying assumptions about an economy. Those simplifying assumptions carry implications for the way national income and product accounts are tracked. To facilitate the appropriate accounting within the GCAM macro-economic system, we articulate an implied national Social Accounting Matrix (SAM). We use the SAM to help ensure macroeconomic consistency.
@@ -144,6 +146,8 @@ Another example of a useful cross-check is the equality between net exports of n
 
 Figure 2: GCAM-macro (KLEM) Social Accounting Matrix {: .fig}
 
+
+
 ### Connect the Macro Equations to GCAM
 
 #### Macro connection to GCAM 
@@ -160,15 +164,13 @@ Finally, we are interested in tracking the annual capital investments that occur
 
 ### Historical Data for Calibration
 
-Historical calibration of national income accounts, such as GDP, capital stock, wages, and savings, and additional inputs and parameters such as population, labor force, and savings and depreciation rates of the capital stock, were based on the Penn World Tables (Feenstra et al., 2015). Country-level data was aggregated to the 32-region representation in GCAM.
+Historical calibration of national income accounts, such as GDP, capital stock, wages, and savings, and additional inputs and parameters such as population, labor force, and savings and depreciation rates of the capital stock, were based on the Penn World Tables (Feenstra et al., 2015) and the GTAP Data Base (Aguiar et al. 2019) when sectoral information is needed. Country-level data was aggregated to the 32-region representation in GCAM.
 
 Final energy service expenditure for each GCAM region was calculated from calibrated energy quantities and endogenous service prices from GCAM to ensure consistency of historical and projected future energy expenditures at the 32-region representation. Calibration of energy quantities for all fuels and energy carriers for historical periods is based on the IEA Energy Balances (IEA, 2022). This, along with historical global fuel prices, ensures robust estimates of energy expenditures for GCAM regions. Calculation of future final energy service is determined endogenously in response to changes in the demand for energy and prices resulting from the interplay of resource supplies and demands. Investment demands by the energy sector are determined endogenously. Energy sector investments include all capital investments associated with the production, transformation, and delivery of energy services. All other investments are attributed to the Materials sector.
 
 For any projected labor force and GDP pathway, total factor productivity values can be selected to reproduce that pathway. That is, the model can be calibrated to replicate reference scenario GDP values or to match any alternative future scenarios of GDP pathways, such as the Shared-Socioeconomic Pathways (SSPs) (IIASA, 2018). Alternatively, estimates of future labor supply and assumptions of total factor/labor/capital/energy productivity improvements can be used directly to determine future GDP outcomes. In all cases, these projects can subsequently be run in open GDP mode (the default option in GCAM v7). 
 
 Assumptions of savings and depreciation rates for future periods are exogenous inputs and can be readily changed. A simple regression model of the relationship between historical per capita GDP and savings rates was applied to adjust future savings rates from initial historical rates by region. Depreciation rates were held fixed at historical values, as they are more uniform across regions.
-
-
 
 ### Calculating economic consequences of perturbations in GCAM
 
@@ -189,6 +191,8 @@ Edmonds, Jae A., and J. M. Reilly. "Future global energy and carbon dioxide emis
 Manne, Allen, and W. M. Hogan. "Energy-economy interactions: The fable of the elephant and the rabbit?." *Advances in the Economics of Energy and Resources* 1 (1978).
 
 Feenstra, Robert C., Robert Inklaar, and Marcel P. Timmer. "The next generation of the Penn World Table." *American economic review* 105, no. 10 (2015): 3150-3182.
+
+Aguiar, Angel, Maksym Chepeliev, Erwin L. Corong, Robert McDougall, and Dominique Van Der Mensbrugghe. "The GTAP data base: version 10." *Journal of Global Economic Analysis* 4, no. 1 (2019): 1-27.
 
 IEA. "World Energy Outlook 2022." (2022).
 
