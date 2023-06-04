@@ -43,12 +43,3 @@ gcam-version: v5.4
 * [How to Set Up and Build ](gcam-build.html)
 * [GCAM Developer's Guide](dev-guide.html)
 * [GCAM Fusion Usage Guide](fusion.html)
-* [Updates from the Previous Release](updates.html)
-* [GCAM-3](v3.2/toc.html)
-* [GCAM-4.2](v4.2/toc.html)
-* [GCAM-4.3](v4.3/toc.html)
-* [GCAM-4.4](v4.4/toc.html)
-* [GCAM-5.1](v5.1/toc.html)
-* [GCAM-5.2](v5.2/toc.html)
-
-

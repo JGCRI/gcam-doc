@@ -3,7 +3,7 @@ layout: index
 title: Details about emissions in GCAM
 prev: emissions.html
 next: emissions.html
-gcam-version: v6
+gcam-version: v7
 ---
 
 ## Calibration year differences between CEDS and GCAM

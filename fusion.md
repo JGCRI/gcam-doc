@@ -3,7 +3,7 @@ layout: index
 title: GCAM Fusion users guide
 prev: gcam-build.html
 next: updates.html
-gcam-version: v6
+gcam-version: v7
 ---
 
 Here we discuss the GCAM Fusion API modelers tools to perform two way coupling
