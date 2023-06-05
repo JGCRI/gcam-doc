@@ -173,11 +173,13 @@ Note that for the Shared Socioeconomic Pathways (SSPs), different inputs are use
 
 ##### Historical demand for crops
 
-Historical demand for agricultural commodities is provided in supply utilization balances in [GCAMDATA_FAOSTAT_SUA_195Regs_530Items_2010to2019.csv.gz](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMDATA_FAOSTAT_SUA_195Regs_530Items_2010to2019.csv.gz) for food, feed, export, and import.
+Historical demand for agricultural commodities is provided in supply utilization balances in [GCAMDATA_FAOSTAT_SUA_195Regs_530Items_2010to2019.csv.gz](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMDATA_FAOSTAT_SUA_195Regs_530Items_2010to2019.csv.gz) for food, feed, export, and import. 
 
 ##### Historical demand for livestock
 
 Historical demand for livestock commodities is provided in in supply utilization balances in [GCAMDATA_FAOSTAT_SUA_195Regs_530Items_2010to2019.csv.gz](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMDATA_FAOSTAT_SUA_195Regs_530Items_2010to2019.csv.gz) for food, feed, export, and import.
+
+Note that in the supply utilization accounting data for both crops and livestock products, other balance elements, e.g., opening and closing stock, loss, seed use, etc., are included. But they are current  aggregated into other use in gcamdata.  
 
 ##### Historical forest data
 
