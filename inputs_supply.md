@@ -158,15 +158,14 @@ The costs of desalinated water reflects electrical energy input and capital and 
 
 | Name | Description | Type | Source | Resolution | Unit |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| Historical country-level production of crops | Production of agricultural commodities by country in the historical period; used for initialization/calibration of GCAM | External data | FAO | Specified by crop, country, and year | tons |
-| Historical country-level harvested area for crops | Harvested area for agricultural commodities by country in the historical period; used for initialization/calibration of GCAM | External data | FAO | Specified by crop, use, country, and year | ha |
+| Historical country-level production of crops | Production of agricultural commodities by country in the historical period; used for initialization/calibration of GCAM | External data | FAO, gcamdata-faostat | Specified by crop, country, and year | tons |
+| Historical country-level harvested area for crops | Harvested area for agricultural commodities by country in the historical period; used for initialization/calibration of GCAM | External data | FAO, gcamdata-faostat | Specified by crop, use, country, and year | ha |
 | Historical sub-national production of crops | Production of agricultural commodities by water basin in a single year; used for initialization/calibration of GCAM | External data | <a href="https://github.com/JGCRI/moirai">moirai</a> | Specified by crop, country and basin | tons |
 | Historical sub-national harvested area of crops | Harvested area of agricultural commodities by water basin in a single year; used for initialization/calibration of GCAM | External data | <a href="https://github.com/JGCRI/moirai">moirai</a> | Specified by crop, country and basin | ha |
-| Historical production of livestock | Production of livestock commodities in the historical period; used for initialization/calibration of GCAM | External data | FAO | Specified by crop, use, country, and year | tons |
-| Feed fractions for livestock | Fraction of feed by type | External data | IMAGE | Specified by commodity, feed system, feed type, IMAGE region and year (1970-2030) | unitless |
-| Livestock feed I-O coefficients | Amount of input per unit of output for livestock feed systems | External data | IMAGE | Specified by commodity, feed system, IMAGE region and year (1970-2030) | Dry feed to animal commodity ratio |
+| Historical production of livestock | Production of livestock commodities in the historical period; used for initialization/calibration of GCAM | External data | FAO, gcamdata-faostat | Specified by crop, use, country, and year | tons |
+| Livestock feed coefficients | Livestock feed input, animal output, and meat output by systems | External data | IMAGE, | Specified by commodity, feed system, IMAGE region and year | various |
 | Historical cost of production | Historical cost of crop production in the USA | External data | <a href="http://www.ers.usda.gov/Data/CostsAndReturns/">USDA</a> | Specified by crop, type of cost, and year | various (e.g., $ per planted acre, $ per bushel) |
-| Historical prices | Historical prices of agriculture and livestock commodities; used for initialization/calibration of GCAM | External data | FAO | Specified by country, commodity, and year |  |
+| Historical prices | Historical prices of agriculture and livestock commodities; used for initialization/calibration of GCAM | External data | FAO, gcamdata-faostat | Specified by country, commodity, and year |  |
 | Agriculture productivity growth | Projected yields through 2050 for agricultural commodities | External data | FAO | Specified by country, commodity, and year |  |
 | Logit exponents | Share parameters dictating substitution between different feed options for livestock | Assumption |  | Specified by type of livestock | unitless |
 | Historical non-CO<sub>2</sub> emissions | Historical emissions of non-CO<sub>2</sub> | External data | [CEDS](https://github.com/JGCRI/CEDS) `v_2021_04_21` | Specified by country, technology, gas, and year | Various |
@@ -183,11 +182,11 @@ Note that for the Shared Socioeconomic Pathways (SSPs), different inputs are use
 
 ##### Historical production and harvested area
 
-For both production and harvested area of crops, GCAM blends country level time series provided by the FAO with subnational information provided by [moirai](https://github.com/JGCRI/moirai) in a single year to determine historical production and harvested area for each [GCAM land region](common_assumptions.html#regional-resolution). FAO data is specified in [FAO_ag_Prod_t_PRODSTAT.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/FAO_ag_Prod_t_PRODSTAT.csv) and [FAO_ag_HA_ha_PRODSTAT.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/FAO_ag_HA_ha_PRODSTAT.csv). Moirai data is specified in [LDS_ag_prod_t.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/LDS/LDS_ag_prod_t.csv) and [LDS_ag_HA_ha.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/LDS/LDS_ag_HA_ha.csv). Livestock production is specified in [FAO_an_Prod_t_PRODSTAT.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/FAO_an_Prod_t_PRODSTAT.csv).
+For both production and harvested area of crops, GCAM blends country level time series provided by the FAO with subnational information provided by [moirai](https://github.com/JGCRI/moirai) in a single year to determine historical production and harvested area for each [GCAM land region](common_assumptions.html#regional-resolution). FAO data is specified in [GCAMDATA_FAOSTAT_ProdArea_195Regs_271Prod160AreaItems_1973to2020.csv.gz](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMDATA_FAOSTAT_ProdArea_195Regs_271Prod160AreaItems_1973to2020.csv.gz). Moirai data is specified in [LDS_ag_prod_t.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/LDS/LDS_ag_prod_t.csv) and [LDS_ag_HA_ha.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/LDS/LDS_ag_HA_ha.csv). Livestock production is specified along with the supply utilization accounts in [GCAMDATA_FAOSTAT_SUA_195Regs_530Items_2010to2019.csv.gz](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMDATA_FAOSTAT_SUA_195Regs_530Items_2010to2019.csv.gz).
 
 ##### Livestock feed information
 
-GCAM bases its historical livestock feed representation on the IMAGE model. GCAM requires information on [input-output coefficients](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/IMAGE/IMAGE_an_FeedIO_Rimg_C_Sys_Y.csv), [feed fractions](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/IMAGE/IMAGE_an_Feedfrac_Rimg_C_Sys_Fd_Y.csv), and [production mixes](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/IMAGE/IMAGE_an_Prodmixfrac_Rimg_C_Y.csv).
+GCAM bases its historical livestock feed representation on the IMAGE model. GCAM utilize information from IMAGE v3.1 on [animal feed by system](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/IMAGE/IMAGE_an_feed_bySystem.csv), [animal head by system](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/IMAGE/IMAGE_an_head_bySystem.csv), and [animal meat production](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/IMAGE/IMAGE_an_meat.csv).
 
 ##### Ag productivity growth
 
@@ -195,16 +194,44 @@ GCAM captures change in yield due to increases in fertilizer use or irrigation e
 
 ##### Prices
 
-GCAM uses producer prices to initialize the model (future prices are endogenous). Those prices are provide in [FAO_ag_an_ProducerPrice.csv.gz](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/FAO_ag_an_ProducerPrice.csv.gz).
+GCAM uses producer prices to initialize the model (future prices are endogenous). Those prices are provide in [GCAMDATA_FAOSTAT_ProducerPrice_170Regs_185PrimaryItems_2010to2020.csv.gz](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMDATA_FAOSTAT_ProducerPrice_170Regs_185PrimaryItems_2010to2020.csv.gz).
 
 
 ##### Cost of production
 
-The costs associated with land, irrigation, and fertilizer are endogenously determined in GCAM (see [Land Supply](supply_land.html)). Other costs of production are exogenously specified and the data used for those costs can be found in [USDA_cost_data.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/USDA_cost_data.csv), with [USDA_item_cost.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/USDA_item_cost.csv) specifying which costs are included in GCAM. Note that we use cost information for the USA in all regions.
+The costs associated with land, irrigation, and fertilizer are endogenously determined in GCAM (see [Land Supply](supply_land.html)). Other costs of production are exogenously specified and the data used for those costs can be found in [USDA_cost_data.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/USDA/USDA_cost_data.csv), with [USDA_item_cost.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/USDA/USDA_item_cost.csv) specifying which costs are included in GCAM. Note that we use cost information for the USA in all regions.
 
 ##### Emissions 
 
 Historical non-CO<sub>2</sub> emissions information is provided in the GCAM release as "pre-built" data aggregated to GCAM regions, technologies, and fuels. Users that want to build using CEDS raw data, for example to build for different regional aggregations, will need to generate CEDS data using the open-source [CEDS system](https://github.com/JGCRI/CEDS) and place the resulting emissions data by country, fuel, and sector within the [CEDS folder](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/emissions/CEDS).
+
+
+
+#### gcamdata-faostat
+
+There has been a significant data method update for the GCAM AgLU (Agriculture and Land Use) sectors in GCAM v7, which is described in detail in [Core Model Proposal #360: GCAM agriculture and land use (AgLU) data and method updates: connecting land hectares to food calories](cmp/CMP_360-AgLU_data_method_updates.pdf). An additional package is developed to facilitate the processing of data from FAOSTAT in a transparent, traceable, and consistent manner. This update encompasses the following key advancements:
+
+1. Functions have been developed to automate the updating of AgLU data, primarily sourced from FAOSTAT. This automation facilitates future base year updates and allows for other data adjustments to be easily incorporated. Note that most of the data in `aglu/FAO` folder are now generated by gcamdata-faostat.
+2. The new update incorporates the compilation of FAO FBS (food balance sheet) and SUA (supply-utilization accounting) data. This integration enables the tracing of flows from land-based primary production to end uses, both in terms of food and non-food purposes. It provides a comprehensive understanding of the agricultural supply and demand.
+3. New methods have been developed to generate "primary equivalent," which serves as a bridge between primary agricultural supply and final consumption. This calculation helps to bridge the gap between the production of agricultural commodities and their ultimate utilization in various forms.
+
+The aggregation of agricultural data from FAO countries and commodities to GCAM regions and commodities are included in gcamdata. The commodity mapping is provided in [Mapping_SUA_PrimaryEquivalent.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/Mapping_SUA_PrimaryEquivalent.csv) and shown in Figures 1 (crop harvested area) and 2 (food). 
+
+
+
+![Food Calories](gcam-figs/inputs_supply_faostat_foodcalories.png)<br/>
+Figure 1: Mapping between FAO and GCAM primary (land-based) commodities (A) and count of FAO commodities per GCAM commodity (B)
+{: .fig}
+
+![Harvested area](gcam-figs/inputs_supply_faostat_harvestarea.png)<br/>
+Figure 2: Mapping between FAO and GCAM food commodities (A) and count of FAO commodities per GCAM commodity (B)
+{: .fig}
+
+
+
+
+
+
 
 
 ## References
