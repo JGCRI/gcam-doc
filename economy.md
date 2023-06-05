@@ -146,22 +146,6 @@ Another example of a useful cross-check is the equality between net exports of n
 
 Figure 2: GCAM-macro (KLEM) Social Accounting Matrix {: .fig}
 
-
-
-### Connect the Macro Equations to GCAM
-
-#### Macro connection to GCAM 
-
-All of the places in GCAM that use GDP to drive behavior still do, such as final demand, which may use an income elasticity, or the food demand model. Previously, they would look up the value from a GDP object. Given the GDP could change with every iteration of the solver, and the macro equations are simultaneously dependent on the outcome of such calculations within GCAM, we utilize $TRIAL$ markets to resolve the dependency. Therefore, the GCAM objects that need a GDP value can just look it up from this $TRIAL$ market at any time. Note: for convenience and added error checking, we include a $SectorUtil$ to look up the value.
-
-#### GCAM connection to Macro 
-
-There are three main accounts to gather from GCAM to feed into the macro equations. In all cases, the information again flows via $TRIAL$ markets due to the simultaneous nature of these equations. The main account is "final energy service," which is an index measure of the energy service from Buildings (Commercial and Residential), Transport (Passenger, Freight, International Aviation, and Shipping), and Industry (Aluminum, Agriculture, Cement, Chemicals, Construction, Mining, Iron & Steel, and Other Industry). To reiterate, we need to be careful to capture just the energy service and not the physical good, such as tons of cement, to avoid double accounting with the Materials sector. The energy services are indexed by using prices from the final calibration year. The C++ object responsible for doing this is the new $AccountingOutput$ as described below.
-
-Another important consideration when calculating GDP is to adjust for trade balances. In particular, we want to explicitly track the trade of Oil, Gas, Coal, and Biomass in terms of dollar value. We take advantage of the "traded oil," etc. sectors to calculate export values and the "regional oil," etc / import technologies to calculate import values. The C++ object responsible for doing this is the new $AccountingOutput$ and $AccountingInput$, which are described in more detail below.
-
-Finally, we are interested in tracking the annual capital investments that occur throughout the energy system in GCAM so that it can be deducted from total savings, potentially reducing the availability to build up the capital stock within the Macro model. This includes tracking investments in primary energy (oil, gas, coal), secondary energy (electricity, refining, gas processing, H2), and final energy (buildings, transport, and industry). Note: at the moment, we are not tracking investments in infrastructure, an important piece that can be addressed in future work. The C++ objects responsible for doing this are the existing $InputCapital$ and new $TrackingNonEnergyInput$, described in more detail below. One wrinkle here is that consumer purchases of durable goods lasting more than a year, such as Light Duty Vehicles, are not capital investments but rather "consumer durable" consumption. For our purposes, we would like to treat it similarly to capital investments. Therefore, we track LDVs and residential building equipment separately so that we can move them from the consumption account and add them to savings, in this way maintaining balance in our social accounting matrix yet still including them as part of our investment constraint.
-
 ### Historical Data for Calibration
 
 Historical calibration of national income accounts, such as GDP, capital stock, wages, and savings, and additional inputs and parameters such as population, labor force, and savings and depreciation rates of the capital stock, were based on the Penn World Tables (Feenstra et al., 2015) and the GTAP Data Base (Aguiar et al. 2019) when sectoral information is needed. Country-level data was aggregated to the 32-region representation in GCAM.
