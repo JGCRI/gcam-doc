@@ -124,7 +124,7 @@ where $$s_i$$ is the share of technology or subsector $$i$$, $$alpha_i$$ is the 
 
 See [relative cost logit](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/functions/source/relative_cost_logit.cpp) and [absolute cost logit](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/functions/source/absolute_cost_logit.cpp).
 
- 
+
 ## Policy options 
 
 There are a number of ways that policies can be applied directly to influence the land sector in GCAM. These include the following.
