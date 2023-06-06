@@ -173,15 +173,21 @@ Note that for the Shared Socioeconomic Pathways (SSPs), different inputs are use
 
 ##### Historical demand for crops
 
-Historical demand for agricultural commodities is provided in separate files for [food](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/FAO_ag_Food_t_SUA.csv), [feed](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/FAO_ag_Feed_t_SUA.csv),  [export](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/FAO_ag_Exp_t_SUA.csv), and [import](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/FAO_ag_Imp_t_SUA.csv).
+Historical demand for agricultural commodities is provided in supply utilization balances in [GCAMDATA_FAOSTAT_SUA_195Regs_530Items_2010to2019.csv.gz](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMDATA_FAOSTAT_SUA_195Regs_530Items_2010to2019.csv.gz) for food, feed, export, and import. 
 
 ##### Historical demand for livestock
 
-Historical demand for livestock commodities is provided in separate files for [food](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/FAO_an_Food_t_SUA.csv), [feed](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/FAO_an_Feed_t_SUA.csv),  [export](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/FAO_an_Exp_t_SUA.csv), and [import](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/FAO_an_Imp_t_SUA.csv).
+Historical demand for livestock commodities is provided in in supply utilization balances in [GCAMDATA_FAOSTAT_SUA_195Regs_530Items_2010to2019.csv.gz](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMDATA_FAOSTAT_SUA_195Regs_530Items_2010to2019.csv.gz) for food, feed, export, and import.
+
+Note that in the supply utilization accounting data for both crops and livestock products, other balance elements, e.g., opening and closing stock, loss, seed use, etc., are also included. However, these elements are currently aggregated into "other use" in gcamdata.
 
 ##### Historical forest data
 
-Historical data for forest demand is determined by [production](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/FAO_For_Prod_m3_FORESTAT.csv), [export](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/FAO_For_Exp_m3_FORESTAT.csv), and [import](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/FAO_For_Imp_m3_FORESTAT.csv) data.
+Historical data for forest demand is provided in in [GCAMDATA_FAOSTAT_ForProdTrade_215Regs_Roundwood_1973to2020](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMDATA_FAOSTAT_ForProdTrade_215Regs_Roundwood_1973to2020) for forestry production, export and import data.
+
+##### Historical food Calories (macronutrients) data
+
+Historical data for food Calories (and other macronutrients) is provided in in [GCAMDATA_FAOSTAT_MacroNutrientRate_179Regs_426Items_2010to2019](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMDATA_FAOSTAT_MacroNutrientRate_179Regs_426Items_2010to2019Mean.csv).
 
 ##### Income and price elasticity
 
@@ -214,5 +220,5 @@ Parameters needed for the food demand module are determined by a separate model,
 <a name="vassolo2005">[Vassolo and Döll 2005]</a> Vassolo, S., and Döll, P. 2005. Global-scale gridded estimates of thermoelectric power and manufacturing water use. *Water Resources Research* 41, W04010. [Link](http://www.uni-frankfurt.de/45217769/Vassolo_Doell_WRR2005.pdf)
 
 
-    
+​    
 

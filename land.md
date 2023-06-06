@@ -330,3 +330,5 @@ Wise, M., Hodson, E. L., Mignone, B. K., Clarke, L., Waldhoff, S., & Luckow, P. 
 
 Zabel, Florian, Birgitta Putzenlechner, and Wolfram Mauser. "Global agricultural land resources-a high resolution suitability evaluation and its perspectives until 2100 under climate change conditions." PloS one 9.9 (2014): e107522. https://doi.org/10.1371/journal.pone.0107522
 
+Zhao, Xin, Katherine V. Calvin, and Marshall A. Wise. "The critical role of conversion cost and comparative advantage in modeling agricultural land use change." *Climate Change Economics* 11, no. 01 (2020): 2050004. https://doi.org/10.1142/S2010007820500049
+
