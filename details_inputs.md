@@ -3,7 +3,7 @@ layout: index
 title: The GCAM Land Model
 prev: inputs_supply.html
 next: inputs_demand.html
-gcam-version: v6 
+gcam-version: v7 
 ---
 
 This page provides more detailed explanations of the descriptions provided in the [inputs to supply](inputs_supply.html) and [inputs to demand](inputs_demand.html) modeling pages.

@@ -3,7 +3,7 @@ layout: index
 title: The GCAM Water Model
 prev: supply_water.html
 next: supply_water.html
-gcam-version: v6 
+gcam-version: v7 
 ---
 
 This page provides more detailed explanations of the descriptions provided in the [Water Supply](supply_water.html) and [Water Demand](demand_water.html) modeling pages.

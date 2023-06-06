@@ -3,7 +3,7 @@ title: "The GCAM Land Allocation Module"
 layout: index
 prev: diagram.html
 next: supply_land.html
-gcam-version: v6
+gcam-version: v7
 ---
 
 # Table of Contents
@@ -329,4 +329,6 @@ Wise, Marshall, Calvin, Katherine, Page Kyle, Patrick Luckow, James Edmonds.  20
 Wise, M., Hodson, E. L., Mignone, B. K., Clarke, L., Waldhoff, S., & Luckow, P. (2015). An approach to computing marginal land use change carbon intensities for bioenergy in policy applications. Energy Economics, 50, 337–347. https://doi.org/10.1016/j.eneco.2015.05.009
 
 Zabel, Florian, Birgitta Putzenlechner, and Wolfram Mauser. "Global agricultural land resources-a high resolution suitability evaluation and its perspectives until 2100 under climate change conditions." PloS one 9.9 (2014): e107522. https://doi.org/10.1371/journal.pone.0107522
+
+Zhao, Xin, Katherine V. Calvin, and Marshall A. Wise. "The critical role of conversion cost and comparative advantage in modeling agricultural land use change." *Climate Change Economics* 11, no. 01 (2020): 2050004. https://doi.org/10.1142/S2010007820500049
 

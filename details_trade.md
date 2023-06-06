@@ -3,7 +3,7 @@ layout: index
 title: Trade in GCAM
 prev: 
 next: 
-gcam-version: v6
+gcam-version: v7
 ---
 
 International trade in most commodities in GCAM is done by one of three methods: (1) Heckscher-Ohlin or single global markets, (2) global trade with regionally-differentiated markets with Armington-like preferences between domestic and imported commodities, and (3) fixed interregional trade.  Other approaches for trade can also be implemented in the GCAM framework (such as [GCAM USA](gcam-usa.html) where logit based decisions are made to facilitating trade between the 50-states).
@@ -34,7 +34,7 @@ In the regional-market representation, one additional sector per crop is added t
 Furthermore, the two market structures are also compared in Figure 2 with an example of a global wheat market equilibrium with demand and supply flows in 2010. 
 
 <img src="gcam-figs/Wheat_global_regional.png"  width="800"/>  
-Figure 2: Global wheat market equilibrium in 2010: integrated world markets vs. segmented regional markets. In fully integrated world markets (a), arrows represent regional production and consumption volume flows and markets clear at the world level. In segmented regional markets (b), arrows in a single region represent domestic wheat supply, arrows between regions and the world represent trade volume flows, and markets clear at the regional level. Regional supplies are distinguished by color. The flows shown are in million tons (MT). Note that the scales are different in each diagram. Each tick mark represents 15 MT of wheat in Fig. 2a and 10 MT in Fig. 2b.
+Figure 2: Global wheat market equilibrium in 2010: integrated world markets vs. segmented regional markets. In fully integrated world markets (a), arrows represent regional production and consumption volume flows and markets clear at the world level. In segmented regional markets (b), arrows in a single region represent domestic wheat supply, arrows between regions and the world represent trade volume flows, and markets clear at the regional level. Regional supplies are distinguished by color. The flows shown are in million tons (MT). Note that the scales are different in each diagram. Each tick mark represents 15 MT of wheat in Fig. 2a and 10 MT in Fig. 2b. Figure source: [Zhao et al. (2022)](https://doi.org/10.1016/j.gloenvcha.2021.102413)
 {: .fig}
 
 For each traded commodity with the logit-based Armington approach, this structure introduces two new nests with [calibrated logit choice](choice.html):
@@ -107,4 +107,4 @@ Peter Debaere (2003) Relative factor abundance and trade. Journal of Political E
 
 Vanek, J. (1968) The factor proportions theory: The n—factor case. Kyklos 21, 749-756. 10.1111/j.1467-6435.1968.tb00141.x
 
-Zhao, X., Wise, M., Waldhoff, S., Kyle, G.P., Huster, J., Ramig, C., Rafelski, L., Patel, P., Calvin, K, (2020). "The impact of agricultural trade approaches on global economic modeling" (Under review)
+Zhao, Xin, Marshall A. Wise, Stephanie T. Waldhoff, G. Page Kyle, Jonathan E. Huster, Christopher W. Ramig, Lauren E. Rafelski, Pralit L. Patel, and Katherine V. Calvin. "The impact of agricultural trade approaches on global economic modeling." *Global Environmental Change* 73 (2022): 102413. https://doi.org/10.1016/j.gloenvcha.2021.102413

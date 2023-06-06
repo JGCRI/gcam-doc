@@ -3,7 +3,7 @@ layout: index
 title: Marketplace
 prev: economy.html
 next: outputs_prices.html
-gcam-version: v6 
+gcam-version: v7 
 ---
 
 # Table of Contents

@@ -3,7 +3,7 @@ layout: index
 title: GCAM Build Instructions
 prev: user-guide.html
 next: fusion.html
-gcam-version: v6 
+gcam-version: v7 
 ---
 
 ## 1.Introduction
@@ -12,7 +12,7 @@ This section is for users that wish to compile GCAM C++ source code into an exec
 * For use on general POSIX systems or a version of Mac or Windows for which the released binary was not compatible.
 * To add new features or otherwise customize the model.
 
-GCAM provides a generic [Makefile](#41-building-with-makefile) as well as [Xcode](#42-building-with-xcode) and [Visual Studio](#43-building-with-visual-studio) project files.  **Note** as of GCAM 4.4 compiling GCAM requires a C++ compiler with support for the C++ 14 language standard.  In addition, it relies on the following third party libraries.  Mac and Windows users should be able to use the libraries provided, otherwise see the section on [building third party libraries](#2-building-third-party-libraries).
+GCAM provides a generic [Makefile](#41-building-with-makefile) as well as [Xcode](#42-building-with-xcode) and [Visual Studio](#43-building-with-visual-studio) project files.  **Note** as of GCAM 7.0 compiling GCAM requires a C++ compiler with support for the C++ 17 language standard.  In addition, it relies on the following third party libraries.  Mac and Windows users should be able to use the libraries provided, otherwise see the section on [building third party libraries](#2-building-third-party-libraries).
 
 * [Boost C++ Libraries](http://www.boost.org), details [here](#21-boost)
 * [Rapid XML](http://rapidxml.sourceforge.net/index.htm), although typically installed via Boost.  More details [here](#22-rapid-xml)
@@ -23,58 +23,20 @@ GCAM provides a generic [Makefile](#41-building-with-makefile) as well as [Xcode
 In addition users will have to download the [Hector submodule](#3-compiling-hector).
 
 ## 2. Building Third Party Libraries
-This section details where to get and how to build the additional software required to re-compile and run GCAM.  In addition some notes beyond those provided by the source as it pertains to GCAM.  All of these required software are open source and/or available free of charge. **Note:** Mac and Windows binary packages (with the exception of Boost due to its large size) will already include these libraries and users only need to follow these instructions if they have a specific need to rebuild them.
+This section details where to get and how to build the additional software required to re-compile and run GCAM.  In addition some notes beyond those provided by the source as it pertains to GCAM.  All of these required software are open source and/or available free of charge.
 
 Most of these libraries can also be installed through package managers:
 
-|        | Homebrew (MacOS)                | Aptitude (Debian/Ubuntu)                                     |
-|        | `brew install <package>`        | `sudo apt install <package>`                                 |
-|--------|---------------------------------|--------------------------------------------------------------|
-| Boost  | `boost`                         | `libboost-dev` `libboost-system-dev libboost-filesystem-dev` |
-| Java   | (Cask) `brew cask install java` | `default-jre` `default-jdk`                                  |
-| TBB    | `tbb`                           | `libtbb-dev`                                                 |
+|        | Homebrew (MacOS)                | Aptitude (Debian/Ubuntu)      |
+|        | `brew install <package>`        | `sudo apt install <package>`  |
+|--------|---------------------------------|-------------------------------|
+| Boost  | `boost`                         | `libboost-dev`                |
+| Java   | (Cask) `brew cask install java` | `default-jre` `default-jdk`   |
+| TBB    | `tbb`                           | `libtbb-dev`                  |
 
 
 ### 2.1 Boost
-Boost includes many general purpose utilities for the C++ language and helps GCAM compile correctly across most platforms.  The library can be downloaded from [Boost](http://www.boost.org/users/download).  The version released with GCAM was 1.62 however any recent version should work.  GCAM now requires the header files and to build the `system` and `filesystem` libraries.  The Xcode and Visual Studio project files will expect boost to be located in `<GCAM Workspace>/libs` and where the folder unziped after downloading `boost_1_62_0` is either renamed or symlinked to `boost-lib`.  When building using the Makefile they can be located anywhere and are referenced by setting [an environment variable](#41-building-with-makefile).
-
-#### 2.1.1 Building Boost Windows Notes
-Users can look at [Boost documentation](http://www.boost.org/doc/libs/1_62_0/more/getting_started/windows.html#prepare-to-use-a-boost-library-binary) for building the needed libraries.  On Windows boost users will need to use the `Developer Command Prompt for VS20NN` (and they may need to run as Administrator) to ensure the C++ compiler can be found to build boost.  In addition they will need to ensure the libraries are built as 64-bit:
-
-```
-cd <GCAM Workspace>/libs/boost-lib
-bootstrap.bat 
-b2 --with-system --with-filesystem address-model=64 stage
-```
-
-#### 2.1.2 Building Boost Mac Notes
-Users can look at [Boost documentation](http://www.boost.org/doc/libs/1_62_0/more/getting_started/unix-variants.html#prepare-to-use-a-boost-library-binary) for building the needed libraries.  Note for users who want to use [Xcode](#42-building-with-xcode) to build, the default project file setting is to use `libc++` instead of `libstdc++` so you should build boost accordingly. 
-
-It is generally simplest to build using the command line by using the following commands:
-
-```
-cd <GCAM Workspace>/libs/boost-lib
-./bootstrap.sh --with-libraries=system,filesystem
-./b2 cxxflags="-stdlib=libc++" linkflags="-stdlib=libc++" stage
-```
-
-Note on the Mac the prefix seems to get ignored.  So users will want to change to relative path install names instead by using the following commands:
-
-```
-cd <GCAM Workspace>/libs/boost-lib/stage/lib
-install_name_tool -id @rpath/libboost_system.dylib libboost_system.dylib
-install_name_tool -id @rpath/libboost_filesystem.dylib libboost_filesystem.dylib
-install_name_tool -change libboost_system.dylib @rpath/libboost_system.dylib libboost_filesystem.dylib
-```
-
-#### 2.1.3 Building Boost POSIX Notes
-Users can look at [Boost documentation](http://www.boost.org/doc/libs/1_62_0/more/getting_started/unix-variants.html#prepare-to-use-a-boost-library-binary) for building the needed libraries.  Generally it will be something like:
-
-```
-cd <GCAM Workspace>/libs/boost-lib
-./bootstrap.sh --with-libraries=system,filesystem --prefix=<GCAM Workspace>/libs/boost-lib/stage/lib
-./b2 stage
-```
+Boost includes many general purpose utilities for the C++ language and helps GCAM compile correctly across most platforms.  The library can be downloaded from [Boost](http://www.boost.org/users/download).  The version released with GCAM was 1.62 however any recent version should work.  The Xcode and Visual Studio project files will expect boost to be located in `<GCAM Workspace>/libs` and where the folder unziped after downloading `boost_1_62_0` is either renamed or symlinked to `boost-lib`.  When building using the Makefile they can be located anywhere and are referenced by setting [an environment variable](#41-building-with-makefile). GCAM only requires the Boost headers so no further installation is required.
 
 ### 2.2 Rapid XML
 We use the Rapid XML parser for reading in XML, the format in which all GCAM inputs and configurations are specified in.  The library can be downloaded from [here](https://sourceforge.net/project/platformdownload.php?group_id=189621&sel_platform=1227).  However, we generally use the copy which is included as part of [Boost](http://boost.org/).
@@ -130,25 +92,6 @@ tar -zxf openjdk-12.0.1_osx-x64_bin.tar.gz
 sudo mv jdk-12.0.1.jdk /Library/Java/JavaVirtualMachines/
 ```
 
-Even if users on OS X 10.10+ install the Oracle/openJDK version of Java they may still be prompted to install the old Apple JDK when running GCAM or the Model Interface.  Note the purpose of the `<GCAM Workspace>/exe/run-gcam.command` wrapper is partially to detect and work around some of these issues.  For users that are being asked to install the old Apple JDK even if the newer version is installed they can try the following edit to the Java JDK Info.plist file in Terminal to resolve the issue:
-
-```
-JAVA_HOME=$(/usr/libexec/java_home)
-open $JAVA_HOME/../Info.plist
-```
-
-And add the following `JVMCapabilities`:
-
-```
-<dict>
-    <key>JVMCapabilities</key>
-    <array>
-        <string>CommandLine</string>
-        <string>JNI</string>
-        <string>BundledApp</string>
-    </array>
-```
-
 Users who want to use the Xcode build environment will need to set up in the `<GCAM Workspace>/libs` the `include` and `lib` directories.  Users will need to create the following symlinks:
 
 ```
@@ -156,9 +99,9 @@ cd <GCAM Workspace>/libs/java
 JAVA_HOME=$(/usr/libexec/java_home)
 ln -s ${JAVA_HOME}/include include
 # Note the following works for Java 1.7/8
-ln -s ${JAVA_HOME}/jre/lib/server lib
-# The following is required for Java 9/10
-# ln -s ${JAVA_HOME}/lib/server lib
+#ln -s ${JAVA_HOME}/jre/lib/server lib
+# The following is required for Java 9+
+ ln -s ${JAVA_HOME}/lib/server lib
 ```
 
 #### 2.3.4 Java On POSIX
@@ -170,7 +113,7 @@ Users should copy into `<GCAM Workspace>/libs/jars` a copy of all of the third p
 #### 2.3.6 BaseX
 BaseX is an XML database used for writing out comprehensive GCAM model output. Most users will be set-up for using BaseX by copying libraries
 and model interface files from a distribution version of GCAM as discussed above. If for some reason you are downloading BaseX directly from the [BaseX web site](https://basex.org/download/)
-note that the BaseX.jar library must be renamed exactly as `BaseX-9.5.0.jar`. 
+note that the BaseX.jar library currently supported is `9.5.x`.
 
 ### 2.4 Eigen
 Eigen is used by GCAM to provide linear algebra algorithms, utilities, and data structures which are used during the solution process.  Eigen is a modern C++ template library which is header only.  In other words, users do not need to compile and install Eigen.  Instead they just need to download the `3.4` release "source code" from [the Eigen Git repo](https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.gz) and copy it into their `libs/`, unzip, and rename / symlink the folder to be called just "eigen" (no version number).
@@ -181,7 +124,6 @@ The Intel / OneAPI Thread Building Blocks (TBB) library is a collection of utili
 * Xcode edit Build Settings -> Preprocessor Macros -> add `GCAM_PARALLEL_ENABLED=0`
 * Visual edit Project -> objects-main Properties -> C/C++ -> Preprocessor -> Preprocessor Definitions -> add `GCAM_PARALLEL_ENABLED=0`
 
-**Warning**: users may want to disable `GCAM_PARALLEL_ENABLED`, or set the `max-parallelism` in their `configuration.xml` to `1`, for any scenario that they will need to be able to **exactly** reproduce.  Since when running with parallelism we can get slightly different round off errors, which in turn could take a different route through the solver.  Ultimately all supplies and demands will be with in tolerance, however sometimes things like land use change emissions can be noticeably different in some land regions even if the market for the ag commodities are within tolerance.
 
 ## 3 Compiling Hector
 [Hector](hector.html) is the simple climate developed at JGCRI.  It is available from the hector project's [Github repository](https://github.com/JGCRI/hector).  
@@ -201,11 +143,11 @@ cd <GCAM Workspace>
 make install_hector
 ```
 
-If you have simply downloaded the standalone GCAM release `Source code` then you will have to go to Hector page on Git hub and download the branch [gcam-integration](https://github.com/JGCRI/hector/archive/gcam-integration.zip).  You can then unpack and move into place hector:
+If you have simply downloaded the standalone GCAM release `Source code` then you will have to go to Hector page on Git hub and download the branch [gcam-integrationv3](https://github.com/JGCRI/hector/archive/gcam-integrationv3.zip).  You can then unpack and move into place hector:
 
 ```
 cd <GCAM Workspace>/cvs/objects/climate/source
-unzip gcam-integration.zip
+unzip gcam-integrationv3.zip
 mv hector-gcam-integration hector
 ```
 
@@ -220,7 +162,6 @@ The core of the Makefile configuration is located under `<GCAM Workspace>/cvs/ob
 ```
 export CXX=g++
 export BOOST_INCLUDE=${HOME}/libs/boost-lib
-export BOOST_LIB=${HOME}/libs/boost-lib/stage/lib
 export JARS_LIB=${HOME}/libs/jars/*
 export JAVA_INCLUDE=${JAVA_HOME}/include
 export JAVA_LIB=${JAVA_HOME}/jre/lib/server
@@ -240,11 +181,11 @@ make gcam -j 8
 
 Note the `-j 8` is simply to compile multiple sources files at a time (set as appropriate for your system configuration) and is only necessary to speed up the processes.  Once complete an executable will be copied to `<GCAM Workspace>/exe` and can be run from that directory with `gcam.exe -C config_file.xml`.
 
-#### 4.1.1 Recommended configuration using Ubuntu 16.04
+#### 4.1.1 Recommended configuration using Ubuntu 22.04
 Assuming the libraries were installed via the `apt` package manager using a command like the following:
 
 ```
-sudo apt install libboost-dev libboost-system-dev libboost-filesystem-dev default-jre default-jdk
+sudo apt install libboost-dev libtbb-dev default-jdk
 ```
 
 ...the following variables can be used:
@@ -252,11 +193,9 @@ sudo apt install libboost-dev libboost-system-dev libboost-filesystem-dev defaul
 ```
 USRLIB=/usr/lib/x86_64-linux-gnu
 
-BOOST_LIB=${USRLIB}
 BOOST_INCLUDE=/usr/include/boost
 
 # For Hector, which uses different definitions
-BOOSTLIB=${BOOST_LIB}
 BOOSTROOT=${BOOST_INCLUDE}
 
 JAVA_INCLUDE=/usr/lib/jvm/default-java/include
@@ -275,7 +214,7 @@ Then under the `Info` tab change the build configuration to `Release`:
 Finally select menu option `Product -> Build` to build GCAM.  Once complete an executable will be copied to `<GCAM Workspace>/exe` and you can still use `run-gcam.command` to run it.  Note that to run GCAM from within Xcode, you must set the working directory to the `exe` directory within your workspace. This is done within the `Options` section of the current scheme.
 
 ### 4.3 Building with Visual Studio
-Users will need to have Microsoft Visual Studio C++ compiler installed (usually called for Windows Desktop).  Note that since GCAM 4.4 you will need a version which supports the C++ 14 standard.  Visual Studio 2015 is known to work.  Note Microsoft does provide a free option called ["Express"](https://visualstudio.microsoft.com/vs/express/).  Users can find the project file under `<GCAM Workspace>/cvs/objects/build/vc10/objects.vcxproj`.  Once open you should change the `Solution Configurations` and `Solution Platform` to `Release` and `x64`:
+Users will need to have Microsoft Visual Studio C++ compiler installed (usually called for Windows Desktop).  Note that since GCAM 7.0 you will need a version which supports the C++ 17 standard.  Visual Studio 2017 is known to work.  Note Microsoft does provide a free option called ["Community"](https://visualstudio.microsoft.com/free-developer-offers/).  Users can find the project file under `<GCAM Workspace>/cvs/objects/build/vc10/objects.vcxproj`.  Once open you should change the `Solution Configurations` and `Solution Platform` to `Release` and `x64`:
 
 ![Visual Studio build configuration](gcam-figs/vs-build-config.png)
 
@@ -312,9 +251,4 @@ make install
 
 ### 6 Troubleshooting
 Below we list some issues that you may encounter along with potential solutions.
-
-* Build fails on a unix/MacOS system with an error:
-   `ld: library not found for -lboost_system`
-	
-	You may have not complied the necessary boost libraries. See section above on compiling boost.
 
