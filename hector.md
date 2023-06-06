@@ -6,12 +6,13 @@ next: emissions.html
 gcam-version: v6
 ---
 
-This section describes the carbon-cycle climate module - Hector - that is available for use in GCAM. MAGICC5.3 (Wigley, 2008) has traditionally been the only climate module available in GCAM. Hector v3.1.1 is the default climate model (Hartin et al., 2015) within GCAM. Users still have the option of running MAGICC5.3 in GCAM5.1, but we will not be supporting this option going forward.    
+This section describes the carbon-cycle climate module - Hector - that is available for use in GCAM. Hector v3.1.1 is the default climate model (Hartin et al., 2015) within GCAM.
 
-Hector, an open-source, object-oriented, reduced-form global climate carbon-cycle model, is written in C++. This model runs essentially instantaneously while still representing the most critical global-scale earth system processes. Hector has a three-part main carbon cycle: a one-pool atmosphere, three-pool land, and 4-pool ocean. The model’s terrestrial carbon cycle includes primary production and respiration fluxes, accommodating arbitrary geographic divisions into, e.g., ecological biomes or political units. Hector actively solves the inorganic carbon system in the surface ocean, directly calculating air– sea fluxes of carbon and ocean pH. Hector reproduces the global historical trends of atmospheric [CO<sub>2</sub>], radiative forcing, and surface temperatures. Hector’s flexibility, open-source nature, and modular design facilitates a broad range of research in various areas. 
+Hector, an open-source, object-oriented, reduced-form global climate carbon-cycle model, is written in C++. This model runs essentially instantaneously while still representing the most critical global-scale earth system processes. Hector has a three-part main carbon cycle: a one-pool atmosphere, three-pool land, and 4-pool ocean. The model’s terrestrial carbon cycle includes primary production and respiration fluxes, accommodating arbitrary geographic divisions into, e.g., ecological biomes or political units. Hector actively solves the inorganic carbon system in the surface ocean, directly calculating air– sea fluxes of carbon and ocean pH. Hector reproduces the global historical trends of atmospheric [CO<sub>2</sub>], radiative forcing, and surface temperatures. Hector’s flexibility, open-source nature, and modular design facilitate a broad range of research. 
 
 ![Hector Carbon Cycle diagram](gcam-figs/hector_box_model.png)<br/>
-Figure 1: Conceptual diagram of the CO2 fluxes (numbered thick gray arrows) between Hector’s four major carbon cycle boxes: a well-mixed atmosphere (Atmosphere), terrestrial carbon cycle (Land), ocean carbon cycle (Ocean), and fossil fuels (Earth). The thinner arrows within the land and ocean boxes allude to Hector's more complex submodule carbon cycle dynamics, which are not discussed in detail here. The solid lines indicate that CO2 fluxes are calculated within Hector, whereas the dashed lines indicate that the fluxes are externally defined inputs read into the model. The fluxes are labeled: (1) CO2 emissions from fossil fuels and industry and uptake carbon capture technologies; (2) CO2 emissions and uptake from land use change (e.g., afforestation, deforestation, etc.); (3) vegetation uptake from the atmosphere (4) the aggregate CO2 from respiration from the terrestrial biosphere; and ocean carbon (5) uptake and (6) outgassing. The model’s permafrost implementation (Woodard et al. 2021) emits both CO2 and CH4 into the atmosphere, it is shown in gray because it is not enabled by default in the V3 model.
+Figure 1: Conceptual diagram of the CO2 fluxes (numbered thick gray arrows) between Hector’s four major carbon cycle boxes: a well-mixed atmosphere (Atmosphere), terrestrial carbon cycle (Land), ocean carbon cycle (Ocean), and fossil fuels (Earth). The thinner arrows within the land and ocean boxes denote Hector's more complex submodule carbon cycle dynamics, which are not discussed in detail here. The solid lines indicate that CO2 fluxes are calculated within Hector, whereas the dashed lines indicate that the fluxes are externally defined inputs read into the model. The fluxes are labeled: (1) CO2 emissions from fossil fuels and industry and uptake carbon capture technologies; (2) CO2 emissions and uptake from land use change (e.g., afforestation, deforestation, etc.); (3) vegetation uptake from the atmosphere (4) the aggregate CO2 from respiration from the terrestrial biosphere; and ocean carbon (5) uptake and (6) outgassing. The model’s permafrost implementation (Woodard et al. 2021) emits both CO2 and CH4 into the atmosphere, and is shown in gray.
+{: .fig}
 
 
 ## GCAM-Hector interactions
@@ -56,8 +57,8 @@ At every time step Hector calculates and outputs key climate variables.
 
 **Atmosphere**
 
-* Global mean air temperature (two time series are available, one with values original Hector out and one relative to 1850-1900)
-* Global mean surface temperature (two time series are available, one with values original Hector out and one relative to 1850-1900)
+* Global mean air temperature (two time series are available, one with values original Hector output and one relative to 1850-1900)
+* Global mean surface temperature (two time series are available, one with values original Hector output and one relative to 1850-1900)
 * Atmospheric concentrations for CO<sub>2</sub> & other species 
 * Total radiative forcing & radiative forcing of individual emissions
 
