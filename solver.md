@@ -3,7 +3,7 @@ layout: index
 title: GCAM Solver
 prev: en_technologies.html
 next: user-guide.html
-gcam-version: v6
+gcam-version: v7
 ---
 
 At each time step, GCAM searches for a vector of prices that cause all

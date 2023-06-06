@@ -3,7 +3,7 @@ layout: index
 title: External Inputs for Modeling the Economy
 prev: diagram.html
 next: economy.html
-gcam-version: v6 
+gcam-version: v7 
 ---
 
 GCAM's economic inputs include information on population and income. These inputs are required for each [geopolitical region](common_assumptions.html#geopolitical-regions) and [historical year](common_assumptions.html#historical-years).

@@ -3,7 +3,7 @@ layout: index
 title: Earth System Module – Hector v3.1.1	
 prev: water.html
 next: emissions.html
-gcam-version: v6
+gcam-version: v7
 ---
 
 This section describes the carbon-cycle climate module - Hector - that is available for use in GCAM. Hector v3.1.1 is the default climate model (Hartin et al., 2015) within GCAM.

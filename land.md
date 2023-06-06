@@ -3,7 +3,7 @@ title: "The GCAM Land Allocation Module"
 layout: index
 prev: diagram.html
 next: supply_land.html
-gcam-version: v6
+gcam-version: v7
 ---
 
 # Table of Contents

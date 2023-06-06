@@ -3,7 +3,7 @@ layout: index
 title: Economy
 prev: inputs_economy.html
 next: outputs_prices.html
-gcam-version: v6 
+gcam-version: v7 
 ---
 
 # Table of Contents
