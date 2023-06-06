@@ -14,6 +14,7 @@ GCAM's external land inputs include information on land, carbon, other emissions
 ### Description
 
 Table 1: External inputs used by the land model <sup>[1](#table_footnote)</sup>
+
 | Name | Description | Type | Source | Resolution | Unit |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | Historical Land Use and Land Cover | Land area by region, land type and year. Land cover data is provided beginning in 1700 in order to spin-up the carbon cycle within GCAM. Crop-specific harvested area is used to downscale FAO data to a subnational level; however this data is only available for a single year. Similarly, the division between irrigated and rainfed land is only available for a single year only. | External Data Set | <a href="https://github.com/JGCRI/moirai">Moirai</a> | Raw data is by country, water basin and land type. | thousand $$km^2$$ |
