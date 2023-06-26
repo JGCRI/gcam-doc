@@ -18,9 +18,9 @@ GCAM v7.0 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8010145.svg)](http
 9. [GCAM-USA nonCO2 GHG emissions in industrial and urban processes](cmp/379-GCAM-USA_nonco2_industrial_urban_proc.pdf)
 10. [Detailed Natural Gas Trade](cmp/350-Detailed_Natural_Trade.pdf)
 11. [Natural Gas Final Grade Cost and Miscellaneous Solution Improvements](cmp/388-Natural_Gas_Final_Grade_Cost.pdf)
-12. Global Iron and Steel Trade
+12. [Global Iron and Steel Trade](cmp/374-Global_Iron_and_Steel_Trade.pdf)
 13. GCAM Macro-Economic Module (KLEM Version)
-14. gcamdata chunk re-name
+14. [gcamdata chunk re-name](cmp/325-gcamdata_chunk_re-name.pdf)
 15. Update to Hector v3
 16. Bugfix before 7.0 Release
 
@@ -38,7 +38,7 @@ GCAM v6.0 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6619287.svg)](http
 11. Add direct air capture as a mitigation option in GCAM-USA.
 12. Gross electricity trade in GCAM-USA.
 13. Add GHGs to GCAM-USA.
-14. Add pollutant emissions to GCAM-USA.
+14. [Add pollutant emissions to GCAM-USA.](cmp/254-Add_Air_Pollutant_Emissions_to_GCAM-USA.pdf)
 15. Solution improvements, particularly related to water markets.
 16. Change the XML parser library to RapidXML.
 17. Add the ability to exit the model early due to solution failure.
