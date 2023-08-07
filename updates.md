@@ -19,9 +19,9 @@ GCAM v7.0 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8010145.svg)](http
 10. [Detailed Natural Gas Trade](cmp/350-Detailed_Natural_Trade.pdf)
 11. [Natural Gas Final Grade Cost and Miscellaneous Solution Improvements](cmp/388-Natural_Gas_Final_Grade_Cost.pdf)
 12. [Global Iron and Steel Trade](cmp/374-Global_Iron_and_Steel_Trade.pdf)
-13. GCAM Macro-Economic Module (KLEM Version)
+13. [GCAM Macro-Economic Module (KLEM Version)](cmp/332-GCAM_Macro_Economic_Module_KLEM.pdf)
 14. [gcamdata chunk re-name](cmp/325-gcamdata_chunk_re-name.pdf)
-15. Update to Hector v3
+15. [Update to Hector v3](cmp/384-Update_to_Hector_v3.pdf)
 16. Bugfix before 7.0 Release
 
 GCAM v6.0 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6619287.svg)](https://doi.org/10.5281/zenodo.6619287):
