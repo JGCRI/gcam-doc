@@ -50,7 +50,7 @@ GCAM v5.4: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5093192.svg)](htt
 Several changes have been made to GCAM since the last release version (v5.3). The key updates are:
  1. Updated technology costs for electricity and transportation technologies
  2. Emissions: using CEDS as data source, updated to 2015, new MAC curves
- 3. Trade: improved trade for fossil fuels, forestry, and agriculture
+ 3. Trade: improved trade for fossil fuels, [forestry](cmp/338-Regional_Forest_Crop_Trade_Updates.pdf), and [agriculture](cmp/312-Livestock_Trade_with_Regional_Markets.pdf)
  4. Included water markets in GCAM-USA
  5. Energy for water
  6. New food demand representation
