@@ -35,7 +35,7 @@ These can be changed by year if desired.
 
 Setting price-adjust to zero means that there is no economic feedback for the price of this GHG. MAC curves, however, will still operate under the default set-up (whereby MAC curves are driven by CO<sub>2</sub> prices). This can be changed separately for energy/industrial/urban CH<sub>4</sub>, agricultural CH<sub>4</sub> (CH4\_AGR), and CH<sub>4</sub> from agricultural waste burning (CH4\_AWB), LUC CO<sub>2</sub> emissions (e.g. CO2_LUC).
 
-Note that you must first create a policy by reading in a <ghgpolicy> object (by reading an an XML with this object first, see the various policy files in the GCAM release) and then you can define how this links to any emissions (through <linked-ghg-policy> objects).
+Note that you must first create a policy by reading in a `<ghgpolicy>` object (by reading an an XML with this object first, see the various policy files in the GCAM release) and then you can define how this links to any emissions (through `<linked-ghg-policy>` objects).
 
 This flexibility allows CO<sub>2</sub>-only, CO<sub>2</sub>-equivalent, or non-CO<sub>2</sub> markets/constraints for various “baskets” of emissions as needed.
 
