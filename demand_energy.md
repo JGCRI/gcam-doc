@@ -121,14 +121,16 @@ Cement is treated as a final demand in GCAM; demands are driven by population an
 
 Note that there is a CO<sub>2</sub> capture and storage technology for cement production, wherein the CO<sub>2</sub> from limestone calcination is captured. The costs of the capture technology are parameterized around [Mahasenan et al. 2005](demand_energy.html#mahasenan2005).
 
-#### N Fertilizer
+#### Ammonia and N fertilizer
 
-The representation of nitrogenous fertilizers ("N fertilizer"), indicated in Mt of fixed N in synthetic fertilizers, includes both the specific production technologies for transforming various feedstocks into N fertilizer, as well as the demands for the commodity in the agricultural sectors. Nitrogenous fertilizers manufactured for non-agricultural purposes are excluded from the commodity modeled in GCAM.
+The representation of nitrogenous fertilizers ("N fertilizer") is represented with ammonia production and trade, indicated in Mt of NH3, which is subsequently indicated in Mt of fixed N in synthetic fertilizers, prior to being an input to crop production. The ammonia and N fertilizer module includes both the specific production technologies for transforming various feedstocks into ammonia, as well as the demands for the commodity in the agricultural sectors. Ammonia manufactured for non-agricultural purposes is excluded from the commodity modeled in GCAM. Similarly, no energy uses of ammonia are represented in GCAM at present.
 
-Fuel and feedstock sources and input-output coefficients are calibrated based on Table 4.15 of [IEA 2007](demand_energy.html#iea2007). The schematic below shows how N fertilizer is situated between the energy and agricultural systems of GCAM.
+Ammonia trade is calibrated based on net trade flows, using generally similar trade structure to fossil fuel trade described in [details_energy](details_energy.html), and the Armington Style trade described in [details_trade](details_trade.html). However, ammonia trade is calibrated according to net rather than gross trade flows due to data unavailability.
+
+Fuel and feedstock sources and input-output coefficients are calibrated based on Table 4.15 of [IEA 2007](demand_energy.html#iea2007). The schematic below shows how ammonia and N fertilizer commodities are situated between the energy and agricultural systems of GCAM.
 
 <img src="gcam-figs/Nfertilizer.png" width="300" height="200" /><br/>
-**Structure of GCAM's representation of N fertilizer supply and demand, with example input-output coefficients shown (GJ/kg of N fertilizer on the energy inputs, and unitless for the N fertilizer inputs to crop production). Note that the fuel/feedstock sources are competing technologies, not fixed inputs to a production function.**
+**Structure of GCAM's representation of N fertilizer supply and demand, with example input-output coefficients shown (GJ/kg of NH3 on the energy inputs to ammonia, the unitlass mass ratio of NH3 to N in going to N fertilizer, and unitless mass of N per mass of crop for the N fertilizer inputs to crop production). Note that only one example production technology for ammonia is shown, when several are represented.**
 {: .fig}
 
 The hydrogen production stage of ammonia production emits a relatively pure stream of CO<sub>2</sub> that is often captured for commercial purposes. Technologies with CCS are modeled in GCAM; additional capture and compression costs and energy inputs are based on H2A [DOE 2015](demand_energy.html#doe2015).
