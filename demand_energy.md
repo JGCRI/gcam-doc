@@ -172,6 +172,17 @@ Fuel and feedstock sources and input-output coefficients are calibrated based on
 
 The hydrogen production stage of ammonia production emits a relatively pure stream of CO<sub>2</sub> that is often captured for commercial purposes. Technologies with CCS are modeled in GCAM; additional capture and compression costs and energy inputs are based on H2A [DOE 2015](demand_energy.html#doe2015).
 
+#### Food processing
+ The food processing sector is highly heterogeneous, generating outputs ranging from dairy products and canned fruits to baked goods and prepared meals using a wide range of processes. Most energy use in the sector is for low temperature heat, primarily process heating and drying. Though energy consumption per dollar value of product tends to be low, food processing is a large source of manufacturing energy demand in some regions. More importantly, the food processing sector plays a unique role in bridging the energy and agri-food sectors. It transforms raw or primary agricultural materials into processed consumer-ready products, thus augmenting the value of the agri-food supply chain and constituting a significant proportion of the total food cost.  
+
+ In GCAM v7.1, the food processing sector is disaggregated from the "other industry" to allow a more sophisticated representation of the sector. This sector includes all of the technology and fuel options for heat production. Thus, the overall food processing sector then takes in both process heat food processing and a direct input of electricity, with the latter representing all non-heating uses of electricity. Also, the sector is linked to the food demand module, such that calorie consumption sets the demand for food processing energy use, with regionally varying coefficients of energy demand per calorie consumed.
+
+More details can be found in [CMP #377](cmp/377-FoodProcessing.pdf).
+
+<img src="gcam-figs/FoodProc.png" width="500" height="328" /><br/>
+**Structure of the food processing sector, including technologies and fuels used for process heat generation, inputs to the overall food processing sector, and the link to food demand.  The left side of the diagram indicates the division of energy demands into process heating and electricity; the right side shows the sources of process heat represented in the model. Combined heat and power technologies, also known as cogeneration technologies, are abbreviated as cogen in this figure.**
+{: .fig}
+
 ### Transportation
 
 The approach to modeling transportation in GCAM has been documented in [Kim et al. 2006](demand_energy.html#kim2006), [Kyle and Kim 2011](demand_energy.html#kyle2011), and the dataset in the current version of GCAM is documented in [Mishra et al. 2013](demand_energy.html#mishra2013). The modeling approach is consistent with the other sectors in the model, though with several different functional forms, and a higher level of detail than is found in the other sectors of the model.
