@@ -57,6 +57,16 @@ Shares of feed are determined by a [logit sharing approach](choice.html), which 
 
 Non-food, non-feed demand, including forestry demand, is determined by price, income, and population size. 
 
+### Future demand (storage)
+In GCAM `v7.1`, GCAM incorporated agricultural stockholding behavior as a technology of regional consumers who allocate regional supply to current consumption or future consumption (storage carried over to the next period). The schematic showing the structure updates is presented in the following figure.
+
+The development leveraged the recently compiled supply-utilization accounts to separate stock variations, opening stock, closing stock, and loss associated with stockholding behavior. The competitive storage model employs a logit sharing structure, where changes in the ratio between closing stock and “current consumption” (i.e., stock-to-use ratio) are responsive to current market prices and expected prices for storage in the next period. We use a lagged price expectation and apply a loss parameter to closing stock to derive the loss associated with interannual storage in a region for a given sector. Currently, agricultural storage is introduced for 13 GCAM crop commodities. See additional details in [CMP #382](cmp/382_AgFoodStorage.pdf).
+
+ 
+<img src="gcam-figs/AgStorageStruc.jpg" width="500" /><br/>
+Schematic of the updating GCAM modeling structure to represent stockholder behaviors. Source: Zhao et al. (2024). 
+{: .fig}
+
 ## Equations 
 The equations that determine food, feed, and forest demand are described here.
 
