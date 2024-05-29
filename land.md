@@ -224,6 +224,8 @@ In a policy regime, we can choose to put a price on land-use change CO<sub>2</su
 
 An example file is included to implement this policy is included in GCAM; see [global_uct.xml](https://github.com/JGCRI/gcam-core/blob/master/input/policy/global_uct.xml).  
 
+Since GCAM `v7.1`, the method for implementing land carbon policy has been updated to allow setting a minimum threshold for carbon density. This ensures that only land with carbon density higher than the threshold is credited. The default assumption is to set the threshold for soil carbon density in a region-basin to the carbon density value of the cropland in the same region-basin. In particular, the option of `Min_Soil_C_at_Cropland = TRUE` to the function of `add_carbon_info` in gcamdata. See additional details in [CMP #393](cmp/393-AgLU_Parameters_Update.pdf).
+
 ### Bioenergy Constraints
 
 We can impose constraints (lower or upper bounds) on bioenergy within GCAM. Under such a policy, GCAM will calculate the tax or subsidy required to ensure that the constraint is met. Note that by default a bioenergy constraint in GCAM (starting with v4.4) is imposed based on the amount of subsidy available for net negative emissions.

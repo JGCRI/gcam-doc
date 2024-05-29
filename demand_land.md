@@ -42,7 +42,12 @@ gcam-version: v7
 
 ### Food demand
 
-Food demand is based on the approach documented in [Edmonds et al. (2017)](#edmonds2017).
+Food demand, i.e., income and own-/cross-price respones of staples and non-staples composites, is based on the approach documented in [Edmonds et al. (2017)](#edmonds2017). A nested logit structure is used to aggregate GCAM food commodities (calorie-based) and connect them to the top-level food demand model. See additional details in recently food data updates in [CMP #360](cmp/360-AgLU_data_and_methods.pdf) and related parameter updates in [CMP #393](cmp/CMP393_AgLU_Parameters_Update.pdf).
+
+<img src="gcam-figs/FoodNests.png" width="500" /><br/>
+Food demand nesting structure in GCAM.  Note that in this CMP, FiberCrop is moved to the Oil nest since over 99% of the FiberCrop for food consumption is cottonseed oil.
+{: .fig}
+
 
 ### Feed demand
 
