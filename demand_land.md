@@ -55,7 +55,10 @@ Shares of feed are determined by a [logit sharing approach](choice.html), which 
 
 ### Non-food, non-feed demand
 
-Non-food, non-feed demand, including forestry demand, is determined by price, income, and population size. 
+Non-food, non-feed demand, including forestry demand, is determined by price, income, and population size.
+
+Note that forestry demand is represented for two product pools, namely wood pulp and sawnwood production. 
+ 
 
 ### Future demand (storage)
 In GCAM `v7.1`, GCAM incorporated agricultural stockholding behavior as a technology of regional consumers who allocate regional supply to current consumption or future consumption (storage carried over to the next period). The schematic showing the structure updates is presented in the following figure.
