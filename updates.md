@@ -5,6 +5,8 @@ prev: fusion.html
 next: 
 gcam-version: v7
 ---
+GCAM v8.0
+1. [Adding detail to Forest sectors in GCAM ](cmp/369-Adding_Detail_To_Forestry_Sector.pdf)
 
 GCAM v7.0 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8010145.svg)](https://doi.org/10.5281/zenodo.8010145)
 1. [Fix Extrapolation in Residue Biomass](cmp/366-Fix_Extrapolation_in_Residue_Biomass.pdf)
