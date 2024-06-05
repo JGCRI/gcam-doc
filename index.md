@@ -4,8 +4,7 @@ title: Global Change Analysis Model (GCAM)
 gcam-version: v7.1
 ---
 
-This documentation describes GCAM v7.0 ([![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8010145.svg)](https://doi.org/10.5281/zenodo.8010145)
-)
+This documentation describes GCAM v7.1 ([![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.11481167.svg)](https://doi.org/10.5281/zenodo.11481167))
 
 
 **GCAM diagram. Click on each box for a more detailed description of that element.**
