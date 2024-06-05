@@ -1,16 +1,17 @@
-digraph region{
-	nfert[label="N fertilizer",style=filled,color=greenyellow];
-	coal[style=filled,label="Coal",color=black,fontcolor=white];
-	gas[style=filled,label="Natural Gas",color=blue,fontcolor=white];
-	oil[style=filled,label="Liquid Fuels",color=black,fontcolor=white];
-	corn[label="Corn",style=filled,color=green3];
-	oilcrop[label="OilCrop",style=filled,color=green3];
-	other_crops[label="All Other Crops",style=filled,color=green3];
-
-	coal->nfert[label="0.055"];
-	gas->nfert[label="0.039"];
-	oil->nfert[label="0.049"];
-	nfert->corn[label="0.02"];
-	nfert->oilcrop[label="0.015"];
-	nfert->other_crops[label="0.02"];
-}
+digraph fertilizer{
+	gas[label = "wholesale gas", style = filled, color = skyblue];
+	nh3[label = "ammonia", style = filled, color = green];
+	reg_nh3[label = "regional ammonia", style = filled, color = green];
+	traded_nh3[label = "traded ammonia", style = filled, color = green];
+	Nfert[label = "N fertilizer", style = filled, color = green];
+	Corn[label = "Corn", style = filled, color = yellow];
+	nh3_energy[label = "ammonia energy", style = filled, color = black, fontcolor = white];
+	
+	gas -> nh3[label = "0.03 GJ/kg"];
+	nh3 -> reg_nh3;
+	nh3 -> traded_nh3[style = "dashed"];
+	traded_nh3 -> reg_nh3[style = "dashed"];
+	reg_nh3 -> Nfert[label = "1.21 NH3/N"];
+	Nfert -> Corn[label = "0.02"];
+	reg_nh3 -> nh3_energy[style = "dotted", label = "53.2 kg NH3/GJ"];
+	}
