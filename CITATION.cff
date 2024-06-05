@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "Citation for GCAM model documentation"
+authors:
+  - name: "Joint Global Change Research Institute"
+title: "GCAM Documentation"
+version: 7.0
+date-released: 2023-06-05
+url: "https://jgcri.github.io/gcam-doc"
+repository-code: "https://github.com/JGCRI/gcam-doc"
