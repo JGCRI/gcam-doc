@@ -119,8 +119,8 @@ Considering the subnational data availability for the US, and its different beha
 
 ##### Thermal load parameters
 
-The raw assumptions/paremeters for the estimation of the thermal load are described in [A44.shell_eff_mult_RG3.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.shell_eff_mult_RG3.csv), [A44.internal_gains.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.internal_gains.csv),[A44.tech_eff_mult_RG3.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.tech_eff_mult_RG3.csv),[A44.USA_TechChange.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.USA_TechChange.csv)
-The files for the calculation and harmonization of the degree days for GCAM regions are stored in the [GIS](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/GIS) folder.
+The raw assumptions/paremeters for the estimation of the thermal load are described in [A44.shell_eff_mult_RG3.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.shell_eff_mult_RG3.csv), [A44.internal_gains.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.internal_gains.csv), [A44.tech_eff_mult_RG3.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.tech_eff_mult_RG3.csv), [A44.USA_TechChange.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.USA_TechChange.csv).  
+The files for the calculation and harmonization of the degree days for GCAM regions are stored in the [GIS](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/GIS) folder. 
 
 ##### Satiation levels
 

@@ -250,8 +250,8 @@ $$ f_{t,r} = (UnadjSat_{r} – a * log(PD_{t,r})) * exp(-b * exp(-c * log(GDPpc_
 
 `UnadjSat` is the maximum per capita floorspace value a consumer demands at his maximum income level. Below this satiation point, the marginal utility of floorspace is positive. Above that point, the marginal utility is negative. As shown in the equation, this value is adjusted based on the population density (`PD`), which is calculated as the population divided by “habitable” land (all land except “rock and dessert” and “tundra” ). `GDPpc` is per capita GDP.  
 `a`, `b`, and `c` are constant parameters that have been estimated in the econometric analysis developed in the model data system ([LA144.building_det_flsp.R](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/zchunk_LA144.building_det_flsp.R#L400)). They represent the effect of the population density and the per capita income, respectively, in the estimation of per capita floorspace.  
-Note that for USA, parameters have been estimated outside the model (using subnational data) and are read in by the DS.  
-Finally, parameter `k` is the regional bias adder, which represents the difference between the observed and estimated per capita floorspace in the final calibration year (2015). It captures the “unobservable” effects that cannot be captured with the used variables, and it is kept constant over the whole time horizon.
+Note that for USA, parameters have been estimated outside the model (using subnational data) and are read in by the gcamdata system.  
+Finally, parameter `k` is the regional bias adder, which represents the difference between the observed and estimated per capita floorspace in the final calibration year. It captures the “unobservable” effects that cannot be captured with the used variables, and it is kept constant over the whole time horizon.
 
 #### Commercial
 
@@ -270,9 +270,9 @@ The demands of generic services per unit floorspace, d, in period t, region r, a
 
 $$ d_{t}=k * [1-exp(-\frac{ln(2)}{\mu}\frac{I_{t}}{P_{t}})] $$
 
-where k is a calibration parameter that captures satiation effects, and the other parameters are the same as the equation above (commercial floorspace), with the exception that here P refers to the price of the service. 
+where `k` is a calibration parameter that captures satiation effects, and the other parameters are the same as the equation above (commercial floorspace), with the exception that here `P` refers to the price of the service. 
 
-Space heating (h) and cooling (c) from modern services use a similar approach with some additional considerations, shown below:
+Space heating (`h`) and cooling (`c`) from modern services use a similar approach with some additional considerations, shown below:
 
 $$ h_{t,r,i}=k_{r} * (HDD_{t,r}*\eta_{t,r,i}*R_{t,r,i}-\lambda_{h,r}*IG_{t,r,i}) * [1-exp(-\frac{ln(2)}{\mu_{r}}\frac{I_{t,r,i}}{P_{t,r}})] $$
 
