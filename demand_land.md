@@ -55,8 +55,7 @@ Shares of feed are determined by a [logit sharing approach](choice.html), which 
 
 ### Non-food, non-feed demand
 
-Non-food, non-feed demand, including forestry demand, is determined by price, income, and population size.
-
+Non-food, non-feed demand, including forestry demand, is determined by price, income, and population size.  
 Note that forestry demand is represented for two product pools, namely wood pulp and sawnwood production. 
  
 
