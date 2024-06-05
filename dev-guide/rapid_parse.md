@@ -1,7 +1,7 @@
 ---
 layout: index
 title: Developers guide for XML Parse via RapidXML
-gcam-version: v7 
+gcam-version: v7.1
 devguide: dev-guide.html
 ---
 

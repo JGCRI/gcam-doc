@@ -3,7 +3,7 @@ layout: index
 title: Recent updates
 prev: fusion.html
 next: 
-gcam-version: v7
+gcam-version: v7.1
 ---
 GCAM v7.1
 1. [Adding detail to Forest sectors in GCAM](cmp/369-Adding_Detail_To_Forestry_Sector.pdf)

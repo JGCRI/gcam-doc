@@ -1,0 +1,50 @@
+digraph cooling{
+
+# sector
+	elec[label="electricity", style = filled, color = yellow];
+
+# subsectors
+	coal[label = "coal", style = filled, color = gray80];
+	gas[label = "gas", style = filled, color = blue, fontcolor=white];
+	oil[label = "oil", style = filled, color = black, fontcolor=white];
+	biomass[label = "biomass", style = filled, color = green];
+	nuclear[label = "nuclear", style = filled, color = orange];
+	hydro[label = "hydro", style = filled, color = lightblue1];
+	geothermal[label = "geothermal", style = filled, color = coral1];
+	wind[label = "wind", style = filled, color = skyblue];
+	solar[label = "solar", style = filled, color = yellow];
+
+#technologies
+	conv_pul[label = "coal (conv pul)", style = filled, color = gray80];
+	conv_pul_ccs[label = "coal (conv pul CCS)", style = filled, color = gray80];
+	igcc[label = "coal (IGCC)", style = filled, color = gray80];
+	igcc_ccs[label = "coal (IGCC_CCS)", style = filled, color = gray80];
+
+# cooling systems
+	once_thru[label = "once through", style = filled, color = lightblue1];
+	seawater[label = "once through\nw/seawater", style = filled, color = aliceblue];
+	recirc[label = "recirculating", style = filled, color = steelblue1];
+	cooling_pond[label = "cooling pond", style = filled, color = lightblue2];
+	dry_cooling[label = "dry cooling", style = filled, color = coral1];
+	
+	elec -> coal[dir=back];
+	elec -> gas[dir=back];
+	elec -> oil[dir=back];
+	elec -> biomass[dir=back];
+	elec -> nuclear[dir=back];
+	elec -> hydro[dir=back];
+	elec -> geothermal[dir=back];
+	elec -> wind[dir=back];
+	elec -> solar[dir=back];
+
+	coal -> conv_pul[dir=back];
+	coal -> conv_pul_ccs[dir=back];
+	coal -> igcc[dir=back];
+	coal -> igcc_ccs[dir=back];
+
+	conv_pul -> once_thru[dir=back];
+	conv_pul -> seawater[dir=back];
+	conv_pul -> recirc[dir=back];
+	conv_pul -> cooling_pond[dir=back];
+	conv_pul -> dry_cooling[dir=back];
+}

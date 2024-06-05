@@ -3,7 +3,7 @@ layout: index
 title: Outputs from the Land Model
 prev: supply_land.html
 next: outputs_emissions.html
-gcam-version: v7 
+gcam-version: v7.1
 ---
 
 ## Description of Outputs

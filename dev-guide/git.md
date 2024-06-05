@@ -1,7 +1,7 @@
 ---
 layout: index
 title: Using Git with GCAM
-gcam-version: v7
+gcam-version: v7.1
 devguide: dev-guide.html
 ---
 ## Using Git with GCAM

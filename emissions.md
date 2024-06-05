@@ -3,7 +3,7 @@ title: "Emissions"
 layout: index
 prev: supply_energy.html
 next: outputs_emissions.html
-gcam-version: v7
+gcam-version: v7.1
 ---
 ## Overview
 

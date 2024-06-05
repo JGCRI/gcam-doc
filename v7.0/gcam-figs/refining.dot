@@ -1,0 +1,24 @@
+digraph refining{
+	unconv_oil[label="Unconventional\nOil",style=filled,color=black,fontcolor=white];
+	crude_oil[label="Crude Oil",style=filled,color=black,fontcolor=white];
+	oil[label="Oil",style=filled,color=black,fontcolor=white];
+	
+	unconv_oil -> oil[ label = 1 ];
+	crude_oil -> oil[ label = 1 ];
+
+	ng[label="Natural Gas",style=filled,color=blue,fontcolor=white];
+	bio[label="Biomass",style=filled,color=green];
+	coal[label="Coal",style=filled,color=black,fontcolor=white];
+	refining[label="Refining",style=filled,color=brown,fontcolor=white];
+	oil->refining[label=1.06]
+	ng->refining[label=1.6]
+	bio->refining[label=2.2]
+	coal->refining[label=2.2]
+	
+	ref_liq_end[ label = "Refined\nLiquids\nEnduse", style = filled, color = brown, fontcolor = white ];
+	ref_liq_ind[ label = "Refined\nLiquids\nIndustrial", style = filled, color = brown, fontcolor = white ];
+	
+	refining -> ref_liq_end[ label = 1 ];
+	refining -> ref_liq_ind[ label = 1 ];
+	
+}

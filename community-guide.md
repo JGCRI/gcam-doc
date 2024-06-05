@@ -3,7 +3,7 @@ layout: index
 title: Community guidelines for peer-reviewed journal articles using GCAM
 prev: 
 next: 
-gcam-version: v7 
+gcam-version: v7.1
 ---
 ## Community guidelines for peer-reviewed journal articles using GCAM
 This memo outlines some ***suggested*** guidelines for the community of GCAM users to employ in peer-reviewed journal articles using GCAM or versions of GCAM. The memo focuses on two areas: i.) guidelines for co-authorship of GCAM team members in papers led by community members, and ii.) guidelines for suggested language to be used to describe GCAM in papers.
