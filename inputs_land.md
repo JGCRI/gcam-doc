@@ -53,9 +53,8 @@ Crops that use C4 photosynthesis and tree crops are each disaggregated in the la
 The soil time scale is provided in [A_soil_time_scale_R.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/A_soil_time_scale_R.csv)
 
 #### Value of Unmanaged Land
-Before GCAM `v7.1`, the value of unmanaged land is provided in [LDS_value_milUSD.csv] (https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/LDS/LDS_value_milUSD.csv) (SAGE-GTAP) (Ramankutty et al., 2005). 
 
-Since GCAM `v7.1`, the unmanaged land value has been updated to use the values directly computed based on GCAM data since it is more consistent and avoids potential aggregation uncertainties in processing the dated SAGE-GTAP data. See additional details in [CMP #393](cmp/393-AgLU_Parameters_Update.pdf).
+The unmanaged land value is directly computed based on GCAM data since it is more consistent and avoids potential aggregation uncertainties in processing the dated SAGE-GTAP data. See additional details in [CMP #393](cmp/393-AgLU_Parameters_Update.pdf).
 
 #### Share Parameters
 The logit exponents used in the land allocation module are provide in [A_LandNode_logit.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/A_LandNode_logit.csv) and [A_LandNode_logit_irr.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/A_LandNode_logit_irr.csv).
