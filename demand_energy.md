@@ -129,7 +129,7 @@ Ammonia trade is calibrated based on net trade flows, using generally similar tr
 
 Fuel and feedstock sources and input-output coefficients are calibrated based on Table 4.15 of [IEA 2007](demand_energy.html#iea2007). The schematic below shows how ammonia and N fertilizer commodities are situated between the energy and agricultural systems of GCAM.
 
-<img src="gcam-figs/Nfertilizer.png" width="300" height="200" /><br/>
+<img src="gcam-figs/Nfertilizer.png" width="285" height="450"/><br/>
 **Structure of GCAM's representation of N fertilizer supply and demand, with example input-output coefficients shown (GJ/kg of NH3 on the energy inputs to ammonia, the unitlass mass ratio of NH3 to N in going to N fertilizer, and unitless mass of N per mass of crop for the N fertilizer inputs to crop production). Note that only one example production technology for ammonia is shown, when several are represented.**
 {: .fig}
 
