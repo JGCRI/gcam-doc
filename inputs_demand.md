@@ -26,6 +26,7 @@ Table 1: External inputs used for demand of energy<sup>[1](#table_footnote1)</su
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | Historical demand for energy | Demand for energy in the historical period; used for initialization/calibration of GCAM | External data | IEA | Specified by demand, fuel, country, and year |  ktoe and GWh |
 | Historical demand for floorspace | Demand for floorspace in the historical period; used for initialization/calibration of GCAM | External data | IEA, Odyssee, Other | Specified by country, and year |  BM2 and m2/pers |
+| Historical service demand | Shares of residential and commercial TFE by service and region | External data | Various | Specified by country, service, and year |  Shares |
 | Price elasticity of demand | Elasticity determining how demand responds to changes in price | Assumption | | Specified by demand |  unitless |
 | Value of time in transit multiplier | Factor multiplied by the wage rate to determine the value of time in transit, used in the transportation module | Assumption | | Specified by demand |  unitless |
 | Cost | Cost of production | Assumption | | Specified by technology and year |  1975$/kg or 1975$/GJ |
@@ -37,6 +38,8 @@ Table 1: External inputs used for demand of energy<sup>[1](#table_footnote1)</su
 | Share weight interpolation rules | These rules dictate how share weights (GCAM's calibration parameter) are specified in future years. | Assumption |  | Specified by sector and subsector | N/A |
 | Fuel preference elasticity | Elasticity dictating how share weights change with GDP per capita | Assumption | | Specified by technology and year | unitless |
 | Residential floorspace parameters | Estimated parameters for residential floorspace demand | Analysis/Assumption | | Specified by region | m2/pers and unitless |
+| Thermal load parameters | Degree days, shell conductivity, internal gains and floorspace-to-surface ratio | External Data/Assumption | | Specified by region | Various |
+| Historical service prices | Prices by sector in the base years. Used to calibrate satiation impedance | External Data | | Specified by region, service, and period | 1975$/unit|
 | Satiation levels | Assumed satiation values for commerical floorspace and building energy services | Assumption | | Specified by demand, service, and region | m2/pers and EJ/pers |
 | Income elasticity of demand | Elasticity determining how demand responds to changes in per capita output for industry and cement | Assumption | | Specified by demand | unitless
 | Energy intensities | Energy intensity for energy-for-water processes (desalination, abstraction, treatment, distribution, wastewater treatment) | External data |  [Liu et al. 2016](#liu2016) | Global | GJ per $$m^3$$ |
@@ -58,6 +61,14 @@ Throughout GCAM, the number in the name of assumption file indicates to which se
 ##### Historical demand for energy
 
 GCAM uses IEA energy balances as a source for historical energy supply and demand. IEA data are proprietary and thus are not provided in the GCAM data repository. Instead, we provide all of the `R` code used to process the IEA data so that the user can replicate the processing _if_ they purchase the IEA data. In addition, we provide aggregated data after it has undergone processing so that GCAM input files can be created and used by the user community. 
+
+##### Historical demand for floorspace
+
+Historical floorspace data combines data from different sources, which is listed in different input files, namely [A44.pcflsp_default.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.pcflsp_default.csv), [CEDB_ResFloorspace_chn.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/CEDB_ResFloorspace_chn.csv), [RECS_ResFloorspace_usa.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/RECS_ResFloorspace_usa.csv), [Other_pcflsp_m2_ctry_Yh.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/Other_pcflsp_m2_ctry_Yh.csv), [IEA_PCResFloorspace.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/IEA_PCResFloorspace.csv), [Odyssee_ResFloorspacePerHouse.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/Odyssee_ResFloorspacePerHouse.csv) 
+
+##### Historical service demand 
+
+The allocation of building energy across different services within each region is defined in [A44.share_serv_fuel.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.share_serv_fuel.csv)
 
 ##### Elasticities of demand
 
@@ -84,7 +95,6 @@ CO<sub>2</sub> capture rates for cement are specified in [A321.globaltech_co2cap
 
 Retirement rules are specified in [A322.globaltech_retirement.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A322.globaltech_retirement.csv), [A44.cost_efficiency.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.cost_efficiency.csv)
 
-
 ##### Logit exponents
 
 Logit exponents are specified in [A32.sector.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A32.sector.csv), [A32.subsector_logit.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A32.subsector_logit.csv), [A321.subsector_logit.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A321.subsector_logit.csv), [A322.subsector_logit.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A322.subsector_logit.csv), [A44.sector.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.sector.csv),  [A44.subsector_logit.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.subsector_logit.csv), [A54.sector.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A54.sector.csv), and  [A54.tranSubsector_logit.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A54.tranSubsector_logit.csv). 
@@ -107,6 +117,10 @@ The parameters (`a`,`b`,`c`) for the estimation of residential floorspace demand
 The econometric analysis is developed using different global floorspace data sources, which are used for floorspace calibration (e.g., IEA, Odyssee).  
 Considering the subnational data availability for the US, and its different behaviour in terms of residential floorspace demand (higher observed floorpace than other regions with similar per capita income or population density), parameters for the US are different from the global values, and have been estimated outside the model and are included in the [constants.R](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/constants.R#L547) file (to ensure everything is consistent when/if the GCAM-USA module is disabled).  
 
+##### Thermal load parameters
+
+The raw assumptions/paremeters for the estimation of the thermal load are described in [A44.shell_eff_mult_RG3.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.shell_eff_mult_RG3.csv), [A44.internal_gains.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.internal_gains.csv), [A44.tech_eff_mult_RG3.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.tech_eff_mult_RG3.csv), [A44.USA_TechChange.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.USA_TechChange.csv).  
+The files for the calculation and harmonization of the degree days for GCAM regions are stored in the [GIS](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/GIS) folder. 
 
 ##### Satiation levels
 

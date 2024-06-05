@@ -23,13 +23,16 @@ gcam-version: v7
 | Name | Resolution | Unit | Source |
 | :--- | :--- | :--- | :--- |
 | Historical energy demand (used for calibration) | By region, technology, and year | EJ/yr | [Exogenous](inputs_demand.html) |
+| Historical service demand (used for calibration) | By region, technology, service, and year | EJ/yr | [Exogenous](inputs_demand.html) |
 | Historical floorspace demand (used for calibration) | By region and year | BM2/yr | [Exogenous](inputs_demand.html) |
 | Cost | By region, technology, and year | 1975$/GJ | [Exogenous](inputs_demand.html) |
 | Income and price elasticity | By region, demand, and year | unitless | [Exogenous](inputs_demand.html) |
 | Residential floorspace demand parameters | By region | unitless | [Exogenous](inputs_demand.html) |
+| Thermal load parameters | By region | various| [Exogenous](inputs_demand.html) |
 | Satiation levels | By region and building type / service | m2/pers and EJ/pers | [Exogenous](inputs_demand.html) |
 | GDP per capita | By region and year | thous 1990$ per person | [Economy module](economy.html) |
 | Population | By region and year | thousand | [Economy](economy.html) |
+| Subregional income distribution| By region and year | shares| [Economy](economy.html) |
 | Habitable Land | By region and year | thousand km2 | [Land](land.html) |
 | Commodity prices | By region, commodity, and year | 1975$/GJ | [Marketplace](marketplace.html) |
 | Logit exponents | By region and sector or subsector | unitless | [Exogenous](inputs_demand.html) |
@@ -52,7 +55,41 @@ gcam-version: v7
 
 ### Buildings
 
-GCAM disaggregates the building sector into residential and commercial sectors and models three aggregate services (heating, cooling, and other). Within each region, each type of building and each service starts with a different mix of fuels supplying energy (see Figure below). The future evolution of building energy use is shaped by changes in (1) floorspace, (2) the level of building service per unit of floorspace, and (3) fuel and technology choices by consumers. Residential floorspace depends on population, income, population density, and exogenously estimated parameters. Commercial floorspace depends on population, income, the average price of energy services, and exogenously specified satiation levels. Note that GCAM also includes the option to specify [floorspace exogenously](details_energy.html#optional-exogenous-floorspace). The level of building service demands per unit of floorspace depend on climate, building shell conductivity, affordability, and satiation levels. The approach used in the buildings sector is documented in [Clarke et al. 2018](demand_energy.html#clarke2018), which has a focus on heating and cooling service and energy demands. Within building services, the structures and functional forms are similar to any other GCAM sector, described in [Energy Technologies](en_technologies.html).
+GCAM disaggregates the building sector into residential and commercial sectors and models floorspace and three aggregate services (heating, cooling, and other). Within building services, the structures and functional forms are similar to any other GCAM sector, described in [Energy Technologies](en_technologies.html). 
+
+The residential sector is divided in different socioeconomic groups (i.e., income deciles). The income deciles within each region have the same population, what means, 10% of regional population in each period. In calibration years, the region-level GDP allocated to each income decile is based on historical income distribution data from different sources (UNU WIDER, LIS, PovCal). The income distribution across income deciles in future model periods for different regions is estimated using an innovative data-driven method, based on principal component analysis (PCA).
+Residential floorspace, building service and energy demand, and direct GHG and air pollutant emissions from the residential sector are reported at income-decile level, which allows to capture within-region consumer dynamics that broaden and enrich the scope of analysis.
+
+#### Floorspace
+**Residential floorspace** depends on different variables that have been identified as significant by analyzing household-level microdata, namely population, income, population density, and regional preferences. There are some key points that are incorporated into the model based on the analysis of historical data:
+* Per capita income is the primary driver for per capita floorspace: richer regions and socioeconomic groups demand more per capita floorspace.
+* Floorspace increases with income until a maximum (saturation) point is achieved. Conceptually, this level should be similar across regions over the world, but it is not possible to test this assumption with observed data.
+* Population density is also an important factor for estimating residential floorspace demand:
+	* Per capita floorspace in rural areas (lower pop density) is higher than in urban areas (higher pop density)
+	* The cross-regional data (historical observations) shows that, comparing two wealthy economies with “high” per capita income, the region with the higher population density (e.g., Japan) demands less per capita floorspace.
+* Comparing some similar countries, with high per capita income and low population density (e.g., USA and Canada or Australia), there are substantial differences in observed floorspace demand. Therefore, the function includes some “unobservable” effects over time to reflect these observed differences.
+
+After testing alternative functional forms, the Gompertz-type function resulted to be the best alternative to fit the cross-regional observed data for all regions with different incomes and population densities. Additional details and parameters on the function are below. Note that total region-level residential floorspace is calculated by adding up the floorspace across different socioeconomic groups. Floorspace for each group is the product between per capita floorspace and subregional population. 
+
+**Commercial floorspace** depends on population, income, and exogenously specified satiation levels. It is estimated using the “satiation demand” function, described in [Eom et al. 2013]( https://www.sciencedirect.com/science/article/pii/S0360544212006214). Therefore, commercial floorspace will increase as per capita GDP increases until a satiation point is achieved.
+
+Finally, note that GCAM also includes the option to specify [floorspace exogenously](details_energy.html#optional-exogenous-floorspace).
+
+#### Building energy demand
+
+The future evolution of building energy use within each region, socioeconomic group, type of building, and service is shaped by changes in (1) floorspace, (2) the level of building service per unit of floorspace, and (3) fuel and technology choices by consumers, which are driven by fuel and non-fuel cost, shareweights and logit parameters ([(Clarke et al.,  2018)](https://www.sciencedirect.com/science/article/pii/S0140988318300112), [(Sampedro et al., 2022)](https://iopscience.iop.org/article/10.1088/1748-9326/ac43df)).
+Focusing on service demand, the model disaggregates three energy services for each building type: heating, cooling, and “other” services. Heating and cooling are considered thermal services, while “other” is categorized as generic. GCAM has a flexible structure, so it is possible to implement a more detailed service disaggregation if data is available. For example, given the large amount of data available, GCAM-USA models 14 residential services, namely cooling, heating, cooking, lighting, water heating, clothes dryer, clothes washer, computers, dishwashers, freezers, furnace fans, refrigerators, televisions, and other energy services. 
+
+In addition, the model distinguishes between “modern” versus “traditional” services. Traditional services include services provided by coal and traditional biomass. Modern services are the main energy source in developed economies, and it is set that their demand will increase as income raises, until a satiation level is achieved. Therefore, the demand for modern energy services depends on historical trends, satiation levels, service affordability (income/ServicePrice), and the thermal load, which includes a range of parameters:
+* Heating/cooling degree days (HDD or CDD) represent how much (in degrees), and for how long (in days) the temperature was below (above) a determined level. The model includes the option to read in HDDs and CDDs from different Earth-System models, and with and without incorporating the future effects of climate change. 
+* Building shell conductivity: this parameter combines indices for cooling and heating conductivity in a single value, so it indicates the “overall” building efficiency. The parameter can be set per region and sector (residential/commercial), and by default, it assumes a gradual efficiency improvement up to 2040 based on projections from the Annual Energy Outlook (U.S. EIA), with no GDP-based decile specific improvements for the longer term. 
+* R is the ratio of floorspace to building area. By default, it is assumed to be 5.5 for all regions without varying over time. It could also be set per region and sector. 
+* IG represents the internal gains per unit of floorspace associated with the heat released by “other” energy services (f.e. appliances) dividing the final energy of other services by the efficiency of each technology. λ is the internal-gains-scalar that adjusts the internal gains for the different regions by multiplying the regional internal gains with the ratio of degree days to USA degree days.
+
+On the other hand, future demand of traditional services does not follow the same path as modern sources. Historical data clearly shows that the consumption of these traditional fuels decreases as income rises. Therefore, demand for traditional services is driven by a functional form that represents the inverse of service affordability, measured as the income divided by the service price. Using affordability instead of income allows to capture some price dynamics that may have an impact on specific scenarios. For example, in a low-carbon scenario with a higher price of coal, the phase-out of residential coal would be even faster, as would be expected in real world.
+
+Finally, we note that the absolute demand for each service is obtained by multiplying the demand per unit of service by the total floorspace.
+
 
 ### Industry
 
@@ -213,39 +250,42 @@ $$ f_{t,r} = (UnadjSat_{r} – a * log(PD_{t,r})) * exp(-b * exp(-c * log(GDPpc_
 
 `UnadjSat` is the maximum per capita floorspace value a consumer demands at his maximum income level. Below this satiation point, the marginal utility of floorspace is positive. Above that point, the marginal utility is negative. As shown in the equation, this value is adjusted based on the population density (`PD`), which is calculated as the population divided by “habitable” land (all land except “rock and dessert” and “tundra” ). `GDPpc` is per capita GDP.  
 `a`, `b`, and `c` are constant parameters that have been estimated in the econometric analysis developed in the model data system ([LA144.building_det_flsp.R](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/zchunk_LA144.building_det_flsp.R#L400)). They represent the effect of the population density and the per capita income, respectively, in the estimation of per capita floorspace.  
-Note that for USA, parameters have been estimated outside the model (using subnational data) and are read in by the DS.  
-Finally, parameter `k` is the regional bias adder, which represents the difference between the observed and estimated per capita floorspace in the final calibration year (2015). It captures the “unobservable” effects that cannot be captured with the used variables, and it is kept constant over the whole time horizon.
-
+Note that for USA, parameters have been estimated outside the model (using subnational data) and are read in by the gcamdata system.  
+Finally, parameter `k` is the regional bias adder, which represents the difference between the observed and estimated per capita floorspace in the final calibration year. It captures the “unobservable” effects that cannot be captured with the used variables, and it is kept constant over the whole time horizon.
 
 #### Commercial
 
 The demand for per-capita commercial floorspace, *f*, in future time period *t* is shown below. In this equation, "satiation" indicates the level of service demand at which increases in income do not lead to further demand.
 
-$$
-f_{t}=(s-a)[1-exp(-\frac{ln(2)}{\mu}I_{t}(\frac{P_{t}}{P_{t0}})^\beta)]+a
-$$
+$$ f_{t,r}=s_{r} * [1-exp(-\frac{ln(2)}{\mu_{r}}I_{t,r}] + a_{r} $$
 
-where *s* is the exogenous satiation level of per-capita floorspace, *μ* is the per-capita GDP at 50% of the satiation level, *a* is an exogenous tuning parameter, *P* is the total levelized cost of the modeled energy services per unit floorspace, *I* is per capita GDP, and $$\beta$$ is the price elasticity of averaged energy services.
+So per capita floorspace demand (`f`) in period `t`, region `r`, would depend on an exogenously specified satiation level (`s`), the “satiation impedance” calibration parameter (`μ`), the income per capita and a bias-correction parameter (`a`).
+
 
 ### Building service demand
 
-The demands of generic services per unit floorspace, *d*, are shown in the equation below. Note that the satiation level indicates the demand at which increases in income do not lead to further demands for services (above this point, marginal utility of the service becomes negative).
+#### Modern Services
 
-$$
-d_{t}=k[1-exp(-\frac{ln(2)}{\mu}\frac{I_{t}}{P_{t}})]
-$$
+The demands of generic services per unit floorspace, d, in period t, region r, and for socioeconomic group i are shown in the equation below:
 
-where *k* is a calibration parameter that captures satiation effects, and the other parameters are the same as the equation above, with the exception that here *P* refers to the price of the service. Space heating (*h*) and cooling (*c*) services use a similar approach with some additional considerations, shown below:
+$$ d_{t}=k * [1-exp(-\frac{ln(2)}{\mu}\frac{I_{t}}{P_{t}})] $$
 
-$$
-h_{t}=k*(HDD_{t}*\eta_{t}*R_{t}-\lambda_{h}*IG_{t})[1-exp(-\frac{ln(2)}{\mu}\frac{I_{t}}{P_{t}})]
-$$
+where `k` is a calibration parameter that captures satiation effects, and the other parameters are the same as the equation above (commercial floorspace), with the exception that here `P` refers to the price of the service. 
 
-$$
-c_{t}=k*(CDD_{t}*\eta_{t}*R_{t}+\lambda_{c}*IG_{t})[1-exp(-\frac{ln(2)}{\mu}\frac{I_{t}}{P_{t}})]
-$$
+Space heating (`h`) and cooling (`c`) from modern services use a similar approach with some additional considerations, shown below:
 
-where *HDD* and *CDD* refer to heating and cooling degree days, respectively, η is the exogenous average building shell conductance, R is the exogenous average floor-to-surface ratio of buildings, IG is the internal gain heat from other building services, and λ is an exogenous internal gain scaler. In this way, the demands of heating and cooling services per unit of floorspace may vary depending on changes in climate, building shell characteristics, and the amount of internal gain heat coming from other modeled services.
+$$ h_{t,r,i}=k_{r} * (HDD_{t,r}*\eta_{t,r,i}*R_{t,r,i}-\lambda_{h,r}*IG_{t,r,i}) * [1-exp(-\frac{ln(2)}{\mu_{r}}\frac{I_{t,r,i}}{P_{t,r}})] $$
+
+$$ c_{t,r,i}=k_{r} * (CDD_{t,r}*\eta_{t,r,i}*R_{t,r,i}-\lambda_{c,r}*IG_{t,r,i}) * [1-exp(-\frac{ln(2)}{\mu_{r}}\frac{I_{t,r,i}}{P_{t,r}})] $$
+
+where HDD and CDD refer to heating and cooling degree days, respectively, η is the exogenous average building shell conductance, R is the exogenous average floor-to-surface ratio of buildings, IG is the internal gain heat from other building services, and λ is an exogenous internal gain scaler. In this way, the demands of heating and cooling services per unit of floorspace may vary depending on changes in climate, building shell characteristics, and the amount of internal gain heat coming from other modeled services. The function shows that the two calibration parameters (k and μ) are estimated at region level (they don’t have the i sub-index). Note that the prices used in the estimation of the calibration parameters (P) are equal for all consumers due to lack of subnational data.
+
+#### Traditional Services
+
+Demand for a traditional service (s, heating or orthers), fuel (f, coal or TradBio) in region r, period t, and for consumer group i, will be estimated based on per capita GDP (I), service price (P), two calibration parameters (X and Y), and a bias adder that will be calculated at region level and split equally across consumers.
+
+$$ d_{t,r,i,f,s}=\frac{X_{f,s}}{\frac{I_{t,r,i}}{P_{t,r,f,s}}+ Y_{f,s}} + k_{r,f,s} $$
+
 
 ### Transportation service demand
 
@@ -395,6 +435,8 @@ Changes in climate will affect residential energy demand [(Zhou et al. 2013)](ht
 
 Residential energy will increase by the end of the century given the projected increase in population and GDP. The implementation of a climate policy promotes the electrification of the sector [(Eom et al.,  2013)](https://www.sciencedirect.com/science/article/pii/S0360544212006214).
 
+Alternative income distribution pathways will impact residential energy demand, emissions, and power sector investments [(Sampedro et al., 2022)](https://iopscience.iop.org/article/10.1088/1748-9326/ac43df).
+
 ### Modeling Energy-for-water in GCAM
 
 [Kyle et al. (2021)](demand_energy.html#kyle2021) demonstrate a surprisingly small net impact on future global energy use from disaggregating energy-for-water in GCAM, as the water-related demands of electricity often parallel the future projected energy growth in the commercial and industrial sectors from which EFW energy is re-allocated. For example, energy for industrial water abstraction, treatment, and post-use wastewater treatment scale with the sector's water demands, which are driven by the sector's output, which is also what drives its demands for energy in the first place. So, representing energy-for-water explicitly in the model does not necessarily cause a departure in projected future energy demands, depending on the sector and region. The study also demonstrates that efforts to improve water provision and quality, as specified in Sustainable Development Goal #6, build off of one another in terms of energy-for-water. Expanding municipal water access to all people will increase the volume of wastewater generated, and parallel efforts to treat the maximum possible portion of wastewater will further increase the energy required for wastewater treatment, to levels that are multiples above a "business-as-usual" scenario.
@@ -489,6 +531,8 @@ Residential and commercial
 <a name="Ren2021">[Ren et al. 2021]</a> Ren, Ming, et al. "Decarbonizing China's iron and steel industry from the supply and demand sides for carbon neutrality." Applied Energy298 (2021): 117209. (Supplementary Material)
 
 <a name="rohwer2007">[Rohwer et al. 2007]</a> Rohwer, J., Gerten, D., and Lucht, W. 2007. *Development of Functional Irrigation Types for Improved Global Crop Modelling*. PIK Report No. 104, Potsdam Institute for Climate Impact Research. [Link](https://www.pik30 potsdam.de/research/publications/pikreports/.files/pr104.pdf)
+
+<a name="sampedro2022">[Sampedro et al. 2022]</a> Sampedro, J., Iyer, G., Msangi, S., Waldhoff, S., Hejazi, M. and Edmonds, J.A. 2022. Implications of different income distributions for future residential energy demand in the US. *Environmental Research Letters* 17(1), 014031. [Link](https://iopscience.iop.org/article/10.1088/1748-9326/ac43df)
 
 <a name="sanders2012">[Sanders and Webber 2012]</a> Sanders, K., and Webber, M. 2012. Evaluating the energy consumed for water use in the United States. *Environmental Research Letters* 7(3), 0034034. [Link](https://iopscience.iop.org/article/10.1088/1748-9326/7/3/034034/meta)
 
