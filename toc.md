@@ -52,6 +52,7 @@ gcam-version: v7
 * [How to Set Up and Build ](gcam-build.html)
 * [GCAM Developer's Guide](dev-guide.html)
 * [GCAM Fusion Usage Guide](fusion.html)
+* [Community guidelines for peer-reviewed journal articles using GCAM](community-guide.html)
 * [References](references.html)
 * [Updates from the Previous Release](updates.html)
 * [GCAM-3](v3.2/toc.html)
