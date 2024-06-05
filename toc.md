@@ -1,7 +1,7 @@
 ---
 layout: index
 title: Table of Contents
-gcam-version: v7
+gcam-version: v7.1
 ---
 ## GCAM Documentation Topics
 
@@ -64,5 +64,6 @@ gcam-version: v7
 * [GCAM-5.3](v5.3/toc.html)
 * [GCAM-5.4](v5.4/toc.html)
 * [GCAM-6.0](v6.0/toc.html)
+* [GCAM-7.0](v7.0/toc.html)
 
 

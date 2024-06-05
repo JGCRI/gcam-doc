@@ -1,7 +1,7 @@
 ---
 layout: index
 title: GCAM-USA
-gcam-version: v7
+gcam-version: v7.1
 ---
 
 The Global Change Analysis Model (GCAM) and GCAM-USA

@@ -3,7 +3,7 @@ layout: index
 title: Common Assumptions
 prev: diagram.html
 next: inputs_demand.html
-gcam-version: v7 
+gcam-version: v7.1
 ---
 
 These assumptions are shared throughout the GCAM model.

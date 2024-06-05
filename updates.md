@@ -3,8 +3,20 @@ layout: index
 title: Recent updates
 prev: fusion.html
 next: 
-gcam-version: v7
+gcam-version: v7.1
 ---
+GCAM v7.1 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.11481167.svg)](https://doi.org/10.5281/zenodo.11481167)
+1. [Adding detail to Forest sectors in GCAM](cmp/369-Adding_Detail_To_Forestry_Sector.pdf)
+2. [Hydrogen Update](cmp/386-Hydrogen_Update.pdf)
+3. [Ammonia Trade](cmp/389-Ammonia_Trade.pdf)
+4. [Biomass Oil Sharing Bugfix](cmp/392-Biomass_Oil_Sharing_Bugfix.pdf)
+5. [Pulp and paper industry in GCAM linked explicitly to forest cover](cmp/370-Forest_Pulp_and_paper_industry.pdf)
+6. [AgLU Paramater Updates](cmp/393-AgLU_Parameters_Update.pdf)
+7. [Food Processing Detailed Industry](cmp/377-FoodProcessing.pdf)
+8. [Residential Floorspace and Energy Demands by Income Decline](cmp/362-Multiple_consumers_in_residential_buildings.pdf)
+9. [Agriculture and Food Storage](cmp/382-AgFoodStorage.pdf)
+10. Hector v3.2
+11. Final Bugfix before GCAM 7.1
 
 GCAM v7.0 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8010145.svg)](https://doi.org/10.5281/zenodo.8010145)
 1. [Fix Extrapolation in Residue Biomass](cmp/366-Fix_Extrapolation_in_Residue_Biomass.pdf)

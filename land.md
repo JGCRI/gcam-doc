@@ -3,7 +3,7 @@ title: "The GCAM Land Allocation Module"
 layout: index
 prev: diagram.html
 next: supply_land.html
-gcam-version: v7
+gcam-version: v7.1
 ---
 
 # Table of Contents
@@ -223,6 +223,8 @@ By default land that is classified as Suitable and Unprotected (No 2 from the ab
 In a policy regime, we can choose to put a price on land-use change CO<sub>2</sub> emissions that is related to the price on fossil fuel and industrial CO<sub>2</sub> emissions. The land carbon price can be any multiplier of the fossil fuel carbon price. This factor is applied at the geopolitical region level, and can be differentiated across regions. We model this policy as a subsidy to land-owners for the holding carbon stocks, as opposed to a tax/subsidy on the change in carbon in land. Specifically, the subsidy is equal to the carbon price x the carbon density x a discount factor to account for the amount of time it takes carbon to accumulate x a discount factor to annualize the subsidy.
 
 An example file is included to implement this policy is included in GCAM; see [global_uct.xml](https://github.com/JGCRI/gcam-core/blob/master/input/policy/global_uct.xml).  
+
+Since GCAM `v7.1`, the method for implementing land carbon policy has been updated to allow setting a minimum threshold for carbon density. This ensures that only land with carbon density higher than the threshold is credited. The default assumption is to set the threshold for soil carbon density in a region-basin to the carbon density value of the cropland in the same region-basin. In particular, the option of `Min_Soil_C_at_Cropland = TRUE` to the function of `add_carbon_info` in gcamdata. See additional details in [CMP #393](cmp/393-AgLU_Parameters_Update.pdf).
 
 ### Bioenergy Constraints
 

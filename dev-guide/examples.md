@@ -1,7 +1,7 @@
 ---
 layout: index
 title: GCAM Development Examples
-gcam-version: v7
+gcam-version: v7.1
 devguide: dev-guide.html
 ---
 ## GCAM Development Examples

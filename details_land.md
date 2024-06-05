@@ -3,7 +3,7 @@ layout: index
 title: The GCAM Land Model
 prev: land.html
 next: land.html
-gcam-version: v7 
+gcam-version: v7.1
 ---
 
 This page provides more detailed explanations of the descriptions provided in the [land](land.html) modeling page.
@@ -22,13 +22,13 @@ This page provides more detailed explanations of the descriptions provided in th
 
 ## Land Sharing Approach 
 
-Economic land use decisions in GCAM are based on a logit model of sharing based on relative inherent profitability of using land for competing purposes. The logit approach was developed by McFadden (1974) to describe the distribution of consumer choice, but a similar mathematical approach works well here for our purposes. The interpretation of this sharing system in GCAM is that there is a distribution of profit behind each competing land use within a region, rather than a single point value. Each competing land use option has a potential average profit over its entire distribution. The share of land allocated to any given use is based on the probability that that use has a highest profit among the competing uses. The relative potential average profits are used in the logit formulation, where an option with a higher average profit will get a higher share than one with a lower average profit. However, at the margin, the profits of competing options are equal. In essence, the sharing can therefore be considered optimal, but the assumption of a distribution of profits makes it very different from a constrained linear optimization approach.
+Economic land use decisions in GCAM are based on a logit model of sharing based on relative inherent profitability of using land for competing purposes. The logit approach was developed by McFadden (1974) to describe the distribution of consumer choice, but a similar mathematical approach works well here for our purposes. The interpretation of this sharing system in GCAM is that there is a distribution of profit behind each competing land use within a region, rather than a single point value. Each competing land use option has a potential average profit over its entire distribution. The share of land allocated to any given use is based on the probability that that use has a highest profit among the competing uses. The relative potential average profits are used in the logit formulation, where an option with a higher average profit will get a higher share than one with a lower average profit. However, at the margin, the profits of competing options are equal. In essence, the sharing can therefore be considered optimal, but the assumption of a distribution of profits makes it very different from a constrained linear optimization approach. 
 
 In GCAM, competing uses of land are nested within land nodes. Within each land node, it is generally assumed to be easier to substitute products, so logit exponents are higher to indicate tighter competition. Examples include switching food crops from one to another and converting forests from unmanaged categories to logging forests. Substitution across land nodes is also allowed but is assumed to be more difficult than within land nodes.  We implement this philosophy by setting lower logit exponents via input data. For example, the expansion of cropland into pasture is more difficult than expansion of wheat land into corn land.
 
 Although relative average profit rates are used in the logit sharing equations, the theory behind the math is that land shares are determined so the land is allocated across uses up until the point at which the marginal profit rates are equal to each other.  Therefore, the land values at the margin are also equal. As a result, all land uses within a nesting structure have equal value at the margin and further substitution will not increase total profits. If one option has a higher potential average profit rate than a second, it is assumed that option has a greater proportion of its distribution of profit rates that will exceed the marginal profit rate than the second option.  Therefore, this option will receive a higher share, but unlike a simple optimization model it will not get all of the land in the node.
 
-Finally, because the logit sharing approach reflects non-linear representations of crop profits and market share, it results in diminishing returns to scale as land uses expand further from historical values. In contrast to a linear model with constant returns to scale, the GCAM approach does not require explicit constraints on land use to govern behavior. See Wise et al. (2014) for more discussion about this effect and the relationship between logit exponents and land use change elasticities.
+Finally, because the logit sharing approach reflects non-linear representations of crop profits and market share, it results in diminishing returns to scale as land uses expand further from historical values. In contrast to a linear model with constant returns to scale, the GCAM approach does not require explicit constraints on land use to govern behavior. See [Wise et al. (2014)](https://doi.org/10.1142/S2010007814500031) for more discussion about this effect and the relationship between logit exponents and land use change elasticities. More recent parameter updates, based on [Zhao et al. (2024)](https://doi.org/10.1038/s41467-024-46575-3), are documented in [CMP #393](cmp/393-AgLU_Parameters_Update.pdf). 
 
 ## Land Nesting Strategy
 
@@ -99,4 +99,8 @@ Figure 3: Timescales for forest regrowth in GCAM.
 
 Samuelson, Paul A.; William D Nordhaus (2004), Economics, McGraw-Hill, ISBN 0-07-287205-5
 
+Wise, Marshall, Kate Calvin, Page Kyle, Patrick Luckow, and J. A. E. Edmonds. "Economic and physical modeling of land use in GCAM 3.0 and an application to agricultural productivity, land, and terrestrial carbon." Climate Change Economics 5, no. 02 (2014): 1450003.https://doi.org/10.1142/S2010007814500031
+
 Zhao, Xin, Katherine V. Calvin, and Marshall A. Wise. "The critical role of conversion cost and comparative advantage in modeling agricultural land use change." *Climate Change Economics* 11, no. 01 (2020): 2050004. https://doi.org/10.1142/S2010007820500049
+
+Zhao, Xin, Bryan K. Mignone, Marshall A. Wise, and Haewon C. McJeon. "Trade-offs in land-based carbon removal measures under 1.5 C and 2 C futures." *Nature Communications* 15, no. 1 (2024): 2297. https://doi.org/10.1038/s41467-024-46575-3

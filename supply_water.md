@@ -3,7 +3,7 @@ layout: index
 title: Supply of Water
 prev: inputs_supply.html
 next: outputs_quantity.html
-gcam-version: v7 
+gcam-version: v7.1
 ---
 
 # Table of Contents
