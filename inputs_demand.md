@@ -197,11 +197,11 @@ Note that in the supply utilization accounting data for both crops and livestock
 
 ##### Historical forest data
 
-Historical data for forest demand is provided in in [GCAMDATA_FAOSTAT_ForProdTrade_215Regs_Roundwood_1973to2020](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMDATA_FAOSTAT_ForProdTrade_215Regs_Roundwood_1973to2020) for forestry production, export and import data.
+Historical data for forest demand is provided in in [GCAMDATA_FAOSTAT_ForProdTrade_215Regs_Roundwood_1973to2020](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO) for forestry production, export and import data.
 
 ##### Historical food Calories (macronutrients) data
 
-Historical data for food Calories (and other macronutrients) is provided in in [GCAMDATA_FAOSTAT_MacroNutrientRate_179Regs_426Items_2010to2019](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMDATA_FAOSTAT_MacroNutrientRate_179Regs_426Items_2010to2019Mean.csv).
+Historical data for food Calories (and other macronutrients) is provided in in [GCAMDATA_FAOSTAT_MacroNutrientRate_179Regs_426Items_2010to2019](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO).
 
 ##### Income and price elasticity
 

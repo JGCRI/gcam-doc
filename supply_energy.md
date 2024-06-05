@@ -67,7 +67,8 @@ Hydropower is the simplest of all energy forms in GCAM; the quantity of hydropow
 
 ##### Biomass
 
-While most of the effort in modeling biomass supply is in the [agriculture and land use component](land.html), there is a renewable resource represented in the energy system, that generally refers to municipal and industrial wastes that can be used for energy purposes. The supply curves use the same functional form as described in the Wind section above, and the specific quantities are documented in [Gregg and Smith (2010)](supply_energy.html#gregg2010). Unlike other resources, the waste biomass supply curve is assumed to grow with GDP, as prescribed by the exogenous supply elasticity of GDP, or "gdpSupplyElast".
+While most of the effort in modeling biomass supply is in the [agriculture and land use component](land.html), there is a renewable resource represented in the energy system, that generally refers to municipal and industrial wastes that can be used for energy purposes. The supply curves use the same functional form as described in the Wind section above, and the specific quantities are documented in [Gregg and Smith (2010)](supply_energy.html#gregg2010). Unlike other resources, the waste biomass supply curve is assumed to grow with GDP, as prescribed by the exogenous supply elasticity of GDP, or "gdpSupplyElast". 
+The supply curve of the residual biomass is updated (in GCAM `v7.1`) based on information in [Hanssen et al. (2020)](https://doi.org/10.1007/s10584-019-02539-x), see [CMP #393](cmp/393-AgLU_Parameters_Update.pdf).
 
 ##### Traditional biomass
 
@@ -344,3 +345,5 @@ Hydrogen
 <a name="nrel2018">[NREL 2018]</a> National Renewable Energy Laboratory, 2018, *H2A: Hydrogen Analysis Production Models*, National Renewable Energy Laboratory. [Link](https://www.nrel.gov/hydrogen/h2a-production-models.html)
 
 <a name="zwart2006">[Zwart et al. 2006]</a> Zwart, R., Boerrigter, H., Deurwaarder, E.P., van der Meijden, C.M., and van Paasen, S.V.B. 2006. *Production of Synthetic Natural Gas (SNG) from Biomass: Development and operation of an integrated bio-SNG system*. Report ECN-E-06-018, Energy Research Centre of the Netherlands. [Link](https://www.ecn.nl/docs/library/report/2006/e06018.pdf)
+
+<a name="Hassen2020">[Hanssen et al. 2020]</a> Hanssen, S.V., Daioglou, V., Steinmann, Z.J.N., Hasegawa, T., Huijbregts, M.A.J., Van Vuuren, Hasegawa, T., Huijbregts, M.A.J., Van Vuuren, D.P., 2020. Biomass residues as twenty-first century bioenergy feedstock—a comparison of eight integrated assessment models. Climatic Change 163, 1569–1586. [Link](https://doi.org/10.1007/s10584-019-02539-x)
