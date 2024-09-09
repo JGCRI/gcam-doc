@@ -104,6 +104,14 @@ There are some naming conventions for a few emission species/sectors within GCAM
 * Emissions from most agricultural activities are suffixed with "\_AGR", except for burning of agricultural waste on fields (AWB), which are suffixed with "\_AWB". (This allows us to separate emissions from these distinct processes from the same technology.) These are in addition to emissions named without a suffix. So to obtain total emissions, the three variants of a given species should be added (e.g., CH4 emissions is the sum of CH4, CH4"\_AGR", and CH4"\_AWB".)
 * Sulfur dioxide (SO<sub>2</sub>) emissions are currently differentiated by four metaregions (SO2\_1,SO2\_2,SO2\_3,SO2\_4). These are kept separate for purposes of feeding the emissions information to the climate model; for emissions estimation, these different categories should be added to obtain global totals.
 
+##### Outlier Emission Factors
+
+Outlier air pollutant emission factors are replaced with the global (GCAM) or national (GCAM-USA) median.
+
+* GCAM: Outlier emission factors are identified as being two standard deviations above or three below the global median for a given pollutant, year, supplysector, subsector, and technology. These outliers are replaced with the global median for the given pollutant, year, supplysector, subsector, and technology. This method is applied to replace outlier emission factors for air pollutants for all supplysectors in the [CEDS data](https://github.com/JGCRI/CEDS) except for out_resources. The out_resources supplysector was not included since previous work implemented an alternate strategy to address outliers here, as additional processing needed to be done to exclude model regions that had very low resource production and did not yield reliable emission factors.
+
+* GCAM-USA: Outlier emission factors are identified as being two standard deviations above or three below the national median for a given pollutant, year, supplysector, subsector, and technology. These outliers, and emission factors that are missing or infinite, are replaced with the national median for the given pollutant, year, supplysector, subsector, and technology. This method is applied to replace outlier emission factors for air pollutants in the GCAM-USA transportation, electricity generation, buildings, and industrial energy use sectors.
+
 ### Equations 
 
 #### <a name="non-co2-ghg-emissions"/>Non-CO<sub>2</sub> GHG Emissions
