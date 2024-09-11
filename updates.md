@@ -15,8 +15,8 @@ GCAM v7.1 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.11481167.svg)](htt
 7. [Food Processing Detailed Industry](cmp/377-FoodProcessing.pdf)
 8. [Residential Floorspace and Energy Demands by Income Decline](cmp/362-Multiple_consumers_in_residential_buildings.pdf)
 9. [Agriculture and Food Storage](cmp/382-AgFoodStorage.pdf)
-10. Hector v3.2
-11. Final Bugfix before GCAM 7.1
+10. [Hector v3.2](cmp/397-Update_to_Hector_v3.2.0.pdf)
+11. [Final Bugfix before GCAM 7.1](cmp/391-GCAM_7.0_Bugfixes.pdf)
 
 GCAM v7.0 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8010145.svg)](https://doi.org/10.5281/zenodo.8010145)
 1. [Fix Extrapolation in Residue Biomass](cmp/366-Fix_Extrapolation_in_Residue_Biomass.pdf)
