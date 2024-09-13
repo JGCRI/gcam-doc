@@ -15,8 +15,8 @@ GCAM v7.1 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.11481167.svg)](htt
 7. [Food Processing Detailed Industry](cmp/377-FoodProcessing.pdf)
 8. [Residential Floorspace and Energy Demands by Income Decline](cmp/362-Multiple_consumers_in_residential_buildings.pdf)
 9. [Agriculture and Food Storage](cmp/382-AgFoodStorage.pdf)
-10. Hector v3.2
-11. Final Bugfix before GCAM 7.1
+10. [Hector v3.2](cmp/397-Update_to_Hector_v3.2.0.pdf)
+11. [Final Bugfix before GCAM 7.1](cmp/391-GCAM_7.0_Bugfixes.pdf)
 
 GCAM v7.0 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8010145.svg)](https://doi.org/10.5281/zenodo.8010145)
 1. [Fix Extrapolation in Residue Biomass](cmp/366-Fix_Extrapolation_in_Residue_Biomass.pdf)
@@ -26,7 +26,7 @@ GCAM v7.0 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8010145.svg)](http
 5. [Miscellaneous Bug Fixes Part 2](cmp/375-Miscellaneous_Bugfixes.pdf)
 6. [GCAM v6.0 transportation bugfix](cmp/367-GCAM_v6.0_transportation_bugfix.pdf)
 7. [Adding fugitive CO2 emissions from fossil resources](cmp/368-Adding_fugitive_CO2_emissions.pdf)
-8. [AgLU data and method updates (connecting land hectares to food calories)](cmp/360_AgLU_data_and_methods.pdf)
+8. [AgLU data and method updates (connecting land hectares to food calories)](cmp/360-AgLU_data_and_methods.pdf)
 9. [GCAM-USA nonCO2 GHG emissions in industrial and urban processes](cmp/379-GCAM-USA_nonco2_industrial_urban_proc.pdf)
 10. [Detailed Natural Gas Trade](cmp/350-Detailed_Natural_Trade.pdf)
 11. [Natural Gas Final Grade Cost and Miscellaneous Solution Improvements](cmp/388-Natural_Gas_Final_Grade_Cost.pdf)
