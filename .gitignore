@@ -2,6 +2,7 @@
 _site
 
 .jekyll-metadata
+.jekyll-cache
 
 # Emacs stuff
 *~
