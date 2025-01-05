@@ -258,7 +258,7 @@ The GCAM-USA air pollutant representation is focused on energy-emissions interac
 <br />
 BC and OC: The NEI does not include BC/OC emissions. BC/OC emissions factors are derived from PM<sub>2.5</sub> emissions using BC/OC ratios. This can lead to some inconsistency between GCAM USA BC/OC emissions and PM<sub>2.5</sub> emissions. In practice this is usually not a significant issue because most analysis uses either BC/OC (climate-focused analysis) or PM<sub>2.5</sub> (air pollution focused analysis) emissions, but not both.
 
-For the power sector, only the GCAM-USA configuration with endogenous cooling technologies (elec_segments_water_USA.xml) is compatible with GCAM-USA air pollutant emissions. For industrial energy use, emission factors for future years are applied assuming industrial sector vintaging (industry_vintage_USA.xml) is being used; not utilizing the industry vintaging feature could lead to discontinuity in future air pollutant emissions.
+For the power sector, only the GCAM-USA configuration with endogenous cooling technologies (elec_segments_water_USA.xml) is compatible with GCAM-USA air pollutant emissions. This version also includes differentiated EFs for CCS and non-CCS technologies. For industrial energy use, emission factors for future years are applied assuming industrial sector vintaging (industry_vintage_USA.xml) is being used; not utilizing the industry vintaging feature could lead to discontinuity in future air pollutant emissions.
 
 References
 ===============
