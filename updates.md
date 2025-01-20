@@ -6,6 +6,9 @@ next:
 gcam-version: v7.1
 ---
 
+GCAM v7.3 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14629770.svg)](https://doi.org/10.5281/zenodo.14629770)
+* [Updated approach for intermittent electricity integration](cmp/394_Intermittent_electricity_integration.pdf)
+
 GCAM v7.2 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.13946379.svg)](https://doi.org/10.5281/zenodo.13946379)
 * [Updating the SSP Database (v3.0)](cmp/399-SSP_Database2024.pdf)
 
