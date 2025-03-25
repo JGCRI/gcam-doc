@@ -179,7 +179,7 @@ cd <GCAM Workspace>/cvs/objects/build/linux
 make gcam -j 8
 ```
 
-Note the `-j 8` is simply to compile multiple sources files at a time (set as appropriate for your system configuration) and is only necessary to speed up the processes.  Once complete an executable will be copied to `<GCAM Workspace>/exe` and can be run from that directory with `gcam.exe -C config_file.xml`.
+Note the `-j 8` is simply to compile up to eight source files at a time (set as appropriate for your system configuration) and is only necessary to speed up the processes.  Once complete an executable will be copied to `<GCAM Workspace>/exe` and can be run from that directory with `gcam.exe -C config_file.xml`.
 
 #### 4.1.1 Recommended configuration using Ubuntu 22.04
 Assuming the libraries were installed via the `apt` package manager using a command like the following:
@@ -228,7 +228,7 @@ Finally select menu option `Build -> Build Solution` to build GCAM.  Once comple
 The Java components of GCAM `XMLDBDriver.jar` and `ModelInterface.jar` are included with the GCAM source code (in the Git repository or release package) and are inherently cross platform.  Users will not typically need to recompile these unless they need to apply bug fixes or feature updates.  In such a case simple Makefiles have been provided.  Note the [Java compiler](#23-java) is required.  In both cases users will need the `<GCAM Workspace>/libs/jars` which are included in both the Mac and Windows Release Package or from the [ModelInterface Releases on Github](https://github.com/JGCRI/modelinterface/releases).
 
 ### 5.1 Recompiling ModelInterface.jar
-Users will need to set up the classpath and run the following.  Note that the ModelInterface is developed in it's [own Git repository](https://github.com/JGCRI/modelinterface) but GCAM contains a submodule reference pointing specifically to the version known to work with your version of GCAM.
+Users will need to set up the CLASSPATH and run the following.  Note that the ModelInterface is developed in it's [own Git repository](https://github.com/JGCRI/modelinterface) but GCAM contains a submodule reference pointing specifically to the version known to work with your version of GCAM.
 
 ```
 export CLASSPATH=<GCAM Workspace>/libs/jars/\*
