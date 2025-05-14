@@ -24,7 +24,7 @@ GCAM's supply inputs include information on production, prices, technology cost 
 
 | Name | Description | Type | Source | Resolution | Unit |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| Historical supply of energy | Supply of energy in the historical period; used for initialization/calibration of GCAM | External data | [IEA](#iea2019) | Specified by fuel, transformation sector, country, and year |  ktoe and GWh |
+| Historical supply of energy | Supply of energy in the historical period; used for initialization/calibration of GCAM | External data | [IEA](#iea2023) | Specified by fuel, transformation sector, country, and year |  ktoe and GWh |
 | CO<sub>2</sub> capture rates | Fraction of CO2 captured in CCS technologies. | Assumption |  | Specified by technology and year | unitless |
 | Retirement rules | For vintaged technologies, GCAM requires the user to specify the lifetime, and the parameters required for phased and profit-based shutdown. | Assumption |  | Specified by technology and year | Years (for lifetime), unitless for others |
 | Logit exponents | GCAM requires the user to specify the logit exponents that determine the substitutability between technologies. | Assumption |  | Specified by sector and subsector | N/A |
@@ -244,7 +244,7 @@ Schematic of the restructuring of the supply-utilization accounts in GCAM to sep
 
 <a name="cdiac2017">[CDIAC 2017]</a> Boden, T., and Andres, B. 2017, *National CO2 Emissions from Fossil-Fuel Burning, Cement Manufacture, and Gas Flaring: 1751-2014*, Carbon Dioxide Information Analysis Center, Oak Ridge National Laboratory. [Link](http://cdiac.ess-dive.lbl.gov/ftp/ndp030/nation.1751_2014.ems)
 
-<a name="iea2019">[IEA 2019]</a> International Energy Agency, 2019, *Energy Balances of OECD Countries 1960-2017 and Energy Balances of Non-OECD Countries 1971-2017*, International Energy Agency, Paris, France. 
+<a name="iea2023">[IEA 2023]</a> International Energy Agency, 2023, *Energy Balances of OECD Countries 1960-2022 and Energy Balances of Non-OECD Countries 1971-2022*, International Energy Agency, Paris, France. 
 
 <a name="kim2016">[Kim et al. 2016]</a> Kim SK, Hejazi M, et al. (2016). *Balancing global water availability and use at basin scale in an integrated assessment model*. Climatic Change 136:217-231. [Link](http://link.springer.com/article/10.1007/s10584-016-1604-6/fulltext.html)
 

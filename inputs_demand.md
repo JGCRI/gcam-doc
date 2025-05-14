@@ -24,8 +24,8 @@ Table 1: External inputs used for demand of energy<sup>[1](#table_footnote1)</su
 
 | Name | Description | Type | Source | Resolution | Unit |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| Historical demand for energy | Demand for energy in the historical period; used for initialization/calibration of GCAM | External data | IEA | Specified by demand, fuel, country, and year |  ktoe and GWh |
-| Historical demand for floorspace | Demand for floorspace in the historical period; used for initialization/calibration of GCAM | External data | IEA, Odyssee, Other | Specified by country, and year |  BM2 and m2/pers |
+| Historical demand for energy | Demand for energy in the historical period; used for initialization/calibration of GCAM | External data | [IEA](#iea2023) | Specified by demand, fuel, country, and year |  ktoe and GWh |
+| Historical demand for floorspace | Demand for floorspace in the historical period; used for initialization/calibration of GCAM | External data | [IEA](#iea2023), Odyssee, Other | Specified by country, and year |  BM2 and m2/pers |
 | Historical service demand | Shares of residential and commercial TFE by service and region | External data | Various | Specified by country, service, and year |  Shares |
 | Price elasticity of demand | Elasticity determining how demand responds to changes in price | Assumption | | Specified by demand |  unitless |
 | Value of time in transit multiplier | Factor multiplied by the wage rate to determine the value of time in transit, used in the transportation module | Assumption | | Specified by demand |  unitless |
@@ -224,6 +224,8 @@ Parameters needed for the food demand module are determined by a separate model,
 <a name="faostat2016">[FAOSTAT]</a> FAO. 2016. *FAOSTAT Statistics Database*, Food and Agriculture Organization of the United Nations (FAO). [Link](http://www.fao.org/nr/water/aquastat/data/query/index.html?lang=en)
 
 <a name="hejazi2014">[Hejazi et al. 2014]</a> Hejazi, M., J. Edmonds, L. Clarke, P. Kyle, E. Davies, V. Chaturvedi, M. Wise, P. Patel, J. Eom, K. Calvin, R. Moss, and S. Kim. 2014. Long-term global water projections using six socioeconomic scenarios in an integrated assessment modeling framework. *Technological Forecasting and Social Change* 13, pp 112-123. [Link](https://www.sciencedirect.com/science/article/pii/S0040162513001169)
+
+<a name="iea2023">[IEA 2023]</a> International Energy Agency, 2023, *Energy Balances of OECD Countries 1960-2022 and Energy Balances of Non-OECD Countries 1971-2022*, International Energy Agency, Paris, France.
 
 <a name="kenny2009">[Kenny et al. 2009]</a> Kenny, J., N. Barber, S. Hutson, K. Linsey, J. Lovelace, M. Maupin. *Estimated use of water in the United States in 2005* Circular 1344, U.S. Geological Survey, U.S. Department of the Interior, Reston, Virginia. [Link](https://pubs.usgs.gov/circ/1344/pdf/c1344.pdf)
 
