@@ -122,11 +122,11 @@ For GCAM3.0 through GCAM4.4, the Agriculture and Land Use model subdivided the G
 
 ### Historical Years
 
-The GCAM data system can produce such data sets annually beginning in 1971. Currently, GCAM uses data from 1990, 2005, 2010, and 2015 to initialize the model, but could be initialized to any year beginning in 1971.
+The GCAM data system can produce such data sets annually beginning in 1971. Currently, GCAM uses data from 1990, 2005, 2010, 2015, and 2021 to initialize the model, but could be initialized to any year beginning in 1971.
 
 ### Future Years
 
-Currently, GCAM models the future from 2020 to 2100 in 5 year time steps. The time step is variable and can be changed in [the data system](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/constants.R). 
+Currently, GCAM models the future from 2025 to 2100 in 5 year time steps. The time step is variable and can be changed in [the data system](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/constants.R). 
 
 ## Economic Choice
 
