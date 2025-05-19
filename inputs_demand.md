@@ -12,7 +12,7 @@ GCAM's demand inputs include information on consumption and prices in the histor
 
 - [Energy](#energy)
 - [Water](#water)
-- [Food, Feed, and Forestry](#food--feed--forestry)
+- [Food, Feed, and Forestry](#food-feed-and-forestry)
 
 ## External Inputs
 
@@ -187,21 +187,21 @@ Note that for the Shared Socioeconomic Pathways (SSPs), different inputs are use
 
 ##### Historical demand for crops
 
-Historical demand for agricultural commodities is provided in supply utilization balances in [GCAMDATA_FAOSTAT_SUA_195Regs_530Items_2010to2019.csv.gz](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMDATA_FAOSTAT_SUA_195Regs_530Items_2010to2019.csv.gz) for food, feed, export, and import. 
+Historical demand for agricultural commodities is provided in supply utilization balances in [GCAMDATA_FAOSTAT_SUA.csv.gz](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMDATA_FAOSTAT_SUA.csv.gz) for food, feed, export, and import. 
 
 ##### Historical demand for livestock
 
-Historical demand for livestock commodities is provided in in supply utilization balances in [GCAMDATA_FAOSTAT_SUA_195Regs_530Items_2010to2019.csv.gz](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMDATA_FAOSTAT_SUA_195Regs_530Items_2010to2019.csv.gz) for food, feed, export, and import.
+Historical demand for livestock commodities is provided in in supply utilization balances in [GCAMDATA_FAOSTAT_SUA.csv.gz](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMDATA_FAOSTAT_SUA.csv.gz) for food, feed, export, and import.
 
 Note that in the supply utilization accounting data for both crops and livestock products, other balance elements, e.g., opening and closing stock, loss, seed use, etc., are also included. However, these elements are currently aggregated into "other use" in gcamdata.
 
 ##### Historical forest data
 
-Historical data for forest demand is provided in in [GCAMDATA_FAOSTAT_ForProdTrade_215Regs_Roundwood_1973to2020](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO) for forestry production, export and import data.
+Historical data for forest demand is provided in in [GCAMDATA_FAOSTAT_ForProdTrade](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMDATA_FAOSTAT_ForProdTrade.csv.gz) for forestry production, export and import data.
 
 ##### Historical food Calories (macronutrients) data
 
-Historical data for food Calories (and other macronutrients) is provided in in [GCAMDATA_FAOSTAT_MacroNutrientRate_179Regs_426Items_2010to2019](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO).
+Historical data for food Calories (and other macronutrients) is provided in in [GCAMDATA_FAOSTAT_MacroNutrientRate](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMDATA_FAOSTAT_MacroNutrientRate.csv.gz).
 
 ##### Income and price elasticity
 

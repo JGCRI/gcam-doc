@@ -41,7 +41,7 @@ The raw data used for historical land cover is mainly provided in [Land_type_are
 The arable land, temporary crops, and temporary fallow land are provided in [GCAMDATA_FAOSTAT_LandCover_229Regs_3Covers_1973to2020.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMDATA_FAOSTAT_LandCover_229Regs_3Covers_1973to2020.csv).  
 
 #### Historical Harvested Area
-Historical harvested area by crop and country is provided in [GCAMDATA_FAOSTAT_ProdArea_195Regs_271Prod160AreaItems_1973to2020.csv.gz](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMDATA_FAOSTAT_ProdArea_195Regs_271Prod160AreaItems_1973to2020.csv.gz) and [GCAMDATA_FAOSTAT_ProdArea_96Regs_16FodderItems_1973to2020.csv.gz](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMDATA_FAOSTAT_ProdArea_96Regs_16FodderItems_1973to2020.csv.gz).
+Historical harvested area by crop and country is provided in [GCAMDATA_FAOSTAT_NonFodderProdArea.csv.gz](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMDATA_FAOSTAT_NonFodderProdArea.csv.gz) and [GCAMDATA_FAOSTAT_FodderProdArea.csv.gz](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMDATA_FAOSTAT_FodderProdArea.csv.gz).
 
 The data used to separate crops into irrigated and rainfed is provided in [MIRCA_irrHA_ha.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/LDS/MIRCA_irrHA_ha.csv) and [MIRCA_rfdHA_ha.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/LDS/MIRCA_rfdHA_ha.csv).   
 
