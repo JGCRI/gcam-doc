@@ -3,7 +3,7 @@ title: "Demand for Energy"
 layout: index
 prev: inputs_demand.html
 next: outputs_quantity.html
-gcam-version: v7.1
+gcam-version: v8.0
 ---
 
 # Table of Contents

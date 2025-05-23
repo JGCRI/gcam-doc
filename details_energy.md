@@ -3,7 +3,7 @@ layout: index
 title: Additional details about the energy model
 prev: supply_energy.html
 next: supply_energy.html
-gcam-version: v7.1
+gcam-version: v8.0
 ---
 
 This page provides more detailed explanations of the descriptions provided in the [Energy Supply](supply_energy.html) and [Energy Demand](demand_energy.html) modeling pages.
