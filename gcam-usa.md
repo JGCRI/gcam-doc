@@ -7,7 +7,7 @@ gcam-version: v8.0
 The Global Change Analysis Model (GCAM) and GCAM-USA
 ------------------------------------------------------
 
-The GCAM model was expanded to include greater spatial detail in the USA region, referred to as GCAM-USA. In GCAM-USA the 50 U.S. states plus the District of Columbia (hereafter, the 51 states) are included as explicit regions that operate within the global GCAM model. Energy transformation (electricity generation and refined liquids production) and end-use demands (buildings, transportation, and industry) are modeled at the individual state level. Inter-state trade of all energy goods is considered, with state-specific consumer price mark-ups assigned for coal, natural gas, and refined liquids assigned based on price data from [EIA 2017b](gcam-usa.html#eia2017b).
+The GCAM model was expanded to include greater spatial detail in the USA region, referred to as GCAM-USA. In GCAM-USA the 50 U.S. states plus the District of Columbia (hereafter, the 51 states) are included as explicit regions that operate within the global GCAM model. Energy transformation (electricity generation and refined liquids production) and end-use demands (buildings, transportation, and industry) are modeled at the individual state level. Inter-state trade of all energy goods is considered, with state-specific consumer price mark-ups assigned for coal, natural gas, and refined liquids assigned based on price data from [EIA 2017](gcam-usa.html#eia2017).
 
 <img src="gcam-figs/gcam-usa.png" width="397" height="525" />
 
@@ -72,7 +72,7 @@ Finally, the USA-region's population and labor productivity assumptions were upd
 Developing a historical energy balance for model calibration
 ============================================================
 
-The first step to modeling at the 51 state level was to create energy balances--that is, production and consumption of different forms of energy by each modeled sector, fuel, and state. These data were developed from 1971 to the final historical year of 2015, and applied in the model base years of 1975, 1990, 2005, 2010, and 2015. In the data processing of the state-level energy data, the aggregated national GCAM-USA energy balances (i.e., all states added together) must still be equal to the corresponding flows in the USA region of the global GCAM data set, which are derived from International Energy Agency (IEA) Energy Balances. With this in mind, we use proportional allocations to disaggregate the US-level quantity flows to the states, utilizing state level data sets from the US Energy Information Agency (EIA). The EIA SEDS (State Energy Data System) was used as the primary data set for this purpose ([EIA 2017a](gcam-usa.html#eia2017a)). The main steps of the data processing methods are described in the subsequent sections.
+The first step to modeling at the 51 state level was to create energy balances--that is, production and consumption of different forms of energy by each modeled sector, fuel, and state. These data were developed from 1971 to the final historical year of 2021, and applied in the model base years of 1975, 1990, 2005, 2010, 2015, and 2021. In the data processing of the state-level energy data, the aggregated national GCAM-USA energy balances (i.e., all states added together) must still be equal to the corresponding flows in the USA region of the global GCAM data set, which are derived from International Energy Agency (IEA) Energy Balances. With this in mind, we use proportional allocations to disaggregate the US-level quantity flows to the states, utilizing state level data sets from the US Energy Information Agency (EIA). The EIA SEDS (State Energy Data System) was used as the primary data set for this purpose ([EIA 2022](gcam-usa.html#eia2022)). The main steps of the data processing methods are described in the subsequent sections.
 
 
 End-use sectors
@@ -303,9 +303,7 @@ References
 
 <a name="eia2014">[EIA 2014]</a> U.S. Energy Information Agency (EIA). 2014. Table 4. Biodiesel producers and production capacity by state in March 2014. <http://www.eia.gov/biofuels/biodiesel/production/table4.pdf>
 
-<a name="eia2017a">[EIA 2017a]</a> U.S. Energy Information Agency (EIA 2017a) State Energy Data System.  All consumption estimates in Btu, 1960-2017. <https://www.eia.gov/state/seds/sep_use/total/csv/use_all_btu.csv>.
-
-<a name="eia2017b">[EIA 2017b]</a> U.S. Energy Information Agency (EIA 2017b) Table E1. Primary Energy, Electricity, and Total Energy Price Estimates, 2017. <https://www.eia.gov/state/seds/data.php?incfile=/state/seds/sep_sum/html/sum_pr_tot.html&sid=US>
+<a name="eia2017">[EIA 2017]</a> U.S. Energy Information Agency (EIA 2017) Table E1. Primary Energy, Electricity, and Total Energy Price Estimates, 2017. <https://www.eia.gov/state/seds/data.php?incfile=/state/seds/sep_sum/html/sum_pr_tot.html&sid=US>
 
 <a name="eia2018a">[EIA 2018a]</a> U.S. Energy Information Agency (EIA 2018a) Electricity Data Browser. <https://www.eia.gov/electricity/data/browser/> (2018).
 
@@ -316,6 +314,8 @@ References
 <a name="eia2019">[EIA 2019]</a> U.S. Energy Information Agency (EIA 2019) Annual Energy Outlook 2019 with projections to 2050. <https://www.eia.gov/outlooks/archive/aeo19/> (2019).
 
 <a name="eia2020">[EIA 2020]</a> U.S. Energy Information Agency (EIA 2020) Annual Energy Outlook 2020 with projections to 2050. <https://www.eia.gov/outlooks/aeo/> (2020).
+
+<a name="eia2022">[EIA 2022]</a> U.S. Energy Information Agency (EIA 2022) State Energy Data System.  All consumption estimates in Btu, 1960-2020. <https://www.eia.gov/state/seds/sep_use/total/csv/use_all_btu.csv>.
 
 <a name="epa2015">[EPA 2015]</a> U.S. Environmental Protection Agency. 2015. Standards of Performance for Greenhouse Gas Emissions from New, Modified, and Reconstructed Stationary Sources: Electric Utility Generating Units, 80 Federal Register 205 (23 October 2015) (40 CFR parts 60, 70, 71, and 98): 64513, 64546-64547, <https://www.gpo.gov/fdsys/pkg/FR-2015-10-23/pdf/2015-22837.pdf> (Accessed 16 December 2016). 
 
