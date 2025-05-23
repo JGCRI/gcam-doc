@@ -24,7 +24,7 @@ GCAM subdivides the world into 32 geopolitical regions, representing countries o
 | Australia\_NZ	| Australia, New Zealand |
 | Brazil | Brazil |
 | Canada	    | Canada |
-| Central America and the Caribbean	 | Aruba, Anguilla, Netherlands Antilles, Antigua & Barbuda, Bahamas, Belize, Bermuda, Barbados, Costa Rica, Cuba, Cayman Islands, Dominica, Dominican Republic, Guadeloupe, Grenada, Guatemala, Honduras, Haiti, Jamaica, Saint Kitts and Nevis, Saint Lucia, Montserrat, Martinique, Nicaragua, Panama, El Salvador, Trinidad and Tobago, Saint Vincent and the Grenadines |
+| Central America and the Caribbean	 | Aruba, Anguilla, Netherlands Antilles, Antigua & Barbuda, Bahamas, Belize, Bermuda, Barbados, Costa Rica, Cuba, Cayman Islands, Dominica, Dominican Republic, Guadeloupe, Grenada, Guatemala, Honduras, Haiti, Jamaica, Saint Kitts and Nevis, Saint Lucia, Montserrat, Martinique, Nicaragua, Panama, El Salvador, Trinidad and Tobago, Saint Barthelemy, Sint Eustatius and Saba Bonaire, Saint Vincent and the Grenadines |
 | Central Asia | Armenia, Azerbaijan, Georgia, Kazakhstan, Kyrgyzstan, Mongolia, Tajikistan, Turkmenistan, Uzbekistan |
 | China | China |
 | Colombia | Colombia |
@@ -32,7 +32,7 @@ GCAM subdivides the world into 32 geopolitical regions, representing countries o
 | EU-15         |	Andorra, Austria, Belgium, Denmark, Finland, France, Germany, Greece, Greenland, Ireland, Italy, Luxembourg, Monaco, Netherlands, Portugal, Sweden, Spain, United Kingdom |
 | Europe\_Eastern | Belarus, Moldova, Ukraine |
 | European Free Trade Association |Iceland, Norway, Switzerland |
-| Europe\_Non\_EU | Albania, Bosnia and Herzegovina, Croatia, Macedonia, Montenegro, Serbia, Turkey |
+| Europe\_Non\_EU | Albania, Bosnia and Herzegovina, Croatia, Kosovo, Macedonia, Montenegro, Serbia, Turkey |
 | India | India |
 | Indonesia | Indonesia |
 | Japan |	Japan |
