@@ -99,8 +99,7 @@ The remaining industrial sectors are collectively modeled as "Other industry", a
 
 #### Iron and Steel
 
-The Iron and Steel sector in GCAM consists of three distinct subsectors: Basic Oxygen Furnace (BOF), Electric Arc Furnace with scrap (EAF), and EAF with Direct Reduced Iron (DRI). Each subsector includes several competing technologies, such as fossil fuels w/ & w/o CCS, electricity, hydrogen, and biomass. Globally consistent cost assumptions for technologies in each subsector are estimated from the literature ([Ren et al. 2021](demand_energy.html#Ren2021)
-;[Santos 2013](demand_energy.html#Santos2013)). Historical Iron and steel energy use is calibrated using energy data from IEA (flow codes include IRONSTL, TBLASTFUR, EBLASTFUR, TCOKEOVS, and ECOKEOVs; for definitions see [IEA 2021](demand_energy.html#iea2021)) and steel production from the World Steel Association (WSA). The income elasticities that drive future iron and steel production across GCAM regions are estimated using NLIT (Non-linear inverse with time-efficiency-factor) function ([Van Ruijven et al. 2016](demand_energy.html#VanRuijven2016)).
+The Iron and Steel sector in GCAM consists of three distinct subsectors: Basic Oxygen Furnace (BOF), Electric Arc Furnace with scrap (EAF), and EAF with Direct Reduced Iron (DRI). Each subsector includes several competing technologies, such as fossil fuels w/ & w/o CCS, electricity, hydrogen, and biomass. Globally consistent cost assumptions for technologies in each subsector are estimated from the literature ([Ren et al. 2021](demand_energy.html#Ren2021); [Santos 2013](demand_energy.html#Santos2013)). Historical Iron and steel energy use is calibrated using energy data from IEA (flow codes include IRONSTL, TBLASTFUR, EBLASTFUR, TCOKEOVS, and ECOKEOVs; for definitions see [IEA 2021](demand_energy.html#iea2021)) and steel production from the World Steel Association (WSA). The income elasticities that drive future iron and steel production across GCAM regions are estimated using NLIT (Non-linear inverse with time-efficiency-factor) function ([Van Ruijven et al. 2016](demand_energy.html#VanRuijven2016)).
 
 <img src="gcam-figs/iron_steel.jpg" width="680" height="450" /><br/>
 GCAM's representation of iron and steel production technologies and subsectors.
@@ -116,7 +115,7 @@ GCAM's representation of Chemicals sector.
 
 #### Aluminum
 
-The aluminum production in GCAM involves two main steps: (1) alumina refining, to refine bauxite ore into alumina, and (2) aluminum smelting, to convert alumina to aluminum. Alumina refining has multiple competing technologies, such as coal, refined liquids, gas, and biomass with and without CCS. Aluminum smelting uses alumina as an input and consumes electricity. The aluminum and alumina subsectors are calibrated using production and energy use data from the International Aluminum Association (IAA). This data from IAA is provided by broader aggregate regions and is down-scaled to individual countries and GCAM regions using country-level data on electrolytic aluminum production from the United States Geological Survey (USGS). For countries with recorded energy use but no production, energy use is adjusted to zero. The intensity coefficients for alumina/aluminum production technologies are estimated from IEA energy data and the country-level production data.
+The aluminum production in GCAM involves two main steps: (1) alumina refining, to refine bauxite ore into alumina, and (2) aluminum smelting, to convert alumina to aluminum. Alumina refining has multiple competing technologies, such as coal, refined liquids, gas, and biomass with and without CCS. Aluminum smelting uses alumina as an input and consumes electricity. The aluminum and alumina subsectors are calibrated using production and energy use data from the International Aluminium Institute (IAI) and CEDS. This data from IAI is provided by broader aggregate regions and is down-scaled to individual countries and GCAM regions using country-level data on electrolytic aluminum production from the United States Geological Survey (USGS). For countries with recorded energy use but no production, energy use is adjusted to zero. The intensity coefficients for alumina/aluminum production technologies are estimated from IEA energy data and the country-level production data.
 
 <img src="gcam-figs/aluminum.png" width="680" height="450" /><br/>
 GCAM's representation of Aluminum sector.
@@ -172,10 +171,12 @@ Fuel and feedstock sources and input-output coefficients are calibrated based on
 
 The hydrogen production stage of ammonia production emits a relatively pure stream of CO<sub>2</sub> that is often captured for commercial purposes. Technologies with CCS are modeled in GCAM; additional capture and compression costs and energy inputs are based on H2A [DOE 2015](demand_energy.html#doe2015).
 
+More details can be found in [CMP #389](cmp/389-Ammonia_Trade.pdf).
+
 #### Food processing
  The food processing sector is highly heterogeneous, generating outputs ranging from dairy products and canned fruits to baked goods and prepared meals using a wide range of processes. Most energy use in the sector is for low temperature heat, primarily process heating and drying. Though energy consumption per dollar value of product tends to be low, food processing is a large source of manufacturing energy demand in some regions. More importantly, the food processing sector plays a unique role in bridging the energy and agri-food sectors. It transforms raw or primary agricultural materials into processed consumer-ready products, thus augmenting the value of the agri-food supply chain and constituting a significant proportion of the total food cost.  
 
- In GCAM v7.1, the food processing sector is disaggregated from the "other industry" to allow a more sophisticated representation of the sector. This sector includes all of the technology and fuel options for heat production. Thus, the overall food processing sector then takes in both process heat food processing and a direct input of electricity, with the latter representing all non-heating uses of electricity. Also, the sector is linked to the food demand module, such that calorie consumption sets the demand for food processing energy use, with regionally varying coefficients of energy demand per calorie consumed.
+The food processing sector is disaggregated from the "other industry" to allow a more sophisticated representation of the sector. This sector includes all of the technology and fuel options for heat production. Thus, the overall food processing sector then takes in both process heat food processing and a direct input of electricity, with the latter representing all non-heating uses of electricity. Also, the sector is linked to the food demand module, such that calorie consumption sets the demand for food processing energy use, with regionally varying coefficients of energy demand per calorie consumed.
 
 More details can be found in [CMP #377](cmp/377-FoodProcessing.pdf).
 
@@ -380,7 +381,7 @@ $$
 D_{r,t} = \sum_{j=1}{n} Prod_{j,t} * Coef_{j,t}
 $$
 
-where $$D_{r,t}$$ is the demand for fertilizer in region $$r$$ at time $$t$$, $$Prod_{j,t}$$ is the crop production for technology $$j$$ at time $$t$$, $$Coef__{j,t}$$ is the fertilizer input-output coefficient for technology $$j$$ at time $$t$$, and $j$ is the set of all agricultural technologies within region $$r$$.
+where $$D_{r,t}$$ is the demand for fertilizer in region $$r$$ at time $$t$$, $$Prod_{j,t}$$ is the crop production for technology $$j$$ at time $$t$$, $$Coef_{j,t}$$ is the fertilizer input-output coefficient for technology $$j$$ at time $$t$$, and $j$ is the set of all agricultural technologies within region $$r$$.
 
 See `production` in [ag_production_techology.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/technologies/source/ag_production_technology.cpp).
 
@@ -416,7 +417,7 @@ $$ElectricEnergyIntensity$$ is in $$kWh/m^3$$.
 
 ### Direct Air Capture for Carbon Dioxide Removal
 
-We use GCAM’s (unmodified) logit choice model for economic choice between DACCS technologies. This includes the “choice” to not deploy DACCS and instead use other mitigation or negative emissions technologies (i.e., the "no-DAC" technology). The share $$s_i$$ of any DACCS technology with price pi is computed as follows:
+We use GCAM’s (unmodified) logit choice model for economic choice between DACCS technologies. This includes the “choice” to not deploy DACCS and instead use other mitigation or negative emissions technologies (i.e., the "no-DAC" technology). The share $$s_i$$ of any DACCS technology with price $$pi$$ is computed as follows:
 
 $$
 s_i=\frac{α_i * exp⁡(β*p_i)}{\sum_{j=1}^{N}α_j * exp(β*p_j))}
