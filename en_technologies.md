@@ -60,7 +60,7 @@ $$
 				<stub-technology name="coal (conv pul)">
 					<period year="2015">
 						<exogenous-shutdown-decider name="exogenous-shutdown">
-							<output-scalar year="2020">0.5</output-scalar>
+							<output-scalar year="2021">0.5</output-scalar>
 							<output-scalar year="2025">0.3</output-scalar>
 							<output-scalar year="2030">0.2</output-scalar>
 							<output-scalar year="2035">0.1</output-scalar>
