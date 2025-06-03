@@ -1,7 +1,7 @@
 ---
 layout: index
 title: Additional Information
-gcam-version: v7.1
+gcam-version: v8.2
 devguide: dev-guide.html
 ---
 ## Additional Information

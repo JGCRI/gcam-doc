@@ -1,7 +1,7 @@
 ---
 layout: index
 title: GCAM Ecosystem of Models and Tools
-gcam-version: v7.1
+gcam-version: v8.2
 devguide: dev-guide.html
 ---
 ## GCAM Ecosystem of Models and Tools

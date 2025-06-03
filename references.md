@@ -1,7 +1,7 @@
 ---
 layout: index
 title: References
-gcam-version: v7.1
+gcam-version: v8.2
 ---
 
 **Selected GCAM Papers**
@@ -36,6 +36,10 @@ Luckow P, MA Wise, JJ Dooley, and SH Kim. 2010. "Large-Scale Utilization of Biom
 Edmonds, J., Reilly, J., 1983. Global energy production and use to the year 2050. Energy 8, 419–432. https://doi.org/https://doi.org/10.1016/0360-5442(83)90064-6
 
 ### Water
+
+Niazi, H., Wild, T. B., Turner, S. W. D., Graham, N. T., Hejazi, M., Msangi, S., Kim, S., Lamontagne, J. R., & Zhao, M. 2024. Global peak water limit of future groundwater withdrawals. *Nature Sustainability*, 7(4), pp. 413–422. [Link](https://doi.org/10.1038/s41893-024-01306-w)
+
+Niazi, H., Ferencz, S. B., Graham, N. T., Yoon, J., Wild, T. B., Hejazi, M., Watson, D. J., and Vernon, C. R. 2025. Long-term hydro-economic analysis tool for evaluating global groundwater cost and supply: Superwell v1.1. *Geoscientific Model Development*, 18(5), pp. 1737-1767. [Link](https://doi.org/10.5194/gmd-18-1737-2025)
 
 Turner, S.W.D., Hejazi, M., Calvin, K., Kyle, P., Kim, S., 2019. A pathway of global food supply adaptation in a world with increasingly constrained groundwater. *Science of the Total Environment* 673, 165–176. https://doi.org/https://doi.org/10.1016/j.scitotenv.2019.04.070
 

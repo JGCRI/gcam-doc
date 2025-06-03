@@ -3,7 +3,7 @@ layout: index
 title: Demand for food, forestry, etc.
 prev: inputs_demand.html
 next: outputs_quantity.html
-gcam-version: v7.1
+gcam-version: v8.2
 ---
 
 # Table of Contents
@@ -42,7 +42,7 @@ gcam-version: v7.1
 
 ### Food demand
 
-Food demand, i.e., income and own-/cross-price respones of staples and non-staples composites, is based on the approach documented in [Edmonds et al. (2017)](#edmonds2017). A nested logit structure is used to aggregate GCAM food commodities (calorie-based) and connect them to the top-level food demand model. See additional details in food data updates in [CMP #360](cmp/360-AgLU_data_and_methods.pdf) and related parameter updates in [CMP #393](cmp/CMP393_AgLU_Parameters_Update.pdf).
+Food demand, i.e., income and own-/cross-price responses of staples and non-staples composites, is based on the approach documented in [Edmonds et al. (2017)](#edmonds2017). A nested logit structure is used to aggregate GCAM food commodities (calorie-based) and connect them to the top-level food demand model. See additional details in food data updates in [CMP #360](cmp/360-AgLU_data_and_methods.pdf) and related parameter updates in [CMP #393](cmp/CMP393_AgLU_Parameters_Update.pdf).
 
 <img src="gcam-figs/Foodnests.png" width="500" /><br/>
 Food demand nesting structure in GCAM.  Note, FiberCrop is moved to the Oil nest since over 99% of the FiberCrop for food consumption is cottonseed oil.
@@ -60,7 +60,7 @@ Note that forestry demand is represented for two product pools, namely wood pulp
  
 
 ### Future demand (storage)
-In GCAM `v7.1`, GCAM incorporated agricultural stockholding behavior as a technology of regional consumers who allocate regional supply to current consumption or future consumption (storage carried over to the next period). The schematic showing the structure updates is presented in the following figure.
+GCAM incorporates agricultural stockholding behavior as a technology of regional consumers who allocate regional supply to current consumption or future consumption (storage carried over to the next period). The schematic showing the structure updates is presented in the following figure.
 
 The development leveraged the recently compiled supply-utilization accounts to separate stock variations, opening stock, closing stock, and loss associated with stockholding behavior. The competitive storage model employs a logit sharing structure, where changes in the ratio between closing stock and “current consumption” (i.e., stock-to-use ratio) are responsive to current market prices and expected prices for storage in the next period. We use a lagged price expectation and apply a loss parameter to closing stock to derive the loss associated with interannual storage in a region for a given sector. Currently, agricultural storage is introduced for 13 GCAM crop commodities. See additional details in [CMP #382](cmp/382-AgFoodStorage.pdf).
 

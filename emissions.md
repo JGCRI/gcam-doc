@@ -3,7 +3,7 @@ title: "Emissions"
 layout: index
 prev: supply_energy.html
 next: outputs_emissions.html
-gcam-version: v7.1
+gcam-version: v8.2
 ---
 ## Overview
 
@@ -30,7 +30,7 @@ Future emissions are determined by the evolution of drivers (such as energy cons
 
 | Name | Resolution | Unit | Source |
 | :--- | :--- | :--- | :--- |
-| Emissions data by sector for NonCO2 (Described in detailed in initialization section below)| country, sector,fuel,gas, year| $$Tg$$ | [Exogenous](inputs_supply.html) |
+| Emissions data by sector for NonCO<sub>2</sub> (Described in detailed in initialization section below)| country, sector,fuel,gas, year| $$Tg$$ | [Exogenous](inputs_supply.html) |
 | Activity data from GCAM by sector|By region, year, sector, fuel| $$EJ$$ | [Endogenous](inputs_supply.html) |
 | Marginal abatement cost (MAC) assumptions| By region, sector, year | $$Unitless$$ | [Exogenous](inputs_supply.html) |
 | Energy production (for emissions driven by production)| By region, technology, year | EJ/yr | [Energy Supply Module](supply_energy.html) |
@@ -52,7 +52,7 @@ CO<sub>2</sub> emissions from limestone used in cement production are also estim
 
 ### <a name="co2-luc-emissions"/> Fugitive CO<sub>2</sub> Emissions From Fossil Fuel Production (Oil, Gas, and Coal)
 
-Fugitive CO<sub>2</sub> emissions from fossil resource production are also included in GCAM. These include CO<sub>2</sub> emissions resulting from natural gas flaring that occurs at the point of extraction (e.g., oil well flares) as well as CO<sub>2</sub> gas released from oil, gas, or coal resources during the process of extraction. See the IPCC Guidelines for national GHG Inventories chapter on fugitive emissions ([IPCC2019](#IPCC2019)) for more information. Fugitive CO<sub>2</sub> emissions from fossil resource production in GCAM are initialized from the [CEDS inventory](https://github.com/JGCRI/CEDS) ([Hoesly et al 2018](#Hoesly2018)) and are modeled using the  [Non-CO2 emissions](emissions.html#non-co2-overview) approach. Note that unconventional oil fugitive CO2 emissions are initialized in a slightly different way as described below.
+Fugitive CO<sub>2</sub> emissions from fossil resource production are also included in GCAM. These include CO<sub>2</sub> emissions resulting from natural gas flaring that occurs at the point of extraction (e.g., oil well flares) as well as CO<sub>2</sub> gas released from oil, gas, or coal resources during the process of extraction. See the IPCC Guidelines for national GHG Inventories chapter on fugitive emissions ([IPCC2019](#IPCC2019)) for more information. Fugitive CO<sub>2</sub> emissions from fossil resource production in GCAM are initialized from the [CEDS inventory](https://github.com/JGCRI/CEDS) ([Hoesly et al 2018](#Hoesly2018)) and are modeled using the  [Non-CO<sub>2</sub> emissions](emissions.html#non-co2-overview) approach. Note that unconventional oil fugitive CO<sub>2</sub> emissions are initialized in a slightly different way as described below.
 
 ### <a name="co2-luc-emissions"/>CO<sub>2</sub> Emissions From Land-Use and Land-Cover Change (LULCC)
  
@@ -75,7 +75,7 @@ We summarize here some general points common to non-CO<sub>2</sub> emissions in 
 
 * CEDS does not have a breakdown of emissions for road transport by mode. Therefore, GAINS emission factors by transport sectors (passenger, freight) and fuels to supplement the CEDS road emissions and derive emissions by different modes using emissions factors from the [GAINS data set](https://iiasa.ac.at/web/home/research/researchPrograms/air/ECLIPSEv5.html).
 
-* Additional information on fluorinated gases is from the [2019 EPA Global Non-CO2 Greenhouse Gas Emission Projection & Mitigation Potential Report](https://www.epa.gov/global-mitigation-non-co2-greenhouse-gases/global-non-co2-greenhouse-gas-emission-projections).
+* Additional information on fluorinated gases is from the [2019 EPA Global Non-CO<sub>2</sub> Greenhouse Gas Emission Projection & Mitigation Potential Report](https://www.epa.gov/global-mitigation-non-co2-greenhouse-gases/global-non-co2-greenhouse-gas-emission-projections).
 
 Note that there are some [calibration year differences between CEDS and GCAM](details_emissions.html#calibration-year-differences-between-ceds-and-gcam).
 
@@ -147,7 +147,7 @@ Non-CO<sub>2</sub> GHG emissions are proportional to the activity except for any
 
 The default set-up is that MAC curves use the scenario's carbon price (if any). The non-CO<sub>2</sub> GHG MACs are an exogenous input, and are read in as the percent of emissions abated as a function of the emissions prices. Note that they are read in with explicit cost points (i.e., piece-wise linear form), with no underlying equation describing the percentage of abatement as a function of the carbon price.
 
-The parameter technological change (`tech-change`) represents annual improvement of reduction potential at all prices (essentially shifting the entire MAC curve to the right). For non-CO2 GHGs, MAC is typically defined in the initial available year (typically 2025), while tech.change starts from the next modeling period (i.e. 2030) to adjust the base-year MAC. `tech-change` from 2030 to 2050 is backward calculated from the maximum mitigation potential in [EPA 2019](#epa2019), and tech.change after 2050 is assumed to be the average of pre-2050 tech.change (since current EPA mitigation report only contains mitigation potential till 2050) ([Ou et al. 2021](#ou2021a)). 
+The parameter technological change (`tech-change`) represents annual improvement of reduction potential at all prices (essentially shifting the entire MAC curve to the right). For non-CO<sub>2</sub> GHGs, MAC is typically defined in the initial available year (typically 2025), while tech.change starts from the next modeling period (i.e. 2030) to adjust the base-year MAC. `tech-change` from 2030 to 2050 is backward calculated from the maximum mitigation potential in [EPA 2019](#epa2019), and tech.change after 2050 is assumed to be the average of pre-2050 tech.change (since current EPA mitigation report only contains mitigation potential till 2050) ([Ou et al. 2021](#ou2021a)). 
 
 $$
 R_{t_2, p}=R_{t_1, p}*(1+TC_{t_2})^{t_2-t_1}
@@ -224,7 +224,7 @@ XML inputs within the MAC curve that will be needed to set-up new markets are:
 XML Tag | Description
 ------------ | -------------
 market-name | Name of market from which the price used by the MAC curve will be obtained (default = "CO2")
-mac-price-conversion | Value to multiply market price by to convert to unit expected by the MAC curve (for example, converting from $/tC to $/tCO2eq) (default  = 1)
+mac-price-conversion | Value to multiply market price by to convert to unit expected by the MAC curve (for example, converting from $/tC to $/tCO<sub>2</sub>eq) (default  = 1)
 Note | mac-price-conversion can also be set to -1, which is a flag to turn off all use of the MAC curve. This is useful for sensitivity studies.
 zero-cost-phase-in-time | Number of years over which to phase-in "below-zero" MAC curve reductions (default = 25 years)
 
@@ -233,14 +233,14 @@ zero-cost-phase-in-time | Number of years over which to phase-in "below-zero" MA
 
 ## Insights and Intuition
 
-### NonCO2 GHG abatement
+### NonCO<sub>2</sub> GHG abatement
 
-In summary, nonCO2 GHG emissions can be controlled by three mechanisms. First, changes in activity (phasing out of carbon-intensive fuels due to climate policy) will reduce non-CO2 GHG emissions (e.g. fugitive CH4 from natural gas production). Second, for emission sources without explicit representation of the underlying activity, emission reductions are calculated off of [MAC curves](#equations) that are parametrized to abatement technologies and abatement levels. While decarbonization-driven fuel switching mainly reduces non-CO2 emissions from fuel extraction and end use, targeted non-CO2 mitigation measures can significantly reduce fluorinated gas emissions from industrial processes and cooling sectors. [(Ou et al. 2021)](https://www.nature.com/articles/s41467-021-26509-z). Finally, carbon prices can be directly passed to nonCO2 GHGs, see [example](policies_examples.html#linked-policy). 
+In summary, nonCO<sub>2</sub> GHG emissions can be controlled by three mechanisms. First, changes in activity (phasing out of carbon-intensive fuels due to climate policy) will reduce non-CO<sub>2</sub> GHG emissions (e.g. fugitive CH4 from natural gas production). Second, for emission sources without explicit representation of the underlying activity, emission reductions are calculated off of [MAC curves](#equations) that are parametrized to abatement technologies and abatement levels. While decarbonization-driven fuel switching mainly reduces non-CO<sub>2</sub> emissions from fuel extraction and end use, targeted non-CO<sub>2</sub> mitigation measures can significantly reduce fluorinated gas emissions from industrial processes and cooling sectors. [(Ou et al. 2021)](https://www.nature.com/articles/s41467-021-26509-z). Finally, carbon prices can be directly passed to nonCO<sub>2</sub> GHGs, see [example](policies_examples.html#linked-policy). 
 
 
 ### Markets
 
-For information on using markets for non-CO2 emissions see the [markets for non-CO<sub>2</sub>](policies.html#non-co2-markets) section of the polices page.
+For information on using markets for non-CO<sub>2</sub> emissions see the [markets for non-CO<sub>2</sub>](policies.html#non-co2-markets) section of the polices page.
 
 ### Additional Non-CO<sub>2</sub> Emission Options
 

@@ -1,7 +1,7 @@
 ---
 layout: index
 title: GCAM Development Examples
-gcam-version: v7.1
+gcam-version: v8.2
 devguide: dev-guide.html
 ---
 ## GCAM Development Examples
@@ -487,7 +487,7 @@ This is used to define a member variable that is just a piece of data such as
 ints, double, string, Value, etc.  More directly, you would want to use this
 definition tag if the member variable does not contain more data
 (i.e. `/price/logit-exponent` isn't valid) or can't be filtered
-(i.e. `/name[@year=2020]` isn't valid).
+(i.e. `/name[@year=2025]` isn't valid).
 
 
 
@@ -498,7 +498,7 @@ This is used to define a member variable that is an array of simple data such as
 PeriodVector&lt;Value&gt; or vector&lt;int&gt;, etc.  More directly, you want to
 use this definition tag if the member variable does not contain more data
 (i.e. `/price/logit-exponent` isn't valid) but can be filtered
-(i.e. `/price[@year=2020]` is valid).
+(i.e. `/price[@year=2025]` is valid).
 
 
 

@@ -3,7 +3,7 @@ layout: index
 title: GCAM Fusion users guide
 prev: gcam-build.html
 next: updates.html
-gcam-version: v7.1
+gcam-version: v8.2
 ---
 
 Here we discuss the GCAM Fusion API modelers tools to perform two way coupling
@@ -137,7 +137,7 @@ into it with an illustrative feedback example.  In this example we will:
 
 Such a usage pattern will likely be common.  More specifically, in this example
 we will query for global CO2 emissions, calculate feedbacks to heating and
-cooling degree days using a simplistic linear relationsip, and finally change
+cooling degree days using a simplistic linear relationship, and finally change
 the heating and cooling degree days with in GCAM for the next simulation period.
 
 <a name="feedback"></a>
@@ -326,7 +326,7 @@ The add-on file would contain the following XML:
 </scenario>
 ```
 
-Next we will add in some calls to GCAM Fusion to query for the global CO2
+Next we will add in some calls to GCAM Fusion to query for the global CO<sub>2</sub>
 emissions from the model.  You will need to include the following header files
 into your .cpp file:
 
@@ -475,7 +475,7 @@ just received.
 
 Finally we can query for the appropriate GCAM paramaters again but this time
 changing the value.  You will notice that really everything works the same as
-when we were collecting the CO2 emissions.  The data passed to `processData` is
+when we were collecting the CO<sub>2</sub> emissions.  The data passed to `processData` is
 passed by reference to the actual parameter that lives in the GCAM objects and
 is not const so we are free to change it as we please.  These are the queries
 for building heating and cooling services:

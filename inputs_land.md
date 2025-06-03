@@ -3,7 +3,7 @@ layout: index
 title: External Inputs to the Land Model
 prev: diagram.html
 next: land.html
-gcam-version: v7.1
+gcam-version: v8.2
 ---
 
 GCAM's external land inputs include information on land, carbon, other emissions, and the value of unmanaged land in the historical period. These inputs are required for each [global land unit](common_assumptions.html#global-land-units) and [historical year](common_assumptions.html#historical-years).
@@ -38,10 +38,10 @@ Note that for the Shared Socioeconomic Pathways (SSPs), different inputs are use
 #### Historical Land Use and Land Cover
 The raw data used for historical land cover is mainly provided in [Land_type_area_ha.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/LDS/Land_type_area_ha.csv). 
 
-The arable land, temporary crops, and temporary fallow land are provided in [GCAMDATA_FAOSTAT_LandCover_229Regs_3Covers_1973to2020.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMDATA_FAOSTAT_LandCover_229Regs_3Covers_1973to2020.csv).  
+The arable land, temporary crops, and temporary fallow land are provided in [GCAMFAOSTAT_LandCover.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMFAOSTAT_LandCover.csv).  
 
 #### Historical Harvested Area
-Historical harvested area by crop and country is provided in [GCAMDATA_FAOSTAT_ProdArea_195Regs_271Prod160AreaItems_1973to2020.csv.gz](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMDATA_FAOSTAT_ProdArea_195Regs_271Prod160AreaItems_1973to2020.csv.gz) and [GCAMDATA_FAOSTAT_ProdArea_96Regs_16FodderItems_1973to2020.csv.gz](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMDATA_FAOSTAT_ProdArea_96Regs_16FodderItems_1973to2020.csv.gz).
+Historical harvested area by crop and country is provided in [GCAMFAOSTAT_NonFodderProdArea.csv.gz](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMFAOSTAT_NonFodderProdArea.csv.gz) and [GCAMFAOSTAT_FodderProdArea.csv.gz](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMFAOSTAT_FodderProdArea.csv.gz).
 
 The data used to separate crops into irrigated and rainfed is provided in [MIRCA_irrHA_ha.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/LDS/MIRCA_irrHA_ha.csv) and [MIRCA_rfdHA_ha.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/LDS/MIRCA_rfdHA_ha.csv).   
 

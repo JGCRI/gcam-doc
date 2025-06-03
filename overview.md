@@ -3,7 +3,7 @@ layout: index
 title: GCAM Model Overview
 prev: 
 next: macro-econ.html
-gcam-version: v7.1
+gcam-version: v8.2
 ---
 
 ## Introduction
@@ -71,7 +71,7 @@ The exact structure of the model explored in the GCAM core - for example, the nu
   </tr>
     <tr>
     <td class="first_col">Land System</td>
-    <td class="second_col">384 subregions</td>
+    <td class="second_col">396 subregions</td>
   </tr>
     <tr>
     <td class="first_col">Water Supplies</td>
@@ -105,9 +105,9 @@ Figure 2: GCAM regional mapping
 | Colombia | Colombia |
 | EU-12 | Bulgaria, Cyprus, Czech Republic, Estonia, Hungary, Lithuania, Latvia, Malta, Poland, Romania, Slovakia, Slovenia |
 | EU-15         |	Andorra, Austria, Belgium, Denmark, Finland, France, Germany, Greece, Greenland, Ireland, Italy, Luxembourg, Monaco, Netherlands, Portugal, Sweden, Spain, United Kingdom |
-| Europe\_Eastern | Belarus, Moldova, Ukraine |
+| Ukraine | Ukraine |
 | European Free Trade Association |Iceland, Norway, Switzerland |
-| Europe\_Non\_EU | Albania, Bosnia and Herzegovina, Croatia, Macedonia, Montenegro, Serbia, Turkey |
+| Europe\_Non\_EU | Albania, Belarus, Bosnia and Herzegovina, Croatia, Kosovo, Macedonia, Moldova, Montenegro, Serbia, Turkey |
 | India | India |
 | Indonesia | Indonesia |
 | Japan |	Japan |

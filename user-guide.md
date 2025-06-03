@@ -3,7 +3,7 @@ layout: index
 title: GCAM User Guide
 prev: solver.html
 next: gcam-build.html
-gcam-version: v7.1
+gcam-version: v8.2
 ---
 ## Table Of Contents
   [1. Introduction](#gcam-intro)
@@ -268,8 +268,8 @@ Enabling this mode for running GCAM involves specifying a [policy target file](#
      -->
     <target-type>forcing</target-type>
 
-    <!-- first-tax-year | default: 2020 | The first year to start a tax in -->
-    <first-tax-year>2020</first-tax-year>
+    <!-- first-tax-year | default: 2025 | The first year to start a tax in -->
+    <first-tax-year>2025</first-tax-year>
 
     <!-- initial-tax-guess | default: 5 | The first tax value to try, if a user
                                           can provide a good initial guess it may

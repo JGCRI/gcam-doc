@@ -3,7 +3,7 @@ layout: index
 title: Additional details about the energy model
 prev: supply_energy.html
 next: supply_energy.html
-gcam-version: v7.1
+gcam-version: v8.2
 ---
 
 This page provides more detailed explanations of the descriptions provided in the [Energy Supply](supply_energy.html) and [Energy Demand](demand_energy.html) modeling pages.
@@ -225,7 +225,7 @@ With the exception of water abstraction, the energy intensities by sector and pr
 | Municipal | Distribution | Electricity | 0.247 |
 | Municipal | Wastewater Treatment | Electricity | 0.597 |
 
-Electricity used for non-renewable groundwater pumping is represented in future periods, using exogenous supply curves that have been constructed from simulated groundwater pumping over an 80 year period in <a href="https://github.com/JGCRI/superwell">Superwell</a>. The methods used are documented in [Turner et al. 2019](details_energy.html#turner2019) and [Kyle et al. (2021)](details_energy.html#kyle2021). From the Superwell output, supply curves are constructed for each GCAM region and water basin that consist of 20 "graded" points, each of which is assigned a total quantity of water, a non-energy-related cost of well construction and operation, and an electricity input-output coefficient. The grades are binned according to estimated total cost, using exogenous electricity prices; due to changes in electricity prices over time, the relative total costs of these grades may change over time.
+Electricity used for non-renewable groundwater pumping is represented in future periods, using exogenous supply curves that have been constructed from simulated groundwater pumping over an 80 year period in <a href="https://github.com/JGCRI/superwell">Superwell</a> [(Niazi et al., 2024)](details_energy.html#niazi2024). The methods used are documented in [(Niazi et al., 2024)](details_energy.html#niazi2024), [Turner et al. 2019](details_energy.html#turner2019) and [Kyle et al. (2021)](details_energy.html#kyle2021). From the Superwell output, supply curves are constructed for each GCAM region and water basin that consist of 20 "graded" points, each of which is assigned a total quantity of water, a non-energy-related cost of well construction and operation, and an electricity input-output coefficient. The grades are binned according to estimated total cost, using exogenous electricity prices; due to changes in electricity prices over time, the relative total costs of these grades may change over time [(Niazi et al., 2025)](details_energy.html#niazi2025).
 
 ## Optional Exogenous Floorspace
 
@@ -238,7 +238,7 @@ building-node-input/+{year}base-building-size, building-node-input/+base-buildin
 
 The figure below is an example XML of user-specified residential floorspace values for Maine. 
 
-<img src="gcam-figs/floorspace_Maine.PNG" width="343" height="203" /><br/>
+<img src="gcam-figs/floorspace_Maine.png" width="343" height="203" /><br/>
 
 
 ## References
@@ -258,6 +258,10 @@ The figure below is an example XML of user-specified residential floorspace valu
 <a name="kyle2021">[Kyle et al. 2021]</a> Kyle, P., Hejazi, M., Kim, S., Patel, P., Graham, N., and Liu, Y. 2021. Assessing the future of global energy-for-water. *Environmental Research Letters* 16(2), 024031. [Link](https://iopscience.iop.org/article/10.1088/1748-9326/abd8a9)
 
 <a name="liu2016">[Liu et al. 2016]</a> Liu, Y., Hejazi, M., Kyle, P., Kim, S., Davies, E., Miralles, D., Teuling, A., He, Y., and Niyogi, D. 2016. Global and Regional Evaluation of Energy for Water. *Environmental Science & Technology* 50(17), 9736-9745. [Link](https://pubs.acs.org/doi/abs/10.1021/acs.est.6b01065)
+
+<a name="niazi2024">[Niazi et al. 2024]</a> Niazi, H., Wild, T. B., Turner, S. W. D., Graham, N. T., Hejazi, M., Msangi, S., Kim, S., Lamontagne, J. R., & Zhao, M. 2024. Global peak water limit of future groundwater withdrawals. *Nature Sustainability*, 7(4), pp. 413–422. [Link](https://doi.org/10.1038/s41893-024-01306-w)
+
+<a name="niazi2025">[Niazi et al. 2025]</a> Niazi, H., Ferencz, S. B., Graham, N. T., Yoon, J., Wild, T. B., Hejazi, M., Watson, D. J., and Vernon, C. R. 2025. Long-term hydro-economic analysis tool for evaluating global groundwater cost and supply: Superwell v1.1. *Geoscientific Model Development*, 18(5), pp. 1737-1767. [Link](https://doi.org/10.5194/gmd-18-1737-2025)
 
 <a name="rohwer2007">[Rohwer et al. 2007]</a> Rohwer, J., Gerten, D., and Lucht, W. 2007. *Development of Functional Irrigation Types for Improved Global Crop Modelling*. PIK Report No. 104, Potsdam Institute for Climate Impact Research. [Link](https://www.pik30 potsdam.de/research/publications/pikreports/.files/pr104.pdf)
 
