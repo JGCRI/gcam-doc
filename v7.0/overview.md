@@ -48,7 +48,7 @@ Supplied with input information from the GCAM Data System, the GCAM Core is the 
 
 * [**Physical Earth System**](hector.html): The physical Earth system in GCAM is modeled using Hector, a physical Earth system emulator that provides information about the composition of the atmosphere based on emissions provided by the other modules, ocean acidity, and climate.
 
-The exact structure of the model explored in the GCAM core - for example, the number of regions and technologies - is data driven. In all cases, the GCAM core represents the entire world, but it is constructed with different levels of resolution for each of these different systems (see Figure 2). In the current release version of GCAM, the energy-economy system operates at 33 regions globally (see tables below), land is divided into >300 subregions, and water is tracked for 233 basins worldwide. The Earth system module operates at a global scale.
+The exact structure of the model explored in the GCAM core - for example, the number of regions and technologies - is data driven. In all cases, the GCAM core represents the entire world, but it is constructed with different levels of resolution for each of these different systems (see Figure 2). In the current release version of GCAM, the energy-economy system operates at 32 regions globally (see tables below), land is divided into >300 subregions, and water is tracked for 233 basins worldwide. The Earth system module operates at a global scale.
 
 <style type="text/css">
 .header{font-weight:bold;background-color:#333333;color:#ffffff;vertical-align:top}
@@ -63,11 +63,11 @@ The exact structure of the model explored in the GCAM core - for example, the nu
   </tr>
   <tr>
     <td class="first_col">Macro-Economy</td>
-    <td class="second_col">33 Geopolitical Regions</td>
+    <td class="second_col">32 Geopolitical Regions</td>
   </tr>
     <tr>
     <td class="first_col">Energy System</td>
-    <td class="second_col">33 Geopolitical Regions</td>
+    <td class="second_col">32 Geopolitical Regions</td>
   </tr>
     <tr>
     <td class="first_col">Land System</td>

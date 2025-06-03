@@ -30,9 +30,9 @@ GCAM subdivides the world into 32 geopolitical regions, representing countries o
 | Colombia | Colombia |
 | EU-12 | Bulgaria, Cyprus, Czech Republic, Estonia, Hungary, Lithuania, Latvia, Malta, Poland, Romania, Slovakia, Slovenia |
 | EU-15         |	Andorra, Austria, Belgium, Denmark, Finland, France, Germany, Greece, Greenland, Ireland, Italy, Luxembourg, Monaco, Netherlands, Portugal, Sweden, Spain, United Kingdom |
-| Europe\_Eastern | Belarus, Moldova, Ukraine |
+| Ukraine | Ukraine |
 | European Free Trade Association |Iceland, Norway, Switzerland |
-| Europe\_Non\_EU | Albania, Bosnia and Herzegovina, Croatia, Kosovo, Macedonia, Montenegro, Serbia, Turkey |
+| Europe\_Non\_EU | Albania, Belarus, Bosnia and Herzegovina, Croatia, Kosovo, Macedonia, Moldova, Montenegro, Serbia, Turkey |
 | India | India |
 | Indonesia | Indonesia |
 | Japan |	Japan |
