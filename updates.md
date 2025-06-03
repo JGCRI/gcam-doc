@@ -6,6 +6,9 @@ next:
 gcam-version: v8.2
 ---
 
+GCAM v7.4 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15580627.svg)](https://doi.org/10.5281/zenodo.15580627)
+* [Base Year Update: Initial updates preparing for the new base year](cmp/309-BYU_initial.pdf)
+
 GCAM v7.3 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14629770.svg)](https://doi.org/10.5281/zenodo.14629770)
 * [Updated approach for intermittent electricity integration](cmp/394_Intermittent_electricity_integration.pdf)
 
