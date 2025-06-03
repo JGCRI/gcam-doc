@@ -205,7 +205,7 @@ Emissions prices of different GHGs can be linked together for a multi-gas policy
 The parameter `price-adjust` is used to convert prices and `demand-adjust` is used to convert demand units (typically to convert to a common units of carbon equivalents using the individual gasses Global Warming Potential).
 These can be changed by year as well in order to, for example, phase in a gas into the policy.
 
-Setting price-adjust to zero means that there is no economic feedback for the price of this GHG. MAC curves, however, will still operate under the default set-up (whereby MAC curves are driven by CO<sub>2</sub> prices). This can be changed separately for energy/industrial/urban CH<sub>4</sub>, agricultural CH<sub>4</sub> (CH4_AGR), and CH<sub>4</sub> from agricultural waste burning (CH4_AWB), Land Use Change CO<sub>2</sub> emissions (e.g. CO<sub>2</sub>_LUC).
+Setting price-adjust to zero means that there is no economic feedback for the price of this GHG. MAC curves, however, will still operate under the default set-up (whereby MAC curves are driven by CO<sub>2</sub> prices). This can be changed separately for energy/industrial/urban CH<sub>4</sub>, agricultural CH<sub>4</sub> (CH4_AGR), and CH<sub>4</sub> from agricultural waste burning (CH4_AWB), Land Use Change CO<sub>2</sub> emissions (e.g. CO2_LUC).
 
 Note that you must first create a policy by reading in a `<ghgpolicy>` object in your configuration before attempting to read in a linked GHG policy that needs to link to it.
 
@@ -223,7 +223,7 @@ XML inputs within the MAC curve that will be needed to set-up new markets are:
 
 XML Tag | Description
 ------------ | -------------
-market-name | Name of market from which the price used by the MAC curve will be obtained (default = "CO<sub>2</sub>")
+market-name | Name of market from which the price used by the MAC curve will be obtained (default = "CO2")
 mac-price-conversion | Value to multiply market price by to convert to unit expected by the MAC curve (for example, converting from $/tC to $/tCO<sub>2</sub>eq) (default  = 1)
 Note | mac-price-conversion can also be set to -1, which is a flag to turn off all use of the MAC curve. This is useful for sensitivity studies.
 zero-cost-phase-in-time | Number of years over which to phase-in "below-zero" MAC curve reductions (default = 25 years)

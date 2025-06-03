@@ -38,10 +38,10 @@ Note that for the Shared Socioeconomic Pathways (SSPs), different inputs are use
 #### Historical Land Use and Land Cover
 The raw data used for historical land cover is mainly provided in [Land_type_area_ha.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/LDS/Land_type_area_ha.csv). 
 
-The arable land, temporary crops, and temporary fallow land are provided in [GCAMDATA_FAOSTAT_LandCover_229Regs_3Covers_1973to2020.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMDATA_FAOSTAT_LandCover_229Regs_3Covers_1973to2020.csv).  
+The arable land, temporary crops, and temporary fallow land are provided in [GCAMFAOSTAT_LandCover.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMFAOSTAT_LandCover.csv).  
 
 #### Historical Harvested Area
-Historical harvested area by crop and country is provided in [GCAMDATA_FAOSTAT_NonFodderProdArea.csv.gz](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMDATA_FAOSTAT_NonFodderProdArea.csv.gz) and [GCAMDATA_FAOSTAT_FodderProdArea.csv.gz](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMDATA_FAOSTAT_FodderProdArea.csv.gz).
+Historical harvested area by crop and country is provided in [GCAMFAOSTAT_NonFodderProdArea.csv.gz](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMFAOSTAT_NonFodderProdArea.csv.gz) and [GCAMFAOSTAT_FodderProdArea.csv.gz](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMFAOSTAT_FodderProdArea.csv.gz).
 
 The data used to separate crops into irrigated and rainfed is provided in [MIRCA_irrHA_ha.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/LDS/MIRCA_irrHA_ha.csv) and [MIRCA_rfdHA_ha.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/LDS/MIRCA_rfdHA_ha.csv).   
 

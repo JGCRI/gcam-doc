@@ -123,7 +123,6 @@ Figure 2: GCAM regional mapping
 | South Korea | South Korea |
 | Taiwan | Taiwan |
 | USA | United States |
-| Ukraine | Ukraine|
 
 Table: Mapping from GCAM region to country
 

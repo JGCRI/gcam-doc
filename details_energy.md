@@ -238,7 +238,7 @@ building-node-input/+{year}base-building-size, building-node-input/+base-buildin
 
 The figure below is an example XML of user-specified residential floorspace values for Maine. 
 
-<img src="gcam-figs/floorspace_Maine.PNG" width="343" height="203" /><br/>
+<img src="gcam-figs/floorspace_Maine.png" width="343" height="203" /><br/>
 
 
 ## References

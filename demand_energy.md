@@ -381,7 +381,7 @@ $$
 D_{r,t} = \sum_{j=1}{n} Prod_{j,t} * Coef_{j,t}
 $$
 
-where $$D_{r,t}$$ is the demand for fertilizer in region $$r$$ at time $$t$$, $$Prod_{j,t}$$ is the crop production for technology $$j$$ at time $$t$$, $$Coef_{j,t}$$ is the fertilizer input-output coefficient for technology $$j$$ at time $$t$$, and $j$ is the set of all agricultural technologies within region $$r$$.
+where $$D_{r,t}$$ is the demand for fertilizer in region $$r$$ at time $$t$$, $$Prod_{j,t}$$ is the crop production for technology $$j$$ at time $$t$$, $$Coef_{j,t}$$ is the fertilizer input-output coefficient for technology $$j$$ at time $$t$$, and $$j$$ is the set of all agricultural technologies within region $$r$$.
 
 See `production` in [ag_production_techology.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/technologies/source/ag_production_technology.cpp).
 
@@ -417,7 +417,7 @@ $$ElectricEnergyIntensity$$ is in $$kWh/m^3$$.
 
 ### Direct Air Capture for Carbon Dioxide Removal
 
-We use GCAM’s (unmodified) logit choice model for economic choice between DACCS technologies. This includes the “choice” to not deploy DACCS and instead use other mitigation or negative emissions technologies (i.e., the "no-DAC" technology). The share $$s_i$$ of any DACCS technology with price $$pi$$ is computed as follows:
+We use GCAM’s (unmodified) logit choice model for economic choice between DACCS technologies. This includes the “choice” to not deploy DACCS and instead use other mitigation or negative emissions technologies (i.e., the "no-DAC" technology). The share $$s_i$$ of any DACCS technology with price $$p_i$$ is computed as follows:
 
 $$
 s_i=\frac{α_i * exp⁡(β*p_i)}{\sum_{j=1}^{N}α_j * exp(β*p_j))}
@@ -430,7 +430,7 @@ $$α_i$$ = the shareweight of the technology.
 
 $$β$$ = the logit coefficient, which determines how large a cost difference is required to produce a given difference in market share. 
 
-Shareweights are used to represent societal preferences, infrastructure buildup, and barriers or accelerants to market entry. Consistent with GCAM’s treatment of other new and emerging technologies, we set shareweights for DACCS technologies to zero in the model future period, and linearly increase to 1 by 2050 for most scenarios. This means that by 2100, DACCS technologies are competing solely based on their cost minus the subsidy for removing carbon dioxide from the atmosphere (again, equal to the carbon emissions price). 
+Shareweights are used to represent societal preferences, infrastructure buildup, and barriers or accelerants to market entry. Consistent with GCAM’s treatment of other new and emerging technologies, we set shareweights for DACCS technologies to zero in the first model future period, and linearly increase to 1 by 2050 for most scenarios. This means that by 2100, DACCS technologies are competing solely based on their cost minus the subsidy for removing carbon dioxide from the atmosphere (again, equal to the carbon emissions price). 
 
 In each region, the base year service demand for the CO<sub>2</sub> removal sector (currently, the sum of “no DAC” + “DAC” technologies for which the share of each technology is computed) is set for the USA region at an arbitrarily-high value, with the deployment share of DAC technologies being determined by the sum of their energy, water, and non-energy costs, minus any carbon price subsidy.  The choice of each region's base year service demand ultimately sets the maximum limit on the amount of DACCS that may be deployed in that region in the model. The 2000 MtC base year service demand for the USA region was selected to allow a maximum of over 7 Gt-CO<sub>2</sub> per year of DACCS deployment in this region. However, the modeled DACCS deployment would likely never reach this very high ceiling due to indirect competition with emissions abatement and other CO<sub>2</sub> removal technologies (e.g., renewables, BECCS, afforestation). Base year service demand for other regions is scaled linearly by each region's cumulative onshore carbon storage capacity relative to the USA region.
 
