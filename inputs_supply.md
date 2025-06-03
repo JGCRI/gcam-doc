@@ -39,7 +39,7 @@ GCAM's supply inputs include information on production, prices, technology cost 
 | Default input-output coefficients | Default amount of input required per unit of output produced; can be overwritten by region-specific information derived from historical data | Assumption | | Specified by technology and year |  GJ per GJ |
 | Resource supply curves | Mapping between cost and resource extraction. Resource extraction is cumulative for deplatable resources and annual for renewable resources | External data | Various | Specified by resource and year |  EJ for extraction, 1975$/GJ for cost |
 | Historical non-CO<sub>2</sub> emissions | Historical emissions of non-CO<sub>2</sub> | External data | [CEDS](https://github.com/JGCRI/CEDS) `v_2021_04_21` | Specified by country, technology, gas, and year | Various |
-| CO<sub>2</sub> emissions coefficients | Default carbon content of fuels | External data | [CDIAC](#cdiac2017) and [IEA](#iea2019)  | Specified by fuel | kgC / GJ |
+| CO<sub>2</sub> emissions coefficients | Default carbon content of fuels | External data | [CDIAC](#cdiac2017) and [IEA](#iea2023)  | Specified by fuel | kgC / GJ |
 | Historical CO<sub>2</sub> emissions | Historical emissions of CO<sub>2</sub> | External data | [CDIAC](#cdiac2017) | Specified by nation and year | ktC per year |
 
 
