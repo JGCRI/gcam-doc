@@ -71,7 +71,7 @@ The exact structure of the model explored in the GCAM core - for example, the nu
   </tr>
     <tr>
     <td class="first_col">Land System</td>
-    <td class="second_col">384 subregions</td>
+    <td class="second_col">396 subregions</td>
   </tr>
     <tr>
     <td class="first_col">Water Supplies</td>
