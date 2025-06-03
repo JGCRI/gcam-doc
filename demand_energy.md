@@ -395,7 +395,7 @@ $$
 
 Where $$EFW$$ is energy-for-water, $$s$$ is sector, $$p$$ is process, $$W$$ is water flow volume, and $$EI$$ is energy intensity. The energy intensity values for each process and sector were shown in the table above, and the water flow volumes are generally determined in [GCAM water demand](demand_water.html).
 
-Non-renewable groundwater pumping energy intensity is estimated in Superwell for any well *i* according to the following equations, reproduced from [superwell.R](https://github.com/JGCRI/superwell/blob/master/R/superwell.R):
+Non-renewable groundwater pumping energy intensity is estimated in Superwell [(Niazi et al., 2025)](demand_energy.html#niazi2025) for any well *i* according to the following equations, reproduced from [superwell.R](https://github.com/JGCRI/superwell/blob/master/R/superwell.R):
 
 $$
 Power_{i}=\frac{SpecificWeight*TotalHead_{i}*WellYield_{i}}{PumpEfficiency*WattsPerKW}
@@ -409,7 +409,7 @@ $$
 ElectricEnergyIntensity_{i}=\frac{ElectricEnergyPerYear_{i}}{WellYield_{i}*AnnualOperationTime}
 $$
 
-Where $$Power$$ is in $$kW$$, $$SpecificWeight$$ is in $$kg/m^2/s^2$$, $$WellYield$$ is in $$m^3/s$$, PumpEfficiency is unitless, assumed to be 50%, and $$WattsPerKW$$ is a constant, equal to 1000.
+Where $$Power$$ is in $$kW$$, $$SpecificWeight$$ is in $$kg/m^2/s^2$$, $$WellYield$$ is in $$m^3/s$$, PumpEfficiency is unitless, assumed to be 50%, and $$WattsPerKW$$ is a constant, equal to 1000. 
 
 $$ElectricEnergyPerYear$$ is in $$kWh/yr$$, $$AnnualOperationTime$$ is in seconds per year, and $$SecondsPerHour$$ is a constant, equal to 3600.
 
@@ -437,7 +437,7 @@ In each region, the base year service demand for the CO<sub>2</sub> removal sect
 
 ## Policy options 
 
-There are a number of policy available to the user when it comes to energy demand. Many of these policy options are implemented as a part of the SSP scenarios. For example, there are different income elasticities for demand that are implemented for the different industry sectors such as intron-steel, aluminum and chemicals.  
+There are a number of policy available to the user when it comes to energy demand. Many of these policy options are implemented as a part of the SSP scenarios. For example, there are different income elasticities for demand that are implemented for the different industry sectors such as iron-steel, aluminum and chemicals.  
 
 ## Insights and intuition
 
@@ -539,6 +539,10 @@ Residential and commercial
 <a name="mazzotti2013">[Mazzotti et al. 2013]</a> Mazzotti, M., Baciocchi, R., Desmond, M. J., and Socolow, R. H. “Direct Air Capture of CO2 with Chemicals: Optimization of a Two-Loop Hydroxide Carbonate System Using a Countercurrent Air-Liquid Contactor” *Climatic Change* 118, no. 1 (2013): 119–135. [Link](http://link.springer.com/10.1007/s10584-012-0679-y) 
 
 <a name="mishra2013">[Mishra et al. 2013]</a> Mishra, G.S., Kyle, P., Teter, J., Morrison, G.M., Kim, S., and Yeh, S. 2013. *Transportation Module of Global Change Assessment Model (GCAM): Model Documentation*, Research Report UCD-ITS-RR-13-05, Institute of Transportation Studies, University of California, Davis. [Link] (https://itspubs.ucdavis.edu/wp-content/themes/ucdavis/pubs/download_pdf.php?id=1884)
+
+<a name="niazi2024">[Niazi et al. 2024]</a> Niazi, H., Wild, T. B., Turner, S. W. D., Graham, N. T., Hejazi, M., Msangi, S., Kim, S., Lamontagne, J. R., & Zhao, M. 2024. Global peak water limit of future groundwater withdrawals. Nature Sustainability, 7(4), pp. 413–422. [Link](https://doi.org/10.1038/s41893-024-01306-w)
+
+<a name="niazi2025">[Niazi et al. 2025]</a> Niazi, H., Ferencz, S. B., Graham, N. T., Yoon, J., Wild, T. B., Hejazi, M., Watson, D. J., and Vernon, C. R. 2025. Long-term hydro-economic analysis tool for evaluating global groundwater cost and supply: Superwell v1.1. Geoscientific Model Development, 18(5), pp. 1737-1767. [Link](https://doi.org/10.5194/gmd-18-1737-2025)
 
 <a name="polzin2005">[Polzin and Chu 2005]</a> Polzin, S., and Chu, X. 2005. *Public Transit in America: Results from the 2001 National Household Travel Survey*, Center for Urban Transportation Research, University of South Florida, Tampa. [Link](http://www.nctr.usf.edu/pdf/527-09.pdf)
 

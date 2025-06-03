@@ -124,7 +124,7 @@ Historical non-CO<sub>2</sub> emissions information is provided in the GCAM rele
 | Name | Description | Type | Source | Resolution | Unit |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | Surface water supply curves (cost and availability) | Xanthos derived total maximum runoff values, combined with accessible water calculation to determine water available at very low price and the level of accessible water for cost-curve inflection | Exogenous Data | Xanthos output | Water basin and year | $$km^3$$ available per USD |
-| Groundwater supply curves (cost and availability) | Amount of groundwater available in each basin at increasingly high graded levels | [Turner et al., 2019a](#turner2019a) | Water basin and year | $$km^3$$ available per USD |
+| Groundwater supply curves (cost and availability) | Amount of groundwater available in each basin at increasingly high graded levels | [Niazi et al., 2025](#niazi2025); [Turner et al., 2019a](#turner2019a) | Water basin and year | $$km^3$$ available per USD |
 | Desalination cost | Cost of desalinated water within a basin which is available at high cost and available once the price of water within a basin surpasses a certain threshold | Exogenous Data | Global Constant | USD per $$km^3$$ |
 
 <font size="-1">
@@ -144,7 +144,7 @@ Accessible fraction is specified in [xanthos_accessible_water.csv](https://githu
 For additional accessible calculations, basin historical basin level demands are specified in [basin_water_demand_1990_2015.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/water/basin_water_demand_1990_2010.csv) and groundwater availability is specified in [groundwater_trend_watergap.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/water/groundwater_trend_watergap.csv).
 
 #### Groundwater supply curves
-Non-renewable groundwater supply curves are modeled as a graded depletable resource with a fixed amount of total groundwater availability. Basin level estimates of environmentally exploitable groundwater are aggregated from grid-scale data. Groundwater supply curves represent the relationship between exploitable groundwater and cost of extraction. As the available water within the initial grades is exhausted, the price for additional groundwater resources increases as a function of depth and geological complexity. Energy inputs and costs required for pumping are included for a rigorous estimate of the relationship between groundwater volume and extraction cost ([Turner et al., 2019a](#turner2019a); [Kim et al. 2016](#kim2016)).
+Non-renewable groundwater supply curves are modeled as a graded depletable resource with a fixed amount of total groundwater availability. Basin level estimates of environmentally exploitable groundwater are aggregated from grid-scale data ([Niazi et al., 2025](#niazi2025)). Groundwater supply curves represent the relationship between exploitable groundwater and cost of extraction [Niazi et al., 2024](#niazi2024);. As the available water within the initial grades is exhausted, the price for additional groundwater resources increases as a function of depth and geological complexity. Energy inputs and costs required for pumping are included for a rigorous estimate of the relationship between groundwater volume and extraction cost ([Turner et al., 2019a](#turner2019a); [Kim et al. 2016](#kim2016)).
 Graded groundwater availability is specified in [groundwater_constrained.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/water/groundwater_constrained.csv) with groundwater extraction trends found in [groundwater_trend_watergap.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/water/groundwater_trend_watergap.csv) and [groundwater_trend_gleeson.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/water/groundwater_trend_gleeson.csv).
 
 #### Desalination costs
@@ -251,6 +251,10 @@ Schematic of the restructuring of the supply-utilization accounts in GCAM to sep
 <a name="kyle2021">[Kyle et al. 2021]</a> Kyle, P., Hejazi, M., Kim, S., Patel, P., Graham, N., & Liu, Y. (2021). Assessing the future of global energy-for-water. Environmental Research Letters, 16(2), 024031.
 
 <a name="liu2018">[Liu et al. 2018]</a> Liu Y., M. Hejazi, H. Li, X. Zhang, G. Leng (2018). *A  hydrological emulator for global applications - HE v1.0.0*. Geoscientific Model Development. [Link](https://www.geosci-model-dev.net/11/1077/2018/gmd-11-1077-2018.pdf)
+
+<a name="niazi2024">[Niazi et al. 2024]</a> Niazi, H., Wild, T. B., Turner, S. W. D., Graham, N. T., Hejazi, M., Msangi, S., Kim, S., Lamontagne, J. R., & Zhao, M. 2024. Global peak water limit of future groundwater withdrawals. Nature Sustainability, 7(4), pp. 413–422. [Link](https://doi.org/10.1038/s41893-024-01306-w)
+
+<a name="niazi2025">[Niazi et al. 2025]</a> Niazi, H., Ferencz, S. B., Graham, N. T., Yoon, J., Wild, T. B., Hejazi, M., Watson, D. J., and Vernon, C. R. 2025. Long-term hydro-economic analysis tool for evaluating global groundwater cost and supply: Superwell v1.1. Geoscientific Model Development, 18(5), pp. 1737-1767. [Link](https://doi.org/10.5194/gmd-18-1737-2025)
 
 <a name="turner2019a">[Turner et al. 2019a]</a> Turner S.W.D., M. Hejazi, C. Yonkofski, S. Kim, P. Kyle (2019a). *Influence of groundwater extraction costs and resource depletion limits on simulated global nonrenewable water withdrawals over the 21st century*. Earth's Future (2019), 10.1029/2018EF001105  [Link](https://doi.org/10.1029/2018EF001105)
 
