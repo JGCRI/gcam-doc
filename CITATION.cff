@@ -3,7 +3,7 @@ message: "Citation for GCAM model documentation"
 authors:
   - name: "Joint Global Change Research Institute"
 title: "GCAM Documentation"
-version: 8.0
-date-released: 2025-06-05
+version: 8.2
+date-released: 2025-06-02
 url: "https://jgcri.github.io/gcam-doc"
 repository-code: "https://github.com/JGCRI/gcam-doc"
