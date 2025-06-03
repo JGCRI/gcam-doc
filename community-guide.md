@@ -25,7 +25,7 @@ Subsequent paragraphs of the description might expound on particular capabilitie
 Community users of GCAM might also undertake their own model developments and/or assumptions for papers. It is recommended that these departures from the publicly available version of the model be clearly described. In addition, if these developments are substantial, we suggest making this clear by including an additional phrase (e.g. region name or name of institution) in the name of the model and explicitly calling it out in place of or immediately following the italicized portion in the above paragraphs. For example: _"This study uses a modified version of GCAM/GCAM-USA called GCAM-\<institution name\>/GCAM-USA-\<institution name\>. GCAM-\<institution name\>/GCAM-USA-\<institution name\> incorporates additional details and modified assumptions from GCAM v NN as described subsequently"_. 
 
 ### References
-JGCRI, 2025. GCAM Documentation (Version 8.2). https://github.com/JGCRI/gcam-doc. Joint Global Change Research Institute. [https://zenodo.org/doi/10.5281/zenodo.11377813](https://zenodo.org/doi/10.5281/zenodo.11377813).
+JGCRI, 2025. GCAM Documentation (Version 8.2). https://github.com/JGCRI/gcam-doc. Joint Global Change Research Institute. [https://zenodo.org/doi/10.5281/zenodo.15581183](https://zenodo.org/doi/10.5281/zenodo.15581183).
 
 ### GCAM core model committee
 * [Matthew Binsted](https://www.pnnl.gov/people/matthew-binsted)
