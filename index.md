@@ -1,7 +1,7 @@
 ---
 layout: index
 title: Global Change Analysis Model (GCAM)
-gcam-version: v7.1
+gcam-version: v8.0
 ---
 
 This documentation describes GCAM v7.1 ([![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.11481167.svg)](https://doi.org/10.5281/zenodo.11481167))

@@ -3,7 +3,7 @@ layout: index
 title: Supply of Energy
 prev: inputs_supply.html
 next: outputs_quantity.html
-gcam-version: v7.1
+gcam-version: v8.0
 ---
 
 # Table of Contents
@@ -93,7 +93,7 @@ The oil refining subsector accounts for the vast majority of the historical outp
 
 ##### Biomass Liquids
 
-The biomass liquids subsector includes up to eight technologies in each region, with a global total of [11 production technologies](details_energy.html#biomass-liquids). The biomass liquids technologies include up to four "first-generation" biofuels in each region, defined as biofuels produced from agricultural crops that are also used as food, animal feed, or other modeled uses (described in the [land module](land.html)). The model tracks secondary feed outputs of first generation biofuel production, as DDGS (dried distillers grains and solubles) from ethanol production, and as feedcakes from biodiesel production. Second-generation technologies consume the "biomass" or "biomassOil" commodities, which include purpose-grown bioenergy crops, as well as residues from forestry and agriculture, and municipal and industrial wastes.  Starting in 2020, second-generation biofuels (cellulosic ethanol and Fischer-Tropsch syn-fuels) are introduced, each with three levels of CCS: none, level 1, and level 2. The first CCS level generally consists of relatively pure and high-concentration CO2 sources (e.g., from gasifiers or fermenters), which have relatively low capture and compression costs. The second CCS level includes a broader set of sources (e.g., post-combustion emissions), and incurs higher costs but has a higher CO<sub>2</sub> removal fraction.
+The biomass liquids subsector includes up to eight technologies in each region, with a global total of [11 production technologies](details_energy.html#biomass-liquids). The biomass liquids technologies include up to four "first-generation" biofuels in each region, defined as biofuels produced from agricultural crops that are also used as food, animal feed, or other modeled uses (described in the [land module](land.html)). The model tracks secondary feed outputs of first generation biofuel production, as DDGS (dried distillers grains and solubles) from ethanol production, and as feedcakes from biodiesel production. Second-generation technologies consume the "biomass" or "biomassOil" commodities, which include purpose-grown bioenergy crops, as well as residues from forestry and agriculture, and municipal and industrial wastes.  Starting in 2025, second-generation biofuels (cellulosic ethanol and Fischer-Tropsch syn-fuels) are introduced, each with three levels of CCS: none, level 1, and level 2. The first CCS level generally consists of relatively pure and high-concentration CO<sub>2</sub> sources (e.g., from gasifiers or fermenters), which have relatively low capture and compression costs. The second CCS level includes a broader set of sources (e.g., post-combustion emissions), and incurs higher costs but has a higher CO<sub>2</sub> removal fraction.
 
 ##### Coal to Liquids
 

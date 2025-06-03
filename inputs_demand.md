@@ -3,7 +3,7 @@ layout: index
 title: Inputs for Modeling Demand
 prev: diagram.html
 next: demand_land.html
-gcam-version: v7.1
+gcam-version: v8.0
 ---
 
 GCAM's demand inputs include information on consumption and prices in the historical period in order to calibrate model parameters. Additional parameters related to income and price elasticities are needed for modeling future periods. GCAM requires demand data to be globally consistent with [supply data](inputs_supply.html) for each of its historical model periods as it solves for market equilibrium in these years as it does for future years. These inputs are required for each [region](common_assumptions.html#regional-resolution) and [historical year](common_assumptions.html#historical-years).
@@ -12,7 +12,7 @@ GCAM's demand inputs include information on consumption and prices in the histor
 
 - [Energy](#energy)
 - [Water](#water)
-- [Food, Feed, and Forestry](#food--feed--forestry)
+- [Food, Feed, and Forestry](#food-feed-and-forestry)
 
 ## External Inputs
 
@@ -24,15 +24,15 @@ Table 1: External inputs used for demand of energy<sup>[1](#table_footnote1)</su
 
 | Name | Description | Type | Source | Resolution | Unit |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| Historical demand for energy | Demand for energy in the historical period; used for initialization/calibration of GCAM | External data | IEA | Specified by demand, fuel, country, and year |  ktoe and GWh |
-| Historical demand for floorspace | Demand for floorspace in the historical period; used for initialization/calibration of GCAM | External data | IEA, Odyssee, Other | Specified by country, and year |  BM2 and m2/pers |
+| Historical demand for energy | Demand for energy in the historical period; used for initialization/calibration of GCAM | External data | [IEA](#iea2023) | Specified by demand, fuel, country, and year |  ktoe and GWh |
+| Historical demand for floorspace | Demand for floorspace in the historical period; used for initialization/calibration of GCAM | External data | [IEA](#iea2023), Odyssee, Other | Specified by country, and year |  BM2 and m2/pers |
 | Historical service demand | Shares of residential and commercial TFE by service and region | External data | Various | Specified by country, service, and year |  Shares |
 | Price elasticity of demand | Elasticity determining how demand responds to changes in price | Assumption | | Specified by demand |  unitless |
 | Value of time in transit multiplier | Factor multiplied by the wage rate to determine the value of time in transit, used in the transportation module | Assumption | | Specified by demand |  unitless |
 | Cost | Cost of production | Assumption | | Specified by technology and year |  1975$/kg or 1975$/GJ |
 | Default input-output coefficients | Default amount of input required per unit of output produced; can be overwritten by region-specific information derived from historical data | Assumption | | Specified by technology and year |  Various (e.g., GJ per kg, GJ per GJ) |
 | Default efficiencies | Default amount of output produced per unit of input; can be overwritten by region-specific information derived from historical data | Assumption | | Specified by technology and year |  Various (e.g., GJ per kg, GJ per GJ) |
-| CO<sub>2</sub> capture rates | Fraction of CO2 captured in CCS technologies. | Assumption |  | Specified by technology and year | unitless |
+| CO<sub>2</sub> capture rates | Fraction of CO<sub>2</sub> captured in CCS technologies. | Assumption |  | Specified by technology and year | unitless |
 | Retirement rules | For vintaged technologies, GCAM requires the user to specify the lifetime, and the parameters required for phased and profit-based shutdown. | Assumption |  | Specified by technology and year | Years (for lifetime), unitless for others |
 | Logit exponents | GCAM requires the user to specify the logit exponents that determine the substitutability between technologies. | Assumption |  | Specified by sector and subsector | N/A |
 | Share weight interpolation rules | These rules dictate how share weights (GCAM's calibration parameter) are specified in future years. | Assumption |  | Specified by sector and subsector | N/A |
@@ -46,7 +46,7 @@ Table 1: External inputs used for demand of energy<sup>[1](#table_footnote1)</su
 | Desalinated water production | Water produced through desalination, used to estimate energy-for-water | External data | FAO Aquastat | By nation | $$km^3$$ per year |
 | Shares of wastewater treated | Shares of wastewater treated, used to estimate energy-for-water | External data | [Liu et al. 2016](#liu2016) |  By nation | Unitless |
 | Non-renewable groundwater supply curves - electricity inputs | Electricity inputs to groundwater production | External data | <a href="https://github.com/JGCRI/superwell">Superwell</a> | 20 grades per geopolitical region and GLU | GJ per $$m^3$$ |
-| Historical non-CO<sub>2</sub> emissions | Historical emissions of non-CO<sub>2</sub> | External data | [CEDS](https://github.com/JGCRI/CEDS) `v_2021_04_21` | Specified by country, technology, gas, and year | Various |
+| Historical non-CO<sub>2</sub> emissions | Historical emissions of non-CO<sub>2</sub> | External data | [CEDS](https://github.com/JGCRI/CEDS) `v2024_07_08` | Specified by country, technology, gas, and year | Various |
 
 
 <font size="-1"><a name="table_footnote1">1</a>: Note that this table differs from the one provided on the <a href="demand_energy.html#inputs-to-the-module">Energy Demand Modeling Page</a> in that it only lists external inputs to the demand module (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.</font>
@@ -187,21 +187,21 @@ Note that for the Shared Socioeconomic Pathways (SSPs), different inputs are use
 
 ##### Historical demand for crops
 
-Historical demand for agricultural commodities is provided in supply utilization balances in [GCAMDATA_FAOSTAT_SUA_195Regs_530Items_2010to2019.csv.gz](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMDATA_FAOSTAT_SUA_195Regs_530Items_2010to2019.csv.gz) for food, feed, export, and import. 
+Historical demand for agricultural commodities is provided in supply utilization balances in [GCAMDATA_FAOSTAT_SUA.csv.gz](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMDATA_FAOSTAT_SUA.csv.gz) for food, feed, export, and import. 
 
 ##### Historical demand for livestock
 
-Historical demand for livestock commodities is provided in in supply utilization balances in [GCAMDATA_FAOSTAT_SUA_195Regs_530Items_2010to2019.csv.gz](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMDATA_FAOSTAT_SUA_195Regs_530Items_2010to2019.csv.gz) for food, feed, export, and import.
+Historical demand for livestock commodities is provided in in supply utilization balances in [GCAMDATA_FAOSTAT_SUA.csv.gz](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMDATA_FAOSTAT_SUA.csv.gz) for food, feed, export, and import.
 
 Note that in the supply utilization accounting data for both crops and livestock products, other balance elements, e.g., opening and closing stock, loss, seed use, etc., are also included. However, these elements are currently aggregated into "other use" in gcamdata.
 
 ##### Historical forest data
 
-Historical data for forest demand is provided in in [GCAMDATA_FAOSTAT_ForProdTrade_215Regs_Roundwood_1973to2020](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO) for forestry production, export and import data.
+Historical data for forest demand is provided in in [GCAMDATA_FAOSTAT_ForProdTrade](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMDATA_FAOSTAT_ForProdTrade.csv.gz) for forestry production, export and import data.
 
 ##### Historical food Calories (macronutrients) data
 
-Historical data for food Calories (and other macronutrients) is provided in in [GCAMDATA_FAOSTAT_MacroNutrientRate_179Regs_426Items_2010to2019](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO).
+Historical data for food Calories (and other macronutrients) is provided in in [GCAMDATA_FAOSTAT_MacroNutrientRate](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMDATA_FAOSTAT_MacroNutrientRate.csv.gz).
 
 ##### Income and price elasticity
 
@@ -224,6 +224,8 @@ Parameters needed for the food demand module are determined by a separate model,
 <a name="faostat2016">[FAOSTAT]</a> FAO. 2016. *FAOSTAT Statistics Database*, Food and Agriculture Organization of the United Nations (FAO). [Link](http://www.fao.org/nr/water/aquastat/data/query/index.html?lang=en)
 
 <a name="hejazi2014">[Hejazi et al. 2014]</a> Hejazi, M., J. Edmonds, L. Clarke, P. Kyle, E. Davies, V. Chaturvedi, M. Wise, P. Patel, J. Eom, K. Calvin, R. Moss, and S. Kim. 2014. Long-term global water projections using six socioeconomic scenarios in an integrated assessment modeling framework. *Technological Forecasting and Social Change* 13, pp 112-123. [Link](https://www.sciencedirect.com/science/article/pii/S0040162513001169)
+
+<a name="iea2023">[IEA 2023]</a> International Energy Agency, 2023, *Energy Balances of OECD Countries 1960-2022 and Energy Balances of Non-OECD Countries 1971-2022*, International Energy Agency, Paris, France.
 
 <a name="kenny2009">[Kenny et al. 2009]</a> Kenny, J., N. Barber, S. Hutson, K. Linsey, J. Lovelace, M. Maupin. *Estimated use of water in the United States in 2005* Circular 1344, U.S. Geological Survey, U.S. Department of the Interior, Reston, Virginia. [Link](https://pubs.usgs.gov/circ/1344/pdf/c1344.pdf)
 

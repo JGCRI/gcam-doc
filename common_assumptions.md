@@ -3,7 +3,7 @@ layout: index
 title: Common Assumptions
 prev: diagram.html
 next: inputs_demand.html
-gcam-version: v7.1
+gcam-version: v8.0
 ---
 
 These assumptions are shared throughout the GCAM model.
@@ -24,7 +24,7 @@ GCAM subdivides the world into 32 geopolitical regions, representing countries o
 | Australia\_NZ	| Australia, New Zealand |
 | Brazil | Brazil |
 | Canada	    | Canada |
-| Central America and the Caribbean	 | Aruba, Anguilla, Netherlands Antilles, Antigua & Barbuda, Bahamas, Belize, Bermuda, Barbados, Costa Rica, Cuba, Cayman Islands, Dominica, Dominican Republic, Guadeloupe, Grenada, Guatemala, Honduras, Haiti, Jamaica, Saint Kitts and Nevis, Saint Lucia, Montserrat, Martinique, Nicaragua, Panama, El Salvador, Trinidad and Tobago, Saint Vincent and the Grenadines |
+| Central America and the Caribbean	 | Aruba, Anguilla, Netherlands Antilles, Antigua & Barbuda, Bahamas, Belize, Bermuda, Barbados, Costa Rica, Cuba, Cayman Islands, Dominica, Dominican Republic, Guadeloupe, Grenada, Guatemala, Honduras, Haiti, Jamaica, Saint Kitts and Nevis, Saint Lucia, Montserrat, Martinique, Nicaragua, Panama, El Salvador, Trinidad and Tobago, Saint Barthelemy, Sint Eustatius and Saba Bonaire, Saint Vincent and the Grenadines |
 | Central Asia | Armenia, Azerbaijan, Georgia, Kazakhstan, Kyrgyzstan, Mongolia, Tajikistan, Turkmenistan, Uzbekistan |
 | China | China |
 | Colombia | Colombia |
@@ -32,7 +32,7 @@ GCAM subdivides the world into 32 geopolitical regions, representing countries o
 | EU-15         |	Andorra, Austria, Belgium, Denmark, Finland, France, Germany, Greece, Greenland, Ireland, Italy, Luxembourg, Monaco, Netherlands, Portugal, Sweden, Spain, United Kingdom |
 | Europe\_Eastern | Belarus, Moldova, Ukraine |
 | European Free Trade Association |Iceland, Norway, Switzerland |
-| Europe\_Non\_EU | Albania, Bosnia and Herzegovina, Croatia, Macedonia, Montenegro, Serbia, Turkey |
+| Europe\_Non\_EU | Albania, Bosnia and Herzegovina, Croatia, Kosovo, Macedonia, Montenegro, Serbia, Turkey |
 | India | India |
 | Indonesia | Indonesia |
 | Japan |	Japan |
@@ -122,11 +122,11 @@ For GCAM3.0 through GCAM4.4, the Agriculture and Land Use model subdivided the G
 
 ### Historical Years
 
-The GCAM data system can produce such data sets annually beginning in 1971. Currently, GCAM uses data from 1990, 2005, 2010, and 2015 to initialize the model, but could be initialized to any year beginning in 1971.
+The GCAM data system can produce such data sets annually beginning in 1971. Currently, GCAM uses data from 1990, 2005, 2010, 2015, and 2021 to initialize the model, but could be initialized to any year beginning in 1971.
 
 ### Future Years
 
-Currently, GCAM models the future from 2020 to 2100 in 5 year time steps. The time step is variable and can be changed in [the data system](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/constants.R). 
+Currently, GCAM models the future from 2025 to 2100 in 5 year time steps. The time step is variable and can be changed in [the data system](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/constants.R). 
 
 ## Economic Choice
 

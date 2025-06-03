@@ -1,7 +1,7 @@
 ---
 layout: index
 title: GCAM Policy Examples
-gcam-version: v7.1
+gcam-version: v8.0
 ---
 
 This page includes some examples of input files required to create policies. Note that each example will need to be tailored to your own needs. 
@@ -61,7 +61,7 @@ The following policy examples are provided in this section.
 
 
 ## <a name="carbon-price"/> Carbon Price
-The following input file will create a carbon price of $1/tC (in $1990) in the USA, starting in the year 2020 and going through out the model time horizon. Additional regions can be added to this file. Regions with the same `market` name will use the same carbon price.
+The following input file will create a carbon price of $1/tC (in $1990) in the USA, starting in the year 2025 and going through out the model time horizon. Additional regions can be added to this file. Regions with the same `market` name will use the same carbon price.
 
 ```
 <scenario>
@@ -69,7 +69,7 @@ The following input file will create a carbon price of $1/tC (in $1990) in the U
         <region name="USA">
             <ghgpolicy name="CO2">
                 <market>USA</market>
-                <fixedTax year="2020" fillout="1">1</fixedTax>
+                <fixedTax year="2025" fillout="1">1</fixedTax>
             </ghgpolicy>
         </region>
     </world>
@@ -101,9 +101,9 @@ Linked policies are used to tie the price of one policy to another. In the examp
 ```
 
 ## <a name="energy-constraint"/> Energy Constraint 
-The following inputs will set a constraint on bioenergy use in the USA, limiting it to 10 EJ/yr. Note that the `input-tax` tag will need to be added to all model periods (the example only uses 2020 for brevity). Additionally, this tag needs to be added to all production technologies and regions that are included in the target. For example, corn ethanol, sugarcane ethanol, and biodiesel do not consume or produce "regional biomass" and therefore would be excluded from the policy below. If you wanted to include these options in this constraint, you would need to add a tag to those technologies in the refinery sector. 
+The following inputs will set a constraint on bioenergy use in the USA, limiting it to 10 EJ/yr. Note that the `input-tax` tag will need to be added to all model periods (the example only uses 2025 for brevity). Additionally, this tag needs to be added to all production technologies and regions that are included in the target. For example, corn ethanol, sugarcane ethanol, and biodiesel do not consume or produce "regional biomass" and therefore would be excluded from the policy below. If you wanted to include these options in this constraint, you would need to add a tag to those technologies in the refinery sector. 
 
-This example sets an upper bound on production. If instead you wanted a lower bound, then you would use `input-subsidy` in the technology and `policyType` equals "subsidy" in the policy-portfolio-standard. If you wanted to set an exact constraint, you can use either a tax or a subsidy with the additional tag `<min-price year="2020" fillout="1">-100</min-price>` which will allow the tax or subsidy to go negative, effectively enabling either a tax or a subsidy within the same constraint.
+This example sets an upper bound on production. If instead you wanted a lower bound, then you would use `input-subsidy` in the technology and `policyType` equals "subsidy" in the policy-portfolio-standard. If you wanted to set an exact constraint, you can use either a tax or a subsidy with the additional tag `<min-price year="2025" fillout="1">-100</min-price>` which will allow the tax or subsidy to go negative, effectively enabling either a tax or a subsidy within the same constraint.
 
 If you wanted to only constrain one type of bioenergy, then would only put the `input-tax` tag in the technology producing that type of bioenergy (e.g., you could include `input-tax` in the biomass resource to just limit MSW production).  
 
@@ -114,7 +114,7 @@ If you wanted to only constrain one type of bioenergy, then would only put the `
          <supplysector name="regional biomass">
             <subsector name="regional biomass">
                <technology name="regional biomass">
-                  <period year="2020">
+                  <period year="2025">
                      <input-tax name="bio-constraint"/>
                   </period>
                   ...
@@ -124,7 +124,7 @@ If you wanted to only constrain one type of bioenergy, then would only put the `
         <policy-portfolio-standard name="bio-constraint">
 				<market>USA</market>
 				<policyType>tax</policyType>	
-				<constraint year="2020" fillout="1">10</constraint>
+				<constraint year="2025" fillout="1">10</constraint>
 		</policy-portfolio-standard>
     </region>
 	</world>
@@ -132,7 +132,7 @@ If you wanted to only constrain one type of bioenergy, then would only put the `
 ```
 
 ## <a name="land-constraint"/> Land Constraint 
-The following input file will keep UnmanagedForest area in the USA GreatLakes region above 12 thous sq km, starting in the year 2020 and going through out the model time horizon. Because the policy type is specified as `<policyType>subsidy</policyType>` the model will add a subsidy to the associated market to achieve the specified 12 thous sq km target. 
+The following input file will keep UnmanagedForest area in the USA GreatLakes region above 12 thous sq km, starting in the year 2025 and going through out the model time horizon. Because the policy type is specified as `<policyType>subsidy</policyType>` the model will add a subsidy to the associated market to achieve the specified 12 thous sq km target. 
 
 If an upper bound was needed instead, this can be implemented by changing `policyType` to "tax" in the below xml example. In this case the opposite will occur, with the model adding a tax to the associated market to keep land use below the specified value. 
 
@@ -156,7 +156,7 @@ Note that the `land-constraint-policy` tag will need to be added to any `Unmanag
             <policy-portfolio-standard name="reduced_deforestation">
                 <market>USA</market>
                 <policyType>subsidy</policyType>
-                <constraint year="2020" fillout="1">12</constraint>
+                <constraint year="2025" fillout="1">12</constraint>
             </policy-portfolio-standard>
         </region>
      </world>
@@ -170,7 +170,7 @@ The following inputs will set up a energy intensity standard. These policies dif
    <supplysector name="refined liquids transport">
             <subsector name="refined liquids transport">
                <technology name="refined liquids transport">
-                  <period year="2020">
+                  <period year="2025">
                      <minicam-energy-input name="BioFuelsCredits">
                         <coefficient>0.1</coefficient>
                      </minicam-energy-input>
@@ -187,7 +187,7 @@ The supply is created by putting a secondary output of "Biofuels Credits" on eac
 <supplysector name="refining">
             <subsector name="biomass liquids">
                <technology name="cellulosic ethanol">
-                  <period year="2020">
+                  <period year="2025">
                      <res-secondary-output name="BioFuelsCredits">
                         <output-ratio>1</output-ratio>
                      </res-secondary-output>

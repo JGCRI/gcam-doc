@@ -3,7 +3,7 @@ layout: index
 title: Energy Technologies
 prev: choice.html
 next: solver.html
-gcam-version: v7.1
+gcam-version: v8.0
 ---
 
 This page documents the parameters and functional forms found within technologies in GCAM's energy system. In the heirarchy of the information in the XML input and output files, the technology is located at the following level:
@@ -60,7 +60,7 @@ $$
 				<stub-technology name="coal (conv pul)">
 					<period year="2015">
 						<exogenous-shutdown-decider name="exogenous-shutdown">
-							<output-scalar year="2020">0.5</output-scalar>
+							<output-scalar year="2021">0.5</output-scalar>
 							<output-scalar year="2025">0.3</output-scalar>
 							<output-scalar year="2030">0.2</output-scalar>
 							<output-scalar year="2035">0.1</output-scalar>

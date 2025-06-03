@@ -1,13 +1,13 @@
 ---
 layout: index
 title: GCAM-USA
-gcam-version: v7.1
+gcam-version: v8.0
 ---
 
 The Global Change Analysis Model (GCAM) and GCAM-USA
 ------------------------------------------------------
 
-The GCAM model was expanded to include greater spatial detail in the USA region, referred to as GCAM-USA. In GCAM-USA the 50 U.S. states plus the District of Columbia (hereafter, the 51 states) are included as explicit regions that operate within the global GCAM model. Energy transformation (electricity generation and refined liquids production) and end-use demands (buildings, transportation, and industry) are modeled at the individual state level. Inter-state trade of all energy goods is considered, with state-specific consumer price mark-ups assigned for coal, natural gas, and refined liquids assigned based on price data from [EIA 2017b](gcam-usa.html#eia2017b).
+The GCAM model was expanded to include greater spatial detail in the USA region, referred to as GCAM-USA. In GCAM-USA the 50 U.S. states plus the District of Columbia (hereafter, the 51 states) are included as explicit regions that operate within the global GCAM model. Energy transformation (electricity generation and refined liquids production) and end-use demands (buildings, transportation, and industry) are modeled at the individual state level. Inter-state trade of all energy goods is considered, with state-specific consumer price mark-ups assigned for coal, natural gas, and refined liquids assigned based on price data from [EIA 2017](gcam-usa.html#eia2017).
 
 <img src="gcam-figs/gcam-usa.png" width="397" height="525" />
 
@@ -72,7 +72,7 @@ Finally, the USA-region's population and labor productivity assumptions were upd
 Developing a historical energy balance for model calibration
 ============================================================
 
-The first step to modeling at the 51 state level was to create energy balances--that is, production and consumption of different forms of energy by each modeled sector, fuel, and state. These data were developed from 1971 to the final historical year of 2015, and applied in the model base years of 1975, 1990, 2005, 2010, and 2015. In the data processing of the state-level energy data, the aggregated national GCAM-USA energy balances (i.e., all states added together) must still be equal to the corresponding flows in the USA region of the global GCAM data set, which are derived from International Energy Agency (IEA) Energy Balances. With this in mind, we use proportional allocations to disaggregate the US-level quantity flows to the states, utilizing state level data sets from the US Energy Information Agency (EIA). The EIA SEDS (State Energy Data System) was used as the primary data set for this purpose ([EIA 2017a](gcam-usa.html#eia2017a)). The main steps of the data processing methods are described in the subsequent sections.
+The first step to modeling at the 51 state level was to create energy balances--that is, production and consumption of different forms of energy by each modeled sector, fuel, and state. These data were developed from 1971 to the final historical year of 2021, and applied in the model base years of 1975, 1990, 2005, 2010, 2015, and 2021. In the data processing of the state-level energy data, the aggregated national GCAM-USA energy balances (i.e., all states added together) must still be equal to the corresponding flows in the USA region of the global GCAM data set, which are derived from International Energy Agency (IEA) Energy Balances. With this in mind, we use proportional allocations to disaggregate the US-level quantity flows to the states, utilizing state level data sets from the US Energy Information Agency (EIA). The EIA SEDS (State Energy Data System) was used as the primary data set for this purpose ([EIA 2022](gcam-usa.html#eia2022)). The main steps of the data processing methods are described in the subsequent sections.
 
 
 End-use sectors
@@ -166,7 +166,7 @@ Carbon-Dioxide Capture and Geologic Storage
 
 The depiction of the grid-region-specific graded CO<sub>2</sub> transport storage cost curves reflect adjusted per-ton project costs for CO<sub>2</sub> transport and geologic storage as based on the methodology developed by [Dahowski et al. 2011](gcam-usa.html#dahowski2011); [Dahowski et al. 2005](gcam-usa.html#dahowski2005); [Dahowski et al. 2010](gcam-usa.html#dahowski2010)). The costs shown in the figure include site characterization, capital and operations and maintenance costs associated with CO<sub>2</sub> injection into suitable deep geologic reservoirs, and costs for required measurement, monitoring and verification technologies as well as other costs associated with regulatory compliance. These values do not include the cost of CO<sub>2</sub> capture and compression to pipeline pressures, which are accounted for at the level of the technologies of emissions-producing activities that are equipped to perform CO<sub>2</sub> capture. CO<sub>2</sub> storage is aggregated to the same sub-regional markets as electricity to allow for some cross state border trade in CO<sub>2</sub>.
 
-The region-specific CO<sub>2</sub> transport and storage cost curves for the U.S. were developed using a cost-optimized source-sink matching algorithm designed to model globally optimal CCS deployment (again, less the cost of CO<sub>2</sub> capture and compression) across the modeled domain. Each point on the resulting cost curves represents a single source-sink pair with a single average per-ton cost over the first 20-year time step of the analysis (see [Dahowski et al. 2005](gcam-usa.html#dahowski2005); [Dahowski et al. 2010](gcam-usa.html#dahowski2010) for the rationale for this 20-year time step and its significance for these CO2 transport and storage cost curves). Source-sink pairs were derived using both spatial and economic criteria based on a set of 2017 large anthropogenic CO<sub>2</sub> point sources and 326 individual geologic storage reservoirs within the US ([Dahowski et al. 2011](gcam-usa.html#dahowski2011)). As shown in this earlier published research, the *average* per ton cost of CO<sub>2</sub> transport and storage would increase in the future as the capacity of low cost, value-added geologic CO<sub>2</sub> storage reservoirs are preferentially consumed ahead of non-value added geologic storage reservoirs. The cost-curves are implemented within GCAM-USA as exhaustible resources, so once low-cost storage sites are used, higher cost sites must be used.
+The region-specific CO<sub>2</sub> transport and storage cost curves for the U.S. were developed using a cost-optimized source-sink matching algorithm designed to model globally optimal CCS deployment (again, less the cost of CO<sub>2</sub> capture and compression) across the modeled domain. Each point on the resulting cost curves represents a single source-sink pair with a single average per-ton cost over the first 20-year time step of the analysis (see [Dahowski et al. 2005](gcam-usa.html#dahowski2005); [Dahowski et al. 2010](gcam-usa.html#dahowski2010) for the rationale for this 20-year time step and its significance for these CO<sub>2</sub> transport and storage cost curves). Source-sink pairs were derived using both spatial and economic criteria based on a set of 2017 large anthropogenic CO<sub>2</sub> point sources and 326 individual geologic storage reservoirs within the US ([Dahowski et al. 2011](gcam-usa.html#dahowski2011)). As shown in this earlier published research, the *average* per ton cost of CO<sub>2</sub> transport and storage would increase in the future as the capacity of low cost, value-added geologic CO<sub>2</sub> storage reservoirs are preferentially consumed ahead of non-value added geologic storage reservoirs. The cost-curves are implemented within GCAM-USA as exhaustible resources, so once low-cost storage sites are used, higher cost sites must be used.
 
 In keeping with the US electricity-specific CCS modeling presented in [Wise et al. 2007](gcam-usa.html#wise2007), the CO<sub>2</sub> transport and storage cost curves represented in this analysis have been adjusted to account for the fact that the cost of CO<sub>2</sub> capture can vary by an order of magnitude for the different CO<sub>2</sub> sources modeled to generate the raw region specific CO<sub>2</sub> transport and storage cost (i.e., a natural gas processing plant generates a virtually pure stream of CO<sub>2</sub> that can be captured - already dehydrated and compressed - for a cost of less than $10/tonCO<sub>2</sub>, while an older and relatively small pulverized coal plant could see capture costs well above $50/tonCO<sub>2</sub>) and which kinds of CO<sub>2</sub> point sources get to access what kinds of geologic storage reservoirs is influenced strongly by the capture costs. Therefore, without the sort of adjustments performed, the raw region-specific CO<sub>2</sub> transport and storage curves would present an unrealistically low representation of the net cost of CO<sub>2</sub> transport and storage likely to be experienced by large stationary CO<sub>2</sub> point sources like coal, natural gas, and biomass fired power plants and refineries, which are the anthropogenic CO<sub>2</sub> sources that are modeled specifically in GCAM-USA.
 
@@ -224,11 +224,11 @@ State-level technology share-weights, which influence the competition between co
 This approach differs somewhat from the global GCAM, where future cooling shares are exogenously specified by region. Historically calibrated share-weights are not carried forward into the future in the global model. 
 
 
-Non-CO2 GHGs
+Non-CO<sub>2</sub> GHGs
 ===========
 GCAM-USA represents state-level CH4 and N2O emissions in the electricity, buildings, industrial energy use, industrial processes, urban processes, refining, and N fertilizer sectors. HFC emissions are represented in the buildings sector (for residential and commercial cooling). SF6 emissions associated with the electricity transmission system are represented at grid-region level (in the electricity_net_ownuse sector). Resource production and agricultural activity are still represented at the national level; thus, emissions from these sectors are also represented at the national level and are not currently downscaled to states.
 
-Historical CH4 and N2O emissions in industrial processes and urban processes are calibrated to the [2022 U.S. State-level Non-CO2 GHG Mitigation Report](gcam-usa.html#epa2022). Emissions in other sectors are represented using the same emission factors as the "USA" region in the 32-region GCAM, developed from the [2019 EPA Global Non-CO2 Greenhouse Gas Emission Projection & Mitigation Potential Report](emissions.html#epa2019).
+Historical CH4 and N2O emissions in industrial processes and urban processes are calibrated to the [2022 U.S. State-level Non-CO<sub>2</sub> GHG Mitigation Report](gcam-usa.html#epa2022). Emissions in other sectors are represented using the same emission factors as the "USA" region in the 32-region GCAM, developed from the [2019 EPA Global Non-CO<sub>2</sub> Greenhouse Gas Emission Projection & Mitigation Potential Report](emissions.html#epa2019).
 
 Currently, GCAM-USA uses the same marginal abatement cost (MAC) curves as the "USA" region in the 32-region GCAM.
 
@@ -303,9 +303,7 @@ References
 
 <a name="eia2014">[EIA 2014]</a> U.S. Energy Information Agency (EIA). 2014. Table 4. Biodiesel producers and production capacity by state in March 2014. <http://www.eia.gov/biofuels/biodiesel/production/table4.pdf>
 
-<a name="eia2017a">[EIA 2017a]</a> U.S. Energy Information Agency (EIA 2017a) State Energy Data System.  All consumption estimates in Btu, 1960-2017. <https://www.eia.gov/state/seds/sep_use/total/csv/use_all_btu.csv>.
-
-<a name="eia2017b">[EIA 2017b]</a> U.S. Energy Information Agency (EIA 2017b) Table E1. Primary Energy, Electricity, and Total Energy Price Estimates, 2017. <https://www.eia.gov/state/seds/data.php?incfile=/state/seds/sep_sum/html/sum_pr_tot.html&sid=US>
+<a name="eia2017">[EIA 2017]</a> U.S. Energy Information Agency (EIA 2017) Table E1. Primary Energy, Electricity, and Total Energy Price Estimates, 2017. <https://www.eia.gov/state/seds/data.php?incfile=/state/seds/sep_sum/html/sum_pr_tot.html&sid=US>
 
 <a name="eia2018a">[EIA 2018a]</a> U.S. Energy Information Agency (EIA 2018a) Electricity Data Browser. <https://www.eia.gov/electricity/data/browser/> (2018).
 
@@ -316,6 +314,8 @@ References
 <a name="eia2019">[EIA 2019]</a> U.S. Energy Information Agency (EIA 2019) Annual Energy Outlook 2019 with projections to 2050. <https://www.eia.gov/outlooks/archive/aeo19/> (2019).
 
 <a name="eia2020">[EIA 2020]</a> U.S. Energy Information Agency (EIA 2020) Annual Energy Outlook 2020 with projections to 2050. <https://www.eia.gov/outlooks/aeo/> (2020).
+
+<a name="eia2022">[EIA 2022]</a> U.S. Energy Information Agency (EIA 2022) State Energy Data System.  All consumption estimates in Btu, 1960-2020. <https://www.eia.gov/state/seds/sep_use/total/csv/use_all_btu.csv>.
 
 <a name="epa2015">[EPA 2015]</a> U.S. Environmental Protection Agency. 2015. Standards of Performance for Greenhouse Gas Emissions from New, Modified, and Reconstructed Stationary Sources: Electric Utility Generating Units, 80 Federal Register 205 (23 October 2015) (40 CFR parts 60, 70, 71, and 98): 64513, 64546-64547, <https://www.gpo.gov/fdsys/pkg/FR-2015-10-23/pdf/2015-22837.pdf> (Accessed 16 December 2016). 
 
