@@ -181,7 +181,7 @@ Aguiar, Angel, Maksym Chepeliev, Erwin L. Corong, Robert McDougall, and Dominiqu
 
 IEA. "World Energy Outlook 2022." (2022).
 
-IIASA. "SSP Database." (2018).
+IIASA. "SSP Database." (2024).
 
 
 
