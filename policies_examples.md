@@ -1,7 +1,7 @@
 ---
 layout: index
 title: GCAM Policy Examples
-gcam-version: v8.0
+gcam-version: v8.2
 ---
 
 This page includes some examples of input files required to create policies. Note that each example will need to be tailored to your own needs. 

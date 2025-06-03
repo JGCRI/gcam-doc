@@ -3,7 +3,7 @@ layout: index
 title: Price Outputs
 prev: marketplace.html
 next: outputs_trade.html
-gcam-version: v8.0
+gcam-version: v8.2
 ---
 
 ## Description of Outputs

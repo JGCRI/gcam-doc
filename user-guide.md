@@ -3,7 +3,7 @@ layout: index
 title: GCAM User Guide
 prev: solver.html
 next: gcam-build.html
-gcam-version: v8.0
+gcam-version: v8.2
 ---
 ## Table Of Contents
   [1. Introduction](#gcam-intro)

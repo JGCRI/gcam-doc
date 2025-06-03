@@ -3,7 +3,7 @@ layout: index
 title: Community guidelines for peer-reviewed journal articles using GCAM
 prev: 
 next: 
-gcam-version: v8.0
+gcam-version: v8.2
 ---
 ## Community guidelines for peer-reviewed journal articles using GCAM
 This memo outlines some ***suggested*** guidelines for the community of GCAM users to employ in peer-reviewed journal articles using GCAM or versions of GCAM. The memo focuses on two areas: i.) guidelines for co-authorship of GCAM team members in papers led by community members, and ii.) guidelines for suggested language to be used to describe GCAM in papers.
@@ -25,7 +25,7 @@ Subsequent paragraphs of the description might expound on particular capabilitie
 Community users of GCAM might also undertake their own model developments and/or assumptions for papers. It is recommended that these departures from the publicly available version of the model be clearly described. In addition, if these developments are substantial, we suggest making this clear by including an additional phrase (e.g. region name or name of institution) in the name of the model and explicitly calling it out in place of or immediately following the italicized portion in the above paragraphs. For example: _"This study uses a modified version of GCAM/GCAM-USA called GCAM-\<institution name\>/GCAM-USA-\<institution name\>. GCAM-\<institution name\>/GCAM-USA-\<institution name\> incorporates additional details and modified assumptions from GCAM v NN as described subsequently"_. 
 
 ### References
-JGCRI, 2025. GCAM Documentation (Version 7.1). https://github.com/JGCRI/gcam-doc. Joint Global Change Research Institute. [https://zenodo.org/doi/10.5281/zenodo.11377813](https://zenodo.org/doi/10.5281/zenodo.11377813).
+JGCRI, 2025. GCAM Documentation (Version 8.2). https://github.com/JGCRI/gcam-doc. Joint Global Change Research Institute. [https://zenodo.org/doi/10.5281/zenodo.11377813](https://zenodo.org/doi/10.5281/zenodo.11377813).
 
 ### GCAM core model committee
 * [Matthew Binsted](https://www.pnnl.gov/people/matthew-binsted)

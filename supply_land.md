@@ -3,7 +3,7 @@ layout: index
 title: Supply of Food, Feed, and Forestry
 prev: inputs_supply.html
 next: outputs_quantity.html
-gcam-version: v8.0
+gcam-version: v8.2
 ---
 
 # Table of Contents

@@ -1,7 +1,7 @@
 ---
 layout: index
 title: Getting Started
-gcam-version: v8.0
+gcam-version: v8.2
 devguide: dev-guide.html
 ---
 ## Getting Started
