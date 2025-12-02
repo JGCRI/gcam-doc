@@ -6,6 +6,12 @@ next:
 gcam-version: v8.2
 ---
 
+GCAM v8.4 
+* [Socioeconomic and Macro Data Updates](cmp/410-Socioeconomic_Macro_Data_compressed.pdf)
+
+GCAM v8.3 
+* [Gcamstr: A String Interning Implemention in GCAM](cmp/405-Gcamstr_A_String_Interning_in-GCAM.pdf)
+
 GCAM v8.2 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15581174.svg)](https://doi.org/10.5281/zenodo.15581174)
 * [Miscellaneous Bugfixes Prior to 2025 Annual Meeting](cmp/403-Misc_Bugfix_2025.pdf)
 
