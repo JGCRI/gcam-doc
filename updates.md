@@ -6,6 +6,15 @@ next:
 gcam-version: v8.2
 ---
 
+GCAM v8.5 
+* [GCAM Bugfix Fall 2025](cmp/422-GCAM_Bugfix_Fall_2025.pdf)
+
+GCAM v8.4 
+* [Socioeconomic and Macro Data Updates](cmp/410-Socioeconomic_Macro_Data_compressed.pdf)
+
+GCAM v8.3 
+* [Gcamstr: A String Interning Implemention in GCAM](cmp/405-Gcamstr_A_String_Interning_in-GCAM.pdf)
+
 GCAM v8.2 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15581174.svg)](https://doi.org/10.5281/zenodo.15581174)
 * [Miscellaneous Bugfixes Prior to 2025 Annual Meeting](cmp/403-Misc_Bugfix_2025.pdf)
 
@@ -19,7 +28,7 @@ GCAM v7.4 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15580627.svg)](htt
 * [Base Year Update: Initial updates preparing for the new base year](cmp/309-BYU_initial.pdf)
 
 GCAM v7.3 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14629770.svg)](https://doi.org/10.5281/zenodo.14629770)
-* [Updated approach for intermittent electricity integration](cmp/394_Intermittent_electricity_integration.pdf)
+* [Updated approach for intermittent electricity integration](cmp/394-Intermittent_electricity_integration.pdf)
 
 GCAM v7.2 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.13946379.svg)](https://doi.org/10.5281/zenodo.13946379)
 * [Updating the SSP Database (v3.0)](cmp/399-SSP_Database2024.pdf)
