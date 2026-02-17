@@ -26,19 +26,19 @@ GCAM v8.3
 GCAM v8.2 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15581174.svg)](https://doi.org/10.5281/zenodo.15581174)
 * [Miscellaneous Bugfixes Prior to 2025 Annual Meeting](cmp/403-Misc_Bugfix_2025.pdf)
 
-GCAM v8.1 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15580677.svg)](https://doi.org/10.5281/zenodo.15580677)
+GCAM v8.1 
 * [Ukraine as an independent region](cmp/401-Ukraine_as_an_independent_region.pdf)
 
-GCAM v8.0 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15580671.svg)](https://doi.org/10.5281/zenodo.15580671)
+GCAM v8.0 
 * [Base Year Update: Move Model Base Year to 2021](cmp/404-Base_Year_Update_Move_Model_Base_Year_to_2021.pdf)
 
-GCAM v7.4 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15580627.svg)](https://doi.org/10.5281/zenodo.15580627)
+GCAM v7.4 
 * [Base Year Update: Initial updates preparing for the new base year](cmp/309-BYU_initial.pdf)
 
-GCAM v7.3 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14629770.svg)](https://doi.org/10.5281/zenodo.14629770)
+GCAM v7.3 
 * [Updated approach for intermittent electricity integration](cmp/394-Intermittent_electricity_integration.pdf)
 
-GCAM v7.2 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.13946379.svg)](https://doi.org/10.5281/zenodo.13946379)
+GCAM v7.2 
 * [Updating the SSP Database (v3.0)](cmp/399-SSP_Database2024.pdf)
 
 GCAM v7.1 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.11481167.svg)](https://doi.org/10.5281/zenodo.11481167)
