@@ -6,6 +6,14 @@ next:
 gcam-version: v8.2
 ---
 
+Below are summaries of the updates included in each GCAM Release. Including links to the Core Model Proposals, which provide full documentation of recent changes, including methods of implementation and analysis of impacts on key results. Note that since GCAM 7.1 each update will receive its own release and version. Major releases, which correspond to those with release packages on Github, will also note a DOI.
+
+GCAM v8.7 
+* [Cement Data Updates](cmp/408-Cement_Data_Updates.pdf)
+
+GCAM v8.6 
+* [Electricity Generation CCS Emission Factors](cmp/400-Electricity_Generation_CCS_Emission_Factors.pdf)
+
 GCAM v8.5 
 * [GCAM Bugfix Fall 2025](cmp/422-GCAM_Bugfix_Fall_2025.pdf)
 
