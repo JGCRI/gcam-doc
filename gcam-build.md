@@ -246,14 +246,15 @@ sudo apt install nautilus           -y
 sudo apt install x11-apps           -y
 sudo apt install vlc                -y
 
-install.packages(c("drake", "assertthat")) <- Necessary R packages
+install.packages(c("drake", "assertthat"))                                     <- Necessary R packages
 
-readlink -f `which javac` | sed "s:/bin/javac::"              <- Will give you the neccesary path for JAVA_HOME
-export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/bin/java  <- Replace with whatever path you obtained from the line above
-cp ~/.bashrc ~/.bashrc.bak
-echo "export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64" >> ~/.bashrc
-tail -3 ~/.bashrc
+readlink -f `which javac` | sed "s:/bin/javac::"                               <- Will give you the neccesary path for JAVA_HOME
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/bin/java                   <- Replace with whatever path you obtained from the line above
+cp ~/.bashrc ~/.bashrc.bak                                                     <- Creates a backup of your bashrc
+echo "export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64" >> ~/.bashrc        <- Sets the enviroment variable permanently through bashrc
+tail -3 ~/.bashrc                                                              <- The environment variable and it's path should be outputted
 
+cd ${HOME}/gcam-core
 mkdir libs
 wget https://github.com/JGCRI/modelinterface/releases/download/v5.4/jars.zip
 wget https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.gz
@@ -265,8 +266,8 @@ tar -xvf eigen-3.4.0.tar.gz
 rm eigen-3.4.0.tar.gz
 rm jars.zip
 
-Finally, you will want to travel gcam-core -> output -> modelinterface and run this command to create a symbolic link:
-ln -s ${HOME}/gcam-core/libs/jars
+cd ${HOME}/gcam-core/output/modelinterface
+ln -s ${HOME}/gcam-core/libs/jars                                              <- Creeates a symbolic link to the jars file. Neccesary for to open GUi                  
 
 You can use these environment variables:
 
