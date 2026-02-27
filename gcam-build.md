@@ -280,6 +280,8 @@ export JAVA_LIB="${JAVA_HOME}/lib/server"
 export JARS_LIB="${HOME}/gcam-core/libs/jars/*"
 export EIGEN_INCLUDE="${HOME}/gcam-core/libs/eigen"
 ```
+Note: You may need to rename BaseX jar. Model interface expects version 9.5.2, if it's not already named BaseX-9.5.2.jar then make the change.
+
 ### 4.2 Building with Xcode
 Mac users who would like to use the Xcode integrated development environment must have it installed (available from the Apple App Store), however a recent version with C++ 14 support is required.  Xcode version 8.1+ have been known to work.  Users can find the project file under `<GCAM Workspace>/cvs/objects/build/xcode3/objects.xcodeproj`. Once open you should change the `Scheme` to build the `Release` target.  You can find the scheme settings here:
 
