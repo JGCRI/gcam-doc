@@ -267,7 +267,7 @@ rm eigen-3.4.0.tar.gz
 rm jars.zip
 
 cd ${HOME}/gcam-core/output/modelinterface
-ln -s ${HOME}/gcam-core/libs/jars                                              <- Creeates a symbolic link to the jars file. Neccesary for to open GUi                  
+ln -s ${HOME}/gcam-core/libs/jars                                              <- Creates a symbolic link to the jars file. Neccesary for to open GUi                  
 
 You can use these environment variables:
 
