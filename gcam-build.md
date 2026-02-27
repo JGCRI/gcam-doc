@@ -279,7 +279,7 @@ export BOOSTROOT="${BOOST_INCLUDE}"
 export JAVA_INCLUDE="${JAVA_HOME}/include"
 export JAVA_LIB="${JAVA_HOME}/lib/server"
 export JARS_LIB="${HOME}/gcam-core/libs/jars/*"
-export EIGEN_INCLUDE="${HOME}/gcam-core/libs/eigen"
+export EIGEN_INCLUDE="${HOME}/gcam-core/libs/eigen-3.4.0"
 ```
 Note: You may need to rename BaseX jar. Model interface expects version 9.5.2, if it's not already named BaseX-9.5.2.jar then make the change.
 
