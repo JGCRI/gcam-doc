@@ -252,7 +252,7 @@ readlink -f `which javac` | sed "s:/bin/javac::"                               <
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/bin/java                   <- Replace with whatever path you obtained from the line above
 cp ~/.bashrc ~/.bashrc.bak                                                     <- Creates a backup of your bashrc
 echo "export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64" >> ~/.bashrc        <- Sets the enviroment variable permanently through bashrc
-tail -3 ~/.bashrc                                                              <- The environment variable and it's path should be outputted
+tail -3 ~/.bashrc                                                              <- The environment variable and its path should be outputted
 
 cd ${HOME}/gcam-core
 mkdir libs
