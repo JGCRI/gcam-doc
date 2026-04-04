@@ -8,6 +8,9 @@ gcam-version: v8.2
 
 Below are summaries of the updates included in each GCAM Release. Including links to the Core Model Proposals, which provide full documentation of recent changes, including methods of implementation and analysis of impacts on key results. Note that since GCAM 7.1 each update will receive its own release and version. Major releases, which correspond to those with release packages on Github, will also note a DOI.
 
+GCAM v8.8 
+* [Updated Energy System Techno Economic Data](cmp/415-Updated_Energy_System_Techno_Economic_Data.pdf)
+
 GCAM v8.7 
 * [Cement Data Updates](cmp/408-Cement_Data_Updates.pdf)
 
