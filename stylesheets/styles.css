@@ -391,14 +391,16 @@ footer p + p {
   top: calc(100% + 4px);
   left: 0;
   right: 0;
-  z-index: 100;
+  z-index: 9999;
   background: #fff;
   border: 1px solid #ccc;
   border-radius: 6px;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-  max-height: 420px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  max-height: 500px;
   overflow-y: auto;
+  text-align: left;
 }
+#gcam-search-overlay[hidden] { display: none; }
 #gcam-search-results {
   list-style: none;
   margin: 0;
