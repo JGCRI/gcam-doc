@@ -94,11 +94,16 @@
       return;
     }
     var html = '';
+    var q = encodeURIComponent(query);
     for (var i = 0; i < hits.length; i++) {
       var h = hits[i];
       var snip = h.contentPos >= 0
         ? makeSnippet(h.page.content, h.contentPos, query) : '';
-      html += '<li><a href="' + escapeHtml(h.page.url) + '">'
+      // Append ?q=... so the landing page can scroll to and highlight the match
+      var hrefBase = h.page.url;
+      var sep = hrefBase.indexOf('?') === -1 ? '?' : '&';
+      var href = hrefBase + sep + 'q=' + q;
+      html += '<li><a href="' + escapeHtml(href) + '">'
         + '<div class="gcam-search-title">' + escapeHtml(h.page.title)
         + ' <span class="gcam-search-count">' + h.count + '</span></div>'
         + (snip ? '<div class="gcam-search-snippet">' + snip + '</div>' : '')
@@ -151,12 +156,90 @@
     });
   }
 
+  // ---- Highlight the search term within the current page (?q=...) ----
+
+  function getQueryParam(name) {
+    var pairs = (location.search || '').replace(/^\?/, '').split('&');
+    for (var i = 0; i < pairs.length; i++) {
+      var kv = pairs[i].split('=');
+      if (decodeURIComponent(kv[0] || '') === name) {
+        return decodeURIComponent((kv[1] || '').replace(/\+/g, ' '));
+      }
+    }
+    return '';
+  }
+
+  function highlightOnPage(query) {
+    if (!query) return;
+    var root = document.querySelector('.wrapper section') || document.body;
+    if (!root) return;
+
+    var qLower = query.toLowerCase();
+    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        if (!n.parentNode) return NodeFilter.FILTER_REJECT;
+        var tag = n.parentNode.nodeName;
+        if (tag === 'SCRIPT' || tag === 'STYLE' || tag === 'MARK') {
+          return NodeFilter.FILTER_REJECT;
+        }
+        // Skip the search box itself
+        if (n.parentNode.closest && n.parentNode.closest('.gcam-search-box')) {
+          return NodeFilter.FILTER_REJECT;
+        }
+        return n.nodeValue.toLowerCase().indexOf(qLower) === -1
+          ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT;
+      }
+    });
+
+    var matched = [];
+    var node;
+    while ((node = walker.nextNode())) {
+      matched.push(node);
+      if (matched.length > 500) break; // safety cap
+    }
+
+    var firstMark = null;
+    for (var i = 0; i < matched.length; i++) {
+      var n = matched[i];
+      var text = n.nodeValue;
+      var lower = text.toLowerCase();
+      var frag = document.createDocumentFragment();
+      var idx = 0, j;
+      while ((j = lower.indexOf(qLower, idx)) !== -1) {
+        if (j > idx) frag.appendChild(document.createTextNode(text.slice(idx, j)));
+        var mark = document.createElement('mark');
+        mark.className = 'gcam-page-highlight';
+        mark.textContent = text.slice(j, j + query.length);
+        if (!firstMark) {
+          mark.classList.add('gcam-page-highlight-first');
+          firstMark = mark;
+        }
+        frag.appendChild(mark);
+        idx = j + query.length;
+      }
+      if (idx < text.length) frag.appendChild(document.createTextNode(text.slice(idx)));
+      n.parentNode.replaceChild(frag, n);
+    }
+
+    if (firstMark) {
+      setTimeout(function () {
+        firstMark.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 100);
+    }
+  }
+
   function init() {
+    var pageQuery = getQueryParam('q');
+    if (pageQuery) highlightOnPage(pageQuery);
+
     var input = $('gcam-search-input');
     var button = $('gcam-search-button');
     var overlay = $('gcam-search-overlay');
     var resultsList = $('gcam-search-results');
     if (!input || !overlay || !resultsList) return;
+
+    // Pre-fill the search box with the query that brought us here
+    if (pageQuery && !input.value) input.value = pageQuery;
 
     var debounceTimer;
     function go() { runSearch(input.value, overlay, resultsList); }

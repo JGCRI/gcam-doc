@@ -485,6 +485,20 @@ footer p + p {
   text-align: center;
   font-style: italic;
 }
+
+/* In-page highlights for when arriving via ?q=... */
+mark.gcam-page-highlight {
+  background: #ffe680;
+  color: inherit;
+  padding: 0 2px;
+  border-radius: 2px;
+}
+mark.gcam-page-highlight-first {
+  background: #ff9b3d;
+  color: #000;
+  font-weight: 600;
+  box-shadow: 0 0 0 2px rgba(255, 155, 61, 0.4);
+}
 #gcam-search-results {
   list-style: none;
   margin: 0;
