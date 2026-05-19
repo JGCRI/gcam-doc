@@ -10,8 +10,10 @@
     <link rel="shortcut icon" href="{{site.baseurl}}/images/logo.gif">
     <script src="{{site.baseurl}}/javascripts/scale.fix.js"></script>
     <script src="{{site.baseurl}}/javascripts/load_queries.js"></script>
+    <script src="{{site.baseurl}}/javascripts/search.js" defer></script>
     <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="gcam-baseurl" content="{{site.baseurl}}">
 
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -29,6 +31,12 @@
           <li><a href="https://github.com/JGCRI/gcam-core">View On <strong>GitHub</strong></a></li>
         </ul>
 	<hr/>
+	<div class="gcam-search-box">
+	  <input type="search" id="gcam-search-input" placeholder="Search documentation…" autocomplete="off" aria-label="Search documentation">
+	  <div id="gcam-search-overlay" hidden>
+	    <ul id="gcam-search-results"></ul>
+	  </div>
+	</div>
 	<p class="nav">
 	  <a href="{{site.baseurl}}/index.html">[Home]</a>
 	  {% if page.devguide %}

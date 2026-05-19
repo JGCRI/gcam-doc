@@ -338,6 +338,85 @@ footer p + p {
   float: right;
 }
 
+/* ---- Documentation search ---- */
+.gcam-search-box {
+  position: relative;
+  margin: 8px 0 10px;
+}
+#gcam-search-input {
+  width: 100%;
+  padding: 7px 10px;
+  font-size: 14px;
+  border: 1px solid #b2d2e1;
+  border-radius: 4px;
+  background: #fff;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+#gcam-search-input:focus {
+  outline: none;
+  border-color: #069;
+  box-shadow: 0 0 0 2px rgba(0, 102, 153, 0.15);
+}
+#gcam-search-overlay {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  max-height: 420px;
+  overflow-y: auto;
+}
+#gcam-search-results {
+  list-style: none;
+  margin: 0;
+  padding: 4px 0;
+}
+#gcam-search-results li a {
+  display: block;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: #333;
+  border-bottom: 1px solid #f0f0f0;
+}
+#gcam-search-results li a:hover {
+  background: #e8f4fc;
+}
+.gcam-search-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #069;
+}
+.gcam-search-count {
+  font-size: 11px;
+  font-weight: 700;
+  color: #c44;
+  margin-left: 4px;
+}
+.gcam-search-snippet {
+  font-size: 12px;
+  color: #666;
+  margin-top: 2px;
+  line-height: 1.4;
+}
+.gcam-search-snippet mark {
+  background: #ffe680;
+  color: inherit;
+  padding: 0 1px;
+  border-radius: 2px;
+}
+.gcam-search-empty {
+  padding: 12px;
+  color: #999;
+  font-size: 13px;
+  text-align: center;
+}
+
 @media print, screen and (max-width: 740px) {
   body {
     padding: 0;
