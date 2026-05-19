@@ -339,14 +339,26 @@ footer p + p {
 }
 
 /* ---- Documentation search ---- */
+.gcam-nav-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.gcam-nav-row .nav {
+  margin: 0;
+  flex: 1 1 auto;
+}
 .gcam-search-box {
   position: relative;
-  margin: 8px 0 10px;
+  flex: 0 0 260px;
+  max-width: 260px;
 }
 #gcam-search-input {
   width: 100%;
-  padding: 7px 10px;
-  font-size: 14px;
+  padding: 6px 10px;
+  font-size: 13px;
   border: 1px solid #b2d2e1;
   border-radius: 4px;
   background: #fff;

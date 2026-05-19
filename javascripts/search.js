@@ -46,9 +46,8 @@
 
   function loadIndex(cb) {
     if (index) return cb();
-    var base = document.querySelector('meta[name="gcam-baseurl"]');
-    var baseUrl = base ? base.getAttribute('content') : '';
-    var url = baseUrl + '/search.json';
+    var meta = document.querySelector('meta[name="gcam-search-url"]');
+    var url = meta ? meta.getAttribute('content') : '/search.json';
 
     var xhr = new XMLHttpRequest();
     xhr.open('GET', url);
