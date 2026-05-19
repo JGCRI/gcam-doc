@@ -8,6 +8,8 @@
 (function () {
   'use strict';
 
+  console.log('[gcam-search] script loaded');
+
   var INDEX = null;          // Loaded page index
   var INDEX_LOADING = false; // Single-flight flag
   var INDEX_CALLBACKS = [];  // Queued callbacks while loading
@@ -152,18 +154,23 @@
   }
 
   function init() {
+    console.log('[gcam-search] init() running');
     var input = $('gcam-search-input');
     var button = $('gcam-search-button');
     var overlay = $('gcam-search-overlay');
     var resultsList = $('gcam-search-results');
+    console.log('[gcam-search] elements:', { input: !!input, button: !!button, overlay: !!overlay, resultsList: !!resultsList });
 
     if (!input || !overlay || !resultsList) {
-      // Search UI not present on this page — nothing to do.
+      console.warn('[gcam-search] missing elements, aborting');
       return;
     }
 
     var debounceTimer;
-    function go() { runSearch(input.value, overlay, resultsList); }
+    function go() {
+      console.log('[gcam-search] go() called with value:', input.value);
+      runSearch(input.value, overlay, resultsList);
+    }
 
     input.addEventListener('input', function () {
       clearTimeout(debounceTimer);
@@ -185,10 +192,13 @@
 
     if (button) {
       button.addEventListener('click', function (e) {
+        console.log('[gcam-search] button clicked');
         e.preventDefault();
         clearTimeout(debounceTimer);
         go();
       });
+    } else {
+      console.warn('[gcam-search] button not found');
     }
 
     // Close overlay when clicking outside the search box.
