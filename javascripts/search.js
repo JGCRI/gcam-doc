@@ -86,9 +86,14 @@
   }
 
   function renderResults(overlay, resultsList, query, hits) {
+    console.log('[gcam-search] renderResults:', hits ? hits.length : 0, 'hits');
     overlay.hidden = false;
     overlay.removeAttribute('hidden');
     overlay.style.display = 'block';
+    overlay.style.visibility = 'visible';
+    overlay.style.opacity = '1';
+    var rect = overlay.getBoundingClientRect();
+    console.log('[gcam-search] overlay rect:', rect.top, rect.left, rect.width, rect.height);
 
     if (!hits || hits.length === 0) {
       resultsList.innerHTML =

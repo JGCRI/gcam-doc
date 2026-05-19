@@ -387,20 +387,27 @@ footer p + p {
   box-shadow: 0 0 0 2px rgba(0, 102, 153, 0.15);
 }
 #gcam-search-overlay {
-  position: absolute;
-  top: calc(100% + 4px);
-  left: 0;
-  right: 0;
-  z-index: 9999;
-  background: #fff;
-  border: 1px solid #ccc;
+  position: absolute !important;
+  top: calc(100% + 4px) !important;
+  left: 0 !important;
+  right: 0 !important;
+  min-width: 320px;
+  z-index: 99999 !important;
+  background: #fff !important;
+  border: 2px solid #069 !important;
   border-radius: 6px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
   max-height: 500px;
   overflow-y: auto;
   text-align: left;
+  display: block;
 }
-#gcam-search-overlay[hidden] { display: none; }
+#gcam-search-overlay[hidden] { display: none !important; }
+#gcam-search-overlay ul {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 4px 0 !important;
+}
 #gcam-search-results {
   list-style: none;
   margin: 0;
