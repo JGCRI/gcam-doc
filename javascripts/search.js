@@ -103,8 +103,14 @@
       var hrefBase = h.page.url;
       var sep = hrefBase.indexOf('?') === -1 ? '?' : '&';
       var href = hrefBase + sep + 'q=' + q;
+      // Extract version from URL path (e.g. /gcam-doc/v3.2/foo.html -> v3.2).
+      // Pages under no version subdirectory are the current docs ("current").
+      var verLabel = '';
+      var verMatch = h.page.url.match(/\/(v\d+(?:\.\d+)?)\//);
+      verLabel = verMatch ? verMatch[1] : 'current';
       html += '<li><a href="' + escapeHtml(href) + '">'
         + '<div class="gcam-search-title">' + escapeHtml(h.page.title)
+        + ' <span class="gcam-search-version">' + escapeHtml(verLabel) + '</span>'
         + ' <span class="gcam-search-count">' + h.count + '</span></div>'
         + (snip ? '<div class="gcam-search-snippet">' + snip + '</div>' : '')
         + '</a></li>';
