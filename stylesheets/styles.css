@@ -352,11 +352,13 @@ footer p + p {
 }
 .gcam-search-box {
   position: relative;
-  flex: 0 0 260px;
-  max-width: 260px;
+  flex: 0 0 320px;
+  max-width: 320px;
+  display: flex;
+  gap: 4px;
 }
 #gcam-search-input {
-  width: 100%;
+  flex: 1;
   padding: 6px 10px;
   font-size: 13px;
   border: 1px solid #b2d2e1;
@@ -365,6 +367,20 @@ footer p + p {
   font-family: inherit;
   box-sizing: border-box;
 }
+#gcam-search-button {
+  padding: 6px 14px;
+  font-size: 13px;
+  font-family: inherit;
+  font-weight: 700;
+  color: #fff;
+  background: #069;
+  border: 1px solid #069;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#gcam-search-button:hover {
+  background: #047;
+}
 #gcam-search-input:focus {
   outline: none;
   border-color: #069;
@@ -372,14 +388,13 @@ footer p + p {
 }
 #gcam-search-overlay {
   position: absolute;
-  top: 100%;
+  top: calc(100% + 4px);
   left: 0;
   right: 0;
   z-index: 100;
   background: #fff;
   border: 1px solid #ccc;
-  border-top: none;
-  border-radius: 0 0 6px 6px;
+  border-radius: 6px;
   box-shadow: 0 6px 16px rgba(0,0,0,0.15);
   max-height: 420px;
   overflow-y: auto;

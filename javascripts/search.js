@@ -12,31 +12,47 @@
   var overlay = null;     // DOM: results overlay
   var resultsList = null; // DOM: <ul> inside overlay
   var input = null;       // DOM: search <input>
+  var button = null;      // DOM: search <button>
   var timer = null;
 
   // ---- Bootstrap ----
 
   function init() {
     input = document.getElementById('gcam-search-input');
+    button = document.getElementById('gcam-search-button');
     overlay = document.getElementById('gcam-search-overlay');
     resultsList = document.getElementById('gcam-search-results');
     if (!input || !overlay || !resultsList) return;
 
+    // Live search as you type
     input.addEventListener('input', function () {
       clearTimeout(timer);
       timer = setTimeout(function () { runSearch(input.value.trim()); }, 200);
     });
 
+    // Enter key triggers search immediately
     input.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        clearTimeout(timer);
+        runSearch(input.value.trim());
+      } else if (e.key === 'Escape') {
         input.value = '';
         hideOverlay();
       }
     });
 
-    // Close overlay when clicking outside
+    // Click on the Search button
+    if (button) {
+      button.addEventListener('click', function (e) {
+        e.preventDefault();
+        runSearch(input.value.trim());
+      });
+    }
+
+    // Close overlay when clicking outside the search box
     document.addEventListener('click', function (e) {
-      if (!overlay.contains(e.target) && e.target !== input) {
+      if (!overlay.contains(e.target) && e.target !== input && e.target !== button) {
         hideOverlay();
       }
     });
