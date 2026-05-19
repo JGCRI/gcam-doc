@@ -104,13 +104,14 @@
       var sep = hrefBase.indexOf('?') === -1 ? '?' : '&';
       var href = hrefBase + sep + 'q=' + q;
       // Extract version from URL path (e.g. /gcam-doc/v3.2/foo.html -> v3.2).
-      // Pages under no version subdirectory are the current docs ("current").
-      var verLabel = '';
+      // Current-version pages have no version subdirectory, so no badge.
       var verMatch = h.page.url.match(/\/(v\d+(?:\.\d+)?)\//);
-      verLabel = verMatch ? verMatch[1] : 'current';
+      var verBadge = verMatch
+        ? ' <span class="gcam-search-version">' + escapeHtml(verMatch[1]) + '</span>'
+        : '';
       html += '<li><a href="' + escapeHtml(href) + '">'
         + '<div class="gcam-search-title">' + escapeHtml(h.page.title)
-        + ' <span class="gcam-search-version">' + escapeHtml(verLabel) + '</span>'
+        + verBadge
         + ' <span class="gcam-search-count">' + h.count + '</span></div>'
         + (snip ? '<div class="gcam-search-snippet">' + snip + '</div>' : '')
         + '</a></li>';
