@@ -8,8 +8,6 @@
 (function () {
   'use strict';
 
-  console.log('[gcam-search] script loaded');
-
   var INDEX = null;          // Loaded page index
   var INDEX_LOADING = false; // Single-flight flag
   var INDEX_CALLBACKS = [];  // Queued callbacks while loading
@@ -86,14 +84,9 @@
   }
 
   function renderResults(overlay, resultsList, query, hits) {
-    console.log('[gcam-search] renderResults:', hits ? hits.length : 0, 'hits');
     overlay.hidden = false;
     overlay.removeAttribute('hidden');
     overlay.style.display = 'block';
-    overlay.style.visibility = 'visible';
-    overlay.style.opacity = '1';
-    var rect = overlay.getBoundingClientRect();
-    console.log('[gcam-search] overlay rect:', rect.top, rect.left, rect.width, rect.height);
 
     if (!hits || hits.length === 0) {
       resultsList.innerHTML =
@@ -159,23 +152,14 @@
   }
 
   function init() {
-    console.log('[gcam-search] init() running');
     var input = $('gcam-search-input');
     var button = $('gcam-search-button');
     var overlay = $('gcam-search-overlay');
     var resultsList = $('gcam-search-results');
-    console.log('[gcam-search] elements:', { input: !!input, button: !!button, overlay: !!overlay, resultsList: !!resultsList });
-
-    if (!input || !overlay || !resultsList) {
-      console.warn('[gcam-search] missing elements, aborting');
-      return;
-    }
+    if (!input || !overlay || !resultsList) return;
 
     var debounceTimer;
-    function go() {
-      console.log('[gcam-search] go() called with value:', input.value);
-      runSearch(input.value, overlay, resultsList);
-    }
+    function go() { runSearch(input.value, overlay, resultsList); }
 
     input.addEventListener('input', function () {
       clearTimeout(debounceTimer);
@@ -197,13 +181,10 @@
 
     if (button) {
       button.addEventListener('click', function (e) {
-        console.log('[gcam-search] button clicked');
         e.preventDefault();
         clearTimeout(debounceTimer);
         go();
       });
-    } else {
-      console.warn('[gcam-search] button not found');
     }
 
     // Close overlay when clicking outside the search box.
