@@ -158,7 +158,15 @@
           contentPos: page.content.toLowerCase().indexOf(qLower)
         });
       }
-      hits.sort(function (a, b) { return b.count - a.count; });
+      // Sort: current-version pages first (no /vX.Y/ in URL), then archived;
+      // within each group, more matches first.
+      var archivedRe = /\/v\d+(?:\.\d+)?\//;
+      hits.sort(function (a, b) {
+        var aArch = archivedRe.test(a.page.url) ? 1 : 0;
+        var bArch = archivedRe.test(b.page.url) ? 1 : 0;
+        if (aArch !== bArch) return aArch - bArch;
+        return b.count - a.count;
+      });
       renderResults(overlay, resultsList, query, hits);
     });
   }
