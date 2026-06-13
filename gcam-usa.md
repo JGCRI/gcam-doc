@@ -143,6 +143,54 @@ For electricity trade between states we group states roughly into the 15 "grid r
 <span id="_Ref277591668" class="anchor"></span>Modeled electricity markets based on NEMS.
 
 
+Fossil Fuel Supplies
+===============
+
+The fossil resource supply sector in GCAM-USA represents U.S. coal, crude oil,
+and natural gas production at the state level. The approach introduces
+state-level resource supply curves for the 50 states, while preserving
+consistency with the aggregate USA fossil resource availability and historical
+production represented in the GCAM core. 
+
+For each fossil resource, state-level production is organized through a
+hierarchical supply structure (See figure below). Individual states contain
+resource-specific production technologies that draw from subresource categories
+such as surface and underground coal mining; onshore conventional, onshore
+unconventional, offshore, and speculative natural gas; and onshore conventional
+oil, onshore unconventional oil, onshore unconventional heavy oil, and offshore
+oil. These state-level production technologies are aggregated into broader U.S.
+production pools, with Alaska represented separately from the lower 48 states
+(at the subsector level) to reflect geographic isolation and transportation
+constraints. It enables inter-state competition in fossil fuel production,
+captures differences across resource types and extraction costs. State-level
+production is first aggregated into U.S. fossil production, which then feeds
+both domestic regional supply and global traded fossil fuel markets.
+
+<img src="gcam-figs/gcam-usa-ff-res-supply-structure.png" width="650" height="372" />
+
+State-level fossil fuel resource supply structure for crude oil supply.
+
+The model uses subresource supply curves defined by availability and extraction
+cost grades. Historical production is calibrated using state-level data from EIA
+[EIA 2024](gcam-usa.html#eia2024), while resource availability is drawn from
+federal data sources from USGS [USGS 2013](gcam-usa.html#usgs2013) and BOEM
+[BOEM 2011](gcam-usa.html#boem2011). Extraction costs are based primarily on
+ETSAP [IEA-ETSAP 2010](gcam-usa.html#ieaetsap2010) and 
+BOEM [BOEM 2011](gcam-usa.html#boem2011) estimates. Where state-level resource
+estimates do not fully match the aggregate GCAM-USA resource curves, additional
+“speculative” resource categories are introduced for coal and natural gas to
+harmonize state-level resource availability with the GCAM core representation.
+
+The sector also includes emissions from fossil resource production. State-level
+greenhouse gas emissions factors are derived from EPA state-level greenhouse gas
+inventory data [EPA 2024](gcam-usa.html#epa2024), and non-GHG emissions factors
+are derived from NEI inventory data [EPA NEI 2015](gcam-usa.html#epanei2015).
+These emissions factors are mapped to GCAM-USA fossil subresources, allowing
+emissions from coal, oil, and natural gas production to vary by state and
+subresource type.
+
+
+
 Refining sector
 ===============
 
@@ -263,6 +311,8 @@ For the power sector, only the GCAM-USA configuration with endogenous cooling te
 References
 ===============
 
+<a name="boem2011">[BOEM 2011]</a> Bureau of Ocean Energy Management (BOEM). 2011. "Bureau of Ocean Energy Management." https://www.boem.gov/sites/default/files/oil-and-gas-energy-program/Resource-Evaluation/Resource-Assessment/2011-factsheet-12092014.pdf. Accessed April 2023.
+
 <a name="calvin2014">[Calvin et al. 2014]</a> Calvin KV, MA Wise, GP Kyle, PL Patel, LE Clarke, and JA Edmonds. 2014. "Trade-offs of different land and bioenergy policies on the path to achieving climate targets." Climatic Change 123(3-4):691-704. doi:10.1007/s10584-013-0897-y
 
 <a name="calvin2019">[Calvin et al. 2019]</a> Calvin, K., Patel, P., Clarke, L., Asrar, G., Bond-Lamberty, B., Cui, R. Y., Di Vittorio, A., Dorheim, K., Edmonds, J., Hartin, C., Hejazi, M., Horowitz, R., Iyer, G., Kyle, P., Kim, S., Link, R., McJeon, H., Smith, S. J., Snyder, A., Waldhoff, S., and Wise, M.: GCAM v5.1: representing the linkages between energy, water, land, climate, and economic systems, Geosci. Model Dev., 12, 677–698, <https://doi.org/10.5194/gmd-12-677-2019>, 2019.
@@ -281,6 +331,8 @@ References
 
 <a name="denholm2008">[Denholm and Margolis 2008]</a> Denholm, P. and R. Margolis. 2008. Supply Curves for Rooftop Solar PV-Generated Electricity for the United States. National Renewable Energy Laboratory, Technical Report NREL / TP-6A0-44073, November 2008.
 
+<a name="epa2024">[EPA 2024]</a> U.S. Environmental Protection Agency (EPA). 2024. "Methodology Report: Inventory of U.S. Greenhouse Gas Emissions and Sinks by State: 1990-2021." https://www.epa.gov/ghgemissions/methodology-report-inventory-us-greenhouse-gas-emissions-and-sinks-state-1990-2021.
+
 <a name="eurek2016">[Eurek et al. 2016]</a> Eurek, K, W Cole, D Bielen, N Blair, S Cohen, B Frew, J Ho, V Krishnan, T Mai, B Sigrin, D Steinberg. 2016. Regional Energy Deployment System (ReEDS) Model Documentation: Version 2016. <https://www.nrel.gov/docs/fy17osti/67067.pdf>
 
 <a name="greet">[GREET 2014]</a> Argonne National Laboratory. 2014. GREET v1.2.0 11425. <https://greet.es.anl.gov/>
@@ -288,6 +340,8 @@ References
 <a name="fuhrman2021">[Fuhrman et al. 2021]</a> Fuhrman J, Clarens A F, Calvin K, Doney S C, Edmonds J A, O'Rourke P, Patel P, Pradhan S, Shobe W M and McJeon H 2021. The role of direct air capture and negative emissions technologies in the shared socioeconomic pathways towards +1.5 °C and +2 °C futures Environ. Res. Lett. 16 114012 [Link](https://iopscience.iop.org/article/10.1088/1748-9326/ac2db0)
 
 <a name="huang2018">[Huang et al. 2018]</a> Huang, Z., Hejazi, M., Li, X., Tang, Q., Leng, G., Liu, Y., Döll, P., Eisner, S., Gerten, D., Hanasaki, N. and Wada, Y., 2018. Reconstruction of global gridded monthly sectoral water withdrawals for 1971-2010 and analysis of their spatiotemporal patterns. Hydrology and Earth System Sciences Discussions, 22, pp.2117-2133.
+
+<a name="ieaetsap2010">[IEA-ETSAP 2010]</a> IEA-ETSAP. 2010. "Unconventional Oil & Gas Production." Technology Brief P02, May 2010. Data from Tables 4 and 5. https://iea-etsap.org/E-TechDS/PDF/P02-Uncon_oil&gas-GS-gct.pdf.
 
 <a name="iyer2017">[Iyer et al. 2017]</a> Iyer GC, LE Clarke, JA Edmonds, GP Kyle, CM Ledna, HC McJeon, and MA Wise. 2017. "GCAM-USA Analysis of U.S. Electric Power Sector Transitions." Pacific Northwest National Laboratory.
 
@@ -317,11 +371,15 @@ References
 
 <a name="eia2022">[EIA 2022]</a> U.S. Energy Information Agency (EIA 2022) State Energy Data System.  All consumption estimates in Btu, 1960-2020. <https://www.eia.gov/state/seds/sep_use/total/csv/use_all_btu.csv>.
 
+<a name="eia2024">[EIA 2024]</a> U.S. Energy Information Administration (EIA). 2024. "Homepage." https://www.eia.gov/index.php.
+
 <a name="epa2015">[EPA 2015]</a> U.S. Environmental Protection Agency. 2015. Standards of Performance for Greenhouse Gas Emissions from New, Modified, and Reconstructed Stationary Sources: Electric Utility Generating Units, 80 Federal Register 205 (23 October 2015) (40 CFR parts 60, 70, 71, and 98): 64513, 64546-64547, <https://www.gpo.gov/fdsys/pkg/FR-2015-10-23/pdf/2015-22837.pdf> (Accessed 16 December 2016). 
 
 <a name="epa2019">[EPA 2019]</a> U.S. Environmental Protection Agency. 2019. Global Non-CO2 Greenhouse Gas Emission Projections & Mitigation Potential: 2015-2050, <https://www.epa.gov/global-mitigation-non-co2-greenhouse-gases/us-state-level-non-co2-ghg-mitigation-report> (Accessed 17 March 2023).  
 
 <a name="epa2022">[EPA 2022]</a> U.S. Environmental Protection Agency. 2022. U.S. State-level Non-CO2 GHG Mitigation Report, <https://www.epa.gov/global-mitigation-non-co2-greenhouse-gases/us-state-level-non-co2-ghg-mitigation-report> (Accessed 17 March 2023).  
+
+<a name="epanei2015">[EPA NEI 2015]</a> U.S. Environmental Protection Agency (EPA). 2015. "National Emissions Inventory (NEI)." https://www.epa.gov/air-emissions-inventories/national-emissions-inventory-nei.
 
 <a name="epatier1">[EPA Tier 1 CAPS]</a> U.S. Environmental Protection Agency. 2016. Air Pollutant Emissions Trends Data, State Tier 1 CAPS Trends. <https://www.epa.gov/air-emissions-inventories/air-pollutant-emissions-trends-data>.
 
@@ -333,6 +391,8 @@ References
 
 <a name="sulfur">[EPA Category 3 marine engine sulfur limit]</a> U.S. Environmental Protection Agency. EPA Guidance on ECA Marine Fuel.  <https://www.epa.gov/sites/default/files/2015-10/documents/420b14097.pdf>. (2014).
 
+<a name="usgs2013">[USGS 2013]</a> U.S. Geological Survey (USGS). 2013. "National Assessment of Oil and Gas Resources Update." https://energy.usgs.gov/OilGas/AssessmentsData/NationalOilGasAssessment/Methodology.aspx.
+
 <a name="wise2007">[Wise et al. 2007]</a> Wise, M., Dooley, J., Dahowski, R., Davidson, C., 2007. Modeling the impacts of climate policy on the deployment of carbon dioxide capture and geologic storage across electric power regions in the United States. International Journal of Greenhouse Gas Control 1, 261-270.
 
 <a name="wise2014">[Wise et al. 2014]</a> Wise MA, JJ Dooley, P Luckow, KV Calvin, and GP Kyle. 2014. "[Agriculture, Land Use, Energy and Carbon Emission Impacts of Global Biofuel Mandates to Mid-Century](http://dx.doi.org/10.1016/j.apenergy.2013.08.042)." Applied Energy 114:763-773. doi:10.1016/j.apenergy.2013.08.042
@@ -340,6 +400,8 @@ References
 <a name="zhou2013">[Zhou et al. 2013]</a> Zhou Y, J Eom, and LE Clarke. 2013. "The effect of climate change, population distribution, and climate mitigation on building energy use in the U.S. and China." Climatic Change 119(3-4):979-992. doi:10.1007/s10584-013-0772-x
 
 <a name="zhou2014">[Zhou et al. 2014]</a> Zhou Y, LE Clarke, J Eom, GP Kyle, PL Patel, SH Kim, JA Dirks, EA Jensen, Y Liu, JS Rice, LC Schmidt, and TE Seiple. 2014. "Modeling the effect of climate change on U.S. state-level buildings energy demands in an integrated assessment framework." Applied Energy 113:1077-1088. doi:10.1016/j.apenergy.2013.08.034
+
+
 
 
 
