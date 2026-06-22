@@ -89,7 +89,7 @@ The refining sector, or liquid fuels production sector, explicitly tracks all en
 
 ##### Oil Refining
 
-The oil refining subsector accounts for the vast majority of the historical output of the refining sector, globally and in all regions. Each region is assigned a single production technology for oil refining; this technology does not differentiate between conventional and unconventional oil, whose competition is explicitly modeled upstream of the refining sector. In a typical region, the oil refining technology consumes three energy inputs: crude oil, natural gas, and electricity (see [Figure](details_energy.html#oil-refining)). The coefficients of the oil refining production technology reflect whole-process inputs and liquid fuel outputs; there is no explicit tracking of the production and on-site use of intermediate products such as refinery gas (still gas). Electricity produced at refineries (both the fuel inputs and electricity outputs) is modeled in the electricity and/or industrial energy use sectors, as the IEA Energy Balances ([IEA 2019](supply_energy.html#iea2019)) do not disaggregate autoproducer electric power plants at refineries from elsewhere. There is no oil refining technology option with CO<sub>2</sub> capture and storage (CCS) considered.
+The oil refining subsector accounts for the vast majority of the historical output of the refining sector, globally and in all regions. Each region is assigned a single production technology for oil refining; this technology does not differentiate between conventional and unconventional oil, whose competition is explicitly modeled upstream of the refining sector. In a typical region, the oil refining technology consumes three energy inputs: crude oil, natural gas, and electricity (see [Figure](details_energy.html#oil-refining)). The coefficients of the oil refining production technology reflect whole-process inputs and liquid fuel outputs; there is no explicit tracking of the production and on-site use of intermediate products such as refinery gas (still gas). Electricity produced at refineries (both the fuel inputs and electricity outputs) is modeled in the electricity and/or industrial energy use sectors, as the IEA Energy Balances ([IEA 2023](supply_energy.html#iea2023)) do not disaggregate autoproducer electric power plants at refineries from elsewhere. There is no oil refining technology option with CO<sub>2</sub> capture and storage (CCS) considered.
 
 ##### Biomass Liquids
 
@@ -127,7 +127,7 @@ In most regions in GCAM, heat is not explicitly represented as an energy commodi
 
 #### Hydrogen
 
-Hydrogen is represented as a commodity in future time periods that is available for various energy and industrial processes. Hydrogen is not treated as a fuel in the IEA Energy Balances [IEA 2019](supply_energy.html#iea2019), or most other energy statistics. As such, the representation excludes the on-site production and use of hydrogen at oil refineries, ammonia plants, and other present-day industrial facilities.  The representation of hydrogen in GCAM includes 10 “central” production technologies, as well as 2 “forecourt” (i.e. on-site) production technologies, which may have higher costs due to the economies of scale and higher capacity factors of central production, but the forecourt technologies avoid the costs and energy requirements of distribution. The hydrogen distribution representation differentiates a range of hydrogen commodities whose costs largely reflect the various temperatures and pressures at which hydrogen is transported and stored for different end-use applications. Production technology costs and energy intensities are from the U.S. Department of Energy’s Hydrogen Analysis (H2A) models [NREL 2018](supply_energy.html#nrel2018), and the distribution costs and energy intensities are from Argonne’s Hydrogen Delivery Scenario Analysis Model (HDSAM) [ANL 2015](supply_energy.html#anl2015). See [hydrogen](details_energy.html#hydrogen) for more information.
+Hydrogen is represented as a commodity in future time periods that is available for various energy and industrial processes. Hydrogen is not treated as a fuel in the IEA Energy Balances [IEA 2023](supply_energy.html#iea2023), or most other energy statistics. As such, the representation excludes on-site hydrogen production using conventional technologies at oil refineries, ammonia plants, and other present-day industrial facilities.  The representation of hydrogen in GCAM includes 7 “central” production technologies, as well as 2 on-site production technologies, which may have higher costs due to the economies of scale and higher capacity factors of central production, but the on-site technologies avoid the costs and energy requirements of distribution. The hydrogen distribution representation differentiates a range of hydrogen commodities whose costs largely reflect the various temperatures and pressures at which hydrogen is transported and stored for different end-use applications. Production technology costs and energy intensities are from the U.S. Department of Energy’s H2A-Lite model [NREL 2025](supply_energy.html#nlr2025), and the distribution costs and energy intensities are from Argonne’s Hydrogen Delivery Scenario Analysis Model (HDSAM) [ANL 2025](supply_energy.html#anl2025). See [hydrogen](details_energy.html#hydrogen) for more information.
 
 ### Energy Trade
 
@@ -314,7 +314,7 @@ Hydrogen
 
 ## References
 
-<a name="anl2015">[ANL 2015]</a> Argonne National Laboratory, 2015, *Hydrogen delivery scenario analysis model (HDSAM)*, Argonne National Laboratory. [Link](https://hdsam.es.anl.gov/index.php?content=hdsam)
+<a name="anl2025">[ANL 2025]</a> Argonne National Laboratory, 2025, *Hydrogen delivery scenario analysis model (HDSAM)*, Argonne National Laboratory. [Link](https://hdsam.es.anl.gov/index.php?content=hdsam)
 
 <a name="deloitte2008">[Deloitte 2008]</a> Deloitte Development LLC, 2008, *Geothermal Risk Mitigation Strategies Report*, prepared for Department of Energy, Office of Energy Efficiency and Renewable Energy, Geothermal Program. [Link](https://www1.eere.energy.gov/geothermal/pdfs/geothermal_risk_mitigation.pdf)
 
@@ -336,13 +336,13 @@ Hydrogen
 
 <a name="iea2012">[IEA 2012]</a> International Energy Agency, 2011, *Energy Balances of OECD Countries 1960-2010 and Energy Balances of Non-OECD Countries 1971-2010*, International Energy Agency, Paris, France. [Link](http://www.iea.org/bookshop/661-Energy_Balances_of_OECD_Countries)
 
-<a name="iea2019">[IEA 2019]</a> International Energy Agency, 2019, *Energy Balances of OECD Countries 1960-2017 and Energy Balances of Non-OECD Countries 1971-2017*, International Energy Agency, Paris, France. 
+<a name="iea2023">[IEA 2023]</a> International Energy Agency, 2023, *World Energy Balances*, International Energy Agency, Paris, France. [Link](https://www.iea.org/data-and-statistics/data-product/world-energy-balances)
 
 <a name="iha2000">[IHA 2000]</a> International Hydropower Association, et al., 2000, *Hydropower and the World's Energy Future*. [Link](http://www.ieahydro.org/media/ffab53b0/Hydropower%20and%20the%20World's%20Energy%20Future%20.pdf)
 
 <a name="linden1976">[Linden et al. 1976]</a> Linden, H.R., Bodle, W.W., Lee, B.S., and Vyas, K.C. 1976. Production of high-btu gas from coal. *Annual Reviews of Energy* 1, pp. 65-86. [Link](http://www.annualreviews.org/doi/pdf/10.1146/annurev.eg.01.110176.000433)
 
-<a name="nrel2018">[NREL 2018]</a> National Renewable Energy Laboratory, 2018, *H2A: Hydrogen Analysis Production Models*, National Renewable Energy Laboratory. [Link](https://www.nrel.gov/hydrogen/h2a-production-models.html)
+<a name="nlr2025">[NREL 2025]</a> National Laboratory of the Rockies, 2025, *H2A-Lite: Hydrogen Analysis Lite Production Model*, National Laboratory of the Rockies. [Link](https://www.nlr.gov/hydrogen/h2a-lite)
 
 <a name="zwart2006">[Zwart et al. 2006]</a> Zwart, R., Boerrigter, H., Deurwaarder, E.P., van der Meijden, C.M., and van Paasen, S.V.B. 2006. *Production of Synthetic Natural Gas (SNG) from Biomass: Development and operation of an integrated bio-SNG system*. Report ECN-E-06-018, Energy Research Centre of the Netherlands. [Link](https://www.ecn.nl/docs/library/report/2006/e06018.pdf)
 
