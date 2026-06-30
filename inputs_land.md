@@ -24,7 +24,8 @@ Table 1: External inputs used by the land model <sup>[1](#table_footnote)</sup>
 | Soil time scale | Inputs include the number of years for soil carbon changes to occur. Note that this is not the time to equilibrium, which is much longer. | Assumption | | GCAM geopolitical region | Years |
 | Value of Unmanaged Land | GCAM requires profit rates for all land types in the historical period for calibration. Managed land profit is calculated in the <a href="inputs_supply.html">supply model</a>. For unmanaged land, however, the value is input into the model. | External Data Set | <a href="https://github.com/JGCRI/moirai">Moirai</a> | Raw data is by country, water basin, and land use. | million USD |
 | Share Parameters | GCAM requires the user to specify the logit exponents that determine the substitutability between different leaves and nodes in the land model. These parameters were chosen to produce land supply elasticities comparable to those found in the literature, although it should be noted that there is not a transformation between logit exponents and supply elasticities for all land types. | Assumption |  | Specified by land node | N/A |
-| Parameters to introduce a new land type | For land types that do not exist in the historical period, GCAM requires parameters to introduce these land types in the future. Specifically, GCAM needs to know how that land type will compete with other land types in its nest _if_ it were to have equal profit. | Assumption | | Currently specified globally, but could be specified by region and water basin | Share |
+| Parameters to introduce a new land type | For land types that do not exist in the historical period, GCAM requires parameters to introduce these land types in the future. For purpose-grown energy crops, these parameters include ghost-share assumptions and regional biomass supply-share assumptions. | Assumption | E.g., for purpose-grown energy crops [`A_bio_ghost_share.csv`](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/A_bio_ghost_share.csv), [`A_biomassSupplyShare_R.csv`](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/A_biomassSupplyShare_R.csv) | Global and region-specific, depending on parameter | Share |
+
 
 <font size="-1">
 <a name="table_footnote">1</a>: Note that this table differs from the one provided on the <a href="land.html#inputs-to-the-module">Land Modeling Page</a> in that it only lists external inputs to the land module (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.
@@ -33,12 +34,15 @@ Table 1: External inputs used by the land model <sup>[1](#table_footnote)</sup>
 
 Note that for the Shared Socioeconomic Pathways (SSPs), different inputs are used for some variables. See [SSPs](ssp.html) for more information.
 
+
 ### Data
 
 #### Historical Land Use and Land Cover
 The raw data used for historical land cover is mainly provided in [Land_type_area_ha.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/LDS/Land_type_area_ha.csv). 
 
 The arable land, temporary crops, and temporary fallow land are provided in [GCAMFAOSTAT_LandCover.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMFAOSTAT_LandCover.csv).  
+
+Because purpose-grown energy crops have no observed land area in the base-year land data, their future introduction is controlled through the new-land-type parameters described above rather than through historical land allocation. GCAM therefore introduces these crops in future periods (2030) using share-weight assumptions that allow new biomass land types to enter the land allocation system. 
 
 #### Historical Harvested Area
 Historical harvested area by crop and country is provided in [GCAMFAOSTAT_NonFodderProdArea.csv.gz](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMFAOSTAT_NonFodderProdArea.csv.gz) and [GCAMFAOSTAT_FodderProdArea.csv.gz](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMFAOSTAT_FodderProdArea.csv.gz).

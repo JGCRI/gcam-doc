@@ -6,7 +6,11 @@ next: demand_land.html
 gcam-version: v8.2
 ---
 
-GCAM's demand inputs include information on consumption and prices in the historical period in order to calibrate model parameters. Additional parameters related to income and price elasticities are needed for modeling future periods. GCAM requires demand data to be globally consistent with [supply data](inputs_supply.html) for each of its historical model periods as it solves for market equilibrium in these years as it does for future years. These inputs are required for each [region](common_assumptions.html#regional-resolution) and [historical year](common_assumptions.html#historical-years).
+GCAM's demand inputs include information on consumption and prices in the historical period in order to calibrate model parameters. Additional parameters related to income and price elasticities are needed for modeling future periods. GCAM requires demand data to be globally consistent with [supply data](inputs_supply.html) for each of its historical model periods as it solves for market equilibrium in these years as it does for future years. 
+
+Recent GCAM-Macro-KLEAM updates affect selected demand-related inputs and linkages, especially income-elasticity processing for industrial and other final-demand sectors and the treatment of agricultural nonfood demand used in macroeconomic accounting.
+
+These inputs are required for each [region](common_assumptions.html#regional-resolution) and [historical year](common_assumptions.html#historical-years).
 
 # Table of Contents
 
@@ -41,7 +45,7 @@ Table 1: External inputs used for demand of energy<sup>[1](#table_footnote1)</su
 | Thermal load parameters | Degree days, shell conductivity, internal gains and floorspace-to-surface ratio | External Data/Assumption | | Specified by region | Various |
 | Historical service prices | Prices by sector in the base years. Used to calibrate satiation impedance | External Data | | Specified by region, service, and period | 1975$/unit|
 | Satiation levels | Assumed satiation values for commerical floorspace and building energy services | Assumption | | Specified by demand, service, and region | m2/pers and EJ/pers |
-| Income elasticity of demand | Elasticity determining how demand responds to changes in per capita output for industry and cement | Assumption | | Specified by demand | unitless
+| Income elasticity of demand | Elasticity determining how selected final demands respond to changes in per-capita output | Assumption | [`zsocio_L232.Inc_Elas_scenarios.R`](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/zsocio_L232.Inc_Elas_scenarios.R) and related assumption files | Specified by demand, region, scenario, and year where applicable | unitless |
 | Energy intensities | Energy intensity for energy-for-water processes (desalination, abstraction, treatment, distribution, wastewater treatment) | External data |  [Liu et al. 2016](#liu2016) | Global | GJ per $$m^3$$ |
 | Desalinated water production | Water produced through desalination, used to estimate energy-for-water | External data | FAO Aquastat | By nation | $$km^3$$ per year |
 | Shares of wastewater treated | Shares of wastewater treated, used to estimate energy-for-water | External data | [Liu et al. 2016](#liu2016) |  By nation | Unitless |
@@ -72,7 +76,7 @@ The allocation of building energy across different services within each region i
 
 ##### Elasticities of demand
 
-Price elasticity of demand is specified in [A32.demand.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A32.demand.csv), and [A54.demand.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A54.demand.csv). Income elasticities of demand for industry and cement are specified in [A32.inc_elas_output.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/socioeconomics/A32.inc_elas_output.csv) and [A321.inc_elas_output.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/socioeconomics/A321.inc_elas_output.csv).
+Income elasticities for selected industrial and other final-demand sectors are now processed through [`zsocio_L232.Inc_Elas_scenarios.R`](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/zsocio_L232.Inc_Elas_scenarios.R), which consolidates several sector-specific income-elasticity calculations. The module uses per-capita GDP trajectories by scenario to generate income-elasticity inputs for sectors such as cement, iron and steel, off-road, chemicals, aluminum, paper, and other industrial demands.
 
 ##### Cost
 
@@ -174,7 +178,7 @@ Table 3: External inputs used for demand of food, feed, and forestry <sup>[3](#t
 | Historical demand for crops | Demand for agricultural commodities in the historical period; used for initialization/calibration of GCAM | External data | FAO | Specified by crop, use, country, and year | tons |
 | Historical demand for livestock | Demand for livestock commodities in the historical period; used for initialization/calibration of GCAM | External data | FAO | Specified by crop, use, country, and year | tons |
 | Historical demand for forest | Demand for forest products in the historical period; used for initialization/calibration of GCAM | External data | FAO | Specified by country and year | m<sup>3</sup> |
-| Income and price elasticity | Income and price elasticity of demand (for non-food, non-feed demand) | Assumption |  | Specified by demand | unitless |
+| Income and price elasticity | Income and price elasticity of demand for nonfood, nonfeed, and nonenergy agricultural demand categories | Assumption | [`A_demand_supplysector.csv`](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/A_demand_supplysector.csv) | Specified by demand | unitless |
 | Food demand parameters | Set of 11 parameters required for the food demand model | External data | [Ambrosia](https://github.com/jgcri/ambrosia) | | unitless |
 | Logit exponents | Share parameters dictating substitution between different commodities | Assumption |  | Specified by type demand | unitless |
 
@@ -205,7 +209,8 @@ Historical data for food Calories (and other macronutrients) is provided in in [
 
 ##### Income and price elasticity
 
-Price and income elasticity are specified in [A_demand_supplysector.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/A_demand_supplysector.csv).
+Price and income elasticity are specified in [A_demand_supplysector.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/A_demand_supplysector.csv). 
+In GCAM-Macro-KLEAM, agricultural demand is also connected to macroeconomic accounting. Agricultural food demand remains governed by the food demand model, while its value is tracked as `ag-food-service-value` in the national accounts. Nonfood agricultural demand is aggregated as an agricultural nonfood-service input to the Materials production function. To support this linkage, CMP-411 updated selected nonfood agricultural demand elasticities, including nonfood crop, meat, and forestry product demand. These parameters should be checked against the final release branch version of [`A_demand_supplysector.csv`](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/A_demand_supplysector.csv).
 
 ##### Logit exponents
 

@@ -2,7 +2,7 @@
 layout: index
 title: GCAM Model Overview
 prev: 
-next: macro-econ.html
+next: economy.html
 gcam-version: v8.2
 ---
 
@@ -28,7 +28,8 @@ Developing and quantifying a single set of scenario assumptions is the most comm
 
 The GCAM ecosystem includes a range of different tools, from data manipulation tools, the dynamic core of GCAM, and a range of disaggregation models, visualization tools and emulation tools. The GCAM release includes a data system for creating the XML inputs for GCAM and the dynamic core. Additional tools are produced and available separately and not included in the release version of GCAM.
 
-The [GCAM Data System](https://github.com/JGCRI/gcamdata) combines and reconciles a wide range of different data sets, and systematically incorporates a range of future assumptions. The output of the data system is an XML dataset with historical and base-year data for calibrating the model along with assumptions about future trajectories such as GDP, population, and technology. It includes the necessary information for representing energy, water, land, and the economic system. The GCAM Data System is largely constructed in R, but accommodates inputs in a range of different formats. Creating new scenarios does not require the use of the GCAM data system. New, "add on" XML files can be created to overwrite key future scenario assumptions such as population, economic activity, and technology cost and performance, among others.
+The [GCAM Data System](https://github.com/JGCRI/gcamdata) combines and reconciles a wide range of different data sets, and systematically incorporates a range of future assumptions. 
+The output of the data system is an XML dataset with historical and base-year data for calibrating the model, along with assumptions about future trajectories such as population, GDP (or calibrated factor productivities), employment or labor supply, technology, and productivity. It includes the necessary information for representing energy, water, land, and the economic system. The GCAM Data System is largely constructed in R, but accommodates inputs in a range of different formats. Creating new scenarios does not require the use of the GCAM data system. New, "add on" XML files can be created to overwrite key future scenario assumptions such as population, economic activity, and technology cost and performance, among others.
 
 The GCAM core (discussed below) is the component of the model in which economic decisions are made (e.g., land use and technology choices), and in which dynamics and interactions are modeled within and among different human and Earth systems. The GCAM core is written in C++ and takes in inputs in XML. Outputs are written to an XML database.
 
@@ -38,7 +39,7 @@ Many applications of GCAM require information at finer spatial and temporal scal
 
 Supplied with input information from the GCAM Data System, the GCAM Core is the heart of the dynamic character of GCAM. GCAM takes in a set of assumptions and then processes those assumptions to create a full scenario of prices, energy and other transformations, and commodity and other flows across regions and into the future. GCAM represents five different interacting and interconnected systems. The interactions between these different systems all take place within the GCAM core; that is, they are not modeled as independent modules, but as one integrated whole. The five systems in the GCAM Core are as follows:
 
-* [**Macro-economy**](macro-econ.html): This module takes population and labor productivity assumptions as inputs and produces regional Gross Domestic Product and regional populations as inputs for the other modules. The macroeconomy sets the scale of economic activity in GCAM. 
+* [**Macro-economy**](economy.html): The macroeconomic representation sets the scale of economic activity in GCAM. In fixed-GDP scenarios, regional GDP follows exogenous socioeconomic assumptions. In GCAM-Macro/KLEAM configurations, GDP can respond endogenously through interactions among sectoral production, labor, capital, energy, agriculture, savings, and investment.
 
 * [**Energy systems**](energy.html): The energy system is a detailed representation of the sources of energy supply, modes of energy transformation, and energy service demands such as passenger and freight transport, industrial energy use across subsectors, and residential and commercial energy service demands. The module reports supplies and demands of energy forms as well as emissions of greenhouse gases, aerosols and other short-lived species. Energy systems demand bioenergy from agriculture and land systems and water from water systems.
 
@@ -137,13 +138,13 @@ Figure 3: Conceptual Schematic of the Operation of the GCAM Core
 
 GCAM is a dynamic recursive model, meaning that decision-makers do not know the future when making a decision today. (In contrast, intertemporal optimization models assume that agents know the entire future with certainty when they make decisions.) After it solves each period, the model then uses the resulting state of the world, including the consequences of decisions made in that period - such as resource depletion, capital stock retirements and installations, and changes to the landscape - and then moves to the next time step and performs the same exercise. For long-lived investments, decision-makers may account for future profit streams, but those estimates would be based on current prices. 
 
-The release version of GCAM is typically operated in five-year time steps with 2015 as the final calibration year. However, the model has flexibility to be operated at different temporal resolutions through user-defined parameters. 
+Release versions of GCAM are calibrated to historical observations (e.g., through 2021 since GCAM v8.2) and are typically run through the end of the century in five-year time steps. However, the model can also be operated at alternative temporal resolutions through user-defined parameters.
 
 While the agents in the GCAM model are assumed to act to maximize their own self-interest, the model as a whole is not performing an optimization calculation. In fact, actors in GCAM can make decisions that "seemed like a good idea at the time", but which are not optimal from a larger social perspective and which the decision maker would not have made had the decision maker known what lay ahead in the future. For example, the model's actors do not know about future climate regulations, and could install fossil fuel power in the years preceding the implementation of such policies. 
 
 Key Scenario Assumptions for the GCAM Core
 
-* Socioeconomics: Population, labor participation, and labor productivity
+* Socioeconomics and macroeconomics: population, GDP, employment or labor supply, productivity, savings, investment, and related macroeconomic assumptions
 * Energy Technology Characteristics: e.g., costs, performance, water requirements
 * Agricultural Technology Characteristics: e.g., crop yields, costs, carbon contents, water requirements, fertilizer requirements
 * Energy and Other Resources: e.g., fossil fuels, wind, solar, uranium, groundwater 

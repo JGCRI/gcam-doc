@@ -13,6 +13,11 @@ The GCAM model was expanded to include greater spatial detail in the USA region,
 
 Note that several aspects of the energy system are still modeled at the aggregate U.S. level. Most notably, this applies to primary production of fossil resources including oil, gas, and coal. The supply of biomass energy feedstocks, which include residues and dedicated energy crops, is modeled at the level of 22 water basins in the United States ([Calvin et al. 2019](gcam-usa.html#calvin2019), [Calvin et al. 2014](gcam-usa.html#calvin2014), [Wise et al. 2014](gcam-usa.html#wise2014)). As with the global model, biomass feedstocks are distinguished between those produced and consumed domestically and those traded in a global market.
 
+### GCAM-USA and GCAM-Macro-KLEAM
+
+The current GCAM-Macro-KLEAM implementation is designed for the global GCAM configuration, where labor and capital markets are closed through regional production functions and endogenous factor-price feedbacks. GCAM-USA replaces the aggregate U.S. energy system with detailed state-level energy systems, but the United States and individual states do not currently have corresponding KLEAM production functions that generate dynamic demands for Materials, labor, and capital. As a result, the full KLEAM labor and capital market closure is not yet applied within GCAM-USA.
+
+For the current implementation, U.S. agricultural labor and capital are treated as unlimited resources with fixed prices when running GCAM-USA. This allows the U.S. agricultural system to remain compatible with GCAM-USA without imposing an inconsistent macroeconomic closure. The rest of the world continues to use the full global KLEAM structure with endogenous labor, capital, savings-investment, and GDP feedbacks. Future work is expected to develop a more complete GCAM-USA macroeconomic treatment, potentially including national or state-level production functions and a consistent linkage between detailed state energy systems and labor and capital market dynamics.
 
 Story-line for the GCAM-USA reference scenario 
 ==============================================

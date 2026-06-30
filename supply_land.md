@@ -25,7 +25,11 @@ gcam-version: v8.2
 | Historical harvested area (used to calculate historical yield) | By GLU, crop, management practice, and year | thousand $$km^2$$ | [Exogenous](inputs_supply.html) |
 | Historical production (used to calculate historical yield) | By GLU, crop, management practice, and year | thousand $$km^2$$ | [Exogenous](inputs_supply.html) |
 | Agriculture productivity growth (used to calculate future yield) | By GLU, crop, management practice, year | % per year | [Exogenous](inputs_supply.html) |
-| Non-fertilizer, non-water, non-land variable cost of production | By GLU, crop, management practice, and year | 1975$/kg | [Exogenous](inputs_supply.html)  |
+| Non-land variable cost (also no water/fertilizer/labor/capital) of production | By GLU, crop, management practice, and year | 1975$/kg | [Exogenous](inputs_supply.html)  |
+| Labor coefficients | By GLU, crop, management practice, and year where applicable | physical input per unit output | [Exogenous](inputs_supply.html) |
+| Capital coefficients | By GLU, crop, management practice, and year where applicable | capital input per unit output | [Exogenous](inputs_supply.html) |
+| Labor prices | By GCAM region and year | 1975$/person or related calibrated unit | [Economy module](economy.html) |
+| Capital prices | By GCAM region and year | unitless gross rate of return | [Economy module](economy.html) |
 | Fertilizer coefficients | By GLU, crop, management practice, and year | 1975$/kg | [Exogenous](inputs_supply.html)  |
 | Water coefficients | By GLU, crop, management practice, and year | 1975$/kg | [Exogenous](inputs_demand.html)  |
 | Commodity prices | By region, commodity, and year | 1975$/kg | [Marketplace](marketplace.html)  |
@@ -40,22 +44,26 @@ gcam-version: v8.2
 
 ### Variable Costs
 
-Variable costs are defined here as the non-land costs of crop production, per-unit of crop.  We model the cost of fertilizer and water explicitly, including input-output coefficients and prices of each. Other components of variable cost are derived from USDA cost data.
+Variable costs are the non-land shutdown costs of producing a crop, expressed per unit of output. They create price floors in GCAM: if the crop price falls to or below variable cost, production can fall to zero.
 
-Variable costs set hard price floors in the model: production goes to zero when price is less than or equal to the variable costs. As a result, these costs should be interpreted as pure minimum or shut-down costs. They should be just the cost of materials and hired labor for producing a crop or product with a given technology in a subregion. 
+GCAM represents several input costs explicitly, including fertilizer, water, and, in GCAM-Macro-KLEAM, agricultural labor and capital where applicable. These explicit inputs should not be double counted in the residual `varCost` category. Variable costs should therefore be interpreted narrowly as minimum production costs that are not otherwise represented.
 
-Value-added categories are not included in the variable costs. In addition, variable costs do not include land costs, as the model is based on allocating land on per unit profits. They should also not include cost categories that represent return to capital or profits. We can assume these costs are captured in the distribution of profit rates behind the logit. Otherwise, consider that if these costs are put into our variable costs, ultimately all marginal profit rates (from economic theory) would be zero and provide no value to our modeling. In addition, accounting costs such as depreciation should not be part of variable costs.
+Variable costs should not include land costs, returns to capital, profits, depreciation, or owner wages. These value-added components are represented through land allocation, profit rates, or explicit labor and capital inputs rather than through shutdown costs. If labor-cost data are used in residual variable costs, they should be limited to hired labor rather than owner labor or expected farm income.
 
-Data on labor costs can be difficult to use, since some farm wage categories are income that the farmer either earns or expects to be paid and thus, some labor costs are really profit to the land-owner (i.e., farmer). Therefore, we have restricted our variable cost data to include what is labeled as “hired labor”.
+Region-specific variable costs should be used carefully because they create region-specific price floors. If technical change lowers global prices, high variable-cost regions may stop producing a commodity for reasons driven by the imposed floor rather than by broader land-allocation dynamics.
 
-Note that introducing variable costs that differ by region can result in unintended consequences. Different variable costs create different price floors, which can result in a region ceasing production of a particular product if technical change lowers the global product price significantly (i.e., to a point where the variable cost is less than the price received). 
+In summary:
 
-The main points can be summarized as:
+* Variable costs create price floors.
+* They should represent minimum technology-based production costs.
+* They should not be used as calibration parameters to adjust profits.
+* They should not include land costs, profits, depreciation, returns to capital, or owner wages.
 
-* Variable costs create price floors
-* Variable costs should be based on technology data. They should not be used as calibration parameters to adjust profits.
-* Variable costs should not include land costs, value-added categories of land, return to capital, and owner-wages.
+### Labor, capital, and agricultural value-added in KLEAM
 
+GCAM-Macro-KLEAM adds explicit labor and capital inputs to primary agricultural production. These inputs are downscaled to agricultural technologies and used to trace labor costs, wages, capital returns, and agricultural value-added by region, sector, and technology. Labor-intensive and capital-intensive technologies can be differentiated through input coefficients, so changes in wage rates or capital rental prices can affect technology profitability and production choices.
+
+Within primary agriculture, a common regional agricultural wage rate is assumed across agricultural sectors, reflecting labor mobility within agriculture. Total regional labor supply is linked to socioeconomic employment assumptions and allocated between agriculture and the Materials sector in the broader KLEAM framework. Agricultural capital is also connected to investment tracking and the regional savings-investment closure through GCAM-Macro-KLEAM.
 
 ## Equations 
 
@@ -68,6 +76,9 @@ profitRate = 1e9*( price + subsidy - varCost - inputCosts + secondaryValue ) * y
 $$
 
 where $$price$$ is the commodity price, $$subsidy$$ is any exogenously-specified subsidy, $$varCost$$ is the non-land variable cost, $$inputCosts$$ are the costs of inputs (e.g., fertilizer, water), $$yield$$ is the yield for the technology, and $$impliedSubsidy$$ is an implicit subsidy calculated in the calibration periods to ensure profits are above a specified threshold. Note that the subsidy is multiplied by $$1e9$$, as the land allocator expects profit rates in 1975$/billion m<sup>2</sup>.
+
+In KLEAM configurations, `inputCosts` may include explicit labor and capital inputs in addition to inputs such as fertilizer and water.
+
 
 See `calcProfitRate` in [ag_production_technology.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/technologies/source/ag_production_technology.cpp).
 
@@ -134,8 +145,10 @@ There are a number of ways that policies can be applied directly to influence th
 * Valuing carbon in land: When applying a price on carbon through any of the emissions-related policy approaches, GCAM users can choose whether that price extends to land use change CO<sub>2</sub> emissions. This policy is modeled as a subsidy to land-owners for the holding carbon stocks as opposed to a price on the emissions themselves.
 
 * Bioenergy constraints: GCAM users can impose constraints on bioenergy within GCAM. Under such a policy, GCAM will calculate the tax or subsidy required to ensure that the constraint is met. By default two bioenergy related constraints are enabled in GCAM and described below.  Alternative approaches could be used for more direct constraints as show in the [examples](policies_examples.html#energy-constraint).
-  * Negative emissions budget: This constraint limits the total *gross value* of all negative emissions, be it bioenergy or otherwise, to a certain fraction of GDP as defined by `energy.NEG_EMISS_GDP_BUDGET_PCT` in [constants.R](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/constants.R#L549).  To enforce the constraint the model will scale back the value of the subsidy given to bioenergy to stay within the budget.  Thus limiting the value but not necessarily the quantity of negative emissions.  Note this budget is also applied to the valuation of carbon in land when running such a policy, however the actual value of those emissions are not included in this budget at the moment.
-  * Biomass externality cost: We include an additional constraint which is meant to represent the costs paid for various externalities resulting from large scale production of purpose grown bioenergy crops.  This constraint is represented with an increasing cost with higher levels of production as defined in [A27.GrdRenewRsrcCurves.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A27.GrdRenewRsrcCurves.csv).
+
+* Negative emissions budget: This constraint limits the total *gross value* of all negative emissions, be it bioenergy or otherwise, to a certain fraction of GDP as defined by `energy.NEG_EMISS_GDP_BUDGET_PCT` in [constants.R](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/constants.R#L549).  To enforce the constraint the model will scale back the value of the subsidy given to bioenergy to stay within the budget.  Thus limiting the value but not necessarily the quantity of negative emissions.  Note this budget is also applied to the valuation of carbon in land when running such a policy, however the actual value of those emissions are not included in this budget at the moment.
+
+* Biomass externality cost: We include an additional constraint which is meant to represent the costs paid for various externalities resulting from large scale production of purpose grown bioenergy crops.  This constraint is represented with an increasing cost with higher levels of production as defined in [A27.GrdRenewRsrcCurves.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A27.GrdRenewRsrcCurves.csv).
 
 * Land constraints: GCAM users can constrain the amount of land of a particular type in a given region. Under such a policy, GCAM will calculate the tax or subsidy required to ensure that the constraint is met. See [example](policies_examples.html#land-constraint).
 

@@ -6,11 +6,13 @@ next: solver.html
 gcam-version: v8.2
 ---
 
-This page documents the parameters and functional forms found within technologies in GCAM's energy system. In the heirarchy of the information in the XML input and output files, the technology is located at the following level:
+This page documents the parameters and functional forms found within technologies in GCAM's energy system. In the hierarchy of the information in the XML input and output files, the technology is located at the following level:
 <br/>**scenario / world / region / supplysector / subsector / technology**<br/>
 Note that in the input XML files, technology-level information may be located within individual regions' "technology", "stub-technology", "intermittent-technology" tags, or within the global-technology-database.
 
 The information computed within technologies is passed up to subsectors and then subsequently to supplysectors (the markets). Quantities, such as the input and output, are simply added; i.e., the subsector output is equal to the sum of the constituent technologies. Subsector costs are computed as the output-weighted average of constituent technology costs, using only the new installations in the given time period. That is, where a technology's lifetime is assumed longer than the length of the model time period, and there is stock carryover from prior time periods, the technology costs in a given time period only reflect the installations in that time period. The costs of each technology are estimated as the average levelized costs of producing the given good, including all fuel costs, amortized capital costs, operations and maintenance costs, and where applicable, emissions penalties.
+
+In GCAM-Macro-KLEAM configurations, selected technology cost inputs also include capital-tracking information. These inputs preserve the standard technology-level cost representation, but allow the capital-related portion of technology costs and investment demand to be linked to the regional capital market used by GCAM-Macro-KLEAM. This enables capital price feedbacks to affect capital-intensive energy technologies while keeping the detailed bottom-up energy technology structure.
 
 The following section includes a glossary of parameters that characterize technologies in GCAM, providing any relevant equations. Parameters specific to individual sectors (e.g., electricity or transportation) are identified in separate sections.
 
@@ -85,10 +87,13 @@ $$
 ### Electricity Technologies
 The following are input parameters that are specific to electricity generation technologies.
 
-* **input-capital**: used for reading in capital costs
+* **input-capital**: used for reading in capital costs for electricity technologies and for tracking capital investment demand.
 * input-capital/**capacity-factor**: annual average utilization factor, defined as the annual output divided by the output if operated at maximum rated capacity.
 * input-capital/**fixed-charge-rate**: portion of overnight capital costs that are paid each year, estimated from assumed expected lifetime and discount rate.
 * input-capital/**capital-overnight**: overnight capital costs (i.e., excluding the interest payments required during the construction time), in 1975$ per kW of installed capacity.
+* input-capital/**interest-rate**: technology-specific rate used to annualize capital costs. In GCAM-Macro-KLEAM, this rate is scaled by changes in the regional capital price.
+* input-capital/**payback-years**: number of years over which capital payments are annualized.
+* input-capital/**tracking-market**: market to which capital investment demand is added, typically the regional capital market.
 * **input-OM-fixed/OM-fixed**: annual fixed operations and maintenance costs, or costs that do not scale with the output of the technology, in 1975$/kW/yr.
 * **input-OM-var/OM-var**: variable operations and maintenance costs, in 1975$/MWh.
 
@@ -107,3 +112,12 @@ Transportation technologies have several parameters that are different from othe
 * **minicam-non-energy-input/input-cost**: the average levelized cost of transportation, in 1990$ per vehicle-km. The conversion from 1975$ to 1990$ is 2.212.
 * **minicam-energy-input/coefficient**: the input-output coefficient is indicated in btus of energy per one millionth of the output unit (btu/vehicle-km). The assmued conversion from btu to kJ is 1.055.
 * **loadFactor**: average number of persons per vehicle for passenger technologies, or tonnes per vehicle for freight technologies
+
+* **tracking-non-energy-input(name)**: a variant of `minicam-non-energy-input` used when part of a total non-energy cost is treated as capital-related and linked to a capital tracking market. This input is useful when only total non-energy costs are available, but a portion of that cost should respond to capital-market feedbacks in GCAM-Macro-KLEAM.
+* tracking-non-energy-input/**input-cost**: total non-energy cost before decomposition into capital and non-capital components.
+* tracking-non-energy-input/**capital-ratio**: fraction of `input-cost` treated as capital-related.
+* tracking-non-energy-input/**interest-rate**: technology-specific rate used to annualize the capital portion of cost. In GCAM-Macro-KLEAM, this rate is scaled by changes in the regional capital price.
+* tracking-non-energy-input/**payback-years**: number of years over which the capital portion of cost is annualized.
+* tracking-non-energy-input/**invest-unit-conversion**: unit conversion used when calculating the capital investment value added to the tracking market.
+* tracking-non-energy-input/**tracking-market**: market to which derived capital investment demand is added, typically the regional capital market.
+* tracking-non-energy-input/**depreciation-rate**: depreciation rate used to derive investment demand for non-vintaged technologies.
