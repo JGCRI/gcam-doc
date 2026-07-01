@@ -17,13 +17,23 @@ gcam-version: v8.2
 ## Inputs to the Module
 **Table 1: Inputs required by the economic module <sup>[1](#table_footnote)</sup>**
 
+
 | Name | Resolution | Unit | Source |
 | :--- | :--- | :--- | :--- |
-| Population | Region and year | thousands | [Exogenous](inputs_economy.html) |
-| Labor productivity growth rate | Region and year | unitless | [Exogenous](inputs_economy.html) |
-| Labor force participation rate | Region and year | unitless | [Exogenous](inputs_economy.html) |
-| Base year GDP | Region | million 1990$ | [Exogenous](inputs_economy.html) |
-| Base year national accounts | Region | million 1990$ | [Exogenous](inputs_economy.html) |
+| Population | Region and year | thousand people | [Exogenous](inputs_economy.html) |
+| GDP | Region, scenario, and year | million 1990 USD | [Exogenous](inputs_economy.html) |
+| GDP per capita | Region, scenario, and year | thousand 1990 USD per capita | [Exogenous](inputs_economy.html) |
+| Employment / labor supply | Region, scenario, and year | million people | [Exogenous](inputs_economy.html) |
+| Labor-force share | Region, scenario, and year | share | [Exogenous](inputs_economy.html) |
+| Base-year national accounts | Region and year | million 1990 USD | [Exogenous](inputs_economy.html) |
+| Savings-rate parameters | Region | unitless | [Exogenous](inputs_economy.html) |
+| Depreciation rates | Region and year | share | [Exogenous](inputs_economy.html) |
+| Capital stock and factor compensation | Region and year | million 1990 USD | [Exogenous](inputs_economy.html) |
+| Materials production-function parameters | Region / production-function nest | unitless | [Exogenous](inputs_economy.html) |
+| Total factor productivity | Region, scenario, and year | index | [Exogenous / calibrated](inputs_economy.html) |
+| Agricultural labor and capital inputs | Region, sector, technology, and year | various | [Land supply module](supply_land.html) |
+| Energy capital and investment inputs | Region, sector, technology, and year | various | [Energy supply module](supply_energy.html) |
+
 
 ## Description
 
@@ -31,131 +41,135 @@ The socioeconomic component of GCAM sets the scale of economic activity and asso
 
 One of the most important determinants of energy, agriculture, and land-use is the scale of economic activity, which we assume is proportional to GDP. In previous versions of GCAM, dating back to the model's earliest formulations, the level of GDP was prescribed exogenously. There has been an option to endogenously modify the initial GDP assumption to reflect changes in the cost of delivering energy services within a scenario (Edmonds and Reilly, 1983; Edmonds and Reilly, 1985). However, that feedback elasticity was not determined structurally and was a simple scalar parameter. In other words, population and economic activity are used in GCAM through a one-way transfer of information to other GCAM components. For example, neither the price nor quantity of energy nor the quantity of energy services provided to the economy affect the calculation of the principle model output of the GCAM macro-economic system, GDP.
 
-Since GCAM v7, GCAM incorporates a macroeconomic module that allows for fully endogenizing GDP responses. This model creates a two-way coupling between the scale of economic activity, measured as GDP, and the existing energy sector module. In the simple macro-economic model that we employ here, the two-way interaction is developed for each geo-political region in GCAM. The system is assumed to be open, with each of the regions interacting with others in the global economy via trade. Figure 1 shows the new elements in relation to existing GCAM elements.
+Since GCAM v7, GCAM incorporates a macroeconomic module (KLEM) that allows for fully endogenizing GDP responses. This model creates a two-way coupling between the scale of economic activity, measured as GDP, and the existing energy sector module. In the simple macro-economic model that we employ here, the two-way interaction is developed for each geo-political region in GCAM. The system is assumed to be open, with each of the regions interacting with others in the global economy via trade. 
 
+Beginning with GCAM v9.1, GCAM-Macro is extended to GCAM-Macro-KLEAM, which adds primary Agriculture (A) to the Capital-Labor-Energy-Materials (KLEM) framework. KLEAM explicitly represents labor and capital in primary agricultural production, links agricultural labor to regional employment, incorporates agricultural investment into the savings-investment closure, and adds agricultural food and nonfood services to the macroeconomic accounting structure. This strengthens two-way feedbacks among sectoral production, factor markets, capital accumulation, and aggregate economic outcomes such as GDP, wage rates, and capital rental prices.
 
-
-<img src="gcam-figs/GCAM_macro_schematic.png" alt="Schematic of the major components of the GCAM macroeconomic model (earlier version in blue; the version in this CMP in blue and orange)" style="zoom: 33%;" /><br/>
-Figure 1: Schematic of the major components of the GCAM macroeconomic model (earlier version in blue; the version in this CMP in blue and orange
-{: .fig}
+More detailed documentation of the original GCAM-Macro KLEM implementation and the GCAM-Macro-KLEAM extension is available in [CMP-332](cmp/332-GCAM_Macro_Economic_Module_KLEM.pdf) and [CMP-411](cmp/411-GCAM_Macro_KLEAM_incl_Appendix.pdf), respectively.
 
 
 ### GCAM-macro (KLEM) Description 
 
-At the heart of the "production" of GDP in the macroeconomic model is the materials sector ($$X$$). The materials sector is the source of all net output not originating in the energy system ($$E$$). $$X_{M}$$ represents the sale of new final goods and services. Additionally, the materials sector consumes all net $E$ output, measured here as efficiency-weighted end-use energy. $$X_{M}$$ therefore serves as the retailer to the economy.
+GCAM-Macro was first introduced as a KLEM framework, linking Capital, Labor, Energy, and Materials. In that structure, the Materials sector represented the rest of the economy outside the energy system. Energy services entered Materials production, and investment demand from energy technologies was connected to regional savings and investment.
+
+GCAM-Macro-KLEAM extends this structure by adding Agriculture explicitly to the macroeconomic framework. KLEAM links Agriculture, Energy, and Materials through national accounting, labor supply, capital accumulation, investment demand, and factor-price feedbacks. Primary agriculture now includes explicit labor and capital inputs, agricultural food services are represented in final consumption, and agricultural nonfood services enter Materials production.
+
+KLEAM is designed to preserve GCAM's detailed sectoral representations while improving consistency between physical production systems and value-based macroeconomic accounting. Physical quantities are still determined within GCAM's energy, agriculture, land, water, and other sectoral systems. Macroeconomic consistency is enforced in value terms through national-account identities and market-clearing conditions.
+
+<img src="gcam-figs/GCAM_macro_IO_schematic_kleam.png" alt="Overview of the GCAM-Macro-KLEAM input–output and accounting framework" style="zoom: 80%;" /><br/>
+Figure 1: Overview of the GCAM-Macro-KLEAM input–output and accounting framework. Agriculture (Ag), Energy (En), and Materials (Ma) use primary factors of production and supply services and goods to final demand. GDP is defined consistently by income and expenditure.
+{: .fig}
 
 
+## Accounting structure
+
+KLEAM maintains consistency between income-side and expenditure-side measures of GDP in its base data construction.
+
+Income-side GDP is represented as the sum of factor compensation across sectors:
 
 $$
-X_M = F_M (X_{K,M}, X_{L,M}, X_{E,M})  
+GDP = \sum \text{factor compensation from land, labor, and capital}
 $$
 
-$$
-X_{i,j} = \text{sale of product i to sector j, } i=K,L,E,M \text{ and } j=M
-$$
+Expenditure-side GDP is represented as final consumption, investment, and net exports:
 
 $$
-F_M \text{ is the production function for materials, with output of } X_M.
+GDP = C + G + INV + NX
 $$
 
-The production function $$F_M$$ is homogeneous of degree one and thus carries all of the properties of such functions.
-
-We implement the materials production function as a nested constant elasticity of substitution (CES) production function:
+Within the KLEAM accounting structure, the GCAM national-account identity can be summarized as:
 
 $$
-X_M = \left( a \left( bX_{L,M}^{\eta} + X_{K,M}^{\eta} \right)^{\frac{\rho}{\eta}} + cX_{E,M}^{\rho} \right)^{\frac{1}{\rho}}
-$$
-where $$a$$, $$b$$, $$c$$, $$\rho$$, and $$\eta$$ are constants.
-
-We calculate GDP for a region using equation (3), where: 
-$$
-GDP = P_M F_M (X_{K,M}, X_{L,M}, X_{E,M}) + NX_E + X_{I,M} \label{eq:3}
-$$
-$$X_{i,j}$$ represents the sale of product $i$ to sector $j$, with $$i = K, L, E, M$$ and $$j = E, M, NX$$. $$NX_E$$ represents net exports of $E$, and $$P_M$$ is the price of $M$ (assumed to be 1). $$X_{I,M}$$ represents the net balance of trade.
-
-$$X_{E,M}$$ and $$NX_E$$ are taken directly from the GCAM energy module. The materials sector is the sole consumer of final-energy production. For simplicity, all labor is assumed to be employed by the materials sector.
-$$
-L = L_M
+GDP = \text{materials-gross-output} + \text{ag-food-service-value} + \text{gcam-net-export}
 $$
 
-$$
-X_{L,M} = L_M h_L(t)
-$$
+where `materials-gross-output` represents the output of the Materials sector, `ag-food-service-value` represents the value of agricultural food services entering final consumption, and `gcam-net-export` represents net exports from GCAM sectors, including agriculture and energy.
 
-where $$h_L(t)$$ is an exogenous labor productivity scalar.
+Agricultural nonfood services and energy services are treated as intermediate inputs to the Materials production function. Agricultural food services are kept separate because food demand is governed by GCAM's food demand model and enters final consumption directly.
 
-Similarly, effective energy is given by:
+## Materials production function
 
-$$
-X_{E,M} = E_M h_E(t)g_E(t)
-$$
-where $$h_E(t)$$ is an exogenous energy productivity scalar, and $$g_E(t)$$ is an endogenous energy service efficiency scalar calculated as an energy service index within the GCAM energy module.
+The Materials sector represents the rest of the economy outside the detailed GCAM energy and agricultural systems. In KLEAM, Materials production is represented with a nested constant elasticity of substitution (CES) production function that combines value-added inputs and intermediate service inputs.
 
-The capital investment market distributes savings and international capital flows between energy and investment:
+The main inputs are:
 
-$$
-S = X_{I,M} + X_{I,E} + NX_K
-$$
-$$NX_K$$ represents net international capital flows.
+* capital used in Materials production,
+* labor allocated to Materials,
+* energy services supplied by GCAM energy technologies, and
+* agricultural nonfood services supplied by GCAM agricultural sectors.
 
-Savings, in turn, is assumed to be a function of GDP:
+Conceptually:
 
 $$
-S = f(GDP)
+\text{materials-gross-output} = F(K_M, L_M, E_M, A_M)
 $$
-Investment in capital stocks employed to produce energy services includes those deployed in industry as well as those deployed in the household sector, such as cars, air conditioners, furnaces, and hot water heaters. The concept of savings is similarly expanded to include resources devoted to expenditures on energy services providing durable goods.
 
-The energy module in GCAM uses a putty-clay representation of capital. In other words, once an investment is made, that capital stock remains productive throughout its assigned lifetime as long as the vintage can cover its operating costs. If a vintage of capital cannot cover its operating costs, the model retires that vintage.
+where \(K_M\) is Materials capital, \(L_M\) is Materials labor, \(E_M\) is energy service input, and \(A_M\) is agricultural nonfood service input.
 
-The materials sector capital stock is determined by the following capital accumulation equation:
+Energy services and agricultural nonfood services are aggregated from detailed GCAM sectoral outputs using initial prices as weights. Total factor productivity is calibrated so that open-GDP reference runs reproduce the corresponding reference GDP trajectory.
+
+## Labor and capital markets
+
+In KLEAM, total regional labor supply is linked to population and employment assumptions. Labor is allocated between Agriculture and Materials. Agriculture and Materials are connected through this regional labor allocation system, while sectoral labor markets clear within the model.
+
+Within primary agriculture, a common regional agricultural wage rate is assumed across agricultural sectors. This reflects the assumption that labor is mobile within primary agriculture. Agricultural labor inputs are represented explicitly in crop, livestock, and forestry production where applicable.
+
+Capital is represented through a regional savings-investment closure. Aggregate investment demand includes investment from Agriculture, Energy, Energy services, and Materials. Regional investment is constrained by regional savings and capital net exports:
+
 $$
-X_{K,M}(t) = (1-\lambda)X_{K,M}(t-1) + X_{I,M}
+INV_{Ag} + INV_{En} + INV_{Ma} = S + NX_K
 $$
-Prices of inputs to the materials sector are given by:
-$$
-P_i = P_M \left(\frac{\partial F_M}{\partial X_{i,M}}\right), \quad i=K,L,E
-$$
-Across regions, net exports must sum to zero:
-$$
-0 = \sum_R NX_{i,R}
-$$
-where $$i=E,K,M$$ and $$R=regions$$.
+
+where \(INV_{Ag}\), \(INV_{En}\), and \(INV_{Ma}\) are agricultural, energy, and Materials investment, \(S\) is savings, and \(NX_K\) is capital net export.
+
+KLEAM introduces an endogenous regional capital rental price. This capital price links macroeconomic savings-investment conditions to investment costs in Agriculture, Energy, and Materials. For energy technologies, the capital-related portion of technology costs can respond to changes in the regional capital price while preserving the detailed bottom-up technology representation.
 
 For code updates, see scripts in [national_account.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/containers/source/national_account.cpp).
 
+## Historical Data for Calibration
 
+Historical calibration of the macroeconomic accounts uses a combination of socioeconomic, national-account, labor, capital, and sectoral data. Population and GDP are processed from historical data and extended with SSP assumptions. National-account variables such as capital stock, labor compensation, capital compensation, depreciation rates, savings rates, and capital net exports are processed from datasets including the Penn World Table, the Global Macro Database, FAOSTAT-based GDP inputs, GTAP-based sectoral information, and other mapping files.
 
-### GCAM-macro (KLEM) Social Accounting Matrix
+With GCAM-Macro-KLEAM, the historical calibration also includes more detailed labor-market and agricultural value-added information. Total employment is used as a labor-supply input, and labor is allocated between Agriculture and Materials. Agricultural labor and capital inputs are compiled from sources including FAO, USDA, ILO, and GTAP-based data, then downscaled to agricultural sectors and technologies.
 
-The two-way interactions between energy and the economy require the articulation of a set of simplifying assumptions about an economy. Those simplifying assumptions carry implications for the way national income and product accounts are tracked. To facilitate the appropriate accounting within the GCAM macro-economic system, we articulate an implied national Social Accounting Matrix (SAM). We use the SAM to help ensure macroeconomic consistency.
+Energy service quantities are still derived from GCAM energy-sector outputs and aggregated into an energy-service input to the Materials production function. Agricultural nonfood outputs are similarly aggregated into an agricultural nonfood-service input. Agricultural food services are treated separately and enter final consumption directly.
 
-A SAM organizes an economy's transactions and resource transfers between production activities, factors of production, and institutions into a consistent set of accounts. The process of drafting the GCAM SAM provides the occasion for explicitly confronting the simplifying assumptions that go into the model.
+For future periods, total factor productivity is calibrated so that open-GDP reference scenarios reproduce the corresponding reference GDP trajectories. Savings-rate parameters, depreciation rates, labor supply assumptions, and trade-balance assumptions remain exogenous inputs that can be modified by users. Capital net exports are initialized from historical national-account data and are phased out over time according to the trade-balance assumption.
 
-A SAM is a series of double-entry bookkeeping accounts for which each row has a corresponding column and vice versa. An important feature of a SAM is that row sums and the corresponding column sums **MUST** be equal. This system of equalities enables post-calculation cross-checks on GCAM macro-economy solutions. If a row and column are not equal, the model has failed to solve correctly. The GCAM-macro SAM follows the approach developed by Hogan and Manne (Hogan and Manne 1978) and is given in Figure 2. In the SAM accounting framework that we have developed, light green cells report inter-industry transactions. While important for ensuring consistency in our representation of the macro economy, these transactions are not part of the GDP.
+Historical value and price outputs should be interpreted carefully. Some historical calibration uses base-year or final historical prices, and sectoral investment is not fully calibrated to historical observations because consistent historical data are limited.
 
-The GDP is the value of new, final goods and services produced in a given year. Entries in the gold cells represent purchases of new, final goods and services by three categories of economic agents. Our aggregate agents are households and government ($$HH+G$$), capital ($$Cap$$), and the rest of the world ($$ROW$$). Our materials sector ($$M$$) is the retailer to the economy, and thus, all sales of new, final goods and services are sold by the materials sector ($$M$$), with one important exception, the net export of energy products to the $$ROW$$. GDP is the sum of $$C+I+G+net exports$$ or the sum of all of the values in the gold cells.
+## Fixed-GDP and open-GDP modes
 
-Because each row and column must sum to exactly the same thing, we can also calculate our GDP as the sum of payments to factors of production, reported in the blue cells. That is, GDP also equals payments to the primary factors of production, which we aggregate into payments to capital ($$K$$) and labor ($$L$$). By definition, all primary factor rewards are paid to either households ($$HH$$) or government ($$G$$).
+GCAM can be run with fixed GDP or open GDP.
 
-Another useful cross-check that is enabled by the SAM is the savings-investment cross-check where Savings ($$S$$) plus net international financial transfers ($$NX$$) equals Investment ($$I$$). Note that we have chosen to include energy-consuming consumer durable goods purchases, such as cars and household appliances, in our capital account (rather than lumped into consumption). They are not formally investment purchases but represent part of the underlying energy-using infrastructure of the economy. The net international financial transfers will be inherited from the historical national accounts data. In the data system, we provide a constant to allow users to phase it out by a certain year or hold it constant for all years. It is currently configured to phase out by 2035.
+In fixed-GDP mode, GDP follows exogenous socioeconomic assumptions and is not affected by GCAM sectoral outcomes. This mode is useful for scenario comparison when users want to hold the socioeconomic pathway fixed.
 
-Another example of a useful cross-check is the equality between net exports of new, final goods and services and offsetting international capital transfers. That is, both the "$$ROW$$" column and "$$ROW$$" row must sum to zero.
+In open-GDP mode, GCAM-Macro/KLEAM allows GDP to respond endogenously. In reference scenarios, total factor productivity is calibrated so that open-GDP results reproduce the corresponding reference GDP trajectory. In policy or perturbation scenarios, changes in energy, agriculture, labor, capital, savings, investment, and other sectoral conditions can affect GDP and related macroeconomic outputs.
 
+The key outputs used to interpret these responses are summarized below.
 
+## Outputs
 
-<img src="gcam-figs/GCAM_macro_SAM.png" alt="GCAM-macro (KLEM) Social Accounting Matrix" style="zoom:50%;" /><br/>
-Figure 2: GCAM-macro (KLEM) Social Accounting Matrix
-{: .fig}
+Economy-related outputs include socioeconomic drivers, endogenous macroeconomic outcomes, and national-account variables used to diagnose GCAM-Macro/KLEAM behavior. These outputs are available through ModelInterface queries and XML database outputs. Exact query names are defined in [`Main_queries.xml`](https://github.com/JGCRI/gcam-core/blob/master/output/queries/Main_queries.xml), and availability may depend on the model configuration.
 
-### Historical Data for Calibration
+In fixed-GDP runs, GDP follows the exogenous socioeconomic trajectory. In GCAM-Macro/KLEAM open-GDP runs, GDP can respond endogenously to changes in energy, agriculture, labor, capital, savings, investment, and other sectoral conditions.
 
-Historical calibration of national income accounts, such as GDP, capital stock, wages, and savings, and additional inputs and parameters such as population, labor force, and savings and depreciation rates of the capital stock, were based on the Penn World Tables (Feenstra et al., 2015) and the GTAP Data Base (Aguiar et al. 2019) when sectoral information is needed. Country-level data was aggregated to the 32-region representation in GCAM.
+**Table 2: Selected economy-related outputs**
 
-Final energy service expenditure for each GCAM region was calculated from calibrated energy quantities and endogenous service prices from GCAM to ensure consistency of historical and projected future energy expenditures at the 32-region representation. Calibration of energy quantities for all fuels and energy carriers for historical periods is based on the IEA Energy Balances [(IEA 2023)](economy.html#iea2023). This, along with historical global fuel prices, ensures robust estimates of energy expenditures for GCAM regions. Calculation of future final energy service is determined endogenously in response to changes in the demand for energy and prices resulting from the interplay of resource supplies and demands. Investment demands by the energy sector are determined endogenously. Energy sector investments include all capital investments associated with the production, transformation, and delivery of energy services. All other investments are attributed to the Materials sector.
+| Output group | Example outputs | Notes |
+| :--- | :--- | :--- |
+| Socioeconomic indicators | `GDP`, `population`, `gdp-per-capita`, `gdp-per-capita-ppp` | GDP is exogenous in fixed-GDP mode and endogenous in open-GDP mode. PPP-adjusted GDP per capita is mainly used in food demand. |
+| Productivity | `total-factor-productivity` | Materials-sector TFP is calibrated so that open-GDP reference runs reproduce reference GDP trajectories. |
+| Savings and investment | `investment`, `savings-rate`, `savings`, `capital-net-export` | Regional investment is constrained by savings and capital net exports in GCAM-Macro/KLEAM. |
+| Materials-sector accounts | `materials-gross-output`, `materials-value-added`, `materials-labor-wages`, `materials-labor-force`, `materials-capital-stock`, `materials-capital-investment`, `materials-net-export`, `depreciation` | These variables describe the aggregate Materials sector, representing the rest of the economy outside the detailed GCAM agriculture and energy systems. |
+| Capital market diagnostics | `capital-price` | Gross capital rental price, defined as capital compensation divided by capital stock. This links savings-investment conditions to capital-related technology costs. |
+| Agricultural service accounts | `ag-food-service-value`, `ag-nonfood-service`, `ag-nonfood-service-value`, `ag-investment` | KLEAM separates agricultural food services in final consumption from agricultural nonfood services entering Materials production. |
+| Energy service accounts | `energy-service`, `energy-service-value`, `energy-consumer-durable`, `energy-investment` | Energy services enter Materials production, while energy and energy-service technologies contribute to investment demand. |
+| GCAM sector net exports | `gcam-net-export` | Net exports from detailed GCAM sectors, including agriculture and energy. |
 
-For any projected labor force and GDP pathway, total factor productivity values can be selected to reproduce that pathway. That is, the model can be calibrated to replicate reference scenario GDP values or to match any alternative future scenarios of GDP pathways, such as the Shared-Socioeconomic Pathways (SSPs) (IIASA, 2018). Alternatively, estimates of future labor supply and assumptions of total factor/labor/capital/energy productivity improvements can be used directly to determine future GDP outcomes. In all cases, these projects can subsequently be run in open GDP mode (the default option in GCAM v7). 
+Most value-based national-account variables are reported in million 1990 USD unless otherwise noted. Historical price and value outputs should be interpreted carefully because only selected historical or base-year prices are used for calibration.
 
-Assumptions of savings and depreciation rates for future periods are exogenous inputs and can be readily changed. A simple regression model of the relationship between historical per capita GDP and savings rates was applied to adjust future savings rates from initial historical rates by region. Depreciation rates were held fixed at historical values, as they are more uniform across regions.
+For GCAM-Macro/KLEAM runs, these outputs are mainly intended to support interpretation of macroeconomic feedbacks and accounting consistency. At the global level, aggregate investment is constrained by savings. At the regional level, capital net exports represent the financial-account counterpart to value net exports and are phased out over time according to the trade-balance assumptions.
 
 ### Calculating economic consequences of perturbations in GCAM
 
@@ -164,6 +178,16 @@ In previous versions of GCAM, the cost of emissions mitigation was calculated us
 The inclusion of the GCAM macro module expands the range of options available for reporting the economic consequences of any model perturbation. The GCAM model now provides the ability to report changes in GDP, consumption, and/or deadweight loss. Each measure offers unique insights. Deadweight loss takes a "bottom-up" approach by considering the cost of each technology switch, while consumption and GDP are macroeconomic measures. Consumption is directly linked to welfare, while GDP provides a better measure of overall economic activity.
 
 A significant advantage of the macroeconomic module is that it enables the direct output of GDP and/or consumption consequences for a broader range of perturbations, eliminating the need for post-processing. In contrast, the deadweight loss approach requires case-by-case development of methods when the economy is perturbed by factors other than emissions mitigation enforced through a carbon price. Changes in consumption and/or GDP can be observed, for example, in response to regulatory interventions, variations in water availability, or weather/climate-related factors.
+
+## Calculating economic consequences of perturbations in GCAM
+
+In earlier versions of GCAM, the cost of emissions mitigation was often calculated using a “deadweight loss” approach, where the area under a marginal abatement cost curve was estimated from multiple model runs. A description of this approach is provided on the [Policies Page](policies.html).
+
+The cost of greenhouse gas mitigation can be measured in several ways, including carbon prices, GDP changes, consumption changes, deadweight loss, and equivalent variation. GCAM focuses on estimating resource costs and economic responses to mitigation or other perturbations; it does not directly quantify the avoided damages or benefits of emissions reductions.
+
+GCAM-Macro and GCAM-Macro-KLEAM expand the set of outputs available for evaluating perturbations. In fixed-GDP mode, GDP follows the exogenous socioeconomic pathway, so macroeconomic consequences are not reflected through aggregate GDP changes. In open-GDP mode, perturbations can affect GDP and related national-account variables through changes in sectoral production, prices, energy services, agricultural services, labor allocation, capital accumulation, savings, and investment.
+
+These macroeconomic responses can be useful for evaluating a broader set of shocks than carbon pricing alone, including technology changes, energy-market disruptions, water or land constraints, agricultural productivity changes, climate impacts, and other sectoral perturbations. The resulting outputs should be interpreted as model-consistent economic responses within the GCAM-Macro/KLEAM accounting framework, not as a complete welfare analysis.
 
 
 
@@ -229,4 +253,3 @@ Autonomous energy efficiency improvements
 
 <a name="table_footnote">1</a>: Note that this table differs from the one provided on the [Economy Inputs Page](inputs_economy.html#description) in that it lists all inputs to the economy module, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
 
-<a name="iea2023">[IEA 2023]</a> International Energy Agency, 2023, *Energy Balances of OECD Countries 1960-2022 and Energy Balances of Non-OECD Countries 1971-2022*, International Energy Agency, Paris, France.
