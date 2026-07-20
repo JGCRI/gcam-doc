@@ -8,6 +8,21 @@ gcam-version: v8.2
 
 Below are summaries of the updates included in each GCAM Release. Including links to the Core Model Proposals, which provide full documentation of recent changes, including methods of implementation and analysis of impacts on key results. Note that since GCAM 7.1 each update will receive its own release and version. Major releases, which correspond to those with release packages on Github, will also note a DOI.
 
+GCAM v9.1 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20510944.svg)](https://doi.org/10.5281/zenodo.20510944)
+* [GCAM Bugfix Spring 2026](cmp/425-GCAM_Bugfix_Spring_2026.pdf)
+
+GCAM v9.0 
+* [GCAM Macro-Economic Module KLEAM and Related Ag Updates](cmp/411-GCAM_Macro_KLEAM.pdf)
+
+GCAM v8.11
+* [GCAM-USA Fossil Resource Curves](cmp/376-GCAM-USA_fossil_resource_curves.pdf)
+
+GCAM v8.10 
+* [Moirai LULC Data and Pasture Update](cmp/424-Moirai_LULC_Data_Pasture_Update.pdf)
+
+GCAM v8.9 
+* [Update Non-CO2 MAC Curves 2025](cmp/414-Update_NonCO2_MAC_Curve_2025.pdf)
+
 GCAM v8.8 
 * [Updated Energy System Techno Economic Data](cmp/415-Updated_Energy_System_Techno_Economic_Data.pdf) which includes the core model proposal [Add Small Modular Reactors](cmp/407-Add_Small_Modular_Reactors.pdf)
 
