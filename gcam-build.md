@@ -201,6 +201,87 @@ BOOSTROOT=${BOOST_INCLUDE}
 JAVA_INCLUDE=/usr/lib/jvm/default-java/include
 JAVA_LIB=/usr/lib/jvm/default-java/jre/lib/amd64/server
 ```
+#### 4.1.2 Recommended configuration using Ubuntu 24.04.1 LTS on WSL2
+```
+sudo apt update                         <- This fetches all the the latest package versions
+sudo apt full-upgrade               -y  <- This updates all installed packages and removes older packages if neccesary
+sudo apt install build-essential    -y  <- This installs the GNU GCC Compiler and Development environment
+                                            - libc6-dev C Standard Library
+                                            - gcc       C Compiler
+                                            - g++       C++ Compiler
+                                            - make      GNU make utility
+                                            - dpkg-dev  Debian package development tools
+
+
+sudo apt install locate             -y
+sudo apt install tree               -y
+
+** For program debugging **
+sudo apt install valgrind           -y  <- Powerful memory debugging tool, memory leak detection, and profiling
+                                            - For more information visit: https://valgrind.org/docs/manual/manual.html
+sudo apt install gdb                -y  <- GNU Project Debugger or GDB is a great debugging tool for C and C++ projects.
+                                            - Also supports:
+                                                D
+                                                Go
+                                                Objective C
+                                                OpenCL C
+                                                Fortran
+                                                Pascal
+                                                Rust
+                                                Modula-2
+                                                Ada
+                                            - For more information visit: https://sourceware.org/gdb/documentation/
+
+** Other neccesary packages **
+sudo apt install default-jdk        -y
+sudo apt install libboost-dev       -y
+sudo apt install libtbb-dev         -y
+sudo apt install r-cran-devtools    -y
+sudo apt install libxerces-c3.2     -y
+
+** To open model interface from WSL2**
+sudo apt install gnome-text-editor  -y
+sudo apt install gimp               -y
+sudo apt install nautilus           -y
+sudo apt install x11-apps           -y
+sudo apt install vlc                -y
+
+install.packages(c("drake", "assertthat"))                                     <- Necessary R packages
+
+readlink -f `which javac` | sed "s:/bin/javac::"                               <- Will give you the neccesary path for JAVA_HOME
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/bin/java                   <- Replace with whatever path you obtained from the line above
+cp ~/.bashrc ~/.bashrc.bak                                                     <- Creates a backup of your bashrc
+echo "export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64" >> ~/.bashrc        <- Sets the enviroment variable permanently through bashrc
+tail -3 ~/.bashrc                                                              <- The environment variable and its path should be outputted
+
+cd ${HOME}/gcam-core
+mkdir libs
+wget https://github.com/JGCRI/modelinterface/releases/download/v5.4/jars.zip
+wget https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.gz
+
+** Extract the new dependencies **
+unzip jars.zip
+tar -xvf eigen-3.4.0.tar.gz
+
+rm eigen-3.4.0.tar.gz
+rm jars.zip
+
+cd ${HOME}/gcam-core/output/modelinterface
+ln -s ${HOME}/gcam-core/libs/jars                                              <- Creates a symbolic link to the jars file. Necessary to utilize GUI               
+
+You can use these environment variables:
+
+export USRLIB="/usr/lib/x86_64-linux-gnu"
+export BOOST_INCLUDE="/usr/include"
+export TBB_INCLUDE="/usr/include"
+export TBB_LIB="${USRLIB}"
+export BOOSTROOT="${BOOST_INCLUDE}"
+export JAVA_INCLUDE="${JAVA_HOME}/include"
+export JAVA_LIB="${JAVA_HOME}/lib/server"
+export JARS_LIB="${HOME}/gcam-core/libs/jars/*"
+export EIGEN_INCLUDE="${HOME}/gcam-core/libs/eigen-3.4.0"
+```
+Note: You may need to rename BaseX jar. Model interface expects version 9.5.2, if it's not already named BaseX-9.5.2.jar then make the change.
 
 ### 4.2 Building with Xcode
 Mac users who would like to use the Xcode integrated development environment must have it installed (available from the Apple App Store), however a recent version with C++ 14 support is required.  Xcode version 8.1+ have been known to work.  Users can find the project file under `<GCAM Workspace>/cvs/objects/build/xcode3/objects.xcodeproj`. Once open you should change the `Scheme` to build the `Release` target.  You can find the scheme settings here:
