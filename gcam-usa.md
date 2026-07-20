@@ -144,51 +144,19 @@ For electricity trade between states we group states roughly into the 15 "grid r
 
 
 Fossil Fuel Supplies
-===============
+====================
 
-The fossil resource supply sector in GCAM-USA represents U.S. coal, crude oil,
-and natural gas production at the state level. The approach introduces
-state-level resource supply curves for the 50 states, while preserving
-consistency with the aggregate USA fossil resource availability and historical
-production represented in the GCAM core. 
+The fossil resource supply sector in GCAM-USA represents U.S. coal, crude oil, and natural gas production at the state level. The approach introduces state-level resource supply curves for the 50 states, while preserving consistency with the aggregate USA fossil resource availability and historical production represented in the core GCAM. 
 
-For each fossil resource, state-level production is organized through a
-hierarchical supply structure (See figure below). Individual states contain
-resource-specific production technologies that draw from subresource categories
-such as surface and underground coal mining; onshore conventional, onshore
-unconventional, offshore, and speculative natural gas; and onshore conventional
-oil, onshore unconventional oil, onshore unconventional heavy oil, and offshore
-oil. These state-level production technologies are aggregated into broader U.S.
-production pools, with Alaska represented separately from the lower 48 states
-(at the subsector level) to reflect geographic isolation and transportation
-constraints. It enables inter-state competition in fossil fuel production,
-captures differences across resource types and extraction costs. State-level
-production is first aggregated into U.S. fossil production, which then feeds
-both domestic regional supply and global traded fossil fuel markets.
+For each fossil resource, state-level production is organized through a hierarchical supply structure (See figure below). Individual states contain resource-specific production technologies that draw from subresource categories such as surface and underground coal mining; onshore conventional, onshore unconventional, offshore, and speculative natural gas; and onshore conventional oil, onshore unconventional oil, onshore unconventional heavy oil, and offshore oil. These state-level production technologies are aggregated into broader U.S. production pools, with Alaska represented separately from the lower 48 states (at the subsector level) to reflect geographic isolation and transportation constraints. This structure enables inter-state competition in fossil fuel production, capturing differences across resource types and extraction costs. State-level production is first aggregated into U.S. fossil production, which then feeds both domestic regional supply and global traded fossil fuel markets.
 
 <img src="gcam-figs/gcam-usa-ff-res-supply-structure.png" width="650" height="372" />
 
 State-level fossil fuel resource supply structure for crude oil supply.
 
-The model uses subresource supply curves defined by availability and extraction
-cost grades. Historical production is calibrated using state-level data from EIA
-[EIA 2024](gcam-usa.html#eia2024), while resource availability is drawn from
-federal data sources from USGS [USGS 2013](gcam-usa.html#usgs2013) and BOEM
-[BOEM 2011](gcam-usa.html#boem2011). Extraction costs are based primarily on
-ETSAP [IEA-ETSAP 2010](gcam-usa.html#ieaetsap2010) and 
-BOEM [BOEM 2011](gcam-usa.html#boem2011) estimates. Where state-level resource
-estimates do not fully match the aggregate GCAM-USA resource curves, additional
-“speculative” resource categories are introduced for coal and natural gas to
-harmonize state-level resource availability with the GCAM core representation.
+The model uses subresource supply curves defined by availability and extraction cost grades. Historical production is calibrated using state-level data from EIA [EIA 2024](gcam-usa.html#eia2024), while resource availability is drawn from federal data sources from USGS [USGS 2013](gcam-usa.html#usgs2013) and BOEM [BOEM 2011](gcam-usa.html#boem2011). Extraction costs are based primarily on ETSAP [IEA-ETSAP 2010](gcam-usa.html#ieaetsap2010) and  BOEM [BOEM 2011](gcam-usa.html#boem2011) estimates. Where state-level resource estimates do not fully match the aggregate GCAM-USA resource curves, additional “speculative” resource categories are introduced for coal and natural gas to harmonize state-level resource availability with the GCAM core representation.
 
-The sector also includes emissions from fossil resource production. State-level
-greenhouse gas emissions factors are derived from EPA state-level greenhouse gas
-inventory data [EPA 2024](gcam-usa.html#epa2024), and non-GHG emissions factors
-are derived from NEI inventory data [EPA NEI 2015](gcam-usa.html#epanei2015).
-These emissions factors are mapped to GCAM-USA fossil subresources, allowing
-emissions from coal, oil, and natural gas production to vary by state and
-subresource type.
-
+The sector also includes emissions from fossil resource production. State-level greenhouse gas emissions factors are derived from EPA state-level greenhouse gas inventory data [EPA 2024](gcam-usa.html#epa2024), and non-GHG emissions factors are derived from NEI inventory data [EPA NEI 2015](gcam-usa.html#epanei2015). These emissions factors are mapped to GCAM-USA fossil subresources, allowing emissions from coal, oil, and natural gas production to vary by state and subresource type.
 
 
 Refining sector
@@ -331,8 +299,6 @@ References
 
 <a name="denholm2008">[Denholm and Margolis 2008]</a> Denholm, P. and R. Margolis. 2008. Supply Curves for Rooftop Solar PV-Generated Electricity for the United States. National Renewable Energy Laboratory, Technical Report NREL / TP-6A0-44073, November 2008.
 
-<a name="epa2024">[EPA 2024]</a> U.S. Environmental Protection Agency (EPA). 2024. "Methodology Report: Inventory of U.S. Greenhouse Gas Emissions and Sinks by State: 1990-2021." https://www.epa.gov/ghgemissions/methodology-report-inventory-us-greenhouse-gas-emissions-and-sinks-state-1990-2021.
-
 <a name="eurek2016">[Eurek et al. 2016]</a> Eurek, K, W Cole, D Bielen, N Blair, S Cohen, B Frew, J Ho, V Krishnan, T Mai, B Sigrin, D Steinberg. 2016. Regional Energy Deployment System (ReEDS) Model Documentation: Version 2016. <https://www.nrel.gov/docs/fy17osti/67067.pdf>
 
 <a name="greet">[GREET 2014]</a> Argonne National Laboratory. 2014. GREET v1.2.0 11425. <https://greet.es.anl.gov/>
@@ -380,6 +346,8 @@ References
 <a name="epa2022">[EPA 2022]</a> U.S. Environmental Protection Agency. 2022. U.S. State-level Non-CO2 GHG Mitigation Report, <https://www.epa.gov/global-mitigation-non-co2-greenhouse-gases/us-state-level-non-co2-ghg-mitigation-report> (Accessed 17 March 2023).  
 
 <a name="epanei2015">[EPA NEI 2015]</a> U.S. Environmental Protection Agency (EPA). 2015. "National Emissions Inventory (NEI)." https://www.epa.gov/air-emissions-inventories/national-emissions-inventory-nei.
+
+<a name="epa2024">[EPA 2024]</a> U.S. Environmental Protection Agency (EPA). 2024. "Methodology Report: Inventory of U.S. Greenhouse Gas Emissions and Sinks by State: 1990-2021." https://www.epa.gov/ghgemissions/methodology-report-inventory-us-greenhouse-gas-emissions-and-sinks-state-1990-2021.
 
 <a name="epatier1">[EPA Tier 1 CAPS]</a> U.S. Environmental Protection Agency. 2016. Air Pollutant Emissions Trends Data, State Tier 1 CAPS Trends. <https://www.epa.gov/air-emissions-inventories/air-pollutant-emissions-trends-data>.
 
