@@ -147,7 +147,13 @@ GCAM's representation of Agricultural energy use sector.
 
 #### Cement
 
-GCAM includes a physical representation of the manufacture of cement, that tracks both the fuel- and limestone-derived emissions of CO<sub>2</sub>. Production volumes are indicated in Mt of cement; input-output coefficients of heat and electricity are indicated in GJ per kg of cement, and the input-output coefficient of limestone is unitless. The energy input-output coefficients are specific to each region, based on [Worrell et al. (2001)](demand_energy.html#worrell2001) and Tables 6.9 and 6.10 in [IEA (2007)](demand_energy.html#iea2007). The limestone input-output coefficient is calculated to return the region's cement-related emissions reported by [CDIAC 2017](demand_energy.html#CDIAC2017). Each region's calibrated fuel shares in this industry are from Table 6.6 in [IEA 2007](demand_energy.html#iea2007). A simple schematic with example input-outout coefficients is shown below; note that in the structure, "process heat cement" is treated as a specific energy commodity, so as to avoid allowing electricity to compete for market share of this input to the cement production process.
+GCAM includes a physical representation of the manufacture of cement which tracks both the fuel- and limestone-derived emissions of CO<sub>2</sub>. Production volumes are indicated in Mt of cement; input-output coefficients of heat and electricity are indicated in GJ per kg of cement; the input-output coefficient of limestone is unitless. 
+
+Country level cement production and CO<sub>2</sub> emissions are taken from [Andrew (2025)](demand_energy.html#andrew2025). The limestone input-output coefficient is calculated to return the region's cement-related emissions reported by [Andrew 2025](demand_energy.html#andrew2025).
+
+Energy input-output coefficients are specific to most regions (filled in with global averages where regional data is unavailable), based Tables 6.9 and 6.10 in [IEA (2007)](demand_energy.html#iea2007), [IEA (2021b)](demand_energy.html#iea2021b), and [IEA (2023)](demand_energy.html#iea2023). Each region's calibrated fuel shares in this industry are from the IEA World Energy Balances [IEA 2021](demand_energy.html#iea2021) energy estimates for the non-metallic minerals sector, which also includes the glass and ceramics industries. Total energy for each region is also bounded by the energy estimates from the non-metallic minerals sector. 
+
+A simple schematic with example input-outout coefficients is shown below; note that in the structure, "process heat cement" is treated as a specific energy commodity, so as to avoid allowing electricity to compete for market share of this input to the cement production process.
 
 <img src="gcam-figs/cement.png" width="500" height="250" /><br/>
 Structure of GCAM's representation of cement production, with example input-output coefficients shown (GJ/kg of energy, and unitless for limestone)
@@ -502,6 +508,9 @@ Residential and commercial
 
 ## References
 
+<a name="andrew2025">[Andrew 2025]</a> Andrew, R.M., 2025, *Global CO2 emissions from cement production (Version 250226)* Zenodo.
+[Link](https://doi.org/10.5281/zenodo.14931651)
+
 <a name="bts2015">[BTS 2015]</a> Bureau of Transportation Statistics, 2015, *Table 3-21: Average Freight Revenue Per Ton-mile (Current cents)*, U.S. Department of Transportation, Office of the Assistant Secretary for Research and Technology. [Link](http://www.rita.dot.gov/bts/sites/rita.dot.gov.bts/files/publications/national_transportation_statistics/html/table_03_21.html)
 
 <a name="beuttler2019">[Beuttler et al. 2019]</a> Beuttler, C., Charles, L., and Wurzbacher, J. “The Role of Direct Air Capture in Mitigation of Anthropogenic Greenhouse Gas Emissions” *Frontiers in Climate* 1, (2019)[Link](https://www.frontiersin.org/article/10.3389/fclim.2019.00010/full)
@@ -520,7 +529,13 @@ Residential and commercial
 
 <a name="iea2007">[IEA 2007]</a> International Energy Agency, 2007, *Tracking Industrial Energy Efficiency and CO<sub>2</sub> Emissions*, International Energy Agency, Paris, France. [Link](https://www.iea.org/publications/freepublications/publication/tracking_emissions.pdf)
 
-<a name="iea2021">[IEA 2021]</a> International Energy Agency, 2007, *World Energy Balances Database Documentation*, International Energy Agency, Paris, France. [Link](http://wds.iea.org/wds/pdf/worldbal_documentation.pdf)
+<a name="iea2021">[IEA 2021]</a> International Energy Agency, 2021, *World Energy Balances Database Documentation*, International Energy Agency, Paris, France. [Link](http://wds.iea.org/wds/pdf/worldbal_documentation.pdf)
+
+<a name="iea2021b">[IEA 2021b]</a> International Energy Agency, 2021, *Electricity use per tonne of cement in selected countries and regions, 2018* International Energy Agency, Paris.
+[Link](https://www.iea.org/data-and-statistics/charts/electricity-use-per-tonne-of-cement-in-selected-countries-and-regions-2018)
+
+<a name="iea2023">[IEA 2023]</a> International Energy Agency, 2023, *Global thermal energy intensity of clinker production by fuel in the Net Zero Scenario, 2010-2030* International Energy Agency, Paris.
+[Link](https://www.iea.org/data-and-statistics/charts/global-thermal-energy-intensity-of-clinker-production-by-fuel-in-the-net-zero-scenario-2010-2030)
 
 <a name="keith2018">[Keith et al 2018]</a> Keith, D. W., Holmes, G., St Angelo, D., and Heidel, K. “A Process for Capturing CO 2 from the Atmosphere” (2018) [Link](https://doi.org/10.1016/j.joule.2018.05.006) 
 
@@ -565,7 +580,5 @@ Residential and commercial
 <a name="VanRuijven2016">[Van Ruijven et al. 2016]</a> Van Ruijven, Bas J., et al. "Long-term model-based projections of energy use and CO2 emissions from the global steel and cement industries." Resources, Conservation and Recycling 112 (2016): 15-36.
 
 <a name="vtpi2013">[VTPI 2013]</a> Victoria Transport Policy Institute. 2013. Chapter 5.2: Travel Time, in *Transportation Costs and Benefits II: Techniques, Estimates and Implications*, Victoria Transport Policy Institute. [Link](http://www.vtpi.org/tca/tca0502.pdf)
-
-<a name="worrell2001">[Worrell et al. 2000]</a> Worrell, E., Price, L., Martin, N., Hendriks, C., and Ozawa Meida, L. 2001. Carbon dioxide emissions from the global cement industry. *Annual Reviews of Energy and the Environment* 26, pp. 303-329. [Link](https://www.annualreviews.org/doi/abs/10.1146/annurev.energy.26.1.303)
 
 <a name="zamparini2007">[Zamparini and Reggiani 2007]</a> Zamparini, L., and Reggiani, A. 2007. Meta-analysis and the value of time savings: a transatlantic perspective in passenger transport. *Networks and Spatial Economics* 7, pp. 377-396. [Link](http://link.springer.com/article/10.1007/s11067-007-9028-5)
