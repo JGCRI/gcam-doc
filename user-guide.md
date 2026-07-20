@@ -156,10 +156,8 @@ File Tag | Description
 xmlInputFileName | First XML file read in. In recent versions of GCAM this is used to readin the modeltime object, which sets the time intervals for GCAM. The modeltime object can only be read in once.
 BatchFileName | Name of the [batch file input](#gcam-batch-mode). This will only be used if the `BatchMode` boolean is set to 1. 
 policy-target-file | Run the model in [target finder mode](#target-finder).  This will only be used if `find-path` boolean is set to 1.
-GHGInputFileName | Default MAGICC input for GHG emissions time series. 
 xmldb-location | Location and name of xml output database
 xmlDebugFileName | Name of debug output file. For the specified `debug-region` (see below), a set of internal state variables will be output at the end of each model period.
-climatFileName | Output file that contains the GHG and pollutant emissions that was passed to MAGICC.
 costCurvesOutputFileName | Output for cost curves if `createCostCurve` is set to 1. 
 batchCSVOutputFile | csv output of a minimal set of variables. This is useful during large batch runs where creating an xml database would result in excessively large files.
 
@@ -171,8 +169,6 @@ File Tag | Description
 ------------ | -------------
 scenarioName | Name of the scenario. This name will be embedded in output xml data. For batch file operation this name is the prefix to the final file name.
 debug-region | String that specifies which region is used for debugging output (see xmlDebugFileName), which provides a dump, by model period, of GCAM internal state variables which can be useful for debugging and understanding results.
-MAGICC-input-dir | Input directory for necessary MAGICC input files. This normally should not be changed.
-MAGICC-output-dir | Directory for MAGICC model output files.
 AbatedGasForCostCurves | Default: "CO2".  The name of the market/gas to change the price of and sum emissions for when calculating [Policy Costs](policies.html#policy-costs).  Note when [targeting multiple gasses](policies.html#linked-markets) you may specificy this value as `GHG;CO2;CH4;N2O;C2F6;CF4`, for example, to list all of the gasses to sum and they will be weighted according to the linked ghg policy
 
 #### 3.1.4 `<Bools>` Input Options
@@ -197,10 +193,10 @@ File Tag | Description
 ------------ | -------------
 numPointsForCO2CostCurve | Number of points to use in CO2 cost curve calculation (if `createCostCurve` is turned on).
 carbon-output-start-year | Starting year for carbon-cycle output in the XML database
-climateOutputInterval | Output interval for climate data (concentrations, forcing, temperature, etc.) in the XML database
 parallel-grain-size | A performance tuning option when GCAM is compiled with multi-threaded support.
 stop-period | Specify an early model exit.  Run up to and including the given period, -1 indicates run all periods.
 restart-period | Instructs GCAM to trust read in market prices up but not including the specified period for the initial solution prices.  This can be used in conjunction with `stop-period` to support checkpoint and restarting of a GCAM simulation.  Setting a value beyond the final model period can also speed up [target finder](#target-finder) scenarios.
+xmldb-buffer-size | A "buffer" size in terms of MBs used to write GCAM results to the XMLDB.  A higher value _may_ speed up data write times with the trade off of consuming a higher peak memory usage.  Note several "buffers" are required during the writing processes.
 
 ### 3.2 <a name="gcam-batch-mode"> GCAM Batch Mode </a>
 
@@ -481,7 +477,7 @@ The GCAM XML database output is verbose and can consume a lot of disk space.  Us
 <!-- The path to an STX style script to filter GCAM results before writing them to the
      DB.  If empty no filters will be applied.
 -->
-<entry key="filter-script"></entry>
+<entry key="filter-script">../output/queries/filters/default_filter.xml</entry>
 <!-- The path to a Model Interface batch file to run queries after a GCAM run has
      finished.  If a value of - is specified this instructs the Model Interface
      to read the batch file from STDIN which could be useful when being run by some
