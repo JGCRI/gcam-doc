@@ -46,7 +46,7 @@ gcam-version: v8.2
 
 Variable costs are the non-land shutdown costs of producing a crop, expressed per unit of output. They create price floors in GCAM: if the crop price falls to or below variable cost, production can fall to zero.
 
-GCAM represents several input costs explicitly, including fertilizer, water, and, in GCAM-Macro-KLEAM, agricultural labor and capital where applicable. These explicit inputs should not be double counted in the residual `varCost` category. Variable costs should therefore be interpreted narrowly as minimum production costs that are not otherwise represented.
+GCAM represents several input costs explicitly, including fertilizer, water, agricultural labor and capital where applicable. These explicit inputs should not be double counted in the residual `varCost` category. Variable costs should therefore be interpreted narrowly as minimum production costs that are not otherwise represented.
 
 Variable costs should not include land costs, returns to capital, profits, depreciation, or owner wages. These value-added components are represented through land allocation, profit rates, or explicit labor and capital inputs rather than through shutdown costs. If labor-cost data are used in residual variable costs, they should be limited to hired labor rather than owner labor or expected farm income.
 
@@ -59,11 +59,11 @@ In summary:
 * They should not be used as calibration parameters to adjust profits.
 * They should not include land costs, profits, depreciation, returns to capital, or owner wages.
 
-### Labor, capital, and agricultural value-added in KLEAM
+### Labor, capital, and agricultural value-added
 
-GCAM-Macro-KLEAM adds explicit labor and capital inputs to primary agricultural production. These inputs are downscaled to agricultural technologies and used to trace labor costs, wages, capital returns, and agricultural value-added by region, sector, and technology. Labor-intensive and capital-intensive technologies can be differentiated through input coefficients, so changes in wage rates or capital rental prices can affect technology profitability and production choices.
+Labor and capital inputs are explicit inputs to primary agricultural production. These inputs are downscaled to agricultural technologies and used to trace labor costs, wages, capital returns, and agricultural value-added by region, sector, and technology. Labor-intensive and capital-intensive technologies can be differentiated through input coefficients, so changes in wage rates or capital rental prices can affect technology profitability and production choices.
 
-Within primary agriculture, a common regional agricultural wage rate is assumed across agricultural sectors, reflecting labor mobility within agriculture. Total regional labor supply is linked to socioeconomic employment assumptions and allocated between agriculture and the Materials sector in the broader KLEAM framework. Agricultural capital is also connected to investment tracking and the regional savings-investment closure through GCAM-Macro-KLEAM.
+Within primary agriculture, a common regional agricultural wage rate is assumed across agricultural sectors, reflecting labor mobility within agriculture. Total regional labor supply is linked to socioeconomic employment assumptions and allocated between agriculture and the Materials sector in the broader GCAM-Macro framework. Agricultural capital is also connected to investment tracking and the regional savings-investment closure through GCAM-Macro.
 
 ## Equations 
 
@@ -77,7 +77,7 @@ $$
 
 where $$price$$ is the commodity price, $$subsidy$$ is any exogenously-specified subsidy, $$varCost$$ is the non-land variable cost, $$inputCosts$$ are the costs of inputs (e.g., fertilizer, water), $$yield$$ is the yield for the technology, and $$impliedSubsidy$$ is an implicit subsidy calculated in the calibration periods to ensure profits are above a specified threshold. Note that the subsidy is multiplied by $$1e9$$, as the land allocator expects profit rates in 1975$/billion m<sup>2</sup>.
 
-In KLEAM configurations, `inputCosts` may include explicit labor and capital inputs in addition to inputs such as fertilizer and water.
+Note, $$inputCosts$$ may include explicit labor and capital inputs in addition to inputs such as fertilizer and water.
 
 
 See `calcProfitRate` in [ag_production_technology.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/technologies/source/ag_production_technology.cpp).

@@ -53,11 +53,11 @@ Food demand nesting structure in GCAM.  Note, FiberCrop is moved to the Oil nest
 
 Shares of feed are determined by a [logit sharing approach](choice.html), which depends on the relative costs of the different feed options. Demand for feed is determined by the scale of livestock demand and these feed shares
 
-In GCAM-Macro-KLEAM, food demand remains governed by the food demand model, but the value of agricultural food consumption is also tracked as `ag-food-service-value` in national accounts. This accounting linkage does not replace the food demand model; it allows agricultural food consumption to be represented consistently in macroeconomic final demand.
+In GCAM-Macro, food demand remains governed by the food demand model, but the value of agricultural food consumption is also tracked as `ag-food-service-value` in national accounts. This accounting linkage does not replace the food demand model; it allows agricultural food consumption to be represented consistently in macroeconomic final demand.
 
 ### Non-food, non-feed demand
 
-Non-food, non-feed, and nonenergy demand, including selected forestry and agricultural product demands, is determined by price, income, and population size. In GCAM-Macro-KLEAM, these demands also provide the physical basis for an agricultural nonfood-service input to the Materials production function. Recent KLEAM updates revised selected nonfood demand elasticities to improve consistency with this macroeconomic linkage. Income elasticity was added for `NonFoodDemand_Crops` and `NonFoodDemand_Meat`, increased for `NonFoodDemand_sawnwood`, and price elasticity was added for these nonfood demand categories. 
+Non-food, non-feed, and nonenergy demand, including selected forestry and agricultural product demands, is determined by price, income, and population size. In GCAM-Macro, these demands also provide the physical basis for an agricultural nonfood-service input to the Materials production function.
  
 
 ### Future demand (storage)

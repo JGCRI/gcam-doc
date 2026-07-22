@@ -157,7 +157,7 @@ Hydrogen produced centrally can be distributed through two means: pipeline and l
 
 ### Capital and investment tracking
 
-In GCAM-Macro-KLEAM configurations, energy technologies can contribute to regional investment demand through technology-level capital tracking. Energy-sector capital is not represented as a standalone aggregate production factor in the same way as Materials-sector capital. Instead, capital-related technology costs are tracked at the technology level and linked to the regional capital market through `input-capital` and `tracking-non-energy-input` objects. This allows changes in regional capital prices to affect the capital-related portion of technology costs and investment demand while preserving the detailed energy technology structure. See [Energy Technologies](en_technologies.html) for the relevant technology-level parameters.
+Energy technologies can contribute to regional investment demand through technology-level capital tracking. Energy-sector capital is not represented as a standalone aggregate production factor in the same way as Materials-sector capital. Instead, capital-related technology costs are tracked at the technology level and linked to the regional capital market through `input-capital` and `tracking-non-energy-input` objects. This allows changes in regional capital prices to affect the capital-related portion of technology costs and investment demand while preserving the detailed energy technology structure. See [Energy Technologies](en_technologies.html) for the relevant technology-level parameters.
 
 ## Trade
 

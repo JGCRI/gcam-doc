@@ -188,6 +188,7 @@ find-path | [Turn on path finding capability](#target-finder). A valid `policy-t
 createCostCurve | Turns on calculation of a CO2 cost curve. The model will be run multiple times to generate a CO2 cost curve, which will be integrated to estimate total policy costs. 
 debugChecking | Turns on some internal consistency checks.
 QuitFirstFailure | When set to 1, the model will abort a scenario (skip remaining periods, print output, and exit) after the first failed period. This feature is not available when running in target finder mode.
+verbose-parse-warnings | When set to 1, the model will produce verbose warning messages during XML parse including a "stack trace" of the XML tags which caused the warning.
 
 #### 3.1.5 `<Ints>` Input Options
 
