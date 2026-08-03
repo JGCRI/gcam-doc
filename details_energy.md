@@ -12,6 +12,7 @@ This page provides more detailed explanations of the descriptions provided in th
 
 - [Resources](#resources)
 - [Energy Transformation](#energy-transformation)
+- [Capital and investment tracking](#capital-and-investment-tracking)
 - [Trade](#trade)
 - [Energy for water](#energy-for-water)
 - [Optional Exogenous Floorspace](#optional-exogenous-floorspace)
@@ -153,6 +154,10 @@ The most common hydrogen production technology today is natural gas steam reform
 Direct wind and solar electrolysis are specifically disaggregated from grid-based electrolysis because these uses of wind and solar energy do not incur any backup-related costs, unlike in the electricity sector where backup costs increase as a function of their share of total grid capacity (see [electricity](supply_energy.html#electricity)). Compared with grid-based electrolysis, these technologies also avoid the cost markups of electricity transmission and distribution. Each region's costs of wind- and solar-based electrolysis are based on region-specific renewable resource supply curves and capacity factors, as well as the levelized cost of the electrolyzers, which are similarly a function of the renewable capacity factors. The nuclear technology represents thermal splitting, which does not use electricity as an intermediate energy product.
 
 Hydrogen produced centrally can be distributed through two means: pipeline and liquefied hydrogen truck. The electricity and freight trucking input-output coefficients of each pathway are based on Argonne's Hydrogen Delivery Scenario Analysis Model (HDSAM) [ANL 2015](details_energy.html#anl2015), and reflect the respective requirements for refrigeration, compression, transportation, and storage by each distribution pathway. For end users, further energy may be required for additional compression and/or refrigeration, depending on the pathway. For example, vehicles use hydrogen that is at a higher pressure than the pipeline distribution network, and the additional on-site compression energy requirements of the dispensing stations is part of the electricity input-output coefficient to wholesale dispensing. Dispensing is generally used for hydrogen that is held at high pressure and/or low temperatures for end-use purposes (e.g., vehicles and other mobile applications), whereas delivery is used for stationary sources where storage volume is not as constrained (e.g., buildings and industrial facilities). Forecourt (i.e., on-site) production is represented as natural gas and electricity-based technologies within the delivery and dispensing sectors. These technologies typically have high levelized costs than the corresponding central technologies, due to lower capacity factors and smaller scales, but do not incur the cost markups and energy requirements of the distribution system.
+
+### Capital and investment tracking
+
+Energy technologies can contribute to regional investment demand through technology-level capital tracking. Energy-sector capital is not represented as a standalone aggregate production factor in the same way as Materials-sector capital. Instead, capital-related technology costs are tracked at the technology level and linked to the regional capital market through `input-capital` and `tracking-non-energy-input` objects. This allows changes in regional capital prices to affect the capital-related portion of technology costs and investment demand while preserving the detailed energy technology structure. See [Energy Technologies](en_technologies.html) for the relevant technology-level parameters.
 
 ## Trade
 

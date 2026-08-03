@@ -1,6 +1,6 @@
 ---
 layout: index
-title: The GCAM Land Model
+title: Details on GCAM Inputs
 prev: inputs_supply.html
 next: inputs_demand.html
 gcam-version: v8.2
