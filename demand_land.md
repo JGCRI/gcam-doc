@@ -26,7 +26,7 @@ gcam-version: v8.2
 | Historical demand for livestock (used for calibration) | By region, demand, commodity, and year | Mt/yr | [Exogenous](inputs_demand.html) |
 | Historical demand for forest (used for calibration) | By region and year | billion km<sup>3</sup>/yr | [Exogenous](inputs_demand.html) |
 | Commodity prices | By region, commodity, and year | 1975$/kg or 1975$/m<sup>3</sup> | [Marketplace](marketplace.html) |
-| Income and price elasticity (for non-food, non-feed) | By region, demand, and year | unitless | [Exogenous](inputs_demand.html) |
+| Income and price elasticity (for non-food, non-feed, and nonenergy agricultural demand) | By region, demand, and year | unitless | [Exogenous](inputs_demand.html) |
 | Scale parameter, self-price elasticity, cross-price elasticity, income elasticity, regional bias, price scaling parameters (for food demand) | By region | unitless | [Exogenous](inputs_demand.html) |
 | Logit exponents | By region and sector or subsector | unitless |  [Exogenous](inputs_demand.html) |
 | GDP per capita | By region and year | thous 1990$ per person | [Economy module](economy.html) |
@@ -53,10 +53,11 @@ Food demand nesting structure in GCAM.  Note, FiberCrop is moved to the Oil nest
 
 Shares of feed are determined by a [logit sharing approach](choice.html), which depends on the relative costs of the different feed options. Demand for feed is determined by the scale of livestock demand and these feed shares
 
+In GCAM-Macro, food demand remains governed by the food demand model, but the value of agricultural food consumption is also tracked as `ag-food-service-value` in national accounts. This accounting linkage does not replace the food demand model; it allows agricultural food consumption to be represented consistently in macroeconomic final demand.
+
 ### Non-food, non-feed demand
 
-Non-food, non-feed demand, including forestry demand, is determined by price, income, and population size.  
-Note that forestry demand is represented for two product pools, namely wood pulp and sawnwood production. 
+Non-food, non-feed, and nonenergy demand, including selected forestry and agricultural product demands, is determined by price, income, and population size. In GCAM-Macro, these demands also provide the physical basis for an agricultural nonfood-service input to the Materials production function.
  
 
 ### Future demand (storage)
@@ -78,9 +79,10 @@ $$
 q = A * (x^{h(x)}) * (w_{self}^{e_{self}(x)}) * (w_{cross}^{e_{cross}(x)})
 $$
 
-where $$A$$ is a scale parameter, $$x$$ is the income divided by price of materials, $$h(x)$$ is the income elasticity, and $$w_i$$ is the price of the food input divided by the price of materials times some scale factor, and $$e_i$$ are price elasticities. 
- 
-$$x^{h(x)}$$ is calculated all together depending on the type of FoodDemandInput. See `StaplesFoodDemandInput::calcIncomeTerm` and `NonStaplesFoodDemandInput::calcIncomeTerm` in [food_demand_input.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/functions/source/food_demand_input.cpp).
+where $$A$$ is a scale parameter, $$x$$ is the income divided by price of materials, $$h(x)$$ is the income elasticity, and $$w_i$$ is the price of the food input divided by the price of materials times some scale factor, and $$e_i$$ are price elasticities. $$x^{h(x)}$$ is calculated all together depending on the type of FoodDemandInput. 
+
+
+See `StaplesFoodDemandInput::calcIncomeTerm` and `NonStaplesFoodDemandInput::calcIncomeTerm` in [food_demand_input.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/functions/source/food_demand_input.cpp).
 
 $$e_{self} =  g_{self} - \alpha * f(x)$$, $$e_{cross} = g_{cross} - \alpha_{cross} * f(x)$$, where $$g_{self}$$ is self price elasticity parameter, $$g_{cross}$$ is the cross price elasticity, $$\alpha$$ is the share of the total budget for the good, and $$f(x)$$ is the derivative of the income term. See `StaplesFoodDemandInput::getCrossPriceElasticity`, `NonStaplesFoodDemandInput::getCrossPriceElasticity`, `StaplesFoodDemandInput::calcIncomeTermDerivative`, and `NonStaplesFoodDemandInput::calcIncomeTermDerivative` in [food_demand_input.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/functions/source/food_demand_input.cpp). 
 

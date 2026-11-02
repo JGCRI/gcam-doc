@@ -34,7 +34,7 @@ GCAM's supply inputs include information on production, prices, technology cost 
 | Fixed O&M costs | Fixed operating and maintenance (O&M) costs for electricity generation technologies | External data | Annual Technology Baseline (ATB) 2019 | Specified by technology and year |  1975$/kW/yr |
 | Variable O&M costs | Variable operating and maintenance (O&M) costs for electricity generation technologies | External data | Annual Technology Baseline (ATB) 2019 | Specified by technology and year |  1975$/MWh |
 | Capacity factor | Ratio of generation to capacity for electricity generation technologies | Assumption |  | Specified by technology and year |  Unitless |
-| Fixed charge rate | Factor used to levelize capital cost | Assumption |  | Specified by technology |  Unitless |
+| Capital tracking and investment parameters | Parameters used to derive sectoral capital and investment demand for energy supply and energy service technologies | Assumption | Various GCAM technology input files | Specified by sector, technology, and year | `capital.ratio`, `interest.rate`, `payback.years`, `invest.unit.conversion`, `tracking.market`, and `depreciation.rate` |
 | Default efficiencies | Default amount of output produced per unit of input; can be overwritten by region-specific information derived from historical data | Assumption | | Specified by technology and year | GJ per GJ |
 | Default input-output coefficients | Default amount of input required per unit of output produced; can be overwritten by region-specific information derived from historical data | Assumption | | Specified by technology and year |  GJ per GJ |
 | Resource supply curves | Mapping between cost and resource extraction. Resource extraction is cumulative for deplatable resources and annual for renewable resources | External data | Various | Specified by resource and year |  EJ for extraction, 1975$/GJ for cost |
@@ -89,6 +89,10 @@ Costs of conversion technologies are specified in  [A21.globaltech_cost.csv](htt
 [A26.globaltech_cost.csv](https://github.com/JGCRI/gcam-core/tree/master/input/gcamdata/inst/extdata/energy/A26.globaltech_cost.csv), [A21.globalrsrctech_cost.csv](https://github.com/JGCRI/gcam-core/tree/master/input/gcamdata/inst/extdata/energy/A21.globalrsrctech_cost.csv), and [A61.globaltech_cost.csv](https://github.com/JGCRI/gcam-core/tree/master/input/gcamdata/inst/extdata/energy/A61.globaltech_cost.csv).
 
 For electricity generation technologies, costs inputs are specified in [capital cost](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/NREL_ATB_capital.csv), [fixed operating & maintenance costs](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/NREL_ATB_OMfixed.csv), and [variable operating & maintenance cost](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/NREL_ATB_OMvar.csv).
+
+##### Capital tracking and investment parameters
+
+In addition to levelized technology costs, GCAM tracks capital and investment information for energy supply and energy service technologies. These inputs are used to derive sectoral investment demand and to connect energy technologies to the macroeconomic savings-investment system. The relevant parameters include `capital.ratio`, `interest.rate`, `payback.years`, `invest.unit.conversion`, `tracking.market`, and `depreciation.rate`. These parameters are processed across multiple energy, industry, building, transport, and water-sector modules and support the calculation of investment demand in GCAM-Macro.
 
 ##### Default efficiencies
 Efficiencies are specified in [A23.globaltech_eff.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A23.globaltech_eff.csv), [A25.globaltech_eff.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A25.globaltech_eff.csv), and [A26.globaltech_eff.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A26.globaltech_eff.csv).
@@ -158,14 +162,19 @@ The costs of desalinated water reflects electrical energy input and capital and 
 
 | Name | Description | Type | Source | Resolution | Unit |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| Historical country-level production of crops | Production of agricultural commodities by country in the historical period; used for initialization/calibration of GCAM | External data | FAO, [gcamdata-faostat](#gcamdata-faostat) | Specified by crop, country, and year | tons |
-| Historical country-level harvested area for crops | Harvested area for agricultural commodities by country in the historical period; used for initialization/calibration of GCAM | External data | FAO, [gcamdata-faostat](#gcamdata-faostat) | Specified by crop, use, country, and year | ha |
+| Historical country-level production of crops | Production of agricultural commodities by country in the historical period; used for initialization/calibration of GCAM | External data | FAO, `gcamdata-faostat` | Specified by crop, country, and year | tons |
+| Historical country-level harvested area for crops | Harvested area for agricultural commodities by country in the historical period; used for initialization/calibration of GCAM | External data | FAO, `gcamdata-faostat` | Specified by crop, use, country, and year | ha |
 | Historical sub-national production of crops | Production of agricultural commodities by water basin in a single year; used for initialization/calibration of GCAM | External data | <a href="https://github.com/JGCRI/moirai">moirai</a> | Specified by crop, country and basin | tons |
 | Historical sub-national harvested area of crops | Harvested area of agricultural commodities by water basin in a single year; used for initialization/calibration of GCAM | External data | <a href="https://github.com/JGCRI/moirai">moirai</a> | Specified by crop, country and basin | ha |
-| Historical production of livestock | Production of livestock commodities in the historical period; used for initialization/calibration of GCAM | External data | FAO, [gcamdata-faostat](#gcamdata-faostat) | Specified by crop, use, country, and year | tons |
-| Livestock feed coefficients | Livestock feed input, animal output, and meat output by systems | External data | IMAGE, | Specified by commodity, feed system, IMAGE region and year | various |
-| Historical cost of production | Historical cost of crop production in the USA | External data | <a href="http://www.ers.usda.gov/Data/CostsAndReturns/">USDA</a> | Specified by crop, type of cost, and year | various (e.g., $ per planted acre, $ per bushel) |
-| Historical prices | Historical prices of agriculture and livestock commodities; used for initialization/calibration of GCAM | External data | FAO, [gcamdata-faostat](#gcamdata-faostat) | Specified by country, commodity, and year |  |
+| Historical production of livestock | Production of livestock commodities in the historical period; used for initialization/calibration of GCAM | External data | FAO, `gcamdata-faostat` | Specified by crop, use, country, and year | tons |
+| Livestock feed coefficients | Livestock feed input, animal output, and meat output by systems | External data | IMAGE | Specified by commodity, feed system, IMAGE region and year | various |
+| Historical cost of production | Historical cost of crop production in the USA | External data | USDA and GTAP cost shares | Specified by crop, type of cost, and year | various (e.g., $ per planted acre, $ per bushel) |
+| Historical prices | Historical prices of agriculture and livestock commodities; used for initialization/calibration of GCAM | External data | FAO, `gcamdata-faostat` | Specified by country, commodity, and year |  |
+| Agricultural capital stock | Historical capital stock used to construct agricultural capital inputs and investment tracking | External data | FAO, `gcamdata-faostat` | Country, agricultural sector, and year | Monetary value |
+| Agricultural labor and capital inputs | Labor and capital data used to derive agricultural employment shares, capital stocks, wage rates, capital rental prices, and value-added components | External data | USDA, ILO, FAO, and GTAP-based sources | Country / region, sector, and year | Various |
+| Agricultural labor and capital coefficients | Technology-level labor and capital coefficients for crop, livestock, and forestry production | Derived input | `gcamdata` processing | GCAM region, commodity, technology, management, and year | Input-output coefficients |
+| Agricultural factor productivity | Productivity assumptions for land, labor, capital, water, fertilizer, livestock, and forestry inputs | Assumption / derived input | FAO-based land productivity assumptions and GCAM scenario inputs | GCAM region, commodity, input, and year | Productivity index |
+| Agricultural capital tracking | Parameters and XML inputs used to derive agricultural investment demand | Derived input / assumption | `gcamdata` processing | GCAM region, sector, and year | Monetary value and capital-input coefficients |
 | Agriculture productivity growth | Projected yields through 2050 for agricultural commodities | External data | FAO | Specified by country, commodity, and year |  |
 | Logit exponents | Share parameters dictating substitution between different feed options for livestock | Assumption |  | Specified by type of livestock | unitless |
 | Historical non-CO<sub>2</sub> emissions | Historical emissions of non-CO<sub>2</sub> | External data | [CEDS](https://github.com/JGCRI/CEDS) `v2024_07_08` | Specified by country, technology, gas, and year | Various |
@@ -190,16 +199,24 @@ GCAM bases its historical livestock feed representation on the IMAGE model. GCAM
 
 ##### Ag productivity growth
 
-GCAM captures change in yield due to increases in fertilizer use or irrigation endogenously. All other non-climate related factors driving yield increases are exogenously specified, with data specified in [FAO_ag_CROSIT.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/FAO_ag_CROSIT.csv).
+GCAM captures yield changes from endogenous changes in fertilizer and irrigation management, while other non-climate drivers of agricultural productivity are specified exogenously. In recent GCAM versions, agricultural productivity processing has been restructured to support factor-specific productivity assumptions. Land productivity remains the main exogenous driver of crop yield improvements, however we also include factor-augmenting productivity inputs for non-land factors, including labor, capital, and other inputs. These inputs are processed through agricultural productivity modules such as [zaglu_L2083.ag_factor_productivity_scen.R](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/zaglu_L2083.ag_factor_productivity_scen.R), [zaglu_xml_ag_land_prodchange_Scen.R](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/zaglu_xml_ag_land_prodchange_Scen.R), and [zaglu_xml_ag_nonland_input_Scen.R](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/zaglu_xml_ag_nonland_input_Scen.R).
+
 
 ##### Prices
 
 GCAM uses producer prices to initialize the model (future prices are endogenous). Those prices are provided in [GCAMFAOSTAT_ProdPrice.csv.gz](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMFAOSTAT_ProdPrice.csv.gz).
 
+##### Agricultural labor, capital, and capital tracking
+
+GCAM explicitly represents labor and capital inputs in primary agricultural sectors. Agricultural labor and capital data are compiled from multiple sources, including FAO, USDA, ILO, and GTAP-based data, and are harmonized in `gcamdata` to derive regional and sectoral labor and capital inputs. FAO-based agricultural capital stock data are provided in [GCAMFAOSTAT_CapitalStock.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMFAOSTAT_CapitalStock.csv), and USDA international agricultural productivity data are provided in [USDA_InternationAgProductivity_LaborCapital.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/USDA/USDA_InternationAgProductivity_LaborCapital.csv).
+
+These inputs are processed in [zaglu_L103.ag_labor_capital.R](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/zaglu_L103.ag_labor_capital.R) and downscaled to agricultural technologies in [zaglu_L2082.ag_an_for_laborcapital.R](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/zaglu_L2082.ag_an_for_laborcapital.R). The resulting labor and capital coefficients are written to agricultural input XMLs, including `ag_input_laborcapital_IRR_MGMT.xml`, and agricultural investment information is linked through `ag_capital_tracking.xml`.
+
+This update separates labor and capital from the residual “other cost” category where possible. It also supports differentiation between more labor-intensive and more capital-intensive agricultural technologies, allowing changes in wages and capital rental prices to affect technology profitability and production choices in GCAM-Macro.
 
 ##### Cost of production
 
-The costs associated with land, irrigation, and fertilizer are endogenously determined in GCAM (see [Land Supply](supply_land.html)). Other costs of production are exogenously specified and the data used for those costs can be found in [USDA_cost_data.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/USDA/USDA_cost_data.csv), with [USDA_item_cost.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/USDA/USDA_item_cost.csv) specifying which costs are included in GCAM. Note that we use cost information for the USA in all regions.
+The costs associated with land, labor, capital, irrigation, and fertilizer are endogenously determined in GCAM (see [Land Supply](supply_land.html)). Other costs of production are exogenously specified and the data used for those costs in the USA were from [USDA_cost_data.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/USDA/USDA_cost_data.csv). Additional assumptions based on GTAP cost shares were used to derive other cost for all regions and sectors.
 
 ##### Emissions 
 

@@ -25,6 +25,8 @@ Edmonds, J. and J. Reilly. 1983. "A Long-Term, Global, Energy-Economic Model of 
 
 ### Energy
 
+Edmonds, J., Zhao, X., Patel, P., Sheng, D., Lochner, E., Bertram, C., ... & Waldhoff, S. (2025). Sensitivity of future regional and global energy markets and macroeconomic activity to a hypothetical global energy market disruption. Iscience, 28(1). [10.1016/j.isci.2024.111449](https://www.cell.com/iscience/fulltext/S2589-0042(24)02676-2)
+
 Wise, M., Patel, P., Khan, Z., Kim, S. H., Hejazi, M., & Iyer, G. (2019). Representing power sector detail and flexibility in a multisector model. *Energy Strategy Reviews*, 26, 100411. https://doi.org/10.1016/j.esr.2019.100411
 
 Clarke, L., Eom, J., Marten, E. H., Horowitz, R., Kyle, P., Link, R., et al. (2018). Effects of long-term climate change on global building energy expenditures. *Energy Economics*, 72, 667–677. https://doi.org/10.1016/j.eneco.2018.01.003
@@ -53,7 +55,11 @@ Hejazi, M., Edmonds, J., Clarke, L., Kyle, P., Davies, E., Chaturvedi, V., Wise,
 
 Liu, L., Hejazi, M., Patel, P., Kyle, P., Davies, E., Zhou, Y., Clarke, L., J Edmonds, 2014. Water Demands for Electricity Generation in the U.S.: Modeling Different Scenarios for the Water-Energy Nexus. *Technological Forecasting and Social Change* 94, 318–334. https://doi.org/DOI:10.1016/j.techfore.2014.11.004
 
-### Land
+### Ag-Land
+
+Sheng, D., Edmonds, J. A., Patel, P., Waldhoff, S. T., O’Neill, B. C., Wise, M. A., & Zhao, X. (2025). Labour market evolution is a key determinant of global agroeconomic and environmental futures. Nature Food, 6(2), 139-150. [10.1038/s43016-024-01088-6](https://doi.org/10.1038/s43016-024-01088-6)
+
+Zhao, X., Mignone, B. K., Wise, M. A., & McJeon, H. C. (2024). Trade-offs in land-based carbon removal measures under 1.5 C and 2 C futures. Nature Communications, 15(1), 2297. [10.1038/s41467-024-46575-3](https://www.nature.com/articles/s41467-024-46575-3)
 
 Calvin, K., Wise, M., Kyle, P., Clarke, L., Edmonds, J., 2017. A hindcast experiment using the GCAM 3.0 agriculture and land-use module. *Climate Change Economics* 8. https://doi.org/10.1142/S2010007817500051
 
