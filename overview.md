@@ -3,7 +3,7 @@ layout: index
 title: GCAM Model Overview
 prev: 
 next: economy.html
-gcam-version: v8.2
+gcam-version: v9.1
 ---
 
 ## Introduction
@@ -138,7 +138,7 @@ Figure 3: Conceptual Schematic of the Operation of the GCAM Core
 
 GCAM is a dynamic recursive model, meaning that decision-makers do not know the future when making a decision today. (In contrast, intertemporal optimization models assume that agents know the entire future with certainty when they make decisions.) After it solves each period, the model then uses the resulting state of the world, including the consequences of decisions made in that period - such as resource depletion, capital stock retirements and installations, and changes to the landscape - and then moves to the next time step and performs the same exercise. For long-lived investments, decision-makers may account for future profit streams, but those estimates would be based on current prices. 
 
-Release versions of GCAM are calibrated to historical observations (e.g., through 2021 since GCAM v8.2) and are typically run through the end of the century in five-year time steps. However, the model can also be operated at alternative temporal resolutions through user-defined parameters.
+Release versions of GCAM are calibrated to historical observations (e.g., through 2021 since GCAM v8.0) and are typically run through the end of the century in five-year time steps. However, the model can also be operated at alternative temporal resolutions through user-defined parameters.
 
 While the agents in the GCAM model are assumed to act to maximize their own self-interest, the model as a whole is not performing an optimization calculation. In fact, actors in GCAM can make decisions that "seemed like a good idea at the time", but which are not optimal from a larger social perspective and which the decision maker would not have made had the decision maker known what lay ahead in the future. For example, the model's actors do not know about future climate regulations, and could install fossil fuel power in the years preceding the implementation of such policies. 
 

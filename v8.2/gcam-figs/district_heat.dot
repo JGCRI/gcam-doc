@@ -1,0 +1,18 @@
+digraph district_heat{
+	oil[label="Liquid\nFuels",style=filled,color=black,fontcolor=white];
+	ng[label="Natural Gas",style=filled,color=blue,fontcolor=white];
+	bio[label="Biomass",style=filled,color=green];
+	coal[label="Coal",style=filled,color=black,fontcolor=white];
+	dist_heat[label="district heat",style=filled,color=brown,fontcolor=white];
+	oil->dist_heat[label=1.25]
+	ng->dist_heat[label=1.25]
+	bio->dist_heat[label=1.25]
+	coal->dist_heat[label=1.25]
+	
+	bld[ label = "Buildings", style = filled, color = brown, fontcolor = white ];
+	ind[ label = "Industrial\nEnergy Use", style = filled, color = brown, fontcolor = white ];
+	
+	dist_heat -> bld[ label = 1 ];
+	dist_heat -> ind[ label = 1 ];
+	
+}

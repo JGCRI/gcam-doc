@@ -1,7 +1,7 @@
 ---
 layout: index
 title: References
-gcam-version: v8.2
+gcam-version: v9.1
 ---
 
 **Selected GCAM Papers**

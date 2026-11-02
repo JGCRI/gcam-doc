@@ -1,10 +1,10 @@
 ---
 layout: index
 title: Global Change Analysis Model (GCAM)
-gcam-version: v8.2
+gcam-version: v9.1
 ---
 
-This documentation describes GCAM v8.2 ([![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15581183.svg)](https://doi.org/10.5281/zenodo.15581183))
+This documentation describes GCAM v9.2 ([![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20510944.svg)](https://doi.org/10.5281/zenodo.20510944))
 
 
 **GCAM diagram. Click on each box for a more detailed description of that element.**
@@ -65,4 +65,6 @@ GCAM is under continuing development. Information on how this version of GCAM di
 * [GCAM-5.4](v5.4/toc.html)
 * [GCAM-6.0](v6.0/toc.html)
 * [GCAM-7.0](v7.0/toc.html)
+* [GCAM-7.1](v7.1/toc.html)
+* [GCAM-8.2](v8.2/toc.html)
 

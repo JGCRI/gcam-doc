@@ -3,7 +3,7 @@ layout: index
 title: Recent updates
 prev: fusion.html
 next: 
-gcam-version: v8.2
+gcam-version: v9.1
 ---
 
 Below are summaries of the updates included in each GCAM Release. Including links to the Core Model Proposals, which provide full documentation of recent changes, including methods of implementation and analysis of impacts on key results. Note that since GCAM 7.1 each update will receive its own release and version. Major releases, which correspond to those with release packages on Github, will also note a DOI.
