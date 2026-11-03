@@ -1,0 +1,19 @@
+digraph region{
+	cement[style=filled,color=gray70];
+	process_heat[label="process heat\ncement",style=filled,color=brown,fontcolor=white];
+	electricity[label="electricity",style=filled,color=yellow];
+	limestone[label="limestone",style=filled,color=gray70];
+	coal[style=filled,label="Coal",color=black,fontcolor=white];
+	gas[style=filled,label="Natural Gas",color=blue,fontcolor=white];
+	oil[style=filled,label="Liquid Fuels",color=black,fontcolor=white];
+	biomass[style=filled,label="Biomass",color=green];
+
+	electricity->cement[label=0.0005];
+	limestone->cement[label=1.5];
+	process_heat->cement[label=0.004];
+	gas->process_heat;
+	oil->process_heat;
+	coal->process_heat;
+	biomass->process_heat;
+
+}

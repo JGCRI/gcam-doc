@@ -3,7 +3,7 @@ layout: index
 title: Outputs from Emissions Modeling
 prev: emissions.html
 next: diagram.html
-gcam-version: v8.2
+gcam-version: v9.1
 ---
 
 ## Description of Outputs

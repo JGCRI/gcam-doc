@@ -3,7 +3,7 @@ layout: index
 title: Quantity Outputs
 prev: supply_land.html
 next: outputs_prices.html
-gcam-version: v8.2
+gcam-version: v9.1
 ---
 
 ## Description of Outputs
